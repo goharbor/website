@@ -1,6 +1,6 @@
 baseURL: http://goharbor.local/
 languageCode: en-us
-title: Go Harbor
+title: Harbor
 theme: harbor
 publishdir: "public-dev"
 params:
