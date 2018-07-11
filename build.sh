@@ -68,6 +68,7 @@ cd ../..
         rm -rf public/*
         hugo --config config.yaml,config-prod.yaml
         cp LICENSE public/LICENSE
+        echo -n "goharbor.io" > public/CNAME
         LogIt "success" "Live: Site build complete. Please check /public folder and deploy it using ftp,sftp or ssh".
         ;;
     staging)
