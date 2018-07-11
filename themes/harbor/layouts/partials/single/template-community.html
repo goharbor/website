@@ -1,0 +1,149 @@
+<section class="module module--comunity-showcase">
+    <div class="container wrap">
+        <div class="list-items social-channel">
+
+            <div class="list-item">
+                <div class="list-item-wrap">
+                    <div class="list-item-icon">
+                        <img src="/img/icons/twitter-icon.svg" class="">
+                    </div>
+                    <div class="list-item-content">
+                        <div class="list-title">
+                            <h3>Twitter</h3>
+                        </div>
+                        <div class="list-article-info">
+                            <a href="https://twitter.com/project_harbor" class="hlink">@project_harbor</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="list-item">
+                <div class="list-item-wrap">
+                    <div class="list-item-icon">
+                        <img src="/img/icons/slack-icon.svg" class="">
+                    </div>
+                    <div class="list-item-content">
+                        <div class="list-title">
+                            <h3>Slack</h3>
+                        </div>
+                        <div class="list-article-info">
+                            <p>Join Harbor's community to discuss your experience and ask questions:
+                            <br/>
+                                <a href="https://code.vmware.com/join/" class="hlink">VMware &#123;code&#125;</a>, channel: <a href="https://vmwarecode.slack.com/messages/harbor">#harbor</a>.
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="list-items-info">
+            <p>There are two distribution lists for Harbor, one for users and one for developers:</p>
+        </div>
+        <div class="list-items google-groups">
+
+            <div class="list-item">
+                <div class="list-item-wrap">
+                    <div class="list-item-icon">
+                        <img src="/img/icons/user-group-icon.svg" class="svg">
+                    </div>
+                    <div class="list-item-content">
+                        <div class="list-title">
+                            <h3>User Groups</h3>
+                        </div>
+                        <div class="list-article-info">
+                            <p>Join Harbor’s user email group:</p>
+                            <p><a href="mailto:harbor-users@googlegroups.com" class="hlink">harbor-users@googlegroups.com</a> to get Harbor's news, features, and releases, or to provide suggestions and feedback.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="list-item">
+                <div class="list-item-wrap">
+                    <div class="list-item-icon">
+                        <img src="/img/icons/dev-group-icon.svg" class="svg">
+                    </div>
+                    <div class="list-item-content">
+                        <div class="list-title">
+                            <h3>Developer Groups</h3>
+                        </div>
+                        <div class="list-article-info">
+                            <p>Join Harbor’s developer group:</p>
+                            <p><a href="mailto:harbor-dev@googlegroups.com" class="hlink">harbor-dev@googlegroups.com</a> for updates related to development and contribution.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<section class="module module--content">
+    <div class="container wrap">
+        <p class="pad-t-3">
+            Below are some of Harbor’s users and partners. If you would like to be listed on this page as a reference user or partner, please contact us at <a href="mailto:harbor@vmware.com" class="hlink">harbor@vmware.com</a>.
+        </p>
+    </div>
+</section>
+<section class="module module--image-grid community-users">
+    <div class="container wrap">
+        <!--Variables-->
+        {{- $harborusers := .Site.Params.PageCommunity.harborusers -}}
+        {{- $title := $harborusers.title -}}
+        {{- $users := $harborusers.users -}}
+
+        <h2 class="module-title">{{ $title }}</h2>
+        <div id="carousel-community-users" class="items owl-carousel mobile-only">
+        {{ range $users }}
+            {{ if (not .hide) }}
+            <div class="item">
+                <div class="item-icon">
+                    <a href={{ .link }} target="_blank">
+                        <img src={{ .logo }} title="{{ .title }}" alt="{{ .title }}" />
+                    </a>
+                </div>
+                <div class="item-title">
+                    <a href={{ .link }} target="_blank">
+                        {{ .title }}
+                    </a>
+                </div>
+            </div>
+            {{ end }}
+        {{ end }}
+        </div>
+    </div>
+</section>
+<section class="module module--image-grid community-partners">
+    <div class="container wrap">
+        <!--Variables-->
+        {{- $harborpartners := .Site.Params.PageCommunity.harborpartners -}}
+        {{- $title := $harborpartners.title -}}
+        {{- $partners := $harborpartners.partners -}}
+
+        <h2 class="module-title">{{ $title }}</h2>
+        <div id="carousel-community-partners" class="items owl-carousel mobile-only">
+        {{ range $partners }}
+            {{ if (not .hide) }}
+            <div class="item">
+                <div class="item-icon">
+                    <a href={{ .link }} target="_blank">
+                        <img src={{ .logo }} title="{{ .title }}" alt="{{ .title }}"/>
+                    </a>
+                </div>
+                <div class="item-title">
+                    <a href={{ .link }} target="_blank">
+                        {{ .title }}
+                    </a>
+                </div>
+            </div>
+            {{ end }}
+        {{ end }}
+        </div>
+    </div>
+</section>
+<section class="module module--content">
+    <div class="container wrap">
+        <h2 class="module-title">Contributions</h2>
+        <p>If you wish to contribute to Harbor we’d love to hear from you. To sign our Contributor License Agreement (CLA) and get started please open a pull request on Harbor GitHub and follow the prompts. For any questions about the CLA process, please refer to our <a href="https://cla.vmware.com/faq" class="hlink" target="_blank">FAQ</a> or contact us at <a href="mailto:harbor@vmware.com" class="hlink">harbor@vmware.com</a></p>
+    </div>
+</section>

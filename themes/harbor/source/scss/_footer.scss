@@ -1,0 +1,112 @@
+/* ==========================================================================
+Fresh Footer
+========================================================================== */
+
+footer.footer-dark {
+    background: $harbor__violet;
+    color: #fff;
+    padding-top:0;
+    padding-left:0;
+    padding-right:0;
+    @include curve(top-curve-reverse);
+    p,div,span{
+        color: #fff;
+    }
+    .container{
+        padding-left: $gutter;
+        padding-right: $gutter;
+    }
+    .columns {
+        margin-top: 35px;
+        @include breakpoint(mobile-max){
+            display:flex;
+            flex-direction: column;
+            .column{
+                &:nth-child(1){
+                    order:3;
+                }
+                margin-bottom:20px;
+            }
+        }
+        .column{
+            &:first-of-type{
+                @include breakpoint(tablet){
+                    flex: none;
+                    width: 45%;
+                }
+            }
+        }
+    }
+    .footer-logo {
+        img {
+            height: 50px;
+        }
+    }
+    .footer-copyright{
+        margin-top:30px;
+    }
+    .footer-column {
+        .footer-header h3 {
+            font-weight:600;
+            font-size: 1.6rem;
+            //text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            color:$white
+        }
+        ul.link-list {
+            line-height: 2rem;
+            font-size: 1.6rem;
+            padding-left:0;
+            .link-list-item{
+
+                display:flex;
+                align-items: center;
+                &:hover {
+                    a{
+                        color: $harbor__purple;
+                    }
+                    svg.icon{
+                        path,*{fill:$harbor__purple;}
+                    }
+
+                }
+                &:not(:last-child){
+                    margin-bottom: 10px;
+                }
+                .icon-wrapper{
+                    padding-right:6px;
+                    padding-top:3px;
+                }
+                .link{
+
+                }
+
+            }
+            a {
+                color: $white;
+                font-weight: 400;
+                transition: all 0.5s;
+            }
+
+        }
+        .level-item .icon {
+            color: $secondary;
+            transition: all 0.5s;
+            :hover {
+                color: $smoke-white;
+            }
+        }
+
+    }
+    svg.icon{
+        path,*{fill:$white;transition: all $delay}
+    }
+}
+
+/* Override */
+body.page-home{
+    footer.footer-dark .container{
+        padding-top: calc(#{$last-module-to-footer-overlap/2});
+    }
+}

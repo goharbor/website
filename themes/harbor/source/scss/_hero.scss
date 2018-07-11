@@ -1,0 +1,142 @@
+/* ==========================================================================
+Hero styles
+========================================================================== */
+
+section.hero{
+    overflow:hidden;
+}
+.hero-body {
+    padding: 6rem 1.5rem;
+    position:relative;
+    flex-direction: column;
+    .container{
+
+    }
+    &.curved-border{
+        //
+        background: rgb(164,116,255)!important;
+        background: radial-gradient(circle at 50% 80%, #a474ff 0%, #4a00d8 35%, #4a00d8 100%) !important;
+
+        min-height:300px;
+        @include breakpoint(desktop){
+            min-height:600px;
+        }
+    }
+    .title.main-title {
+        color: $title-grey;
+    }
+    .title.page-title {
+        font-size: 3.5rem;
+    }
+    .subtitle.page-subtitle {
+        font-size: 1.8rem;
+    }
+    .hero-image{
+        .wrap{
+            max-width:100vw;
+            @include breakpoint(tablet){
+                max-width:600px;
+            }
+        }
+    }
+}
+
+.hero-content{
+
+    position: relative;
+    z-index: 10;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:-20%;
+margin-bottom: 70px;
+    background:$white;
+width:calc(100% - #{$gutter * 2});
+    padding:25px 0 25px 0;
+    box-shadow: 0 4px 8px 0 rgba(12,0,51,0.1);
+    border-radius:6px;
+    @include breakpoint(desktop){
+        width:$width_content;
+        margin-top:-8%;
+    }
+
+    h1{
+        font-weight:700;
+    }
+    h2{
+        font-size:2.8rem;
+        line-height:3.6rem;
+        font-weight:normal;
+        margin-top:10px;
+        margin-bottom:30px;
+    }
+    .wrap{
+        margin:0 auto;
+        padding:0 20px;
+    }
+}
+
+.hero-foot {
+    img.partner-logo {
+        height: 70px;
+    }
+}
+
+.hero {
+    &.is-primary a:not(.button), &.is-info a:not(.button), &.is-danger a:not(.button), &.is-success a:not(.button), &.is-dark a:not(.button)  {
+        color: #7a7a7a;
+        &:hover {
+            color: #363636;
+        }
+    }
+    &.is-primary a.navbar-item.navbar-inner-xs, &.is-info a.navbar-item.navbar-inner-xs, &.is-danger a.navbar-item.navbar-inner-xs, &.is-success a.navbar-item.navbar-inner-xs, &.is-dark a.navbar-item.navbar-inner-xs  {
+        color: #7a7a7a;
+        &:hover {
+            color: $secondary !important;
+        }
+    }
+    &.is-light a.navbar-item.is-drop:hover a {
+        color: $secondary !important;
+    }
+    &.is-light a.button, &.is-warning a.button {
+        color: $white;
+    }
+    &.is-theme-primary {
+        background-color: $primary;
+        .title {
+            color: $white;
+        }
+        .subtitle {
+            color: $white;
+        }
+    }
+    &.is-theme-secondary {
+        background-color: $secondary;
+        .title {
+            color: $white;
+        }
+        .subtitle {
+            color: $white;
+        }
+    }
+    &.is-theme-accent {
+        background-color: $accent;
+        .title {
+            color: $white;
+        }
+        .subtitle {
+            color: $white;
+        }
+    }
+    &.is-light-grey {
+        background-color: $light-grey;
+        background-image: -webkit-linear-gradient(309deg, #d0e0ec 0%, #f5f7fa 71%, white 100%);
+        background-image: linear-gradient(141deg, #d0e0ec 0%, #f5f7fa 71%, white 100%);
+    }
+}
+
+.navbar-item.is-drop  {
+    color: #7a7a7a;
+    &:hover {
+        color: $secondary !important;
+    }
+}

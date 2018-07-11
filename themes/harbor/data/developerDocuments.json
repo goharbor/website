@@ -1,0 +1,46 @@
+{
+  "documents":[
+    {
+      "title":"Architecture overview of Harbor",
+      "excerpt":"Developers, read this first.",
+      "link":"https://github.com/vmware/harbor/wiki/Architecture-Overview-of-Harbor",
+      "publish":true
+    },
+    {
+      "title":"Build Harbor from Source",
+      "excerpt":"How to build Harbor from source code.",
+      "link":"https://github.com/vmware/harbor/blob/master/docs/compile_guide.md",
+      "publish":true
+    },
+    {
+      "title":"Internationalization Guide",
+      "excerpt":"How to add your local language to Harbor.",
+      "link":"https://github.com/vmware/harbor/blob/master/docs/developer_guide_i18n.md",
+      "publish":true
+    },
+    {
+      "title":"Python SDK",
+      "excerpt":"(by community)",
+      "link":"https://github.com/vmware/harbor/tree/master/contrib/sdk/harbor-py",
+      "publish":true
+    },
+    {
+      "title":"Harbor CLI",
+      "excerpt":"(by community)",
+      "link":"https://github.com/int32bit/python-harborclient",
+      "publish":true
+    },
+    {
+      "title":"Deploy Harbor using Docker Machine",
+      "excerpt":"(by community)",
+      "link":"https://github.com/vmware/harbor/blob/master/contrib/deploying_using_docker_machine.md",
+      "publish":true
+    },
+    {
+      "title":"Configuring Harbor as a local registry mirror",
+      "excerpt":"(by community)",
+      "link":"https://github.com/vmware/harbor/blob/master/contrib/Configure_mirror.md",
+      "publish":true
+    }
+  ]
+}

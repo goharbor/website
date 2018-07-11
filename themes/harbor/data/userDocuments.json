@@ -1,0 +1,34 @@
+{
+  "documents":[
+    {
+      "title":"Installation and Configuration Guide",
+      "excerpt":"Read this first! Guide for Harbor online installer and offline installer.",
+      "link":"https://github.com/vmware/harbor/blob/master/docs/installation_guide.md",
+      "publish":true
+    },
+    {
+      "title":"Harbor User Guide",
+      "excerpt":"How to use Harbor to manage images, projects, replications and users.",
+      "link":"https://github.com/vmware/harbor/blob/master/docs/user_guide.md",
+      "publish":true
+    },
+    {
+      "title":"Configuring HTTPS for Harbor",
+      "excerpt":"Configure security connection between Harbor and Docker client.",
+      "link":"https://github.com/vmware/harbor/blob/master/docs/configure_https.md",
+      "publish":true
+    },
+    {
+      "title":"Upgrade and Data Migration Guide",
+      "excerpt":"Data migration may be needed when upgrading Harbor to a newer version.",
+      "link":"https://github.com/vmware/harbor/blob/master/docs/migration_guide.md",
+      "publish":true
+    },
+    {
+      "title":"Deploy Harbor on Kubernetes",
+      "excerpt":"Guide to deploy Harbor on Kubernetes. (maintained by community)",
+      "link":"https://github.com/vmware/harbor/blob/master/docs/kubernetes_deployment.md",
+      "publish":true
+    }
+  ]
+}

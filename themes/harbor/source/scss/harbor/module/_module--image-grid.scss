@@ -1,0 +1,69 @@
+.module--image-grid{
+  &.community-users{
+    .container{
+      padding-top: 100px;
+    }
+  }
+  &.community-partners{
+    .container{
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
+  }
+}
+
+
+/* Grid Base */
+.module--image-grid{
+  $item-gutter:20px;
+  @mixin flex-child-item-end-gutter($count:1){
+    @for $i from 1 to ($count+1){
+      &:nth-last-of-type(#{$i}){
+        padding-bottom:0!important;
+      }
+    }
+  }
+  @mixin flex-child-item-grid(){
+
+    $num-of-items:(
+            "mobile":2,
+            "tablet":3,
+            "desktop":4
+    );
+
+    flex-basis: calc(100%/#{map_get($num-of-items,mobile)});
+    padding:0 0 $item-gutter 0;
+    box-sizing: border-box;
+    @include flex-child-item-end-gutter( map_get($num-of-items,mobile) );
+    @include breakpoint(tablet){
+      flex-basis: calc(100%/#{map_get($num-of-items,tablet)});
+      padding:0 $item-gutter $item-gutter $item-gutter;
+      box-sizing: border-box;
+      @include flex-child-item-end-gutter( map_get($num-of-items,tablet) );
+    }
+    @include breakpoint(desktop){
+      flex-basis: calc(100%/#{map_get($num-of-items,desktop)});
+      padding:0 $item-gutter $item-gutter $item-gutter;
+      box-sizing: border-box;
+      @include flex-child-item-end-gutter( map_get($num-of-items,desktop) );
+    }
+  }
+
+  .container{
+    .items{
+      display:flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      @include breakpoint(tablet) {
+        text-align: center;
+      }
+      >.item{
+        @include flex-child-item-grid();
+
+        .item-title{
+          display:none;
+        }
+      }
+    }
+  }
+}

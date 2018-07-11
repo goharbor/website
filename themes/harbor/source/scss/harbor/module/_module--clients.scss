@@ -1,0 +1,32 @@
+.module--clients{
+
+  .container{
+    padding-top:40px;
+    padding-bottom:40px;
+
+
+    border: 1px solid #F5F1FE;	border-radius: 10px;	background-color: #FFFFFF;	box-shadow: 0 4px 8px 0 rgba(12,0,51,0.1);
+
+
+    @include breakpoint(tablet) {
+      text-align: center;
+    }
+
+    width: calc(100% - #{$gutter});
+    padding-left: calc(#{$gutter} * 2);
+    padding-right: calc(#{$gutter} * 2);
+    @include breakpoint(desktop){
+      max-width: calc(#{$width_content} + #{$gutter*2} + #{100px * 2});
+      padding-left: 100px;
+      padding-right: 100px;
+    }
+
+
+  }
+}
+
+body.page-home .module--clients{
+  position: relative;
+  margin-bottom: -#{$last-module-to-footer-overlap};
+  z-index:2;
+}

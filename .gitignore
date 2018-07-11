@@ -1,0 +1,37 @@
+# Application #
+############
+.htaccess
+bower
+node_modules
+gulp/sync.js
+#public*/
+
+# Packages #
+############
+*.7z
+*.dmg
+*.gz
+*.bz2
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.tgz
+
+# GULP #
+########
+sync.js
+
+# OS generated files #
+######################ß
+.DS_Store*
+ehthumbs.db
+#Icon?
+Thumbs.db
+._*
+
+# Editor generated files #
+######################
+*.un~
+.idea/

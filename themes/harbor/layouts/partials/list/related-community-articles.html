@@ -1,0 +1,65 @@
+<!--Variables-->
+{{- $showRelatedCommunityArticles := .Site.Params.blogpost.showRelatedCommunityArticles -}}
+{{- $maxRelatedCommunityArticles := .Site.Params.blogpost.maxRelatedCommunityArticles -}}
+{{- $thisPost := .Title -}}
+{{- $thisPostUrl := .Permalink -}}
+{{- $thisPostSlugWithTrailingSlash := (replace $thisPostUrl ( printf "%sblogs/" .Site.BaseURL) "") -}}
+{{- $thisPostSlug := (strings.TrimSuffix "/" $thisPostSlugWithTrailingSlash) -}}
+
+{{ if eq $showRelatedCommunityArticles true}}
+
+<section class="module module--community-articles">
+    <div class="container">
+
+        <h2 class="module-title">Related articles from the Community</h2>
+
+        <div class="list-items">
+
+        <!-- Setting variable -->
+        {{ $.Scratch.Set "matchCount" 0 }}
+
+        <!-- Start loop -->
+        {{ range $index, $element := (.Site.Data.communityArticles).articles }}
+            {{- $articleTitle := .title -}}
+            {{- $articleLink := .link -}}
+            {{- $articleAuthor := .author -}}
+
+            <!-- Loop over relatedtopics of post-->
+            {{ range .relatedtopics }}
+
+                {{- $topicUrl := .link -}}
+                {{- $topicSlug := (replace .link "/blogs/" "") -}}
+
+                {{ if eq $topicSlug $thisPostSlug}}
+
+                    {{ if lt (printf "%v" ($.Scratch.Get "matchCount" )) $maxRelatedCommunityArticles }}
+                    <div class="list-item">
+                        <div class="list-title">
+                            <a href="{{ $articleLink }}" target="_blank" ><h3>{{ $articleTitle }}</h3></a>
+                        </div>
+                        <div class="list-article-info">
+                            {{ $articleAuthor }}
+                        </div>
+                    </div>
+                    {{ end }}
+                    {{ $.Scratch.Add "matchCount" 1 }}
+
+                {{ end}}
+            {{ end }}
+        {{end}}
+
+
+        {{ if lt (printf "%v" ($.Scratch.Get "matchCount" )) 1 }}
+            <!-- Not Found Message -->
+            <div class="not-found">
+                <p>
+                    No matching community articles found at this time.
+                </p>
+            </div>
+        {{ end }}
+        </div>
+
+    </div>
+</section>
+
+{{end}}

@@ -1,0 +1,22 @@
+{{if eq .Params.showPageInfo true}}
+
+  <div class="article-info">
+    <div class="list-date">{{ dateFormat "Monday, Jan 2, 2006" .Date }}</div>
+    <div class="list-author">
+      {{if .Params.Author.Name}}
+      <span class="list-author-name">
+        {{.Params.Author.Name}}
+      </span>
+      {{end}}
+      {{if .Params.Author.Company}}
+        <span class="list-author-company">
+          {{.Params.Author.Company}}
+        </span>
+      {{end}}
+    </div>
+    {{if .Description }}
+    <h3  class="blogpost-excerpt">{{.Description}}</h3>
+    {{ end }}
+  </div>
+
+{{end}}

@@ -1,0 +1,16 @@
+{{ if .relatedtopics }}
+    <div class="list-related-topics">
+        {{ $len := (len .relatedtopics) }}
+        <small>
+            <strong><span>Related Topics:</span></strong>
+            {{ range $index, $element :=.relatedtopics }}
+                <span class="topic">
+                    <a href="{{.link}}">{{ .title }}</a>
+                    {{if lt $index (sub $len 1) }}
+                    ,
+                    {{ end }}
+                </span>
+            {{ end }}
+        </small>
+    </div>
+{{ end }}

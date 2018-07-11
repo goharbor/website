@@ -1,0 +1,33 @@
+<!--Variables-->
+{{- $ourCommunity := .Site.Params.ourcommunity -}}
+{{- $title := $ourCommunity.title -}}
+{{- $communities := $ourCommunity.communities -}}
+
+<section class="module module--our-community">
+    <div class="container">
+        <h2 class="module-title">{{ $title }}</h2>
+        <div class="items">
+            {{ range $communities }}
+            <div class="item">
+                <div class="item-icon">
+                    <a href={{ .link }} target="_blank" svg-item={{ .logo }}>
+                        <img src={{ .logo }} class=""/>
+                    </a>
+                </div>
+                <div class="item-title">
+                    <a href={{ .link }} target="_blank">
+                        {{ .title }}
+                    </a>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+        {{ if (not $ourCommunity.buttonHide) }}
+        <div class="cta has-text-centered">
+            <a href={{ $ourCommunity.buttonLink }} class="hbutton-outline-violet button">
+                {{ $ourCommunity.buttonTitle }}
+            </a>
+        </div>
+        {{ end }}
+    </div>
+</section>

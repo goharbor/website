@@ -1,0 +1,273 @@
+baseURL: http://goharbor.local/
+languageCode: en-us
+title: Go Harbor
+theme: harbor
+publishdir: "public-dev"
+params:
+  repo: https://github.com/vmware/harbor
+  hero:
+    tagline: Harbor
+    subTagline: Manage and serve container images in a secure environment
+    buttonText: Get Started
+    image: illustrations/worker.svg
+    bottomIcons:
+    - logos/clients/systek.svg
+    - logos/clients/tribe.svg
+    - logos/clients/kromo.svg
+    - logos/clients/infinite.svg
+    - logos/clients/gutwork.svg
+    showGithubEmbed: false
+  navbar:
+    buttonText: Get Started
+    buttonLink: "#getting-started"
+    buttonNewTab: false
+    logo:
+      src: logos/harbor-logo-white.svg
+      alt: Main navbar logo
+    links:
+    - text: Community
+      url: /community
+    - text: Docs
+      url: /docs
+    - text: Blogs
+      url: /blogs
+    - text: Demo
+      dropdown: true
+      links:
+      - title: Dropdown item 1
+        url: /demo-item-1
+      - title: Dropdown item 2
+        url: /demo-item-2
+      - title: Dropdown item 3
+        url: /demo-item-3
+      hide: true
+  keyfeatures:
+    title: Key Features
+    features:
+    - title: Multi-tenant content signing and validation
+      logo: /img/icons/multi-content-icon.svg
+    - title: Security and vulnerability analysis
+      logo: /img/icons/security-icon.svg
+    - title: Identity integration and role-based access control
+      logo: /img/icons/identity-integration-icon.svg
+    - title: Image replication between instances
+      logo: /img/icons/image-replication-icon.svg
+    - title: Extensible API and graphical UI
+      logo: /img/icons/extensible-api-icon.svg
+    - title: Internationalization (currently English and Chinese)
+      logo: /img/icons/international-icon.svg
+  ourcommunity:
+    title: Our Community
+    buttonTitle: Discover how to join
+    buttonLink: /community
+    buttonHide: false
+    communities:
+    - title: Twitter
+      logo: /img/icons/twitter-icon.svg
+      link: https://twitter.com/project_harbor
+      handle: "@project_harbor"
+    - title: Slack
+      logo: /img/icons/slack-icon.svg
+      link: https://vmwarecode.slack.com/messages/harbor
+      handle: "#harbor"
+    - title: User Group
+      logo: /img/icons/user-group-icon.svg
+      link: https://groups.google.com/forum/#!forum/harbor-users
+      handle: "harbor-users@googlegroups.com"
+    - title: Developer Group
+      logo: /img/icons/dev-group-icon.svg
+      link: https://groups.google.com/forum/#!forum/harbor-dev
+      handle: "harbor-dev@googlegroups.com"
+  userspartners:
+    title: Users and Partners of Harbor
+    clients:
+    - title: axatp
+      logo: /img/logos/users-partners/axa-logo.png
+      link: https://www.axatp.com/
+    - title: beegoLogo
+      logo: /img/logos/users-partners/beegoLogo.png
+      link: https://example.com/
+      hide: true
+    - title: beyondsoft
+      logo: /img/logos/users-partners/beyond-logo.png
+      link: http://www.beyondsoft.com/
+    - title: bingocloud
+      logo: /img/logos/users-partners/bingo-logo.png
+      link: http://www.bingocloud.cn/
+    - title: bocoit
+      logo: /img/logos/users-partners/boco-logo.png
+      link: http://www.boco.com.cn:8081/
+    - title: boer
+      logo: /img/logos/users-partners/boer-logo.png
+      link: http://www.boericasa.com/index.html
+    - title: caicloud
+      logo: /img/logos/users-partners/caicloud-logo.png
+      link: https://caicloud.io/
+    - title: cloudchef
+      logo: /img/logos/users-partners/cloudchef-logo.png
+      link: http://www.cloudchef.io/
+    - title: cloudstar
+      logo: /img/logos/users-partners/cloud-logo.png
+      link: http://www.cloud-star.com.cn/
+    - title: dataman
+      logo: /img/logos/users-partners/dataman.png
+      link: https://example.com/
+      hide: true
+    - title: datayes
+      logo: /img/logos/users-partners/datayes-logo.png
+      link: https://www.datayes.com/en/?lang=en-US
+    - title: hydsoft
+      logo: /img/logos/users-partners/hydsoft-logo.png
+      link: http://www.hydsoft.com/en/
+    - title: ifre
+      logo: /img/logos/users-partners/ifre-logo.png
+      link: http://www.ifre.com.cn/
+    - title: trendmicro
+      logo: /img/logos/users-partners/micro-logo.png
+      link: https://www.trendmicro.com/en_au/business.html
+    - title: onstar
+      logo: /img/logos/users-partners/onstar-logo.png
+      link: https://www.onstar.com.cn/portal/ZH/index/index.html
+    - title: openedutainment
+      logo: /img/logos/users-partners/open-logo.png
+      link: http://www.open.com.cn/
+    - title: pivotal
+      logo: /img/logos/users-partners/pivotal-logo.png
+      link: https://pivotal.io/
+    - title: rancher
+      logo: /img/logos/users-partners/rancher-logo.png
+      link: https://rancher.com/
+    - title: slamtec
+      logo: /img/logos/users-partners/slamtec-logo.png
+      link: http://www.slamtec.com/en/
+    - title: talkingdata
+      logo: /img/logos/users-partners/talkingdata-logo.png
+      link: https://www.talkingdata.com/
+    - title: tenxcloud
+      logo: /img/logos/users-partners/tenxcloud-logo.png
+      link: https://www.tenxcloud.com/
+    - title: wise2c
+      logo: /img/logos/users-partners/wise-logo.png
+      link: http://www.wise2c.com/
+  footer:
+    image: harbor-logo-white.svg
+    columns:
+    - title: Getting Started
+      links:
+      - name: GitHub
+        url: https://vmware.github.io/harbor
+        icon: /img/logos/github.svg
+      - name: User Guide
+        url: https://github.com/vmware/harbor/blob/master/docs/user_guide.md
+        icon:
+      - name: Installation Guide
+        url: https://github.com/vmware/harbor/blob/master/docs/installation_guide.md
+        icon:
+    - title: Community
+      links:
+      - name: Twitter
+        url: "https://twitter.com/project_harbor"
+        icon: /img/icons/twitter-icon.svg
+      - name: Slack
+        url: "https://vmwarecode.slack.com/messages/harbor"
+        icon: /img/icons/slack-icon.svg
+      - name: User Group
+        url: "https://groups.google.com/forum/#!forum/harbor-users"
+        icon: /img/icons/user-group-icon.svg
+      - name: Developer Group
+        url: "https://groups.google.com/forum/#!forum/harbor-dev"
+        icon: /img/icons/dev-group-icon.svg
+    followUs:
+    - icon: github
+      url: "https://github.com/lucperkins"
+    - icon: dribbble
+      url: "#"
+    - icon: facebook
+      url: "#"
+    - icon: twitter
+      url: "https://twitter.com/lucperkins"
+    - icon: bitbucket
+      url: "#"
+  blogs:
+    showRelatedTopics: false
+    maxArticlesFromCommunity: 12
+  blogpost:
+    showRelatedCommunityArticles: true
+    maxRelatedCommunityArticles: 4
+    showRecentPosts: true
+    maxRecentPosts: 4
+  pageCommunity:
+    harborusers:
+      title: Users of Harbor
+      users:
+      - title: axatp
+        logo: /img/logos/users-partners/axa-logo.png
+        link: https://www.axatp.com/
+      - title: beyondsoft
+        logo: /img/logos/users-partners/beyond-logo.png
+        link: http://www.beyondsoft.com/
+      - title: bocoit
+        logo: /img/logos/users-partners/boco-logo.png
+        link: http://www.boco.com.cn:8081/
+      - title: boer
+        logo: /img/logos/users-partners/boer-logo.png
+        link: http://www.boericasa.com/index.html
+      - title: cloudstar
+        logo: /img/logos/users-partners/cloud-logo.png
+        link: http://www.cloud-star.com.cn/
+      - title: datayes
+        logo: /img/logos/users-partners/datayes-logo.png
+        link: https://www.datayes.com/en/?lang=en-US
+      - title: hydsoft
+        logo: /img/logos/users-partners/hydsoft-logo.png
+        link: http://www.hydsoft.com/en/
+      - title: ifre
+        logo: /img/logos/users-partners/ifre-logo.png
+        link: http://www.ifre.com.cn/
+      - title: onstar
+        logo: /img/logos/users-partners/onstar-logo.png
+        link: https://www.onstar.com.cn/portal/ZH/index/index.html
+      - title: openedutainment
+        logo: /img/logos/users-partners/open-logo.png
+        link: http://www.open.com.cn/
+      - title: talkingdata
+        logo: /img/logos/users-partners/talkingdata-logo.png
+        link: https://www.talkingdata.com/
+      - title: trendmicro
+        logo: /img/logos/users-partners/micro-logo.png
+        link: https://www.trendmicro.com/en_au/business.html
+      - title: wise2c
+        logo: /img/logos/users-partners/wise-logo.png
+        link: http://www.wise2c.com/
+      - title: beegoLogo
+        logo: /img/logos/users-partners/beegoLogo.png
+        link: https://example.com/
+        hide: true
+      - title: dataman
+        logo: /img/logos/users-partners/dataman.png
+        link: https://example.com/
+        hide: true
+    harborpartners:
+      title: Partners of Harbor
+      partners:
+      - title: bingocloud
+        logo: /img/logos/users-partners/bingo-logo.png
+        link: http://www.bingocloud.cn/
+      - title: caicloud
+        logo: /img/logos/users-partners/caicloud-logo.png
+        link: https://caicloud.io/
+      - title: cloudchef
+        logo: /img/logos/users-partners/cloudchef-logo.png
+        link: http://www.cloudchef.io/
+      - title: pivotal
+        logo: /img/logos/users-partners/pivotal-logo.png
+        link: https://pivotal.io/
+      - title: rancher
+        logo: /img/logos/users-partners/rancher-logo.png
+        link: https://rancher.com/
+      - title: slamtec
+        logo: /img/logos/users-partners/slamtec-logo.png
+        link: http://www.slamtec.com/en/
+      - title: tenxcloud
+        logo: /img/logos/users-partners/tenxcloud-logo.png
+        link: https://www.tenxcloud.com/

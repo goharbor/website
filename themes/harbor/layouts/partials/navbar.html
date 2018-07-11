@@ -1,0 +1,95 @@
+{{- $navbar := .Site.Params.navbar -}}
+{{- $logoSrc := printf "img/%s" $navbar.logo.src | absURL -}}
+{{- $logoAlt := $navbar.logo.alt -}}
+{{- $links := $navbar.links -}}
+{{- $buttonText := $navbar.buttonText -}}
+{{- $buttonLink := $navbar.buttonLink | safeURL -}}
+
+<!-- Check if hashlink or absolute link -->
+{{ $.Scratch.Set "buttonLink" $buttonLink }}
+{{- $linkFirstChar := (printf "%s" (substr $buttonLink 0 (printf "%v" (sub 1 (len $buttonLink )) ) ) ) -}}
+{{ if eq $linkFirstChar "#" }}
+  <!-- concatenate hashlink to SiteBaseUrl -->
+  {{- $newLink := (print .Site.BaseURL $buttonLink) -}}
+  {{ $.Scratch.Set "buttonLink" $newLink }}
+{{ end }}
+
+<div class="navbar-wrapper navbar-sticky">
+  <div class="hero-head">
+    <div class="container">
+      <nav class="navbar">
+        <div class="navbar-start">
+          <a class="navbar-item has-logo" href="{{ .Site.BaseURL }}">
+            <img class="brand" src="{{ $logoSrc }}" alt="{{ $logoAlt }}">
+          </a>
+          <span>
+          <a href={{ (printf "%v" ($.Scratch.Get "buttonLink" )) }} class="get-started button rounded secondary-btn raised"
+             {{- if eq .Site.Params.navbar.buttonNewTab true }}
+             target="_blank"
+             {{- end -}}
+          >
+            {{ $buttonText }}
+          </a>
+            </span>
+          <a id="panel-trigger" href="#left-panel" class="navbar-item navbar-inner hamburger-btn" href="javascript:void(0);">
+            <span class="menu-toggle">
+              <span class="icon-box-toggle">
+                <span class="rotate">
+                  <i class="icon-line-top"></i>
+                  <i class="icon-line-center"></i>
+                  <i class="icon-line-bottom"></i>
+                </span>
+              </span>
+            </span>
+          </a>
+        </div>
+        <span class="navbar-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+        <div class="navbar-end navbar-menu">
+          {{- range $links -}}
+            {{- if not .hide -}}
+              {{- if ne .dropdown true }}
+              <a class="navbar-item is-tab navbar-inner" href="{{ .url }}">
+                {{ .text }}
+              </a>
+              {{- else }}
+              <div class="navbar-item is-drop">
+                <a class="navbar-item is-tab navbar-inner-xs">
+                  {{ .text }}
+                </a>
+                <span class="drop-caret"><i class="fa fa-angle-down"></i></span>
+                <div class="dropContain">
+                  <div class="dropOut">
+                    <div class="triangle"></div>
+                    <ul>
+                      {{- range .links -}}
+                      <li>
+                        <a href="{{ .url }}" class="">{{ .title }}</a>
+                      </li>
+                      {{- end -}}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              {{- end -}}
+            {{- end -}}
+          {{- end -}}
+
+          <span class="navbar-item main-cta">
+            <a href={{ (printf "%v" ($.Scratch.Get "buttonLink" )) }} class="get-started button cta is-large rounded secondary-btn raised"
+               {{- if eq .Site.Params.navbar.buttonNewTab true }}
+                target="_blank"
+               {{- end -}}
+            >
+              {{ $buttonText }}
+            </a>
+          </span>
+
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>

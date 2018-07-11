@@ -1,0 +1,57 @@
+//Color variables
+  $white: #fff;
+  $smoke-white: #fcfcfc;
+  $grey-white: #f2f2f2;
+  $primary: #4FC1EA;
+  $secondary: #F39200;
+  $accent: #68BB88;
+  $fade-grey: #ededed;
+  $light-grey: #EFF4F7;
+  $title-grey: #A9ABAC;
+  $blue-grey: #444F60;
+  $light-blue-grey: #98a9c3;
+  $medium-grey: #66676b;
+  $basaltic-grey: #878787;
+  $purple: #7F00FF;
+  $mint: #11FFBD;
+  $bloody: #FC354C;
+  $pinky: #ff00cc;
+  $frost: #004e92;
+  $placeholder: #cecece;
+  $dark-grey: #344258;
+  $border-grey: #ccc;
+  $muted-grey: #999;
+  $section-grey: #fbfbfb;
+
+  $harbor__purple:#A474FF;
+  $harbor__violet:#4A00D8;
+  $harbor__yellow:#F2CB05;
+  $harbor__faded_yellow:#FFFCED;
+
+  $harbor__violet--electric-indigo:#5400F4;
+  $harbor__blue--prussian-blue:#5400F4;
+  $harbor__violet--lavender:#F9F6FE;
+
+  $color__font_primary:#0C0033;
+
+//Font
+  $font_heading: 'Source Sans Pro', sans-serif;
+
+// Nav
+  $nav-height:(
+      "mobile":60px,
+      "tablet":60px,
+      "desktop":64px
+  );
+
+//Others
+  $delay:0.5s;
+  $gutter:10px;
+  $width_content:921px;
+
+  $curve-radius: 0 0 50% 50%;
+
+  $hero-gutter-desktop:400px;
+  $hero-gutter-mobile:250px;
+
+  $last-module-to-footer-overlap: 200px;

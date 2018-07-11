@@ -1,0 +1,367 @@
+/******************************************************************
+Mixins
+******************************************************************/
+@mixin breakpoint($class) {
+  @if $class == tiny {
+    @media (max-width: 479px) { @content; }
+  } @else if $class == mobile {
+    @media (min-width: 480px) { @content; }
+  } @else if $class == mobile-max {
+    @media (max-width: 768px) { @content; }
+  } @else if $class == tablet {
+    @media (min-width: 769px) { @content; }
+  } @else if $class == tablet-max {
+    @media (max-width: 1024px) { @content; }
+  } @else if $class == desktop {
+    @media (min-width: 1025px) { @content; }
+  } @else if $class == container {
+    @media (min-width: 1180px) { @content; }
+  } @else if $class == desktop-max {
+    @media (max-width: 1188px) { @content; }
+  } @else if $class == huge {
+    @media (min-width: 1215px) { @content; }
+  } @else if $class == enormous {
+    @media (min-width: 1550px) { @content; }
+  } @else if $class == gigantic {
+    @media (min-width: 1680px) { @content; }
+  } @else if $class == print {
+    @media print { @content; }
+  } @else {
+    @warn "Breakpoint mixin supports: tiny, mobile, tablet, desktop, huge";
+  }
+}
+
+// VENDOR PREFIXES
+@mixin vendorize($property, $value) {
+  -webkit-#{$property}: $value;
+  -moz-#{$property}: $value;
+  -ms-#{$property}: $value;
+  -o-#{$property}: $value;
+  #{$property}: $value;
+}
+
+// TRANSPARENCY
+@mixin opacity($value: .5, $important: null) {
+  opacity: $value $important;
+  filter: alpha(opacity=$value * 100) $important;
+  zoom: 1;
+}
+
+// TRANSITION
+@mixin transition($transition: all .1s linear) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+
+// TRANSITION MULTIPLE
+@mixin transitions($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+// ANIMATION MULTIPLE
+@mixin animations($animate...) {
+  $max: length($animate);
+  $animations: '';
+
+  @for $i from 1 through $max {
+    $animations: #{$animations + nth($animate, $i)};
+    @if $i < $max {
+      $animations: #{$animations + ', '};
+    }
+  }
+
+  -webkit-animation: $animations;
+  -moz-animation: $animations;
+  -o-animation: $animations;
+  animation: $animations;
+}
+
+// ANIMATION KEYFRAMES
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+  @-moz-keyframes #{$animationName} {
+    @content;
+  }
+  @-o-keyframes #{$animationName} {
+    @content;
+  }
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+
+// FORCE HARDWARE ACC
+@mixin hardware-acc {
+  @include vendorize(transform, translate3d(0, 0, 0));
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+}
+
+// GRAYSCALE FILTER
+@mixin grayscale {
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+  filter: gray;
+  -webkit-backface-visibility: hidden;
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+}
+
+// CLEAR MARGIN-PADDING
+@mixin clear {
+  margin: 0;
+  padding: 0;
+}
+
+// FILL SPACE
+@mixin fill {
+  height: 100%;
+  width: 100%;
+}
+
+// BACKGROUND-COVER
+@mixin cover {
+  @include vendorize(background-size, cover);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+// BG RETINA
+@mixin background-image-retina($file, $type, $width, $height) {
+  background-image: url($file + '.' + $type);
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (-moz-min-device-pixel-ratio: 2),
+  only screen and (-o-min-device-pixel-ratio: 2/1),
+  only screen and (min-device-pixel-ratio: 2),
+  only screen and (min-resolution: 192dpi),
+  only screen and (min-resolution: 2dppx) {
+    & {
+      background-image: url($file + '@2x.' + $type);
+      -webkit-background-size: $width $height;
+      -moz-background-size: $width $height;
+      -o-background-size: $width $height;
+      background-size: $width $height;
+    }
+  }
+}
+
+// RESPONSIVENESS
+@mixin respond-to($media) {
+  @if $media == mobile {
+    @media only screen and (max-width: 768px - 1) { @content; }
+  }
+  @else if $media == tablet {
+    @media only screen and (min-width: 768px) and (max-width: 1024px - 1) { @content; }
+  }
+  @else if $media == nondesktop {
+    @media only screen and (max-width: 1024px - 1) { @content; }
+  }
+}
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin unclearfix {
+  &:after {
+    content: "";
+    display: none;
+    clear: none;
+  }
+}
+
+@mixin screenreader() {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
+
+@mixin flex($direction: 'row'){
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+
+  @if $direction == 'row'{
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@mixin button-color($primary,$secondary){
+  background:$primary;
+  color: $secondary;
+  svg{
+    path{
+      fill:$secondary;
+      @include transition(all $delay linear);
+    }
+  }
+
+  &:hover{
+    //reverse color
+    background:$secondary;
+    color: $primary;
+    svg{
+      path{fill:$primary}
+    }
+
+  }
+}
+
+@mixin curve($type:default){
+
+  @if $type == full-curve-reverse{
+
+    $curve-height:100px;
+    $module-curve-radius: 0 0 50% 50%;
+    position:relative;
+    //width: calc(100% + #{$hero-gutter-mobile*2});
+    //transform: translateX(- #{$hero-gutter-mobile});
+    ////border-radius: $curve-radius;
+    //padding-bottom: 34px;
+    margin-bottom:calc(#{$curve-height});
+
+    //@include breakpoint(tablet){
+    //  width: calc(100% + #{$hero-gutter-desktop*2});
+    //  padding-left:$hero-gutter-desktop;
+    //  padding-right:$hero-gutter-desktop;
+    //  transform: translateX(-#{$hero-gutter-desktop});
+    //  border-radius: $curve-radius;
+    //}
+    //@include breakpoint(mobile-max){
+    //  width: calc(100% + #{$hero-gutter-mobile*2});
+    //  transform: translateX(- #{$hero-gutter-mobile});
+    //  padding-left:$hero-gutter-mobile;
+    //  padding-right:$hero-gutter-mobile;
+    //}
+
+    &:before{
+      display:block;
+      content:"";
+      background: $white;
+      height:$curve-height;
+      width:100%;
+      border-radius: $module-curve-radius;
+    }
+    &:after{
+      display:block;
+      content:"";
+      background: inherit;
+      height:$curve-height;
+      width:100%;
+      border-radius: $module-curve-radius;
+      position:absolute;
+      bottom: calc(-#{$curve-height});
+    }
+  }
+  @else if $type == top-curve-reverse{
+    $curve-height:100px;
+    $module-curve-radius: 0 0 50% 50%;
+    position:relative;
+    padding-top:$curve-height;
+    &:before{
+      display:block;
+      content:"";
+      background: $white;
+      height:$curve-height;
+      width:100%;
+      border-radius: $module-curve-radius;
+      position:absolute;
+      width:calc(100% + (100px * 2 ));
+      left:-100px;
+      top:0;
+    }
+  }
+  @else if $type == bottom{
+    $curve-height:100px;
+    $module-curve-radius: 0 0 50% 50%;
+    position:relative;
+    padding-top:$curve-height;
+    &:after{
+      display:block;
+      content:"";
+      background: inherit;
+      height:$curve-height;
+      width:100%;
+      border-radius: $module-curve-radius;
+      position:absolute;
+      width:calc(100% + (100px * 2 ));
+      left:-100px;
+      z-index:-1;
+      bottom:-#{$curve-height/2.5};
+    }
+  }
+  @else {
+    width: calc(100% + #{$hero-gutter-mobile*2});
+    transform: translateX(- #{$hero-gutter-mobile});
+    border-radius: $curve-radius;
+    padding-bottom: 34px;
+    @include breakpoint(tablet){
+      width: calc(100% + #{$hero-gutter-desktop*2});
+      padding-left:$hero-gutter-desktop;
+      padding-right:$hero-gutter-desktop;
+      transform: translateX(-#{$hero-gutter-desktop});
+      border-radius: $curve-radius;
+    }
+  }
+}
+
+@mixin underline-flow($color:$harbor__violet--electric-indigo,$factor:1){
+  //Underline
+  background-size: 1px 1em;
+  box-shadow:
+          inset 0 -#{$factor * 0.175em} white,
+          inset 0 -#{$factor * 0.2em} #000;
+  display: inline;
+
+  //underline-blue
+  box-shadow:
+          inset 0 -#{$factor * 0.075em} $color,
+          inset 0 -#{$factor * 0.12em} $color;
+}
+
+@mixin padding-classes(){
+  $int:10;
+  @for $i from 0 through $int {
+    .pad-#{$i}{
+      padding: #{$i * 10px };
+    }
+    .pad-t-#{$i}{
+      padding-top: #{$i * 10px };
+    }
+    .pad-b-#{$i}{
+      padding-bottom: #{$i * 10px };
+    }
+    .pad-v-#{$i}{
+      padding-top: #{$i * 10px };
+      padding-bottom: #{$i * 10px };
+    }
+    .pad-h-#{$i}{
+      padding-left: #{$i * 10px };
+      padding-right: #{$i * 10px };
+    }
+
+  }
+}
+@include padding-classes();

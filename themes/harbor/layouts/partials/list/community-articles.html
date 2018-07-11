@@ -1,0 +1,29 @@
+<!--Variables-->
+{{- $showRelatedTopics := .Site.Params.Blogs.ShowRelatedTopics -}}
+{{- $maxArticlesFromCommunity := .Site.Params.Blogs.maxArticlesFromCommunity -}}
+
+<section class="module module--community-articles">
+    <div class="container">
+        <h2 class="module-title">Articles from the Community</h2>
+        <div class="list-items">
+            {{ range first $maxArticlesFromCommunity (.Site.Data.communityArticles).articles }}
+            <!--{{ $article := . }}-->
+            <div class='list-item {{ printf "icon-%s" .icon }}'>
+                <div class="list-title">
+                    <a href="{{.link}}" target="_blank" ><h3>{{.title}}</h3></a>
+                </div>
+                <div class="list-article-info">
+                    {{.author}}
+                    </small>
+                </div>
+
+
+                {{if eq $showRelatedTopics true}}
+                {{ partial "list/related-topics.html" . }}
+                {{ end }}
+
+            </div>
+            {{end}}
+        </div>
+    </div>
+</section>

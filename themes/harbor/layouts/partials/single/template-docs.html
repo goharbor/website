@@ -1,0 +1,42 @@
+<section class="module module--user-documents">
+    <div class="container wrap">
+        <h1 class="module-title">User documents</h1>
+        <div class="documents">
+            {{ range .Site.Data.userDocuments.documents }}
+                {{ if eq .publish true}}
+                <div class="document">
+                    <div class="document-wrap">
+                        <div class="document-title">
+                            <h2><a href="{{.link}}" target="_blank">{{.title}}</a></h2>
+                        </div>
+                        <div class="document-description">
+                            {{.excerpt}}
+                        </div>
+                    </div>
+                </div>
+                {{ end }}
+            {{ end }}
+        </div>
+    </div>
+</section>
+<section class="module module--developer-documents">
+    <div class="container wrap">
+        <h1 class="module-title">Developer documents</h1>
+        <div class="documents">
+            {{ range .Site.Data.developerDocuments.documents }}
+                {{ if eq .publish true}}
+                <div class="document">
+                    <div class="document-wrap">
+                        <div class="document-title">
+                            <h2><a href="{{.link}}" target="_blank">{{.title}}</a></h2>
+                        </div>
+                        <div class="document-description">
+                            {{.excerpt}}
+                        </div>
+                    </div>
+                </div>
+                {{ end }}
+            {{ end }}
+        </div>
+    </div>
+</section>

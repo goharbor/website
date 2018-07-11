@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>{{ block "title" . }}
+          {{ .Site.Title }}
+          {{ end }}</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="{{ "img/favicon.png" | absURL }}" />
+    <link rel="stylesheet" href="{{ "css/bulma.min.css" | absURL }}" />
+    <link rel="stylesheet" href="{{ "css/icons.css" | absURL }}" />
+    {{- if .Site.IsServer -}}
+    {{- $coreCssUrl := printf "css/%s" (index .Site.Data.assetHashes "core.css") | absURL }}
+    <link rel="stylesheet" href="{{ $coreCssUrl }}" />
+    {{- else }}
+    <link rel="stylesheet" href="{{ "css/core.css" | absURL }}" />
+    {{- end }}
+
+  </head>
+
+  {{- $thisPageUrl := .Permalink -}}
+  {{- $thisPageSlugWithTrailingSlash := (replace $thisPageUrl ( printf "%s" .Site.BaseURL) "") -}}
+  {{- $thisPageSlug :=  printf "page-%s" (strings.TrimSuffix "/" $thisPageSlugWithTrailingSlash) -}}
+  {{- $thisPageSlugClean :=  (replace $thisPageSlug "/" "--") -}}
+
+  <body
+    {{ if eq $thisPageSlugClean "page-" }}
+      {{ printf "class='%s'" "page-home" | safeHTMLAttr }}
+    {{ else }}
+      {{ printf "class='%s'" $thisPageSlugClean | safeHTMLAttr }}
+    {{ end }}
+  >
+
+    <!--<div id="preloader">-->
+      <!--<div id="status"></div>-->
+    <!--</div>-->
+
+    {{ partial "navbar.html" . }}
+
+    <!-- Block: Main - will be later overriden by other templates -->
+    {{ block "main" . }}
+    {{ end }}
+
+    {{ partial "footer.html" . }}
+    {{ partial "sidebar.html" . }}
+
+    <!-- Back-to-top button -->
+    <div id="backtotop"><a href="#"></a></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <script src="{{ "js/jquery-panelslider/jquery.panelslider.min.js" | absURL }}"></script>
+    {{- if .Site.IsServer -}}
+    {{- $jsUrl := printf "js/%s" (index .Site.Data.assetHashes "fresh.js") | absURL }}
+    <script src="{{ $jsUrl }}"></script>
+    {{- else }}
+    <script src="{{ "js/fresh.js" | absURL }}"></script>
+    {{- end -}}
+
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="js/bodymovin/bodymovin.js"></script>
+  </body>
+</html>
