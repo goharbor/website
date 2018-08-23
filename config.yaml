@@ -78,6 +78,10 @@ params:
       logo: /img/icons/dev-group-icon.svg
       link: https://groups.google.com/forum/#!forum/harbor-dev
       handle: "harbor-dev@googlegroups.com"
+  cncf:
+    title: We are a Cloud Native Computing Foundation-hosted project
+    logo: /img/logos/cloud-native-computing.png
+    link: https://www.cncf.io/projects
   userspartners:
     title: Users and Partners of Harbor
     clients:
