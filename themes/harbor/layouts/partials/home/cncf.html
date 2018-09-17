@@ -1,0 +1,12 @@
+<!--Variables-->
+{{- $cncf := .Site.Params.cncf -}}
+{{- $title := $cncf.title -}}
+
+<section class="module module--cncf">
+    <div class="container">
+        {{ $cncf.title }}
+        <div class="item">
+            <a href={{ $cncf.link }} target="_blank"><img src={{ $cncf.logo }} width="400" /></a>
+        </div>
+    </div>
+</section>
