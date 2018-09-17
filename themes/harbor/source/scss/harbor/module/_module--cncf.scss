@@ -1,6 +1,6 @@
 .module--cncf{
 
-  $item-v-gap:30px;
+  $item-v-gap:0px;
 
   @mixin item-title-gap($count){
     @for $i from 1 to ($count+1){
@@ -40,10 +40,10 @@
   //background: $harbor__faded_yellow;
 
   //@include curve(full-curve-reverse);
-  padding-top:30px;
+  padding-top:0px;
   .container{
-    padding-top:40px;
-    padding-bottom:40px;
+    padding-top:0px;
+    padding-bottom:15px;
 
     @include breakpoint(tablet) {
       text-align: center;
