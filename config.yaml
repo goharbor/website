@@ -4,7 +4,7 @@ title: Harbor
 theme: harbor
 publishdir: "public-dev"
 params:
-  repo: https://github.com/vmware/harbor
+  repo: https://github.com/goharbor/harbor
   hero:
     tagline: Harbor
     subTagline: Manage and serve container images in a secure environment
@@ -162,13 +162,13 @@ params:
         url: https://www.github.com/goharbor
         icon: /img/logos/github.svg
       - name: User Guide
-        url: https://github.com/vmware/harbor/blob/master/docs/user_guide.md
+        url: https://github.com/goharbor/harbor/blob/master/docs/user_guide.md
         icon:
       - name: Installation Guide
-        url: https://github.com/vmware/harbor/blob/master/docs/installation_guide.md
+        url: https://github.com/goharbor/harbor/blob/master/docs/installation_guide.md
         icon:
       - name: Demo Server
-        url: https://github.com/vmware/harbor/blob/master/docs/demo_server.md
+        url: https://github.com/goharbor/harbor/blob/master/docs/demo_server.md
         icon:
     - title: Community
       links:
