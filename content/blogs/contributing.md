@@ -4,7 +4,7 @@ author:
     name: "Harbor Maintainers"
 description: "How to get involved with Harbor"
 date: 2018-10-4T12:00:00+04:00
-draft: true
+draft: false 
 showPageInfo: true
 ---
 
