@@ -17,16 +17,7 @@ $ git clone https://github.com/goharbor/blog.git
 $ cd blog
 ```
 
-## Step 2: Install theme dependencies
-
-Go to the root of the project and install dependencies using [npm](https://npmjs.org):
-
-```shell
-$ cd themes/harbor/
-$ npm install
-```
-
-## Step 3: Run in a local dev environment
+## Step 2: Run in a local dev environment
 
 Go back to the project root:
 
@@ -54,6 +45,6 @@ $ ENV=staging sh build.sh
 # Build project for local
 $ ENV=dev sh build.sh
 
-# or
+# or just
 $ sh build.sh
 ```

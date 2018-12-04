@@ -2,9 +2,7 @@
 ############
 .htaccess
 
-#public*/
-
-public-*/
+public*/
 
 # Packages #
 ############
