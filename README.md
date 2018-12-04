@@ -31,7 +31,7 @@ Start the Hugo server and keep listening to any changes to the website assets (M
 $ hugo server --buildDrafts
 ```
 
-## Step 4: Prepare for deployment to production
+## Step 3: Prepare for deployment to production
 
 You can build the website in one of three "environments:" live (production), staging, and local.
 
