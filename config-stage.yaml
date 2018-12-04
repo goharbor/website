@@ -1,6 +1,0 @@
-baseURL: https://goharbor.github.io
-publishdir: "public-staging"
-params:
-  hero:
-    tagline: Harbor
-    showGithubEmbed: true
