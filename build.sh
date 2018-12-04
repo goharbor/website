@@ -6,6 +6,9 @@
 LIVE_URL=https://goharbor.io
 STAGING_URL=https://goharbor.io
 
+STAGING_OUTPUT_DIR=public-staging
+DEV_OUTPUT_DIR=public-dev
+
 # -------------------- #
 # --- Functions    --- #
 # -------------------- #
@@ -59,13 +62,13 @@ staging)
 
     hugo --baseURL ${STAGING_URL} --destination public-staging
     
-    LogIt "success" "Staging: Site build complete. Please check the /public folder and deploy it using ftp, sftp, or ssh".
+    LogIt "success" "Staging: Site build complete. Please check the ${STAGING_OUTPUT_DIR} folder and deploy it using ftp, sftp, or ssh".
     ;;
 *)
     LogIt "success" "Building the local site"
 
-    hugo --destination public-dev
+    hugo --destination ${DEV_OUTPUT_DIR}
     
-    LogIt "success" "Dev: Site build complete. Please check the /public folder."
+    LogIt "success" "Dev: Site build complete. Please check the ${DEV_OUTPUT_DIR} folder."
     ;;
 esac
