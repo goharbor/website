@@ -1,8 +1,7 @@
-baseURL: http://goharbor.local/
+baseURL: /
 languageCode: en-us
 title: Harbor
 theme: harbor
-publishdir: "public-dev"
 params:
   repo: https://github.com/goharbor/harbor
   hero:

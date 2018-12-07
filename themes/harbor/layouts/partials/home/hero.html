@@ -52,7 +52,7 @@
         and applications that cannot use a public or cloud-based registry, or
         want a consistent experience across clouds.</p>
 
-        {{ if $hero.showGithubEmbed }}
+        {{ if not .Site.IsServer }}
         {{ partial "embed-github.html" . }}
         {{ end }}
 
