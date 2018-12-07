@@ -3,8 +3,8 @@ title: "Contributing to Harbor 101"
 author:
     name: "Harbor Maintainers"
 description: "How to get involved with Harbor"
-date: 2018-10-4T12:00:00+04:00
-draft: false 
+date: 2018-10-04T12:00:00+04:00
+draft: false
 showPageInfo: true
 ---
 
