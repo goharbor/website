@@ -45,12 +45,12 @@ LogIt(){
 
 LogIt "warning" "Building static project."
 
-LogIt "warning" "Live: Cleaning up 'public' folder. ".
-rm -rf public/
-
 # Check if environment is defined and render correct environment
 case $ENV in
 live)
+    LogIt "warning" "Live: Cleaning up 'public' folder."
+    rm -rf public/
+
     LogIt "success" "Building the live site with a base URL of ${LIVE_URL}"
 
     hugo --baseURL ${LIVE_URL}
@@ -61,14 +61,14 @@ staging)
     LogIt "success" "Building the staging site with a base URL of ${STAGING_URL}"
 
     hugo --baseURL ${STAGING_URL} --destination public-staging
-    
+
     LogIt "success" "Staging: Site build complete. Please check the ${STAGING_OUTPUT_DIR} folder and deploy it using ftp, sftp, or ssh".
     ;;
 *)
     LogIt "success" "Building the local site"
 
     hugo --destination ${DEV_OUTPUT_DIR}
-    
+
     LogIt "success" "Dev: Site build complete. Please check the ${DEV_OUTPUT_DIR} folder."
     ;;
 esac
