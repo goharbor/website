@@ -3,7 +3,7 @@ title: "Welcome new Harbor maintainers!"
 author:
     name: "Harbor Team"
 description: "Two new contributors join the maintainer ranks"
-date: 2019-02-27T12:00:00+04:00
+date: 2019-03-04T12:00:00+04:00
 draft: false
 showPageInfo: true
 ---
@@ -32,7 +32,7 @@ His nomination request is approved in [PR]( https://github.com/goharbor/communit
 
 MingMing is very actively involved in the Harbor community and made very important contributions in V1.7. He implemented the [database logger](https://github.com/mmpei) for the running job in a very tight timeline. Now he’s a member of the [replication workgroup]( https://github.com/goharbor/community/tree/master/workgroups/wg-replication) which is committed to deliver the next generation replication service in V1.8. In addition, he’s also committed to deliver the [webhook]( https://github.com/goharbor/community/pull/36) feature which will benefit the Harbor CI/CD integration scenario in the next release.
 
- 
+
 His nomination request is approved in [PR]( https://github.com/goharbor/community/pull/30).
 
 
