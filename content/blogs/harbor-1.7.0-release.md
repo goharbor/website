@@ -4,7 +4,7 @@ author:
     name: "Harbor Team"
 description: "A fit, finish and polish release just in time for the holidays"
 date: 2018-12-19T12:00:00+04:00
-draft: false 
+draft: false
 showPageInfo: true
 ---
 
@@ -32,7 +32,7 @@ smaller changes in that vein: Tightened container capabilities – minimizing
 capabilities when starting containers (principle of least privilege!)
 
 * Bumped Clair version – Harbor now ships with Clair v2.0.7
-* Bumped Notary veresion – Harbor now ships with Notary v0.6.1
+* Bumped Notary version – Harbor now ships with Notary v0.6.1
 * Miscellaneous – support for longer usernames, refactoring our UI code, enabling markdown support in our project description, etc. are all small polish-like changes to the project, but the little things *do* matter :)
 
 We’ve seen a tremendous increase in participation by our community since

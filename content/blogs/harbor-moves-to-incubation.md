@@ -14,17 +14,17 @@ We are thrilled to announce the promotion of Harbor from the Cloud Native
 Sandbox to Incubating status as a CNCF project. Harbor is an open source cloud
 native registry project that stores, signs, and scans content. This milestone
 reflects Harbor’s significant achievements in the areas of [community](https://github.com/goharbor/harbor/graphs/contributors)
-involvement, governance, feature enhancements and adoption. 
+involvement, governance, feature enhancements and adoption.
 
 Over the last several months Harbor maintainers have been working closely with
 the community to improve everything from processes to codebase. These changes
-have made Harbor even more secure, scalable and available. 
+have made Harbor even more secure, scalable and available.
 
 Since joining the Sandbox earlier this year, the Harbor project has seen a
 marked increase in overall community participation, downloads, contributors,
 commits, and forks.
 
-![Harbor stats](https://github.com/goharbor/goharbor.github.io/tree/master/img/misc/harbor-stats-nov2018.md)
+![Harbor stats](https://raw.githubusercontent.com/goharbor/goharbor.github.io/master/img/misc/harbor-stats-nov2018.png)
 
 We invite you to read more about Harbor, including our a roadmap on where we’re
 going, on the [cncf.io blog
@@ -48,7 +48,7 @@ We’re still working on the v1.8 roadmap, but here are some major features we�
 * Image proxying and caching – a docker pull would proxy a request to, say, Docker Hub, then scan the image before providing to developer. Alternatively, pre-cache images and block images that do not meet vulnerability requirements.
 * One-click upgrades and rollbacks of Harbor.
 * Clustering – Harbor nodes should cluster, replicate metadata (users, RBAC and system configuration, vulnerability scan results, etc.). Support for wide-area clustering is a stretch goal.
-* BitTorrent-backed storage – images are transparently transferred via BT protocol. 
+* BitTorrent-backed storage – images are transparently transferred via BT protocol.
 * Improved multi-tenancy – provide additional multi-tenancy construct (system → tenant → project)
 
 We’ll be opening a pool soon to allow users to vote on their desired features –
