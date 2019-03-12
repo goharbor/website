@@ -3,6 +3,7 @@
 .htaccess
 
 public*/
+resources/
 
 # Packages #
 ############
