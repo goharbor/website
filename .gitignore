@@ -16,7 +16,6 @@ resources/
 *.rar
 *.tar
 *.zip
-*.tgz
 
 # GULP #
 ########
