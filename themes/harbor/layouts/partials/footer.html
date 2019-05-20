@@ -5,7 +5,7 @@
 <footer class="footer footer-dark">
   <div class="container">
     <div class="columns">
-      <div class="column">
+      <div class="column is-full">
         <div class="footer-logo">
           <img src="{{ printf "img/logos/%s" $image | absURL }}">
         </div>
@@ -14,7 +14,7 @@
         </div>
       </div>
       {{- range $columns }}
-      <div class="column">
+      <div class="column is-half-mobile">
         <div class="footer-column">
           <div class="footer-header">
             <h3>{{ .title }}</h3>

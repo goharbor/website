@@ -26,38 +26,47 @@ $(function(){
     //     autoplay: true,
     //     path: '/animation/what-is-harbor/what-is-harbor.json'
     // })
-
-    $(".owl-carousel").owlCarousel({
+    
+    
+    // default responsive values
+    var owlResponsive = {
+        0:{
+            items:1,
+            // autoHeight: true,
+            autoWidth: true,
+            nav:true
+        },
+        481:{
+            items:3,
+            nav:false,
+            autoWidth: true,
+        },
+        679:{
+            items:3,
+            nav:false,
+            autoWidth: true,
+        },
+        1024:{
+            items:5,
+            nav:true,
+            loop:false,
+            autoWidth: true,
+        }
+    };
+    
+    $('.owl-carousel').each(function() {
+      var $this = $(this);
+      $this.owlCarousel({
         loop:false,
         margin:10,
         merge:true,
+        dots: $this.data('owlDots') ? $this.data('owlDots') : false,
         navText : ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
         responsiveClass:true,
-        responsive:{
-            0:{
-                items:1,
-                // autoHeight: true,
-                autoWidth: true,
-                nav:true
-            },
-            481:{
-                items:3,
-                nav:false,
-                autoWidth: true,
-            },
-            679:{
-                items:3,
-                nav:false,
-                autoWidth: true,
-            },
-            1024:{
-                items:5,
-                nav:true,
-                loop:false,
-                autoWidth: true,
-            }
-        }
+        responsive: $this.data('owlResponsive') ? $this.data('owlResponsive') : owlResponsive
+      });
     });
+    
 
     handleMobileCarousel("#carousel-community-users");
     handleMobileCarousel("#carousel-community-partners");

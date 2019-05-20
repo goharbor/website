@@ -1,0 +1,35 @@
+$desktop-offset: -150px;
+.module--video-embed {
+  padding: 0 20px;
+  @include breakpoint(tablet) {
+    padding: 0;
+    margin-bottom: 100px;
+  }  
+  .column {
+    @include breakpoint(tablet) {
+      margin-right: $desktop-offset;
+    }
+    &:first-of-type {
+      margin-right: 0;
+    }
+    p,
+    h3 {
+      @include breakpoint(tablet) {
+        padding-right: 80px;
+      }
+    }
+  }
+  iframe {
+    margin: 0 auto;
+    // 16:9 aspect ratio
+    width: calc(100%-40px);
+    height: 50vw;
+    margin: 30px 0;
+    @include breakpoint(tablet) {
+      margin: 0;
+      max-width: 562px;
+      max-height: 315px;
+    }  
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.75);
+  }
+}

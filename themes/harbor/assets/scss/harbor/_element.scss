@@ -79,6 +79,19 @@ body>section:first-of-type{
     color:$white;
   }
 }
+.hbutton-outline-white{
+  border-color: $white!important;
+  border: 1px solid $white;
+  border-radius: 100px;
+  font-weight:bold;
+  padding: 25px 30px!important;
+  color: $white;
+  background: $harbor__violet--electric-indigo;
+  &:hover{
+    background:$white;
+    color:$harbor__violet--electric-indigo;    
+  }
+}
 
 .owl-carousel{
 
@@ -139,5 +152,7 @@ body>section:first-of-type{
       }
     }
   }
-  .owl-dots{display:none;}
+  .owl-dots { 
+    display:none;
+  }
 }

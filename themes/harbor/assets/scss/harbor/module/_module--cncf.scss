@@ -1,5 +1,5 @@
 .module--cncf{
-
+  margin-bottom: 40px;
   $item-v-gap:0px;
 
   @mixin item-title-gap($count){
@@ -53,8 +53,19 @@
     .module-title{
       //margin-bottom:50px;
     }
+    p {
+      font-weight: bold;
+      text-align: center;
+    }
     .cta{
       margin-top:50px;
+    }
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 400px;
+      margin: 20px auto 0 auto;
     }
     .items{
       display:flex;

@@ -42,19 +42,38 @@ params:
       hide: true
   keyfeatures:
     title: Key Features
-    features:
-    - title: Multi-tenant content signing and validation
-      logo: /img/icons/multi-content-icon.svg
-    - title: Security and vulnerability analysis
-      logo: /img/icons/security-icon.svg
-    - title: Identity integration and role-based access control
-      logo: /img/icons/identity-integration-icon.svg
-    - title: Image replication between instances
-      logo: /img/icons/image-replication-icon.svg
-    - title: Extensible API and graphical UI
-      logo: /img/icons/extensible-api-icon.svg
-    - title: Internationalization (currently English and Chinese)
-      logo: /img/icons/international-icon.svg
+    categories:
+    - category: Security
+      width: one-third
+      features: 
+        - title: Multi-tenant content signing and validation
+          logo: /img/icons/multi-content-icon.svg
+        - title: Image replication between instances
+          logo: /img/icons/image-replication-icon.svg
+    - category: Management
+      width: two-thirds
+      features:
+        - title: Identity integration and role-based access control
+          logo: /img/icons/identity-integration-icon.svg
+        - title: Image replication between instances
+          logo: /img/icons/image-replication-icon.svg
+        - title: Extensible API and graphical UI
+          logo: /img/icons/extensible-api-icon.svg
+        - title: Internationalization (currently English and Chinese)
+          logo: /img/icons/international-icon.svg
+  testimonials:
+  - logo: /img/logos/clients/jd-com.png
+    quote: Harbor is the registry service of JD.com’s JDOS platform. Harbor has been used for over 2 years in production with tens of thousands of nodes and managing millions of container images.
+    citation: JD.com
+  - logo: https://via.placeholder.com/250x250
+    quote: Harbor is the registry service of JD.com’s JDOS platform. Harbor has been used for over 2 years in production with tens of thousands of nodes and managing millions of container images.
+    citation: Some Client
+  - logo: https://via.placeholder.com/500x400
+    quote: Harbor is the registry service of JD.com’s JDOS platform. Harbor has been used for over 2 years in production with tens of thousands of nodes and managing millions of container images.
+    citation: Another client
+  - logo: https://via.placeholder.com/200x100
+    quote: Harbor is the registry service of JD.com’s JDOS platform. Harbor has been used for over 2 years in production with tens of thousands of nodes and managing millions of container images.
+    citation: A third client
   ourcommunity:
     title: Our Community
     buttonTitle: Discover how to join
