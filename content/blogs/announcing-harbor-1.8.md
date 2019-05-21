@@ -3,7 +3,7 @@ title: "Going Big: Harbor 1.8 Takes Security and Replication to New Heights"
 author:
     name: "Harbor Team"
 description:
-date: 2019-05-21T06:00:00-05:00
+date: 2019-05-21T06:00:00+04:00
 draft: false
 showPageInfo: true
 
