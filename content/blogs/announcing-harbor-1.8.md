@@ -29,7 +29,7 @@ Harbor 1.8 expands the Harbor-to-Harbor replication feature to add the ability t
 
 ## Additional Features
 
-Harbor 1.8 brings numerous other capabilities for both administrators and end users:
+Harbor 1.8 brings numerous other capabilities for both administrators and end users:    
 1.	Health check API, which shows detailed status and health of all Harbor components.    
 2.	Harbor extends and builds on top of the open source Docker Registry to facilitate registry operations like the pushing and pulling of images. In this release, we upgraded our Docker Registry to version 2.7.1    
 3.	Support for defining cron-based scheduled tasks in the Harbor UI. Administrators can now use cron strings to define the schedule of a job. Scan, garbage collection, and replication jobs are all supported.    
