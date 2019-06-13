@@ -30,11 +30,11 @@ Harbor 1.8 expands the Harbor-to-Harbor replication feature to add the ability t
 ## Additional Features
 
 Harbor 1.8 brings numerous other capabilities for both administrators and end users:
-1.	Health check API, which shows detailed status and health of all Harbor components.
-2.	Harbor extends and builds on top of the open source Docker Registry to facilitate registry operations like the pushing and pulling of images. In this release, we upgraded our Docker Registry to version 2.7.1
-3.	Support for defining cron-based scheduled tasks in the Harbor UI. Administrators can now use cron strings to define the schedule of a job. Scan, garbage collection, and replication jobs are all supported.
-4.	API explorer integration. End users can now explore and trigger Harbor’s API via the Swagger UI nested inside Harbor’s UI.
-5.	Enhancement of the Job Service engine to include internal webhook events, additional APIs for job management, and numerous bug fixes to improve the stability of the service.
+1.	Health check API, which shows detailed status and health of all Harbor components.    
+2.	Harbor extends and builds on top of the open source Docker Registry to facilitate registry operations like the pushing and pulling of images. In this release, we upgraded our Docker Registry to version 2.7.1    
+3.	Support for defining cron-based scheduled tasks in the Harbor UI. Administrators can now use cron strings to define the schedule of a job. Scan, garbage collection, and replication jobs are all supported.    
+4.	API explorer integration. End users can now explore and trigger Harbor’s API via the Swagger UI nested inside Harbor’s UI.    
+5.	Enhancement of the Job Service engine to include internal webhook events, additional APIs for job management, and numerous bug fixes to improve the stability of the service.    
 
 ## Growing End User Support for Harbor
 
