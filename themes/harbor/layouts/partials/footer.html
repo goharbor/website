@@ -5,16 +5,16 @@
 <footer class="footer footer-dark">
   <div class="container">
     <div class="columns">
-      <div class="column">
+      <div class="column is-full">
         <div class="footer-logo">
           <img src="{{ printf "img/logos/%s" $image | absURL }}">
         </div>
         <div class="footer-copyright">
-          <p>&copy; 2018 Project Harbor Authors</p>
+          <p>&copy; 2019 Project Harbor Authors</p>
         </div>
       </div>
       {{- range $columns }}
-      <div class="column">
+      <div class="column is-half-mobile">
         <div class="footer-column">
           <div class="footer-header">
             <h3>{{ .title }}</h3>

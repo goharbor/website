@@ -13,14 +13,14 @@ footer.footer-dark {
         color: #fff;
     }
     .container{
-        padding-left: $gutter;
-        padding-right: $gutter;
+        padding-left: $gutter * 3;
+        padding-right: $gutter * 3;
     }
     .columns {
         margin-top: 35px;
         @include breakpoint(mobile-max){
             display:flex;
-            flex-direction: column;
+            flex-wrap: wrap;
             .column{
                 &:nth-child(1){
                     order:3;

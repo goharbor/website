@@ -1,22 +1,30 @@
 <!--Variables-->
 {{- $keyFeatures := .Site.Params.keyfeatures -}}
 {{- $title := $keyFeatures.title -}}
+{{- $categories := $keyFeatures.categories -}}
 {{- $features := $keyFeatures.features -}}
 
 <section class="module module--key-features">
-    <div class="container">
-        <h2 class="module-title center">{{ $title }}</h2>
-        <div class="items">
-        {{ range $features }}
-            <div class="item">
+  <div class="container">
+    <h2 class="module-title center">{{ $title }}</h2>
+    <div class="feature-container columns">
+      {{ range $categories }}
+        <div class="category-label category-{{ .category }} column is-{{ .width }}">
+          <h3>{{ .category }}</h3>
+          <div class="items">
+            {{ range .features }}
+              <div class="item">
                 <div class="item-icon">
-                    <img src={{ .logo }} />
+                    <img src={{ .logo }} alt={{ .title }} />
                 </div>
                 <div class="item-title">
                     {{ .title }}
                 </div>
-            </div>
-        {{ end }}
+              </div>
+            {{ end }}
+          </div>
         </div>
+      {{ end }}
     </div>
+  </div>
 </section>

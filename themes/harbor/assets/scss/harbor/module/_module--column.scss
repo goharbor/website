@@ -1,4 +1,4 @@
-.module--column{
+.module--column{  
   $animation-height:350px;
 
   @mixin column($type:default){
@@ -46,12 +46,20 @@
         padding-top:0px;
       }
     }
-    .bodymovin-animation{
+    .bodymovin-animation {
       @include breakpoint(tablet) {
         position:relative;
-        svg,.svg{
+        svg,.svg {
           max-height:$animation-height!important;
           width: auto !important;
+        }
+      }
+      &.hero {
+        svg,.svg {
+          max-height: 50vw;
+          @include breakpoint(tablet) {
+            max-height:450px !important;
+          }
         }
       }
     }

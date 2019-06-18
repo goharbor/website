@@ -1,38 +1,5 @@
 .module--key-features{
 
-  @mixin flex-child-item-end-gutter($count:1){
-    @for $i from 1 to ($count+1){
-      &:nth-last-of-type(#{$i}){
-        padding-bottom:0!important;
-      }
-    }
-  }
-
-  @mixin flex-child-item-grid(){
-
-    $num-of-items:(
-            "mobile":1,
-            "tablet":2,
-            "desktop":3
-    );
-
-    flex-basis: calc(100%/#{map_get($num-of-items,mobile)});
-    padding:0 0 $item-gutter 0;
-    box-sizing: border-box;
-    @include flex-child-item-end-gutter( map_get($num-of-items,mobile) );
-    @include breakpoint(tablet){
-      flex-basis: calc(100%/#{map_get($num-of-items,tablet)});
-      padding:0 $item-gutter $item-gutter $item-gutter;
-      box-sizing: border-box;
-      @include flex-child-item-end-gutter( map_get($num-of-items,tablet) );
-    }
-    @include breakpoint(desktop){
-      flex-basis: calc(100%/#{map_get($num-of-items,desktop)});
-      padding:0 $item-gutter $item-gutter $item-gutter;
-      box-sizing: border-box;
-      @include flex-child-item-end-gutter( map_get($num-of-items,desktop) );
-    }
-  }
 
   $item-gutter:60px;
 
@@ -40,30 +7,68 @@
 
   @include curve(full-curve-reverse);
 
-  .container{
-    padding-top:40px;
+  .container {
+    padding-top: 40px;
     //padding-bottom:40px;
     @include breakpoint(tablet) {
+      padding: 40px 0 0 0;
       text-align: center;
     }
-
+    .feature-container {
+      background: $white;
+      border-radius: 5px; 
+    }
+    .category-label {
+      padding: 35px 0;
+      h3 {
+        text-align: center;
+        margin-bottom: 35px;
+      }
+      &.category-Security {
+        background-color: #f5f1fe;
+      }
+      &.category-Management {
+        background-color: $white;
+      }
+      &.is-one-third {
+        // items are 100% wide
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        @include breakpoint(tablet) {
+          border-bottom-left-radius: 5px;
+          border-top-right-radius: 0px;
+        }
+        .item {
+          width: 100%;
+        }
+      }
+      &.is-two-thirds {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        .item {
+          width: 100%;
+          @include breakpoint(tablet) {
+            width: 50%;
+          }
+        }
+      }
+    }
     .items{
       display:flex;
-      flex-direction: row;
       flex-wrap: wrap;
       @include breakpoint(tablet) {
         text-align: center;
       }
-      >.item{
-        //flex-basis: calc(100%);
-        //padding:0 0 $item-gutter 0;
-        //@include breakpoint(tablet){
-        //  flex-basis: calc(100%/#{$num-of-items});
-        //  padding:0 $item-gutter $item-gutter $item-gutter;
-        //  box-sizing: border-box;
-        //}
-
-        @include flex-child-item-grid();
+      >.item {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 0 70px;
+        &.item-security {
+          background-color: #f5f1fe;
+        }
+        &.item-management {
+          background-color: $white;
+        }
 
         .item-title{
           font-weight: bold;
