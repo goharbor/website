@@ -1,4 +1,8 @@
-.module{
+.module {
+  padding: 0 20px;
+  @include breakpoint(tablet) { 
+    padding: 0;
+  }
   &.has-curve{
     @include curve();
   }

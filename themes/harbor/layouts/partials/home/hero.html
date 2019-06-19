@@ -1,28 +1,37 @@
 {{- $hero := .Site.Params.hero }}
 {{- $tagline := $hero.tagline -}}
 {{- $subTagline := $hero.subtagline -}}
-{{- $buttonText := $hero.buttonText }}
+{{- $primaryButton := $hero.primaryButton }}
+{{- $secondaryButton := $hero.secondaryButton }}
 {{- $heroImageUrl := printf "img/%s" $hero.image | absURL -}}
-<section class="hero is-fullheight is-default is-bold is-slanted">
+<section class="hero is-default is-bold">
 
-  <div class="hero-body curved-border bg-violet">
+  <div class="hero-body curved-border bg-violet module--column">
     <!--<div class="container has-text-centered">-->
-      <div class="hero-image">
-        <div class="wrap">
-          <div id="anim--lighthouse" class="bodymovin-animation" base-dir="lighthouse" base-file="data.json"></div>
+    <div class="container">
+      <div class="left col-item">
+        <div class="hero-content">
+          <div class="wrap">
+            <h1>{{ $tagline }}</h1>
+            <h2>{{ $subTagline }}</h2>
+            <a href="{{$primaryButton.buttonHref}}" class="hbutton-outline-violet button" target="{{$primaryButton.target}}">
+              {{$primaryButton.buttonText}}
+            </a>
+            <a href="{{$secondaryButton.buttonHref}}" class="hbutton-outline-white button" target="{{$secondaryButton.target}}">
+              {{$secondaryButton.buttonText}}
+            </a>
+          </div>
         </div>
       </div>
-
-    <!--</div>-->
-  </div>
-  <div class="hero-content has-text-centered">
-    <div class="wrap">
-      <h1>{{ $tagline }}</h1>
-      <h2>{{ $subTagline }}</h2>
-      <a href="/#getting-started" class="hbutton-violet button" target="_blank">
-        {{$buttonText}}
-      </a>
+      <div class="right col-item">
+          <div class="hero-image has-text-right">
+            <div class="wrap">
+              <div id="anim--lighthouse" class="bodymovin-animation hero" base-dir="lighthouse" base-file="data.json"></div>
+            </div>
+          </div>
+      </div>
     </div>
+    <!--</div>-->
   </div>
   <!--<div class="hero-foot mb-20">-->
     <!--<div class="container">-->

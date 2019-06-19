@@ -1,5 +1,4 @@
 .module--our-community{
-
   $item-v-gap:30px;
 
   @mixin item-title-gap($count){
@@ -14,7 +13,7 @@
     $num-of-items:(
             "mobile":2,
             "tablet":2,
-            "desktop":4
+            "desktop":2
     );
 
     flex-basis: calc(100%/#{map_get($num-of-items,mobile)});
@@ -41,13 +40,13 @@
 
   //@include curve(full-curve-reverse);
   padding-top:30px;
+  margin-bottom: 100px;
   .container{
     padding-top:40px;
     padding-bottom:40px;
 
     @include breakpoint(tablet) {
       text-align: center;
-      max-width:640px;
     }
 
     .module-title{
@@ -56,12 +55,13 @@
     .cta{
       margin-top:50px;
     }
-    .items{
+    .items {
       display:flex;
       flex-direction: row;
       flex-wrap: wrap;
       text-align: center;
       @include breakpoint(tablet) {
+        width: 85%;
       }
       >.item{
         flex-basis: calc(100%);
@@ -71,7 +71,7 @@
 
         .item-title{
           font-weight: bold;
-          padding-top:30px;
+          padding-top: 10px;
         }
         img,svg,.svg{
           height:40px;
