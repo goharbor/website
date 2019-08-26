@@ -110,6 +110,9 @@ params:
     - title: axatp
       logo: /img/logos/users-partners/axa-logo.png
       link: https://www.axatp.com/
+    - title: bekchy
+      logo: /img/logos/users-partners/bekchy-logo.png
+      link: https://bekchy.com/
     - title: beegoLogo
       logo: /img/logos/users-partners/beegoLogo.png
       link: https://example.com/
