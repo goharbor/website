@@ -90,7 +90,7 @@ params:
       handle: "@project_harbor"
     - title: Slack
       logo: /img/icons/slack-icon.svg
-      link: https://cncf.slack.com/messages/harbor
+      link: https://cloud-native.slack.com/messages/harbor
       handle: "#harbor"
     - title: User Group
       logo: /img/icons/user-group-icon.svg
@@ -201,7 +201,7 @@ params:
         url: "https://twitter.com/project_harbor"
         icon: /img/icons/twitter-icon.svg
       - name: Slack
-        url: "https://cncf.slack.com/messages/harbor"
+        url: "https://cloud-native.slack.com/messages/harbor"
         icon: /img/icons/slack-icon.svg
       - name: User Group
         url: "https://groups.google.com/forum/#!forum/harbor-users"

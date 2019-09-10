@@ -58,6 +58,6 @@ who've spent time working on Harbor and contributing to the project:
 ## Join the Fun
 Many thanks to the community for your continued support! We love contributions
 of any kind, including tweaking the documentation, helping others in our
-#harbor [Slack channel](https://cncf.slack.io/), adding docs, tests or even
+#harbor [Slack channel](https://slack.cncf.io/), adding docs, tests or even
 performing code reviews. You can find details on joining us
 [here](https://goharbor.io/community/).
