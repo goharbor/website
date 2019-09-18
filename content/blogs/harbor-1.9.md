@@ -9,11 +9,11 @@ showPageInfo: true
 
 ---
 
-We are excited to announce the release of Harbor version 1.9, arguably one of our biggest releases packed with several long-awaited features that the open source community has asked for. Thanks to all the members of the community who made contributions to these features, and special thanks in particular to 360 Total Security, Hyland Software, NetEase Cloud, and VMware. With this release, Harbor introduces some key new features:  
-1. Tag retention and project quotas that strengthen image lifecycle management and security 
-2. Webhook notifications that enable the integration of Harbor with CI/CD tools
-3. Replication targets for the registry services of all the major cloud providers to let you replicate projects based on your business needs
-4. CVE exception policies and syslog integration that bring an additional layer of management and security capabilities to Harbor operators    
+We are excited to announce the release of Harbor version 1.9, arguably one of our biggest releases packed with several long-awaited features that the open source community has asked for. Thanks to all the members of the community who made contributions to these features, and special thanks in particular to 360 Total Security, Hyland Software, NetEase Cloud, and VMware. With this release, Harbor introduces some key new features:    
+1.	Tag retention and project quotas that strengthen image lifecycle management and security 
+2.	Webhook notifications that enable the integration of Harbor with CI/CD tools
+3.	Replication targets for the registry services of all the major cloud providers to let you replicate projects based on your business needs
+4.	CVE exception policies and syslog integration that bring an additional layer of management and security capabilities to Harbor operators    
 
 Let’s deep dive into some of these features.   
 
