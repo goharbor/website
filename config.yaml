@@ -154,9 +154,6 @@ params:
     - title: trendmicro
       logo: /img/logos/users-partners/micro-logo.png
       link: https://www.trendmicro.com/en_au/business.html
-    - title: onstar
-      logo: /img/logos/users-partners/onstar-logo.png
-      link: https://www.onstar.com.cn/portal/ZH/index/index.html
     - title: openedutainment
       logo: /img/logos/users-partners/open-logo.png
       link: http://www.open.com.cn/
@@ -256,9 +253,6 @@ params:
       - title: ifre
         logo: /img/logos/users-partners/ifre-logo.png
         link: http://www.ifre.com.cn/
-      - title: onstar
-        logo: /img/logos/users-partners/onstar-logo.png
-        link: https://www.onstar.com.cn/portal/ZH/index/index.html
       - title: openedutainment
         logo: /img/logos/users-partners/open-logo.png
         link: http://www.open.com.cn/
