@@ -201,10 +201,10 @@ params:
         url: "https://cloud-native.slack.com/messages/harbor"
         icon: /img/icons/slack-icon.svg
       - name: User Group
-        url: "https://groups.google.com/forum/#!forum/harbor-users"
+        url: "https://lists.cncf.io/g/harbor-users"
         icon: /img/icons/user-group-icon.svg
       - name: Developer Group
-        url: "https://groups.google.com/forum/#!forum/harbor-dev"
+        url: "https://lists.cncf.io/g/harbor-dev"
         icon: /img/icons/dev-group-icon.svg
     followUs:
     - icon: github
