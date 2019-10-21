@@ -6,7 +6,7 @@ params:
   repo: https://github.com/goharbor/harbor
   hero:
     tagline: Harbor
-    subTagline: Out mission is to be the most secure, performant, scalable, and available cloud native repository for Kubernetes
+    subTagline: Our mission is to be the most secure, performant, scalable, and available cloud native repository for Kubernetes
     primaryButton: 
       buttonText: Get Started
       buttonHref: /#getting-started
