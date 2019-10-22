@@ -55,12 +55,7 @@
     <div class="left col-item">
       <h2 class="module-title">What is Harbor?</h2>
       <div class="content">
-        <p>Harbor is an open source cloud native registry that stores, signs, and scans container images for vulnerabilities.</p>
-        <p>Harbor solves common challenges by delivering trust, compliance,
-        performance, and interoperability. It fills a gap for organizations
-        and applications that cannot use a public or cloud-based registry, or
-        want a consistent experience across clouds.</p>
-
+        <p>Harbor is an open source container image registry that secures images with role-based access control, scans images for vulnerabilities, and signs images as trusted. A CNCF Incubating project, Harbor delivers compliance, performance, and interoperability to help you consistently and securely manage images  across cloud native compute platforms like Kubernetes and Docker.</p>
         {{ if not .Site.IsServer }}
         {{ partial "embed-github.html" . }}
         {{ end }}
@@ -82,10 +77,11 @@
     <div class="right col-item">
       <h2 class="module-title">Getting Started</h2>
       <div class="content">
-        <p>Harbor can be installed on any system with Docker support.
+        <p>Harbor can be installed on any Kubernetes environment or on a system with Docker support.
         Read more about getting started and using Harbor below.</p>
 
         <a href="https://github.com/goharbor/harbor/blob/master/README.md" class="hlink">Readme</a>&nbsp;&nbsp;
+        <a href="https://github.com/goharbor/harbor-helm/blob/master/README.md" class="hlink">Helm Chart for Kubernetes</a>
         <a href="https://github.com/goharbor/harbor/blob/master/docs/installation_guide.md" class="hlink">Installation Guide</a>&nbsp;&nbsp;
         <a href="https://github.com/goharbor/harbor/blob/master/docs/user_guide.md" class="hlink">User Guide</a>
 
