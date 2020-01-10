@@ -7,7 +7,26 @@ tagline = "Manage and serve container images in a secure environment"
 description = "Our mission is to be the most secure, performant, scalable, and available cloud native repository for Kubernetes"
 font_awesome_version = "5.12.0"
 
+[params.logos]
+navbar = "harbor-horizontal-black.png"
+hero = "harbor-horizontal-color.png"
+
 [[params.fonts]]
-name = "Open Sans"
+name = "PT Sans"
 sizes = [300, 400, 600, 700]
 type = "sans_serif"
+
+[[menu.main]]
+name = "Community"
+url = "/community"
+weight = 1
+
+[[menu.main]]
+name = "Docs"
+url = "/docs"
+weight = 2
+
+[[menu.main]]
+name = "Blog"
+url = "/blog"
+weight = 3
