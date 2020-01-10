@@ -1,5 +1,6 @@
 title = "Harbor"
 baseURL = "https://goharbor.io"
+disableKinds = ["taxonomy", "taxonomyTerm"]
 
 [params]
 tagline = "Manage and serve container images in a secure environment"
