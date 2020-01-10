@@ -1,0 +1,12 @@
+title = "Harbor"
+baseURL = "https://goharbor.io"
+
+[params]
+tagline = "Manage and serve container images in a secure environment"
+description = "Our mission is to be the most secure, performant, scalable, and available cloud native repository for Kubernetes"
+font_awesome_version = "5.12.0"
+
+[[params.fonts]]
+name = "Open Sans"
+sizes = [300, 400, 600, 700]
+type = "sans_serif"
