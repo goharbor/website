@@ -38,7 +38,7 @@ At this time, the following scanner adapters are available, in alphabetical orde
 * [Scanner Adapter for Anchore Engine and Enterprise][1]
 * [Scanner Adapter for Aqua CSP Scanner][2]
 * [Scanner Adapter for Clair][3]
-* [Scanner Adapter for DoSec Scanner][4]
+* [Scanner Adapter for Dosec Scanner][4]
 * [Scanner Adapter for Trivy][5]
 
 You can also leverage your existing licenses for commercial scanners, such as Anchore Enterprise or Aqua CSP Scanner.

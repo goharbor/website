@@ -145,6 +145,9 @@ params:
     - title: datayes
       logo: /img/logos/users-partners/datayes-logo.png
       link: https://www.datayes.com/en/?lang=en-US
+    - title: dosec
+      logo: /img/logos/users-partners/dosec-logo.png
+      link: https://www.dosec.cn/
     - title: hydsoft
       logo: /img/logos/users-partners/hydsoft-logo.png
       link: http://www.hydsoft.com/en/
@@ -285,6 +288,9 @@ params:
       - title: cloudchef
         logo: /img/logos/users-partners/cloudchef-logo.png
         link: http://www.cloudchef.io/
+      - title: dosec
+        logo: /img/logos/users-partners/dosec-logo.png
+        link: https://www.dosec.cn/
       - title: pivotal
         logo: /img/logos/users-partners/pivotal-logo.png
         link: https://pivotal.io/
