@@ -1,0 +1,8 @@
+{{ define "title" }}
+{{ site.Title }} docs | {{ .Title }}
+{{ end }}
+
+{{ define "main" }}
+{{ partial "docs/hero.html" . }}
+{{ partial "docs/layout.html" . }}
+{{ end }}
