@@ -1,18 +1,39 @@
 {{ $title := site.Title }}
 {{ $desc  := site.Params.description | markdownify }}
-{{ $logo  := printf "img/logos/%s" site.Params.logos.hero | relURL }}
-<section class="hero is-medium">
+<section class="hero is-medium has-background-light">
   <div class="hero-body">
     <div class="container">
-      <div class="title is-spaced">
-        <img class="is-hero-logo" src="{{ $logo }}" alt="{{ $title }} hero logo">
-      </div>
+      <div class="card has-background-white">
+        <div class="card-content">
+          <p class="title is-size-1 is-size-2-mobile has-text-dark has-text-weight-bold{{ if $desc }} is-spaced{{ end }}">
+            {{ $title }}
+          </p>
 
-      {{ with $desc }}
-      <p class="subtitle is-size-3 is-size-4-mobile has-text-weight-light">
-        {{ . }}
-      </p>
-      {{ end }}
+          <p class="subtitle is-size-3 is-size-4-mobile has-text-weight-medium">
+            {{ $desc }}
+          </p>
+
+          <div class="buttons">
+            <a class="button is-primary has-text-weight-bold" href="/docs/getting-started">
+              <span class="icon">
+                <i class="fas fa-play"></i>
+              </span>
+              <span>
+                Getting started
+              </span>
+            </a>
+    
+            <a class="button is-white is-outlined is-inverted has-text-weight-bold" href="/docs/getting-started">
+              <span class="icon has-text-secondary">
+                <i class="fas fa-cloud-download-alt"></i>
+              </span>
+              <span>
+                Download now
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>      
     </div>
   </div>
 </section>

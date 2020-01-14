@@ -30,7 +30,7 @@
       {{ with $menu }}
       <div class="navbar-end">
         {{ range . }}
-        {{ $name := .Name | upper }}
+        {{ $name := .Name }}
         {{ $isHere := eq .URL $here }}
         {{ $isExternal := hasPrefix .URL "http" }}
         <a class="navbar-item has-text-weight-bold{{ if $isHere }} is-active{{ end }}" href="{{ .URL }}"{{ if $isExternal }} target="_blank"{{ end }}>

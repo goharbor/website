@@ -8,8 +8,7 @@ description = "Our mission is to be the most secure, performant, scalable, and a
 font_awesome_version = "5.12.0"
 
 [params.logos]
-navbar = "harbor-horizontal-black.png"
-hero = "harbor-horizontal-color.png"
+navbar = "harbor-horizontal-color.png"
 
 [[params.fonts]]
 name = "PT Sans"

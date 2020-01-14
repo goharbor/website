@@ -37,6 +37,8 @@ ${{ .name }}: '{{ .hex }}'
 $primary: $harbor-blue
 $secondary: $harbor-green
 $link: $primary
+$navbar-height: 4rem
+$navbar-item-img-max-height: $navbar-height * 0.6
 
 // Font overrides
 {{ if $fonts }}
@@ -91,7 +93,7 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white)), $colors)
 
 // Components
 // @import "bulma/sass/components/breadcrumb"
-// @import "bulma/sass/components/card"
+@import "bulma/sass/components/card"
 // @import "bulma/sass/components/dropdown"
 // @import "bulma/sass/components/level"
 // @import "bulma/sass/components/list"
