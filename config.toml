@@ -8,6 +8,8 @@ tagline = "Manage and serve container images in a secure environment"
 description = "Our mission is to be the most secure, performant, scalable, and available cloud native repository for Kubernetes"
 font_awesome_version = "5.12.0"
 
+versions = ["1.10"]
+
 [params.logos]
 footer = "harbor-horizontal-white.png"
 navbar = "harbor-horizontal-color.png"
@@ -23,11 +25,6 @@ url = "/community"
 weight = 1
 
 [[menu.main]]
-name = "Docs"
-url = "/docs"
-weight = 2
-
-[[menu.main]]
 name = "Blog"
 url = "/blog"
-weight = 3
+weight = 2

@@ -1,9 +1,14 @@
-{{ $home   := site.BaseURL }}
-{{ $here   := .RelPermalink }}
-{{ $title  := site.Title }}
-{{ $logo   := site.Params.logos.navbar }}
-{{ $menu   := site.Menus.main }}
-{{ $social := site.Params.social }}
+{{ $home     := site.BaseURL }}
+{{ $here     := .RelPermalink }}
+{{ $title    := site.Title }}
+{{ $logo     := site.Params.logos.navbar }}
+{{ $menu     := site.Menus.main }}
+{{ $social   := site.Params.social }}
+{{ $versions := site.Params.versions }}
+{{ $latest   := index $versions 0 }}
+{{ $isDocs   := eq .Section "docs" }}
+{{ $version  := index (split .File.Path "/") 1 }}
+{{ $isLatest := eq $version $latest }}
 <nav class="navbar is-fixed-top has-shadow" role="navigation" aria-label="main navigation">
   <div class="container">
     <div class="navbar-brand">
@@ -27,6 +32,23 @@
 
     {{ if or $social $menu }}
     <div class="navbar-menu" id="navbar-menu">
+      {{ if $isDocs }}
+      <div class="navbar-start">
+        <div class="navbar-item">
+          <div class="tags has-addons has-text-weight-bold">
+            <span class="tag is-light">
+              {{ $version }}
+            </span>
+            {{ if $isLatest }}
+            <span class="tag is-success">
+              latest
+            </span>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+      {{ end }}
+
       {{ with $menu }}
       <div class="navbar-end">
         {{ range . }}
@@ -37,12 +59,39 @@
           {{ $name }}
         </a>
         {{ end }}
-      </div>
-      {{ end }}
 
-      {{ with $social }}
-      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link has-text-weight-bold">
+            Docs
+          </a>
+
+          <div class="navbar-dropdown is-right">
+            {{ range $versions }}
+            {{ $isLatest := eq . $latest }}
+            <div class="navbar-item">
+              <div class="columns">
+                <div class="column">
+                  <a class="has-text-black" href="/docs/{{ . }}">
+                    <span>
+                      {{ . }}
+                    </span>
+                    &nbsp;&nbsp;
+                    {{ if $isLatest }}
+                    <span class="tag is-success">
+                      latest
+                    </span>
+                    {{ end }}
+                  </a>
+                </div>
+              </div>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+
+        {{ with $social }}
         {{ partial "social-buttons.html" . }}
+        {{ end }}
       </div>
       {{ end }}
     </div>
