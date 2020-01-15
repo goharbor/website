@@ -1,22 +1,20 @@
-<div class="admonition is-{{ .type }}">
-  <div class="columns">
-    <div class="column is-1">
-      <span class="icon has-text-{{ .type }}">
-        {{ partial "components/icon.html" (dict "icon" .icon "size" "medium") }}
+<div class="notification is-{{ .type }}">
+  <article class="media">
+    <div class="media-left">
+      <span class="icon">
+        <i class="fas fa-lg fa-{{ .icon }}"></i>
       </span>
     </div>
-
-    <div class="column">
+    <div class="media-content">
       <div class="content">
-        {{ with .title }}
-        <p class="title is-size-4 is-size-5-mobile">
-          {{ . | markdownify }}
-        </p>
+        {{ if ne .title nil }}
+        <h3 class="title">
+          {{ .title | markdownify }}
+        </h3>
         {{ end }}
 
         {{ .content | markdownify }}
       </div>
     </div>
-  </div>
+  </article>
 </div>
-
