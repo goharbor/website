@@ -62,6 +62,9 @@ $family-monospace: "{{ . }}", monospace
 
 // Bulma variable overrdides that require derived variables like $dark
 $colors: mergeColorMaps(("secondary": ($secondary, $white)), $colors)
+$menu-item-active-color: $primary
+$menu-item-active-background-color: $white-bis
+$menu-item-radius: none
 
 // Bulma core
 @import "bulma/sass/utilities/_all"

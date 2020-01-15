@@ -27,7 +27,7 @@
     {{ $isThisPage := eq $thisPage .RelPermalink }}
 
     <li>
-      <a{{ if $isThisPage }} class="is-active"{{ end }} href="{{ .RelPermalink }}">
+      <a{{ if $isThisPage }} class="has-text-weight-bold is-active"{{ end }} href="{{ .RelPermalink }}">
         {{ .Title }}
       </a>
     </li>
