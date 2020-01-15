@@ -1,0 +1,31 @@
+{{ $this         := .CurrentSection }}
+{{ $docsSections := where site.Sections "Section" "docs" }}
+
+<aside class="menu">
+  {{ range $docsSections }}
+  {{ range .Sections }}
+  {{ range .Sections }}
+  {{ $thisSection := eq $this . }}
+
+  <p class="menu-label">
+    <a{{ if $thisSection }} class="has-text-weight-bold"{{ end }} href="{{ .RelPermalink }}">
+      {{ .Title }}
+    </a>
+  </p>
+
+  {{ if $thisSection }}
+  <ul class="menu-list">
+    {{ range .RegularPages }}
+    <li>
+      <a href="{{ .RelPermalink }}">
+        {{ .Title }}
+      </a>
+    </li>
+    {{ end }}
+  </ul>
+  {{ end }}
+
+  {{ end }}
+  {{ end }}
+  {{ end }}
+</aside>

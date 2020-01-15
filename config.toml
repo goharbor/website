@@ -28,3 +28,13 @@ weight = 1
 name = "Blog"
 url = "/blog"
 weight = 2
+
+[outputs]
+home = [ "HTML", "REDIRECTS" ]
+
+[mediaTypes."text/netlify"]
+delimiter = ""
+
+[outputFormats.REDIRECTS]
+mediaType = "text/netlify"
+baseName = "_redirects"

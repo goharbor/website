@@ -1,14 +1,14 @@
 <section class="section">
   <div class="container">
-    <div class="columns">
+    <div class="columns is-variable is-8">
       <div class="column">
-        <aside class="toc is-sticky">
-          TOC
+        <aside class="toc is-sticky is-scrollable">
+          {{ partial "docs/menu.html" . }}
         </aside>
       </div>
 
       <div class="column is-three-quarters">
-        <div class="content is-medium is-constrained">
+        <div class="content is-constrained">
           {{ .Content }}
         </div>
       </div>
