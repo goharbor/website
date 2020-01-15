@@ -1,23 +1,33 @@
-{{ $this         := .CurrentSection }}
+{{ $thisSection  := .CurrentSection }}
+{{ $thisPage     := .RelPermalink }}
 {{ $docsSections := where site.Sections "Section" "docs" }}
+{{ $version      := index (split .File.Path "/") 1 }}
 
 <aside class="menu">
+  <p class="menu-label">
+    <a href="/docs/{{ $version }}">
+      Harbor version {{ $version }}
+    </a>
+  </p>
+
   {{ range $docsSections }}
   {{ range .Sections }}
   {{ range .Sections }}
-  {{ $thisSection := eq $this . }}
+  {{ $isThisSection := eq $thisSection . }}
 
   <p class="menu-label">
-    <a{{ if $thisSection }} class="has-text-weight-bold"{{ end }} href="{{ .RelPermalink }}">
+    <a{{ if $isThisSection }} class="has-text-weight-bold"{{ end }} href="{{ .RelPermalink }}">
       {{ .Title }}
     </a>
   </p>
 
-  {{ if $thisSection }}
+  {{ if $isThisSection }}
   <ul class="menu-list">
     {{ range .RegularPages }}
+    {{ $isThisPage := eq $thisPage .RelPermalink }}
+
     <li>
-      <a href="{{ .RelPermalink }}">
+      <a{{ if $isThisPage }} class="is-active"{{ end }} href="{{ .RelPermalink }}">
         {{ .Title }}
       </a>
     </li>
