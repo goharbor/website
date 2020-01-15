@@ -1,6 +1,7 @@
 title = "Harbor"
 baseURL = "https://goharbor.io"
 disableKinds = ["taxonomy", "taxonomyTerm"]
+copyright = "The Harbor authors"
 
 [params]
 tagline = "Manage and serve container images in a secure environment"
@@ -8,6 +9,7 @@ description = "Our mission is to be the most secure, performant, scalable, and a
 font_awesome_version = "5.12.0"
 
 [params.logos]
+footer = "harbor-horizontal-white.png"
 navbar = "harbor-horizontal-color.png"
 
 [[params.fonts]]

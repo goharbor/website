@@ -1,10 +1,22 @@
-{{ with site.Copyright }}
+{{ $copy := site.Copyright }}
 {{ $year := now.Year }}
-<footer class="footer">
+{{ $logo := printf "img/logos/%s" site.Params.logos.footer | relURL }}
+<footer class="footer has-background-black">
   <div class="container">
-    <p class="title is-size-6 has-text-light has-text-weight-light">
-      &copy; {{ $year }} {{ . }}
+    <div class="columns">
+      <div class="column">
+        <img class="is-footer-logo" src="{{ $logo }}" alt="{{ site.Title }} footer logo">
+      </div>
+
+      <div class="column">
+        
+      </div>
+    </div>
+
+    <hr />
+
+    <p class="is-size-6 has-text-light has-text-weight-light">
+      &copy; {{ $year }} {{ $copy }}
     </p>
   </div>
 </footer>
-{{ end }}
