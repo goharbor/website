@@ -1,3 +1,6 @@
+# Versioned documentation
+content/docs/1.*/
+
 # Application #
 ############
 .htaccess
