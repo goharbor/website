@@ -1,20 +1,22 @@
-<div class="notification is-{{ .type }}">
-  <article class="media">
-    <div class="media-left">
-      <span class="icon">
-        <i class="fas fa-lg fa-{{ .icon }}"></i>
+<div class="admonition is-{{ .type }}">
+  <div class="columns is-vcentered">
+    <div class="column is-1">
+      <span class="icon is-medium">
+        <ion-icon size="medium" name="{{ .icon }}"></ion-icon>
       </span>
     </div>
-    <div class="media-content">
+
+    <div class="column">
       <div class="content">
-        {{ if ne .title nil }}
-        <h3 class="title">
-          {{ .title | markdownify }}
-        </h3>
+        {{ with .title }}
+        <p class="title">
+          {{ . | markdownify }}
+        </p>
         {{ end }}
 
         {{ .content | markdownify }}
       </div>
     </div>
-  </article>
+  </div>
 </div>
+
