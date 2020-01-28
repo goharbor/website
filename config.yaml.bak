@@ -6,8 +6,15 @@ params:
   repo: https://github.com/goharbor/harbor
   hero:
     tagline: Harbor
-    subTagline: Manage and serve container images in a secure environment
-    buttonText: Get Started
+    subTagline: Our mission is to be the most secure, performant, scalable, and available cloud native repository for Kubernetes
+    primaryButton: 
+      buttonText: Get Started
+      buttonHref: /#getting-started
+      target: _self
+    secondaryButton: 
+      buttonText: Download Now
+      buttonHref:  https://github.com/goharbor/harbor/releases
+      target: _Blank
     image: illustrations/worker.svg
     bottomIcons:
     - logos/clients/systek.svg
@@ -42,19 +49,35 @@ params:
       hide: true
   keyfeatures:
     title: Key Features
-    features:
-    - title: Multi-tenant content signing and validation
-      logo: /img/icons/multi-content-icon.svg
-    - title: Security and vulnerability analysis
-      logo: /img/icons/security-icon.svg
-    - title: Identity integration and role-based access control
-      logo: /img/icons/identity-integration-icon.svg
-    - title: Image replication between instances
-      logo: /img/icons/image-replication-icon.svg
-    - title: Extensible API and graphical UI
-      logo: /img/icons/extensible-api-icon.svg
-    - title: Internationalization (currently English and Chinese)
-      logo: /img/icons/international-icon.svg
+    categories:
+    - category: Security
+      width: one-third
+      features: 
+        - title: Security and vulnerability analysis
+          logo: /img/icons/security-icon.svg
+        - title: Content signing and validation
+          logo: /img/icons/multi-content-icon.svg
+    - category: Management
+      width: two-thirds
+      features:
+        - title: Multi-tenant
+          logo: /img/icons/multi-tenant-icon.svg
+        - title: Extensible API and web UI
+          logo: /img/icons/extensible-api-icon.svg
+        - title: ​Image replication across multiple Harbor instances
+          logo: /img/icons/image-replication-icon.svg
+        - title: ​Identity integration and role-based access control
+          logo: /img/icons/international-icon.svg
+  testimonials:
+  - logo: /img/logos/clients/netease-cloud.png
+    quote: Harbor provides rich functions in container image management. It solves our challenges of transferring images and Helm charts between container clusters. Harbor does allow us to save a lot of resources in image repository. The community is very active and the features are constantly being improved.
+    citation: Netease Cloud
+  - logo: /img/logos/users-partners/caicloud-logo.png
+    quote: In Caicloud’s product of cloud native platform, we leveraged Harbor to implement the capability of image management, including Harbor's image synchronization and vulnerability scanning function. Delivered as an important component in our product, Harbor has been used by many enterprise customers.
+    citation: Caicloud
+  - logo: /img/logos/clients/360-total-security.png
+    quote: Through Harbor’s Web UI, we can conveniently manage the access rights of projects, members and images. We take advantage of Harbor’s remote replication features to create replicas of image repository in data centers across different regions.
+    citation: 360 Total Security
   ourcommunity:
     title: Our Community
     buttonTitle: Discover how to join
@@ -67,18 +90,18 @@ params:
       handle: "@project_harbor"
     - title: Slack
       logo: /img/icons/slack-icon.svg
-      link: https://cncf.slack.com/messages/harbor
+      link: https://cloud-native.slack.com/messages/harbor
       handle: "#harbor"
     - title: User Group
       logo: /img/icons/user-group-icon.svg
-      link: https://groups.google.com/forum/#!forum/harbor-users
-      handle: "harbor-users@googlegroups.com"
+      link: https://lists.cncf.io/g/harbor-users
+      handle: "https://lists.cncf.io/g/harbor-users"
     - title: Developer Group
       logo: /img/icons/dev-group-icon.svg
-      link: https://groups.google.com/forum/#!forum/harbor-dev
-      handle: "harbor-dev@googlegroups.com"
+      link: https://lists.cncf.io/g/harbor-dev
+      handle: "https://lists.cncf.io/g/harbor-dev"
   cncf:
-    title: We are a Cloud Native Computing Foundation-hosted project
+    title: We are a Cloud Native Computing Foundation incubating project
     logo: /img/logos/cloud-native-computing.png
     link: https://www.cncf.io/projects
   userspartners:
@@ -87,6 +110,9 @@ params:
     - title: axatp
       logo: /img/logos/users-partners/axa-logo.png
       link: https://www.axatp.com/
+    - title: bekchy
+      logo: /img/logos/users-partners/bekchy-logo.png
+      link: https://bekchy.com/
     - title: beegoLogo
       logo: /img/logos/users-partners/beegoLogo.png
       link: https://example.com/
@@ -128,9 +154,6 @@ params:
     - title: trendmicro
       logo: /img/logos/users-partners/micro-logo.png
       link: https://www.trendmicro.com/en_au/business.html
-    - title: onstar
-      logo: /img/logos/users-partners/onstar-logo.png
-      link: https://www.onstar.com.cn/portal/ZH/index/index.html
     - title: openedutainment
       logo: /img/logos/users-partners/open-logo.png
       link: http://www.open.com.cn/
@@ -175,13 +198,13 @@ params:
         url: "https://twitter.com/project_harbor"
         icon: /img/icons/twitter-icon.svg
       - name: Slack
-        url: "https://cncf.slack.com/messages/harbor"
+        url: "https://cloud-native.slack.com/messages/harbor"
         icon: /img/icons/slack-icon.svg
       - name: User Group
-        url: "https://groups.google.com/forum/#!forum/harbor-users"
+        url: "https://lists.cncf.io/g/harbor-users"
         icon: /img/icons/user-group-icon.svg
       - name: Developer Group
-        url: "https://groups.google.com/forum/#!forum/harbor-dev"
+        url: "https://lists.cncf.io/g/harbor-dev"
         icon: /img/icons/dev-group-icon.svg
     followUs:
     - icon: github
@@ -230,9 +253,6 @@ params:
       - title: ifre
         logo: /img/logos/users-partners/ifre-logo.png
         link: http://www.ifre.com.cn/
-      - title: onstar
-        logo: /img/logos/users-partners/onstar-logo.png
-        link: https://www.onstar.com.cn/portal/ZH/index/index.html
       - title: openedutainment
         logo: /img/logos/users-partners/open-logo.png
         link: http://www.open.com.cn/

@@ -151,7 +151,8 @@ appropriate. We make mistakes, too.
 I'll follow-up with future blog posts with further discussion on how to
 contribute to Harbor. Contributing code can be more involved, particularly if
 the feature is large, but we encourage you to join the fun.  You can find us
-on GitHub, Slack or on the harbor-users and harbor-dev Google Groups mailing
-list.
+on [GitHub](https://github.com/goharbor), [Slack](https://cloud-native.slack.com/messages/harbor),
+or on the [harbor-users](https://lists.cncf.io/g/harbor-users) and [harbor-dev](https://lists.cncf.io/g/harbor-dev)
+mailing lists.
 
 Thanks for reading!
