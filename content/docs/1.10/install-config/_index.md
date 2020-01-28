@@ -1,5 +1,6 @@
 ---
 title: Harbor Installation and Configuration
+weight: 1
 ---
 
 This section describes how to perform a new installation of Harbor.

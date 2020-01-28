@@ -10,6 +10,43 @@
       <div class="column is-three-quarters">
         <div class="content is-constrained has-extra-bottom-padding">
           {{ .Content }}
+
+
+          {{ if or .RegularPages .Sections }}
+          <hr class="thick" />
+          
+          {{ with .Sections }}
+          <h2 id="subsections">
+            Subsections
+          </h2>
+
+          <ul>
+            {{ range . }}
+            <li>
+              <a href="{{ .RelPermalink }}">
+                {{ .Title }}
+              </a>
+            </li>
+            {{ end }}
+          </ul>
+          {{ end }}
+
+          {{ with .RegularPages }}
+          <h2 id="pages">
+            Pages in this section
+          </h2>
+
+          <ul>
+            {{ range . }}
+            <li>
+              <a href="{{ .RelPermalink }}">
+                {{ .Title }}
+              </a>
+            </li>
+            {{ end }}
+          </ul>
+          {{ end }}
+          {{ end }}
         </div>
       </div>
     </div>
