@@ -1,11 +1,9 @@
 ---
 title: "Welcome new Harbor maintainers!"
 author:
-    name: "Harbor Team"
+  name: "Harbor Team"
 description: "Two new contributors join the maintainer ranks"
 date: 2019-03-04T12:00:00+04:00
-draft: false
-showPageInfo: true
 ---
 
 ## Welcome new Harbor maintainers!

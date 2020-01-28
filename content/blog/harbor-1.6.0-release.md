@@ -1,8 +1,8 @@
 ---
 title: "Harbor version 1.6.0 is live!"
 author:
-    name: "Harbor Team"
-    company: "VMware"
+  name: "Harbor Team"
+  company: "VMware"
 description: "Adding features such as Helm charts management, image replication and more"
 date: 2018-09-13T12:00:00+04:00
 draft: false

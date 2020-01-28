@@ -1,10 +1,9 @@
 ---
 title: "Harbor Moves to Incubation"
 author:
-    name: "Harbor Team"
-description: "Project Harbor is now an incubated project at the Cloud Native Computing Foundation"
+  name: "Harbor Team"
+description: "Project Harbor is now an incubating project at the Cloud Native Computing Foundation"
 date: 2018-11-13T20:15:00+04:00
-draft: false
 showPageInfo: true
 ---
 

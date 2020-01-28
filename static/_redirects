@@ -1,1 +1,2 @@
+/blogs     /blog
 /blogs/*     /blog/:splat

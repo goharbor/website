@@ -3,12 +3,53 @@ baseURL = "https://goharbor.io"
 disableKinds = ["taxonomy", "taxonomyTerm"]
 copyright = "The Harbor authors"
 
+ignoreFiles = [
+    "content/docs/*.md",
+    "content/docs/security",
+    "content/docs/prepare-swagger.sh"
+]
+
 [params]
 tagline = "Manage and serve container images in a secure environment"
 description = "Our mission is to be the most secure, performant, scalable, and available cloud native repository for Kubernetes"
+intro = "Want to know more about what Harbor is and how it works? Watch this intro video to see how Harbor is helping organizations deliver a consistent image management solution across a variety of cloud native compute platforms like [Kubernetes](https://kubernetes.io) and [Docker](https://docker.com)."
 font_awesome_version = "5.12.0"
+favicon = "favicon.png"
+cncf_status = "incubating"
+repo = "goharbor/harbor"
+twitter = "project_harbor"
+slack = "https://cloud-native.slack.com/messages/harbor"
+user_group = "https://lists.cncf.io/g/harbor-users"
+dev_group = "https://lists.cncf.io/g/harbor-dev"
+youtube_video_id = "hG1YSlfVTqY"
 
 versions = ["1.10"]
+
+[params.info]
+what_is = "Harbor is an open source container image registry that secures images with role-based access control, scans images for vulnerabilities, and signs images as trusted. A CNCF Incubating project, Harbor delivers compliance, performance, and interoperability to help you consistently and securely manage images across cloud native compute platforms like Kubernetes and Docker."
+
+getting_started = """
+Harbor can be installed on any Kubernetes environment or on a system with Docker support. Here are some good places to go to get started:
+
+* [Harbor Installation and Configuration](/docs/latest/install-config)
+* [Harbor Administration](/docs/latest/administration)
+"""
+
+[params.features]
+security = [
+    { title = "Security and vulnerability analysis", icon = "fas fa-lock" },
+    { title = "Content signing and validation", icon = "fas fa-file-signature" },
+]
+management = [
+    { title = "Multi-tenant", icon = "fas fa-boxes" },
+    { title = "Extensible API and web UI", icon = "fas fa-globe" },
+    { title = "​Image replication across multiple Harbor instances", icon = "far fa-images" },
+    { title = "​Identity integration and role-based access control", icon = "fas fa-users" },
+]
+
+[markup.highlight]
+style = "pygments"
+guessSyntax = true
 
 [params.logos]
 footer = "harbor-horizontal-white.png"

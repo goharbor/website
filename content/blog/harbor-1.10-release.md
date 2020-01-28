@@ -1,12 +1,10 @@
 ---
 title: "Harbor 1.10 Puts Security and Pluggable Scanners in the Limelight"
 author:
-    name: "Harbor Team"
+  name: "Harbor Team"
 description:
 date: 2020-01-07T01:00:00+04:00
-draft: false
 showPageInfo: true
-
 ---
 
 We are excited to announce Harbor 1.10, a release that hardens security and adds  security-related features, including a pluggable scanner framework that lets you pair Harbor with popular image scanners, such as Anchore Enterprise and Trivy by Aqua Security.
@@ -21,15 +19,15 @@ Harbor has long been able to scan images in your repositories for security vulne
 
 Any cloud native security vendor that has a container image scanner, be it open source or commercial software, can provide an adapter service that implements the [Harbor scanner API](https://editor.swagger.io/?url=https://raw.githubusercontent.com/goharbor/pluggable-scanner-spec/master/api/spec/scanner-adapter-openapi-v1.0.yaml) specification and integrate with Harbor’s scanning workflows. Once the adapter is deployed and mounted at a URL endpoint accessible to Harbor, you can create a corresponding scanner registration under the Interrogation Services settings to activate the underlying scanner.
 
-![Interrogation services](../images/harbor-1.10/interrogation-services.png/)
+![Interrogation services](../img/interrogation-services.png)
 
 The default scanner, set to Clair for Harbor 1.10, is registered in the system settings. The default scanner is inherited by all projects. You can change it globally or override it at the project level, so that different projects can use different scanners.
 
-![Select scanner](../images/harbor-1.10/select-scanner.png/)
+![Select scanner](../img/select-scanner.png)
 
 In Harbor 1.10, which supports Scanner API 1.0, each scanner adapter is supposed to return a unified scan report with a flat list of vulnerability items, where each item represents a vulnerable operating system package or an application dependency.
 
-![Scan report](../images/harbor-1.10/scan-report.png/)
+![Scan report](../img/scan-report.png)
 
 Scanner API 1.0 is extensible with MIME types corresponding to scan reports. This extensibility would potentially allow Harbor, in future releases, to display enhanced vulnerability reports or support completely new types of reports. For example, one could configure multiple scanners per project to add checks for licenses or sensitive data.
 
@@ -47,7 +45,7 @@ You can also leverage your existing licenses for commercial scanners, such as An
 
 Harbor system and project administrators can now configure images as immutable, which means another image with matching tags cannot be pushed into the same project in Harbor, thus avoiding accidental overwrites. The Docker distribution does not natively enforce this image tag to image digest mapping, and this behavior can be undesirable for certain release tags that rarely if ever should be tampered with. For example, tags such as ‘rc’, ‘test’, ‘prod’, ‘nightly’ will, over the course of their lifetime, likely migrate across different images as new images are pushed to Harbor while version-specific tags, such as Harbor_v1.6.1, Harbor_v1.7.2, and Harbor_v1.8.3, should be immutable because they are meant to represent a point-in-time snapshot. Once released, a version such as ‘Harbor_v1.8.1’ should never be changed, and any changes should be reflected on the next version, such as ‘Harbor_v1.8.2’. This freezing mechanism provides image traceability and guarantees that an immutable image will always have the same behavior regardless of how subsequent images are pushed, tagged, or retagged. Image immutability can be configured for an entire project, specific repositories, specific tags, or any combination of these.
 
-![Immutability rule](../images/harbor-1.10/immutability-rule.png/)
+![Immutability rule](../img/immutability-rule.png)
 
 ## OIDC Support Enhancements
 
@@ -74,8 +72,10 @@ With [Harbor 2.0](https://github.com/orgs/goharbor/projects/1) aiming to transfo
 
 ## Collaborate with the Harbor Community!
 
-Get updates on Twitter ([@project_harbor](https://twitter.com/project_harbor))
-Chat with us on Slack ([#harbor](https://cloud-native.slack.com/messages/harbor) on the [CNCF Slack](https://slack.cncf.io/))
+Get updates on Twitter at [@project_harbor](https://twitter.com/project_harbor)
+
+Chat with us on Slack at [#harbor](https://cloud-native.slack.com/messages/harbor) on the [CNCF Slack](https://slack.cncf.io/)
+
 Collaborate with us on GitHub: [github.com/goharbor/harbor](https://github.com/goharbor/harbor)
 
 ---

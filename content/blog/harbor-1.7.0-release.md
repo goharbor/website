@@ -1,7 +1,7 @@
 ---
 title: "Harbor v1.7: hot off the press!"
 author:
-    name: "Harbor Team"
+  name: "Harbor Team"
 description: "A fit, finish and polish release just in time for the holidays"
 date: 2018-12-19T12:00:00+04:00
 draft: false

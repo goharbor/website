@@ -5,6 +5,9 @@
 public*/
 resources/
 
+# Content from goharbor/harbor repo
+content/docs/
+
 # Packages #
 ############
 *.7z

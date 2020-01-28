@@ -1,14 +1,18 @@
+prepare:
+	git submodule update --init
+	cp -rf harbor/docs content
+
 serve:
 	hugo server \
 		--buildDrafts \
 		--buildFuture \
 		--disableFastRender
 
-production-build:
+production-build: prepare
 	hugo \
 	--minify
 
-preview-build:
+preview-build: prepare
 	hugo \
 		--baseURL $(DEPLOY_PRIME_URL) \
 		--buildDrafts \

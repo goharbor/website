@@ -11,8 +11,6 @@
 @import url({{ $fontsUrl }})
 {{ end }}
 
-@import url({{ $fontAwesomeVersion }})
-
 {{ with $fontAwesomeVersion }}
 {{ $fontAwesomeUrl := printf "https://use.fontawesome.com/releases/v%s/css/all.css" . }}
 @import url({{ $fontAwesomeUrl }})
@@ -21,6 +19,8 @@
 // Site-specific variables here
 $harbor-blue: #4495d7
 $harbor-green: #60b932
+$twitter-blue: rgb(29, 161, 242)
+$slack-green: #2EB67D
 
 // Extra colors specified in config
 {{ with $extraColors }}
@@ -39,12 +39,12 @@ $secondary: $harbor-green
 $link: $primary
 $navbar-height: 4rem
 $navbar-item-img-max-height: $navbar-height * 0.6
-$card-content-padding: 2.5rem
 $menu-label-font-size: 1rem
 $code: $primary
 $code-background: $white-bis
 $navbar-dropdown-radius: none
 $navbar-dropdown-border-top: none
+$list-radius: none
 
 // Font overrides
 {{ if $fonts }}
@@ -63,7 +63,7 @@ $family-monospace: "{{ . }}", monospace
 @import "bulma/sass/utilities/derived-variables"
 
 // Bulma variable overrdides that require derived variables like $dark
-$colors: mergeColorMaps(("secondary": ($secondary, $white)), $colors)
+$colors: mergeColorMaps(("secondary": ($secondary, $white), "twitter-blue": ($twitter-blue, $white), "slack-green": ($slack-green, $white)), $colors)
 $menu-item-active-color: $primary
 $menu-item-active-background-color: $white-bis
 $menu-item-radius: none
@@ -105,8 +105,8 @@ $menu-item-radius: none
 @import "bulma/sass/components/card"
 @import "bulma/sass/components/dropdown"
 @import "bulma/sass/components/level"
-// @import "bulma/sass/components/list"
-// @import "bulma/sass/components/media"
+@import "bulma/sass/components/list"
+@import "bulma/sass/components/media"
 @import "bulma/sass/components/menu"
 // @import "bulma/sass/components/message"
 // @import "bulma/sass/components/modal"

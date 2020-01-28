@@ -7,17 +7,24 @@
   .is-main
     flex: 1
 
-.is-hero-logo
+.is-sticky
+  position: sticky
+  position: -webkit-sticky
+
+=logo($d, $t)
   +desktop
-    width: 60%
+    width: $d
   +touch
-    width: 75%
+    width: $t
+
+.is-cncf-logo
+  +logo(40%, 75%)
+
+.is-hero-logo
+  +logo(60%, 75%)
   
 .is-footer-logo
-  +desktop
-    width: 40%
-  +touch
-    width: 75%
+  +logo(40%, 75%)
 
 .is-sticky
   position: sticky
@@ -40,3 +47,26 @@
 
 hr.thick
   margin: 3rem 0
+
+hr.color
+  background-color: $primary
+  width: 3rem
+  height: 0.35rem
+  margin-bottom: 2rem
+
+  &.secondary
+    background-color: $secondary
+  &.black
+    background-color: $black
+
+.has-extra-card-content-padding
+  padding: 2.5rem
+
+.has-extra-media-bottom-padding
+  margin-bottom: 2rem
+
+.has-margin-right
+  +desktop
+    margin-right: 1.5rem
+  +touch
+    margin-right: 0.75rem

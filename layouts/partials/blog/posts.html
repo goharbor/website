@@ -1,0 +1,83 @@
+{{ $posts    := where site.RegularPages "Section" "blog" }}
+{{ $articles := site.Data.communityArticles.articles }}
+<section class="section">
+  <div class="container has-extra-bottom-padding">
+    <p class="title is-size-3 is-size-4-mobile">
+      Our Latest Posts
+    </p>
+
+    <hr class="color" />
+
+    <div class="columns is-variable is-4 is-multiline">
+      {{ range $posts }}
+      {{ $date   := dateFormat "January 1, 2006" .Date }}
+      <div class="column is-one-third">
+        <div class="card">
+          <div class="card-content content">
+            <h3>
+              <a href="{{ .RelPermalink }}">
+                {{ .Title }}
+              </a>
+            </h3>
+
+            <p class="has-text-weight-light">
+              {{ $date }}
+            </p>
+
+            <p>
+              <span class="has-text-weight-bold">
+                {{ .Params.author.name -}}
+              </span>{{ with .Params.author.company }}, {{ . }}{{ end }}
+            </p>
+            
+            {{ with .Params.description }}
+            <p>
+              {{ . }}
+            </p>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+
+    <hr class="thick" />
+
+    <p class="title is-size-3 is-size-4-mobile">
+      Articles From the Community
+    </p>
+
+    <hr class="color" />
+
+    <div class="container">
+      <div class="columns is-variable is-8 is-multiline">
+        {{ range $articles }}
+        <div class="column is-half">
+          <article class="media has-extra-media-bottom-padding">
+            <div class="media-content">
+              <div class="content">
+                <p class="title is-size-5 is-size-6-mobile is-spaced">
+                  <a href="{{ .link }}" target="_blank">
+                    {{ .title }}
+                  </a>
+                </p>
+
+                <p class="subtitle">
+                  {{ .author }}
+                </p>
+              </div>
+            </div>
+            <div class="media-right">
+              <a class="has-text-secondary" href="{{ .link }}" target="_blank">
+                <span class="icon">
+                  <i class="fas fa-external-link-alt"></i>
+                </span>
+              </a>
+            </div>
+          </article>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>

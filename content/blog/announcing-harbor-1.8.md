@@ -1,12 +1,10 @@
 ---
 title: "Going Big: Harbor 1.8 Takes Security and Replication to New Heights"
 author:
-    name: "Harbor Team"
+  name: "Harbor Team"
 description:
 date: 2019-05-21T06:00:00+04:00
-draft: false
 showPageInfo: true
-
 ---
 
 Happy release day everyone! We are very excited to present the latest release of Harbor. The release cycle for version 1.8 was one of our longest cycles, and version 1.8 involved the highest number of contributions from community members of any Harbor release to date. As a result, 1.8 is our best release so far and comes packed with a great number of new features and improvements, including enhanced automation integration, security, monitoring, and cross-registry replication support.

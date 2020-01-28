@@ -1,15 +1,12 @@
 ---
 title: "Harbor Joins CNCF"
 author:
-    name: "Harbor Team"
-    company: "VMware"
+  name: "Harbor Team"
+  company: "VMware"
 description: "Project Harbor has joined the Cloud Native Computing Foundation"
 date: 2018-07-31T12:00:00+04:00
-draft: false
 showPageInfo: true
 ---
-
-## Harbor Joins the CNCF
 
 Today we are thrilled to announce that Harbor has become an official top-level
 CNCF project, joining the ranks of other widely-used cloud native projects

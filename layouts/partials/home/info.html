@@ -1,0 +1,41 @@
+{{ $info   := site.Params.info }}
+{{ $whatIs := $info.what_is | markdownify }}
+{{ $start  := $info.getting_started | markdownify }}
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-variable is-8">
+      <div class="column">
+        <p class="title is-size-3 is-size-4-mobile">
+          <span class="icon has-text-secondary has-margin-right">
+            <i class="fas fa-question-circle"></i>
+          </span>
+          <span>
+            What is Harbor?
+          </span>
+        </p>
+
+        <div class="content is-medium">
+          {{ $whatIs }}
+        </div>
+
+        {{ partial "github-info.html" . }}
+      </div>
+
+      <div class="column">
+        <p class="title is-size-3 is-size-4-mobile">
+          <span class="icon has-text-secondary has-margin-right">
+            <i class="fas fa-play-circle"></i>
+          </span>
+          <span>
+            Getting started
+          </span>
+        </p>
+
+        <div class="content is-medium">
+          {{ $start }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

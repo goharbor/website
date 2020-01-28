@@ -1,4 +1,5 @@
 {{ $lang := site.LanguageCode }}
+{{ $home := .IsHome }}
 <!DOCTYPE html>
 <html{{ with $lang }} lang="{{ . }}"{{ end }}>
   <head>
@@ -9,6 +10,10 @@
     </title>
     {{ partial "css.html" . }}
     {{ partial "favicon.html" . }}
+
+    {{ if $home }}
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    {{ end }}
   </head>
   <body class="is-page has-navbar-fixed-top">
     <main class="is-main">

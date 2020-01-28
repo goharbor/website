@@ -1,15 +1,12 @@
 ---
 title: "Hello world!"
 author:
-    name: "Harbor Team"
-    company: "VMware"
+  name: "Harbor Team"
+  company: "VMware"
 description: "Our new Harbor site is up and running, and we're excited to get feedback."
 date: 2018-07-12T12:11:15+04:00
-draft: false
 showPageInfo: true
 ---
-
-## Hello world!
 
 We've been hard at work on our new Harbor site, and we're thrilled to finally
 open it up to the world!

@@ -1,11 +1,9 @@
 ---
 title: "Harbor at KubeCon + CloudNativeCon 2018 in Seattle"
 author:
-    name: "Harbor Team"
-description: "The Harbor team is going to KubeCon + CloudNativeCon for the
-    first time as a CNCF project!"
+  name: "Harbor Team"
+description: "The Harbor team is going to KubeCon + CloudNativeCon for the first time as a CNCF project!"
 date: 2018-12-06T12:00:00+04:00
-draft: false
 showPageInfo: true
 ---
 

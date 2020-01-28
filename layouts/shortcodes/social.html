@@ -1,0 +1,31 @@
+<div class="container has-extra-media-bottom-padding">
+  <div class="columns is-variable is-8">
+    <div class="column is-half">
+      {{ template "media" (dict "title" "Twitter" "icon" "fab fa-twitter" "color" "twitter-blue" "text" "[@project_harbor](https://twitter.com/project_harbor)") }}
+    </div>
+
+    <div class="column is-half">
+      {{ template "media" (dict "title" "Slack" "icon" "fab fa-slack" "color" "slack-green") }}
+    </div>
+  </div>
+</div>
+
+{{ define "media" }}
+<article class="media">
+  <figure class="media-left">
+    <span class="icon has-text-{{ .color }}">
+      <i class="{{ .icon }} fa-2x"></i>
+    </span>
+  </figure>
+
+  <div class="media-content">
+    <p class="title">
+      {{ .title }}
+    </p>
+
+    <div class="content">
+      {{ .text | markdownify }}
+    </div>
+  </div>
+</article>
+{{ end }}

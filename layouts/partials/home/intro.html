@@ -1,0 +1,21 @@
+{{ $intro   := site.Params.intro | markdownify }}
+{{ $videoId := site.Params.youtube_video_id }}
+<section class="section has-background-black">
+  <div class="container">
+    <div class="columns is-vcentered is-variable is-8">
+      <div class="column">
+        <p class="title is-size-3 is-size-4-mobile has-text-light">
+          Intro to Harbor
+        </p>
+
+        <div class="content is-medium has-text-grey-lighter">
+          {{ $intro }}
+        </div>
+      </div>
+
+      <div class="column">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $videoId }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
