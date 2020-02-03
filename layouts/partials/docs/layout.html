@@ -9,11 +9,15 @@
 
       <div class="column is-three-quarters">
         <div class="content is-constrained has-extra-bottom-padding">
-          {{ .Content }}
+          {{ with .Content }}
+          {{ . }}
+          {{ end }}
 
 
-          {{ if or .RegularPages .Sections }}
+          {{ if (or .RegularPages .Sections) }}
+          {{ if .Content }}
           <hr class="thick" />
+          {{ end }}
           
           {{ with .Sections }}
           <h2 id="subsections">
