@@ -1,13 +1,13 @@
 <section class="section">
   <div class="container">
     <div class="columns is-variable is-8">
-      <div class="column">
-        <aside class="toc is-sticky is-scrollable">
+      <div class="column is-one-quarter">
+        <aside class="docs-menu is-sticky is-scrollable">
           {{ partial "docs/menu.html" . }}
         </aside>
       </div>
 
-      <div class="column is-three-quarters">
+      <div class="column">
         <div class="content is-constrained has-extra-bottom-padding">
           {{ with .Content }}
           {{ . }}
@@ -53,6 +53,23 @@
           {{ end }}
         </div>
       </div>
+
+      {{ with .TableOfContents }}
+      <div class="column is-one-quarter">
+        <div class="toc is-sticky is-scrollable">
+          <p class="title is-size-4">
+            <span class="icon has-margin-right has-text-secondary">
+              <i class="fas fa-align-left"></i>
+            </span>
+            <span>
+              Content
+            </span>
+          </p>
+
+          {{ . }}
+        </div>
+      </div>
+      {{ end }}
     </div>
   </div>
 </section>
