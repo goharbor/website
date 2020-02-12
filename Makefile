@@ -1,5 +1,5 @@
 prepare:
-	git submodule update --init
+	git submodule foreach git merge origin/master
 	cp -rf harbor/docs content
 
 serve:
