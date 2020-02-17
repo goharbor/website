@@ -42,7 +42,7 @@ who've spent time working on Harbor and contributing to the project:
 
 * [Brett Johnson](https://twitter.com/brettjohnson008)
 * [Christian Witts](https://github.com/ChristianWitts)
-* [Jacky Wu](Colstuwjx)
+* [Jacky Wu](https://github.com/Colstuwjx)
 * [Frank Kung](https://github.com/kofj)
 * [Jeff Lee Wei Che](https://github.com/jeffweilee)
 * [Jeremy Wilken](https://twitter.com/gnomeontherun)

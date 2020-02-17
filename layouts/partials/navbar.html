@@ -21,11 +21,11 @@
       </a>
 
       {{ if $menu }}
-      <a role="button" class="navbar-burger" data-target="navbar-menu" aria-label="menu" aria-expanded="false">
+      <div role="button" class="navbar-burger" data-target="navbar-menu" aria-label="menu" aria-expanded="false">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
-      </a>
+      </div>
       {{ end }}
     </div>
 
@@ -60,9 +60,9 @@
         {{ end }}
 
         <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link has-text-weight-bold">
+          <p class="navbar-link has-text-weight-bold">
             Docs
-          </a>
+          </p>
 
           <div class="navbar-dropdown is-right">
             {{ range $versions }}

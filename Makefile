@@ -1,3 +1,6 @@
+clean:
+	rm -rf public resources
+
 prepare:
 	git submodule foreach git merge origin/master
 	cp -rf harbor/docs content
@@ -18,3 +21,11 @@ preview-build: prepare
 		--buildDrafts \
 		--buildFuture \
 		--minify
+
+link-checker-setup:
+	curl https://htmltest.wjdp.uk | bash
+
+run-checker:
+	bin/htmltest
+
+check-links: clean production-build link-checker-setup run-checker

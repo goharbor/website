@@ -30,7 +30,7 @@ The introduction of quotas allows project administrators to exercise control ove
 
 In addition to project quotas, version 1.9 also includes a complementary feature called tag retention to better manage image lifecycle and optimize storage allocation.  A repository can rapidly accumulate a large number of image tags, especially if Harbor is hooked into a continuous integration system generating automatic builds. Many of the builds become obsolete or insecure after a given time or after they have been superseded by a subsequent build.  To free up space taken up by these images in order to adhere to regulatory and compliance requirements, project administrators can define retention policies on selective repos that will retain images with certain matching image tags while the rest of the tags and their associated blobs are deleted.  Image tags, which can be  manually generated or automatically generated from CI/CD pipelines, contain rich metadata information about the environment and usage of images and are sufficient as criteria for defining retention policies.
 
-![Tag Retention](../imgs/tag-retention.png)
+![Tag Retention](../img/tag-retention.png)
 
 ## CVE Exception Policy
 
