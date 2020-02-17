@@ -5,6 +5,8 @@ description: Contribute to Harbor and get in touch
 
 {{< social >}}
 
+---
+
 ## Users of Harbor
 
 {{< users >}}
