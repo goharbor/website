@@ -3,7 +3,6 @@
 {{ $title    := site.Title }}
 {{ $logo     := site.Params.logos.navbar }}
 {{ $menu     := site.Menus.main }}
-{{ $social   := site.Params.social }}
 {{ $versions := site.Params.versions }}
 {{ $latest   := index $versions 0 }}
 {{ $isDocs   := eq .Section "docs" }}
@@ -21,7 +20,7 @@
         {{ end }}
       </a>
 
-      {{ if or $social $menu }}
+      {{ if $menu }}
       <a role="button" class="navbar-burger" data-target="navbar-menu" aria-label="menu" aria-expanded="false">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -30,7 +29,7 @@
       {{ end }}
     </div>
 
-    {{ if or $social $menu }}
+    {{ if $menu }}
     <div class="navbar-menu" id="navbar-menu">
       {{ if $isDocs }}
       <div class="navbar-start">
@@ -89,9 +88,7 @@
           </div>
         </div>
 
-        {{ with $social }}
         {{ partial "social-buttons.html" . }}
-        {{ end }}
       </div>
       {{ end }}
     </div>

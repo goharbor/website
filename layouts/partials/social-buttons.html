@@ -1,17 +1,13 @@
-{{ range . }}
-{{ $color := .color | default "white" }}
-<div class="navbar-item">
-  <a class="button is-{{ $color }}">
-    {{ with .icon }}
+<div class="buttons">
+  <a class="button is-small is-twitter-blue" target="_blank" href="https://twitter.com/{{ site.Params.twitter }}">
     <span class="icon">
-      <i class="{{ . }}"></i>
+      <i class="fab fa-twitter"></i>
     </span>
-    {{ end }}
-    {{ with .name }}
-    <span>
-      {{ . }}
+  </a>
+
+  <a class="button is-small is-slack-green" target="_blank" href="{{ site.Params.slack }}">
+    <span class="icon">
+      <i class="fab fa-slack"></i>
     </span>
-    {{ end }}
   </a>
 </div>
-{{ end }}
