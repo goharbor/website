@@ -1,31 +1,71 @@
-<div class="container has-extra-media-bottom-padding">
-  <div class="columns is-variable is-8">
-    <div class="column is-half">
-      {{ template "media" (dict "title" "Twitter" "icon" "fab fa-twitter" "color" "twitter-blue" "text" "[@project_harbor](https://twitter.com/project_harbor)") }}
-    </div>
+<div class="columns">
+  <div class="column">
+    <h2>
+      On social media
+    </h2>
 
-    <div class="column is-half">
-      {{ template "media" (dict "title" "Slack" "icon" "fab fa-slack" "color" "slack-green") }}
+    <div class="buttons">
+      <div class="button is-twitter-blue">
+        <span class="icon">
+          <i class="fab fa-twitter"></i>
+        </span>
+        <span>
+          Twitter: <a class="has-text-white has-text-weight-bold" href="https://twitter.com/project_harbor">@project_harbor</a>
+        </span>
+      </div>
+
+      <div class="button is-slack-green">
+        <span class="icon">
+          <i class="fab fa-slack"></i>
+        </span>
+        <span>
+          Slack: <a class="has-text-white has-text-weight-bold" href="https://cloud-native.slack.com/messages/harbor">#harbor</a> on the <a class="has-text-white has-text-weight-bold" href="https://slack.cncf.io">CNCF Slack</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <h2>
+      Distribution lists
+    </h2>
+
+    <p class="is-size-5">
+      There are two distribution lists for Harbor, one for users and one for developers:
+    </p>
+
+    <div class="container">
+      <div class="columns is-variable is-6">
+        <div class="column">
+          <h3>
+            <span class="icon has-text-secondary has-margin-right">
+              <i class="fas fa-users"></i>
+            </span>
+            <span>
+              User groups
+            </span>
+          </h3>
+
+          <p>
+            Join Harbor's user email group at <a href="https://lists.cncf.io/g/harbor-users" target="_blank">https://lists.cncf.io/g/harbor-users</a> to get Harbor's news, features, and releases, or to provide suggestions and feedback.
+          </p>
+        </div>
+
+        <div class="column">
+          <h3>
+            <span class="icon has-text-secondary has-margin-right">
+              <i class="fas fa-laptop"></i>
+            </span>
+            <span>
+              Developer groups
+            </span>
+          </h3>
+
+          <p>
+            Join Harbor's developer group at <a href="https://lists.cncf.io/g/harbor-dev" target="_blank">https://lists.cncf.io/g/harbor-dev</a> for updates related to development and contribution.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
-{{ define "media" }}
-<article class="media">
-  <figure class="media-left">
-    <span class="icon has-text-{{ .color }}">
-      <i class="{{ .icon }} fa-2x"></i>
-    </span>
-  </figure>
-
-  <div class="media-content">
-    <p class="title">
-      {{ .title }}
-    </p>
-
-    <div class="content">
-      {{ .text | markdownify }}
-    </div>
-  </div>
-</article>
-{{ end }}
