@@ -4,6 +4,7 @@ clean:
 prepare:
 	git submodule foreach git merge origin/master
 	cp -rf harbor/docs content
+	rm -rf content/docs/*.md content/docs/prepare-swagger.sh content/docs/{adopters,security}
 
 serve:
 	hugo server \
@@ -28,4 +29,4 @@ link-checker-setup:
 run-checker:
 	bin/htmltest
 
-check-links: clean production-build link-checker-setup run-checker
+check-links: clean prepare production-build link-checker-setup run-checker

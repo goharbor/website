@@ -3,14 +3,6 @@ baseURL = "https://goharbor.io"
 disableKinds = ["taxonomy", "taxonomyTerm"]
 copyright = "The Harbor authors"
 
-ignoreFiles = [
-    "content/docs/*.md",
-    "content/docs/adopters",
-    "content/docs/security",
-    "content/docs/prepare-swagger.sh",
-    "README.md"
-]
-
 [params]
 tagline = "Manage and serve container images in a secure environment"
 description = "Our mission is to be the most secure, performant, scalable, and available cloud native repository for Kubernetes"
