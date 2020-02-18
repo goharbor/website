@@ -4,9 +4,9 @@ clean:
 prepare:
 	git submodule foreach git merge origin/master
 	cp -rf harbor/docs content
-	rm -rf content/docs/*.md content/docs/prepare-swagger.sh content/docs/{adopters,security}
+	rm -rf content/docs/*.md content/docs/prepare-swagger.sh content/docs/{adopters,security} content/docs/**/README.md
 
-serve:
+serve: prepare
 	hugo server \
 		--buildDrafts \
 		--buildFuture \
