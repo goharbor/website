@@ -29,4 +29,8 @@ link-checker-setup:
 run-checker:
 	bin/htmltest
 
-check-links: clean prepare production-build link-checker-setup run-checker
+build:
+	hugo \
+	--minify
+
+check-links: clean build link-checker-setup run-checker
