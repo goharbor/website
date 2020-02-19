@@ -45,6 +45,9 @@ management = [
 style = "pygments"
 guessSyntax = true
 
+[markup.goldmark.renderer]
+unsafe = true
+
 [params.logos]
 footer = "harbor-horizontal-white.png"
 navbar = "harbor-horizontal-color.png"
