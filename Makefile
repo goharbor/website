@@ -2,7 +2,6 @@ clean:
 	rm -rf public resources
 
 prepare:
-	git submodule foreach git merge origin/master
 	cp -rf harbor/docs content
 	rm -rf content/docs/*.md content/docs/prepare-swagger.sh content/docs/{adopters,security} content/docs/**/README.md
 
