@@ -2,6 +2,7 @@ clean:
 	rm -rf public resources
 
 prepare:
+	git submodule update --remote --merge
 	cp -rf harbor/docs content
 	rm -rf content/docs/*.md content/docs/prepare-swagger.sh content/docs/{adopters,security} content/docs/**/README.md
 
