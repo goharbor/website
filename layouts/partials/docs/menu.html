@@ -1,4 +1,4 @@
-{{ $thisSection  := .CurrentSection }}
+{{ $thisSection  := .CurrentSection.RelPermalink }}
 {{ $thisPage     := .RelPermalink }}
 {{ $docsSections := where site.Sections "Section" "docs" }}
 {{ $version      := index (split .File.Path "/") 1 }}
@@ -11,18 +11,44 @@
   </p>
 
   {{ range $docsSections }}
-  {{ range .Sections }}
-  {{ range .Sections }}
-  {{ $isThisSection := eq $thisSection . }}
+  {{ range .Sections }} <!-- docs versions -->
+  {{ range .Sections }} <!-- sections within version -->
+  {{ $isThisPage := eq .RelPermalink $thisPage }}
+  {{ $showSection := in $thisSection .RelPermalink }}
 
   <p class="menu-label">
-    <a{{ if $isThisSection }} class="has-text-weight-bold"{{ end }} href="{{ .RelPermalink }}">
+    <a{{ if $isThisPage }} class="has-text-weight-bold"{{ end }} href="{{ .RelPermalink }}">
       {{ .Title }}
     </a>
   </p>
 
-  {{ if $isThisSection }}
+  {{ if $showSection }}
   <ul class="menu-list">
+    {{ range .Sections }}
+    {{ $showSection := in $thisSection .RelPermalink }}
+    {{ $isThisPage := eq .RelPermalink $thisPage }}
+    <li>
+      <a{{ if $isThisPage }} class="is-active"{{ end }} href="{{ .RelPermalink }}">
+        {{ .Title }}
+      </a>
+
+      {{ with .RegularPages }}
+      {{ if $showSection }}
+      <ul>
+        {{ range . }}
+        {{ $isThisPage := eq .RelPermalink $thisPage }}
+        <li>
+          <a{{ if $isThisPage }} class="is-active"{{ end }} href="{{ .RelPermalink }}">
+            {{ .Title }}
+          </a>
+        </li>
+        {{ end }}
+      </ul>
+      {{ end }}
+      {{ end }}
+    </li>
+    {{ end }}
+
     {{ range .RegularPages }}
     {{ $isThisPage := eq $thisPage .RelPermalink }}
 
