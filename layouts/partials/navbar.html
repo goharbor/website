@@ -8,7 +8,7 @@
 {{ $isDocs   := eq .Section "docs" }}
 {{ $version  := index (split .File.Path "/") 1 }}
 {{ $isLatest := eq $version $latest }}
-<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+<nav class="navbar is-black is-fixed-top" role="navigation" aria-label="main navigation">
   <div class="container">
     <div class="navbar-brand">
       <a class="navbar-item" href="{{ $home }}">
