@@ -6,7 +6,7 @@ prepare:
 	cp -rf harbor/docs content
 	rm -rf content/docs/*.md content/docs/prepare-swagger.sh content/docs/{adopters,security} content/docs/**/README.md
 
-serve: prepare
+serve:
 	hugo server \
 		--buildDrafts \
 		--buildFuture \
@@ -31,6 +31,8 @@ run-checker:
 
 build:
 	hugo \
+	--buildDrafts \
+	--buildFuture \
 	--minify
 
 check-links: clean build link-checker-setup run-checker
