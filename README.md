@@ -50,7 +50,7 @@ This starts up the local Hugo server on http://localhost:1313. As you make chang
 To run the link checker for the Harbor website:
 
 ```sh
-make check-links
+make check-internal-links
 ```
 
 This command builds the site (including drafts and future content), downloads the [htmltest](https://github.com/wjdp/htmltest) link checker into your local directory, and runs the checker in accordance with the configuration specified in [`.htmltest.yml`](./.htmltest.yml). Only internal links are checked and all errors are piped to stdout.
