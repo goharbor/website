@@ -35,4 +35,7 @@ build:
 	--buildFuture \
 	--minify
 
-check-links: clean build link-checker-setup run-checker
+check-internal-links: clean build link-checker-setup run-checker
+
+check-all-links: clean build link-checker-setup
+	bin/htmltest --conf .htmltest.external.yml
