@@ -5,9 +5,10 @@
 {{ define "main" }}
 {{ $title := .Title }}
 {{ $desc  := .Params.description }}
-<section class="hero is-medium">
+<section class="hero is-small">
   <div class="hero-body">
     <div class="container">
+      <br/>
       <p class="title is-size-1 is-size-2-mobile has-text-weight-light{{ if $desc }} is-spaced{{ end }}">
         {{ $title }}
       </p>
