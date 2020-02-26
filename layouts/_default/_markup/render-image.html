@@ -1,0 +1,12 @@
+{{ $src := .Destination | safeURL }}
+<a href="{{ $src }}" target="_blank">
+  <img src="{{ $src }}"{{ with .Text }} alt="{{ . }}"{{ end }}{{ with .Title }} title="{{ . }}"{{ end }}>
+</a>
+
+{{ with .Title }}
+<div class="img-title">
+  <p>
+    {{ . }}
+  </p>
+</div>
+{{ end }}
