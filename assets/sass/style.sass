@@ -21,7 +21,6 @@ $harbor-blue: #4495d7
 $harbor-green: #60b932
 $twitter-blue: rgb(29, 161, 242)
 $slack-green: #2EB67D
-$github-white: #FFFFFF
 
 // Extra colors specified in config
 {{ with $extraColors }}
@@ -62,7 +61,7 @@ $family-monospace: "{{ . }}", monospace
 @import "bulma/sass/utilities/derived-variables"
 
 // Bulma variable overrdides that require derived variables like $dark
-$colors: mergeColorMaps(("secondary": ($secondary, $white), "twitter-blue": ($twitter-blue, $white), "slack-green": ($slack-green, $white), "github-white": ($github-white, $black)), $colors)
+$colors: mergeColorMaps(("secondary": ($secondary, $white), "twitter-blue": ($twitter-blue, $white), "slack-green": ($slack-green, $white)), $colors)
 $menu-item-active-color: $primary
 $menu-item-active-background-color: $white-bis
 $menu-item-radius: none
