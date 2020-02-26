@@ -6,7 +6,9 @@
   <div class="modal-background"></div>
   <div class="modal-content">
     <p class="image">
-      <img src="{{ $src }}"{{ with .Text }} alt="{{ . }}"{{ end }}{{ with .Title }} title="{{ . }}"{{ end }}>
+      <img src="{{ $src }}"{{ with .Text }} alt="{{ . }}"{{ end }}>
+    </p>
   </div>
+
   <button class="modal-close is-large" aria-label="close"></button>
 </div>
