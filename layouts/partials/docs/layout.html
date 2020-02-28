@@ -54,7 +54,22 @@
         </div>
       </div>
 
-      {{ partial "docs/sidebar.html" . }}
+      {{ if gt (len .TableOfContents) 32 }}
+      <div class="column is-one-quarter is-hidden-touch">
+        <div class="toc is-sticky is-scrollable">
+          <p class="title is-size-4">
+            <span class="icon has-margin-right has-text-secondary">
+              <i class="fas fa-align-left"></i>
+            </span>
+            <span>
+              On this page
+            </span>
+          </p>
+
+          {{ .TableOfContents }}
+        </div>
+      </div>
+      {{ end }}
     </div>
   </div>
 </section>

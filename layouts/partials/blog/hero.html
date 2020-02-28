@@ -2,10 +2,11 @@
 {{ $desc   := .Params.description }}
 {{ $date   := dateFormat "January 1, 2006" .Date }}
 {{ $isMain := eq .Kind "section" }}
-<section class="hero is-medium">
+<section class="hero is-small">
   <div class="hero-body">
     <div class="container">
-      <p class="title is-size-1 is-size-2-mobile has-text-weight-bold{{ if $desc }} is-spaced{{ end }}">
+      <br/>
+      <p class="title is-size-1 is-size-2-mobile has-text-weight-light{{ if $desc }} is-spaced{{ end }}">
         {{ .Title }}
       </p>
 
