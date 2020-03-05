@@ -66,7 +66,7 @@ weight = 1
 
 [[menu.main]]
 name = "Getting Started"
-url = "/docs/1.10/install-config/"
+url = "/docs/latest/install-config"
 weight = 2
 
 [[menu.main]]
