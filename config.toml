@@ -5,7 +5,7 @@ copyright = "Harbor authors"
 
 [params]
 tagline = "Manage and serve container images in a secure environment"
-description = "Our mission is to be the most secure, performant, scalable, and available cloud native repository for Kubernetes"
+description = "Our mission is to be the trusted cloud native repository for Kubernetes"
 intro = "Want to know more about what Harbor is and how it works? Watch this intro video to see how Harbor is helping organizations deliver a consistent image management solution across a variety of cloud native compute platforms like [Kubernetes](https://kubernetes.io) and [Docker](https://docker.com)."
 font_awesome_version = "5.12.0"
 favicon = "favicon.png"
@@ -65,14 +65,19 @@ url = "/"
 weight = 1
 
 [[menu.main]]
+name = "Getting Started"
+url = "/docs/1.10/install-config/"
+weight = 2
+
+[[menu.main]]
 name = "Community"
 url = "/community"
-weight = 2
+weight = 3
 
 [[menu.main]]
 name = "Blog"
 url = "/blog"
-weight = 3
+weight = 4
 
 [outputs]
 home = [ "HTML", "REDIRECTS" ]
