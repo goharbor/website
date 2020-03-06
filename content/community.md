@@ -1,25 +1,21 @@
 ---
 title: Community
-description: Do you want to help build Harbor?
+#description: Join the Harbor community!
 ---
+
+{{< community-info >}}
+
+---
+
+{{< social >}}
+
+## Want to contribute to the codebase or documentation?
 
 If you’re a newcomer, check out the “[Good first issue][good-first]” and “[Help wanted][help-wanted]” labels in the Harbor repository.
 
-Read how we're using ZenHub for project and roadmap planning.
+If you are ready to jump in and test, add code, or help with documentation, follow the instructions on our [contributing][contributing] documentation for guidance on how to setup Harbor for development.
 
-If you are ready to jump in and test, add code, or help with documentation, follow the instructions on our Start contributing documentation for guidance on how to setup Velero for development.
-
-You can follow the work we do, see our milestones, and our backlog on our ZenHub board.
-
-Follow us on Twitter at @projectvelero
-Join our Kubernetes Slack channel and talk to over 800 other community members: #velero
-Join our Google Group to get updates on the project and invites to community meetings.
-Join the Velero community meetings:
-Every Tuesday at 12PM ET / 9AM PT (Convert to your time zone) - Zoom link
-Read and comment on the meeting notes
-See previous community meetings on our YouTube Channel
-
-{{< social >}}
+You can follow the work we do, see our milestones, and our backlog on our [ZenHub][zenhub] board.
 
 ---
 
@@ -33,5 +29,16 @@ See previous community meetings on our YouTube Channel
 
 {{< partners >}}
 
+[community-meetings]: https://github.com/goharbor/community/blob/master/MEETING_SCHEDULE.md
+[past-meetings]: https://www.youtube.com/playlist?list=PLgInP-D86bCwTC0DYAa1pgupsQIAWPomv
+[users-slack]: https://cloud-native.slack.com/archives/CC1E09J6S
+[dev-slack]: https://cloud-native.slack.com/archives/CC1E0J0MC
+[cncf-slack]: https://slack.cncf.io
+[users-dl]: https://lists.cncf.io/g/harbor-users
+[dev-dl]: https://lists.cncf.io/g/harbor-dev
+[website]: https://goharbor.io
 [good-first]: https://github.com/goharbor/harbor/issues?q=is%3Aopen+is%3Aissue+label%3Acommunity%2Fgood-first-issue
 [help-wanted]: https://github.com/goharbor/harbor/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22
+[zenhub]: https://app.zenhub.com/workspaces/cncf-5b84fc036092773c0b854fe6/board?repos=50613991
+[contributing]: https://github.com/goharbor/harbor/blob/master/CONTRIBUTING.md
+[twitter]: https://twitter.com/project_harbor
