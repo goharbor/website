@@ -1,15 +1,18 @@
+- title: anchore
+  logo: anchore-logo.png
+  link: https://anchore.com/
 - title: bingocloud
   logo: bingo-logo.png
   link: http://www.bingocloud.cn/
+- title: dosec
+  logo: dosec-logo.png
+  link: https://www.dosec.cn/
 - title: caicloud
   logo: caicloud-logo.png
   link: https://caicloud.io/
 - title: cloudchef
   logo: cloudchef-logo.png
   link: http://www.cloudchef.io/
-- title: vmware
-  logo: vmware-logo.png
-  link: https://vmware.com/
 - title: rancher
   logo: rancher-logo.png
   link: https://rancher.com/
@@ -19,3 +22,6 @@
 - title: tenxcloud
   logo: tenxcloud-logo.png
   link: https://www.tenxcloud.com/
+- title: vmware
+  logo: vmware-logo.png
+  link: https://vmware.com/
