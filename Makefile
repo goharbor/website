@@ -14,14 +14,14 @@ serve:
 
 production-build: prepare
 	hugo \
-	--minify
+
 
 preview-build: prepare
 	hugo \
 		--baseURL $(DEPLOY_PRIME_URL) \
 		--buildDrafts \
 		--buildFuture \
-		--minify
+
 
 link-checker-setup:
 	curl https://htmltest.wjdp.uk | bash
@@ -33,7 +33,7 @@ build:
 	hugo \
 	--buildDrafts \
 	--buildFuture \
-	--minify
+
 
 check-internal-links: clean build link-checker-setup run-checker
 
