@@ -15,7 +15,7 @@ If you’re a newcomer, check out the “[Good first issue][good-first]” and �
 
 If you are ready to jump in and test, add code, or help with documentation, follow the instructions on our [contributing][contributing] documentation for guidance on how to setup Harbor for development.
 
-You can follow the work we do, see our milestones, and our backlog on our [ZenHub][zenhub] board.
+You can follow the work we do and see our milestones on our [project board][projectboard]. You can also follow the state of all issues and our backlog on the [ZenHub][zenhub] board.
 
 ---
 
@@ -40,5 +40,6 @@ You can follow the work we do, see our milestones, and our backlog on our [ZenHu
 [good-first]: https://github.com/goharbor/harbor/issues?q=is%3Aopen+is%3Aissue+label%3Acommunity%2Fgood-first-issue
 [help-wanted]: https://github.com/goharbor/harbor/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22
 [zenhub]: https://app.zenhub.com/workspaces/cncf-5b84fc036092773c0b854fe6/board?repos=50613991
+[projectboard]: https://github.com/orgs/goharbor/projects/1
 [contributing]: https://github.com/goharbor/harbor/blob/master/CONTRIBUTING.md
 [twitter]: https://twitter.com/project_harbor
