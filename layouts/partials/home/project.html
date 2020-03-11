@@ -1,0 +1,84 @@
+{{ $features := site.Params.features }}
+{{ $security := $features.security }}
+{{ $mgmt     := $features.management }}
+<section class="section">
+  <div class="container">
+    <div class="columns is-variable is-8">
+      <div class="column">
+        <p class="title is-size-3 is-size-4-mobile">
+          <span class="icon has-text-secondary has-margin-right">
+            <i class="fas fa-plus"></i>
+          </span>
+          <span>
+            Features
+          </span>
+        </p>
+
+        <br />
+
+        {{ template "title" "Security" }}
+
+        {{ template "logos" $security }}
+
+        <br />
+
+        {{ template "title" "Management" }}
+
+        {{ template "logos" $mgmt }}
+      </div>
+
+      <div class="column">
+        <p class="title is-size-3 is-size-4-mobile">
+          <span class="icon has-text-secondary has-margin-right">
+            <i class="fas fa-people-carry"></i>
+          </span>
+          <span>
+            Community
+          </span>
+        </p>
+    
+        <br />
+    
+        <p class="is-size-5 is-size-6-mobile">
+          Come help us build and improve Harbor!
+          <br/>
+          Join our vibrant world-wide community and communicate with us on Slack, Twitter, and mailing lists.
+        </p>
+
+        <br />
+
+        <div class="buttons">
+          <a class="button is-twitter-blue" href="/community" target="_blank">
+            <span class="icon">
+              <i class="fas fa-users"></i>
+            </span>
+            <span class="has-text-weight-bold">
+              Community information
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ define "title" }}
+<p class="title has-text-grey-dark">
+  {{ . }}
+</p>
+{{ end }}
+
+{{ define "logos" }}
+<div class="list is-hoverable">
+  {{ range . }}
+  <div class="list-item is-size-5">
+    <span class="icon has-text-primary has-margin-right">
+      <i class="{{ .icon }}"></i>
+    </span>
+    <span class="has-text-weight-bold">
+      {{ .title }}
+    </span>
+  </div>
+  {{ end }}
+</div>
+{{ end }}

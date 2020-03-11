@@ -1,0 +1,35 @@
+{{ $title  := .Title }}
+{{ $desc   := .Params.description }}
+{{ $date   := dateFormat "January 1, 2006" .Date }}
+{{ $isMain := eq .Kind "section" }}
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <br/>
+      <p class="title is-size-1 is-size-2-mobile has-text-weight-light{{ if $desc }} is-spaced{{ end }}">
+        {{ .Title }}
+      </p>
+
+      {{ with $desc }}
+      <p class="subtitle is-size-3 is-size-4-mobile has-text-weight-light">
+        {{ . }}
+      </p>
+      {{ end }}
+
+      {{ if not $isMain }}
+      <hr class="color" />
+
+      <p class="is-size-4 is-size-5-mobile">
+        {{ $date }}
+      </p>
+      {{ end }}
+
+      <br />
+
+      <p class="is-size-4 is-size-5-mobile">
+        <span class="has-text-weight-bold">{{ .Params.author.name -}}</span>
+        {{- with .Params.author.company }}, {{ . }}{{ end }}
+      </p>
+    </div>
+  </div>
+</section>

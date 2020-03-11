@@ -1,0 +1,36 @@
+{{ $recent := first 4 (where site.RegularPages "Section" "blog") }}
+<section class="section">
+  <div class="container">
+    <div class="columns is-variable is-8">
+      <div class="column is-two-thirds">
+        <div class="content is-medium is-constrained has-extra-bottom-padding">
+          {{ .Content }}
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="is-sticky">
+          <div class="content">
+            <h2>
+              Recent articles
+            </h2>
+
+            <hr class="color" />
+
+            {{ $n := len $recent }}
+            {{ range $idx, $item := $recent }}
+            {{ $isLast := eq (sub $n 1) $idx }}
+            <a class="is-size-5 is-size-6-mobile" href="{{ $item.RelPermalink }}">
+              {{ $item.Title }}
+            </a>
+
+            {{ if not $isLast }}
+            <br /><br />
+            {{ end }}
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

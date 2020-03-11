@@ -1,0 +1,77 @@
+// This guarantees that the footer stays stuck to the bottom of the page
+.is-page
+  display: flex
+  flex-direction: column
+  min-height: 100vh
+
+  .is-main
+    flex: 1
+
+.is-sticky
+  position: sticky
+  position: -webkit-sticky
+
+=logo($d, $t)
+  +desktop
+    width: $d
+  +touch
+    width: $t
+
+.is-cncf-logo
+  +logo(40%, 75%)
+
+.is-hero-logo
+  +logo(60%, 75%)
+  
+.is-footer-logo
+  +logo(40%, 75%)
+
+.is-sticky
+  position: sticky
+  position: -webkit-sticky
+  top: $navbar-height + 2rem
+
+.is-constrained
+  max-width: 80ch
+
+.is-scrollable
+  overflow-y: auto
+
+.has-extra-bottom-padding
+  padding-bottom: 8rem
+
+// Fix bug in Bulma content
+.content
+  .highlight, li .highlight
+    margin-bottom: 1rem
+
+hr.thick
+  margin: 3rem 0
+
+hr.color
+  background-color: $primary
+  width: 3rem
+  height: 0.35rem
+  margin-bottom: 2rem
+
+  &.secondary
+    background-color: $secondary
+  &.black
+    background-color: $black
+
+.has-extra-card-content-padding
+  padding: 2.5rem
+
+.has-extra-media-bottom-padding
+  margin-bottom: 2rem
+
+.has-margin-right
+  +desktop
+    margin-right: 0.75rem
+  +touch
+    margin-right: 0.5rem
+
+.content
+  .img
+    &:hover
+      cursor: pointer

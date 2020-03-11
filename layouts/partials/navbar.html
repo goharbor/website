@@ -1,0 +1,99 @@
+{{ $home     := site.BaseURL }}
+{{ $here     := .RelPermalink }}
+{{ $title    := site.Title }}
+{{ $logo := printf "img/logos/%s" site.Params.logos.navbar | relURL }}
+{{ $menu     := site.Menus.main }}
+{{ $versions := site.Params.versions }}
+{{ $latest   := index $versions 0 }}
+{{ $isDocs   := eq .Section "docs" }}
+{{ $version  := index (split .File.Path "/") 1 }}
+{{ $isLatest := eq $version $latest }}
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation" x-data="{ open: false }">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="{{ $home }}">
+        <img class="is-footer-logo" src="{{ $logo }}" alt="{{ site.Title }} logo">
+      </a>
+
+      {{ if $menu }}
+      <div role="button" class="navbar-burger" data-target="navbar-menu" aria-label="menu" aria-expanded="false" @click="open = !open" :class="{ 'is-active': open }">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </div>
+      {{ end }}
+    </div>
+
+    {{ if $menu }}
+    <div class="navbar-menu" id="navbar-menu" :class="{ 'is-active': open }">
+      {{ if $isDocs }}
+      <div class="navbar-start">
+        <div class="navbar-item">
+          <div class="tags has-addons has-text-weight-bold">
+            <span class="tag is-light">
+              {{ $version }}
+            </span>
+            {{ if $isLatest }}
+            <span class="tag is-success">
+              latest
+            </span>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+      {{ end }}
+
+      {{ with $menu }}
+      <div class="navbar-end">
+        {{ range . }}
+        {{ $name := .Name }}
+        {{ $isHere := eq .URL $here }}
+        {{ $isExternal := hasPrefix .URL "http" }}
+        <a class="navbar-item has-text-weight-bold{{ if $isHere }} is-active{{ end }}" href="{{ .URL }}"{{ if $isExternal }} target="_blank"{{ end }}>
+          {{ $name }}
+        </a>
+        {{ end }}
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <p class="navbar-link is-arrowless has-text-weight-bold">
+            <span>
+              Docs
+            </span>
+            <span class="icon has-text-secondary">
+              <i class="fas fa-caret-down"></i>
+            </span>
+          </p>
+
+          <div class="navbar-dropdown is-right">
+            {{ range $versions }}
+            {{ $isLatest := eq . $latest }}
+            <div class="navbar-item">
+              <div class="columns">
+                <div class="column">
+                  <a class="has-text-black" href="/docs/{{ . }}">
+                    <span>
+                      {{ . }}
+                    </span>
+                    &nbsp;&nbsp;
+                    {{ if $isLatest }}
+                    <span class="tag is-success">
+                      latest
+                    </span>
+                    {{ end }}
+                  </a>
+                </div>
+              </div>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+
+        <div class="navbar-item">
+          {{ partial "social-buttons.html" . }}
+        </div>
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</nav>

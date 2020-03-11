@@ -1,0 +1,49 @@
+{{ $pageSourceUrl := printf "https://github.com/goharbor/harbor/tree/master/%s" .File.Path }}
+{{ $issues        := "https://github.com/goharbor/harbor/issues" }}
+<div class="column is-one-quarter is-hidden-touch">
+  <div class="toc is-sticky">
+    {{ if gt (len .TableOfContents) 32 }}
+    <p class="title is-size-4">
+      <span class="icon has-margin-right has-text-secondary">
+        <i class="fas fa-align-left"></i>
+      </span>
+      <span>
+        On this page
+      </span>
+    </p>
+
+    {{ .TableOfContents }}
+
+    <br /><br />
+    {{ end }}
+    
+    <p class="title is-size-4">
+      <span class="icon has-margin-right has-text-grey-light">
+        <i class="fas fa-folder-plus"></i>
+      </span>
+      <span>
+        Contributing
+      </span>
+    </p>
+
+    <div class="buttons are-small">
+      <a class="button is-black" href="{{ $pageSourceUrl }}" target="_blank">
+        <span class="icon">
+          <i class="fab fa-github"></i>
+        </span>
+        <span>
+          Page source
+        </span>
+      </a>
+
+      <a class="button is-black" href="{{ $issues }}" target="_blank">
+        <span class="icon">
+          <i class="fab fa-github"></i>
+        </span>
+        <span>
+          Create issue
+        </span>
+      </a>
+    </div>
+  </div>
+</div>

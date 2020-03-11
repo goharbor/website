@@ -1,0 +1,40 @@
+{{ $title := site.Title }}
+{{ $desc  := site.Params.description | markdownify }}
+{{ $latest := index site.Params.versions 0 }}
+<section class="hero is-small has-background-white-bis">
+  <div class="hero-body">
+    <div class="container">
+      <div class="card">
+        <div class="card-content has-extra-card-content-padding">
+          <p class="title is-size-1 is-size-2-mobile has-text-dark has-text-weight-bold{{ if $desc }} is-spaced{{ end }}">
+            {{ $title }}
+          </p>
+
+          <p class="subtitle is-size-3 is-size-4-mobile has-text-weight-medium">
+            {{ $desc }}
+          </p>
+
+          <div class="buttons">
+            <a class="button is-white is-outlined is-inverted has-text-weight-bold" href="/docs/{{ $latest }}/install-config">
+              <span class="icon has-text-primary">
+                <i class="fas fa-play"></i>
+              </span>
+              <span>
+                Getting started
+              </span>
+            </a>
+    
+            <a class="button is-white is-outlined is-inverted has-text-weight-bold" href="https://github.com/goharbor/harbor/releases" target="_blank">
+              <span class="icon has-text-secondary">
+                <i class="fas fa-cloud-download-alt"></i>
+              </span>
+              <span>
+                Download now
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>      
+    </div>
+  </div>
+</section>

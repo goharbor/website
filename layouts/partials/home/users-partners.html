@@ -1,0 +1,22 @@
+{{ $users := site.Data.users }}
+<section class="section">
+  <div class="container">
+    <p class="title is-size-2 is-size-3-mobile">
+      Harbor Users
+    </p>
+
+    <hr class="color" />
+
+    {{ partial "users.html" . }}
+
+    <hr class="thick" />
+
+    <p class="title is-size-2 is-size-3-mobile">
+      Harbor Partners
+    </p>
+
+    <hr class="color" />
+
+    {{ partial "partners.html" . }}
+  </div>
+</section>

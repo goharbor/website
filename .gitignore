@@ -5,6 +5,13 @@
 public*/
 resources/
 
+# Content from goharbor/harbor repo
+content/docs/
+
+# Link checker artifacts
+bin/
+tmp/
+
 # Packages #
 ############
 *.7z
