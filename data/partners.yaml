@@ -1,6 +1,9 @@
 - title: anchore
   logo: anchore-logo.png
   link: https://anchore.com/
+- title: aquasecurity
+  logo: aquasec-logo.png
+  link: https://www.aquasec.com
 - title: bingocloud
   logo: bingo-logo.png
   link: http://www.bingocloud.cn/
