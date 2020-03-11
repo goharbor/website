@@ -4,7 +4,7 @@
     {{ range $users }}
     {{ $img := printf "img/logos/users-partners/%s" .logo | relURL }}
     <div class="column is-one-quarter has-text-centered">
-      <img src="{{ $img }}" alt="{{ .title }} user logo">
+      <a href="{{ .link }}"><img src="{{ $img }}" alt="{{ .title }} user logo"></a>
     </div>
     {{ end }}
   </div>

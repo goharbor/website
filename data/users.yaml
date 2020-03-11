@@ -1,3 +1,6 @@
+- title: 360-total-security
+  logo: 360-total-security-logo.png
+  link: https://www.360totalsecurity.com/en/
 - title: axatp
   logo: axa-logo.png
   link: https://www.axatp.com/
@@ -7,6 +10,12 @@
 - title: boer
   logo: boer-logo.png
   link: http://www.boericasa.com/index.html
+- title: bocoit
+  logo: boco-logo.png
+  link: http://www.boco.com.cn:8080/bocoit/
+- title: china-mobile
+  logo: china-mobile-logo.png
+  link: http://www.chinamobileltd.com/
 - title: cloudstar
   logo: cloud-logo.png
   link: http://www.cloud-star.com.cn/
@@ -19,15 +28,24 @@
 - title: ifre
   logo: ifre-logo.png
   link: http://www.ifre.com.cn/
+- title: JD
+  logo: jd.com-logo.png
+  link: https://www.jd.com/
+- title: netease
+  logo: netease-logo.png
+  link: https://www.163yun.com/
 - title: openedutainment
   logo: open-logo.png
-  link: http://www.open.com.cn/
+  link: https://open.com.cn/
 - title: talkingdata
   logo: talkingdata-logo.png
   link: https://www.talkingdata.com/
 - title: trendmicro
-  logo: micro-logo.png
-  link: https://www.trendmicro.com/en_au/business.html
+  logo: trend-micro-logo.png
+  link: https://www.trendmicro.com
 - title: wise2c
   logo: wise-logo.png
   link: http://www.wise2c.com/
+- title: yanrongyun
+  logo: yanrong-logo.png
+  link: https://www.yanrongyun.com/
