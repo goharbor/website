@@ -8,7 +8,7 @@
 {{ $isDocs   := eq .Section "docs" }}
 {{ $version  := index (split .File.Path "/") 1 }}
 {{ $isLatest := eq $version $latest }}
-<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation" x-data="{ open: false }">
   <div class="container">
     <div class="navbar-brand">
       <a class="navbar-item" href="{{ $home }}">
@@ -16,7 +16,7 @@
       </a>
 
       {{ if $menu }}
-      <div role="button" class="navbar-burger" data-target="navbar-menu" aria-label="menu" aria-expanded="false">
+      <div role="button" class="navbar-burger" data-target="navbar-menu" aria-label="menu" aria-expanded="false" @click="open = !open" :class="{ 'is-active': open }">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -25,7 +25,7 @@
     </div>
 
     {{ if $menu }}
-    <div class="navbar-menu" id="navbar-menu">
+    <div class="navbar-menu" id="navbar-menu" :class="{ 'is-active': open }">
       {{ if $isDocs }}
       <div class="navbar-start">
         <div class="navbar-item">
