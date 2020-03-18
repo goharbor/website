@@ -53,7 +53,7 @@ unsafe = true
 
 [params.logos]
 footer = "harbor-horizontal-color.svg"
-navbar = "harbor-horizontal-color.svg"
+navbar = "harbor-horizontal-color.png"
 
 [[params.fonts]]
 name = "PT Sans"
