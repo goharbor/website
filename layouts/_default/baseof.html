@@ -16,13 +16,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     {{ end }}
   </head>
-  <body class="is-page has-navbar-fixed-top">
-    <main class="is-main">
-      {{ partial "navbar.html" . }}
+  <body class="has-navbar-fixed-top">
+    {{ partial "navbar.html" . }}
 
-      {{ block "main" . }}
-      {{ end }}
-    </main>
+    {{ block "main" . }}
+    {{ end }}
 
     {{ partial "footer.html" . }}
     {{ partial "javascript.html" }}
