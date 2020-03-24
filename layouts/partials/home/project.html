@@ -5,7 +5,7 @@
   <div class="container">
     <div class="columns is-variable is-8">
       <div class="column">
-        <p class="title is-size-3 is-size-4-mobile">
+        <p class="title is-size-3 is-size-4-mobile" id="features">
           <span class="icon has-text-secondary has-margin-right">
             <i class="fas fa-plus"></i>
           </span>
@@ -29,7 +29,7 @@
 
       <div class="column">
         <p class="title is-size-3 is-size-4-mobile">
-          <span class="icon has-text-secondary has-margin-right">
+          <span class="icon has-text-secondary has-margin-right" id="community">
             <i class="fas fa-people-carry"></i>
           </span>
           <span>
@@ -48,7 +48,7 @@
         <br />
 
         <div class="buttons">
-          <a class="button is-twitter-blue" href="/community" target="_blank">
+          <a class="button is-twitter-blue" href="/community" target="_blank" id="community-info">
             <span class="icon">
               <i class="fas fa-users"></i>
             </span>
@@ -63,7 +63,7 @@
 </section>
 
 {{ define "title" }}
-<p class="title has-text-grey-dark">
+<p class="title has-text-grey-dark" id="{{ . | urlize }}">
   {{ . }}
 </p>
 {{ end }}
