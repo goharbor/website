@@ -45,6 +45,8 @@
 
       {{ with $menu }}
       <div class="navbar-end">
+        {{ partial "search-bar.html" . }}
+
         {{ range . }}
         {{ $name := .Name }}
         {{ $isHere := eq .URL $here }}
