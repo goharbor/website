@@ -10,6 +10,7 @@ resources/
 
 # Content from goharbor/harbor repo
 content/docs/
+generated/
 
 # Link checker artifacts
 bin/
