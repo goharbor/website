@@ -20,7 +20,10 @@ logo_repo = "https://branding.cncf.io/projects/harbor"
 youtube_video_id = "hG1YSlfVTqY"
 alpine_js_version = "2.1.2"
 
-versions = ["1.10"]
+[[params.versions]]
+harborversion = "1.10"
+helmversion = "1.3"
+branchname = "release-1.10-doc"
 
 [params.info]
 what_is = "Harbor is an open source container image registry that secures images with role-based access control, scans images for vulnerabilities, and signs images as trusted. As a CNCF Incubating project, Harbor delivers compliance, performance, and interoperability to help you consistently and securely manage images across cloud native compute platforms like Kubernetes and Docker."
