@@ -2,6 +2,7 @@ title = "Harbor"
 baseURL = "https://goharbor.io"
 disableKinds = ["taxonomy", "taxonomyTerm"]
 copyright = "Harbor authors"
+ignoreFiles = ["README.md"]
 
 [params]
 tagline = "Manage and serve container images in a secure environment"
