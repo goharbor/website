@@ -67,14 +67,14 @@
           </p>
 
           <div class="navbar-dropdown is-right">
-            {{ range $versions }}
+            {{ range site.Params.versions }}
             {{ $isLatest := eq . $latest }}
             <div class="navbar-item">
               <div class="columns">
                 <div class="column">
-                  <a class="has-text-black" href="/docs/{{ . }}">
+                  <a class="has-text-black" href="/docs/{{ .harborversion }}">
                     <span>
-                      {{ . }}
+                      {{ .harborversion }}
                     </span>
                     &nbsp;&nbsp;
                     {{ if $isLatest }}

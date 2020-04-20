@@ -11,7 +11,9 @@
   </p>
 
   {{ range $docsSections }}
-  {{ range .Sections }} <!-- docs versions -->
+  {{ range .Sections }} <!-- all docs versions -->
+  {{ $thisVersion := index (split .File.Path "/") 1 }}
+  {{ if eq $thisVersion $version }} <!-- version filter -->
   {{ range .Sections }} <!-- sections within version -->
   {{ $isThisPage := eq .RelPermalink $thisPage }}
   {{ $showSection := in $thisSection .RelPermalink }}
@@ -61,6 +63,7 @@
   </ul>
   {{ end }}
 
+  {{ end }}
   {{ end }}
   {{ end }}
   {{ end }}
