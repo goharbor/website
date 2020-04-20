@@ -1,7 +1,6 @@
 title = "Harbor"
 baseURL = "https://goharbor.io"
 disableKinds = ["taxonomy", "taxonomyTerm"]
-copyright = "Harbor authors"
 ignoreFiles = ["README.md"]
 
 [params]
