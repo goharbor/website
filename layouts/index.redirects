@@ -1,4 +1,4 @@
-{{- $latest := index site.Params.versions 0 -}}
-/docs     /docs/{{ $latest }}
-/docs/latest     /docs/{{ $latest }}
-/docs/latest/*     /docs/{{ $latest }}/:splat
+{{- $harborLatest := (index site.Params.versions 0).harborversion -}}
+/docs     /docs/{{ $harborLatest }}
+/docs/latest     /docs/{{ $harborLatest }}
+/docs/latest/*     /docs/{{ $harborLatest }}/:splat
