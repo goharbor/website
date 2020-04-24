@@ -1,6 +1,5 @@
 {{ $title := site.Title }}
 {{ $desc  := site.Params.description | markdownify }}
-{{ $latest := index site.Params.versions 0 }}
 <section class="hero is-small has-background-white-bis">
   <div class="hero-body">
     <div class="container">
@@ -15,7 +14,7 @@
           </p>
 
           <div class="buttons">
-            <a class="button is-white is-outlined is-inverted has-text-weight-bold" href="/docs/{{ $latest }}/install-config">
+            <a class="button is-white is-outlined is-inverted has-text-weight-bold" href="/docs/latest/install-config">
               <span class="icon has-text-primary">
                 <i class="fas fa-play"></i>
               </span>
