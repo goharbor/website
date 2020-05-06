@@ -104,14 +104,22 @@ rm -rf ${ROOT_DIR}/generated/*
 #echo 'Adding "latest" version to releases.yaml'
 #echo "- latest" > ${RELEASES_YAML_FILE}
 
+# include the master branch as we want to be able to display the latest master
+RELEASES+=("master")
+
 for release in "${RELEASES[@]}"; do
 
     echo "Checking out release ${release}"
 
     # Don't error if the checkout fails
     set +e
-    git fetch https://github.com/goharbor/harbor.git ${release}:${release}
-    git checkout ${release}
+    if [[ ${release} != "master" ]]; then
+        git fetch https://github.com/goharbor/harbor.git ${release}:${release}
+        git checkout ${release}
+    else
+        git fetch https://github.com/goharbor/harbor.git ${release}:master-dev
+        git checkout master-dev
+    fi
     errc=$?
     set -e
 
@@ -123,10 +131,12 @@ for release in "${RELEASES[@]}"; do
 #    else
 #        echo "WARNING: Failed to check out version ${version}!!"
 #    fi
-
-    release=$(echo $release | awk -F- '{print $2}')
-    version_docs_dir=${ROOT_DIR}/generated/docs/${release}
-
+    if [[ ${release} != "master" ]]; then
+        release=$(echo $release | awk -F- '{print $2}')
+        version_docs_dir=${ROOT_DIR}/generated/docs/${release}
+        else
+        version_docs_dir=${ROOT_DIR}/generated/docs/${release}
+    fi
     mkdir -p ${version_docs_dir}
 
     echo "Copying doc content from tag ${release}"
@@ -135,6 +145,7 @@ for release in "${RELEASES[@]}"; do
 done
 
 # Move generated content to the right place
+rm -fr content/docs/*
 mkdir -p content/docs
 mv generated/docs/* content/docs
 
