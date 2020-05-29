@@ -17,7 +17,7 @@ github = "https://github.com/goharbor/harbor"
 user_group = "https://lists.cncf.io/g/harbor-users"
 dev_group = "https://lists.cncf.io/g/harbor-dev"
 logo_repo = "https://branding.cncf.io/projects/harbor"
-youtube_video_id = "hG1YSlfVTqY"
+youtube_video_id = "4zZiBcvZmgQ"
 alpine_js_version = "2.1.2"
 
 [[params.versions]]
