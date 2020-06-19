@@ -48,7 +48,7 @@ security = [
 management = [
     { title = "Multi-tenant", icon = "fas fa-boxes" },
     { title = "Extensible API and web UI", icon = "fas fa-globe" },
-    { title = "Image replication across multiple Harbor instances", icon = "far fa-images" },
+    { title = "Replication across many registries, including Harbor", icon = "far fa-images" },
     { title = "Identity integration and role-based access control", icon = "fas fa-users" },
 ]
 
