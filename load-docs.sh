@@ -18,9 +18,9 @@ GIT_VERSION=$(git --version)
 # Look at the git tags and generate a list of releases
 # that we want to show docs for.
 if [[ -z ${OFFLINE} ]]; then
-    git fetch ${REPOSITORY_URL:-https://github.com/goharbor/harbor.git}
+    git fetch ${REPOSITORY_URL:-https://github.com/goharbor/website.git}
 fi
-ALL_RELEASES=$(git ls-remote https://github.com/goharbor/harbor | grep release | awk -F/ '{print $3}' | sort -r -V)
+ALL_RELEASES=$(git ls-remote https://github.com/goharbor/website | grep release | awk -F/ '{print $3}' | sort -r -V)
 RELEASES=()
 PREV_MAJOR_VER="-1"
 PREV_MINOR_VER="-1"
@@ -114,10 +114,10 @@ for release in "${RELEASES[@]}"; do
     # Don't error if the checkout fails
     set +e
     if [[ ${release} != "master" ]]; then
-        git fetch https://github.com/goharbor/harbor.git ${release}:${release}
-        git checkout ${release}
+        git fetch https://github.com/goharbor/website.git ${release}:${release}-local
+        git checkout ${release}-local
     else
-        git fetch https://github.com/goharbor/harbor.git ${release}:master-dev
+        git fetch https://github.com/goharbor/website.git ${release}:master-dev
         git checkout master-dev
     fi
     errc=$?
