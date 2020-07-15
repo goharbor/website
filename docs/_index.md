@@ -1,8 +1,8 @@
 ---
-title: Harbor 2.0 Documentation
+title: Harbor Dev Documentation
 ---
 
-Welcome to the Harbor 2.0.x documentation. This documentation includes all of the information that you need to install, configure, and use Harbor.
+Welcome to the new and fancy documentation for Harbor. This documentation includes all of the information that you need to install, configure, and use Harbor.
 
 ## Harbor Installation and Configuration
 
