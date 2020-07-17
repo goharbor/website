@@ -153,8 +153,8 @@ mv generated/docs/* content/docs
 restore_tree
 
 # Create the "edge" version from current working tree
-echo 'Adding "edge" to releases.yaml'
-echo "- edge" >> ${RELEASES_YAML_FILE}
+#echo 'Adding "edge" to releases.yaml'
+#echo "- edge" >> ${RELEASES_YAML_FILE}
 
 # Link instead of copy so we don't need to re-generate each time.
 # Use a relative link so it works in a container more easily.
