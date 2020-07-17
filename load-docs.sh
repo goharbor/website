@@ -1,4 +1,5 @@
 #!/bin/bash
+# Original file from the Open Policy Agent project: https://github.com/open-policy-agent/opa/blob/master/docs/website/scripts/load-docs.sh
 
 set -xe
 
@@ -11,18 +12,19 @@ if [[ "${ORIGINAL_COMMIT}" == "undefined" ]]; then
 fi
 
 ROOT_DIR=$(git rev-parse --show-toplevel)
-RELEASES_YAML_FILE=${ROOT_DIR}/docs/website/data/releases.yaml
+#RELEASES_YAML_FILE=${ROOT_DIR}/data/releases.yaml
 GIT_VERSION=$(git --version)
 
 # Look at the git tags and generate a list of releases
 # that we want to show docs for.
-#if [[ -z ${OFFLINE} ]]; then
-git fetch ${REPOSITORY_URL:-https://github.com/goharbor/website.git}
-#fi
+if [[ -z ${OFFLINE} ]]; then
+    git fetch ${REPOSITORY_URL:-https://github.com/goharbor/website.git}
+fi
 ALL_RELEASES=$(git ls-remote https://github.com/goharbor/website | grep release | awk -F/ '{print $3}' | sort -r -V)
 RELEASES=()
 PREV_MAJOR_VER="-1"
 PREV_MINOR_VER="-1"
+
 for release in ${ALL_RELEASES}; do
     CUR_SEM_VER=${release#"release-"}
 
@@ -92,43 +94,60 @@ function cleanup {
 trap cleanup EXIT
 
 echo "Cleaning generated folder"
-rm -rf ${ROOT_DIR}/docs/website/generated/*
+rm -rf ${ROOT_DIR}/generated/*
 
-echo "Removing data/releases.yaml file"
-rm -f ${RELEASES_YAML_FILE}
+#echo "Removing data/releases.yaml file"
+#rm -f ${RELEASES_YAML_FILE}
 
-mkdir -p $(dirname ${RELEASES_YAML_FILE})
+#mkdir -p $(dirname ${RELEASES_YAML_FILE})
 
-echo 'Adding "latest" version to releases.yaml'
-echo "- latest" > ${RELEASES_YAML_FILE}
+#echo 'Adding "latest" version to releases.yaml'
+#echo "- latest" > ${RELEASES_YAML_FILE}
+
+# include the master branch as we want to be able to display the latest master
+RELEASES+=("master")
 
 for release in "${RELEASES[@]}"; do
+
     echo "Checking out release ${release}"
 
     # Don't error if the checkout fails
     set +e
-    git checkout ${release}
+    if [[ ${release} != "master" ]]; then
+        git fetch https://github.com/goharbor/website.git ${release}:${release}-local
+        git checkout ${release}-local
+    else
+        git fetch https://github.com/goharbor/website.git ${release}:master-dev
+        git checkout master-dev
+    fi
     errc=$?
     set -e
 
-    release=$(echo $release | awk -F- '{print $2}')
-    version_docs_dir=${ROOT_DIR}/content/docs/${release}
-
-    mkdir -p ${version_docs_dir}
-
     # only add the version to the releases.yaml data file
     # if we were able to check out the version, otherwise skip it..
-    if [[ "${errc}" == "0" ]]; then
-        echo "Adding ${release} to releases.yaml"
-        echo "- ${release}" >> ${RELEASES_YAML_FILE}
-    else
-        echo "WARNING: Failed to check out version ${version}!!"
+#    if [[ "${errc}" == "0" ]]; then
+#        echo "Adding ${release} to releases.yaml"
+#        echo "- ${release}" >> ${RELEASES_YAML_FILE}
+#    else
+#        echo "WARNING: Failed to check out version ${version}!!"
+#    fi
+    if [[ ${release} != "master" ]]; then
+        release=$(echo $release | awk -F- '{print $2}')
+        version_docs_dir=${ROOT_DIR}/generated/docs/${release}
+        else
+        version_docs_dir=${ROOT_DIR}/generated/docs/${release}
     fi
+    mkdir -p ${version_docs_dir}
 
     echo "Copying doc content from tag ${release}"
     cp -r ${ROOT_DIR}/docs/* ${version_docs_dir}/
 
 done
+
+# Move generated content to the right place
+rm -fr content/docs/*
+mkdir -p content/docs
+mv generated/docs/* content/docs
 
 # Go back to the original tree state
 restore_tree
@@ -142,4 +161,4 @@ echo "- edge" >> ${RELEASES_YAML_FILE}
 ln -s ${ROOT_DIR}/docs ${ROOT_DIR}/content/docs/edge
 
 # Create a "latest" version from the latest semver found
-#ln -s ${ROOT_DIR}/content/docs/${RELEASES[0]} ${ROOT_DIR}/content/docs/latest
+#ln -s ${ROOT_DIR}/docs/website/generated/docs/${RELEASES[0]} ${ROOT_DIR}/docs/website/generated/docs/latest
