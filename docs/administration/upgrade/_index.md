@@ -55,7 +55,7 @@ Since the migration might alter the database schema and the settings of `harbor.
     docker image load -i harbor/harbor.[version].tar.gz
     ```
 
-1. Copy the `harbor.yml.tmp` to `harbor.yml` and upgrade it.
+1. Copy the `harbor.yml.tmpl` to `harbor.yml` and upgrade it.
 
     ```sh
     docker run -it --rm -v /:/hostfs goharbor/prepare:[tag] migrate -i ${path to harbor.yml}
