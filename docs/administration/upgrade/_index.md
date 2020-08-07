@@ -55,7 +55,7 @@ Since the migration might alter the database schema and the settings of `harbor.
     docker image load -i harbor/harbor.[version].tar.gz
     ```
 
-1. Copy the `harbor.yml.tmp` to `harbor.yml` and upgrade it.
+1. Copy the `harbor.yml.tmpl` to `harbor.yml` and upgrade it.
 
     ```sh
     docker run -it --rm -v /:/hostfs goharbor/prepare:[tag] migrate -i ${path to harbor.yml}
@@ -66,5 +66,5 @@ Since the migration might alter the database schema and the settings of `harbor.
 1. In the `./harbor` directory, run the `./install.sh` script to install the new Harbor instance.
 
    To install Harbor with components such as Notary, Clair, and chartmuseum, see [Run the Installer Script](../../install-config/run-installer-script.md) for more information.
-   
+
 If you need to roll back to the previous version of Harbor, see [Roll Back from an Upgrade](roll-back-upgrade.md).
