@@ -22,7 +22,7 @@ To replicate image repositories from one instance of Harbor to another Harbor or
    - Huawei SWR
    - Helm Hub
    - Gitlab
-   - Quay.io
+   - Quay
    - Jfrog Artifactory
 
    ![Replication providers](../../../img/replication-endpoint2.png)
@@ -34,12 +34,7 @@ To replicate image repositories from one instance of Harbor to another Harbor or
 
 1. Enter the Access ID and Access Secret for the endpoint registry instance.
 
-   Use an account that has the appropriate privileges on that registry, or an account that has write permission on the corresponding project in a Harbor registry.
-
-   {{< note >}}
-   - AWS ECR adapters should use access keys, not a username and password. The access key should have sufficient permissions, such as storage permission.
-   - Google GCR adapters should use the entire JSON key generated in the service account. The namespace should start with the project ID.
-   {{< /note >}}
+   Use an account that has the appropriate privileges on that registry, or an account that has write permission on the corresponding project in a Harbor registry. See more information about [Access ID and Secret Configuration](#access-id-and-secret-configuration).
 
 1. Optionally, select the **Verify Remote Cert** check box.
 
@@ -48,9 +43,34 @@ To replicate image repositories from one instance of Harbor to another Harbor or
 1. Click **Test Connection**.
 1. When you have successfully tested the connection, click **OK**.
 
-## Managing Registries  
+## Access ID and Secret Configuration
 
-You can list, add, edit and delete registries under **Administration** -> **Registries**. Only registries which are not referenced by any rules can be deleted.  
+- AWS ECR adapters should use access keys, not a username and password.The access key should have sufficient permissions, such as storagepermission.
+- Google GCR adapters should use the entire JSON key generated in the service account. The namespace should start with the project ID.
+- Quay Registry
+   - Supported scope
+      - [Quay.io](https://quay.io) (cloud version) does not allow to create namespaces (organizations) automaticaly, due to Recaptcha enabled on the Quay.io side.
+      - [RedHat Quay](https://www.openshift.com/products/quay) (enterprise on-premises version) is fully supported (tested on v3.2.0)
+      - [Project Quay](https://github.com/quay/quay) (open sourced version) is also supported theoretically, but has not been tested yet.
+   - Authorization
+      - If you are connecting to a registry without authorization, keep Access ID and Access Secret empty.
+      - If you are connecting to a registry with authorization, you don't need to input an Access ID. Harbor uses json_file as the default Access ID. Input your Access Secret in json format, example:
+      ```
+      {
+      "oauth2\_token": "YmQZ1QZENVmOD6v9kENzmfptNVhgBuy5oVl85eGV", // optional
+      "account\_name": "jack",
+      "docker\_cli\_password": "q6NVazikNqIf4coiQ+JvV4iqiCpkNjE0DLX8ZMQuFRbkHk5iMv6/hd4WdV3W3nyX"
+      }
+      ```
+      - `oauth2\_token` is required only if you want to create an organization automatically.
+      - `account\_name` is your login name. Its not recommended to use a robot account because a robot account can not access different organization's repositories.
+      - `docker\_cli\_password` is your cli password. You can generate this on the Quay ui page.
+
+   {{< note >}} Harbor does not support Docker registry manifest schema1 in Quay registries. {{< /note >}}
+
+## Managing Registries
+
+You can list, add, edit and delete registries under **Administration** -> **Registries**. Only registries which are not referenced by any rules can be deleted.
 
 ![browse project](../../../img/manage-registry.png)
 
