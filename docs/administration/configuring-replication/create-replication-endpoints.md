@@ -5,6 +5,10 @@ weight: 20
 
 To replicate image repositories from one instance of Harbor to another Harbor or non-Harbor registry, you first create replication endpoints.
 
+{{< note >}}
+You can also use an endpoint in a proxy cache project. Read more about how to [Configure Proxy Cache](../../configure-proxy-cache/).
+{{< /note >}}
+
 1. Go to **Registries** and click the **+ New Endpoint** button.
 
    ![New replication endpoint](../../../img/replication-endpoint1.png)
@@ -25,6 +29,10 @@ To replicate image repositories from one instance of Harbor to another Harbor or
    - Quay.io
    - Jfrog Artifactory
 
+   {{< note >}}
+   If you plan to use this endpoint in a proxy cache project, note that they only support Docker Hub and Harbor registries. Read more about how to [Configure Proxy Cache](../../configure-proxy-cache/).
+   {{< /note >}}
+
    ![Replication providers](../../../img/replication-endpoint2.png)
 
 1. Enter a suitable name and description for the new replication endpoint.
@@ -39,6 +47,10 @@ To replicate image repositories from one instance of Harbor to another Harbor or
    {{< note >}}
    - AWS ECR adapters should use access keys, not a username and password. The access key should have sufficient permissions, such as storage permission.
    - Google GCR adapters should use the entire JSON key generated in the service account. The namespace should start with the project ID.
+   {{< /note >}}
+
+   {{< note >}}
+   If you plan to use this endpoint with a proxy cache project, the access accounts you provide here enables the proxy cache project to pull every image from the target registry that the access account has permission to pull.
    {{< /note >}}
 
 1. Optionally, select the **Verify Remote Cert** check box.
