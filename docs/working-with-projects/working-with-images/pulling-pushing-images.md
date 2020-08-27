@@ -3,7 +3,7 @@ title: Pulling and Pushing Images in the Docker Client
 weight: 65
 ---
 
-Harbor optionally supports HTTP connections, however the Docker client always attempts to connect to registries by first using HTTPS. If Harbor is configured for HTTP, you must configure your Docker client so that it can connect to insecure registries. In your Docker client is not configured for insecure registries, you will see the following error when you attempt to pull or push images to Harbor: 
+Harbor optionally supports HTTP connections, however the Docker client always attempts to connect to registries by first using HTTPS. If Harbor is configured for HTTP, you must configure your Docker client so that it can connect to insecure registries. In your Docker client is not configured for insecure registries, you will see the following error when you attempt to pull or push images to Harbor:
 
 <pre>
 Error response from daemon: Get https://<i>myregistrydomain.com</i>/v1/users/: dial tcp <i>myregistrydomain.com</i>:443 getsockopt: connection refused.
@@ -27,7 +27,7 @@ docker login <harbor_address>
 
 You can now pull an image:
 
-```sh 
+```sh
 docker pull <harbor_address>/library/ubuntu:14.04
 ```
 
@@ -38,6 +38,8 @@ You cannot pull an unsigned image if you have enabled content trust.
 ## Pushing Images
 
 Before you can push an image to Harbor, you must create a corresponding project in the Harbor interface. For information about how to create a project, see [Create Projects](../create-projects/_index.md).
+
+To push Windows images to your Harbor instance, you also must set your docker daemon to `allow-nondistributable-artifacts`. For more information see [Pushing Windows Images](#pushing-windows-images).
 
 First, log in from Docker client:
 
@@ -56,6 +58,19 @@ Push the image:
 ```sh
 docker push <harbor_address>/demo/ubuntu:14.04
 ```
+
+### Pushing Windows Images
+
+If you plan to push Windows images to your Harbor instance, you must configure your docker daemon to allow pushing restricted artifacts by setting `allow-nondistributable-artifacts` in your `daemon.json` file.
+
+```
+{
+"allow-nondistributable-artifacts" : ["myregistrydomain.com:5000"]
+}
+
+```
+
+For more information on the `allow-nondistributable-artifacts` setting, see [Docker's documentation](https://docs.docker.com/engine/reference/commandline/dockerd/#allow-push-of-nondistributable-artifacts).
 
 ## Add Descriptions to Repositories
 
@@ -84,7 +99,7 @@ First, you delete a repository in the Harbor interface. This is soft deletion. Y
 If both tag A and tag B refer to the same image, after deleting tag A, B will also get deleted. if you enabled content trust, you need to use notary command line tool to delete the tag's signature before you delete an image.
 {{< /danger >}}
 
-Next, delete the repository files by running [garbage collection](../../administration/garbage-collection/_index.md) in the Harbor interface. 
+Next, delete the repository files by running [garbage collection](../../administration/garbage-collection/_index.md) in the Harbor interface.
 
 ## Pulling Images from Harbor in Kubernetes
 Kubernetes users can easily deploy pods with images stored in Harbor. The settings are similar to those of any other private registry. There are two issues to be aware of:
