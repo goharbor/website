@@ -39,6 +39,8 @@ You cannot pull an unsigned image if you have enabled content trust.
 
 Before you can push an image to Harbor, you must create a corresponding project in the Harbor interface. For information about how to create a project, see [Create Projects](../create-projects/_index.md).
 
+To push Windows images to your Harbor instance, you also must set your docker daemon to `allow-nondistributable-artifacts`. For more information see [Pushing Windows Images](#pushing-windows-images).
+
 {{< note >}}
 You cannot push images to a proxy cache project. See more about how about [proxy cache projects](../../../administration/configure-proxy-cache/).
 {{< /note >}}
@@ -60,6 +62,19 @@ Push the image:
 ```sh
 docker push <harbor_address>/demo/ubuntu:14.04
 ```
+
+### Pushing Windows Images
+
+If you plan to push Windows images to your Harbor instance, you must configure your docker daemon to allow pushing restricted artifacts by setting `allow-nondistributable-artifacts` in your `daemon.json` file.
+
+```
+{
+"allow-nondistributable-artifacts" : ["myregistrydomain.com:5000"]
+}
+
+```
+
+For more information on the `allow-nondistributable-artifacts` setting, see [Docker's documentation](https://docs.docker.com/engine/reference/commandline/dockerd/#allow-push-of-nondistributable-artifacts).
 
 ## Add Descriptions to Repositories
 
