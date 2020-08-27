@@ -35,11 +35,15 @@ The installation processes are almost the same for both the online and offline i
       
       ```sh
       gpg: armor header: Version: GnuPG v1
-      gpg: assuming signed data in 'harbor-offline-installer-v1.10.0-rc2.tgz'
-      gpg: Signature made Fri, Dec  6, 2019  5:04:17 AM WEST
-      gpg: using RSA key 644FF454C0B4115C
+      gpg: assuming signed data in 'harbor-online-installer-v2.0.2.tgz'
+      gpg: Signature made Tue Jul 28 09:49:20 2020 UTC
+      gpg:                using RSA key 644FF454C0B4115C
       gpg: using pgp trust model
-      gpg: Good signature from "Harbor-sign (The key for signing Harbor build) <jiangd@vmware.com> [unknown]
+      gpg: Good signature from "Harbor-sign (The key for signing Harbor build) <jiangd@vmware.com>" [unknown]
+      gpg: WARNING: This key is not certified with a trusted signature!
+      gpg:          There is no indication that the signature belongs to the owner.
+      Primary key fingerprint: 7722 D168 DAEC 4578 06C9  6FF9 644F F454 C0B4 115C
+      gpg: binary signature, digest algorithm SHA1, key algorithm rsa4096
       ```
 
 1. Use `tar` to extract the installer package:
