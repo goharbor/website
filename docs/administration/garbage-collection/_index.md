@@ -13,10 +13,15 @@ When you delete images from Harbor, space is not automatically freed up. You mus
 
     ![Garbage collection](../../img/garbage-collection.png)
 
-1. To delete untagged artifacts, select the check box **Delete Untagged Artifacts**. 
+1. To delete untagged artifacts, select the check box **Delete Untagged Artifacts**.
+1. To dry run garbage collection, click **DRY RUN**. 
 1. To run garbage collection immediately, click **GC Now**.
 
-When you run garbage collection, Harbor goes into read-only mode. All modifications to the registry are prohibited.
+As of v2.1.0, Harbor runs garbage collection uninterrupted so users can continue pushing, pulling, deleting artifacts.
+
+**DRY RUN** prints the blobs eligible for deletion, a rough estimation of free up space without removing any data. 
+
+To avoid damaging the uploading artifact, the garbage collection introduces a time windows(2 hours) to reserve the recent uploaded layers. Garbage collection does not sweep the manifest & blob files that have a timestamp in the time window.
 
 To avoid triggering the garbage collection process too frequently, the availability of the **GC Now** button is restricted. Garbage collection can be only run once per minute.
 
