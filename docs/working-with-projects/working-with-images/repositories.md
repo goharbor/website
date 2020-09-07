@@ -13,7 +13,7 @@ Click your project to enter the project detail page after successful logging in.
 
 ### Description of a repository
 
-Click the repository, then click the "Info" tab.  You can view the description of the project.  Users with project admin, master or developer role can click the "Edit" button to edit the description.  You can style the description via Markdown syntax.
+Click the repository, then click the "Info" tab.  You can view the description of the project.  Users with project admin, maintainer or developer role can click the "Edit" button to edit the description.  You can style the description via Markdown syntax.
 
 ![edit_repository_description](../../../img/edit-repository-description.png)
 
