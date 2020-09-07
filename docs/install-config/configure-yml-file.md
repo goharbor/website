@@ -308,12 +308,12 @@ The following table lists the additional, optional parameters that you can set t
   <tr>
     <td valign="top">&nbsp;</td>
     <td valign="top"><code>host</code></td>
-    <td valign="top">Hostname of the external Redis instance.</td>
+    <td valign="top">redis_host:redis_port of the external Redis instance. If you are using Sentinel mode, this part should be host_sentinel1:port_sentinel1,host_sentinel2:port_sentinel2</td>
   </tr>
   <tr>
     <td valign="top">&nbsp;</td>
-    <td valign="top"><code>port</code></td>
-    <td valign="top">Redis instance port.</td>
+    <td valign="top"><code>sentinel_master_set</code></td>
+    <td valign="top">Only set this when using Sentinel mode</td>
   </tr>
   <tr>
     <td valign="top">&nbsp;</td>
@@ -334,6 +334,16 @@ The following table lists the additional, optional parameters that you can set t
     <td valign="top">&nbsp;</td>
     <td valign="top"><code>chartmuseum_db_index</code></td>
     <td valign="top">Database index for Chart museum.</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>clair_db_index</code></td>
+    <td valign="top">Database index for Clair adapter.</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>trivy_db_index</code></td>
+    <td valign="top">Database index for Trivy adapter.</td>
   </tr>
 </table>
 
