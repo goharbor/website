@@ -42,9 +42,9 @@ Before configuring an OIDC provider in Harbor, make sure that your provider is c
        
        ![OIDC settings](../../../img/oidc-auth-setting.png)
 1. Uncheck **Verify Certificate** if the OIDC Provider uses a self-signed or untrusted certificate.
+1. Check the **Automatic onboarding** if you don't want user to set his username in Harbor during his first login.  When this option is checked, the attribute **Username Claim** must be set, Harbor will read the value of this claim from ID token and use it as the username for onboarding the user.  Therefore, you must make sure the value you set in **Username Claim** is included in the ID token returned by the OIDC provider you set, otherwise there will be a system error when Harbor tries to onboard the user.
 1. Verify that the Redirect URI that you configured in your OIDC provider is the same as the one displayed at the bottom of the page. 
-      
-     ![OIDC certificate verification, URI, and test ](../../../img/oidc-cert-verification.png)
+       ![OIDC_auto_onboarding](../../../img/oidc-cert-verifi-auto-onboard.png)
 1. Click **Test OIDC Server** to make sure that your configuration is correct.
 1. Click **Save** to complete the configuration.
 
@@ -58,13 +58,12 @@ When the Harbor system administrator has configured Harbor to authenticate via O
     
 1. As a Harbor user, click the **Login via OIDC Provider** button.
  
-   This redirects you to the OIDC Provider for authentication.  
-1. If this is the first time that you are logging in to Harbor with OIDC, specify a user name for Harbor to associate with your OIDC username.
-
-   ![Specify Harbor username for OIDC](../../../img/oidc-onboard-dlg.png)
-    
-   This is the user name by which you are identified in Harbor, which is used when adding you to projects, assigning roles, and so on. If the username is already taken, you are prompted to choose another one.
-1. After the OIDC provider has authenticated you, you are redirected back to Harbor.
+   This redirects you to the OIDC Provider for authentication, after the OIDC provider has authenticated you, you are redirected back to Harbor. 
+1. If this is the first time you are logging in to Harbor with OIDC, you will be onboarded to Harbor so that you have a user record in Harbor's database, which is used when adding you to projects, assigning roles, and so on.  The flow of this process depends on the configuration:
+   1.  If the option **Automatic onboarding** is not checked, a dialog will be displayed for specifying a user name for Harbor to associate with your OIDC username.
+       ![Specify Harbor username for OIDC](../../../img/oidc-onboard-dlg.png)
+       If the username is already taken, you are prompted to choose another one.
+   2.  If the option **Automatic onboarding** is checked, you will not be prompted to set the user name, instead, Harbor will try to extract the user name from ID token via the claim set in **Username Claim** and automatically onboard the user using this username.
 
 ### Using OIDC from the Docker or Helm CLI
 
@@ -89,7 +88,7 @@ The Docker and Helm CLIs cannot handle redirection for OIDC, so Harbor provides 
 You can now use your CLI secret as the password when logging in to Harbor from the Docker or Helm CLI.
 
 <pre>
-docker login -u testuser -p <i>cli_secret</i> jt-test.local.goharbor.io
+docker login -u testuser -p <i>cli_secret</i> jt-dev.local.goharbor.io
 </pre>
 
 {{< note >}}
