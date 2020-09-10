@@ -7,7 +7,7 @@ Harbor keeps a log of all of the operations that users perform in a project. You
 
 ## Prerequisites
 
-Log in to Harbor with a Harbor administrator, project administrator, master, developer, or guest account.
+Log in to Harbor with a Harbor administrator, project administrator, maintainer, developer, or guest account.
 
 ## Procedure
 

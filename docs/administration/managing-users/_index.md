@@ -10,7 +10,7 @@ Harbor manages images through projects. You provide access to these images to us
 * **Limited Guest**: A Limited Guest does not have full read privileges for a project. They can pull images but cannot push, and they cannot see logs or the other members of a project. For example, you can create limited guests for users from different organizations who share access to a project.
 * **Guest**: Guest has read-only privilege for a specified project. They can pull and retag images, but cannot push.
 * **Developer**: Developer has read and write privileges for a project.
-* **Master**: Master has elevated permissions beyond those of 'Developer' including the ability to scan images, view replications jobs, and delete images and helm charts.
+* **Maintainer**: Maintainer has elevated permissions beyond those of 'Developer' including the ability to scan images, view replications jobs, and delete images and helm charts.
 * **ProjectAdmin**: When creating a new project, you will be assigned the "ProjectAdmin" role to the project. Besides read-write privileges, the "ProjectAdmin" also has some management privileges, such as adding and removing members, starting a vulnerability scan.
 
 Besides the above roles, there are two system-level roles:

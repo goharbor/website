@@ -13,7 +13,7 @@ System admin have all permissions for the project.
 
 The following table depicts the various user permission levels in a project.
 
-| Action                                  | Limited Guest | Guest | Developer | Master | Project Admin |
+| Action                                  | Limited Guest | Guest | Developer | Maintainer | Project Admin |
 | --------------------------------------- | ------------- | ----- | --------- | ------ | ------------- |
 | See the project configurations          | ✓             | ✓     | ✓         | ✓      | ✓             |
 | Edit the project configurations         |               |       |           |        | ✓             |

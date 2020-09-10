@@ -1,6 +1,6 @@
 Harbor Documentation
 
-This is the main table of contents for the Harbor 1.10.x documentation.
+This is the main table of contents for the Harbor 2.1.x documentation.
 
 ## Harbor Installation and Configuration
 
@@ -54,7 +54,7 @@ This section describes how to use and maintain Harbor after deployment. These da
 
 ## Working with Harbor Projects
 
-This section describes how users with the developer, master, and project administrator roles manage and participate in Harbor projects.
+This section describes how users with the developer, maintainer, and project administrator roles manage and participate in Harbor projects.
 
 - [Introduction](working-with-projects/_index.md)
 - [Create Projects](working-with-projects/create-projects/_index.md)
