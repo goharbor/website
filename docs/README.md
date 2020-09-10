@@ -51,6 +51,7 @@ This section describes how to use and maintain Harbor after deployment. These da
   - [Upgrading Harbor Deployed with Helm](administration/upgrade/helm-upgrade.md)
   - [Roll Back an Upgrade](administration/upgrade/roll-back-upgrade.md)
   - [Test Harbor Upgrade](administration/upgrade/upgrade-test.md)
+- [Configure P2P Preheat](administration/p2p-preheat/_index.md)
 
 ## Working with Harbor Projects
 
@@ -72,6 +73,7 @@ This section describes how users with the developer, master, and project adminis
     - [Create Tag Retention Rules](working-with-projects/create-tag-retention-rules.md)
     - [Create Tag Immutability  Rules](working-with-projects/create-tag-immutability-rules.md)
     - [Manage Kubernetes Packages with Helm Charts](working-with-projects/managing-helm-charts.md)
+    - [Preheat Images](working-with-projects/working-with-images/preheat-images.md)
 - [Using API Explorer](working-with-projects/using-api-explorer/_index.md)
 
 ## Build, Customize, and Contribute to Harbor
