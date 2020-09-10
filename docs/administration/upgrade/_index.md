@@ -3,7 +3,7 @@ title: Upgrade Harbor and Migrate Data
 weight: 45
 ---
 
-This guide covers upgrade and migration to version 2.0.0. This guide only covers migration from v1.9.x and later to the current version. If you are upgrading from an earlier version, refer to the migration guide in the `release-1.9.0` branch to upgrade to v1.9.x first, then follow this guide to perform the migration to this version.
+This guide covers upgrade and migration to version 2.1.0. This guide only covers migration from v1.10.x and later to the current version. If you are upgrading from an earlier version, refer to the migration guide in the `release-1.10.0` branch to upgrade to v1.10.x first, then follow this guide to perform the migration to this version.
 
 If you are upgrading a Harbor instance that you deployed with Helm, see [Upgrading Harbor Deployed with Helm](helm-upgrade.md).
 
@@ -12,11 +12,9 @@ Since the migration might alter the database schema and the settings of `harbor.
 
 ## Notes
 
-- Again, you must back up your data before any data migration.
-- In version 1.9.0, some containers are started by `non-root`. This does not pose problems if you are upgrading an officially released version of Harbor, but if you have deployed a customized instance of Harbor, you might encounter permission issues.
-- In previous releases, user roles took precedence over group roles in a project. In this version, user roles and group roles are combined so that the user has whichever set of permissions is highest. This might cause the roles of certain users to change during upgrade.
-- With the introduction of storage and artifact quotas in version 1.9.0, migration from 1.8.x might take a few minutes. This is because the `core` walks through all blobs in the registry and populates the database with information about the layers and artifacts in projects.
-- With the introduction of storage and artifact quotas in version 1.9.0, replication between version 1.9.0 and a previous version of Harbor does not work. You must upgrade all Harbor nodes to 1.9.0 if you have configured replication between them.
+- Again, you MUST backup your data before any data migration.
+- In version 1.10.0, some containers are started by `non-root`. This does not pose problems if you are upgrading an officially released version of Harbor, but if you have deployed a customized instance of Harbor, you might encounter permission issues.
+- In v2.0 the metadata of artifacts are stored in database, when Harbor is started for the first time after the upgrade it will walkthrough the artifacts in registry storage to extract metadata of the artifacts into database.  This process may take relatively long time if there are large number of artifacts in the registry, especially when registry is configured to use external storage like S3.  During this process the Harbor API will not be responsive please check the log of `harbor-core` and `registry` to monitor the process.
 
 ## Upgrading Harbor and Migrating Data
 
