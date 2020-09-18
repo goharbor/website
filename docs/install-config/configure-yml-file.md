@@ -73,7 +73,7 @@ You can use certificates that are signed by a trusted third-party CA, or you can
   </tr>
   <tr>
     <td valign="top">&nbsp;</td>
-    <td valign="top"><code>certificate</code></td>
+    <td valign="top"><code>dir</code></td>
     <td valign="top">The path to the directory that contains internal certs and keys</td>
   </tr>
 
