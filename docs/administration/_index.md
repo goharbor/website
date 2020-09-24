@@ -14,5 +14,5 @@ The operations that are performed by the Harbor system administrator are the fol
 - Set up replication of images between Harbor and another Harbor instance or a 3rd party replication target. For information, see [Configuring Replication](configuring-replication).
 - Set up vulnerability scanners to check the images in the registry for CVE vulnerabilities. For information, see [Vulnerability Scanning](vulnerability-scanning).
 - Perform garbage collection, to remove unnecessary data from Harbor. For information, see [Garbage Collection](garbage-collection).
-- Upgrade Harbor when a new version becomes available. For information, see [Upgrading Harbor](upgrade/upgrade-migrate-data.md).
+- Upgrade Harbor when a new version becomes available. For information, see [Upgrading Harbor](upgrade).
 - Set up P2P preheat provider instances to preheat the specified images into the P2P network. For information, see [P2P preheat](p2p-preheat).
