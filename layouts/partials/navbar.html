@@ -51,7 +51,7 @@
         {{ $name := .Name }}
         {{ $isHere := eq .URL $here }}
         {{ $isExternal := hasPrefix .URL "http" }}
-        <a class="navbar-item has-text-weight-bold{{ if $isHere }} is-active{{ end }}" href="{{ .URL }}"{{ if $isExternal }} target="_blank"{{ end }}>
+        <a class="navbar-item has-text-weight-bold{{ if $isHere }} is-active{{ end }}" href="{{ .URL }}"{{ if $isExternal }} target="_blank"{{ end }} data-proofer-ignore>
           {{ $name }}
         </a>
         {{ end }}
@@ -72,7 +72,7 @@
             <div class="navbar-item">
               <div class="columns">
                 <div class="column">
-                  <a class="has-text-black" href="/docs/{{ .harborversion }}">
+                  <a class="has-text-black" href="/docs/{{ .harborversion }}" data-proofer-ignore>
                     <span>
                       {{ .harborversion }}
                     </span>
