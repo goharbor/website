@@ -3,7 +3,7 @@ title: Preheat Images
 weight: 30
 ---
 
-Before you can preheat images, a system administrator must first configure a P2P provider instance. See more about [configuring P2P preheating in Harbor](administration/p2p-preheat/manage-preheat-providers).
+Before you can preheat images, a system administrator must first configure a P2P provider instance. See more about [configuring P2P preheating in Harbor](../../administration/p2p-preheat/manage-preheat-providers.md).
 
 In Harbor the preheat action is policy driven, and is scoped to the project within which it's created. This means when a
 project administrator creates a preheat policy under a specified project, that policy only applies to images managed
