@@ -42,21 +42,6 @@ Clair Image Scanner will be officially deprecated as an embedded scanner option 
 
 Harbor v2.1 also allows for hosting AI / ML on Kubernetes data models such as Kubeflow models and more. See this detailed blog on the work we did with ByteDance to enable Harbor registry for machine learning workload artifacts - https://goharbor.io/blog/harbor-extending-its-reach/
 
-## About Harbor
-
-[Harbor](http://github.com/goharbor/harbor) is an open source, trusted
-cloud native registry project that stores, signs, and scans container
-images, Helm charts, and any other OCI-compliant artifacts. Harbor
-extends the open-source Docker Distribution by adding key
-enterprise-level features in authentication and access control (LDAP and
-AD as well as OIDC support for RBAC), two-way replication to and from
-other third-party registries, advanced garbage collection, and
-authenticity and provenance capabilities through third-party image
-scanning and signing solutions. Harbor, which supports Docker Compose
-and Kubernetes, deploys in under 30 minutes. Harbor can be fully managed
-through a single web console and comes with a rich set of APIs managed
-with Swagger.
-
 ## Collaborate with the Harbor Community!
 
 Get updates on Twitter: [@project\_harbor](https://twitter.com/project_harbor)
@@ -71,7 +56,7 @@ Attend the community meetings:
 [https://github.com/goharbor/community/wiki/Harbor-Community-Meetings](https://github.com/goharbor/community/wiki/Harbor-Community-Meetings)
 
 
-Alex Xu
-Harbor Maintainer
-Senior Product Manager, VMware
+Alex Xu  
+Harbor Maintainer  
+Senior Product Manager, VMware  
 [@xaleeks](https://github.com/xaleeks)
