@@ -1,0 +1,35 @@
+{{ define "main" }}
+{{ partial "docs/hero.html" . }}
+
+{{ $here     := .RelPermalink }}
+{{ $menu     := site.Menus.main }}
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-variable is-8">
+      <div class="column is-half">
+        <div class="content is-constrained has-extra-bottom-padding is-medium">
+          <p>We weren't able to find that page.</p>
+          <ul>
+          {{ with $menu }}
+          {{ range . }}
+          {{ $isHere := eq .URL $here }}
+          {{ $isExternal := hasPrefix .URL "http" }}
+            <li>
+              <a class="" href="{{ .URL }}"{{ if $isExternal }} target="_blank"{{ end }} data-proofer-ignore>
+              {{ .Name }}
+              </a>
+            </li>
+          {{ end }}
+          {{ end }}
+          <li>
+            <a href="/docs/latest" data-proofer-ignore>Docs</a>
+          </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ end }}
