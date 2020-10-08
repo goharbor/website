@@ -51,6 +51,9 @@ By default, Harbor creates a 7 day retention policy for each new proxy cache pro
 
 To start using the proxy cache, configure your docker pull commands or pod manifests to reference the proxy cache project by adding `<harbor_servername>/<proxy_project_name>/` as a prefix to the image tag. For example:
 
-```
-docker pull <harbor_servername>/<proxy_project_name>/example/hello-world:latest
+```bash
+> docker pull <harbor_server_name>/<proxy_project_name>/goharbor/harbor-core:dev
+
+# To pull offcial images, use the 'library' namespace
+> docker pull <harbor_server_name>/<proxy_project_name>/library/hello-world:latest
 ```
