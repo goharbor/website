@@ -63,6 +63,10 @@ For more information about Trivy, see the [Trivy documentation](https://github.c
 
 ## Installation with Clair
 
+{{< important >}}
+Clair is being removed as a default vulnerability scanner in Harbor v2.2. Its highly recommended that you install using Trivy as your default scanner instead. If you still want to use Clair, you can configure it as an [external scanner](https://goharbor.io/docs/edge/administration/vulnerability-scanning/pluggable-scanners/) after you install.
+{{< /important >}}
+
 To install Harbor with Clair service, add the `--with-clair` parameter when you run `install.sh`:
 
 ```sh
@@ -73,7 +77,7 @@ For more information about Clair, see the [Clair documentation](https://coreos.c
 
 By default, Harbor limits the CPU usage of the Clair container to 150000 to avoid it using up all CPU resources. This is defined in the `docker-compose.clair.yml` file. You can modify this file based on your hardware configuration.
 
-## Installation with Chart Repository Service 
+## Installation with Chart Repository Service
 
 To install Harbor with chart repository service, add the `--with-chartmuseum` parameter when you run `install.sh`:
 
