@@ -16,3 +16,4 @@ The operations that are performed by the Harbor system administrator are the fol
 - Perform garbage collection, to remove unnecessary data from Harbor. For information, see [Garbage Collection](garbage-collection).
 - Upgrade Harbor when a new version becomes available. For information, see [Upgrading Harbor](upgrade/upgrade-migrate-data.md).
 - Set up P2P preheat provider instances to preheat the specified images into the P2P network. For information, see [P2P preheat](p2p-preheat).
+- Details of defining a user-defined OCI artifact so that Harbor can manage it. For information, see [user-defined OCI artifact](user-defined-OCI-artifact).

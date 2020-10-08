@@ -52,6 +52,7 @@ This section describes how to use and maintain Harbor after deployment. These da
   - [Roll Back an Upgrade](administration/upgrade/roll-back-upgrade.md)
   - [Test Harbor Upgrade](administration/upgrade/upgrade-test.md)
 - [Configure P2P Preheat](administration/p2p-preheat/_index.md)
+- [User-defined OCI artifact](administration/user-defined-OCI-artifact/_index.md)
 
 ## Working with Harbor Projects
 
