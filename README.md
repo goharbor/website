@@ -8,16 +8,23 @@ The website is built and developed using the [Hugo](https://gohugo.io/) static s
 
 Instructions for installing Hugo can be found [here](https://gohugo.io/getting-started/installing/). Use the version of Hugo specified by the `HUGO_VERSION` environment variable in the [`netlify.toml`](./netlify.toml) configuration file, and make sure to install the "extended" version of Hugo with support for [Hugo Pipes](https://gohugo.io/hugo-pipes/introduction/).
 
+[backport](https://github.com/sqren/backport) is used to backport PRs into different release branches.
+
 ## Website content
 
 The content for the [Harbor blog](https://goharbor.io/blog) is in [`content/blog`](./content/blog), while the content for the Harbor documentation is in the [`docs`](./docs) folder.
 
-### Specific instructions for documentation
+The latest (edge) version of the documentation lives in the [`docs`](./docs) folder on the `master` branch, and is always viewable on https://goharbor.io/docs/edge. Documentation for specific released versions lives in its own release branch, for example `release-2.1.0`.
 
-The latest (edge) version of the documentation lives in the [`docs`](./docs) folder, and is always viewable on https://goharbor.io/docs/edge.
-When updating this version and making a PR, the edge docs will be viewable through the Netlify preview linked in the PR tests, just make sure you add `/docs/edge/` to the URL. That way you can verify that your changes look good before asking the maintainers for a review.
+### Creating a PR
 
-When updating already released versions of the documentation, please make changes and PRs against the `release-X` branches.
+In general, all PRs should be made against the `master` branch to update the edge version of the docs. If you are making a change that also affects released versions, indicate which release branches to update in your PR so the website maintainers can backport your changes.
+
+If you are making a change that is specific to a single released version of documentation, make a PR against that branch (`release-X`).
+
+A preview of your changes is viewable through the Netlify preview linked in the PR tests. Use this to verify that your changes look good before asking the maintainers for a review. When updating the edge version make sure you add `/docs/edge/` to the preview URL to see your changes.
+
+### Creating release docs
 
 When creating docs for a new release, please create a branch with the format `release-X.Y.Z`.
 When you want to make these docs available through the dropdown menu, put the following into the `config.toml` file, above all other versions (versions are linked based on order in the config file):
@@ -28,6 +35,8 @@ harborversion = "X.Y.Z"
 helmversion = "1.3"
 branchname = "release-X.Y.Z"
 ```
+
+After a releases, update the `.backportrc.json` file with the new release branch.
 
 ### CSS
 
@@ -62,7 +71,7 @@ This copies the `docs` directory and the `release-X` branches into this repo's [
 npm i
 ```
 
-## Step 3: Run Hugo in server mode
+## Step 4: Run Hugo in server mode
 
 ```sh
 make serve
