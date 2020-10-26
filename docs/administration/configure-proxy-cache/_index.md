@@ -3,7 +3,7 @@ title: Configure Proxy Cache
 weight: 35
 ---
 
-Proxy cache allows you to use Harbor to proxy and cache images from a target public or private registry.
+Proxy cache allows you to use Harbor to proxy and cache images from a target public or private registry. As of Harbor v2.1.1, the proxy cache feature was updated to align with [Docker Hub's rate limit policy](https://www.docker.com/blog/scaling-docker-to-serve-millions-more-developers-network-egress/). If you plan to use proxy cache with your Harbor instance, it is strongly recommended that you use v2.1.1 or later to avoid being rate limited.
 
 You can use a proxy cache to pull images from a target Harbor or non-Harbor registry in an environment with limited or no access to the internet. You can also use a proxy cache to limit the amount of requests made to a public registry, avoiding consuming too much bandwidth or being throttled by the registry server.
 
@@ -25,6 +25,8 @@ The next time a user requests that image, Harbor checks the image's latest manif
 * If the image has been updated in the target registry, the new image is pulled from the target registry, then served and cached in the proxy cache project.
 * If the target registry is not reachable, the proxy cache project serves the cached image.
 * If the image is no longer in the target registry, no image is served.
+
+As of Harbor v2.1.1, when checking an image on Docker Hub, none of the blobs for the image are updated. This means that when Harbor performs these checks on the image, it will not count towards Docker Hub's [rate limit policy](https://www.docker.com/blog/scaling-docker-to-serve-millions-more-developers-network-egress/).
 
 ## Create Proxy Cache Project
 
