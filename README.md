@@ -20,7 +20,7 @@ The latest (edge) version of the documentation lives in the [`docs`](./docs) fol
 
 In general, all PRs should be made against the `master` branch to update the edge version of the docs. If you are making a change that also affects released versions, indicate which release branches to update in your PR so the website maintainers can backport your changes.
 
-If you are making a change that is specific to a single released version of documentation, make a PR against that branch (`release-X`).
+If you are making a change that is specific to a single released version of documentation, make a PR against that branch (`release-X`). For example, if you are fixing something specific to v2.1.0 you should make a PR against the release-2.1.0 branch only. If you are fixing something that impacts v2.1.0 docs and all future versions, you should make the PR against the `master` branch and so the change can also be backported to the v2.1.0 docs.
 
 A preview of your changes is viewable through the Netlify preview linked in the PR tests. Use this to verify that your changes look good before asking the maintainers for a review. When updating the edge version make sure you add `/docs/edge/` to the preview URL to see your changes.
 
@@ -36,7 +36,7 @@ helmversion = "1.3"
 branchname = "release-X.Y.Z"
 ```
 
-After a releases, update the `.backportrc.json` file with the new release branch.
+After a release, update the [backport](https://github.com/sqren/backport) tool configuration file, `.backportrc.json`, with the new release branch name. 
 
 ### CSS
 
