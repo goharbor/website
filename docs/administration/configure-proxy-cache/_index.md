@@ -26,7 +26,7 @@ The next time a user requests that image, Harbor checks the image's latest manif
 * If the target registry is not reachable, the proxy cache project serves the cached image.
 * If the image is no longer in the target registry, no image is served.
 
-As of Harbor v2.1.1, when checking an image on Docker Hub, none of the blobs for the image are updated. This means that when Harbor performs these checks on the image, it will not count towards Docker Hub's [rate limit policy](https://www.docker.com/blog/scaling-docker-to-serve-millions-more-developers-network-egress/).
+As of Harbor v2.1.1, Harbor proxy cache fires a HEAD request to determine whether any layer of a cached image has been updated in the Docker Hub registry. Using this method to check the target registry will not trigger the [Docker Hub rate limiter](https://www.docker.com/blog/scaling-docker-to-serve-millions-more-developers-network-egress/). If any image layer was updated, the proxy cache will pull the new image, which will count towards the Docker Hub rate limiter.
 
 ## Create Proxy Cache Project
 
