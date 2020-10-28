@@ -64,7 +64,7 @@ For more information about Trivy, see the [Trivy documentation](https://github.c
 ## Installation with Clair
 
 {{< important >}}
-Clair is being removed as a default vulnerability scanner in Harbor v2.2. Its highly recommended that you install using Trivy as your default scanner instead. If you still want to use Clair, you can configure it as an [external scanner](https://goharbor.io/docs/edge/administration/vulnerability-scanning/pluggable-scanners/) after you install.
+Clair is being removed as a default vulnerability scanner in Harbor v2.2. Its highly recommended that you install using Trivy as your default scanner instead. If you still want to use Clair, you can configure it as an [external scanner](../../administration/vulnerability-scanning/pluggable-scanners/) after you install.
 {{< /important >}}
 
 To install Harbor with Clair service, add the `--with-clair` parameter when you run `install.sh`:
