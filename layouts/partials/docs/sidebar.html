@@ -1,7 +1,7 @@
 {{ $version       := index (split .File.Path "/") 1 }}
 {{ $genVersion    := cond (eq $version "1.10") "1.10-doc" $version }}
 {{ $path          := .File.Path | replaceRE (printf "/%s" $version) "" }}
-{{ $pageSourceUrl := printf "https://github.com/goharbor/harbor/blob/release-%s/%s" $genVersion $path  }}
+{{ $pageSourceUrl := printf "https://github.com/goharbor/website/blob/release-%s/%s" $genVersion $path  }}
 {{ $issues        := "https://github.com/goharbor/harbor/issues" }}
 <div class="column is-one-quarter is-hidden-touch">
   <div class="toc is-sticky">
