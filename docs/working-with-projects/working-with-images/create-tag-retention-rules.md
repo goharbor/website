@@ -7,7 +7,7 @@ A repository can rapidly accumulate a large number of artifacts, many of which m
 
 ## How Tag Retention Rules Work
 
-You define tag retention rules on repositories, not on projects. This allows for greater granularity when defining your retention rules. As the name suggests, when you define a retention rule for a repository, you are identifying which tags to retain. You do not define rules to explicitly remove tags. Rather, when you set a rule, any tags in a repository that are not identified as being eligible for retention are discarded. 
+You define tag retention rules on repositories, not on projects. This allows for greater granularity when defining your retention rules. As the name suggests, when you define a retention rule for a repository, you are identifying which tags to retain. You do not define rules to explicitly remove tags. Rather, when you set a rule, any tags in a repository that are not identified as being eligible for retention are discarded. The `OR` algorithm is used between rules.
 
 A tag retention rule has 3 filters that are applied sequentially, as described in the following table.
 
@@ -92,17 +92,16 @@ This example uses a different repository to the previous examples.
 - You define three tag retention rules on this repository:
   - Retain the 10 most recently pushed artifacts that start with `2`.
   - Retain the 10 most recently pushed artifacts that end with `-prod`.
-  - Retain all tags that do not include `2.1-your_repo-prod`.
 
 In this example, the rules are applied to the following 7 tags:
 
+- `2.1-your_repo-prod`
 - `2.1-your_repo-rc`
 - `2.1-your_repo-release`
 - `2.2-your_repo-prod`
 - `2.2-your_repo-rc`
 - `2.2-your_repo-release`
 - `3.1-your_repo-prod`
-- `4.4-your_repo-prod`
 
 Because there are no untagged artifacts, checking the checkbox makes no difference.
 
