@@ -13,7 +13,7 @@ You have a machine or VM that is running Ubuntu 18.04. The script does not work 
 
 ## Procedure
 
-1. Download the `harbor.sh` script from [this GitHub Gist](https://gist.github.com/kacole2/95e83ac84fec950b1a70b0853d6594dc) to your Ubuntu machine or VM.
+1. Download the `harbor.sh` script from [this GitHub Gist](https://gist.github.com/kacole2/95e83ac84fec950b1a70b0853d6594dc) (No Longer Maintained) to your Ubuntu machine or VM.
 
 1. Grant run permissions to the current user.
 
