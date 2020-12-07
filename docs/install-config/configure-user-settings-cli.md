@@ -10,13 +10,13 @@ From release 1.8.0 onwards, user settings are configured separately from the sys
 **Add a new user in the local database:**
 
 ```sh
-curl -X PUT -u "<username>:<password>" -H "Content-Type: application/json" -ki <Harbor Server URL>/api/configurations -d'{"<item_name>":"<item_value>"}'
+curl -X PUT -u "<username>:<password>" -H "Content-Type: application/json" -ki <Harbor Server URL>/api/v2.0/configurations -d'{"<item_name>":"<item_value>"}'
 ```
 
 **Get the current configuration:**
 
 ```sh
-curl -u "<username>:<password>" -H "Content-Type: application/json" -ki <Harbor Server URL>/api/configurations
+curl -u "<username>:<password>" -H "Content-Type: application/json" -ki <Harbor Server URL>/api/v2.0/configurations
 ```
 
 **Update Harbor to use LDAP authentication:**
@@ -24,7 +24,7 @@ curl -u "<username>:<password>" -H "Content-Type: application/json" -ki <Harbor 
 Command
 
 ```shell
-curl -X PUT -u "<username>:<password>" -H "Content-Type: application/json" -ki https://harbor.sample.domain/api/configurations -d'{"auth_mode":"ldap_auth"}'
+curl -X PUT -u "<username>:<password>" -H "Content-Type: application/json" -ki https://harbor.sample.domain/api/v2.0/configurations -d'{"auth_mode":"ldap_auth"}'
 ```
 
 Output
@@ -44,7 +44,7 @@ Set-Cookie: sid=a5803a1265e2b095cf65ce1d8bbd79b1; Path=/; HttpOnly
 Command
 
 ```shell
-curl -X PUT -u "<username>:<password>" -H "Content-Type: application/json" -ki https://harbor.sample.domain/api/configurations -d'{"project_creation_restriction":"adminonly"}'
+curl -X PUT -u "<username>:<password>" -H "Content-Type: application/json" -ki https://harbor.sample.domain/api/v2.0/configurations -d'{"project_creation_restriction":"adminonly"}'
 ```
 
 Output
@@ -64,7 +64,7 @@ Set-Cookie: sid=b7925eaf7af53bdefb13bdcae201a14a; Path=/; HttpOnly
 Command
 
 ```shell
-curl -X PUT -u "<username>:<password>" -H "Content-Type: application/json" -ki https://harbor.sample.domain/api/configurations -d'{"token_expiration":"300"}'
+curl -X PUT -u "<username>:<password>" -H "Content-Type: application/json" -ki https://harbor.sample.domain/api/v2.0/configurations -d'{"token_expiration":"300"}'
 ```
 
 Output
