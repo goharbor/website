@@ -69,14 +69,14 @@ You can also use an endpoint in a proxy cache project. Read more about how to [C
       - If you are connecting to a registry with authorization, you don't need to input an Access ID. Harbor uses json_file as the default Access ID. Input your Access Secret in json format, example:
       ```
       {
-      "oauth2\_token": "YmQZ1QZENVmOD6v9kENzmfptNVhgBuy5oVl85eGV", // optional
-      "account\_name": "jack",
-      "docker\_cli\_password": "q6NVazikNqIf4coiQ+JvV4iqiCpkNjE0DLX8ZMQuFRbkHk5iMv6/hd4WdV3W3nyX"
+      "oauth2_token": "YmQZ1QZENVmOD6v9kENzmfptNVhgBuy5oVl85eGV", // optional
+      "account_name": "jack",
+      "docker_cli_password": "q6NVazikNqIf4coiQ+JvV4iqiCpkNjE0DLX8ZMQuFRbkHk5iMv6/hd4WdV3W3nyX"
       }
       ```
-      - `oauth2\_token` is required only if you want to create an organization automatically.
-      - `account\_name` is your login name. Its not recommended to use a robot account because a robot account can not access different organization's repositories.
-      - `docker\_cli\_password` is your cli password. You can generate this on the Quay ui page.
+      - `oauth2_token` is required only if you want to create an organization automatically.
+      - `account_name` is your login name. Its not recommended to use a robot account because a robot account can not access different organization's repositories.
+      - `docker_cli_password` is your cli password. You can generate this on the Quay ui page.
 
    {{< note >}} Harbor does not support Docker registry manifest schema1 in Quay registries. {{< /note >}}
 
