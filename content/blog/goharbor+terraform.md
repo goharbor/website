@@ -7,8 +7,11 @@ author:
   company: BESTSELLER
 showPageInfo: true
 ---
+
+![](https://storage.googleapis.com/bs-blog-images/goharbor-terraform/harbor+terraform.png)
+
 #### Why write a terraform provider.
-At BESTSELLER IT we are big believers in Infrastructure As Code and that as much as possible should be automated. One of the tools we fond of, and utilize heavily, is Terraform. Why not use Terraform to automate the Harbor management?  But there was no Terraform provider for Harbor. :anguished:
+At BESTSELLER IT we are big believers in Infrastructure As Code and that as much as possible should be automated. One of the tools we are fond of, and utilize heavily, is Terraform. Why not use Terraform to automate the Harbor management?  But there was no Terraform provider for Harbor.
 
 What were we going to do? After some time searching on Google, we found an article by Hashicorp about writing a Terraform provider. We not give it a go? Harbor has an api we can use. And guess what, we were able to write a Terraform provider for Harbor fulfilling our needs and keeping everything as Infrastructure As Code.
 
