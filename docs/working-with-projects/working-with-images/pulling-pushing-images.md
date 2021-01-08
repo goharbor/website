@@ -134,3 +134,27 @@ By default the local directory for storing meta files for the Notary client is d
 ```sh
 alias notary="notary -s https://192.168.0.5:4443 -d ~/.docker/trust --tlscacert /etc/docker/certs.d/192.168.0.5/ca.crt"
 ```
+
+### Lost Notary Keys
+
+In the event that your Notary root key is deleted without backups, you can resolve orphaned images using the following steps.
+
+1. Remove data from the `notarysigner` and `notaryserver` database. Replace the fully qualified URI of your repository in the SQL commands below.
+
+    ```
+    docker exec -it harbor-db /bin/bash
+    postgres [ / ]$ psql
+    ....
+    postgres=# \c notaryserver
+    notaryserver=# delete from tuf_files where gun='<fully_qualified_URI_of_repository>';
+    ....
+    notaryserver=# \c notarysigner
+    notarysigner=# delete from private_keys where gun='<fully_qualified_URI_of_repository>';
+    notarysigner=# \q
+    ```
+
+1. Restart harbor-core to clear some temporary cache.
+
+    ```
+    docker restart harbor-core
+    ```
