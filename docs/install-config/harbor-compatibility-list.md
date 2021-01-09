@@ -17,13 +17,13 @@ This document provides compatibility information for all Harbor components.
 | [ECR](https://aws.amazon.com/ecr/) | ![ECR](../../img/replication-adapters/ecr.png)|![Y](../../img/replication-adapters/right.png)|![Y](../../img/replication-adapters/right.png)| V1.9 | Y |
 | [ACR](https://azure.microsoft.com/en-us/services/container-registry/) | ![ACR](../../img/replication-adapters/acr.png)|![Y](../../img/replication-adapters/right.png)|![Y](../../img/replication-adapters/right.png)| V1.9 | N |
 | [AliCR](https://www.alibabacloud.com/product/container-registry) | ![AliCR](../../img/replication-adapters/ali-cr.png)|![Y](../../img/replication-adapters/right.png)|![Y](../../img/replication-adapters/right.png)| V1.9 | N |
-| [Helm Hub](https://hub.helm.sh/) | ![Helm Hub](../../img/replication-adapters/helm-hub.png)|![Y](../../img/replication-adapters/right.png)| N/A | V1.9 | N |
+| [Helm Hub](https://hub.helm.sh/) | ![Helm Hub](../../img/replication-adapters/helm-hub.png)|![Y](../../img/replication-adapters/right.png)| N/A | V1.9 (Support removed in V2.0.4 and later) | N |
 | [Artifactory](https://jfrog.com/artifactory/) | ![Artifactory](../../img/replication-adapters/artifactory.png)|![Y](../../img/replication-adapters/right.png)| ![Y](../../img/replication-adapters/right.png) | V1.10 | N |
 | [Quay](https://github.com/quay/quay) | ![Quay](../../img/replication-adapters/quay.png)|![Y](../../img/replication-adapters/right.png)| ![Y](../../img/replication-adapters/right.png) | V1.10 | N |
 | [GitLab Registry](https://docs.gitlab.com/ee/user/packages/container_registry/) | ![GitLab Registry](../../img/replication-adapters/gitlab.png)|![Y](../../img/replication-adapters/right.png)| ![Y](../../img/replication-adapters/right.png) | V1.10 | N |
 
 {{< note >}}
-* `Pull` mode replicates artifacts from the specified source registries into Harbor. 
+* `Pull` mode replicates artifacts from the specified source registries into Harbor.
 * `Push` mode replicates artifacts from Harbor to the specified target registries.
 {{< /note >}}
 
