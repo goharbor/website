@@ -36,6 +36,8 @@ Before configuring an OIDC provider in Harbor, make sure that your provider is c
    - **OIDC Client ID**: The client ID with which Harbor is registered as  client application with the OIDC provider.
    - **OIDC Client Secret**: The secret for the Harbor client application.
    - **Group Claim Name**: The name of a custom group claim that you have configured in your OIDC provider, that includes the groups to add to Harbor.
+   - **OIDC Admin Group**: The name of the admin group, if the ID token of the user shows that he is a member of this group, the user will have admin
+     privilege in Harbor. **Note**: You can only set one Admin Group.  Please also make sure the value in this field matches the value of group item in ID token.  
    - **OIDC Scope**: A comma-separated string listing the scopes to be used during authentication. 
    
        The OIDC scope must contain `openid` and usually also contains `profile` and `email`. To obtain refresh tokens it should also contain `offline_access`. If you are using OIDC groups, a scope must identify the group claim. Check with your OIDC provider administrator for precise details of how to identify the group claim scope, as this differs from vendor to vendor.
