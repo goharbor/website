@@ -8,7 +8,14 @@ Proxy cache allows you to use Harbor to proxy and cache images from a target pub
 You can use a proxy cache to pull images from a target Harbor or non-Harbor registry in an environment with limited or no access to the internet. You can also use a proxy cache to limit the amount of requests made to a public registry, avoiding consuming too much bandwidth or being throttled by the registry server.
 
 {{< note >}}
-Harbor only supports proxy caching for Docker Hub and Harbor registries.
+Harbor supports proxy caching for the following registries:
+   - Harbor
+   - Docker Hub
+   - AWS Elastic Container Registry
+   - Azure Container Registry
+   - Google Container Registry
+   - Quay
+
 {{< /note >}}
 
 A Harbor system administrator configures a proxy cache by creating a proxy cache project, which connects to a target registry using a registry endpoint you have configured. A proxy cache project works similarly to a normal Harbor project, except that you are not able to push images to a proxy cache project.
@@ -34,7 +41,7 @@ To set up a proxy cache, a Harbor system administrators can create a proxy cache
 
 A proxy cache project is able to use the same features available to a normal Harbor project, except that you are not able to push images to a proxy cache project. For more information on projects, see the [Working with Projects](../../working-with-projects/) documentation.
 
-1. Before creating a proxy cache project, create a Docker Hub or Harbor registry endpoint for the proxy cache project to use. See how to [create a registry endpoint](../configuring-replication/create-replication-endpoints.md).
+1. Before creating a proxy cache project, create a registry endpoint for the proxy cache project to use. See how to [create a registry endpoint](../configuring-replication/create-replication-endpoints.md).
 
     {{< note >}}Proxy cache projects can pull every image from the target registry that the access account you configure in the registry endpoint has access to. This means that Harbor users with access to the proxy cache project are able to pull any image available to the access account in the target repository.
     {{< /note >}}
