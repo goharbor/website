@@ -179,7 +179,7 @@ You can use certificates that are signed by a trusted third-party CA, or you can
   <tr>
     <td valign="top"><code>proxy</code></td>
     <td valign="top">&nbsp;</td>
-    <td valign="top">Configure proxies to be used by the replication jobservice and Harbor. Leave blank if no proxies are required.</td>
+    <td valign="top">Configure proxies to be used by trivy-adapter, the replication jobservice, and Harbor. Leave blank if no proxies are required. Some proxies have whitelist settings, if Trivy is enabled, you need to add the following urls to the proxy server whitelist: <code>github.com</code>, <code>github-releases.githubusercontent.com</code>, and <code>*.s3.amazonaws.com.</code></td>
   </tr>
     <tr>
     <td valign="top">&nbsp;</td>
