@@ -23,7 +23,7 @@ This document provides compatibility information for all Harbor components.
 | [GitLab Registry](https://docs.gitlab.com/ee/user/packages/container_registry/) | ![GitLab Registry](../../img/replication-adapters/gitlab.png)|![Y](../../img/replication-adapters/right.png)| ![Y](../../img/replication-adapters/right.png) | V1.10 | N |
 
 {{< note >}}
-* `Pull` mode replicates artifacts from the specified source registries into Harbor. 
+* `Pull` mode replicates artifacts from the specified source registries into Harbor.
 * `Push` mode replicates artifacts from Harbor to the specified target registries.
 {{< /note >}}
 
@@ -41,7 +41,7 @@ This document provides compatibility information for all Harbor components.
 
 |   | Scanners | Providers | Evaluated | As Default | Onboard in Release |
 |---|----------|-----------|-----------|------------|--------------------|
-| [Clair](https://github.com/goharbor/harbor-scanner-clair)    |![Clair](../../img/scanners/clair.png)| CentOS    |![Y](../../img/replication-adapters/right.png)|![Y](../../img/replication-adapters/right.png)| v1.10 |
+| [Clair](https://github.com/goharbor/harbor-scanner-clair)    |![Clair](../../img/scanners/clair.png)| CentOS    |![Y](../../img/replication-adapters/right.png)|N (removed as default in v2.2)| v1.10 |
 | [Anchore](https://github.com/anchore/harbor-scanner-adapter) |![Anchore](../../img/scanners/anchore.png)   | Anchore    |![Y](../../img/replication-adapters/right.png)| N | v1.10 |
 | [Trivy](https://github.com/aquasecurity/harbor-scanner-trivy)|![Trivy](../../img/scanners/trivy.png)| Aqua    |![Y](../../img/replication-adapters/right.png)| ![Y](../../img/replication-adapters/right.png) | v1.10 |
 | [CSP](https://github.com/aquasecurity/harbor-scanner-aqua)   |![Aqua](../../img/scanners/aqua.png)| Aqua    | ![Y](../../img/replication-adapters/right.png) | N | v1.10 |

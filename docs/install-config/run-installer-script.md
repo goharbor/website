@@ -8,16 +8,15 @@ Once you have configured `harbor.yml` copied from `harbor.yml.tmpl` and optional
 
 You can install Harbor in different configurations:
 
-- Just Harbor, without Notary, Trivy, Clair, or Chart Repository Service
+- Just Harbor, without Notary, Trivy or Chart Repository Service
 - Harbor with Notary
 - Harbor with Trivy
-- Harbor with Clair
 - Harbor with Chart Repository Service
-- Harbor with two or all three of Notary, Trivy, Clair, and Chart Repository Service
+- Harbor with two or all three of Notary, Trivy, and Chart Repository Service
 
-## Default installation without Notary, Trivy, Clair, or Chart Repository Service
+## Default installation without Notary, Trivy, or Chart Repository Service
 
-The default Harbor installation does not include Notary or Trivy, Clair service. Run the following command
+The default Harbor installation does not include Notary or Trivy service. Run the following command
 
 ```sh
 sudo ./install.sh
@@ -60,23 +59,6 @@ sudo ./install.sh --with-trivy
 
 For more information about Trivy, see the [Trivy documentation](https://github.com/aquasecurity/trivy).
 
-
-## Installation with Clair
-
-{{< important >}}
-Clair is being removed as a default vulnerability scanner in Harbor v2.2. Its highly recommended that you install using Trivy as your default scanner instead. If you still want to use Clair, you can configure it as an [external scanner](../../administration/vulnerability-scanning/pluggable-scanners/) after you install.
-{{< /important >}}
-
-To install Harbor with Clair service, add the `--with-clair` parameter when you run `install.sh`:
-
-```sh
-sudo ./install.sh --with-clair
-```
-
-For more information about Clair, see the [Clair documentation](https://coreos.com/clair/docs/2.0.1/).
-
-By default, Harbor limits the CPU usage of the Clair container to 150000 to avoid it using up all CPU resources. This is defined in the `docker-compose.clair.yml` file. You can modify this file based on your hardware configuration.
-
 ## Installation with Chart Repository Service
 
 To install Harbor with chart repository service, add the `--with-chartmuseum` parameter when you run `install.sh`:
@@ -85,12 +67,12 @@ To install Harbor with chart repository service, add the `--with-chartmuseum` pa
 sudo ./install.sh --with-chartmuseum
 ```
 
-## Installation with Notary, Trivy, Clair, and Chart Repository Service
+## Installation with Notary, Trivy, and Chart Repository Service
 
-If you want to install all three of Notary, Clair and chart repository service, specify all of the parameters in the same command:
+If you want to install both Notary and chart repository service, specify all of the parameters in the same command:
 
 ```
-sudo ./install.sh --with-notary --with-trivy --with-clair --with-chartmuseum
+sudo ./install.sh --with-notary --with-trivy --with-chartmuseum
 ```
 
 ## Connecting to Harbor via HTTP {#connect-http}
