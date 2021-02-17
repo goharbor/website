@@ -13,9 +13,9 @@ Since the migration might alter the database schema and the settings of `harbor.
 ## Notes
 
 - Again, you MUST backup your data before any data migration.
-- In version 1.10.0, some containers are started by `non-root`. This does not pose problems if you are upgrading an ially released version of Harbor, but if you have deployed a customized instance of Harbor, you might encounter permission issues.
+- In version 1.10.0, some containers are started by `non-root`. This does not pose problems if you are upgrading an officially released version of Harbor, but if you have deployed a customized instance of Harbor, you might encounter permission issues.
 - In v2.0 the metadata of artifacts are stored in database, when Harbor is started for the first time after the upgrade it will walkthrough the artifacts in registry storage to extract metadata of the artifacts into database.  This process may take relatively long time if there are large number of artifacts in the registry, especially when registry is configured to use external storage like S3.  During this process the Harbor API will not be responsive please check the log of `harbor-core` and `registry` to monitor the process.
-- Harbor v2.2 removed support for Clair as a default scanner. If you upgrade with Clair as your default scanner, you will no longer be able to scan until a new scanner is installed. Scan data from before the upgrade is preserved. It's recommended that you use Trivy as your default scanner or add Clair as an [external scanner](../vulnerability-scanning/pluggable-scanners.md) after upgrade. 
+- Harbor v2.2 removed support for Clair as a default scanner. If you upgrade with Clair as your default scanner, you will no longer be able to scan until a new scanner is installed. Scan data from before the upgrade is preserved. It's recommended that you use Trivy as your default scanner or add Clair as an [external scanner](../vulnerability-scanning/pluggable-scanners.md) after upgrade.
 
 ## Upgrading Harbor and Migrating Data
 
