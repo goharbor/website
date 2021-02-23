@@ -52,7 +52,8 @@ This page lists all available system robot accounts for your Harbor instance. Th
 
 1. Enter a name and an optional description for this robot account.
 1. Set Expiration time for this robot account. By default the configured system default expiration time is used. You can also select **Never Expired** from the dropdown if you want to create a never expiring robot account.
-1. Select **Cover all projects** if you want to use this system robot account across all projects. Using this option means that this system robot account will be able to access all existing and future projects in your Harbor instance with all robot account permissions.  
+1. Select **Cover all projects** if you want to use this system robot account across all projects. Using this option means that this system robot account will be able to access all existing and future projects in your Harbor instance. You can use the **Permissions(s)** dropdown to select which permission to grant to the robot account.   
+    ![Cover all projects and select permissions from the dropdown](../../img/cover-all-projeects-robot-account.png)
 1. If you want this robot account to only cover certain projects or be granted certain permissions, use the project table to select the projects and permissions you want to assign to the system robot account. This table shows the each project name, the project creation time, and a dropdown list of permissions to assign the system robot account for that project.
 
     ![Project table for assigning robot accounts](../../img/project-table-robot-account.png)
