@@ -345,7 +345,28 @@ The following table lists the additional, optional parameters that you can set t
     <td valign="top"><code>trivy_db_index</code></td>
     <td valign="top">Database index for Trivy adapter.</td>
   </tr>
+  <tr>
+    <td valign="top"><code>metric</code></td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">Configure exposing Harbor instance metrics to a specified port and path</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>enable</code></td>
+    <td valign="top">Enable exposing metrics on your Harbor instance by setting this to <code>true</code>. Default is <code>false</code></td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>port</code></td>
+    <td valign="top">Port metrics are exposed on. Default is <code>9090</code></td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>path</code></td>
+    <td valign="top">Path metrics are exposed on. Default is <code>/metrics</code></td>
+  </tr>
 </table>
+
 
 {{< note >}}
 The `harbor.yml` file includes options to configure a UAA CA certificate. This authentication mode is not recommended and is not documented.
