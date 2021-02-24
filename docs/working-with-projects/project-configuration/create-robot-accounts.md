@@ -1,9 +1,9 @@
 ---
-title: Create Robot Accounts
+title: Create Project Robot Accounts
 weight: 40
 ---
 
-Harbor allows you to use a robot account to automate running operations for a project including,
+Harbor allows you to use a projeect robot account to automate running operations for a project including,
 
 * Push artifacts
 * Pull artifacts
@@ -16,9 +16,9 @@ Harbor allows you to use a robot account to automate running operations for a pr
 * Create artifact labels
 * Create a scan
 
-A project robot account can only perform actions within the project that it is created in, however, Harbor v2.2 introduces the ability for system administrators to create system robot accounts in addition to creating project robot account that can automate tasks across multiple projects. Read more about [system level robot accounts](../../administration/robot-accounts/).
+A project robot account uses authenticates to your Harbor instance using a secret, allowing you to connect to your Harbor instance through the OCI client or Harbor API to automate tasks. Robot Accounts cannot log in to the Harbor interface.
 
-A robot account uses authenticates to your Harbor instance using a secret, allowing you to connect to your Harbor instance through the API and automate tasks.
+A project robot account can only perform actions within the project that it is created in, however, Harbor v2.2 introduces the ability for system administrators to create system robot accounts in addition to creating project robot account that can automate tasks across multiple projects. Read more about [system level robot accounts](../../administration/robot-accounts/).
 
 {{< important >}}
 Harbor 2.2 introduced changes to project robot accounts that impact existing robot accounts created in Harbor versions before v2.2. Read more about [legacy robot accounts](#legacy-robot-accounts).
@@ -65,7 +65,7 @@ You are only able to see project robot accounts from this page. Harbor administr
    Harbor does not store robot secret tokens, so you must either download the secret or copy and paste its contents into a text file. There is no way to get the secret from Harbor after you have created the robot account, however you are able refresh the secret after the robot account is created.
    {{< /important >}}
 
-   The new robot account appears as `<prefix><project_name>+<account_name>` in the list of robot accounts. The prefix is set by your Harbor administrator and is the same for all robot accounts. Read more about [robot account prefixes](/administration/robot-accounts/#configure-robot-account-prefix).
+   The new robot project account appears as `<prefix><project_name>+<account_name>` in the list of project robot accounts. The prefix is set by your Harbor administrator and is the same for all robot accounts. Read more about [robot account prefixes](/administration/robot-accounts/#configure-robot-account-prefix).
 
    ![New robot account](../../../img/project-robot-account.png)
 
@@ -91,9 +91,9 @@ You can refresh a robot account's secret after its created in the event that you
 1. Click **Refresh**. If you created a secret randomly, download the secret JSON file or copy and paste its contents.
 
 
-## Authenticate with a Robot Account
+## Authenticate with a Project Robot Account
 
-To use a robot account in an automated process, for example a script, use `docker login` and provide the credentials of the robot account.
+To use a robot account in an automated process, for example, use `docker login` and provide the credentials of the robot account.
 
 ```
 docker login <harbor_address>
@@ -112,3 +112,4 @@ Legacy robot accounts functionality
 * You can't edit a legacy robot account. You are only able to disable or delete legacy robot accounts.
 * Available legacy robot accounts permissions are limited to pushing and pulling artifact, and pushing or pulling a Helm Chart.
 * Legacy robot accounts use a JWT for authentication. You are not able to refresh or retrieve a legacy robot account JWT authentication token.
+* Legacy robot accounts names use the prefix `robot$`, for example `robot$<account_name>`

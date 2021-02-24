@@ -18,7 +18,7 @@ For each system robot account you are able to assign the following permissions,
 * Create artifact labels
 * Create a scan
 
-Depending on your needs to can assign any combination of these permissions to a system robot account to perform your desired tasks through the Docker and Helm CLIs. Robot Accounts cannot log in to the Harbor interface.
+Depending on your needs to can assign any combination of these permissions to a system robot account to perform your desired tasks through the OCI client or Harbor API. Robot Accounts cannot log in to the Harbor interface.
 
 You are also able create project scope robot account that only have access to a single project. Read more about [project robot accounts](../../working-with-projects/project-configuration/create-robot-accounts/).
 
@@ -89,7 +89,7 @@ This page lists all available system robot accounts for your Harbor instance. Th
 
 ## Edit, Disable, or Delete a System Robot Account
 
-You are able to edit, disable, or delete a sytem robot account.
+You are able to edit, disable, or delete a system robot account.
 
 1. From the administrator **Robot Account** page, select the checkbox next to the robot account you are updating.
 1. Select **Action** and then **Edit**, **Disable**, or **Delete**.
@@ -120,9 +120,9 @@ By default, robot accounts expire after 30 days. You can set a longer or shorter
 
 ## Configure Robot Account Prefix
 
-By default, robot account names use a prefix of `robot$`. Harbor uses this prefix to distinguish a robot account from a user account. The full name of a robot account is the prefix and the name you provided when creating the robot account. For example if you create a new robot account with the name `test`, the full name is  `robot$test`.
+By default, robot account names use a prefix of `robot$`. Harbor uses this prefix to distinguish a robot account from a user account. The full name of a system robot account is the prefix and the name you provide when creating the robot account. For example if you create a new robot system account with the name `test`, the full name is  `robot$test`.
 
-The same prefix is used for all robot accounts, including both system and project robot accounts. When you update this value, it will apply to all existing and future system and project robot accounts, including robot accounts created in Harbor v2.1 and earlier.
+The same prefix is used for all robot accounts, including both system and project robot accounts. When you update this value, it will apply to all existing and future system and project robot accounts, except robot accounts created in Harbor v2.1 and earlier which will continue to use the prefix `robot$`.
 
 1. Log in to the Harbor interface with an account that has Harbor system administrator privileges.
 1. Go to **Configuration** and select **System Settings**.
@@ -130,7 +130,7 @@ The same prefix is used for all robot accounts, including both system and projec
 
     ![Set robot account prefix](../../img/set-robot-prefix.png)
 
-## Authenticate with a Robot Account
+## Authenticate with a System Robot Account
 
 To use a robot account in an automated process, for example a script, use `docker login` and provide the credentials of the robot account.
 
