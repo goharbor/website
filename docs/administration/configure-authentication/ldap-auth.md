@@ -29,9 +29,9 @@ If you want to manage user authentication by using LDAP groups, you must enable 
 
      ![Basic LDAP configuration](../../../img/ldap-auth.png)  
 1. If you want to manage user authentication with LDAP groups, configure the group settings.
-   - **LDAP Group Base DN**: The base DN from which to lookup a group in LDAP/AD. For example, `ou=groups,dc=example,dc=com`. This field cannot be empty.
-   - **LDAP Group Filter**: The filter to search for LDAP/AD groups. for OpenLDAP: `objectclass=groupOfNames`. for Active Directory: `objectclass=group`. This field cannot be empty.
-   - **LDAP Group GID**: The attribute used to name an LDAP/AD group. For example, `cn`. This field cannot be empty.
+   - **LDAP Group Base DN**: The base DN from which to lookup a group in LDAP/AD. For example, `ou=groups,dc=example,dc=com`. This field cannot be empty when LDAP group feature is enabled.
+   - **LDAP Group Filter**: The filter to search for LDAP/AD groups. for OpenLDAP: `objectclass=groupOfNames`. for Active Directory: `objectclass=group`. This field cannot be empty when LDAP group feature is enabled.
+   - **LDAP Group GID**: The attribute used to name an LDAP/AD group. For example, `cn`. This field cannot be empty when LDAP group feature is enabled.
    - **LDAP Group Admin DN**: All LDAP/AD users in this group DN have Harbor system administrator privileges.
    - **LDAP Group Membership**: The user attribute usd to identify a user as a member of a group. By default this is `memberof`.
    - **LDAP Scope**: The scope to search for LDAP/AD groups. Select from **Subtree**, **Base**, and **OneLevel**.
