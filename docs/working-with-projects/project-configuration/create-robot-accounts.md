@@ -3,7 +3,7 @@ title: Create Project Robot Accounts
 weight: 40
 ---
 
-Harbor allows you to use a projeect robot account to automate running operations for a project including,
+Harbor allows you to use a project robot account to automate running operations for a project including,
 
 * Push artifacts
 * Pull artifacts
@@ -31,7 +31,7 @@ Harbor 2.2 introduced changes to project robot accounts that impact existing rob
 
 ![Project robot accounts page](../../../img/project-robot-account.png)
 
-This page lists all available system robot accounts for a project. The table lists the following information for each robot account,
+This page lists all available project robot accounts for a project. The table lists the following information for each robot account,
 
 * The name of the robot account. This is derived from robot account prefix configured for your Harbor instance, the project name, and the name assigned to the robot account when it was created. A robot account name follows the format `<prefix><project_name>+<account_name>`. If you use the search function on this page, you only need to search for the account name without the prefix.
 * The enabled status shows if an account is enabled or disabled.

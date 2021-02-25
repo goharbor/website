@@ -31,7 +31,7 @@ You are also able create project scope robot account that only have access to a 
 
 This page lists all available system robot accounts for your Harbor instance. The table lists the following information for each system robot account,
 
-* The name of a system account. This is derived from robot account prefix configured for your Harbor instance and the name assigned to the account when it was created. A robot account name follows thee format `<prefix><account_name>`. If you use the search function on this page, you only need to search for the account name without the prefix.
+* The name of a system account. This is derived from robot account prefix configured for your Harbor instance and the name assigned to the account when it was created. A robot account name follows the format `<prefix><account_name>`. If you use the search function on this page, you only need to search for the account name without the prefix.
 * Enabled status shows if an account is enabled or disabled.
 * The number of projects an account is associated with. To see a full list of the projects an account is associated with, click on the **Project(s)** link.
 
@@ -44,7 +44,7 @@ This page lists all available system robot accounts for your Harbor instance. Th
 
 ## Add a System Robot Account
 
-1. Log in to the Harbor interface with an account that has at least project administrator privileges.
+1. Log in to the Harbor interface with an account that has at least system administrator privileges.
 1. Go to **Administration**, select a project, and select **Robot Accounts**.
 1. Click **New Robot Account**.
 
@@ -68,11 +68,11 @@ This page lists all available system robot accounts for your Harbor instance. Th
 
     ![](../../img/set-robot-account-permissions.png)
 
-    Click the **Rest Permissions** dropdown to control which permissions are available for each project. Selecting or unselecting a permission will add or remove the permission for every project. Using this option will adjust permissions for all projects, not just the projects shown if you have filtered for a specific project name.
+    Click the **Reset Permissions** dropdown to control which permissions are available for each project. Selecting or unselecting a permission will add or remove the permission for every project. Using this option will adjust permissions for all projects, not just the projects shown if you have filtered for a specific project name.
 
     ![Reset robot account permissions](../../img/reset-robot-account-permissions.png)
 
-    Click **Select All** to associate thee system robot account with all of the projects shown in the table. If you are filtering by project name, this option will only select the filtered projects.
+    Click **Select All** to associate the system robot account with all of the projects shown in the table. If you are filtering by project name, this option will only select the filtered projects.
 
 
 1. Click **Add**.
