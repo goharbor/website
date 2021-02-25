@@ -31,7 +31,7 @@ Name | Description | Labels | Metric type
 `harbor_artifact_pulled` |	Number of images pulled in a project |	project_name | gauge
 `harbor_project_artifact_total` | Total number of artifacts type in a project | artifact_type , project_name, public (`true`,`false`) | gauge
 `harbor_health` | Current status of Harbor | | gauge
-`harbor_system_info` | Information about your Harbor instance | auth_mode, harbor_version, self_registration(`true`,`false`) | gauge
+`harbor_system_info` | Information about your Harbor instance | auth_mode (`db_auth`, `ldap_auth`, `uaa_auth`, `http_auth`, `oidc_auth`), harbor_version, self_registration(`true`,`false`) | gauge
 `harbor_up`| Running status of Harbor components  | component (`chartmuseum`, `core`, `database`, `jobservice`, `portal`, `redis`, `registry`, `registryctl`, `trivy`) | gauge
 {{< /table >}}
 
