@@ -3,19 +3,21 @@ title: Upgrade Harbor and Migrate Data
 weight: 45
 ---
 
-This guide covers upgrade and migration to version 2.1.0. This guide only covers migration from v1.10.x and later to the current version. If you are upgrading from an earlier version, refer to the migration guide in the `release-1.10.0` branch to upgrade to v1.10.x first, then follow this guide to perform the migration to this version.
+This guide covers upgrade and migration to version 2.2.0. This guide only covers migration from v1.10.x and later to the current version. If you are upgrading from an earlier version, refer to the migration guide in the `release-1.10.0` branch to upgrade to v1.10.x first, then follow this guide to perform the migration to this version.
 
 If you are upgrading a Harbor instance that you deployed with Helm, see [Upgrading Harbor Deployed with Helm](helm-upgrade.md).
 
 When upgrading an existing Harbor instance to a newer version, you might need to migrate the settings in `harbor.yml`.
 Since the migration might alter the database schema and the settings of `harbor.yml`, you should **always** back up your data before any migration.
 
-## Notes
+## Important Upgrade Notes
 
 - Again, you MUST backup your data before any data migration.
 - In version 1.10.0, some containers are started by `non-root`. This does not pose problems if you are upgrading an officially released version of Harbor, but if you have deployed a customized instance of Harbor, you might encounter permission issues.
 - In v2.0 the metadata of artifacts are stored in database, when Harbor is started for the first time after the upgrade it will walkthrough the artifacts in registry storage to extract metadata of the artifacts into database.  This process may take relatively long time if there are large number of artifacts in the registry, especially when registry is configured to use external storage like S3.  During this process the Harbor API will not be responsive please check the log of `harbor-core` and `registry` to monitor the process.
-- Harbor v2.2 removed support for Clair as a default scanner. If you upgrade with Clair as your default scanner, you will no longer be able to scan until a new scanner is installed. Scan data from before the upgrade is preserved. It's recommended that you use Trivy as your default scanner or add Clair as an [external scanner](../vulnerability-scanning/pluggable-scanners.md) after upgrade.
+- Harbor v2.2 vulnerability scanning changes
+  - Clair was removed as a default scanner. If you upgrade with Clair as your default scanner, you will no longer be able to run vulnerability scans until a new scanner is installed. It's recommended that you use Trivy as your default scanner or add Clair as an [external scanner](../vulnerability-scanning/pluggable-scanners.md) after upgrade.
+  - Updates were made to the vulnerability database scheme which require you to rescan all images after upgrade. Scan reports from before the upgrade are preserved, but will not be visible to you until you scan all images again. For more information, read how to [Scan All Artifacts](../vulnerability-scanning/scan-all-artifacts/).
 
 ## Upgrading Harbor and Migrating Data
 
