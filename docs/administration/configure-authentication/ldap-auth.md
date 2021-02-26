@@ -23,19 +23,19 @@ If you want to manage user authentication by using LDAP groups, you must enable 
 
    - **LDAP Search DN** and **LDAP Search Password**: When a user logs in to Harbor with their LDAP username and password, Harbor uses these values to bind to the LDAP/AD server. For example, `cn=admin,dc=example.com`.
    - **LDAP Base DN**: Harbor looks up the user under the LDAP Base DN entry, including the subtree. For example, `dc=example.com`.
-   - **LDAP Filter**: The filter to search for LDAP/AD users. For example, `objectclass=user`. 
-   - **LDAP UID**: An attribute, for example `uid`, or `cn`, that is used to match a user with the username. If a match is found, the user's password is verified by a bind request to the LDAP/AD server. 
+   - **LDAP Filter**: The filter to search for LDAP/AD users. For example, `objectclass=user`.
+   - **LDAP UID**: An attribute, for example `uid`, or `cn`, that is used to match a user with the username. If a match is found, the user's password is verified by a bind request to the LDAP/AD server.
    - **LDAP Scope**: The scope to search for LDAP/AD users. Select from **Subtree**, **Base**, and **OneLevel**.
-   
+
      ![Basic LDAP configuration](../../../img/ldap-auth.png)  
 1. If you want to manage user authentication with LDAP groups, configure the group settings.
-   - **LDAP Group Base DN**: The base DN from which to lookup a group in LDAP/AD. For example, `ou=groups,dc=example,dc=com`.
-   - **LDAP Group Filter**: The filter to search for LDAP/AD groups. For example, `objectclass=groupOfNames`. 
-   - **LDAP Group GID**: The attribute used to name an LDAP/AD group. For example, `cn`.  
+   - **LDAP Group Base DN**: The base DN from which to lookup a group in LDAP/AD. For example, `ou=groups,dc=example,dc=com`. This field cannot be empty when LDAP group feature is enabled.
+   - **LDAP Group Filter**: The filter to search for LDAP/AD groups. for OpenLDAP: `objectclass=groupOfNames`. for Active Directory: `objectclass=group`. This field cannot be empty when LDAP group feature is enabled.
+   - **LDAP Group GID**: The attribute used to name an LDAP/AD group. For example, `cn`. This field cannot be empty when LDAP group feature is enabled.
    - **LDAP Group Admin DN**: All LDAP/AD users in this group DN have Harbor system administrator privileges.
    - **LDAP Group Membership**: The user attribute usd to identify a user as a member of a group. By default this is `memberof`.
    - **LDAP Scope**: The scope to search for LDAP/AD groups. Select from **Subtree**, **Base**, and **OneLevel**.
-   
+
      ![LDAP group configuration](../../../img/ldap-groups.png)
 1. Uncheck **LDAP Verify Cert** if the LDAP/AD server uses a self-signed or untrusted certificate.
 
