@@ -1,9 +1,9 @@
 ---
-title: Harbor Metrics
+title: Access Metrics
 weight: 37
 ---
 
-Harbor exposes some key metrics needed for operators and administrators to monitor how your Harbor instance is running in real time. Observability is a key feature for operating a service in production and using this data you can identify abnormal statuses and make informed decisions to fix issues when an error occurs. Harbor exposes metrics as  [Prometheus](https://prometheus.io/docs/introduction/overview/) templates.
+Harbor exposes some key metrics needed for operators and administrators to monitor how your Harbor instance is running in real time. Observability is a key feature for operating a service in production and using this data you can identify abnormal statuses and make informed decisions to fix issues when an error occurs. Harbor exposes metrics using the  [Prometheus data model](https://prometheus.io/docs/concepts/data_model/) so you can easily start scraping your Harbor instance's metrics using Prometheus.
 
 In Harbor v2.2 and later you are able to enable metrics in your Harbor [configuration file](../../install-config/configure-yml-file.md). Harbor metrics are available at `<harbor_instance>:<metrics_port>/<metrics_path>` based on your configured values.
 
@@ -21,7 +21,7 @@ Metrics are exposed by three components: `exporter`, `core` and `registry`. In a
 The `exporter` component metrics relate to your Harbor instance configuration and collects some data from the Harbor database. Metrics are available at `<harbor_instance>:<metrics_port>/<metrics_path>`.
 
 {{< table caption="Metrics exposed by the Harbor Exporter" >}}
-Name | Description | Labels | Metric type
+Name | Description | Labels (Values) | Metric type
 :---------|:------------|:-------|:-------
 `harbor_project_total` |	Total number of public and private projects | public (`true`,`false`) | gauge
 `harbor_project_repo_total` |	Total number of repositories in a project |	public (`true`,`false`),  project_name | gauge
@@ -40,11 +40,11 @@ Name | Description | Labels | Metric type
 The following are metrics pulled from the Harbor core pod and are available at `<harbor_instance>:<metrics_port>/<metrics_path>?comp=core`.
 
 {{< table caption="Metrics exposed by Harbor Core" >}}
-Name | Description | Labels | Metric type
+Name | Description | Labels (Values) | Metric type
 :---------|:------------|:-------|:-------
-`harbor_core_http_inflight_requests` | The total number of requests | operation | gauge
-`harbor_core_http_request_duration_seconds` | The time duration of the requests | method (`GET`, `POST`, `HEAD`, `PATCH`, `PUT`), operation, quantile | summary
-`harbor_core_http_request_total` | The total number of requests | method (`GET`, `POST`, `HEAD`, `PATCH`, `PUT`), operation | counter
+`harbor_core_http_inflight_requests` | The total number of requests | operation (values from `operationId` in [Harbor API](https://github.com/goharbor/harbor/blob/master/api/v2.0/swagger.yaml). Some legacy endpoints do not have an `operationId`, so the label value is `unknown`) | gauge
+`harbor_core_http_request_duration_seconds` | The time duration of the requests | method (`GET`, `POST`, `HEAD`, `PATCH`, `PUT`), operation (values from `operationId` in [Harbor API](https://github.com/goharbor/harbor/blob/master/api/v2.0/swagger.yaml). Some legacy endpoints do not have an `operationId`, so the label value is `unknown`), quantile | summary
+`harbor_core_http_request_total` | The total number of requests | method (`GET`, `POST`, `HEAD`, `PATCH`, `PUT`), operation (values from `operationId` in [Harbor API](https://github.com/goharbor/harbor/blob/master/api/v2.0/swagger.yaml). Some legacy endpoints do not have an `operationId`, so the label value is `unknown`) | counter
 {{< /table >}}
 
 ## Registry Metrics
@@ -52,7 +52,7 @@ Name | Description | Labels | Metric type
 The following are metrics pulled from the Docker distribution and are available at `<harbor_instance>:<metrics_port>/<metrics_path>?comp=registry`.
 
 {{< table caption="Metrics exposed by Harbor Core" >}}
-Name | Description | Labels |Metric type
+Name | Description | Labels (Values) |Metric type
 :---------|:------------|:-------|:-------
 `registry_http_in_flight_requests` | The in-flight HTTP requests | handler | gauge
 `registry_http_request_duration_seconds` | The HTTP request latencies in seconds | handler, method (`GET`, `POST`, `HEAD`, `PATCH`, `PUT`), le | histogram
