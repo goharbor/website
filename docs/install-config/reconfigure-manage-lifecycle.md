@@ -24,7 +24,7 @@ Stopping harbor-db          ... done
 Stopping harbor-log         ... done
 ```
 
-## Restart Harbor 
+## Restart Harbor
 
 To restart Harbor, run the following command.
 
@@ -45,13 +45,13 @@ Starting proxy       ... done
 
 To reconfigure Harbor, perform the following steps.
 
-1. Stop Harbor. 
+1. Stop Harbor.
 
     ```sh
     sudo docker-compose down -v
     ```
 
-1. Update `harbor.yml`. 
+1. Update `harbor.yml`.
 
     ```sh
     vim harbor.yml
@@ -63,10 +63,10 @@ To reconfigure Harbor, perform the following steps.
     sudo prepare
     ```
 
-    To reconfigure Harbor to install Notary, Clair, and the chart repository service, include all of the components in the `prepare` command.
+    To reconfigure Harbor to install Notary, Trivy, and the chart repository service, include all of the components in the `prepare` command.
 
     ```sh
-    sudo prepare --with-notary --with-clair --with-chartmuseum
+    sudo prepare --with-notary --with-trivy --with-chartmuseum
     ```
 
 1. Re-create and start the Harbor instance.

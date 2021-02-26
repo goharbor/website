@@ -108,11 +108,6 @@ You can use certificates that are signed by a trusted third-party CA, or you can
     <td valign="top">The location on the target host in which to store Harbor's data. This data remains unchanged even when Harbor's containers are removed and/or recreated. You can optionally configure external storage, in which case disable this option and enable <code>storage_service</code>. The default is <code>/data</code>.</td>
   </tr>
   <tr>
-    <td valign="top"><code>clair</code></td>
-    <td valign="top"><code>updaters_interval</code></td>
-    <td valign="top">Set an interval for Clair updates, in hours. Set to 0 to disable the updates. The default is 12 hours.</td>
-  </tr>
-  <tr>
     <td valign="top"><code>trivy</code></td>
     <td valign="top">&nbsp;</td>
     <td valign="top">Configure Trivy scanner.</td>
@@ -184,7 +179,7 @@ You can use certificates that are signed by a trusted third-party CA, or you can
   <tr>
     <td valign="top"><code>proxy</code></td>
     <td valign="top">&nbsp;</td>
-    <td valign="top">Configure proxies to be used by Clair, the replication jobservice, and Harbor. Leave blank if no proxies are required.</td>
+    <td valign="top">Configure proxies to be used by trivy-adapter, the replication jobservice, and Harbor. Leave blank if no proxies are required. Some proxies have whitelist settings, if Trivy is enabled, you need to add the following urls to the proxy server whitelist: <code>github.com</code>, <code>github-releases.githubusercontent.com</code>, and <code>*.s3.amazonaws.com.</code></td>
   </tr>
     <tr>
     <td valign="top">&nbsp;</td>
@@ -245,7 +240,7 @@ The following table lists the additional, optional parameters that you can set t
   <tr>
     <td valign="top"><code>external_database</code></td>
     <td valign="top">&nbsp;</td>
-    <td valign="top">Configure external database settings, if you disable the local database option. Currently, Harbor only supports PostgreSQL database. You must create four databases for Harbor core, Clair, Notary server, and Notary signer. The tables are generated automatically when Harbor starts up.</td>
+    <td valign="top">Configure external database settings, if you disable the local database option. Currently, Harbor only supports PostgreSQL database. You must create three databases for Harbor core, Notary server, and Notary signer. The tables are generated automatically when Harbor starts up.</td>
   </tr>
   <tr>
     <td valign="top">&nbsp;</td>
@@ -261,19 +256,6 @@ The following table lists the additional, optional parameters that you can set t
         <li><code>max_idle_conns</code>: The maximum number of connections in the idle connection pool. If &lt;=0 no idle connections are retained. The default value is 2.</li>
         <li><code>max_open_conns</code>: The maximum number of open connections to the database. If &lt;= 0 there is no limit on the number of open connections. The default value is 0.</li>
     </ul>      </td>
-  </tr>
-  <tr>
-    <td valign="top">&nbsp;</td>
-    <td valign="top"><code>clair</code></td>
-    <td valign="top">Configure an external database for Clair.
-      <ul>
-        <li><code>host</code>: Hostname of the Clair database</li>
-        <li><code>port</code>: Database port.</li>
-        <li><code>db_name</code>: Database name.</li>
-        <li><code>username</code>: Username to connect to the Clair database.</li>
-        <li><code>password</code>: Password for the account you set in <code>username</code>.</li>
-        <li><code>ssl_mode</code>: Enable SSL mode.</li>
-      </ul>    </td>
   </tr>
   <tr>
     <td valign="top">&nbsp;</td>
@@ -334,11 +316,6 @@ The following table lists the additional, optional parameters that you can set t
     <td valign="top">&nbsp;</td>
     <td valign="top"><code>chartmuseum_db_index</code></td>
     <td valign="top">Database index for Chart museum.</td>
-  </tr>
-  <tr>
-    <td valign="top">&nbsp;</td>
-    <td valign="top"><code>clair_db_index</code></td>
-    <td valign="top">Database index for Clair adapter.</td>
   </tr>
   <tr>
     <td valign="top">&nbsp;</td>

@@ -3,7 +3,7 @@ title: Configure Webhook Notifications
 weight: 45
 ---
 
-If you are a project administrator, you can configure a connection from a project in Harbor to a webhook endpoint. If you configure webhooks, Harbor notifies the webhook endpoint of certain events that occur in the project. Webhooks allow you to integrate Harbor with other tools to streamline continuous integration and development processes. 
+If you are a project administrator, you can configure a connection from a project in Harbor to a webhook endpoint. If you configure webhooks, Harbor notifies the webhook endpoint of certain events that occur in the project. Webhooks allow you to integrate Harbor with other tools to streamline continuous integration and development processes.
 
 The action that is taken upon receiving a notification from a Harbor project depends on your continuous integration and development processes. For example, by configuring Harbor to send a `POST` request to a webhook listener at an endpoint of your choice, you can trigger a build and deployment of an application whenever there is a change to an image in the repository.
 
@@ -85,10 +85,10 @@ And for Slack endpoint, you should follow the [guide of Slack incoming webhook](
 
 You can configure your continuous integration and development infrastructure so that it performs the following types of operations when it receives a webhook notification from Harbor.
 
-- Artifact push: 
+- Artifact push:
   - Trigger a new build immediately following a push on selected repositories or tags.
   - Notify services or applications that use the artifact that a new artifact is available and pull it.
-  - Scan the artifact using Clair.
+  - Scan the artifact using Trivy.
   - Replicate the artifact to remote registries.
 - Image scanning:
   - If a vulnerability is found, rescan the image or replicate it to another registry.
@@ -108,7 +108,7 @@ You can configure your continuous integration and development infrastructure so 
 
 1. Enter the URL for your webhook endpoint listener.
 
-1. If your webhook listener implements authentication, enter the authentication header. 
+1. If your webhook listener implements authentication, enter the authentication header.
 
 1. To implement `HTTPS POST` instead of `HTTP POST`, select the **Verifiy Remote Certficate** check box.
 
@@ -118,13 +118,13 @@ You can configure your continuous integration and development infrastructure so 
 
 1. Click **Continue** to create the webhook.
 
-When you have created the webhook, you can click on the arrow at the left end to see the status of the different notifications and the  timestamp of the last time each notification was triggered. You can also manage the webhook by clicking the drop list button of `ACTION...` . 
+When you have created the webhook, you can click on the arrow at the left end to see the status of the different notifications and the  timestamp of the last time each notification was triggered. You can also manage the webhook by clicking the drop list button of `ACTION...` .
 
 You can modify the webhook, you can also `Enable` or `Disable` the webhook.
 
 ![Webhook Status](../../../img/webhooks3.png)
 
-If a webhook notification fails to send, or if it receives an HTTP error response with a code other than `2xx`, the notification is re-sent based on the configuration that you set in `harbor.yml`. 
+If a webhook notification fails to send, or if it receives an HTTP error response with a code other than `2xx`, the notification is re-sent based on the configuration that you set in `harbor.yml`.
 
 ### Globally Enable and Disable Webhooks
 

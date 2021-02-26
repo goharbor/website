@@ -60,12 +60,6 @@ You can compile the code by one of the two approaches:
     make install GOBUILDIMAGE=golang:1.13.8 COMPILETAG=compile_golangimage NOTARYFLAG=true
     ```
 
-- Build, install and bring up Harbor with Clair:
-
-   ```sh
-   make install GOBUILDIMAGE=golang:1.13.8 COMPILETAG=compile_golangimage CLAIRFLAG=true
-   ```
-
 #### II. Compile code with your own Golang environment, then build Harbor
 
 - Move source code to `$GOPATH`
@@ -76,18 +70,18 @@ You can compile the code by one of the two approaches:
     mv harbor $GOPATH/src/github.com/goharbor/.
     ```
 
-- Build, install and run Harbor without Notary and Clair:
+- Build, install and run Harbor without Notary:
 
     ```sh
     cd $GOPATH/src/github.com/goharbor/harbor
     $ make install
     ```
 
-- Build, install and run Harbor with Notary and Clair:
+- Build, install and run Harbor with Notary:
 
     ```sh
     cd $GOPATH/src/github.com/goharbor/harbor
-    make install -e NOTARYFLAG=true CLAIRFLAG=true
+    make install -e NOTARYFLAG=true
     ```
 
 ### Verify your installation
@@ -113,7 +107,6 @@ The `Makefile` contains these configurable parameters:
 | DEVFLAG             | Build model flag, default: dev                                   |
 | COMPILETAG          | Compile model flag, default: compile_normal (local golang build) |
 | NOTARYFLAG          | Notary mode flag, default: false                                 |
-| CLAIRFLAG           | Clair mode flag, default: false                                  |
 | TRIVYFLAG           | Trivy mode flag, default: false                                  |
 | HTTPPROXY           | NPM http proxy for Clarity UI builder                            |
 | REGISTRYSERVER      | Remote registry server IP address                                |

@@ -6,7 +6,7 @@ This is the main table of contents for the Harbor 2.1.x documentation.
 
 This section describes how to install Harbor and perform the required initial configurations. These day 1 operations are performed by the Harbor Administrator.
 
-- [Introduction](install-config/_index.md) 
+- [Introduction](install-config/_index.md)
 - [Test Harbor with the Demo Server](install-config/demo-server.md)
 - [Harbor Compatibility List](install-config/harbor-compatibility-list.md)
 - [Harbor Installation Prerequisites](install-config/installation-prereqs.md)
@@ -15,12 +15,11 @@ This section describes how to install Harbor and perform the required initial co
 - [Configure the Harbor YML File](install-config/configure-yml-file.md)
 - [Run the Installer Script](install-config/run-installer-script.md)
 - [Deploying Harbor with High Availability via Helm](install-config/harbor-ha-helm.md)
-- [Deploy Harbor with the Quick Installation Script](install-config/quick-install-script.md)
 - [Troubleshooting Harbor Installation](install-config/troubleshoot-installation.md)
 - [Reconfigure Harbor and Manage the Harbor Lifecycle](install-config/reconfigure-manage-lifecycle.md)
 - [Customize the Harbor Token Service](install-config/customize-token-service.md)
 - [Configure Harbor User Settings at the Command Line](install-config/configure-user-settings-cli.md)
-  
+
 ## Harbor Administration
 
 This section describes how to use and maintain Harbor after deployment. These day 2 operations are performed by the Harbor Administrator.
@@ -38,7 +37,7 @@ This section describes how to use and maintain Harbor after deployment. These da
 - [Configuring Replication](administration/configuring-replication/_index.md)
     - [Create Replication Endpoints](administration/configuring-replication/create-replication-endpoints.md)
     - [Create Replication Rules](administration/configuring-replication/create-replication-rules.md)
-    - [Manage Replications](administration/configuring-replication/manage-replications.md) 
+    - [Manage Replications](administration/configuring-replication/manage-replications.md)
 - [Vulnerability Scanning](administration/vulnerability-scanning/_index.md)
     - [Connect Harbor to Additional Vulnerability Scanners](administration/vulnerability-scanning/pluggable-scanners.md)
     - [Scan Individual Images](administration/vulnerability-scanning/scan-individual-image.md)
