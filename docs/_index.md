@@ -1,8 +1,8 @@
 ---
-title: Harbor 2.1 Documentation
+title: Harbor 2.2 Documentation
 ---
 
-Welcome to the Harbor 2.1.x documentation. This documentation includes all of the information that you need to install, configure, and use Harbor.
+Welcome to the Harbor 2.2.x documentation. This documentation includes all of the information that you need to install, configure, and use Harbor.
 
 ## Harbor Installation and Configuration
 
@@ -22,6 +22,6 @@ This section describes how developers can build from Harbor source code, customi
 
 ## Access the Documentation Source Files
 
-The source files for this documentation set are located in the [Harbor repository on Github](https://github.com/goharbor/harbor/tree/release-2.1.0/docs). 
+The source files for this documentation set are located in the [Harbor repository on Github](https://github.com/goharbor/harbor/tree/release-2.2.0/docs).
 
 For the previous versions of the docs, go to the [`docs` folder in the Github repository](https://github.com/goharbor/harbor/tree/master/docs) and select the appropriate `release-xxx` branch.
