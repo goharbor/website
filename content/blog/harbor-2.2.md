@@ -94,10 +94,10 @@ In 2021, the team will focus on
 - Deploy onto IPv6-based K8s clusters
 - Releasing an ARM64-based Harbor
 
-We also want to thank the following users for their sustained
-contributions to the project !
-
 ## Contributors to v2.2
+
+We also want to thank the following users for their sustained
+contributions to the project!
 
 - Will Sun
 - Qian Deng
