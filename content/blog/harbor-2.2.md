@@ -77,6 +77,8 @@ Huge shoutout to the maintainer team, our contributors & everyone in the
 community who helped the project realize its level of adoption today !!
 The project would not be where it is today without the community
 
+## Focus for 2021
+
 In 2021, the team will focus on
 
 - Hardening the Harbor Operator; great hook for any company offering
