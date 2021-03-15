@@ -20,7 +20,7 @@ To replicate image repositories from one instance of Harbor to another Harbor or
    - Ali Cloud Container Registry
    - Google Container Registry
    - Huawei SWR
-   - Helm Hub
+   - Artifact Hub (Support added in v2.0.4)
    - Gitlab
    - Quay.io
    - Jfrog Artifactory
