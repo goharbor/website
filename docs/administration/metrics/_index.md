@@ -92,3 +92,28 @@ To begin accessing your Harbor instance's metrics with Prometheus,
             - targets: ['<harbor_instance>:<metrics_port>']
       ```
 1. Once you have configured your Prometheus server to collect your Harbor metrics, you can use [Grafana](https://grafana.com/docs/) to visualize your data.  
+
+### From a Kubernetes cluster
+
+You can also use Prometheus to collect metrics from a Harbor instance deployed in your Kubernetes cluster. You should already have [installed  Prometheus](https://github.com/prometheus-community/helm-charts) and set up to pull metrics from your cluster.
+
+1. Create a ServiceMonitor in Prometheus for Harbor.
+
+    ```
+    apiVersion: monitoring.coreos.com/v1
+    kind: ServiceMonitor
+    metadata:
+      name: harbor
+      labels:
+        app: harbor
+    spec:
+      selector:
+        matchLabels:
+          app: harbor
+      endpoints:
+      - port: metrics
+    ```
+
+2. Enable Harbor to expose metrics by updating your harbor-helm `values.yaml` file and set `metrics.enabled` to `true`. You can also edit the port and path the metrics are exposed on by updating the available harbor-helm chart [configuration options for metrics](https://github.com/goharbor/harbor-helm#configuration).
+
+Prometheus should now show your Harbor instance's metrics.  
