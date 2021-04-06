@@ -329,7 +329,7 @@ The following table lists the additional, optional parameters that you can set t
   </tr>
   <tr>
     <td valign="top">&nbsp;</td>
-    <td valign="top"><code>enable</code></td>
+    <td valign="top"><code>enabled</code></td>
     <td valign="top">Enable exposing metrics on your Harbor instance by setting this to <code>true</code>. Default is <code>false</code></td>
   </tr>
   <tr>
