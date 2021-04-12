@@ -1139,7 +1139,7 @@ paths:
         '401':
           description: Unauthorized.
         '403':
-          description: Forbidden. User should have read permisson for the repository to perform the action.
+          description: Forbidden. User should have read permission for the repository to perform the action.
         '404':
           description: Repository not found.
     post:
@@ -1166,7 +1166,7 @@ paths:
         '401':
           description: Unauthorized.
         '403':
-          description: Forbidden. User should have write permisson for the repository to perform the action.
+          description: Forbidden. User should have write permission for the repository to perform the action.
         '404':
           description: Resource not found.
   '/repositories/{repo_name}/labels/{label_id}':
@@ -1193,7 +1193,7 @@ paths:
         '401':
           description: Unauthorized.
         '403':
-          description: Forbidden. User should have write permisson for the repository to perform the action.
+          description: Forbidden. User should have write permission for the repository to perform the action.
         '404':
           description: Resource not found.
   '/repositories/{repo_name}/tags/{tag}':
@@ -1343,7 +1343,7 @@ paths:
         '401':
           description: Unauthorized.
         '403':
-          description: Forbidden. User should have read permisson for the image to perform the action.
+          description: Forbidden. User should have read permission for the image to perform the action.
         '404':
           description: Resource not found.
     post:
@@ -1375,7 +1375,7 @@ paths:
         '401':
           description: Unauthorized.
         '403':
-          description: Forbidden. User should have write permisson for the image to perform the action.
+          description: Forbidden. User should have write permission for the image to perform the action.
         '404':
           description: Resource not found.
   '/repositories/{repo_name}/tags/{tag}/labels/{label_id}':
@@ -1407,7 +1407,7 @@ paths:
         '401':
           description: Unauthorized.
         '403':
-          description: Forbidden. User should have write permisson for the image to perform the action.
+          description: Forbidden. User should have write permission for the image to perform the action.
         '404':
           description: Resource not found.
   '/repositories/{repo_name}/tags/{tag}/manifest':
