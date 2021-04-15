@@ -42,7 +42,7 @@ Since the migration might alter the database schema and the settings of `harbor.
 
 1. Get the latest Harbor release package from [https://github.com/goharbor/harbor/releases](https://github.com/goharbor/harbor/releases) and extract it. 
 
-   For more information see [Download the Harbor Installer](../../install-config/download-installer.md)
+   For more information see [Download the Harbor Installer](../../install-config/download-installer.md).
 
 1. Before upgrading Harbor, perform migration.
 
