@@ -88,4 +88,5 @@ Remove the Harbor database and image data before performing a clean re-installat
 ```sh
 rm -r /data/database
 rm -r /data/registry
+rm -r /data/redis
 ```
