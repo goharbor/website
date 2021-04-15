@@ -5,7 +5,7 @@ title: Customize the Look and Feel of Harbor
 The primary look & feel of Harbor supports to be customized with several simple steps. All the relevant customization in configurations are saved in the `setting.json` file under `$HARBOR_DIR/src/portal/src` folder with `json` format and will be loaded when Harbor is launched.
 
 {{< note >}}
-There is a known issue in Harbor v2.0.0 where the `headerBgColor` setting is overridden by Harbor's default light and dark mode value. If you were using this setting in previous versions, it will be ignored after upgrading to v2.0. THis will be fixed in a future version.
+There is a known issue in Harbor v2.0.0 where the `headerBgColor` setting is overridden by Harbor's default light and dark mode value. If you were using this setting in previous versions, it will be ignored after upgrading to v2.0. This will be fixed in a future version.
 {{< /note >}}
 
 ## Configure
