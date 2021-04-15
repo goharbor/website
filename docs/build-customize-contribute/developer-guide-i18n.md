@@ -6,7 +6,13 @@ title: Developing for Internationalization
 All the files you created should use UTF-8 encoding.
 {{< /note >}}
 
-Steps to localize the UI in your language
+There are several translations available for the Harbor portal. See the available [translation files](https://github.com/goharbor/harbor/tree/master/src/portal/src/i18n/lang) for a full list of available languages.
+
+{{< note >}}
+Harbor officially supports only the English and Chinese translations, and both languages are verified for each release. If you plan to use another translation, its recommended that you verify the translations are correct for your Harbor version before implementing.
+{{< /note >}}
+
+Use the steps below to add a translation for a new language to the Harbor portal.
 
 1. In the folder `src/portal/src/i18n/lang`, copy json file `en-us-lang.json` to a new file and rename it to `<language>-<locale>-lang.json` .
 
@@ -22,12 +28,12 @@ Steps to localize the UI in your language
       // ...
     }
     ```
-    
+
     In the file `<language>-<locale>-lang.json`, translate all the values into your language. Do not change any keys.
 
 2. After creating your language file, you should add it to the language supporting list.
 
-    Locate the file `src/portal/src/app/shared/shared.const.ts`.
+    Locate the file `src/portal/src/app/shared/entities/shared.const.ts`.
 
     Append `<language>-<locale>` to the language supporting list:
 
@@ -44,14 +50,12 @@ Steps to localize the UI in your language
         "<language>-<locale>": "<DISPLAY_NAME>"
     };
     ```
-
-  {{< note >}}
   Don't miss the comma before the new key-value item you've added.
-  {{< /note >}}
+
 
 3. Enable the new language in the view.
 
-    Locate the file `src/portal/src/app/base/navigator/navigator.component.html` and then find the following code piece:
+    Locate the file `src/portal/src/app/shared/components/navigator/navigator.component.html` and then find the following code piece:
 
     ```html
     <div class="dropdown-menu">
