@@ -28,8 +28,17 @@ The installation processes are almost the same for both the online and offline i
       You should see the message ` public key "Harbor-sign (The key for signing Harbor build) <jiangd@vmware.com>" imported`
    1. Verify that the package is genuine by running one of the following commands.
 
-      - Online installer: <pre>gpg -v --keyserver hkps://keyserver.ubuntu.com --verify harbor-online-installer-<i>version</i>.tgz.asc</pre>
-      - Offline installer: <pre>gpg -v --keyserver hkps://keyserver.ubuntu.com --verify harbor-offline-installer-<i>version</i>.tgz.asc</pre>
+      - Online installer:
+
+         ```sh
+         gpg -v --keyserver hkps://keyserver.ubuntu.com --verify harbor-online-installer-version.tgz.asc
+         ```
+
+      - Offline installer:
+
+         ```sh
+         gpg -v --keyserver hkps://keyserver.ubuntu.com --verify harbor-offline-installer-version.tgz.asc
+         ```
       
       The `gpg` command verifies that the signature of the bundle matches that of the `*.asc` key file. You should see confirmation that the signature is correct.
       
@@ -48,8 +57,17 @@ The installation processes are almost the same for both the online and offline i
 
 1. Use `tar` to extract the installer package:
 
-   - Online installer:<pre>bash $ tar xvf harbor-online-installer-<em>version</em>.tgz</pre>
-   - Offline installer:<pre>bash $ tar xvf harbor-offline-installer-<em>version</em>.tgz</pre>
+   - Online installer:
+
+      ```sh
+      bash $ tar xzvf harbor-online-installer-version.tgz
+      ```
+
+   - Offline installer:
+   
+      ```sh
+      bash $ tar xzvf harbor-offline-installer-version.tgz
+      ```
    
 ## Next Steps
 
