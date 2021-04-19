@@ -19,7 +19,7 @@ Table updated on 10/21/2019 against Harbor 1.9.
 | LDAP-based Auth                                        | ✓      | ✓                       | ✓       | partial                           | ✗                           | ✓           | ✓        |
 | Local Auth                                             | ✓      | ✓                       | ✓       | ✓                                 | ✗                           | ✓           | ✓        |
 | Multi-Tenancy (projects, teams, namespaces, etc)       | ✓      | ✓                       | ✓       | partial                           | ✗                           | ✓           | ✓        |
-| Open Source                                            | ✓      | partial                 | ✗       | ✗                                 | ✓                           | partial     | partial  |
+| Open Source                                            | ✓      | partial                 | ✓       | ✗                                 | ✓                           | partial     | partial  |
 | Project Quotas (by image count & storage consumption)  | ✓      | ✗                       | ✗       | partial                           | ✗                           | ✗           | ✗        |
 | Replication between instances                          | ✓      | ✓                       | ✓       | n/a                               | ✗                           | ✓           | ✗        |
 | Replication between non-instances                      | ✓      | ✗                       | ✓       | n/a                               | ✗                           | ✗           | ✗        |
@@ -27,9 +27,9 @@ Table updated on 10/21/2019 against Harbor 1.9.
 | Robot Accounts for Images                              | ✓      | ?                       | ✓       | ?                                 | ✗                           | ?           | ?        |
 | Role-Based Access Control                              | ✓      | ✓                       | ✓       | ✓                                 | ✗                           | ✓           | ✗        |
 | Single Sign On (OIDC)                                  | ✓      | ✓                       | ✓       | ✓                                 | ✗                           | partial     | ✗        |
-| Tag Retention Policy                                   | ✓      | ✗                       | partial | ✗                                 | ✗                           | ✗           | ✗        |
+| Tag Retention Policy                                   | ✓      | ✗                       | ✓       | ✗                                 | ✗                           | ✗           | ✗        |
 | Upstream Registry Proxy Cache                          | ✗      | ✓                       | ✗       | ✗                                 | ✓                           | ✓           | ✗        |
 | Vulnerability Scanning & Monitoring                    | ✓      | ✓                       | ✓       | ✗                                 | ✗                           | ✓           | partial  |
-| Vulnerability Scanning Plugin Framework                | ✓      | ✗                       | ✗       | ✗                                 | ✗                           | ✗           | ✗        |
+| Vulnerability Scanning Plugin Framework                | ✓      | ✗                       | ✓       | ✗                                 | ✗                           | ✗           | ✗        |
 | Vulnerability Allowlisting                             | ✓      | ✗                       | ✗       | ✗                                 | ✗                           | ✗           | ✗        |
 | Webhooks                                               | ✓      | ✓                       | ✓       | ✓                                 | ✓                           | ✓           | ✓        |
