@@ -134,7 +134,7 @@ The `Makefile` contains these configurable parameters:
 | package_online         | prepare online install package                                                                                              |
 | package_offline        | prepare offline install package                                                                                             |
 | pushimage              | push Harbor images to specific registry server                                                                              |
-| clean all              | remove binary, Harbor images, specific version docker-compose file, specific version tag and online/offline install package |
+| cleanall               | remove binary, Harbor images, specific version docker-compose file, specific version tag and online/offline install package |
 | cleanbinary            | remove ui and jobservice binary                                                                                             |
 | cleanimage             | remove Harbor images                                                                                                        |
 | cleandockercomposefile | remove specific version docker-compose                                                                                      |
