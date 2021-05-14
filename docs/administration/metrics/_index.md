@@ -91,7 +91,7 @@ To begin accessing your Harbor instance's metrics with Prometheus,
           static_configs:
             - targets: ['<harbor_instance>:<metrics_port>']
       ```
-1. Once you have configured your Prometheus server to collect your Harbor metrics, you can use [Grafana](https://grafana.com/docs/) to visualize your data.  
+1. Once you have configured your Prometheus server to collect your Harbor metrics, you can use [Grafana](https://grafana.com/docs/) to visualize your data. An [example Grafana dashboard](https://github.com/goharbor/harbor/blob/master/contrib/grafana-dashborad/metrics-example.json) is available in the Harbor repo to help you get started visualizing Harbor metrics.  
 
 ### From a Kubernetes cluster
 
