@@ -14,7 +14,7 @@ Harbor metrics show data related to
 * Metrics provided by the [docker distribution](https://github.com/distribution/distribution/blob/main/notifications/metrics.go) itself
 * Some data related to business logic which already exist in the Harbor database
 
-Metrics are exposed by three components: `exporter`, `core` and `registry`. In addition to runtime and performance data, these components expose Harbor specific metrics. Thee following sections list the available Harbor metrics.
+Metrics are exposed by several Harbor components: `exporter`, `core`, `jobservice`, and `registry`. In addition to runtime and performance data, these components also expose Harbor specific metrics. The following sections list the available Harbor metrics.
 
 ## Harbor Exporter Metrics
 
@@ -33,6 +33,9 @@ Name | Description | Labels (Values) | Metric type
 `harbor_health` | Current status of Harbor | | gauge
 `harbor_system_info` | Information about your Harbor instance | auth_mode (`db_auth`, `ldap_auth`, `uaa_auth`, `http_auth`, `oidc_auth`), harbor_version, self_registration(`true`,`false`) | gauge
 `harbor_up`| Running status of Harbor components  | component (`chartmuseum`, `core`, `database`, `jobservice`, `portal`, `redis`, `registry`, `registryctl`, `trivy`) | gauge
+`harbor_jobservice_job_size` | The size of Jobservice task queue |  | gauge
+`harbor_jobservice_running_task` | 	Number of running tasks |  | gauge
+`harbor_jobservice_pending_task` | Number of pending tasks |  | gauge
 {{< /table >}}
 
 ## Harbor Core Metrics
@@ -58,6 +61,20 @@ Name | Description | Labels (Values) |Metric type
 `registry_http_request_duration_seconds` | The HTTP request latencies in seconds | handler, method (`GET`, `POST`, `HEAD`, `PATCH`, `PUT`), le | histogram
 `registry_http_request_size_bytes` | The HTTP request sizes in bytes. | handler, le | histogram
 {{< /table >}}
+
+## Harbor Jobservice metrics
+
+The following are metrics pulled from the Docker distribution and are available at `<harbor_instance>:<metrics_port>/<metrics_path>?comp=jobservice`.
+
+{{< table caption="Metrics exposed by Harbor Core" >}}
+Name | Description | Labels (Values) |Metric type
+:---------|:------------|:-------|:-------
+`harbor_jobservice_task_total` |  The number of done Jobservice tasks |  | counter
+`harbor_jobservice_task_process_time` | Distribution of task duration |  | summary
+
+{{< /table >}}
+
+
 
 ## Scrapping Metrics with Prometheus
 
@@ -88,6 +105,14 @@ To begin accessing your Harbor instance's metrics with Prometheus,
           params:
             # Scrape metrics from the Harbor registry component
             comp: ['registry']
+          static_configs:
+            - targets: ['<harbor_instance>:<metrics_port>']
+
+        - job_name: 'harbor-jobservice'
+          scrape_interval: 20s
+          params:
+            # Scrape metrics from the Harbor jobservice component
+            comp: ['jobservice']
           static_configs:
             - targets: ['<harbor_instance>:<metrics_port>']
       ```
