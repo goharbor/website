@@ -11,6 +11,7 @@ You can use a proxy cache to pull images from a target Harbor or non-Harbor regi
 Harbor supports proxy caching for the following registries:
    - Harbor
    - Docker Hub
+   - Docker registry
    - AWS Elastic Container Registry
    - Azure Container Registry
    - Google Container Registry
