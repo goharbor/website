@@ -44,12 +44,12 @@ See [Run the Installer Script](run-installer-script.md) or [Reconfigure Harbor a
 
 1. Replace the default key and certificate. 
 
-   Assuming that the key and certificate are in `/root/cert`, run the following commands:
+   Assuming that the new key and certificate are in `/root/cert`, and `/srv/harbor/data` was specified as `data_volume` run the following commands:
 
    ```sh
    cd config/ui
-   cp /root/cert/private_key.pem private_key.pem
-   cp /root/cert/root.crt ../registry/root.crt
+   cp /root/cert/private_key.pem /srv/harbor/data/secret/core/private_key.pem
+   cp /root/cert/root.crt /srv/harbor/data/secret/registry/root.crt
    ```
 
 1. Go back to the `make` directory, and start Harbor by using following command:
