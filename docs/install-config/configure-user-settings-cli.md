@@ -83,7 +83,7 @@ Set-Cookie: sid=cc1bc93ffa2675253fc62b4bf3d9de0e; Path=/; HttpOnly
 
 ## Configure Users Settings using an Environment Variable
 
-Introduced in 2.3.0 is the ability to use an environment variable in the core container, `CONFIG_OVERWRITE_JSON`, to configure user settings.
+Introduced in 2.3.0 is the ability to use an environment variable, `CONFIG_OVERWRITE_JSON`, in the core container to configure user settings. Once the `CONFIG_OVERWRITE_JSON` variable is set, you can only update or remove settings by updating the `CONFIG_OVERWRITE_JSON` and restarting the container. You will not be able to update user settings in the Harbor interface or in the commandline.
 
 **Example CONFIG_OVERWRITE_JSON configuration:**
 
@@ -94,9 +94,9 @@ CONFIG_OVERWRITE_JSON={"ldap_verify_cert":"false", "auth_mode":"ldap_auth","ldap
 
 See the [user settings](#harbor-user-settings) table below for more information about available inputs for `CONFIG_OVERWRITE_JSON`.
 
-{{< important >}}
-Once the `CONFIG_OVERWRITE_JSON` variable is set, you can only update or remove settings by updating the `CONFIG_OVERWRITE_JSON` and restarting the container. You will not be able to update user settings in the Harbor interface or in the commandline. Additionally, if there is a legacy user in your instance of Harbor, the authentication mode can’t be changed by the environment variable `CONFIG_OVERWRITE_JSON`.
-{{< /important >}}
+{{< note >}}
+If there is a legacy user in your instance of Harbor, the authentication mode can’t be changed by the environment variable `CONFIG_OVERWRITE_JSON`.
+{{< /note >}}
 
 
 ## Harbor user settings
