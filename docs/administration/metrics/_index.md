@@ -59,7 +59,7 @@ Name | Description | Labels (Values) |Metric type
 `registry_http_request_size_bytes` | The HTTP request sizes in bytes. | handler, le | histogram
 {{< /table >}}
 
-## Scrapping Metrics with Prometheus
+## Scraping Metrics with Prometheus
 
 To begin accessing your Harbor instance's metrics with Prometheus,
 1. Enable exposing metrics in your `harbor.yml` [configuration file](../../install-config/configure-yml-file.md) and set the port and path for metrics to be exposed on. Also see more about [reconfiguring your Harbor instance](../../install-config/reconfigure-manage-lifecycle/).
