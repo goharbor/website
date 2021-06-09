@@ -5,6 +5,11 @@ weight: 25
 
 A replication endpoint must exist before you create a replication rule. To create an endpoint, follow the instructions in [Creating Replication Endpoints](create-replication-endpoints.md).
 
+{{< note >}}
+Because of major API changes in the v2.0 release to support [OCI](https://github.com/opencontainers/distribution-spec).
+You **can not** replicate from Harbor v1.x to v2.0 and later, and you **can not** replicate artifacts with **manifest list** from v2.0 and later to v1.x.
+{{< /note >}}
+
 1. Log in to the Harbor interface with an account that has Harbor system administrator privileges.
 1. Expand **Administration**, and select **Replications**.
 
@@ -42,9 +47,6 @@ A replication endpoint must exist before you create a replication rule. To creat
 1. If you are creating a Push-based replication rule, use the **Destination Registry** drop-down menu to select from the configured replication endpoints.
 1. For **Destination Namespace**, enter the name of the namespace in which to replicate resources in the  text box. If you do not enter a namespace, resources are placed in the same namespace as in the source registry.
 
-   **NOTE:** Because of major API changes in the v2.0 release to support [OCI](https://github.com/opencontainers/distribution-spec).
-   You **can not** replicate from Harbor v1.x to v2.0 and later, and you **can not** replicate artifacts with **manifest list** from v2.0 and later to v1.x.
-
 1. Use the Destination Flattening drop-down to select how you want Harbor treat to image hierarchy when replicating images. Depending on what you select, Harbor will remove the same number of levels from the image's hierarchy, starting from the left, when replicating an image into your chosen destination namespace.
 
     * **Flatten All Levels**: Remove all hierarchy from the replicated image. For example, `a/b/c/d/img` replicates to `namespace/img`. This is the default behavior of replication in v2.2 and before. All replication rules created before upgrading to v2.3.0 will default to using this flattening option after upgrade.
@@ -52,6 +54,11 @@ A replication endpoint must exist before you create a replication rule. To creat
     * **Flattening 1 level**: Remove one level from the image hierarchy. For example, `a/b/c/d/img` replicates to `namespace/b/c/d/img`. This is the default selection.
     * **Flattening 2 levels**: Remove two levels from the image hierarchy. For example, `a/b/c/d/img` replicates to `namespace/c/d/img`
     * **Flattening 3 levels**: Remove three levels from the image hierarchy. For example, `a/b/c/d/img` replicates to `namespace/d/img`
+
+
+  {{< note >}}
+  You should always set replication rules for Chartmuseum resources to Flatten All Levels because Chartmusem expects the destination chart name hierarchy to only have 2 levels: `namespace/chart`.
+  {{< /note >}}
 
 1. Use the Trigger Mode drop-down menu to select how and when to run the rule.
    * **Manual**: Replicate the resources manually when needed. **Note**: Deletion operations are not replicated.
