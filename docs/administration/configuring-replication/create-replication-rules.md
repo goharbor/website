@@ -55,9 +55,8 @@ You **can not** replicate from Harbor v1.x to v2.0 and later, and you **can not*
     * **Flattening 2 levels**: Remove two levels from the image hierarchy. For example, `a/b/c/d/img` replicates to `namespace/c/d/img`
     * **Flattening 3 levels**: Remove three levels from the image hierarchy. For example, `a/b/c/d/img` replicates to `namespace/d/img`
 
-
   {{< note >}}
-  You should always set replication rules for Chartmuseum resources to Flatten All Levels because Chartmusem expects the destination chart name hierarchy to only have 2 levels: `namespace/chart`.
+  Chartmusem expects chart name hierarchy to only include 2 levels. If you are creating a rule that will replicate Chartmusem charts, make sure that the destination chart name is formatted as `namespace/chart`.
   {{< /note >}}
 
 1. Use the Trigger Mode drop-down menu to select how and when to run the rule.
