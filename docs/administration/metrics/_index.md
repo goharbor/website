@@ -65,9 +65,9 @@ Name | Description | Labels (Values) |Metric type
 
 ## Harbor Jobservice metrics
 
-The following are metrics pulled from the Docker distribution and are available at `<harbor_instance>:<metrics_port>/<metrics_path>?comp=jobservice`.
+The following are metrics pulled from the Harbor Jobservice and are available at `<harbor_instance>:<metrics_port>/<metrics_path>?comp=jobservice`.
 
-{{< table caption="Metrics exposed by Harbor Jobserive" >}}
+{{< table caption="Metrics exposed by Harbor Jobservice" >}}
 Name | Description | Labels (Values) |Metric type
 :---------|:------------|:-------|:-------
 `harbor_jobservice_info` |  The information of Jobservice | instance, job, node, pool, workers | gauge
