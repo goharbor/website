@@ -1,11 +1,13 @@
 ---
-title: Configure Harbor User Settings at the Command Line
+title: Configure Harbor User Settings
 weight: 65
 ---
 
-From release 1.8.0 onwards, user settings are configured separately from the system settings. You do not configure user settings in the `harbor.yml` file, but rather in the Harbor interface or via HTTP requests.
+User settings are configured separately from the [system settings](configure-yml-file.md). You can change user settings in the Harbor interface, through HTTP requests, or using an environment variable. This page describes the available user settings, and how to use the commandline or environment variable to update user settings.
 
-## Example Configuration Commands:
+See the [Managing Users](../administration/managing-users) section for more information about updating user settings through the Harbor interface.
+
+## Example Configuration Commands for the Commandline
 
 **Add a new user in the local database:**
 
@@ -79,9 +81,27 @@ Connection: keep-alive
 Set-Cookie: sid=cc1bc93ffa2675253fc62b4bf3d9de0e; Path=/; HttpOnly
 ```
 
+## Configure Users Settings using an Environment Variable
+
+Introduced in 2.3.0 is the ability to use an environment variable, `CONFIG_OVERWRITE_JSON`, in the core container to configure user settings. Once the `CONFIG_OVERWRITE_JSON` variable is set, you can only update or remove settings by updating the `CONFIG_OVERWRITE_JSON` and restarting the container. You will not be able to update user settings in the Harbor interface or in the commandline.
+
+**Example CONFIG_OVERWRITE_JSON configuration:**
+
+```
+CONFIG_OVERWRITE_JSON={"ldap_verify_cert":"false", "auth_mode":"ldap_auth","ldap_base_dn":"dc=example,dc=com", "ldap_search_dn":"cn=admin,dc=example,dc=com","ldap_search_password":"admin","ldap_url”:”myldap.example.com", "ldap_scope":2}
+
+```
+
+See the [user settings](#harbor-user-settings) table below for more information about available inputs for `CONFIG_OVERWRITE_JSON`.
+
+{{< note >}}
+If there is a legacy user in your instance of Harbor, the authentication mode can’t be changed by the environment variable `CONFIG_OVERWRITE_JSON`.
+{{< /note >}}
+
+
 ## Harbor user settings
 
-| Configure item name | Description  | Type | Required | Default Value | 
+| Configure item name | Description  | Type | Required | Default Value |
 | ------------ |------------ | ---- | ----- | ----- |
 auth_mode | Authentication mode, it can be db_auth, ldap_auth, uaa_auth or oidc_auth  | string
 email_from |   Email from  |  string | required (email feature)
@@ -92,7 +112,7 @@ email_insecure |  Email verify certificate, true or false |boolean  | optional (
 email_port |    Email server port | number | required (email feature)
 email_ssl |    Email SSL | boolean    | optional | false
 email_username |  Email username | string | required (email feature)
-ldap_url |  LDAP URL | string | required | 
+ldap_url |  LDAP URL | string | required |
 ldap_base_dn |   LDAP base DN  | string | required(ldap_auth)
 ldap_filter |    LDAP filter | string | optional
 ldap_scope |  LDAP search scope, 0-Base Level, 1- One Level, 2-Sub Tree | number | optional | 2-Sub Tree
