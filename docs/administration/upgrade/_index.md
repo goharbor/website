@@ -3,7 +3,7 @@ title: Upgrade Harbor and Migrate Data
 weight: 45
 ---
 
-This guide covers upgrade and migration to version 2.2.0. This guide only covers migration from v1.10.x and later to the current version. If you are upgrading from an earlier version, refer to the migration guide in the `release-1.10.0` branch to upgrade to v1.10.x first, then follow this guide to perform the migration to this version.
+This guide covers upgrade and migration to version 2.3.0. This guide only covers migration from v1.10.x and later to the current version. If you are upgrading from an earlier version, refer to the migration guide in the `release-1.10.0` branch to upgrade to v1.10.x first, then follow this guide to perform the migration to this version.
 
 If you are upgrading a Harbor instance that you deployed with Helm, see [Upgrading Harbor Deployed with Helm](helm-upgrade.md).
 
@@ -18,6 +18,7 @@ Since the migration might alter the database schema and the settings of `harbor.
 - Harbor v2.2 vulnerability scanning changes
   - Clair was removed as a default scanner. If you upgrade with Clair as your default scanner, you will no longer be able to run vulnerability scans until a new scanner is installed. It's recommended that you use Trivy as your default scanner or add Clair as an [external scanner](../vulnerability-scanning/pluggable-scanners.md) after upgrade.
   - Updates were made to the vulnerability database scheme which require you to rescan all images after upgrade. Scan reports from before the upgrade are preserved, but will not be visible to you until you scan all images again. For more information, read how to [Scan All Artifacts](../vulnerability-scanning/scan-all-artifacts/).
+- Harbor v2.3 uses PostgreSQL v13.2. During an upgrade, Harbor will remove the old PostgreSQL data and migrate it to new destination to compatible new version PostgreSQL. You must backup your data before upgrading to v2.3.0.
 
 ## Upgrading Harbor and Migrating Data
 
@@ -40,7 +41,7 @@ Since the migration might alter the database schema and the settings of `harbor.
     cp -r /data/database /my_backup_dir/
     ```
 
-1. Get the latest Harbor release package from [https://github.com/goharbor/harbor/releases](https://github.com/goharbor/harbor/releases) and extract it. 
+1. Get the latest Harbor release package from [https://github.com/goharbor/harbor/releases](https://github.com/goharbor/harbor/releases) and extract it.
 
    For more information see [Download the Harbor Installer](../../install-config/download-installer.md).
 
