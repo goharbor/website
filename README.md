@@ -36,6 +36,9 @@ helmversion = "1.3"
 branchname = "release-X.Y.Z"
 ```
 
+As last step, update the [_index.md](https://github.com/goharbor/website/blob/master/docs/_index.md) file with the new version number and correct links.
+
+
 After a release, update the [backport](https://github.com/sqren/backport) tool configuration file, `.backportrc.json`, with the new release branch name. 
 
 ### CSS
