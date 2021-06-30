@@ -59,5 +59,6 @@ The following table depicts the various user permission levels in a project.
 | Enable/disable tag immutability rules   |               |       |           | ✓      | ✓             |
 | See project quotas                      | ✓             | ✓     | ✓         | ✓      | ✓             |
 | Edit project quotas  *                  |               |       |           |        |               |
+| Delete Project                          |               |       |           |        | ✓             |
 
 &ast; Only the Harbor system administrator can edit project quotas and add new scanners.
