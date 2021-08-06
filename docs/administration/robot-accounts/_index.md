@@ -3,7 +3,7 @@ title: Create System Robot Accounts
 weight: 40
 ---
 
-Harbor v2.2 introduces the capability for administrators to create system robot accounts you can use you run automated actions in your Harbor instances. System robot accounts allow you to use a robot account to perform maintenance or repeated task across all or a subset of projects in your Harbor instance.
+Harbor v2.2 introduces the capability for administrators to create system robot accounts you can use you run automated actions in your Harbor instances. System robot accounts allow you to use a robot account to perform maintenance or repeated tasks across all or a subset of projects in your Harbor instance.
 
 For each system robot account you are able to assign the following permissions,
 
