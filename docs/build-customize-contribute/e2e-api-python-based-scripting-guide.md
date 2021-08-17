@@ -73,9 +73,23 @@ header: Content-Security-Policy: frame-ancestors 'none'
 
 ......
 
-#### How To Trigger Script In CI ####
+#### How To Add more E2E Scripts In CI ####
 
-If you like to have your scripts running in CI which is for verification of pull requests, please add your scripts into *https://github.com/goharbor/harbor/blob/master/tests/robot-cases/Group0-BAT/API_DB.robot* file, then scripts can be triggered once there is a pull request.
+If you like to have your scripts running in CI which is for verification of pull requests, please add your script full path into *https://github.com/goharbor/harbor/blob/master/tests/robot-cases/Group0-BAT/API_DB.robot* file, then scripts in this file can be triggered once there is a pull request.
 
 
+
+#### Execute E2E test By Docker Container ####
+
+1. Start Container
+    `docker run -it --privileged -v /harbor/code/harbor:/drone -w /drone goharbor/harbor-e2e-engine:3.0.1-api bash`
+	Note: "/harbor/code/harbor" is root directory of harbor source code.
+
+2. Initialize Environment
+    `robot -v DOCKER_USER:user -v DOCKER_PWD:pwd -v ip:10.10.10.10 -v ip1: -v HARBOR_PASSWORD:Harbor12345 /drone/tests/robot-cases/Group1-Nightly/Setup.robot`
+	Note: Initialization include building swagger client, starting dockerd and containerd, etc.
+
+3. Run API Scripts
+    `robot --include robot_account -v DOCKER_USER:user -v DOCKER_PWD:pwd -v ip:10.10.10.10-v ip1: -v HARBOR_PASSWORD:Harbor12345  /drone/tests/robot-cases/Group0-BAT/API_DB.robot`
+	Note: Python test scripts should be included into API_DB.robot and grouped by tags, tags are the input for "–include" option. then scripts can be executed according to tags.
 
