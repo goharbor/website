@@ -18,10 +18,10 @@ From time to time, you may need to mannually test Harbor REST API. You can deplo
   When using Swagger to send REST requests to Harbor, you may alter the data of Harbor accidentally. For this reason, we do **not** recommended using Swagger against a production Harbor instance.
   {{< /danger >}}
 
-* Download `prepare-swagger.sh` and `swagger.yaml` under the `docs` directory to your local Harbor directory, e.g. `~/harbor`.
+* Download `prepare-swagger.sh` and `swagger.yaml` under the `api` directory to your local Harbor directory, e.g. `~/harbor`.
 
     ```sh
-    wget https://raw.githubusercontent.com/goharbor/harbor/master/docs/prepare-swagger.sh https://raw.githubusercontent.com/goharbor/harbor/master/docs/swagger.yaml
+    wget https://raw.githubusercontent.com/goharbor/harbor/master/docs/prepare-swagger.sh https://raw.githubusercontent.com/goharbor/harbor/master/api/swagger.yaml
     ```
 
 * Edit the script file `prepare-swagger.sh`.
