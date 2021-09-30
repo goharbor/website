@@ -342,7 +342,55 @@ The following table lists the additional, optional parameters that you can set t
     <td valign="top"><code>path</code></td>
     <td valign="top">Path metrics are exposed on. Default is <code>/metrics</code></td>
   </tr>
+  <tr>
+    <td valign="top"><code>trace</code></td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">Configure exposing Distributed tracing data</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>enabled</code></td>
+    <td valign="top">Enable exposing tracing on your Harbor instance by setting this to <code>true</code>. Default is <code>false</code></td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>sample_rate</code></td>
+    <td valign="top">Set the sample rate of tracing. For example, set sample_rate to <code>1</code> if you wanna sampling 100% of trace data; set <code>0.5</code> if you wanna sampling 50% of trace data, and so forth </td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>namespace</code></td>
+    <td valign="top">Namespace used to differenciate different harbor services, which will set to attribute with key <code>service.namespace</code></td>
+  </tr>
+    <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>attributes</code></td>
+    <td valign="top">The attributes is a key value dict contains user defined customized attributes used to initialize trace provider, and all of these atributes will added to trace data</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>jaeger</code></td>
+    <td valign="top"><ul>
+      <li><code>endpoint</code>: The url of endpoint(for example <code>http://127.0.0.1:14268/api/traces</code>). set endpoint means export to jaeger collector via http.</li>
+      <li><code>username:</code>: Username used to connect endpoint. Left empty if not needed.</li>
+      <li><code>password:</code>: Password used to connect endpoint. Left empty if not needed.</li>
+      <li><code>agent_host</code>: The host name of jaeger agent. Set agent_host means export data to jaeger agent via udp. </li>
+      <li><code>agent_port:</code>: The port name of jaeger agent.</li>
+    </ul></td>
+  </tr>
+   <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>otel</code></td>
+    <td valign="top"><ul>
+      <li><code>endpoint</code>: The hostname and port for otel compitable backend(for example <code>127.0.0.1:4318</code>).</li>
+      <li><code>url_path:</code>: The url path of endpoint(for example <code>127.0.0.1:4318</code>) </li>
+      <li><code>compression:</code>: If enabling data compression</li>
+      <li><code>insecure</code>: Ignore cert verification for otel backend </li>
+      <li><code>timeout:</code>: The timeout of data transfer</li>
+    </ul></td>
+  </tr>
 </table>
+
 
 
 {{< note >}}
