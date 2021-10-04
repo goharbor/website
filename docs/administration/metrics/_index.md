@@ -59,8 +59,12 @@ The following are metrics pulled from the Docker distribution and are available 
 Name | Description | Labels (Values) |Metric type
 :---------|:------------|:-------|:-------
 `registry_http_in_flight_requests` | The in-flight HTTP requests | handler | gauge
-`registry_http_request_duration_seconds` | The HTTP request latencies in seconds | handler, method (`GET`, `POST`, `HEAD`, `PATCH`, `PUT`), le | histogram
-`registry_http_request_size_bytes` | The HTTP request sizes in bytes. | handler, le | histogram
+`registry_http_request_duration_seconds_bucket` `registry_http_request_duration_seconds_sum` `registry_http_request_duration_seconds_count` | The HTTP request latencies in seconds | handler, method (`GET`, `POST`, `HEAD`, `PATCH`, `PUT`), le | histogram
+`registry_http_request_size_bytes_bucket registry_http_request_size_bytes_sum registry_http_request_size_bytes_count` | The HTTP request sizes in bytes | handler, le | histogram
+`registry_http_requests_total` | Total number of HTTP requests made | code,handler,method,le | counter
+`registry_http_response_size_bytes_bucket` `registry_http_response_size_bytes_sum` `registry_http_response_size_bytes_count` | The HTTP response sizes in bytes | handler,le | histogram
+`registry_storage_action_seconds_bucket` `registry_storage_action_seconds_sum` `registry_storage_action_seconds_count`| The number of seconds that the storage action takes | action,driver,le | histogram
+`registry_storage_cache_total` | The number of cache request received | type | gauge
 {{< /table >}}
 
 ## Harbor Jobservice metrics
