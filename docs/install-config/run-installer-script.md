@@ -58,6 +58,7 @@ sudo ./install.sh --with-trivy
 ```
 
 For more information about Trivy, see the [Trivy documentation](https://github.com/aquasecurity/trivy).
+For more information about how to use Trivy in an webproxy environment see [Configure custom Certification Authorities for trivy](administration/vulnerability-scanning/configure-custom-certs.md)
 
 ## Installation with Chart Repository Service
 
