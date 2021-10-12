@@ -25,9 +25,9 @@ You **can not** replicate from Harbor v1.x to v2.0 and later, and you **can not*
    ![Replication filters](../../../img/replication-rule3.png)
 
    * **Name**: Replicate resources with a given name by entering an artifact name or fragment.
-   * **Tag**: Replicate resources with a given tag by entering a tag name or fragment.
-   * **Label**: Replicate resources with a given label by using the drop-down menu to select from the available labels.
-   * **Resource**: Replicate artifacts, charts, or both.
+   * **Tag**: Replicate resources with a given tag by entering a tag name or fragment. You can also specify matching/excluding for this filter.
+   * **Label**: Replicate resources with a given label by using the drop-down menu to select from the available labels. You can also specify matching/excluding for this filter.
+   * **Resource**: Replicate images, charts, artifacts or all. Artifacts contain images and other OCI compatible resources.
 
    The name filter and tag filters support the following patterns:
 
@@ -69,8 +69,16 @@ You **can not** replicate from Harbor v1.x to v2.0 and later, and you **can not*
    {{< /note >}}
 
    ![Trigger mode](../../../img/replication-rule5.png)
+1. Optionally set the maximum network bandwidth for each replication task, please pay attention to the number of concurrent executions, the default value is 10 for each job-service pod. The unit is kilo bytes per second, and -1 stands for unlimited bandwith. 
 
+   ![Bandwidth](../../../img/replication-rule7.png)
+
+   {{< note >}}
+   There's a known issue [15708](https://github.com/goharbor/harbor/issues/15708), that if you limit the bandwidth too slow, and stop the replication job, it may take quite a long time to really release the job worker to run a new job.
+   {{< /note >}}
 1. Optionally select the Override checkbox to force replicated resources to replace resources at the destination with the same name.
+
+   ![Override](../../../img/replication-rule8.png)
 1. Click **Save** to create the replication rule.  
 
 ## What to Do Next
