@@ -30,4 +30,4 @@ Harbor system administrators can assign the Harbor system administrator role to 
 
 ![browse project](../../img/new-set-admin-remove-user.png)
 
-To delete users, select a user and click `DELETE`. Deleting users is only supported under database authentication mode.
+To delete users, select a user and click `DELETE`. When deleting the user, its privilege will be removed. for LDAP/AD or OIDC authentication mode, it just delete the user data in Harbor, not in the LDAP/AD or OIDC.
