@@ -89,5 +89,5 @@ Collaborate with us on [GitHub](https://github.com/goharbor/harbor)
 Attend the [community meetings](https://github.com/goharbor/community/wiki/Harbor-Community-Meetings)
 
 Orlin Vasilev
-Harbor Community Managaer
+Harbor Community Manager
 [@OrlinVasilev](https://github.com/OrlinVasilev)
