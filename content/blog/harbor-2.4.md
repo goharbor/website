@@ -1,5 +1,5 @@
 ---
-title: "Harbor v2.4 Distributed Tracing"
+title: "Harbor v2.4 release and Distributed Tracing"
 author:
   name: "Harbor Team"
 date: 2021-10-25T12:00:00+04:00
@@ -23,7 +23,7 @@ Other notable features such as:
 - Support exclusions and rate limit to Replication Rules.
 - Enable OIDC auth based user deletion, This addresses [#8424](https://github.com/goharbor/harbor/issues/8424).
 - Schedule synchronize from DB to Redis. 
-- Golang v1.16.7. Harbor is now built using Golang v1.16.7 as of this release. [#15868](https://github.com/goharbor/harbor/pull/15868)
+- Harbor is now built using Golang v1.17.2 as of this release. [#15868](https://github.com/goharbor/harbor/pull/15868)
 - Bump up Trivy to 0.23.0 which adds support for go.sum scanning.[#15861](https://github.com/goharbor/harbor/pull/15861)
 
 Deprecations:
@@ -52,6 +52,18 @@ The project would not be where it is today without the community
 
 We also want to thank the following users for their sustained
 contributions to the project!
+
+- Alexis L
+- Chenyu Zhang
+- He Weiwei
+- Rolf Ahrenberg
+- Steven Zou
+- Wang Yan
+- chlins
+- stonezdj(Daojun Zhang)
+- 孙世军
+
+And overall contributors:
 
 - Will Sun
 - Qian Deng
