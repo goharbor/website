@@ -2,11 +2,10 @@
 title: "Harbor v2.4 release and Distributed Tracing"
 author:
   name: "Harbor Team"
-date: 2021-10-25T12:00:00+04:00
+date: 2021-10-29T12:00:00+04:00
 draft: false
 showPageInfo: true
 ---
-
 
 We’re excited to announce the Harbor v2.4 GA release which focuses on distributed tracing for enhanced troubleshooting, identifying performance bottlenecks.
 
@@ -15,7 +14,7 @@ v2.4](https://github.com/goharbor/harbor/releases/tag/v2.4.0).
 
 Main new feature:
 
-Observability is a key feature for operating a service in production and using this data you can identify abnormal statuses and make informed decisions to fix issues when an error occurs. The distributed tracing is key element of observability in modern application. Harbor can provide distributed tracing data for operators and administrator to know the current running status and to help  troubleshooting.  Harbor expose tracing data using the [OpenTelemetry]([OpenTelemetry](https://opentelemetry.io/)) sdk, you can eazily export traces via Otel protocol which can comsumed by [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) then expose to almost the on-prem or cloud trace backend. Because of the popularity [Jaeger](https://www.jaegertracing.io), Harbor also can expose tracing data to Jaeger backend directly.
+Observability is a key feature for operating a service in production and using this data you can identify abnormal statuses and make informed decisions to fix issues when an error occurs. The distributed tracing is key element of observability in modern application. Harbor can provide distributed tracing data for operators and administrator to know the current running status and to help  troubleshooting.  Harbor expose tracing data using the [OpenTelemetry](https://opentelemetry.io/) sdk, you can eazily export traces via Otel protocol which can comsumed by [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) then expose to almost the on-prem or cloud trace backend. Because of the popularity [Jaeger](https://www.jaegertracing.io), Harbor also can expose tracing data to Jaeger backend directly.
 
 Other notable features such as:
 - Support Harbor instances replication with Robot Aaccount[guide](https://github.com/goharbor/harbor/wiki/How-to-do-replication-with-Robot-Account)
@@ -30,9 +29,9 @@ Deprecations:
 - The legacy robot account is deprecated in v2.4.0 release. It's suggested that remove all the legacy robots and use robot v2 for instead.
 - Limit support on Chartmuseum from v2.4.0 release.
 
-Full list of [PRs](https://github.com/goharbor/harbor/issues?q=is%3Aclosed+label%3Atarget%2F2.4.0+)
+Full list of [PRs](https://github.com/goharbor/harbor/issues?q=is%3Aclosed+label%3Atarget%2F2.4.0+)!
 
-Resolved [issues](https://github.com/goharbor/harbor/issues?q=is%3Aissue+label%3Atarget%2F2.4.0+is%3Aclosed)
+Full list of Resolved issues [here](https://github.com/goharbor/harbor/issues?q=is%3Aissue+label%3Atarget%2F2.4.0+is%3Aclosed)!
 
 ## Distributed Tracing
 
@@ -93,13 +92,13 @@ And overall contributors:
 
 ## Collaborate with the Harbor Community
 
-Get updates on Twitter: [@project\_harbor](https://twitter.com/project_harbor)
+Get updates on Twitter: [@project\_harbor](https://twitter.com/project_harbor)  
 Chat with us on Slack: [#harbor](https://cloud-native.slack.com/messages/harbor)
 and [#harbor-dev](https://cloud-native.slack.com/messages/harbor-dev)
-on the[CNCF Slack](https://slack.cncf.io/)
-Collaborate with us on [GitHub](https://github.com/goharbor/harbor)
+on the[CNCF Slack](https://slack.cncf.io/)  
+Collaborate with us on [GitHub](https://github.com/goharbor/harbor)  
 Attend the [community meetings](https://github.com/goharbor/community/wiki/Harbor-Community-Meetings)
 
-Orlin Vasilev
-Harbor Community Managaer
+Orlin Vasilev  
+Harbor Community Managaer  
 [@OrlinVasilev](https://github.com/OrlinVasilev)
