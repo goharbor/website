@@ -18,7 +18,7 @@ Observability is a key feature for operating a service in production and by usin
 
 Other notable features such as:
 - Support Harbor instances replication with Robot Aaccount[guide](https://github.com/goharbor/harbor/wiki/How-to-do-replication-with-Robot-Account)
-- Support Stop All and single scan job
+- Support Stop All and single scan jobs
 - Support exclusions and rate limit to Replication Rules.
 - Enable OIDC auth based user deletion, This addresses [#8424](https://github.com/goharbor/harbor/issues/8424).
 - Schedule synchronize from DB to Redis. 
