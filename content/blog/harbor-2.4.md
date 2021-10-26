@@ -35,7 +35,7 @@ Full list of Resolved issues [here](https://github.com/goharbor/harbor/issues?q=
 
 ## Distributed Tracing
 
-In harbor v2.4 and later you are able to enable distributed tracing in you Harbor. But we only support one exporter at a time(you can not set bosh or none of them if you enabled tracing). You can set otel as exporter and leveraging OpenTelemetry Collector to retransmit to multiple backend if you want to send data to multiple exporter. And similarly, Jaeger exporter support agent mode and endpoint mode, but only one mode can enabled at a time.
+In harbor v2.4 and later you are able to enable distributed tracing in your Harbor. But we only support one exporter at a time (you can not set bosh or none of them if you enabled tracing). You can set otel as exporter and leveraging OpenTelemetry Collector to retransmit to multiple backend if you want to send data to multiple exporter. And similarly, Jaeger exporter supports agent mode and endpoint mode, but only one mode can be enabled at a time.
 
 
 
