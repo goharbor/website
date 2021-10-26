@@ -20,7 +20,7 @@ Other notable features such as:
 - Support Harbor instances replication with Robot Aaccount[guide](https://github.com/goharbor/harbor/wiki/How-to-do-replication-with-Robot-Account)
 - Support Stop All and single scan jobs
 - Support exclusions and rate limit to Replication Rules.
-- Enable OIDC auth based user deletion, This addresses [#8424](https://github.com/goharbor/harbor/issues/8424).
+- Enable OIDC auth based user deletion, this addresses [#8424](https://github.com/goharbor/harbor/issues/8424).
 - Schedule synchronize from DB to Redis. 
 - Harbor is now built using Golang v1.17.2 as of this release. [#15868](https://github.com/goharbor/harbor/pull/15868)
 - Bump up Trivy to 0.23.0 which adds support for go.sum scanning.[#15861](https://github.com/goharbor/harbor/pull/15861)
