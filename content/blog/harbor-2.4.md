@@ -26,7 +26,7 @@ Other notable features such as:
 - Bump up Trivy to 0.23.0 which adds support for go.sum scanning.[#15861](https://github.com/goharbor/harbor/pull/15861)
 
 Deprecations:
-- The legacy robot account is deprecated in v2.4.0 release. It's suggested that remove all the legacy robots and use robot v2 for instead.
+- The legacy robot account is deprecated in v2.4.0 release. It's suggested that you remove all the legacy robots and use robot v2 instead.
 - Limit support on Chartmuseum from v2.4.0 release.
 
 Full list of [PRs](https://github.com/goharbor/harbor/issues?q=is%3Aclosed+label%3Atarget%2F2.4.0+)!
