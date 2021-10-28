@@ -95,7 +95,7 @@ And overall contributors:
 Get updates on Twitter: [@project\_harbor](https://twitter.com/project_harbor)  
 Chat with us on Slack: [#harbor](https://cloud-native.slack.com/messages/harbor)
 and [#harbor-dev](https://cloud-native.slack.com/messages/harbor-dev)
-on the[CNCF Slack](https://slack.cncf.io/)  
+on the[CNCF Slack](https://slack.cncf.io)  
 Collaborate with us on [GitHub](https://github.com/goharbor/harbor)  
 Attend the [community meetings](https://github.com/goharbor/community/wiki/Harbor-Community-Meetings)
 
