@@ -97,8 +97,12 @@ Chat with us on Slack: [#harbor](https://cloud-native.slack.com/messages/harbor)
 and [#harbor-dev](https://cloud-native.slack.com/messages/harbor-dev)
 on the[CNCF Slack](https://slack.cncf.io)  
 Collaborate with us on [GitHub](https://github.com/goharbor/harbor)  
-Attend the [community meetings](https://github.com/goharbor/community/wiki/Harbor-Community-Meetings)
+Attend the [community meetings](https://github.com/goharbor/community/wiki/Harbor-Community-Meetings)  
+
+&nbsp;
+&nbsp;
 
 Orlin Vasilev  
-Harbor Community Managaer  
-[@OrlinVasilev](https://github.com/OrlinVasilev)
+Harbor Community Manager  
+GitHub: [@OrlinVasilev](https://github.com/OrlinVasilev)  
+Twitter: [@OrlinVasilev](https://twitter.com/OrlinVasilev)
