@@ -17,7 +17,7 @@ Main new feature:
 Observability is a key feature for operating a service in production and by using this data you can identify abnormal statuses and make informed decisions to fix issues when an error occurs. The distributed tracing is a key element of observability in modern applications. Harbor can provide distributed tracing data for operators and administrators to know the current running status and to help  troubleshooting.  Harbor exposes tracing data using the [OpenTelemetry](https://opentelemetry.io/) sdk, you can easily export traces via Otel protocol which can be consumed by [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) then expose to almost the on-prem or cloud trace backend. Because of the popularity of [Jaeger](https://www.jaegertracing.io), Harbor also can expose tracing data to Jaeger backend directly.
 
 Other notable features such as:
-- Support Harbor instances replication with Robot Aaccount[guide](https://github.com/goharbor/harbor/wiki/How-to-do-replication-with-Robot-Account)
+- Support replication of Harbor instances with Robot Account [guide](https://github.com/goharbor/harbor/wiki/How-to-do-replication-with-Robot-Account)
 - Support Stop All and single scan jobs
 - Support exclusions and rate limit to Replication Rules.
 - Enable OIDC auth based user deletion, this addresses [#8424](https://github.com/goharbor/harbor/issues/8424).
