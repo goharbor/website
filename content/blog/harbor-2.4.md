@@ -2,7 +2,7 @@
 title: "Harbor v2.4 release and Distributed Tracing"
 author:
   name: "Harbor Team"
-date: 2021-10-29T12:00:00+04:00
+date: 2021-10-28T12:00:00+04:00
 draft: false
 showPageInfo: true
 ---
