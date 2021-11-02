@@ -65,7 +65,7 @@ You are only able to see project robot accounts from this page. Harbor administr
    Harbor does not store robot secret tokens, so you must either download the secret or copy and paste its contents into a text file. There is no way to get the secret from Harbor after you have created the robot account, however you are able refresh the secret after the robot account is created.
    {{< /important >}}
 
-   The new robot project account appears as `<prefix><project_name>+<account_name>` in the list of project robot accounts. The prefix is set by your Harbor administrator and is the same for all robot accounts. Read more about [robot account prefixes](/administration/robot-accounts/#configure-robot-account-prefix).
+   The new robot project account appears as `<prefix><project_name>+<account_name>` in the list of project robot accounts. The prefix is set by your Harbor administrator and is the same for all robot accounts. Read more about [robot account prefixes](../../administration/robot-accounts/#configure-robot-account-prefix).
 
    ![New robot account](../../../img/project-robot-account.png)
 
