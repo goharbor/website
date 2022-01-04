@@ -122,11 +122,11 @@ helm plugin install https://github.com/chartmuseum/helm-push
 After a successful installation, run the `push` command to upload your charts:
 
 ```sh
-helm push --ca-file=ca.crt --username=admin --password=passw0rd chart_repo/hello-helm-0.1.0.tgz myrepo
+helm cm-push --ca-file=ca.crt --username=admin --password=passw0rd chart_repo/hello-helm-0.1.0.tgz myrepo
 ```
 
 {{< note >}}
-The `push` command does not yet support pushing a prov file of a signed chart.
+The `cm-push` command does not yet support pushing a prov file of a signed chart.
 {{< /note >}}
 
 ### Install Charts
