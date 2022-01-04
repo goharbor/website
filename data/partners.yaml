@@ -1,6 +1,9 @@
 - title: anchore
   logo: anchore-logo.png
   link: https://anchore.com/
+- title: arksec
+  logo: arksec-logo.png
+  link: https://arksec.cn/
 - title: aquasecurity
   logo: aquasec-logo.png
   link: https://www.aquasec.com
