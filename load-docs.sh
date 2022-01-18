@@ -104,8 +104,8 @@ rm -rf ${ROOT_DIR}/generated/*
 #echo 'Adding "latest" version to releases.yaml'
 #echo "- latest" > ${RELEASES_YAML_FILE}
 
-# include the master branch as we want to be able to display the latest master
-RELEASES+=("master")
+# include the main branch as we want to be able to display the latest main
+RELEASES+=("main")
 
 for release in "${RELEASES[@]}"; do
 
@@ -113,12 +113,12 @@ for release in "${RELEASES[@]}"; do
 
     # Don't error if the checkout fails
     set +e
-    if [[ ${release} != "master" ]]; then
+    if [[ ${release} != "main" ]]; then
         git fetch https://github.com/goharbor/website.git ${release}:${release}-local
         git checkout ${release}-local
     else
-        git fetch https://github.com/goharbor/website.git ${release}:master-dev
-        git checkout master-dev
+        git fetch https://github.com/goharbor/website.git ${release}:main-dev
+        git checkout main-dev
     fi
     errc=$?
     set -e
@@ -131,7 +131,7 @@ for release in "${RELEASES[@]}"; do
 #    else
 #        echo "WARNING: Failed to check out version ${version}!!"
 #    fi
-    if [[ ${release} != "master" ]]; then
+    if [[ ${release} != "main" ]]; then
         release=$(echo $release | awk -F- '{print $2}')
         version_docs_dir=${ROOT_DIR}/generated/docs/${release}
         else
