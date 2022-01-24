@@ -41,6 +41,6 @@ You can follow the work we plan to do using the [Harbor Roadmap][roadmap] and se
 [help-wanted]: https://github.com/goharbor/harbor/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22
 [zenhub]: https://app.zenhub.com/workspaces/cncf-5b84fc036092773c0b854fe6/board?repos=50613991
 [projectboard]: https://github.com/orgs/goharbor/projects/1
-[contributing]: https://github.com/goharbor/harbor/blob/master/CONTRIBUTING.md
+[contributing]: https://github.com/goharbor/harbor/blob/main/CONTRIBUTING.md
 [twitter]: https://twitter.com/project_harbor
-[roadmap]: https://github.com/goharbor/harbor/blob/master/ROADMAP.md
+[roadmap]: https://github.com/goharbor/harbor/blob/main/ROADMAP.md

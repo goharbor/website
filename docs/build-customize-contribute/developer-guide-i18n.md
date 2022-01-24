@@ -6,7 +6,7 @@ title: Developing for Internationalization
 All the files you created should use UTF-8 encoding.
 {{< /note >}}
 
-There are several translations available for the Harbor portal. See the available [translation files](https://github.com/goharbor/harbor/tree/master/src/portal/src/i18n/lang) for a full list of available languages.
+There are several translations available for the Harbor portal. See the available [translation files](https://github.com/goharbor/harbor/tree/main/src/portal/src/i18n/lang) for a full list of available languages.
 
 {{< note >}}
 Harbor only officially supports the English and Chinese translations, and both languages are verified for each release. If you plan to use another translation, its recommended that you verify the translations are correct for your Harbor version before implementing.
@@ -77,7 +77,7 @@ Use the steps below to add a translation for a new language to the Harbor portal
 4. Next, refer to [Build Harbor from Source Code](compile-guide.md) to rebuild and restart Harbor.
 
 ## Contributing localizations to Harbor
-If you'd like to [contribute your localization file](https://github.com/goharbor/harbor/blob/master/CONTRIBUTING.md) to the Harbor project, please make a pull request with the changes from the instructions above. Please do your best to make sure your translations are correct and easily understood by speakers of that language.
+If you'd like to [contribute your localization file](https://github.com/goharbor/harbor/blob/main/CONTRIBUTING.md) to the Harbor project, please make a pull request with the changes from the instructions above. Please do your best to make sure your translations are correct and easily understood by speakers of that language.
 
 Finding reviewers for a translation PR is best effort, maintainers may not be able to review the pull request because they do not speak or read the language of your contribution. If you know of another community member who can help with reviewing the pull request, make sure to tag them when you open the PR. You should also plan to attend a community meeting to raise awareness for your pull request and ask the community for help reviewing.
 
