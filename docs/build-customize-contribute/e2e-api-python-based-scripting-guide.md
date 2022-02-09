@@ -75,7 +75,7 @@ header: Content-Security-Policy: frame-ancestors 'none'
 
 #### How To Add more E2E Scripts In CI ####
 
-If you like to have your scripts running in CI which is for verification of pull requests, please add your script full path into *https://github.com/goharbor/harbor/blob/master/tests/robot-cases/Group0-BAT/API_DB.robot* file, then scripts in this file can be triggered once there is a pull request.
+If you like to have your scripts running in CI which is for verification of pull requests, please add your script full path into *https://github.com/goharbor/harbor/blob/main/tests/robot-cases/Group0-BAT/API_DB.robot* file, then scripts in this file can be triggered once there is a pull request.
 
 
 
