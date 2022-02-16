@@ -139,6 +139,8 @@ oidc_name | Name for OIDC authentication | string | required(oidc_auth)
 oidc_endpoint | Endpoint for OIDC auth | string | required(oidc_auth)
 oidc_client_id | Client id for OIDC auth | string | required(oidc_auth)
 oidc_client_secret | Client secret for OIDC auth |string | required(oidc_auth)
+group_claim_name | The name of a custom group claim that you have configured in your OIDC provider, that includes the groups to add to Harbor. | string | optional
+oidc_admin_group | The name of the admin group, if the ID token of the user shows that he is a member of this group, the user will have admin privilege in Harbor. Note: You can only set one Admin Group. | string | optional
 oidc_scope | Ccope for OIDC auth | string| required(oidc_auth)
 oidc_verify_cert | Verify certificate for OIDC auth, true or false | boolean | optional| true
 robot_token_duration | Robot token expiration time in minutes | number | optional | 43200 (30days)
