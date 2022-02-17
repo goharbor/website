@@ -14,13 +14,13 @@ Instructions for installing Hugo can be found [here](https://gohugo.io/getting-s
 
 The content for the [Harbor blog](https://goharbor.io/blog) is in [`content/blog`](./content/blog), while the content for the Harbor documentation is in the [`docs`](./docs) folder.
 
-The latest (edge) version of the documentation lives in the [`docs`](./docs) folder on the `master` branch, and is always viewable on https://goharbor.io/docs/edge. Documentation for specific released versions lives in its own release branch, for example `release-2.1.0`.
+The latest (edge) version of the documentation lives in the [`docs`](./docs) folder on the `main` branch, and is always viewable on https://goharbor.io/docs/edge. Documentation for specific released versions lives in its own release branch, for example `release-2.1.0`.
 
 ### Creating a PR
 
-In general, all PRs should be made against the `master` branch to update the edge version of the docs. If you are making a change that also affects released versions, indicate which release branches to update in your PR so the website maintainers can backport your changes.
+In general, all PRs should be made against the `main` branch to update the edge version of the docs. If you are making a change that also affects released versions, indicate which release branches to update in your PR so a website maintainer can backport your changes.
 
-If you are making a change that is specific to a single released version of documentation, make a PR against that branch (`release-X`). For example, if you are fixing something specific to v2.1.0 you should make a PR against the release-2.1.0 branch only. If you are fixing something that impacts v2.1.0 docs and all future versions, you should make the PR against the `master` branch and so the change can also be backported to the v2.1.0 docs.
+If you are making a change that is specific to a single released version of documentation, make a PR against that branch (`release-X`). For example, if you are fixing something specific to v2.1.0 you should make a PR against the release-2.1.0 branch only. If you are fixing something that impacts v2.1.0 docs and all future versions, you should make the PR against the `main` branch so the change can also be backported to the v2.1.0 docs.
 
 A preview of your changes is viewable through the Netlify preview linked in the PR tests. Use this to verify that your changes look good before asking the maintainers for a review. When updating the edge version make sure you add `/docs/edge/` to the preview URL to see your changes.
 
@@ -39,7 +39,7 @@ branchname = "release-X.Y.Z"
 As last step, update the [_index.md](https://github.com/goharbor/website/blob/master/docs/_index.md) file with the new version number and correct links.
 
 
-After a release, update the [backport](https://github.com/sqren/backport) tool configuration file, `.backportrc.json`, with the new release branch name. 
+After a release, update the [backport](https://github.com/sqren/backport) tool configuration file, `.backportrc.json`, with the new release branch name.
 
 ### CSS
 
@@ -47,7 +47,7 @@ The CSS for the site is built from [Sass](https://sass-lang.com) inputs in the [
 
 ## Publishing the website
 
-The Harbor website is published automatically on the [Netlify](https://netlify.com) platform. Whenever changes are pushed to the `master` branch, the site is re-built and re-deployed, usually within about one minute.
+The Harbor website is published automatically on the [Netlify](https://netlify.com) platform. Whenever changes are merged, the site is re-built and re-deployed, usually within about one minute.
 
 ## Run the Harbor website locally
 
