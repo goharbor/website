@@ -36,7 +36,7 @@ At the meeting, we’ll go over more details about participating in the working 
 * How to preview the documentation locally before submitting a pull request
 * Anything else you’d like to know about helping with Harbor documentation
 
-After our initial kick-off meeting, we are planning to hold monthly SIG Docs meetings to talk about projects and hold informational sessions about contributing to Harbor docs. The invite for the monthly meetings will be sent out after our kick-off meeting. Come participate in the discussions in the [Harbor dev Slack](https://cloud-native.slack.com/archives/CC1E0J0MC).  
+After our initial kick-off meeting, we are planning to hold monthly SIG Docs meetings to talk about projects and hold informational sessions about contributing to Harbor docs. The invite for the monthly meetings will be sent out after our kick-off meeting. Come participate in the discussion in the [Harbor dev Slack](https://cloud-native.slack.com/archives/CC1E0J0MC).  
 
 Check out Harbor’s [website repo](https://github.com/goharbor/website) and [contributing guide](https://github.com/goharbor/harbor/blob/main/CONTRIBUTING.md) for more information about the Harbor community.
 
