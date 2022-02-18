@@ -2,7 +2,7 @@
 title: "Announcing the launch of Harbor SIG Docs"
 author:
   name: "Harbor Team"
-description: "Join us for our kickoff during the community meeting February 23, 2022 to help us improve the docs!"
+description: "A new way to help the Harbor community improve docs"
 date: 2022-02-17T12:00:00+04:00
 draft: false
 showPageInfo: true
@@ -28,7 +28,7 @@ One of our first big goals is to verify and update our Harbor interface localiza
 
 ## How to get involved?
 
-Join us for our kick-off meeting on February 23, 2022 at 8am Eastern Daylight Time ([Time zone converter](https://www.timeanddate.com/worldclock/usa/boston) as part of the Harbor Community Meeting. Get the invite for the meeting by joining the Harbor [mailing list](https://lists.cncf.io/g/harbor-users), and see more about getting involved with Harbor on our [Community page](https://goharbor.io/community/).
+Join us for our kick-off meeting on February 23, 2022 at 8am Eastern Daylight Time ([Time zone converter](https://www.timeanddate.com/worldclock/usa/boston)) as part of the Harbor Community Meeting. Get the invite for the meeting by joining the Harbor [mailing list](https://lists.cncf.io/g/harbor-users), and see more about getting involved with Harbor on our [Community page](https://goharbor.io/community/).
 
 At the meeting, we’ll go over more details about participating in the working group, covering the following topics
 
@@ -36,7 +36,7 @@ At the meeting, we’ll go over more details about participating in the working 
 * How to preview the documentation locally before submitting a pull request
 * Anything else you’d like to know about helping with Harbor documentation
 
-After our initial kick-off meeting, we are planning to hold monthly SIG Docs meetings to talk about projects and hold informational sessions about contributing to Harbor docs. The invite for the monthly meetings will be sent out after our kick-off meeting.
+After our initial kick-off meeting, we are planning to hold monthly SIG Docs meetings to talk about projects and hold informational sessions about contributing to Harbor docs. The invite for the monthly meetings will be sent out after our kick-off meeting. If you are interested in hearing the latest about, join the [#harbor-dev](https://cloud-native.slack.com/archives/CC1E0J0MC) CNCF Slack channel.  
 
 Check out Harbor’s [website repo](https://github.com/goharbor/website) and [contributing guide](https://github.com/goharbor/harbor/blob/main/CONTRIBUTING.md) for more information about the Harbor community.
 
@@ -45,5 +45,5 @@ We look forward to meeting you at our kick-off meeting and thank you for being w
 We hope to see you soon!
 
 Abigail McCarthy  
-Harbor SIG Docs lead  
+Harbor SIG Docs Lead  
 GitHub: [@a-mccarthy](https://github.com/a-mccarthy)  
