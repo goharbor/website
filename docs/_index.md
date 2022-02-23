@@ -1,5 +1,5 @@
 ---
-title: Harbor 2.4 Documentation
+title: Harbor 2.4 Documentation are awesome
 ---
 
 Welcome to the Harbor 2.4.x documentation. This documentation includes all of the information that you need to install, configure, and use Harbor.
