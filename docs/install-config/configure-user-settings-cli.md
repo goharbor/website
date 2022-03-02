@@ -88,7 +88,7 @@ Introduced in 2.3.0 is the ability to use an environment variable, `CONFIG_OVERW
 **Example CONFIG_OVERWRITE_JSON configuration:**
 
 ```
-CONFIG_OVERWRITE_JSON={"ldap_verify_cert":"false", "auth_mode":"ldap_auth","ldap_base_dn":"dc=example,dc=com", "ldap_search_dn":"cn=admin,dc=example,dc=com","ldap_search_password":"admin","ldap_url”:”myldap.example.com", "ldap_scope":2}
+CONFIG_OVERWRITE_JSON={"ldap_verify_cert":"false", "auth_mode":"ldap_auth","ldap_base_dn":"dc=example,dc=com", "ldap_search_dn":"cn=admin,dc=example,dc=com","ldap_search_password":"admin","ldap_url":"myldap.example.com", "ldap_scope":2}
 
 ```
 
