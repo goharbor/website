@@ -3,7 +3,7 @@ title: User Permissions By Role
 weight: 20
 ---
 
-Users have different abilities depending on the role they in a project.
+Users have different abilities depending on the role they have in a project.
 
 On public projects all users will be able to see the list of repositories, images, image vulnerabilities, helm charts and helm chart versions, pull images, retag images (need push permission for destination image), download helm charts, download helm chart versions.
 
