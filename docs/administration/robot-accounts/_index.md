@@ -38,7 +38,7 @@ This page lists all available system robot accounts for your Harbor instance. Th
     ![View list of all projects associated with a system robot account](../../img/list-robot-account-projects.png)
 
 * The created time shows when the robot account was created.
-* The expires at time of the account which is calculated based on the created time and the expiration time set when creating the project robot account.
+* The time until the account expires. Calculated based on the created time and the expiration time set when creating the robot account.
 * The description of the system robot account.
 
 

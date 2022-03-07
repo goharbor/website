@@ -40,7 +40,7 @@ This page lists all available project robot accounts for a project. The table li
 ![View a project robot account permissions](../../../img/permissions-link.png)
 
 * The created time shows when the robot account was created.
-* The expires at time of the project account which is calculated based on the created time and the expiration time set when creating the project robot account.
+* The time until the project robot account expires. This is calculated based on the created time and the expiration time set when creating the project robot account.
 * The description of the project robot account.
 
 You are only able to see project robot accounts from this page. Harbor administrators can also see system robot account information on the [System Robot Account](../../administration/robot-accounts/) page.
