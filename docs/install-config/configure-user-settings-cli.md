@@ -137,12 +137,15 @@ uaa_endpoint | UAA endpoint | string |  required(uaa_auth)
 uaa_verify_cert | UAA verify cert, true or false | boolean | optional | true
 oidc_name | Name for OIDC authentication | string | required(oidc_auth)
 oidc_endpoint | Endpoint for OIDC auth | string | required(oidc_auth)
+oidc_extra_redirect_parms | Extra parameters to add when redirect request to OIDC provider | string | optional | {}
 oidc_client_id | Client id for OIDC auth | string | required(oidc_auth)
 oidc_client_secret | Client secret for OIDC auth |string | required(oidc_auth)
-group_claim_name | The name of a custom group claim that you have configured in your OIDC provider, that includes the groups to add to Harbor. | string | optional
+oidc_groups_claim | The name of a custom group claim that you have configured in your OIDC provider, that includes the groups to add to Harbor | string | optional
 oidc_admin_group | The name of the admin group, if the ID token of the user shows that he is a member of this group, the user will have admin privilege in Harbor. Note: You can only set one Admin Group. | string | optional
-oidc_scope | Ccope for OIDC auth | string| required(oidc_auth)
-oidc_verify_cert | Verify certificate for OIDC auth, true or false | boolean | optional| true
+oidc_scope | Scope for OIDC auth | string | required(oidc_auth)
+oidc_verify_cert | Verify certificate for OIDC auth, true or false | boolean | optional | true
+oidc_auto_onboard | Skip the onboarding screen, so user cannot change its username. Username is provided from ID Token, true or false | boolean | optional | false
+oidc_user_claim | The name of the claim in the ID Token where the username is retrieved from | string | optional | name
 robot_token_duration | Robot token expiration time in minutes | number | optional | 43200 (30days)
 
 {{< note >}}
