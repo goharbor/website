@@ -5,16 +5,25 @@ weight: 40
 
 Harbor allows you to use a project robot account to automate running operations for a project including,
 
-* Push artifacts
-* Pull artifacts
-* Delete artifacts
-* Read Helm charts
-* Create a Helm chart version
-* Delete a Helm chart version
-* Create a tag
-* Delete a tag
-* Create artifact labels
-* Create a scan
+* List Repository
+* Pull Repository
+* Push Repository
+* Delete Repository
+* Read Artifact
+* List Artifact
+* Delete Artifact
+* Create Artifact Label
+* Delete Artifact Label
+* Create Tag
+* Delete Tag
+* List Tag
+* Create Scan
+* Stop Scan
+* Read Helm Chart
+* Create Helm Chart Version  
+* Delete Helm Chart Version
+* Create Helm Chart label
+* Delete Helm Chart label
 
 A project robot account uses authenticates to your Harbor instance using a secret, allowing you to connect to your Harbor instance through the OCI client or Harbor API to automate tasks. Robot Accounts cannot log in to the Harbor interface.
 
@@ -52,7 +61,10 @@ You are only able to see project robot accounts from this page. Harbor administr
 1. Click **New Robot Account**.
 1. Enter a name and an optional description for this robot account.
 1. Set expiration time for this robot account, you can also select checkbox **Never Expired** if you want to create a never expiring robot account.
-1. Click **Permission(s)** to grant permission to the robot account.
+1. Click **Permission(s)** to grant permission to the robot account. You can use the **Select All** and **Unselect All** buttons to quickly add or remove all permissions from a robot account.
+
+    {{< note >}}The **Push Repository** permission must be assigned with the **Pull Repository** permission. You are not able to assign the Push Repository permission by itself.
+    {{< /note >}}
 
     ![Add a robot account](../../../img/add-robot-account-2.png)
 
@@ -84,7 +96,7 @@ You can refresh a robot account's secret after its created in the event that you
 
 1. From the administrator **Robot Account** page, select the checkbox next to the robot account you are updating.
 1. Select **Action** and then **Refresh Secret**.
-1. By default Harbor will generate a new secret randomly, or you can choose to enable manually reseting the secret and entering the **New Secret** then **Confirm Secret**.
+1. By default Harbor will generate a new secret randomly, or you can choose to enable manually reseting the secret and entering the **New Secret** then **Confirm Secret**. Optionally, you can view the secret by clicking the eye icon.
 
     ![Refresh project robot account secret](../../../img/refresh-project-robot-account-token.png)
 
