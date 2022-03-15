@@ -7,18 +7,27 @@ Harbor v2.2 introduces the capability for administrators to create system robot 
 
 For each system robot account you are able to assign the following permissions,
 
-* Push artifacts
-* Pull artifacts
-* Delete artifacts
-* Read Helm charts
-* Create a Helm chart version
-* Delete a Helm chart version
-* Create a tag
-* Delete a tag
-* Create artifact labels
-* Create a scan
+* List Repository
+* Pull Repository
+* Push Repository
+* Delete Repository
+* Read Artifact
+* List Artifact
+* Delete Artifact
+* Create Artifact Label
+* Delete Artifact Label
+* Create Tag
+* Delete Tag
+* List Tag
+* Create Scan
+* Stop Scan
+* Read Helm Chart
+* Create Helm Chart Version  
+* Delete Helm Chart Version
+* Create Helm Chart label
+* Delete Helm Chart label
 
-Depending on your needs to can assign any combination of these permissions to a system robot account to perform your desired tasks through the OCI client or Harbor API. Robot Accounts cannot log in to the Harbor interface.
+Depending on your needs you can assign a combination of these permissions to a system robot account to perform your desired tasks through the OCI client or Harbor API. Robot Accounts cannot log in to the Harbor interface.
 
 You are also able create project scope robot account that only have access to a single project. Read more about [project robot accounts](../../working-with-projects/project-configuration/create-robot-accounts/).
 
@@ -64,7 +73,11 @@ This page lists all available system robot accounts for your Harbor instance. Th
 
       ![Filter project names](../../img/robot-account-filter-project-name.png)
 
-    Use the **Permissions** dropdown to choose which permissions to assign to a particular project. You are able to control which permissions to assign to an individual robot account by project, allowing you fine grained control over each robot account.
+    Use the **Permissions** dropdown to choose which permissions to assign to a particular project. You are able to control which permissions to assign to an individual robot account by project, allowing you fine grained control over each robot account. You can select **Select All** or **Unselect All** to quickly add or remove all permissions from a robot account.
+
+      {{< note >}}The **Push Repository** permission must be assigned with the **Pull Repository** permission. You are not able to assign the Push Repository permission by itself.
+      {{< /note >}}
+
 
     ![](../../img/set-robot-account-permissions.png)
 
@@ -102,7 +115,7 @@ You can refresh a robot account's secret after its created in the event that you
 
 1. From the administrator **Robot Account** page, select the checkbox next to the robot account you are updating.
 1. Select **Action** and then **Refresh Secret**.
-1. By default Harbor will generate a new secret randomly, or you can choose to enable manually reseting the secret and entering the **New Secret** then **Confirm Secret**.
+1. By default Harbor will generate a new secret randomly, or you can choose to enable manually reseting the secret and entering the **New Secret** then **Confirm Secret**. Optionally, you can view the secret by clicking the eye icon.
 
     ![Refresh system robot account secret](../../img/refresh-robot-account-token.png)
 
