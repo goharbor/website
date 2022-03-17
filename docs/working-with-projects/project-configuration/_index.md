@@ -6,7 +6,7 @@ weight: 30
 After the initial creation of a project, you can configure or reconfigure its properties in the **Configuration** tab for that project.
 
 1. Log in to the Harbor interface with an account that has at least project administrator privileges.
-1. Go to **Projects** and select a project. 
+1. Go to **Projects** and select a project.
 1. Select the **Configuration** tab.
 1. To make all repositories under the project accessible to everyone, select the `Public` checkbox, or deselect this checkbox to make the project private.
 1. To prevent un-signed images under the project from being pulled, select the `Enable content trust` checkbox.
@@ -24,7 +24,7 @@ Enter a keyword in the search field at the top to list all matching projects and
 You can configure projects so that images with vulnerabilities cannot be run, and to automatically scan images as soon as they are pushed into the project.
 
 1. Log in to the Harbor interface with an account that has at least project administrator privileges.
-1. Go to **Projects** and select a project. 
+1. Go to **Projects** and select a project.
 1. Select the **Configuration** tab.
 1. To prevent vulnerable images under the project from being pulled, select the **Prevent vulnerable images from running** checkbox.
 
@@ -33,11 +33,13 @@ You can configure projects so that images with vulnerabilities cannot be run, an
 1. Select the severity level of vulnerabilities to prevent images from running.
 
    ![Set vulnerability threshold](../../img/set-vulnerability-threshold.png)
-   
+
    Images cannot be pulled if their level is equal to or higher than the selected level of severity. Harbor does not prevent images with a vulnerability severity of `negligible` from running.
 1. To activate an immediate vulnerability scan on new images that are pushed to the project, select the **Automatically scan images on push** check box.
 
    ![Automatically scan images on push](../../img/scan-on-push.png)
+
+Harbor also supports additional deployment security options, allowing you to [implement content trust](../../working-with-projects/project-configuration/implementing-content-trust/) on your Harbor instance.
 
 ## Build history
 
