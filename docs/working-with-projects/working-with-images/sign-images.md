@@ -11,13 +11,14 @@ This page describes how to start using Cosign and Notary to sign your artifacts.
 
 Harbor v2.5 integrates support for [Cosign](https://github.com/sigstore/cosign), a OCI artifact signing and verification solution that is part of the [Sigstore project](https://github.com/sigstore).
 
-Cosign signs OCI artifacts and pushes the generated signature into Harbor. This signature is stored as an artifact accessory along side the signed artifact. Harbor manages a link between the signed artifact and cosign signature, allowing you to apply things like [tag retention rules](../..//working-with-projects/working-with-images/create-tag-retention-rules/) and [immutable rules](../../working-with-projects/working-with-images/create-tag-immutability-rules/) to a signed artifact, and it will extend to both the signed artifact and the signature. In this way you can use Harbor's built in functionality to manage signed artifacts and Cosign signature accessories.
+Cosign signs OCI artifacts and pushes the generated signature into Harbor. This signature is stored as an artifact accessory along side the signed artifact. Harbor manages a link between the signed artifact and cosign signature, allowing you to apply things like [tag retention rules](../..//working-with-projects/working-with-images/create-tag-retention-rules/) and [immutable rules](../../working-with-projects/working-with-images/create-tag-immutability-rules/) to a signed artifact, and it will extend to both the signed artifact and the signature. In this way you can use Harbor's built in functionality to manage signed artifacts and Cosign signature accessories. Note that [Vulnerability scans](../../../administration/vulnerability-scanning/) of Cosign signatures are not supported.
 
 A key feature of using Cosign with Harbor is the ability use Harbor's [replication capabilities](../../administration/configuring-replication/) to replicate signatures with their associated signed artifact. This means that if a [replication rule](../../administration/configuring-replication/create-replication-rules/) applies to a signed artifact, Harbor will apply the replication rule to the signature in the same way it applies it to the signed artifact.
 
 * When replicating between Harbor instances, the target Harbor instance will maintain the link between the signed artifact and its associated signatures. You will be able to see the relationship between the two artifacts in the target Harbor interface, in the same way that you do in the source registry.
 
 * When replicating from Harbor to another target registry type, the target registry will not manage the link between the signed artifact and any associated signatures. You will see the subject manifest and signatures as coordinating artifacts under the same repository.
+
 
 ### Sign, upload, and view Cosign signatures in Harbor
 
@@ -33,23 +34,33 @@ After entering the password for your cosign private key, cosign will sign the im
 
 1. Log into the Harbor interface and navigate to the project that your signed artifact is located in.
 
-    [SCREENSHOT OF PROJECT PAGE, LOOKING AT AN IMAGE THAT WAS SIGNED]
+    ![Image with cosign signature](../../../img/image-with-cosign-signature.png)
 
-1. Expand the artifact to view the signatures attached to the image.
+1. If the artifact has an associated cosign signature accessory, you can click the > icon to display the Accessories table.
 
-    [SCREENSHOT OF ARTIFACT EXPANDED & ACCESSORY TABLE]
+    ![Expand accessories table](../../../img/expand-accessories-table.png)
+
+    The Accessories table lists all associated cosign signatures that have been pushed to the project. This table shows the Accessory name, Type, Size, and Created Time.
+
+    ![View accessories table](../../../img/view-accessories-table.png)
 
 ### Delete Cosign signatures
 
-You can delete cosign signatures through the Harbor interface.
+You can delete a Cosign signature individually through the Harbor interface.
 
-  [SCREENSHOT OF ARTIFACT EXPANDED & ACCESSORY TABLE WITH DOTTED DROP DOWN EXPANDED (SO YOU CAN SEE THE DELETE OPTION)]
+1. Log into the Harbor interface and navigate to the project that your signed artifact is located in and expand the accessories table.
 
-This will delete the individual signature only. All the signatures are associated with the subject manifest, once the subject manifest is removed, all the signatures are removed as well.
+    ![Expand accessories table](../../../img/expand-accessories-table.png)
 
-Note that Harbor's [garbage collection](../../administration/garbage-collection/) will not remove any signature individually. In Harbor, Cosign signatures are treated like any other OCI artifact, except from the perspective of the garbage collector which can't see accessory artifacts, like Cosign signatures. For example, if you configure garbage collection for untagged artifacts, Harbor's garbage collector will not remove any signatures without a tag.
+1. Click on the **three vertical dot icon** next to the signature you want to delete and then click Delete.
 
-Harbor doesn't support `cosign clean` to remove signature because it requires the tag delete API which is not required by the [OCI distribution spec](https://github.com/opencontainers/distribution-spec).
+    ![Delete cosign signature](../../../img/cosign-signaure-delete.png)
+
+All the signatures associated with a signed artifact and will be deleted if the signed artifact is deleted.
+
+Note that Harbor's [garbage collection](../../administration/garbage-collection/) will not remove any signature individually. In Harbor, Cosign signatures are treated like any other OCI artifact, except from the perspective of the garbage collector which can't see accessory artifacts, like Cosign signatures. For example, if you configure garbage collection for untagged artifacts, Harbor's garbage collector will not remove any signatures without a tag. If the signed artifact is untagged, and matches the configured garbage collect rule, it and any associated signatures will be deleted.
+
+HHarbor doesn't support `cosign clean` to remove signatures.
 
 ## Use Notary to sign images
 
