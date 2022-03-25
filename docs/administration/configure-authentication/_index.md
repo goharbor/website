@@ -6,7 +6,7 @@ weight: 10
 Harbor supports different modes for authenticating users and managing user accounts. You should select an authentication mode as soon as you deploy Harbor.
 
 {{< important >}}
-If you create user accounts in the Harbor database, Harbor is locked in database mode. You cannot change to a different authentication mode after you have created local users.
+If you create user accounts in the Harbor database, Harbor is locked in database mode. You cannot change to a different authentication mode after creating local users.
 {{< /important >}}
 
 - [Database Authentication](db-auth.md): You create and manage user accounts directly in Harbor. The user accounts are stored in the Harbor database.
