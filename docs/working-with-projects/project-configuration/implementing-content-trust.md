@@ -3,32 +3,20 @@ title: Implementing Content Trust
 weight: 55
 ---
 
-{{< note >}}
-Notary is an optional component, please make sure you have already installed it in your Harbor instance before you go through this section.
-{{< /note >}}
+Artifact signing and signature verification are critical security capabilities that allow you to verify the integrity of an artifact. Harbor supports content trust through integrations with [Notary](https://github.com/notaryproject/notarys) and [Cosign](https://github.com/sigstore/cosign), ensuring that only signed and verified images are pulled from your Harbor instance.
 
-If you want to enable content trust to ensure that images are signed, please set two environment variables in the command line before pushing or pulling any image:
+This page describes how to [enforce content trust](#enforce-content-trust) using a default Harbor deployment policy. For more information on using Cosign and Notary with Harbor, see more how to [Sign Artifacts with Cosign and Notary](../../working-with-images/sign-images).
 
-```sh
-export DOCKER_CONTENT_TRUST=1
-export DOCKER_CONTENT_TRUST_SERVER=https://10.117.169.182:4443
-```
+## Enforce deployment security
 
-If you push the image for the first time, You will be asked to enter the root key passphrase. This will be needed every time you push a new image while the `DOCKER_CONTENT_TRUST` flag is set.
-The root key is generated at: `/root/.docker/trust/private/root_keys`
-You will also be asked to enter a new passphrase for the image. This is generated at `/root/.docker/trust/private/tuf_keys/[registry name] /[imagepath]`.
-If you are using a self-signed cert, make sure to copy the CA cert into `/etc/docker/certs.d/10.117.169.182` and `$HOME/.docker/tls/10.117.169.182:4443/`. When an image is signed, it is indicated in the Web UI.
+As a project administrator, you are able to enforce deployment security by activating the default deployment policy for Cosign or Notary for a given project.
 
-A signed image will have a checkbox next to it, otherwise an X is displayed instead.
+1. Log into the Harbor interface and navigate to the Configuration tab for the Project you want to enforce content trust on.
+1. Select the checkbox for **Cosign** or **Notary**. When checked, Harbor will only allow verified images to be pulled from the project. Verified images are determined by either Cosign or Notary, depending on the policy you have checked. You are able to select both options if you wish for both policies to be enforced. If you have both Notary and Cosign policies enforced, then images will need to be signed by both Notary and Cosign to be pulled.
+1. Click **Save**.
 
-If you want to remove a tag signature from harbor, you can use 'notary remove' command:
+  ![Enable deployment security in project configuration page](../../../img/enable-deployment-security.png)
 
-```sh
-notary remove -p 10.117.169.182/libary/alpine latest
-```
-
-{{< note >}}
-Replace "10.117.169.182" with the IP address or domain name of your Harbor node. In order to use content trust, HTTPS must be enabled in Harbor.
-{{< /note >}}
-
-![browse project](../../../img/content-trust.png)
+  {{< note >}}
+  You must have Notary [installed](../../../install-config/run-installer-script/#installation-with-notary) to see the Notary deployment security checkbox.
+  {{< /note >}}
