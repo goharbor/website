@@ -17,7 +17,7 @@ Harbor is deployed as several Docker containers and most of the code is written 
 | make           | 3.81 +           |
 | golang\*       | 1.15.6 +         |
 
-\*optional, required only if you use your own Golang environment.
+\*optional, required if you use your own Golang environment.
 
 ## Step 2: Getting the source code
 
@@ -80,7 +80,7 @@ You can compile the code by one of the two approaches:
 
 ### Verify your installation
 
-If everything worked properly, you will see this message:
+If everything works properly, you will see this message:
 
 ```sh
 ...
@@ -143,7 +143,7 @@ The `Makefile` contains these configurable parameters:
 make pushimage -e DEVFLAG=false REGISTRYSERVER=[$SERVERADDRESS] REGISTRYUSER=[$USERNAME] REGISTRYPASSWORD=[$PASSWORD] REGISTRYPROJECTNAME=[$PROJECTNAME]
 ```
 
-**Note**: need add "/" on end of REGISTRYSERVER. If REGISTRYSERVER is not set, images will be pushed directly to Docker Hub.
+**Note**: need to add "/" at the end of REGISTRYSERVER. If REGISTRYSERVER is not set, images will be pushed directly to Docker Hub.
 
 ```sh
 make pushimage -e DEVFLAG=false REGISTRYUSER=[$USERNAME] REGISTRYPASSWORD=[$PASSWORD] REGISTRYPROJECTNAME=[$PROJECTNAME]
@@ -156,10 +156,10 @@ make clean -e VERSIONTAG=[TAG]
 ```
 
 {{< note >}}
-If new code has been added to Github, the git commit TAG will change. Better use this command to clean up images and files of previous TAG.
+If new code has been added to Github, the git commit TAG will change. Better use this command to clean up images and files of the previous TAG.
 {{< /note >}}
 
-#### By default, the make process create a development build. To create a release build of Harbor, set the below flag to false.
+#### By default, the make process creates a development build. To create a release build of Harbor, set the below flag to false.
 
 ```sh
 make XXXX -e DEVFLAG=false
