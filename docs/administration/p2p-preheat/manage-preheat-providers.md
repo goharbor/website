@@ -25,7 +25,7 @@ So far, the following modes are supported:
     - **NONE**: no authentication needed.
     - **Basic**: HTTP basic authentication mode, **Username** and **Password** are required.
     - **OAuth**: OAuth bearer token mode, bearer **Token** is required.
-1. Check or uncheck the **Enable** checkbox to enable/disable the instance after creation.
+1. Check or uncheck the **Enable** checkbox to enable/deactivate the instance after creation.
 1. Optionally, select the **Skip certificate verification** check box.
 
    Select the check box if the preheat provider instance uses a self-signed or untrusted certificate.
@@ -48,7 +48,7 @@ Select the provider instance by checking the checkbox at front of the row, click
   ![actions](../../../img/p2p-preheat/actions.png)
 
 1. Click **Edit** to open the edit dialog to do modifications to the selected provider instance.
-1. Click **Enable**/**Disable** to enable/disable the selected provider instance if it is disabled/enabled.
+1. Click **Enable**/**Deactivate** to enable/deactivate the selected provider instance if it is deactivated/enabled.
 1. Click **Delete** to delete the selected provider instance.
 
 {{< note >}}
