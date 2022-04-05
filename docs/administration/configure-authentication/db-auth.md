@@ -19,7 +19,7 @@ If you create users in the database, Harbor is locked in database mode. You cann
 
    ![Enable self-registration](../../../img/new-self-reg.png)
     
-   If you enable the self registration option, users can register themselves in Harbor. Self-registration is disabled by default. If you enable self-registration, unregistered users can sign up for a Harbor account by clicking **Sign up for an account** in the Harbor log in page.
+   If you enable the self registration option, users can register themselves in Harbor. Self-registration is deactivated by default. If you enable self-registration, unregistered users can sign up for a Harbor account by clicking **Sign up for an account** in the Harbor log in page.
     
     ![Enable self-registration](../../../img/self-registration-login.png)
     
