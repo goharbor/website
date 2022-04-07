@@ -41,7 +41,7 @@ You are also able create project scope robot account that only have access to a 
 This page lists all available system robot accounts for your Harbor instance. The table lists the following information for each system robot account,
 
 * The name of a system account. This is derived from robot account prefix configured for your Harbor instance and the name assigned to the account when it was created. A robot account name follows the format `<prefix><account_name>`. If you use the search function on this page, you only need to search for the account name without the prefix.
-* Enabled status shows if an account is enabled or disabled.
+* Enabled status shows if an account is enabled or deactivated.
 * The number of projects an account is associated with. To see a full list of the projects an account is associated with, click on the **Project(s)** link.
 
     ![View list of all projects associated with a system robot account](../../img/list-robot-account-projects.png)
@@ -100,12 +100,12 @@ This page lists all available system robot accounts for your Harbor instance. Th
 
    The new robot account appears as `<prefix>account_name` in the list of robot accounts. Read more about [robot account prefixes](#configure-robot-account-prefix).
 
-## Edit, Disable, or Delete a System Robot Account
+## Edit, Deactivate, or Delete a System Robot Account
 
-You are able to edit, disable, or delete a system robot account.
+You are able to edit, deactivate, or delete a system robot account.
 
 1. From the administrator **Robot Account** page, select the checkbox next to the robot account you are updating.
-1. Select **Action** and then **Edit**, **Disable**, or **Delete**.
+1. Select **Action** and then **Edit**, **Deactivate**, or **Delete**.
 
   ![Disable or delete a robot account](../../img/disable-delete-system-robot-account.png)
 
