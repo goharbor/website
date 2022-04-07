@@ -40,7 +40,6 @@ In this case, you cannot delete tag `v1` as it's an immutable tag and you cannot
     You can add a maximum of 15 immutability rules per project. 
 
     After you add a rule, any tags that are identified by the rule are marked **Immutable** in the Repositories tab.
-1. To modify an existing rule, use the **Action** drop-down menu next to a rule to disable, edit, or delete that rule. 
 1. To modify an existing rule, use the **Action** drop-down menu next to a rule to deactivate, edit, or delete that rule. 
 
     ![Immutability rules](../../../img/edit-tag-immutability.png)
