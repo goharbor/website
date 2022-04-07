@@ -69,9 +69,11 @@ criteria can be taken into account.
 1. Select the policy by checking the checkbox at front of the row, click **ACTIONS** to open the drop down menu.
 1. Click **Execute** to start the execution of the selected policy immediately.
 1. Click **Disable**/**Enable** to disable/enable the selected policy.
+1. Click **Deactivate**/**Enable** to deactivate/enable the selected policy.
+
 
    {{< note >}}
-   A disabled policy cannot bee executed.
+   A deactivated policy cannot be executed.
    {{< /note >}}
 
 1. Click **Edit** to open the edit dialog and do modifications to the selected policy.
