@@ -68,7 +68,6 @@ criteria can be taken into account.
    ![preheat policy list](../../../img/p2p-preheat/policy-list.png)
 1. Select the policy by checking the checkbox at front of the row, click **ACTIONS** to open the drop down menu.
 1. Click **Execute** to start the execution of the selected policy immediately.
-1. Click **Disable**/**Enable** to disable/enable the selected policy.
 1. Click **Deactivate**/**Enable** to deactivate/enable the selected policy.
 
 
