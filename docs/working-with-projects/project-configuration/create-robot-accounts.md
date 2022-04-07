@@ -43,7 +43,7 @@ Harbor 2.2 introduced changes to project robot accounts that impact existing rob
 This page lists all available project robot accounts for a project. The table lists the following information for each robot account,
 
 * The name of the robot account. This is derived from robot account prefix configured for your Harbor instance, the project name, and the name assigned to the robot account when it was created. A robot account name follows the format `<prefix><project_name>+<account_name>`. If you use the search function on this page, you only need to search for the account name without the prefix.
-* The enabled status shows if an account is enabled or disabled.
+* The enabled status shows if an account is enabled or deactivated.
 * Click the **Permission(s)** dropdown to view the permissions granted to the robot account.
 
 ![View a project robot account permissions](../../../img/permissions-link.png)
@@ -81,12 +81,13 @@ You are only able to see project robot accounts from this page. Harbor administr
 
    ![New robot account](../../../img/project-robot-account.png)
 
-## Edit, Disable, or Delete a Project Robot Account
+## Edit, Deactivate, or Delete a Project Robot Account
 
-You are able to edit, disable, or delete a project robot account.
+You are able to edit, deactivate, or delete a project robot account.
 
 1. From a project's **Robot Account** page, select the checkbox next to the robot account you are updating.
-1. Select **Action** and then **Edit**, **Disable**, or **Delete**.
+1. Select **Action** and then **Edit**, **Deactivate**, or **Delete**.
+
 
   ![Disable or delete a robot account](../../../img/disable-delete-project-robot-account.png)
 
@@ -121,7 +122,7 @@ Legacy robot accounts functionality is still available in Harbor 2.2, but it wil
 
 Legacy robot accounts functionality
 * You are able to perform operations by using the Docker and Helm CLIs. A Legacy robot account can't log into the Harbor interface.
-* You can't edit a legacy robot account. You are only able to disable or delete legacy robot accounts.
+* You can't edit a legacy robot account. You are only able to deactivate or delete legacy robot accounts.
 * Available legacy robot accounts permissions are limited to pushing and pulling artifact, and pushing or pulling a Helm Chart.
 * Legacy robot accounts use a JWT for authentication. You are not able to refresh or retrieve a legacy robot account JWT authentication token.
 * Legacy robot accounts names use the prefix `robot$`, for example `robot$<account_name>`
