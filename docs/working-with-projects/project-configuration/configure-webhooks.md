@@ -120,15 +120,15 @@ You can configure your continuous integration and development infrastructure so 
 
 When you have created the webhook, you can click on the arrow at the left end to see the status of the different notifications and the  timestamp of the last time each notification was triggered. You can also manage the webhook by clicking the drop list button of `ACTION...` .
 
-You can modify the webhook, you can also `Enable` or `Disable` the webhook.
+You can modify the webhook, you can also `Enable` or `Deactivate` the webhook.
 
 ![Webhook Status](../../../img/webhooks3.png)
 
 If a webhook notification fails to send, or if it receives an HTTP error response with a code other than `2xx`, the notification is re-sent based on the configuration that you set in `harbor.yml`.
 
-### Globally Enable and Disable Webhooks
+### Globally Enable and Deactivate Webhooks
 
-As a Harbor system administrator, you can enable and disable webhook notifications for all projects.
+As a Harbor system administrator, you can enable and deactivate webhook notifications for all projects.
 
 1. Go to **Configuration** > **System Settings**.
 1. Scroll down and check or uncheck the **Webhooks enabled** check box.

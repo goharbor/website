@@ -52,11 +52,11 @@ The following table depicts the various user permission levels in a project.
 | Create/edit/remove CVE allowlist        |               |       |           |        | ✓             |
 | View webhook events                     |               |       |           | ✓      | ✓             |
 | Add new webhook events                  |               |       |           |        | ✓             |
-| Enable/disable webhooks                 |               |       |           |        | ✓             |
+| Enable/deactivate webhooks              |               |       |           |        | ✓             |
 | Create/delete tag retention rules       |               |       | ✓         | ✓      | ✓             |
-| Enable/disable tag retention rules      |               |       | ✓         | ✓      | ✓             |
+| Enable/deactivate tag retention rules   |               |       | ✓         | ✓      | ✓             |
 | Create/delete tag immutability rules    |               |       |           | ✓      | ✓             |
-| Enable/disable tag immutability rules   |               |       |           | ✓      | ✓             |
+| Enable/deactivate tag immutability rules|               |       |           | ✓      | ✓             |
 | See project quotas                      | ✓             | ✓     | ✓         | ✓      | ✓             |
 | Edit project quotas  *                  |               |       |           |        |               |
 | Delete Project                          |               |       |           |        | ✓             |
