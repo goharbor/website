@@ -85,7 +85,7 @@ You can use certificates that are signed by a trusted third-party CA, or you can
   <tr>
     <td valign="top"><code>database</code></td>
     <td valign="top">&nbsp;</td>
-    <td valign="top">Use a local PostgreSQL database. You can optionally configure an external database, in which case you can disable this option.</td>
+    <td valign="top">Use a local PostgreSQL database. You can optionally configure an external database, in which case you can deactivate this option.</td>
   </tr>
   <tr>
     <td valign="top">&nbsp;</td>
@@ -105,7 +105,7 @@ You can use certificates that are signed by a trusted third-party CA, or you can
   <tr>
     <td valign="top"><code>data_volume</code></td>
     <td valign="top">None</td>
-    <td valign="top">The location on the target host in which to store Harbor's data. This data remains unchanged even when Harbor's containers are removed and/or recreated. You can optionally configure external storage, in which case disable this option and enable <code>storage_service</code>. The default is <code>/data</code>.</td>
+    <td valign="top">The location on the target host in which to store Harbor's data. This data remains unchanged even when Harbor's containers are removed and/or recreated. You can optionally configure external storage, in which case deactivate this option and enable <code>storage_service</code>. The default is <code>/data</code>.</td>
   </tr>
   <tr>
     <td valign="top"><code>trivy</code></td>
@@ -145,7 +145,7 @@ You can use certificates that are signed by a trusted third-party CA, or you can
   <tr>
     <td valign="top"><code>chart</code></td>
     <td valign="top"><code>absolute_url</code></td>
-    <td valign="top">Set to <code>enabled</code> for Chart to use an absolute URL. Set to <code>disabled</code> for Chart to use a relative URL.</td>
+    <td valign="top">Set to <code>enabled</code> for Chart to use an absolute URL. Set to <code>deactivated</code> for Chart to use a relative URL.</td>
   </tr>
   <tr>
     <td valign="top"><code>log</code></td>
@@ -235,12 +235,12 @@ The following table lists the additional, optional parameters that you can set t
   <tr>
     <td valign="top">&nbsp;</td>
     <td valign="top"><code>redirect</code></td>
-    <td valign="top">Set <code>disable</code> to <code>true</code> when you want to disable registry redirect</td>
+    <td valign="top">Set <code>deactivate</code> to <code>true</code> when you want to deactivate registry redirect</td>
   </tr>
   <tr>
     <td valign="top"><code>external_database</code></td>
     <td valign="top">&nbsp;</td>
-    <td valign="top">Configure external database settings, if you disable the local database option. Currently, Harbor only supports PostgreSQL database. You must create three databases for Harbor core, Notary server, and Notary signer. The tables are generated automatically when Harbor starts up.</td>
+    <td valign="top">Configure external database settings, if you deactivate the local database option. Currently, Harbor only supports PostgreSQL database. You must create three databases for Harbor core, Notary server, and Notary signer. The tables are generated automatically when Harbor starts up.</td>
   </tr>
   <tr>
     <td valign="top">&nbsp;</td>
@@ -413,7 +413,7 @@ storage_service:
     region: regionOne
     container: docker_images"
   redirect:
-    disable: false
+    deactivate: false
 ```
 
 ## What to Do Next
