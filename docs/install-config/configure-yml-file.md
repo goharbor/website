@@ -413,7 +413,7 @@ storage_service:
     region: regionOne
     container: docker_images"
   redirect:
-    deactivate: false
+    disable: false
 ```
 
 ## What to Do Next
