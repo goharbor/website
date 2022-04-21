@@ -5,10 +5,10 @@ weight: 45
 
 This guide covers upgrade and migration to v2.5.0. This guide only covers migration from v2.3.0 and later to the current version. If you are upgrading from an earlier version, refer to the migration guide for an earlier Harbor version.
 
-* [Upgrade to Harbor v2.3.0](/docs/2.2.0/administration/upgrade/)
+* [Upgrade to Harbor v2.3.0](/docs/2.3.0/administration/upgrade/)
 * [Upgrade to Harbor v2.2.0](/docs/2.2.0/administration/upgrade/)
 * [Upgrade to Harbor v2.1.0](/docs/2.1.0/administration/upgrade/)
-* [Upgrade to Harbor v2.0.0](/docs/2.2.0/administration/upgrade/)
+* [Upgrade to Harbor v2.0.0](/docs/2.0.0/administration/upgrade/)
 * [Upgrade to Harbor v1.10.0](/docs/1.10/administration/upgrade/)
 
 If you are upgrading a Harbor instance that you deployed with Helm, see [Upgrading Harbor Deployed with Helm](helm-upgrade.md).
