@@ -22,7 +22,11 @@ Full Documentation you will be able to find [here](https://goharbor.io/docs/2.5.
 
 ## Demo Setup 
 **Configure two Harbor instances with Cosign enabled(default in v2.5.0) per repo and configure replication**
-We will have two instances harbor1 and harbor2, project "cosign" and replication rule(push based) between harbor1-to-harbor2, using robo-account.
+
+We will have two instances harbor1 and harbor2, project "cosign" and replication rule(push based) between harbor1-to-harbor2, using robo-account.  
+
+Check out a video of this demo:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/u8nxky-6Q9c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
 
 #### 1. Install two instances with cosig(and notary) enabled
    In our setup we use [offline installer](https://goharbor.io/docs/2.5.0/install-config/download-installer/).
@@ -171,6 +175,7 @@ Both verification returns result and exit code zero which indicates for valid si
 As well the digest is the same! 
 
 Hurray!!!  
+
 ### Collaborate with the Harbor Community!  
 
 Join the [Harbor Community][community] meetings and distribution lists  
