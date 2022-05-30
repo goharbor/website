@@ -24,7 +24,7 @@ A key feature of using Cosign with Harbor is the ability use Harbor's [replicati
 
 Before starting to sign with Cosign, you must have cosign installed locally and have a generated a private key. See the [Cosign documentation](https://github.com/sigstore/cosign) for more installation information.
 
-Use the `cosign sign` command to sign an image and upload the Cosign signature to your Harbor instance. Replace `<harbor-instance>/<image/path><image-tag>` in the example below with your Harbor instance and the path to the image.
+Use the `cosign sign` command to sign an image and upload the Cosign signature to your Harbor instance. Replace `<harbor-instance>/<image/path>:<image-tag>` in the example below with your Harbor instance and the path to the image.
 
 ```
 cosign sign --key cosign.key <harbor-instance>/<image/path>:<image-tag>
