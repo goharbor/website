@@ -22,6 +22,7 @@ Full Documentation you will be able to find [here](https://goharbor.io/docs/2.5.
 
 ## Demo Setup 
 **Configure two Harbor instances with Cosign enabled(default in v2.5.0) per repo and configure replication**
+
 We will have two instances harbor1 and harbor2, project "cosign" and replication rule(push based) between harbor1-to-harbor2, using robo-account.  
 
 Check out a video of this demo:
