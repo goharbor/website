@@ -89,11 +89,11 @@ This example uses a different repository to the previous examples.
   |`3.1-your_repo-prod`|`3.1-your_repo-rc`|`3.1-your_repo-release`|
   |`4.4-your_repo-prod`|`4.4-your_repo-rc`|`4.4-your_repo-release`| 
 
-- You define three tag retention rules on this repository:
+- You define two tag retention rules on this repository:
   - Retain the 10 most recently pushed artifacts that start with `2`.
   - Retain the 10 most recently pushed artifacts that end with `-prod`.
 
-In this example, the rules are applied to the following 7 tags:
+In this example, the rules are applied to the following 8 tags:
 
 - `2.1-your_repo-prod`
 - `2.1-your_repo-rc`
@@ -102,6 +102,7 @@ In this example, the rules are applied to the following 7 tags:
 - `2.2-your_repo-rc`
 - `2.2-your_repo-release`
 - `3.1-your_repo-prod`
+- `4.4-your_repo-prod`
 
 Because there are no untagged artifacts, checking the checkbox makes no difference.
 
