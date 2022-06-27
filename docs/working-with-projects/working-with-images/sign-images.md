@@ -3,7 +3,7 @@ title: Sign Artifacts with Cosign or Notary
 weight: 92
 ---
 
-Artifact signing and signature verification are critical security capabilities that allow you to verify the integrity of an artifact. Harbor supports content trust through integrations with [Notary](https://github.com/notaryproject/notarys) and [Cosign](https://github.com/sigstore/cosign).
+Artifact signing and signature verification are critical security capabilities that allow you to verify the integrity of an artifact. Harbor supports content trust through integrations with [Notary](https://github.com/notaryproject/notary) and [Cosign](https://github.com/sigstore/cosign).
 
 This page describes how to start using Cosign and Notary to sign your artifacts. A project administrator can configure a project to [enforce content trust](../..//working-with-projects/project-configuration/implementing-content-trust#enforce-content-trust), making it required for all artifacts to be signed before they can be pulled from a Harbor registry.
 
