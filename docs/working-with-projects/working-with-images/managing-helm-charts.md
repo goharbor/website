@@ -123,6 +123,9 @@ After a successful installation, run the `push` command to upload your charts:
 
 ```sh
 helm push --ca-file=ca.crt --username=admin --password=passw0rd chart_repo/hello-helm-0.1.0.tgz myrepo
+
+# if your helm version is >= v3.7.0, please use the following command
+helm cm-push --ca-file=ca.crt --username=admin --password=passw0rd chart_repo/hello-helm-0.1.0.tgz myrepo
 ```
 
 {{< note >}}
