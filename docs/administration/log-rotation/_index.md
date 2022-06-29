@@ -3,7 +3,7 @@ title: Log Rotation
 weight: 42
 ---
 
-Harbor offers the ability to manage audit logs by configuring an audit log retention window and setting a syslog endpoint to forward audit logs. By default, Harbor tracks all image pull, push, and delete operations performed and keeps a record of these actions in a database. Depending on your usecase, this ma
+By default, Harbor tracks all image pull, push, and delete operations performed and keeps a record of these actions in a database. Harbor offers the ability to manage audit logs by configuring an audit log retention window and setting a syslog endpoint to forward audit logs.
 
 ## Schedule Log Purge
 
