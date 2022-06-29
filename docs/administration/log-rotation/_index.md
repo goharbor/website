@@ -1,0 +1,49 @@
+---
+title: Log Rotation
+weight: 42
+---
+
+Harbor offers the ability to manage audit logs by configuring an audit log retention window and setting a syslog endpoint to forward audit logs. By default, Harbor tracks all image pull, push, and delete operations performed and keeps a record of these actions in a database. Depending on your usecase, this ma
+
+## Schedule Log Purge
+
+1. Log in to the Harbor interface with an account that has Harbor system administrator privileges.
+1. Expand **Administration**, and select **Clean Up**.
+1. Select the **Log Rotation** tab.
+
+    ![Log rotation page in Harbor interface](../../img/log-rotation.png)
+
+1. Use the drop down-menu to select how often to run log rotation.
+
+    ![Log rotation policy configuration](../../img/lr-policy.png)
+
+    * **None**: No log rotation is scheduled.
+    * **Hourly**: Run log rotation at the beginning of every hour.
+    * **Daily**: Run log rotation at midnight every day.
+    * **Weekly**: Run log rotation at midnight every Saturday.
+    * **Custom**: Run log rotation according to a `cron` job.
+1. Use the **Keep records in** to configure how long audit logs should be kept. Use the drop down-menu to select **Hours** or **Days**. For example, if you set this to 7 days, Harbor will only purge audit logs that are 8 or more days old.
+
+    ![Log rotation policy configuration](../../img/lr-policy-settings.png)
+
+1. Select the **Included Operations** for the purge. When **Create**, **Delete**, or **Pull** is selected, Harbor will include audit logs for those operations in the purge.
+1. Click **Save** to save your log rotation schedule.
+
+Use the **DRY RUN** option to test your purge settings. When you perform a dry run, Harbor will create a log with the estimated amount of audit logs that will be purged. You can view a dry run logs in the **Purge History** table.
+
+Use the **PURGE NOW** option to manually run a purge immediately, without waiting for the next scheduled purge.
+
+View the purge runs in the **Purge History** table.
+
+![Purge history table](../../img/purge-history.png)
+
+## Configure Audit Log Forward Endpoint
+
+1. Log in to the Harbor interface with an account that has Harbor system administrator privileges.
+1. Go to **Configuration** and select **System Settings**.
+1. In the **Audit Log Forward Endpoint** row, add your syslog endpoint. If the you installed Harbor with docker-compose, the local syslog endpoint is `harbor-log:10514`.
+1. If you have configured an endpoint to forward audit logs, you can select the checkbox to **Skip Audit Log Database**. When selected, Harbor will not keep any records of audit logs in its database, but will forward all logs to your configured endpoint immediately.
+
+![Audit log forward endpoint settings](../../img/audit-log-endpoint.png)
+
+Harbor will forward all purged records to the audit log forward syslog endpoint you specify.
