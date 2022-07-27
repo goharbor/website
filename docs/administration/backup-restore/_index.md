@@ -5,6 +5,8 @@ weight: 50
 
 Backup and restore is important for the disaster recovery and data migration. With [Velero](https://velero.io/) the administrator can back up and restore Harbor instances without completed shutdown.  
 
+About the basic concepts of Velero, please refer to the official documentation [How Velero Works](https://velero.io/docs/v1.9/how-velero-works/).
+
 Please note that:
 * This section only covers the Harbor instances deployed in Kubernetes cluster by Harbor helm chart
 * For simplicity, we only back up a subset of Harbor's resources and data:
@@ -29,7 +31,8 @@ Install Velero CLI and server according to the [official documentation](https://
 
 ### Backup Harbor Instance
 According to the capability of the platform where Harbor is deployed, you can choose back up the PersistentVolumes with Snapshot or Restic:
-* Snapshot
+* Snapshot  
+  If you want to use snapshot to back up the PersistentVolumes, make sure there is a corresponding plugin for your Kubernetes provider. Check the [list](https://velero.io/docs/v1.9/supported-providers/) to find the supported providers.
   1. In order to exclude the volume of Redis in backup, we need to label the Redis pod, PVC and PV with specific label:
      ```shell
       # label the Pod of Redis, replace the namespace and Pod name with yours
@@ -47,7 +50,8 @@ According to the capability of the platform where Harbor is deployed, you can ch
       velero backup create harbor-backup --include-namespaces harbor --snapshot-volumes --wait
       ```
   
-* Restic
+* Restic  
+  In the case you want to take volume snapshots but didn’t find a plugin for your provider, Velero has support for snapshotting using restic, but please note the [limitations](https://velero.io/docs/v1.9/restic/#limitations).
   1. Exclude the volume of Redis in backup
       ```shell
       # replace the namespace and pod name with yours
@@ -72,6 +76,9 @@ velero restore create harbor-restore --from-backup harbor-backup --wait
 ### Unset ReadOnly
 As we set Harbor to ReadOnly when doing the backup, the instance is still in ReadOnly mode after the restoring, follow [Unset ReadOnly](#unset-readonly) to unset ReadOnly.
 
+
+## Troubleshooting
+If you get any issue during the backing up and restoring, please refer to the [troubleshooting](https://velero.io/docs/v1.9/troubleshooting/) documentation.
 
 ## Limitations
 * **The upload purging process may cause backup failure**  
