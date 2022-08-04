@@ -199,7 +199,7 @@ You can use certificates that are signed by a trusted third-party CA, or you can
   <tr>
     <td valign="top"><code>cache</code></td>
     <td valign="top">&nbsp;</td>
-    <td valign="top">Configure cache layer for your Harbor instance. When enabled, Harbor will cache some Harbor resources (for example, artifacts, projects, or project metadata) using Redis, reducing the amount of time and resources used for repeated requests for the same Harbor resource. It's strongly recommended that you enable this feature on Harbor instances with high pull request rates to improve Harbor's overall performance. For more details on the cache layer implementation and performance improvements, see the the <a href="https://github.com/goharbor/perf/wiki/Cache-layer">Cache Layer wiki page</a>.</td>
+    <td valign="top">Configure cache layer for your Harbor instance. When enabled, Harbor will cache some Harbor resources (for example, artifacts, projects, or project metadata) using Redis, reducing the amount of time and resources used for repeated requests for the same Harbor resource. It's strongly recommended that you enable this feature on Harbor instances with high concurrent pull request rates to improve Harbor's overall performance. For more details on the cache layer implementation and performance improvements, see the <a href="https://github.com/goharbor/perf/wiki/Cache-layer">Cache Layer wiki page</a>.</td>
   </tr>
   <tr>
     <td valign="top">&nbsp;</td>
