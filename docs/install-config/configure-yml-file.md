@@ -196,6 +196,21 @@ You can use certificates that are signed by a trusted third-party CA, or you can
     <td valign="top"><code>no_proxy</code></td>
     <td valign="top">Configure when not to use a proxy, for example, <code>127.0.0.1,localhost,core,registry</code>.</td>
   </tr>
+  <tr>
+    <td valign="top"><code>cache</code></td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">Configure cache layer for your Harbor instance. When enabled, Harbor will cache some Harbor resources (for example, artifacts, projects, or project metadata) using Redis, reducing the amount of time and resources used for repeated requests for the same Harbor resource. It's strongly recommended that you enable this feature on Harbor instances with high concurrent pull request rates to improve Harbor's overall performance. For more details on the cache layer implementation and performance improvements, see the <a href="https://github.com/goharbor/perf/wiki/Cache-layer">Cache Layer wiki page</a>.</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>enabled</code></td>
+    <td valign="top">Default is <code>false</code>, set to <code>true</code> to enable Harbor's cache layer.</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>expire_hours</code></td>
+    <td valign="top">Configure the cache expiration limit in hours. Default is 24. </td>
+  </tr>
 </table>
 
 ## Optional Parameters
