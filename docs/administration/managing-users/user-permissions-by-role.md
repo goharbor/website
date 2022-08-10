@@ -35,6 +35,9 @@ The following table depicts the various user permission levels in a project.
 | Add scanners to Harbor                  |               |       |           |        |               |
 | Edit scanners in projects               |               |       |           |        | ✓             |
 | See a list of image vulnerabilities     | ✓             | ✓     | ✓         | ✓      | ✓             |
+| Create list of project vulnerabilities  |               |       | ✓         | ✓      | ✓             |
+| Read list of project vulnerabilities  |               |       | ✓         | ✓      | ✓             |
+| Export list of project vulnerabilities  |               |       | ✓         | ✓      | ✓             |
 | See image build history                 | ✓             | ✓     | ✓         | ✓      | ✓             |
 | Add/Remove labels of image              |               |       | ✓         | ✓      | ✓             |
 | See a list of helm charts               | ✓             | ✓     | ✓         | ✓      | ✓             |
