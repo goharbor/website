@@ -148,13 +148,13 @@ If you already deployed Harbor with HTTP and want to reconfigure it to use HTTPS
     Your image data remains in the file system, so no data is lost.
 
     ```sh
-    docker-compose down -v
+    docker compose down -v
     ```
 
 1. Restart Harbor:
 
     ```sh
-    docker-compose up -d
+    docker compose up -d
     ```
 
 ## Verify the HTTPS Connection

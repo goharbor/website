@@ -55,7 +55,7 @@ See [Run the Installer Script](run-installer-script.md) or [Reconfigure Harbor a
 1. Go back to the `make` directory, and start Harbor by using following command:
 
    ```sh
-   docker-compose up -d
+   docker compose up -d
    ```
 
 1. Push and pull images to and from Harbor to check that your own certificate works. 
