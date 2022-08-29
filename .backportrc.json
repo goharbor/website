@@ -1,5 +1,5 @@
 // .backportrc.json
 {
   "upstream": "goharbor/website",
-  "targetBranchChoices": ["main", "release-1.10", "release-2.0.0", "release-2.1.0", "release-2.2.0", "release-2.3.0", "release-2.4.0","release-2.5.0" ]
+  "targetBranchChoices": ["main", "release-1.10", "release-2.0.0", "release-2.1.0", "release-2.2.0", "release-2.3.0", "release-2.4.0","release-2.5.0","release-2.6.0" ]
 }
