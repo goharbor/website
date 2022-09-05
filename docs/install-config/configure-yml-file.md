@@ -404,6 +404,26 @@ The following table lists the additional, optional parameters that you can set t
       <li><code>timeout:</code>: The timeout of data transfer</li>
     </ul></td>
   </tr>
+  <tr>
+    <td valign="top"><code>core</code></td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">Configure core service.</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>secret</code></td>
+    <td valign="top">The secret which is used when core server communicates with other components. Must be a string of 16 characters. The default is a random string.</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>xsrf_token</code></td>
+    <td valign="top">The cross-site request forgery token. Must be a string of 32 characters. The default is a random string.</td>
+  </tr>
+  <tr>
+    <td valign="top"><code>jobservice</code></td>
+    <td valign="top"><code>secret</code></td>
+    <td valign="top">The secret which is used when job service communicates with other components. Must be a string of 16 characters. The default is a random string.</td>
+  </tr>
 </table>
 
 
