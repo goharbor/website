@@ -39,38 +39,42 @@ Once the CSV file is downloaded by the user, it is deleted from Harbor internal 
 The CVE export of functionality adheres to the Harbor standard of providing an API access endpoint through which the functionality can be invoked by 3rd party programs, thereby facilitating automation. A programmatic access consists of the following 3 steps:
 
 1. Invoke the CVE export API
-
-      curl --location --request POST 'https://harbordev.com/api/v2.0/export/cve' \
-      --header 'X-Scan-Data-Type: application/vnd.security.vulnerability.report; version=1.1' \
-      --header 'Authorization: Basic xxx' \
-      --header 'Content-Type: application/json' \
-      --data-raw '{
-        "labels": [
-        ],
-        "repositories": "{goharbor/*,nginx}",
-        "projects": [
-        ],
-        "job_name": "Test_Vuln_Export_Job"
-      }'
+```
+curl --location --request POST 'https://harbordev.com/api/v2.0/export/cve' \
+--header 'X-Scan-Data-Type: application/vnd.security.vulnerability.report; version=1.1' \
+--header 'Authorization: Basic xxx' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "labels": [
+  ],
+  "repositories": "{goharbor/*,nginx}",
+  "projects": [
+  ],
+  "job_name": "Test_Vuln_Export_Job"
+}'
+```
 
 The above API execution returns the execution id associated with the CSV export job. This execution id is used as a reference in further API calls to retrieve the status and download the CSV data.
 
 2. Check the status of the CVE export job.
-      curl --location --request GET 'https://harbordev.com/api/v2.0/export/cve/execution/35' \
-      --header 'X-Scan-Data-Type: Test' \
-      --header 'X-Harbor-CSRF-Token: xxx' \
-      --header 'Authorization: Basic xxx' \
-      --data-raw ''
+```
+curl --location --request GET 'https://harbordev.com/api/v2.0/export/cve/execution/35' \
+--header 'X-Scan-Data-Type: Test' \
+--header 'X-Harbor-CSRF-Token: xxx' \
+--header 'Authorization: Basic xxx' \
+--data-raw ''
+```
 
 Note that in the above GET request the execution id of the CSV export job is specified as a part of the invocation URL. In this case the execution ID we obtained for the job was 35
 
 3. Download the CVE exported data
-      curl --location --request GET 'https://harbordev.com/api/v2.0/export/cve/download/35' \
-      --header 'X-Scan-Data-Type: Test' \
-      --header 'X-Harbor-CSRF-Token: xxx' \
-      --header 'Authorization: Basic xxx' \
-      --data-raw ''
-
+```
+curl --location --request GET 'https://harbordev.com/api/v2.0/export/cve/download/35' \
+--header 'X-Scan-Data-Type: Test' \
+--header 'X-Harbor-CSRF-Token: xxx' \
+--header 'Authorization: Basic xxx' \
+--data-raw ''
+```
 Once the CSV file is downloaded by the user, it is deleted from Harbor internal stores and subsequent attempts to download the same file would result in an error.
 
 #### Conclusion
