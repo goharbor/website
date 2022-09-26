@@ -93,6 +93,7 @@ For full information please check the [Harbor v2.6.0 official documentation](htt
 ### Purge and Forward Audit Log
 
 The audit_log is used to record the image pull/push/delete operations so that administrators could retrieve the history of the operation log. In a typical large Harbor server, there might be a large amount pull request and small amount of push request, delete request. Because the audit log is stored in database table, it cost of amount DB IO time and disk space to write the audit_log, it is better to provide a configurable way to log these information in either the file system or database. The audit_log table because of it is large size, it requires the DBA to create a job to clean up it periodically and it also cause the historical data cannot be retrieved. the purge and forward audit log feature provide a way to forward the audit log to external endpoint and purge the audit log table periodically. 
+<<<<<<< HEAD
 
 #### Feature overview
 
@@ -122,7 +123,38 @@ Check the full [documentation here](https://goharbor.io/docs/2.6.0/administratio
 * Start the deprecation of Notary(signer&server) from v2.6.0 and begin to remove in v2.8.0. More details, please refer to the discussion.
 ### Known issues
 * Starting with v2.6.0, there is a regression issue with sentinel redis configuration, you can get the details from 17483 and you can get the solution here. If you have concerns about this, please wait for the next patch release v2.6.1.
+=======
 
+#### Feature overview
+
+The log rotation feature provide a way to configure and schedule the purge operation to the audit log table. administrators could specify the operations need to delete and how long should the audit log be kept in database.
+The audit log forwarding feature allow user to forward the audit log to an existing sys log endpoint, such as Wavefront LogInsight, Logstash, and once the forward setting is configured, then the administrator could disable to log audit information in database.
+
+#### Purge audit log
+After install Harbor 2.6.0, login to Harbor in browser, there is a new menu item named “Clean Up” under “Administration”. there are two tabs, “Garbage Collection” and “Log Rotation”
+
+![Audit log](../img/blog-2.6/audit-log.png)
+
+Check the full [documentation here](https://goharbor.io/docs/2.6.0/administration/log-rotation/)
+
+
+### Other notable features such as:
+* Support backup and restore Harbor helm chart with [Velero](https://github.com/vmware-tanzu/velero). For more details and usage, see the [user guide](https://goharbor.io/docs/2.6.0/administration/backup-restore/).
+* Add stop button for GC by @AllForNothing in https://github.com/goharbor/harbor/pull/17037
+* Add stop button for audit log rotation by @AllForNothing in https://github.com/goharbor/harbor/pull/17054
+
+>>>>>>> Add Blog for 2.6 releasTe
+
+### Additional Features
+* GDPR compliant deletion of Users by @tpoxa in https://github.com/goharbor/harbor/pull/16859
+* [Experimental] Add new feature for supporting WebAssembly artifact by @ln23415 in https://github.com/goharbor/harbor/pull/16931
+
+### Deprecations
+* Start the deprecation of Chartmuseum from v2.6.0 and begin to remove in v2.8.0. More details, please refer to the [discussion](https://github.com/goharbor/harbor/discussions/15057).
+* Start the deprecation of Notary(signer&server) from v2.6.0 and begin to remove in v2.8.0. More details, please refer to the [discussion](https://github.com/goharbor/harbor/discussions/16612).
+* 
+### Known issues
+Starting with v2.6.0, there is a regression issue with sentinel redis configuration, you can get the details from 17483 and you can get the solution here. If you have concerns about this, please wait for the next patch release v2.6.1.
 
 
 
