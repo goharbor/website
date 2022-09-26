@@ -24,7 +24,7 @@ Cloud-native technologies represented by Kubernetes have become the core driving
 
 While seemingly straightforward, these scenarios can lead to the need for a highly available and performant registry as the Harbor's integration points and user base grows, data requests are made transiently or periodically. In summary, it's hard to evaluate the concurrency requests from the outside, so Harbor needs some adaptive and advanced modules to help to improve its performance in high utilization scenarios.
 
-Full article can be found [here](https://github.com/goharbor/perf/wiki/Cache-layer) and more information about the initial prolsal [here](https://github.com/goharbor/community/blob/main/proposals/cache-layer.md)
+Full article can be found [here](https://github.com/goharbor/perf/wiki/Cache-layer) and more information about the initial proposal [here](https://github.com/goharbor/community/blob/main/proposals/cache-layer.md)
 ### CVE export:
 #### Motivation
 Kubernetes and container adoption is witnessing widespread adoption as detailed within the [CNCF survey](https://www.cncf.io/announcements/2022/02/10/cncf-sees-record-kubernetes-and-container-adoption-in-2021-cloud-native-survey/) conducted in February 2022. This trend ultimately bolsters the most fundamental fact - container registries can no longer act as image stores. Instead container registries are now fundamental building blocks for the software supply chain within the cloud-native software realm and hence must expose features that allow the users to assess the software compliance of the images which are stored in the registry. One of the critical parameters for ensuring software compliance is assessing software vulnerabilities present within container images 
