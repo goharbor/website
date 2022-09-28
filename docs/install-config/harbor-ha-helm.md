@@ -70,11 +70,11 @@ Install the Harbor helm chart with a release name `my-release`:
 Helm 2:
 
 ```bash
-helm install --name my-release .
+helm install --name my-release harbor/
 ```
 
 Helm 3:
 
 ```bash
-helm install my-release .
+helm install my-release harbor/
 ```
