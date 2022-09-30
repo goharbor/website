@@ -121,7 +121,7 @@ Check the full [documentation here](https://goharbor.io/docs/2.6.0/administratio
 * Start the deprecation of Chartmuseum from v2.6.0 and begin to remove in v2.8.0. More details, please refer to the [discussion](https://github.com/goharbor/harbor/discussions/15057).
 * Start the deprecation of Notary(signer&server) from v2.6.0 and begin to remove in v2.8.0. More details, please refer to the [discussion](https://github.com/goharbor/harbor/discussions/16612).
 ### Known issues
-* Starting with v2.6.0, there is a regression issue with sentinel redis configuration, you can get the details from 17483 and you can get the solution here. If you have concerns about this, please wait for the next patch release v2.6.1.
+* Starting with v2.6.0, there is a regression issue with sentinel redis configuration, you can get the details from [17483](https://github.com/goharbor/harbor/issues/17483) and you can get the solution here. If you have concerns about this, please wait for the next patch release v2.6.1.
 
 If you're a user of Harbor and want to share any feedback, we'd love to
 hear from you [here](https://github.com/goharbor/community/issues/115)!
