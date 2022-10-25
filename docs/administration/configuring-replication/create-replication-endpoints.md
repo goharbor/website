@@ -22,7 +22,7 @@ You can also use an endpoint in a proxy cache project. Read more about how to [C
    - AWS Elastic Container Registry
    - Azure Container Registry
    - Ali Cloud Container Registry
-   - Google Container Registry
+   - Google Container Registry (and Google Cloud Artifact Registry)
    - Huawei SWR
    - Artifact Hub
    - Gitlab
@@ -30,7 +30,7 @@ You can also use an endpoint in a proxy cache project. Read more about how to [C
    - Jfrog Artifactory
 
    {{< note >}}
-   If you plan to use this endpoint in a proxy cache project, note that they only support Harbor, Docker Hub, AWS Elastic Container Registry, Azure Container Registry, Google Container Registry, and Quay registries. Read more about how to [Configure Proxy Cache](../../configure-proxy-cache/).
+   If you plan to use this endpoint in a proxy cache project, note that they only support Harbor, Docker Hub, AWS Elastic Container Registry, Azure Container Registry, Google Container Registry/Google Cloud Artifact Registry, and Quay registries. Read more about how to [Configure Proxy Cache](../../configure-proxy-cache/).
    {{< /note >}}
 
    ![Replication providers](../../../img/replication-endpoint2.png)
