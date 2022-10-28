@@ -15,7 +15,7 @@ In database authentication mode, the Harbor system administrator creates user ac
     ![Provide user information](../../../img/new-user.png)
 
     - The username must be unique in the Harbor system
-    - The email address is used for password recovery
+    - The email address must be unique in the Harbor system
     - The password must contain at least 8 characters with 1 lowercase letter, 1 uppercase letter and 1 numeric character
 
-If users forget their password, there is a **Forgot Password** in the Harbor log in page. To use this feature, you must [configure an email server](../general-settings/_index.md).
+If users forget their password, they need to ask the administrator to [reset their password](./reset-user-password.md)
