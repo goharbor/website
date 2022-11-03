@@ -3,13 +3,7 @@ title: Configure Global Settings
 weight: 20
 ---
 
-You can configure Harbor to connect to an email server, set the registry in read-only mode, and configure Harbor so that only system administrators can create projects.
-
-## Configure an Email Server
-
-You can configure Harbor to connect to an email server. The email server is only used to send out responses to users who request to reset their password.
-
-![browse project](../../img/new-config-email.png)
+You can configure Harbor to set the registry in read-only mode, and configure Harbor so that only system administrators can create projects.
 
 ## Make the Registry Read Only
 
