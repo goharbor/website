@@ -3,7 +3,7 @@ title: Upgrade Harbor and Migrate Data
 weight: 45
 ---
 
-This guide covers upgrade and migration to version 2.3.0. This guide only covers migration from v1.10.x and later to the current version. If you are upgrading from an earlier version, refer to the migration guide in the `release-1.10.0` branch to upgrade to v1.10.x first, then follow this guide to perform the migration to this version.
+This guide covers upgrade and migration to version 2.4.0. This guide only covers migration from v1.10.x and later to the current version. If you are upgrading from an earlier version, refer to the migration guide in the `release-1.10.0` branch to upgrade to v1.10.x first, then follow this guide to perform the migration to this version.
 
 If you are upgrading a Harbor instance that you deployed with Helm, see [Upgrading Harbor Deployed with Helm](helm-upgrade.md).
 
