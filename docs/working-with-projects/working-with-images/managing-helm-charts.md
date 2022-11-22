@@ -182,24 +182,24 @@ The CA file used by the Harbor must be trusted in the system due to an [issue](h
 
 ### Push Charts to the artifact Repository with the CLI
 
-After logging in, run the `helm chart save` command to save a chart directory that prepares the artifact for pushing.
+After logging in, run the `helm package` command to save a chart directory that prepares the artifact for pushing.
 
 ```sh
-helm chart save dummy-chart xx.xx.xx.xx/library/dummy-chart
+helm package dummy-chart xx.xx.xx.xx/library/dummy-chart
 ```
 
-After the chart saves, run the `helm chart push` command to push your charts:
+After the chart saves, run the `helm push` command to push your charts:
 
 ```sh
-helm chart push xx.xx.xx.xx/library/dummy-chart:version
+helm push xx.xx.xx.xx/library/dummy-chart:version
 ```
 
 ### Pull Charts from the artifact Repository with the CLI
 
-To pull charts from the the OCI-compatible registry of Harbor, run the `helm chart pull` command just like pulling image using the Docker CLI.
+To pull charts from the the OCI-compatible registry of Harbor, run the `helm pull` command just like pulling image using the Docker CLI.
 
 ```sh
-helm chart pull xx.xx.xx.xx/library/dummy-chart:version
+helm pull xx.xx.xx.xx/library/dummy-chart:version
 ```
 
 ### Manage Helm Charts artifacts in Harbor Interface
