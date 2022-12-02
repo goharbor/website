@@ -35,6 +35,7 @@ Before configuring an OIDC provider in Harbor, make sure that your provider is c
    - **OIDC Provider Endpoint**: The URL of the endpoint of the OIDC provider.
    - **OIDC Client ID**: The client ID with which Harbor is registered as  client application with the OIDC provider.
    - **OIDC Client Secret**: The secret for the Harbor client application.
+   - **OIDC Group Filter**: The [regular expression](https://pkg.go.dev/regexp/syntax) to filter OIDC groups.Only the groups that match the provided regular express will be added to Harbor.
    - **Group Claim Name**: The name of a custom group claim that you have configured in your OIDC provider, that includes the groups to add to Harbor.
    - **OIDC Admin Group**: The name of the admin group, if the ID token of the user shows that he is a member of this group, the user will have admin
      privilege in Harbor. **Note**: You can only set one Admin Group.  Please also make sure the value in this field matches the value of group item in ID token.  
