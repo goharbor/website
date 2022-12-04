@@ -138,9 +138,13 @@ uaa_verify_cert | UAA verify cert, true or false | boolean | optional | true
 oidc_name | Name for OIDC authentication | string | required(oidc_auth)
 oidc_endpoint | Endpoint for OIDC auth | string | required(oidc_auth)
 oidc_client_id | Client id for OIDC auth | string | required(oidc_auth)
-oidc_client_secret | Client secret for OIDC auth |string | required(oidc_auth)
-oidc_scope | Ccope for OIDC auth | string| required(oidc_auth)
-oidc_verify_cert | Verify certificate for OIDC auth, true or false | boolean | optional| true
+oidc_client_secret | Client secret for OIDC auth | string | required(oidc_auth)
+oidc_scope | Scope for OIDC auth | string| required(oidc_auth)
+oidc_verify_cert | Verify certificate for OIDC auth, true or false | boolean | optional | true
+oidc_auto_onboard | Auto onboard the OIDC user, true or false | boolean | optional | false
+oidc_groups_claim | Name of claims in the ID token, whose contain the list of groups names | string | optional |
+oidc_admin_group | The OIDC group which has the harbor admin privileges | string | optional |
+oidc_user_claim | The attribute claims the username | string | optional |
 robot_token_duration | Robot token expiration time in minutes | number | optional | 43200 (30days)
 
 {{< note >}}
