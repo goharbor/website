@@ -65,8 +65,4 @@ To start using the proxy cache, configure your docker pull commands or pod manif
 ```bash
 > docker pull <harbor_server_name>/<proxy_project_name>/goharbor/harbor-core:dev
 ```
-To pull official images or from single level repositories, make sure to include the 'library' namespace.
 
-```bash
-> docker pull <harbor_server_name>/<proxy_project_name>/library/hello-world:latest
-```
