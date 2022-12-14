@@ -32,7 +32,7 @@ Log in to Harbor with a Harbor administrator or project administrator account.
 
 5. Click **OK**.
 
-After the project is created, you can browse repositories, members, logs, replication and configuration using the navigation tab.
+After the project is created, you can browse summary, repositories, helm charts, members, labels, scanner, p2p preheat, policy, robot accounts, logs and configuration using the navigation tab.
 
 ![browse project](../../img/new-browse-project.png)
 
@@ -44,13 +44,13 @@ Project properties can be changed by clicking "Configuration".
 
 * To make all repositories under the project accessible to everyone, select the `Public` checkbox.
 
-* To prevent un-signed images under the project from being pulled, select the `Enable content trust` checkbox. For more information about content trust, see [Implementing Content Trust](../project-configuration/implementing-content-trust.md).
+* To prevent un-signed images under the project from being pulled, select the `Prevent vulnerable images from running` checkbox. For more information about content trust, see [Implementing Content Trust](../project-configuration/implementing-content-trust.md).
 
 ![browse project](../../img/project-configuration.png)
 
 
-## Searching Projects and Repositories
-Entering a keyword in the search field at the top lists all matching projects and repositories. The search result includes both public and private repositories you have access to.
+## Searching Projects, Repositories and Helm charts
+Entering a keyword in the search field at the top lists all matching projects, repositories and helm charts. The search result includes both public and private repositories you have access to.
 
 ![browse project](../../img/new-search.png)
 

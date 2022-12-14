@@ -9,7 +9,7 @@ Harbor provides two kinds of labels to isolate different kinds of resources:
 * **Project Level Label**: Managed by project administrators under a project and can only be added to the images of the project.
 
 ## Managing Global Labels
-The Harbor system administrators can list, create, update and delete the global level labels under `Administration->Configuration->Labels`:
+The Harbor system administrators can list, create, update and delete the global level labels under `Administration->Labels`:
 
 ![manage global level labels](../../../img/manage-global-level-labels.png)
 

@@ -20,13 +20,13 @@ By default, all projects have unlimited quotas for storage use.
 
     ![Project quotas](../../img/project-quota2.png)
 
-    1. For **Default storage consumption**, enter the maximum quantity of storage that any project can consume, selecting `MB`, `GB`, or `TB` from the drop-down menu, or enter `-1` to set the default to unlimited.  
+    1. For **Default storage consumption**, enter the maximum quantity of storage that any project can consume, selecting `MiB`, `GiB`, or `TiB` from the drop-down menu, or enter `-1` to set the default to unlimited.  
     ![Project quotas](../../img/project-quota3.png)
 
     1. Click **OK**.
 1. To set quotas on an individual project, select the project and then click **Edit**.
     ![Project quotas](../../img/project-quota4.png)
-    1. For **Default storage consumption**, enter the maximum quantity of storage that this individual project can consume, selecting `MB`, `GB`, or `TB` from the drop-down menu.
+    1. For **Default storage consumption**, enter the maximum quantity of storage that this individual project can consume, selecting `MiB`, `GiB`, or `TiB` from the drop-down menu.
 
 After you set quotas, you can see how much of their quotas each project has consumed.
 

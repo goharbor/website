@@ -9,7 +9,7 @@ After the initial creation of a project, you can configure or reconfigure its pr
 1. Go to **Projects** and select a project.
 1. Select the **Configuration** tab.
 1. To make all repositories under the project accessible to everyone, select the `Public` checkbox, or deselect this checkbox to make the project private.
-1. To prevent un-signed images under the project from being pulled, select the `Enable content trust` checkbox.
+1. To prevent un-signed images under the project from being pulled, select the `Prevent vulnerable images from running` checkbox.
 
 ![browse project](../../img/project-configuration.png)
 
