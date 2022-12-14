@@ -55,14 +55,26 @@ The **Job Queues** tab displays the detail of job queues. The following table de
 |**Latency**|The waiting time of the current queue, it indicate how long tasks in the queue have already waited.|
 |**Paused**|The paused status of job queue.|
 
+
+[You can check full proposal here](https://github.com/goharbor/community/blob/main/proposals/new/jobservice_monitoring.md)
 Full documentation [here](https://goharbor.io/docs/edge/administration/jobservice-dashboard/)  
 
 ### Replication by chunk
+
 Support copy over chunk when copying image blobs for harbor replication.
 * feat: introduce the copy by chunk for replication by @chlins in [17602](https://github.com/goharbor/harbor/pull/17602)
 * Add copy_by-chunk checkbox for replication rule by @AllForNothing in [17617](https://github.com/goharbor/harbor/pull/17617)
 ![Replication by chunk](../img/blog-2.7/replicatin-by-chunk.png)
 
+
+
+With the development of edge compute, the image registry such as Harbor be deployed by sink to edge nodes to achieve the better performance and independence. For some use cases, they need to replicate images from one center Harbor(regisgtry) to edge Harbor instance, but usually the network for edge is restrict and even unstable. The `Low Bandwidth` and `High Latency` environment is the big challenge for replication. So we need to support copy over chunk for replication to improve the quality.
+
+
+![Replication by chunk](../img/blog-2.7/replicatin-by-chunk.png)
+
+
+[You can check full proposal here](https://github.com/goharbor/community/blob/main/proposals/new/replication-chunk.md)
 
 
 ### Additional Features
