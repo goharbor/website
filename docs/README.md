@@ -18,7 +18,7 @@ This section describes how to install Harbor and perform the required initial co
 - [Troubleshooting Harbor Installation](install-config/troubleshoot-installation.md)
 - [Reconfigure Harbor and Manage the Harbor Lifecycle](install-config/reconfigure-manage-lifecycle.md)
 - [Customize the Harbor Token Service](install-config/customize-token-service.md)
-- [Configure Harbor User Settings at the Command Line](install-config/configure-user-settings-cli.md)
+- [Configure Harbor Settings at the Command Line](install-config/configure-system-settings-cli.md)
 
 ## Harbor Administration
 
