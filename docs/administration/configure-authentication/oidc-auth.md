@@ -57,7 +57,7 @@ When the Harbor system administrator has configured Harbor to authenticate via O
 
 ![oidc_login](../../../img/oidc-login.png)
 
-**NOTE:** When Harbor is configured authentication via OIDC, the **Username** and **Password** fields are reserved for the local Harbor system administrator to log in.
+**NOTE:** When Harbor is configured authentication via OIDC, the **LOGIN VIA LOCAL DB** button is for the local Harbor system administrator to log in.
     
 1. As a Harbor user, click the **Login via OIDC Provider** button.
  
