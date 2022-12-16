@@ -99,13 +99,13 @@ After you update `daemon.json`, you must restart both Docker Engine and Harbor.
 1. Stop Harbor.
 
     ```sh
-    docker-compose down -v
+    docker compose down -v
     ```
 
 1. Restart Harbor.
 
     ```sh
-    docker-compose up -d
+    docker compose up -d
     ```
 
 ## What to Do Next ##

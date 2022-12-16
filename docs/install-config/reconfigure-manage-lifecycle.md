@@ -3,16 +3,16 @@ title: Reconfigure Harbor and Manage the Harbor Lifecycle
 weight: 55
 ---
 
-You use `docker-compose` to manage the lifecycle of Harbor. This topic provides some useful commands. You must run the commands in the directory in which `docker-compose.yml` is located.
+You use `docker compose` to manage the lifecycle of Harbor. This topic provides some useful commands. You must run the commands in the directory in which `docker-compose.yml` is located.
 
-See the [Docker Compose command-line reference](https://docs.docker.com/compose/reference/) for more information about `docker-compose`.
+See the [Docker Compose command-line reference](https://docs.docker.com/compose/reference/) for more information about `docker compose`.
 
 ## Stop Harbor
 
 To stop Harbor, run the following command.
 
 ```sh
-sudo docker-compose stop
+sudo docker compose stop
 Stopping nginx              ... done
 Stopping harbor-portal      ... done
 Stopping harbor-jobservice  ... done
@@ -29,7 +29,7 @@ Stopping harbor-log         ... done
 To restart Harbor, run the following command.
 
 ```sh
-sudo docker-compose start
+sudo docker compose start
 Starting log         ... done
 Starting registry    ... done
 Starting registryctl ... done
@@ -48,7 +48,7 @@ To reconfigure Harbor, perform the following steps.
 1. Stop Harbor.
 
     ```sh
-    sudo docker-compose down -v
+    sudo docker compose down -v
     ```
 
 1. Update `harbor.yml`.
@@ -72,7 +72,7 @@ To reconfigure Harbor, perform the following steps.
 1. Re-create and start the Harbor instance.
 
     ```sh
-    sudo docker-compose up -d
+    sudo docker compose up -d
     ```
 
 ## Other Commands
@@ -80,7 +80,7 @@ To reconfigure Harbor, perform the following steps.
 Remove Harbor's containers but keep all of the image data and Harbor's database files in the file system:
 
 ```sh
-sudo docker-compose down -v
+sudo docker compose down -v
 ```
 
 Remove the Harbor database and image data before performing a clean re-installation:
