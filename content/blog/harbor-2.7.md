@@ -40,7 +40,7 @@ The following table describes the information that is displayed in the dashboard
 |**Schedules**|The job service pool is a pool of workers that execute jobs, display the total count of schedules and show its status | **Pause All**: Pause all running job schedule, **Resume All**: Resume all paused job schedule |
 |**Workers**| The job service worker is a goroutine that executes jobs, it displays the free/total workers| **Free All**: stop the execution of running jobs to free all workers |
 
-## View Job Queue Details
+#### View Job Queue Details
 
 In the job service dashboard, click the **Job Queues** tab.
 
