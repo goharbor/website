@@ -9,7 +9,7 @@ When you delete images from Harbor, space is not automatically freed up. You mus
 
 1. Log in to the Harbor interface with an account that has Harbor system administrator privileges.
 1. Expand **Administration**, and select **Clean Up**.
-1. Select the **'Garbage Collection'** tab.
+1. Select the **'Clean Up'** tab.
 
     ![Garbage collection](../../img/garbage-collection.png)
 
