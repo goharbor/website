@@ -28,12 +28,10 @@ For more information about users and roles in Harbor, see [User Permissions By R
 1. Select the **Members** tab and click **+Group**.
 
    ![Add group](../../../img/add-group.png)
-1. Select **Add an existing user group to project members** or **Add a group from LDAP to project member**.
+1. Enter the name of a group that you have already used in Harbor and assign a role to that group.
 
    ![Screenshot of add group dialog](../../../img/ldap-group-addgroup-dialog.png)
    
-   - If you selected **Add an existing user group to project members**, enter the name of a group that you have already used in Harbor and assign a role to that group.
-   - If you selected **Add a group from LDAP to project member**, enter the LDAP Group DN and assign a role to that group.
 
 Once an LDAP group has been assigned a role in a project, all LDAP/AD users in this group have the privileges of the role you assigned to the group. If a user has both user-level role and group-level role, these privileges are merged.
 

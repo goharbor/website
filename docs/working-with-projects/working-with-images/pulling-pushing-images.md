@@ -96,7 +96,6 @@ Deleting repositories involves two steps.
 First, you delete a repository in the Harbor interface. This is soft deletion. You can delete the entire repository or just one of its tags. After the soft deletion, the repository is no longer managed by Harbor, however, the repository files remain in the Harbor storage.
 
 ![browse project](../../../img/new-delete-repo.png)
-![browse project](../../../img/new-delete-tag.png)
 
 {{< danger >}}
 If both tag A and tag B refer to the same image, after deleting tag A, B will also get deleted. if you enabled content trust, you need to use notary command line tool to delete the tag's signature before you delete an image.
