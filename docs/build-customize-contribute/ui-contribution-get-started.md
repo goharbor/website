@@ -9,25 +9,25 @@ If you already have a harbor backend environment, you can build a frontend devel
     **NOTE:** You should replace “hostname” with an available Harbor hostname.
 
     ```json
-  [
-    {
-      "context": [
-        "/api",
-        "/c",
-        "/i18n",
-        "/chartrepo",
-        "/LICENSE",
-        "/swagger.json",
-        "/swagger2.json",
-        "/devcenter-api-2.0",
-        "/swagger-ui.bundle.js"
-      ],
-      "target": "https://hostname",
-      "secure": false,
-      "changeOrigin": true,
-      "logLevel": "debug"
-    }
-  ]
+    [
+      {
+        "context": [
+          "/api",
+          "/c",
+          "/i18n",
+          "/chartrepo",
+          "/LICENSE",
+          "/swagger.json",
+          "/swagger2.json",
+          "/devcenter-api-2.0",
+          "/swagger-ui.bundle.js"
+        ],
+        "target": "https://hostname",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+      }
+    ]
     ```
 
 2. Open the terminal and run the following command，install npm packages as 3rd-party dependencies.
