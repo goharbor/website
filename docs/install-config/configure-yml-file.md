@@ -95,12 +95,22 @@ You can use certificates that are signed by a trusted third-party CA, or you can
   <tr>
     <td valign="top">&nbsp;</td>
     <td valign="top"><code>max_idle_conns</code></td>
-    <td valign="top">The maximum number of connections in the idle connection pool. If set to &lt;=0 no idle connections are retained. The default value is 50. If it is not configured the value is 2.</td>
+    <td valign="top">The maximum number of connections in the idle connection pool. If it <=0, no idle connections are retained.</td>
   </tr>
   <tr>
     <td valign="top">&nbsp;</td>
     <td valign="top"><code>max_open_conns</code></td>
-    <td valign="top">The maximum number of open connections to the database. If &lt;= 0 there is no limit on the number of open connections. The default value is 100 for the max connections to the Harbor database. If it is not configured the value is 0.</td>
+    <td valign="top">The maximum number of open connections to the database. If it <= 0, then there is no limit on the number of open connections.</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>conn_max_lifetime</code></td>
+    <td valign="top">The maximum amount of time a connection may be reused. If it <= 0, connections are not closed due to a connection's age.</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>conn_max_idle_time</code></td>
+    <td valign="top">The maximum amount of time a connection may be idle. If it <= 0, connections are not closed due to a connection's idle time.</td>
   </tr>
   <tr>
     <td valign="top"><code>data_volume</code></td>
@@ -116,6 +126,11 @@ You can use certificates that are signed by a trusted third-party CA, or you can
     <td valign="top">&nbsp;</td>
     <td valign="top"><code>ignore_unfixed</code></td>
     <td valign="top">Set the flag to <code>true</code> to display only fixed vulnerabilities. The default value is <code>false</code></td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>security_check</code></td>
+    <td valign="top">Comma-separated list of what security issues to detect. Possible values are <code>vuln</code>, <code>config</code> and <code>secret</code>. Defaults to <code>vuln</code>.</td>
   </tr>
   <tr>
     <td valign="top">&nbsp;</td>
