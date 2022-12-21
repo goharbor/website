@@ -45,6 +45,6 @@ Harbor also supports additional deployment security options, allowing you to [im
 
 Build history makes it easy to see the contents of a container image, find the code which builds an image, or locate the image for a source repository.
 
-In Harbor portal, enter your project, select the repository, click on the link of tag name you'd like to see its build history, the detail page will be opened. Then switch to `Build History` tab, you can see the build history information.
+In Harbor portal, enter your project, select the repository, click on the link of artifact you'd like to see its build history, the detail page will be opened. Then switch to `Build History` tab, you can see the build history information.
 
 ![build history](../../img/build-history.png)

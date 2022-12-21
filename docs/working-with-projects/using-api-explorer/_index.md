@@ -13,6 +13,6 @@ You can view and test the Harbor REST API from your Harbor interface using the S
 
 ## Access Harbor REST API directly
 
-1. Navigate to the Swagger page by using the IP address of your Harbor instance, `https://<harbor_ip>/devcenter`. For example: https://10.192.111.118/devcenter.
+1. Navigate to the Swagger page by using the IP address of your Harbor instance, `https://<harbor_ip>/devcenter-api-2.0`. For example: https://10.192.111.118/devcenter-api-2.0.
 1. Then click the **Authorize** button to give basic authentication to all APIs. All APIs will be invoked with the current user's authorization.
 ![authentication](../../img/authorize.png)
