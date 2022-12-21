@@ -79,7 +79,13 @@ You **can not** replicate from Harbor v1.x to v2.0 and later, and you **can not*
 1. Optionally select the Override checkbox to force replicated resources to replace resources at the destination with the same name.
 
    ![Override](../../../img/replication-rule8.png)
-1. Click **Save** to create the replication rule.  
+1. Optionally select the Copy by chunk checkbox to enable the artifact blobs copied by chunks, currently only supported for source and destination registry are both harbor, but you can enable this by calling harbor API manually for other type registries.
+   ![Copy by chunk](../../../img/replication-rule9.png)
+
+   {{< note >}}
+   Copy by chunk has not been verified officially between harbor and other type registries. The default chunk size is 10MB, you can override it by setting env `REPLICATION_CHUNK_SIZE` in the jobservice, the value should be united as bytes, for example `10MB=1024*1024*10` then you should set `REPLICATION_CHUNK_SIZE=10485760`.
+   {{< /note >}}
+1. Click **Save** to create the replication rule.
 
 ## What to Do Next
 
