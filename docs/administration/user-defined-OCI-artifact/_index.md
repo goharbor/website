@@ -19,7 +19,7 @@ OPTIONAL property. The list of skip keys. Harbor will ignore these keys in confi
 It is in ```manifest.layers[].annotations```.  
 The identifier of artifact icon. The value for this key should be empty string. Only key will be processed, the value will not be used.
 If an icon is used by artifacts, the icon must be a layer of artifacts when building artifacts.
-Note: The mediaType of icons support image/gif, image/png", image/jpeg"
+Note: The mediaType of icons support "image/gif, image/png, image/jpeg".
 
 
 ## Example OCI Manifest
