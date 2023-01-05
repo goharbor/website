@@ -35,11 +35,21 @@ Use the steps below to add a translation for a new language to the Harbor portal
 
     ```typescript
     export const LANGUAGES = {
-        "en-us": "English",
-        "zh-cn": "中文简体",
-        "<language>-<locale>": "<DISPLAY_NAME>",
+        'en-us': ['English', locale_en],
+        'zh-cn': ['中文简体', locale_zh_CN],
+        '<language>-<locale>': ['<DISPLAY_NAME>', '<LOCALE_DATA>'],
     } as const;
     ```
+   
+{{< note >}}
+For `LOCALE_DATA`, You need to import it correctly:
+```typescript
+import locale_en 
+  from '@angular/common/locales/en';
+import locale_zh_CN 
+  from '@angular/common/locales/zh-Hans';
+```
+{{< /note >}}
 
 3. Next, refer to [Build Harbor from Source Code](compile-guide.md) to rebuild and restart Harbor.
 
