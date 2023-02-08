@@ -86,7 +86,7 @@ If you have any issue while backing up or restoring, please refer to Velero's [t
 
 ## Limitations
 * **The upload purging process may cause backup failure**  
-  A purging process starts in the `registry` pod by default, it removes the unused files under the upload directory periodically and cannot be disabled without restarting. This may impact the backup when using Restic and cause failures.  
+  A purging process starts in the `registry` pod by default, it removes the unused files under the upload directory periodically and cannot be deactivated without restarting. This may impact the backup when using Restic and cause failures.  
   It's better to increase the [interval](https://github.com/goharbor/harbor-helm/blob/v1.9.2/values.yaml#L581) of the purging operation(the default value is 168h) and do the backup in the middle of two rounds of purging to avoid files being removed.
 * **The data in memory is lost during the backup**  
   Harbor stores repository pull and artifact pull times in memory and syncs them periodically into Harbor's database. This means that any data that isn't synced into the database when you take a backup is lost. This data loss should be low impact to your restored Harbor instance.
