@@ -15,7 +15,7 @@ The table below lists the parameters that must be set when you deploy Harbor. By
 
 You can use certificates that are signed by a trusted third-party CA, or you can use self-signed certificates. For information about how to create a CA, and how to use a CA to sign a server certificate and a client certificate, see [Configuring Harbor with HTTPS Access](configure-https.md).
 
-<table width="100%" border="0">
+<table border="0">
   <caption>
     Required Parameters for Harbor Deployment
   </caption>
@@ -232,7 +232,7 @@ You can use certificates that are signed by a trusted third-party CA, or you can
 
 The following table lists the additional, optional parameters that you can set to configure your Harbor deployment beyond the minimum required settings. To enable a setting, you must uncomment it in `harbor.yml` by deleting the leading `#` character.
 
-<table width="100%" border="0">
+<table border="0">
   <caption>
     Optional Parameters for Harbor
   </caption>
