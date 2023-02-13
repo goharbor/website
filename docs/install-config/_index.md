@@ -34,7 +34,7 @@ For information about how to manage your deployed Harbor instance, see [Reconfig
 
 By default, Harbor uses its own private key and certificate to authenticate with Docker. For information about how to optionally customize your configuration to use your own key and certificate, see [Customize the Harbor Token Service](customize-token-service.md).
 
-After installation, log into your Harbor via the web console to configure the instance under 'configuration'.  Harbor also provides a command line interface (CLI) that allows you to [Configure Harbor User Settings at the Command Line](configure-user-settings-cli.md).
+After installation, log into your Harbor via the web console to configure the instance under 'configuration'.  Harbor also provides a command line interface (CLI) that allows you to [Configure Harbor System Settings at the Command Line](configure-system-settings-cli.md).
 
 ## Harbor Components
 
