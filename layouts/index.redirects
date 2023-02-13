@@ -1,10 +1,10 @@
 {{ $versions := site.Params.versions }}
-{{ $latest := (index $versions 0).harborversion }}
+{{ $harborLatest := (index site.Params.versions 0).harborversion }}
 {{ range $versions }}
   {{ if eq .harborversion $1 }}
     /docs/{{ .harborversion }}/{{ $2 }}     /docs/{{ .harborversion }}/{{ $2 }}     200!
   {{ end }}
 {{ end }}
-/docs/{{ $1 }}/{{ $2 }}     /docs/{{ $latest }}/{{ $2 }}     301!
+/docs/{{ $1 }}/{{ $2 }}     /docs/{{ $harborLatest }}/{{ $2 }}     301!
 /docs/latest /docs/{{ $harborLatest }}/
 /docs/latest/* /docs/{{ $harborLatest }}/:splat
