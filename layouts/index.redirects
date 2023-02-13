@@ -1,4 +1,4 @@
-{{ $versions := index site.Params.versions }}
+{{ $versions := site.Params.versions }}
 {{ $harborLatest := (index site.Params.versions 0).harborversion }}
 {{ $1 := (split (substr .URL 0 -1) "/")[2] }}
 {{ $2 := (split (substr .URL 0 -1) "/")[3] }}
