@@ -1,19 +1,15 @@
-{{ $versions := (slice "1.10" "2.0.0" "2.1.0" "2.2.0" "2.3.0" "2.4.0" "2.5.0" "2.6.0" "2.7.0") }}
 {{ $harborLatest := (index site.Params.versions 0).harborversion }}
 
-{{ $requestedVersion := (reReplace "(^/docs/)([^/]+)(.*)", "$2", .URL.Path) }}
-{{ $redirect := false }}
-{{ range $versions }}
-{{ if eq $requestedVersion . }}
-{{ $redirect = false }}
-{{ break }}
-{{ else }}
-{{ $redirect = true }}
-{{ end }}
-{{ end }}
+/docs/2.7.0/ /docs/2.7.0/
+/docs/2.6.0/ /docs/2.6.0/
+/docs/2.5.0/ /docs/2.5.0/
+/docs/2.4.0/ /docs/2.4.0/
+/docs/2.3.0/ /docs/2.3.0/
+/docs/2.2.0/ /docs/2.2.0/
+/docs/2.1.0/ /docs/2.1.0/
+/docs/2.0.0/ /docs/2.0.0/
+/docs/1.10/ /docs/1.10/
 
-{{ if $redirect }}
 /docs/:splat /docs/{{ $harborLatest }}/:splat 302!
-{{ end }}
 /docs/latest /docs/{{ $harborLatest }}/
 /docs/latest/* /docs/{{ $harborLatest }}/:splat
