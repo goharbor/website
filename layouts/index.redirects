@@ -1,4 +1,4 @@
 {{- $harborLatest := (index site.Params.versions 0).harborversion -}}
-/docs     /docs/{{ $harborLatest }}     301!
-/docs/latest     /docs/{{ $harborLatest }}
-/docs/latest/*     /docs/{{ $harborLatest }}/:splat
+/docs /docs/{{ $harborLatest }}/ 302!
+/docs/latest /docs/{{ $harborLatest }}/
+/docs/latest/* /docs/{{ $harborLatest }}/:splat
