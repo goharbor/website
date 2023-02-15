@@ -107,7 +107,7 @@ You are able to edit, deactivate, or delete a system robot account.
 1. From the administrator **Robot Account** page, select the checkbox next to the robot account you are updating.
 1. Select **Action** and then **Edit**, **Deactivate**, or **Delete**.
 
-  ![Disable or delete a robot account](../../img/disable-delete-system-robot-account.png)
+  ![deactivate or delete a robot account](../../img/disable-delete-system-robot-account.png)
 
 ## Refresh System Robot Account Secret
 

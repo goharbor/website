@@ -88,7 +88,7 @@ You are able to edit, deactivate, or delete a project robot account.
 1. From a project's **Robot Account** page, select the checkbox next to the robot account you are updating.
 1. Select **Action** and then **Edit**, **Deactivate**, or **Delete**.
 
-  ![Disable or delete a robot account](../../../img/disable-delete-project-robot-account.png)
+  ![Deactivate or delete a robot account](../../../img/disable-delete-project-robot-account.png)
 
 ## Refresh Project Robot Account Secret
 
