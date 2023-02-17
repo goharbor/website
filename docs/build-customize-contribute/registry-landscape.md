@@ -11,7 +11,7 @@ This table is maintained by contributions from the Harbor community. If you find
 | Ability to Determine Version of Binaries in Containers | ✓      | ✓                       | ✓       | ✗                                 | ✗                           | ?           | ?        |
 | Artifact Repository (rpms, git, jar, etc)              | ✗      | ✗                       | ✗       | ✗                                 | ✗                           | ✓           | partial  |
 | Audit Logs                                             | ✓      | ✓                       | ✓       | ✓                                 | ✗                           | ✓           | ✓        |
-| Content Trust and Validation                           | ✓      | ✓                       | ✗       | ✗                                 | partial                     | partial     | ✗        |
+| Content Trust and Validation                           | ✓      | ✓                       | ✓       | ✗                                 | partial                     | partial     | ✗        |
 | Custom TLS Certificates                                | ✓      | ✓                       | ✓       | ✗                                 | ✓                           | ✓           | ✓        |
 | Helm Chart Repository Manager                          | ✓      | ✗                       | partial | ✗                                 | ✗                           | ✓           | ✗        |
 | LDAP-based Auth                                        | ✓      | ✓                       | ✓       | partial                           | ✗                           | ✓           | ✓        |
@@ -19,7 +19,7 @@ This table is maintained by contributions from the Harbor community. If you find
 | Metrics       | ✓      | ✓                       | ✓       | ✓                           | ✓                           | ✓           | ✓        |
 | Multi-Tenancy (projects, teams, namespaces, etc)       | ✓      | ✓                       | ✓       | partial                           | ✗                           | ✓           | ✓        |
 | Open Source                                            | ✓      | partial                 | ✓       | ✗                                 | ✓                           | partial     | partial  |
-| Project Quotas (by image count & storage consumption)  | ✓      | ✗                       | ✗       | partial                           | ✗                           | ✗           | ✗        |
+| Project Quotas (by storage consumption)                | ✓      | ✗                       | ✓       | partial                           | ✗                           | ✗           | ✗        |
 | Replication between instances                          | ✓      | ✓                       | ✓       | n/a                               | ✗                           | ✓           | ✗        |
 | Replication between non-instances                      | ✓      | ✗                       | ✓       | n/a                               | ✗                           | ✗           | ✗        |
 | Robot Accounts for Helm Charts                         | ✓      | ✗                       | ✗       | ?                                 | ✗                           | ✗           | ✗        |
