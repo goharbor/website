@@ -27,3 +27,9 @@ denied: The system is in read only mode. Any modification is prohibited.
 Use the **Project Creation** drop-down menu to set which users can create projects. Select **Everyone** to allow all users to create projects. Select **Admin Only** to allow only users with the Harbor system administrator role to create projects.
 
 ![browse project](../../img/new-proj-create.png)
+
+## Retain image last pull time on scanning
+
+By default, a vulnerability scanner(e.g. Trivy) will update the image's last `pull time` when the image is scanned. This affects the **Tag Retention Rules** based on pull time. If you want to eliminate this effect, you can enable this option to avoid updating the pull time on scanning. 
+
+![browse project](../../img/skip-pull-time.png)
