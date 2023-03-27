@@ -26,18 +26,18 @@ hello!
 
 There are a few scheduled events / places to find us:
 
-* [**Harbor Project Meeting**](https://sched.co/1JWPD) - Harbor Project Meeting
+* [**Harbor Project Meeting**](https://sched.co/1JWPD)  
 Tuesday, April 18 | 13:00 - 17:00 CEST  
 Room G111, Auditorium Center  
 
 * [**Harbor Maintainers track**](https://sched.co/1HyTg)- [Vadim Bauer](https://twitter.com/vad1mo) and [Yan Wang](https://twitter.com/wy65701436) lead maintainers , will be presenting this edition of the maintainers track - [Yesterday, Today... Project Harbor - The Maintainers Track - Vadim Bauer, 8gears & Yan Wang, VMware](https://sched.co/1HyTg)  
 
 
-* **Meet the Project Kiosk Booth** - 
-find us at the CNCF Project Kiosks number 6 on:  
- - Wednesday, April 19: 16:00 – 21:00  
- - Thursday, April 20: 14:30 – 17:30  
- - Friday, April 21: 12:30 – 14:30
+* **Meet the Project Kiosk Booth** -  
+Find us at the CNCF Project Kiosks number 6 on:  
+  - Wednesday, April 19: 16:00 – 21:00  
+  - Thursday, April 20: 14:30 – 17:30  
+  - Friday, April 21: 12:30 – 14:30
 
 
 We couldn't be more excited to join the community at this fun event and
