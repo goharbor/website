@@ -45,7 +45,6 @@ The table below lists the some of the key components that are deployed when you 
 |Postgresql|13.3.0|
 |Redis|6.0.13|
 |Beego|1.9.0|
-|Chartmuseum|0.9.0|
 |Docker/distribution|2.7.1|
 |Docker/notary|0.6.1|
 |Helm|2.9.1|

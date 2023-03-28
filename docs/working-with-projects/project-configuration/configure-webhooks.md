@@ -16,9 +16,6 @@ You can define multiple webhook endpoints per project. Harbor supports two kinds
 |Push artifact to registry|`PUSH_ARTIFACT`|Repository namespace name, repository name, resource URL, tags, manifest digest, artifact name, push time timestamp, username of user who pushed artifact|
 |Pull artifact from registry|`PULL_ARTIFACT`|Repository namespace name, repository name, manifest digest, artifact name, pull time timestamp, username of user who pulled artifact|
 |Delete artifact from registry|`DELETE_ARTIFACT`|Repository namespace name, repository name, manifest digest, artifact name, artifact size, delete time timestamp, username of user who deleted image|
-|Upload Helm chart to chartMuseum|`UPLOAD_CHART`|Repository name, chart name, chart type, chart version, chart size, tag, timestamp of push, username of user who uploaded chart|
-|Download Helm chart from chartMuseum|`DOWNLOAD_CHART`|Repository name, chart name, chart type, chart version, chart size, tag, timestamp of push, username of user who pulled chart|
-|Delete Helm chart from chartMuseum|`DELETE_CHART`|Repository name, chart name, chart type, chart version, chart size, tag, timestamp of delete, username of user who deleted chart|
 |Image scan completed|`SCANNING_COMPLETED`|Repository namespace name, repository name, tag scanned, image name, number of critical issues, number of major issues, number of minor issues, last scan status, scan completion time timestamp, username of user who performed scan|
 |Image scan failed|`SCANNING_FAILED`|Repository namespace name, repository name, tag scanned, image name, error that occurred, username of user who performed scan|
 |Project quota exceeded|`QUOTA_EXCEED`|Repository namespace name, repository name, tags, manifest digest, artifact name, push time timestamp, username of user who pushed artifact|
