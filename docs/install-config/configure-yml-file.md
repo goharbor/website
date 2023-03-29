@@ -441,9 +441,9 @@ storage_service:
     tenant: admin
     domain: default
     region: regionOne
-    container: docker_images"
+    container: docker_images
   redirect:
-    disable: false
+    disabled: false
 ```
 
 ## What to Do Next
