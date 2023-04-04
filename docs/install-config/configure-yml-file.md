@@ -158,11 +158,6 @@ You can use certificates that are signed by a trusted third-party CA, or you can
     <td valign="top">Set the maximum number of retries for web hook jobs. The default is 10.</td>
   </tr>
   <tr>
-    <td valign="top"><code>chart</code></td>
-    <td valign="top"><code>absolute_url</code></td>
-    <td valign="top">Set to <code>enabled</code> for Chart to use an absolute URL. Set to <code>deactivated</code> for Chart to use a relative URL.</td>
-  </tr>
-  <tr>
     <td valign="top"><code>log</code></td>
     <td valign="top">&nbsp;</td>
     <td valign="top">Configure logging. Harbor uses `rsyslog` to collect the logs for each container.</td>

@@ -41,5 +41,3 @@ Besides, a user can also provide the certs for all components. However, there ar
     |`notary_signer.crt`| notary_signer's certificate file| `notary-signer` |
     |`trivy_adapter.key`| trivy_adapter.'s key file | N/A |
     |`trivy_adapter.crt`| trivy_adapter.'s certificate file| `trivy-adapter` |
-    |`chartmuseum.key`| chartmuseum's key file | N/A |
-    |`chartmuseum.crt`| chartmuseum's certificate file| `chartmuseum` |
