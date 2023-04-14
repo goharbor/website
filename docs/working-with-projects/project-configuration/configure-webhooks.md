@@ -66,32 +66,26 @@ The webhook notification is delivered in JSON format. The following example show
   // requestid is the http request id for tracing the source request of this event
   "requestid": "51c0b694-0168-4f3c-b0db-282565455d7b",
   "source": "/projects/2/webhook/policies/15",
-  "type": "harbor.replication.status.changed",
+  "type": "harbor.artifact.pushed",
   "datacontenttype": "application/json",
   "time": "2023-04-03T06:04:46Z",
   "data": {
-    "replication": {
-      "harbor_hostname": "localhost",
-      "job_status": "Running",
-      "artifact_type": "image",
-      "override_mode": true,
-      "trigger_type": "MANUAL",
-      "policy_creator": "admin",
-      "execution_timestamp": 1680501881,
-      "src_resource": {
-        "registry_name": "hub",
-        "registry_type": "docker-hub",
-        "endpoint": "https://hub.docker.com",
-        "namespace": "library"
-      },
-      "dest_resource": {
-        "registry_type": "harbor",
-        "endpoint": "http://localhost",
-        "namespace": "harbor"
+    "resources": [
+      {
+        "digest": "sha256:954b378c375d852eb3c63ab88978f640b4348b01c1b3456a024a81536dafbbf4",
+        "tag": "sha256:954b378c375d852eb3c63ab88978f640b4348b01c1b3456a024a81536dafbbf4",
+        "resource_url": "localhost/harbor/alpine@sha256:954b378c375d852eb3c63ab88978f640b4348b01c1b3456a024a81536dafbbf4"
       }
+    ],
+    "repository": {
+      "date_created": 1680501893,
+      "name": "alpine",
+      "namespace": "harbor",
+      "repo_full_name": "harbor/alpine",
+      "repo_type": "private"
     }
   },
-  "operator": "MANUAL"
+  "operator": "harbor-jobservice"
 }
 ```
 
