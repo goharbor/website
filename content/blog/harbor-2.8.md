@@ -2,7 +2,7 @@
 title: "Harbor v2.8 release - The KubeCon Release - Amsterdam"
 author:
   name: "Orlin Vasilev"
-date: 2023-04-17T09:00:00+01:00
+date: 2023-04-17T06:00:00+01:00
 draft: false
 showPageInfo: true
 ---
