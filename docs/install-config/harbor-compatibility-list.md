@@ -50,6 +50,7 @@ This document provides compatibility information for all Harbor components.
 | [Sysdig Secure](https://github.com/sysdiglabs/harbor-scanner-sysdig-secure) |![Sysdig](../../img/scanners/sysdig.png) | Sysdig  | ![Y](../../img/replication-adapters/right.png) |  | v2.1.0 |
 | [TensorSecurity](https://github.com/tensorsecurity/harbor-scanner) |![TensorSecurity](../../img/scanners/tensorsecurity.png) | TensorSecurity | ![Y](../../img/replication-adapters/right.png) |  | v2.2.0 |
 | [ArksecScanner](https://github.com/arksec-cn)    |![Arksec](../../img/scanners/arksec.png)| Arksec    |![Y](../../img/replication-adapters/right.png)| | v2.4.0 |
+| [Cyberwatch](https://github.com/Cyberwatch)    |![Cyberwatch](../../img/scanners/cyberwatch.png)| Cyberwatch    |![N](../../img/replication-adapters/no.png)|![Y](../../img/replication-adapters/right.png)| v2.2.0 |
 
 
 {{< note >}}
