@@ -30,7 +30,10 @@ Before configuring an OIDC provider in Harbor, make sure that your provider is c
 
    ![LDAP authentication](../../../img/select-oidc-auth.png)
 1. Enter information about your OIDC provider.   
-   - **Primary Auth Mode**: Whether to use the OIDC mode as the primary auth mode.
+   - **Primary Auth Mode**: Whether to use the OIDC mode as the primary auth mode. 
+     {{< note >}}
+     To override and login via DB is possible when visiting the URL '/account/sign-in' explicitly
+     {{< /note >}}
    - **OIDC Provider Name**: The name of the OIDC provider.
    - **OIDC Provider Endpoint**: The URL of the endpoint of the OIDC provider.
    - **OIDC Client ID**: The client ID with which Harbor is registered as  client application with the OIDC provider.
