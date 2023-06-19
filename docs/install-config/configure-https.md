@@ -72,7 +72,7 @@ The certificate usually contains a `.crt` file and a `.key` file, for example, `
 
 1. Use the `v3.ext` file to generate a certificate for your Harbor host.
    
-    Replace the `yourdomain.com` in the CRS and CRT file names with the Harbor host name.
+    Replace the `yourdomain.com` in the CSR and CRT file names with the Harbor host name.
 
     ```sh
     openssl x509 -req -sha512 -days 3650 \
