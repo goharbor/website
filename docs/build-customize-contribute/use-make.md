@@ -10,7 +10,6 @@ BASEIMAGETAG       | The tag for base image, default:dev
 VERSIONTAG         | The tag for harbor image, default:dev
 DEVFLAG            | Build model flag, default: true
 GOBUILDIMAGE       | Golang image to compile harbor go source code.
-NOTARYFLAG         | Whether to enable notary in harbor, default:false
 TRIVYFLAG          | Whether to enable trivy in harbor, default:false
 CHARTFLAG          | Whether to enable chartmuseum in harbor, default:false
 HTTPPROXY          | Clarity proxy to build UI.
@@ -43,23 +42,11 @@ cleanpackage        | remove online/offline install package
 ### Build and run harbor from source code
 
 ```sh
-make install NOTARYFLAG=true
+make install
 ```
 
 ### Package offline installer
 
 ```sh
-make package_offline NOTARYFLAG=true
-```
-
-### Start harbor with notary
-
-```sh
-make -e NOTARYFLAG=true start
-```
-
-### Stop harbor with notary
-
-```sh
-make -e NOTARYFLAG=true down
+make package_offline
 ```

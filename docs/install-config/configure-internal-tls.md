@@ -35,9 +35,5 @@ Besides, a user can also provide the certs for all components. However, there ar
     |`registry.crt`| registry's certificate file| `registry` |
     |`registryctl.key`| registryctl's key file | N/A |
     |`registryctl.crt`| registryctl's certificate file| `registryctl` |
-    |`notary_server.key`| notary_server's key file | N/A |
-    |`notary_server.crt`| notary_server's certificate file| `notary-server` |
-    |`notary_signer.key`| notary_signer's key file | N/A |
-    |`notary_signer.crt`| notary_signer's certificate file| `notary-signer` |
     |`trivy_adapter.key`| trivy_adapter.'s key file | N/A |
     |`trivy_adapter.crt`| trivy_adapter.'s certificate file| `trivy-adapter` |

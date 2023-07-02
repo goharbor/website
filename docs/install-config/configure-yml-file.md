@@ -11,7 +11,7 @@ After the initial deployment and after you have started Harbor, you perform addi
 
 The table below lists the parameters that must be set when you deploy Harbor. By default, all of the required parameters are uncommented in the `harbor.yml` file. The optional parameters are commented with `#`. You do not necessarily need to change the values of the required parameters from the defaults that are provided, but these parameters must remain uncommented. At the very least, you must update the `hostname` parameter.
 
-**IMPORTANT**: Harbor does not ship with any certificates. In versions up to and including 1.9.x, by default Harbor uses HTTP to serve registry requests. This is acceptable only in air-gapped test or development environments. In production environments, always use HTTPS. If you enable Content Trust with Notary to properly sign all images, you must use HTTPS.
+**IMPORTANT**: Harbor does not ship with any certificates. In versions up to and including 1.9.x, by default Harbor uses HTTP to serve registry requests. This is acceptable only in air-gapped test or development environments. In production environments, always use HTTPS.
 
 You can use certificates that are signed by a trusted third-party CA, or you can use self-signed certificates. For information about how to create a CA, and how to use a CA to sign a server certificate and a client certificate, see [Configuring Harbor with HTTPS Access](configure-https.md).
 
@@ -265,7 +265,7 @@ The following table lists the additional, optional parameters that you can set t
   <tr>
     <td valign="top"><code>external_database</code></td>
     <td valign="top">&nbsp;</td>
-    <td valign="top">Configure external database settings, if you deactivate the local database option. Currently, Harbor only supports PostgreSQL database. You must create three databases for Harbor core, Notary server, and Notary signer. The tables are generated automatically when Harbor starts up.</td>
+    <td valign="top">Configure external database settings, if you deactivate the local database option. Currently, Harbor only supports PostgreSQL database. You must create a database for Harbor core. The tables are generated automatically when Harbor starts up.</td>
   </tr>
   <tr>
     <td valign="top">&nbsp;</td>
@@ -281,31 +281,6 @@ The following table lists the additional, optional parameters that you can set t
         <li><code>max_idle_conns</code>: The maximum number of connections in the idle connection pool. If &lt;=0 no idle connections are retained. The default value is 2.</li>
         <li><code>max_open_conns</code>: The maximum number of open connections to the database. If &lt;= 0 there is no limit on the number of open connections. The default value is 0.</li>
     </ul>      </td>
-  </tr>
-  <tr>
-    <td valign="top">&nbsp;</td>
-    <td valign="top"><code>notary_signer</code></td>
-    <td valign="top">Configure an external database for the Notary signer database
-      <ul>
-        <li><code>host</code>: Hostname of the Notary signer database</li>
-        <li><code>port</code>: Database port.</li>
-        <li><code>db_name</code>: Database name.</li>
-        <li><code>username</code>: Username to connect to the Notary signer database.</li>
-        <li><code>password</code>: Password for the account you set in <code>username</code>.</li>
-        <li><code>ssl_mode</code>: Enable SSL mode.</li>
-      </ul>    </td>
-  </tr>
-  <tr>
-    <td valign="top">&nbsp;</td>
-    <td valign="top"><code>notary_server</code></td>
-    <td valign="top"><ul>
-      <li><code>host</code>: Hostname of the Notary server database.</li>
-      <li><code>port</code>: Database port.</li>
-      <li><code>db_name</code>: Database name.</li>
-      <li><code>username</code>: Username to connect to the Notary server database.</li>
-      <li><code>password</code>: Password for the account you set in <code>username</code>.</li>
-      <li><code>ssl_mode</code>: Enable SSL mode.e</li>
-    </ul>    </td>
   </tr>
   <tr>
     <td valign="top"><code>external_redis</code></td>
