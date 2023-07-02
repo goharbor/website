@@ -28,10 +28,6 @@ A replication endpoint must exist before you create a replication rule. To creat
    * **\***: Matches any sequence of non-separator characters `/`.
    * **\*\***: Matches any sequence of characters, including path separators `/`.
    * **?**: Matches any single non-separator character `/`.
-   * **{alt1,...}**: Matches a sequence of characters if one of the comma-separated alternatives matches. are as follows:
-   * **\***: Matches any sequence of non-separator characters `/`.
-   * **\*\***: Matches any sequence of characters, including path separators `/`.
-   * **?**: Matches any single non-separator character `/`.
    * **{alt1,...}**: Matches a sequence of characters if one of the comma-separated alternatives matches.
 
    **NOTE:** You must add `library` if you want to replicate the official images of Docker Hub. For example, `library/hello-world` matches the official hello-world images.  
