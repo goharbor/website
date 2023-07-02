@@ -85,7 +85,7 @@ Go into the repository and select the **Info** tab, and click the **Edit** butto
 
 ## Download the Harbor Certificate
 
-Users can click the **Registry Certificate** button to download the registry certificate.
+Users can click the **Registry Certificate** button to download the registry certificate. If there is no **Registry Certificate** button, copy your server certificate into the directory `<your-data_volume>/ca_download/` and name it `ca.cert`.
 
 ![browse project](../../../img/download-harbor-certs.png)
 
