@@ -7,7 +7,7 @@ A repository can rapidly accumulate a large number of artifacts, many of which m
 
 ## How Tag Retention Rules Work
 
-You define tag retention rules on repositories, not on projects. This allows for greater granularity when defining your retention rules. As the name suggests, when you define a retention rule for a repository, you are identifying which tags to retain. You do not define rules to explicitly remove tags. Rather, when you set a rule, any tags in a repository that are not identified as being eligible for retention are discarded. The `OR` algorithm is used between rules.
+You define tag retention rules on projects and can specify which repositories you want to apply it to. This allows for greater granularity when defining your retention rules. As the name suggests, when you define a retention rule for a repository, you are identifying which tags to retain. You do not define rules to explicitly remove tags. Rather, when you set a rule, any tags in a repository that are not identified as being eligible for retention are discarded. The `OR` algorithm is used between rules.
 
 A tag retention rule has 3 filters that are applied sequentially, as described in the following table.
 
