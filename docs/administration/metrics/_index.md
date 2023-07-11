@@ -142,7 +142,7 @@ You can also use Prometheus to collect metrics from a Harbor instance deployed i
         matchLabels:
           app: harbor
       endpoints:
-      - port: metrics
+      - port: http-metrics
     ```
 
 2. Enable Harbor to expose metrics by updating your harbor-helm `values.yaml` file and set `metrics.enabled` to `true`. You can also edit the port and path the metrics are exposed on by updating the available harbor-helm chart [configuration options for metrics](https://github.com/goharbor/harbor-helm#configuration).
