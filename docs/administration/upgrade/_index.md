@@ -73,6 +73,6 @@ Since the migration might alter the database schema and the settings of `harbor.
 
 1. In the `./harbor` directory, run the `./install.sh` script to install the new Harbor instance.
 
-   To install Harbor with components such as Notary and Trivy, see [Run the Installer Script](../../install-config/run-installer-script.md) for more information.
+   To install Harbor with Trivy, see [Run the Installer Script](../../install-config/run-installer-script.md) for more information.
 
 If you need to roll back to the previous version of Harbor, see [Roll Back from an Upgrade](roll-back-upgrade.md).

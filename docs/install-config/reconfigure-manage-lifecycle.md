@@ -63,10 +63,10 @@ To reconfigure Harbor, perform the following steps.
     sudo ./prepare
     ```
 
-    To reconfigure Harbor to install Notary and Trivy, include all of the components in the `prepare` command.
+    To reconfigure Harbor to install Trivy, include the component in the `prepare` command.
 
     ```sh
-    sudo ./prepare --with-notary --with-trivy
+    sudo ./prepare --with-trivy
     ```
 
 1. Re-create and start the Harbor instance.

@@ -42,21 +42,15 @@ You can compile the code by one of the two approaches:
 
 #### I. Build with official Golang image
 
-- Build, install and bring up Harbor without Notary:
+- Build, install and bring up Harbor:
 
     ```sh
     make install COMPILETAG=compile_golangimage
     ```
 
-- Build, install and bring up Harbor with Notary:
-
-    ```sh
-    make install COMPILETAG=compile_golangimage NOTARYFLAG=true
-    ```
-
 #### II. Compile code with your own Golang environment, then build Harbor
 
-- Move source code to `$GOPATH`
+- Move source code to `$GOPATH`:
 
     ```sh
     mkdir $GOPATH/src/github.com/goharbor/
@@ -64,18 +58,11 @@ You can compile the code by one of the two approaches:
     mv harbor $GOPATH/src/github.com/goharbor/.
     ```
 
-- Build, install and run Harbor without Notary:
+- Build, install and run Harbor:
 
     ```sh
     cd $GOPATH/src/github.com/goharbor/harbor
     $ make install
-    ```
-
-- Build, install and run Harbor with Notary:
-
-    ```sh
-    cd $GOPATH/src/github.com/goharbor/harbor
-    make install -e NOTARYFLAG=true
     ```
 
 ### Verify your installation
@@ -100,7 +87,6 @@ The `Makefile` contains these configurable parameters:
 | BASEIMAGE           | Container base image, default: photon                            |
 | DEVFLAG             | Build model flag, default: dev                                   |
 | COMPILETAG          | Compile model flag, default: compile_normal (local golang build) |
-| NOTARYFLAG          | Notary mode flag, default: false                                 |
 | TRIVYFLAG           | Trivy mode flag, default: false                                  |
 | HTTPPROXY           | NPM http proxy for Clarity UI builder                            |
 | REGISTRYSERVER      | Remote registry server IP address                                |
@@ -123,8 +109,8 @@ The `Makefile` contains these configurable parameters:
 | build                  | build Harbor docker images (default: using build_photon)                                                                    |
 | build_photon           | build Harbor docker images from Photon OS base image                                                                        |
 | install                | compile binaries, build images, prepare specific version of compose file and startup Harbor instance                        |
-| start                  | startup Harbor instance (set NOTARYFLAG=true when with Notary)                                                              |
-| down                   | shutdown Harbor instance (set NOTARYFLAG=true when with Notary)                                                             |
+| start                  | startup Harbor instance                                                          |
+| down                   | shutdown Harbor instance                                                          |
 | package_online         | prepare online install package                                                                                              |
 | package_offline        | prepare offline install package                                                                                             |
 | pushimage              | push Harbor images to specific registry server                                                                              |
