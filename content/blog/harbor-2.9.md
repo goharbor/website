@@ -2,7 +2,7 @@
 title: "Harbor v2.9 release"
 author:
   name: "Orlin Vasilev"
-date: 2023-08-17T06:00:00+01:00
+date: 2023-08-18T06:00:00+01:00
 draft: false
 showPageInfo: true
 ---
@@ -24,6 +24,7 @@ Admin users can now access valuable security insights, which including the numbe
 * Add security hub summary API by @stonezdj in https://github.com/goharbor/harbor/pull/18872
 * Create index in vulnerability_record table by @stonezdj in https://github.com/goharbor/harbor/pull/18949
 
+[Harbor Security Hub Documentation](https://goharbor.io/docs/2.9.0/administration/security-hub/)
 
 ### GC Enhancements
 Improved visibility with detailed GC execution history and enable parallel deletion for faster GC triggers.
@@ -50,7 +51,15 @@ https://github.com/goharbor/harbor/pull/18666
 https://github.com/goharbor/harbor/pull/18668  
 
 ### Other Enhancements and Updates
-
+* Fix message prompt under the header by @AllForNothing in https://github.com/goharbor/harbor/pull/18613
+* fix: improve the performance of list artifacts by @chlins in https://github.com/goharbor/harbor/pull/18610
+* Improve repo_read_only header on the UI by @AllForNothing in https://github.com/goharbor/harbor/pull/18729
+* Add a text to explain the time window for GC by @AllForNothing in https://github.com/goharbor/harbor/pull/18735
+* Add a tooltip for slack notification by @AllForNothing in https://github.com/goharbor/harbor/pull/18787
+*【UT】add unit test for collector system info by @lengrongfu in https://github.com/goharbor/harbor/pull/18717
+* Add Details column for gc history by @AllForNothing in https://github.com/goharbor/harbor/pull/18797
+* Add Podman push command to the UI by @AllForNothing in https://github.com/goharbor/harbor/pull/18810
+* Add new client Podman to the pull command by @AllForNothing in https://github.com/goharbor/harbor/pull/18857
 
 
 ##### If you're Harbor user and want to share any feedback, we'd love to hear from you [here](https://github.com/goharbor/community/issues/115)!
