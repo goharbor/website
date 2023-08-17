@@ -2,7 +2,7 @@
 title: "Harbor v2.9 release"
 author:
   name: "Orlin Vasilev"
-date: 2023-08-18T06:00:00+01:00
+date: 2023-08-29T06:00:00+01:00
 draft: false
 showPageInfo: true
 ---
@@ -10,7 +10,7 @@ showPageInfo: true
 # Harbor 2.9
 
 ##### Introducing [Harbor 2.9][r29]
-
+![banner](../img/blog-2.9.png)
 This release comes with several new features and improvements, including Harbor Security Hub and OCI v1.1.0-rc2, which provides enhanced support for multi-architecture images and image manifests. Another major addition is improved Garbage Collector. [The 2.9 release][r29] also includes an Customizable Message Banner , providing more comprehensive and detailed information about upcoming maintenance and admin activities. Also we have introduces some significant changes as the removal of Notary.
 
 ## New features
@@ -18,30 +18,33 @@ This release comes with several new features and improvements, including Harbor 
 ### Harbor Security Hub
 Admin users can now access valuable security insights, which including the number of scanned and unscanned artifacts, identification of dangerous artifacts and CVEs and advanced search capabilities for vulnerabilities using multiple combined conditions.
 
-* Add Security Hub UI by @AllForNothing in https://github.com/goharbor/harbor/pull/18942
-* Update table scan_report and extract cvss_v3_score from vendor attribute by @stonezdj in https://github.com/goharbor/harbor/pull/18854
-* Add vulnerability search API by @stonezdj in https://github.com/goharbor/harbor/pull/18924
-* Add security hub summary API by @stonezdj in https://github.com/goharbor/harbor/pull/18872
-* Create index in vulnerability_record table by @stonezdj in https://github.com/goharbor/harbor/pull/18949
+* Add Security Hub UI by @AllForNothing in [18942](https://github.com/goharbor/harbor/pull/18942)
+* Update table scan_report and extract cvss_v3_score from vendor attribute by @stonezdj in [18854](https://github.com/goharbor/harbor/pull/18854)
+* Add vulnerability search API by @stonezdj in [18924](https://github.com/goharbor/harbor/pull/18924)
+* Add security hub summary API by @stonezdj in [18872](https://github.com/goharbor/harbor/pull/18872)
+* Create index in vulnerability_record table by @stonezdj in [18949](https://github.com/goharbor/harbor/pull/18949)
 
 [Harbor Security Hub Documentation](https://goharbor.io/docs/2.9.0/administration/security-hub/)
 
 ### GC Enhancements
 Improved visibility with detailed GC execution history and enable parallel deletion for faster GC triggers.
 
-* Add worker parameter for GC by @AllForNothing in https://github.com/goharbor/harbor/pull/18882
-* add more details in gc history by @wy65701436 in https://github.com/goharbor/harbor/pull/18779
-* add multiple deletion of GC by @wy65701436 in https://github.com/goharbor/harbor/pull/18855
+* Add worker parameter for GC by @AllForNothing in [18882](https://github.com/goharbor/harbor/pull/18882)
+* add more details in gc history by @wy65701436 in [18779](https://github.com/goharbor/harbor/pull/18779)
+* add multiple deletion of GC by @wy65701436 in [18855](https://github.com/goharbor/harbor/pull/18855)
+
+### [OCI Distribution Spec v1.1.0-rc2 Support](https://github.com/opencontainers/distribution-spec/releases/tag/v1.1.0-rc2)
+
+Harbor now supports OCI Distribution Spec v1.1.0-rc2 and added support for **Notation** signature and **Nydus** conversion as referrers. This is a significant upgrade that allows users to store and distribute OCI and Docker images. With this feature, users can manage their images more effectively and efficiently.
+
+* support OCI-Subject header by @wy65701436 in [18885](https://github.com/goharbor/harbor/pull/18885)
+* add notation support by @wy65701436 in [18909](https://github.com/goharbor/harbor/pull/18909)
+* enable notary v2 policy checker by @wy65701436 in [18927](https://github.com/goharbor/harbor/pull/18927)
+* Add Notation UI for deployment security by @AllForNothing in [19952](https://github.com/goharbor/harbor/pull/18952)
+* support nydus as a accessory by @wy65701436 in [18953](https://github.com/goharbor/harbor/pull/18953)
 
 
-### [OCI Distribution Spec v1.1.0-rc2 Support](https://github.com/opencontainers/image-spec/releases/tag/v1.1.0-rc2)
 
-The latest Harbor release now supports the OCI Distribution Spec v1.1.0-rc2. This is a significant upgrade that allows users to store and distribute OCI and Docker images. With this feature, users can manage their images more effectively and efficiently.
-
-https://github.com/goharbor/harbor/pull/18909  
-https://github.com/goharbor/harbor/pull/18927  
-https://github.com/goharbor/harbor/pull/18952  
-https://github.com/goharbor/harbor/pull/18953  
 
 ## Removal of Notary
 Starting in Harbor 2.6 was decided to deprecate Notary you can check this [discussion](https://github.com/goharbor/harbor/discussions/16612). Workflows and pipelines needs to be migrated to [cosign as of Harbor 2.5](https://goharbor.io/blog/cosign-2.5.0/), with version v2.9.0, Harbor no longer includes Notary in either the user interface or the backend.
