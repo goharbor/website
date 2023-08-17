@@ -11,7 +11,7 @@ showPageInfo: true
 
 ##### Introducing [Harbor 2.9][r29]
 ![banner](../img/harbor-2.9.png)
-This release comes with several new features and improvements, including Harbor Security Hub and OCI v1.1.0-rc2, which provides enhanced support for multi-architecture images and image manifests. Another major addition is improved Garbage Collector. [The 2.9 release][r29] also includes an Customizable Message Banner , providing more comprehensive and detailed information about upcoming maintenance and admin activities. Also we have introduces some significant changes as the removal of Notary.
+This release comes with several new features and improvements, including Harbor Security Hub and OCI v1.1.0-rc2, which provides enhanced support for multi-architecture images and image manifests. Another major addition is improved Garbage Collector. [The 2.9 release][r29] also includes an Customizable Message Banner(check green banner above) , providing more comprehensive and detailed information about upcoming maintenance and admin activities. Also we have introduces some significant changes as the removal of Notary.
 
 ## New features
 
