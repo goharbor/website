@@ -63,7 +63,7 @@ Note that Harbor's [garbage collection](../../administration/garbage-collection/
 
 Harbor doesn't support `cosign clean` to remove signatures as Harbor has chosen not to implement tag deletion which is used by `cosign clean`. See the [OCI distribution specification](https://github.com/opencontainers/distribution-spec/blob/main/spec.md#content-management) for more for more information on implantation requirements.
 
-## Use Notation to sign artifacts
+## Use Notation(experimental) to sign artifacts with distribution spec v1.1 mode
 In order to use Notation, generate a certificate for signing artifacts.
 
 ```
@@ -84,5 +84,16 @@ Next, sign an image.
 ```
 notation sign -d --allow-referrers-api <your-image-address>
 ```
+
+
+
+{{< note >}}
+Please set `NOTATION_EXPERIMENTAL=1` environment variable to enable `--allow-referrers-api` flag
+{{< /note >}}
+
+
+To view the notation signatures in Harbor, log into the Harbor interface and navigate to the project that your signed artifact is located in.
+
+![View notation signature](../../../img/view-notation-signature.png)
 
 See the [Notation documentation](https://notaryproject.dev/docs/) for more information.
