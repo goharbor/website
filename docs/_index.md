@@ -2,7 +2,7 @@
 title: Harbor 2.8 Documentation
 ---
 
-Welcome to the Harbor 2.8.x documentation. This documentation includes all of the information that you need to install, configure, and use Harbor.
+Welcome to the Harbor 2.9.x documentation. This documentation includes all of the information that you need to install, configure, and use Harbor.
 
 ## Harbor Installation and Configuration
 
