@@ -14,17 +14,17 @@ Shanghai next week!
 
 ![KubeCon Shanghai](../img/kubeconcn2023.jpeg)
 
-As of today Harbor is a [healthy](https://all.devstats.cncf.io/d/53/projects-health?orgId=1) and
-vibrant Graduated project at the CNCF. We've seen growth in our community and
+As of today, Harbor is a [healthy](https://all.devstats.cncf.io/d/53/projects-health?orgId=1) and
+vibrant graduate project at the CNCF. We've seen growth in our community and
 superb contributions in the form of issues, code, and project feedback.
 
-[Yan Wang](https://twitter.com/wy65701436), [Daojun Zhang](https://github.com/stonezdj) and [Chenyu Zhang](https://github.com/chlins) will be in Shanghai of the week of 26th of September
-and looking forward to engage with users,and those who are just curious
+[Yan Wang](https://twitter.com/wy65701436), [Daojun Zhang](https://github.com/stonezdj), and [Chenyu Zhang](https://github.com/chlins) will be in Shanghai on the week of the 26th of September
+and looking forward to engaging with users, and those who are just curious
 to learn more about Harbor and what it does. We'll be wearing Harbor t-shirts
 throughout the conference, so if you see one of us please don't be shy and say
 hello!
 
-There are a few scheduled events / places to find us:
+There are a few scheduled sessions and places to find us:
 
 * [**Harbor Maintainers track**](https://sched.co/1PTJz)- [Chenyu Zhang](https://github.com/chlins) and [Yan Wang](https://twitter.com/wy65701436) - will be presenting this edition of the maintainers track - [Harbor进展：安全性、OCI规范v1.1和性能增强 | Advancements in Harbor: Security, OCI Spec v1.1, and Performance Enhancement](https://sched.co/1PTJz)  
 
