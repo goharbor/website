@@ -1,8 +1,8 @@
 ---
-title: Using Uffizzi ephemeral environments
+title: Using Uffizzi virtual cluster ephemeral environments
 ---
 
-When a pull request is opened against the (harbor github repo)[https://github.com/goharbor/harbor], a github action workflow will trigger the creation of a [Uffizzi](https://www.uffizzi.com) ephemeral environment. This environment is a Kubernetes cluster where harbor will be deployed built from the changes in the pull request.
+When a pull request is opened against the [main goharbor/harbor GitHub repository](https://github.com/goharbor/harbor), a GitHub action workflow will trigger the creation of a [Uffizzi Virtual Cluster](https://www.uffizzi.com) ephemeral environment. This environment is a Kubernetes cluster where Harbor will be built and deployed from the changes in the pull request.
 
 The ingress to the frontend for harbor will also be available in a comment posted by the github action. To log into the instance of harbor use the following credentials :- 
 
