@@ -42,7 +42,9 @@ Find us at the CNCF Project Kiosks number P2-P on:
 [Kiosk information here](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/project-engagement/#kiosk-information)  
 
 You can "book" a time with us on the Kiosk so we can expect you and be prepared for your topics!
-[Book slot here](https://calendly.com/d/3dz-97c-32f/meet-the-harbor-maintainers-at-the-kiosk?month=2023-11&date=2023-11-09)  
+[Book slot here](https://calendly.com/goharbor/meet-kubeconna)  
+
+{{< calendly calendar="goharbor/meet-kubeconna" type="inlineEmbed" />}}
 
 We couldn't be more excited to join the community at this fun event and
 meet many of you in person. On a personal level, these events are
