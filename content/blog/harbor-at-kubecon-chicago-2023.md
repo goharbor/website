@@ -28,20 +28,27 @@ There are a few scheduled events/places to find us:
 
 * [**Harbor Project Meeting**]  
 Monday, November 6 | 1:00 pm - 4:30 pm (local time)  
-Location: TBA during the event
-
-* [**Harbor Maintainers track**](https://sched.co/1R2sU)- [Vadim Bauer](https://twitter.com/vad1mo), [Yan Wang](https://twitter.com/wy65701436) and [Orlin Vasilev](https://twitter.com/OrlinVasilev) lead maintainers, will be presenting this edition of the maintainer's track - [What’s New in Harbor, and How Can You Make Harbor Even Better?](https://sched.co/1R2sU)  
+Location: TBA during the event  
 
 
-* **Meet the Project Kiosk Booth** -  
+
+* [**Harbor Maintainers track**](https://sched.co/1R2sU)
+  [What’s New in Harbor, and How Can You Make Harbor Even Better?](https://sched.co/1R2sU)  
+ [Vadim Bauer](https://twitter.com/vad1mo), [Yan Wang](https://twitter.com/wy65701436) and [Orlin Vasilev](https://twitter.com/OrlinVasilev) - will be presenting this edition of the maintainer's track  
+
+
+
+* **Meet the Project Kiosk Booth**   
 Find us at the CNCF Project Kiosks number P2-P on:  
   - Tuesday, Nov 7th - 3:30 pm - 8:00 pm (local time)  
   - Wednesday, Nov 8th - 2:00 pm – 5:00 pm (local time)  
   - Thursday, Nov 9th - 12:30 pm – 2:30 pm (local time)  
 
+
+
 [Kiosk information here](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/project-engagement/#kiosk-information)  
 
-You can "book" a time with us on the Kiosk so we can expect you and be prepared for your topics!
+You can "book" a time with us on the Kiosk so we can expect you and be prepared for your topics!  
 📅[Book slot here](https://calendly.com/goharbor/meet-kubeconna)📅  
 
 
