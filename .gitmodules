@@ -1,7 +1,3 @@
 [submodule "harbor"]
 	path = harbor
 	url = https://github.com/goharbor/harbor
-
-[submodule "themes/hugo-calendly-shortcode"]
-    path = themes/hugo-calendly-shortcode
-    url = https://github.com/bespokesy/hugo-calendly-shortcode.git
