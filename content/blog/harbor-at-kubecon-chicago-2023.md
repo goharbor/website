@@ -1,0 +1,57 @@
+---
+title: "Harbor at Windy KubeCon + CloudNativeCon North America 2023 - Chicago"
+author:
+name: "Orlin Vasilev"
+description: "The Harbor team at Windy KubeCon"
+date: 2023-03-28T12:00:00+04:00
+showPageInfo: true
+---
+
+## Join the Harbor Team at KubeCon in Chicago!
+
+We're excited to share that we'll be at KubeCon + CloudNativeCon 2023 in windy Chicago in the week of 6th of November.
+
+![KubeCon Chicago](../img/kubeconna2023.jpeg)
+
+We hope you didn't land on out page by accident so you know what Project Harbor is. Interesting part of the project is the diversity and all great folks and companies being part of it you can check all that on the [Harbor's DevStats Page by CNCF](https://all.devstats.cncf.io/d/53/projects-health?orgId=1).
+
+In September, Harbor team and CNCF also released the [Harbor Journey Report](https://www.cncf.io/reports/harbor-project-journey-report/) to get more insides how the project evolved over the last few years, get some names who is behind the project and how you can join us and make even better!
+
+
+[Yan Wang](https://twitter.com/wy65701436), [Vadim Bauer](https://twitter.com/vad1mo) and [Orlin Vasilev](https://twitter.com/OrlinVasilev) will be in Chicago of the week of 6th of November(and before that on Rejects)
+and looking forward to engage with users, contributors, maintainers, and those who are just curious
+to learn more about Harbor and what it does. We'll be wearing Harbor t-shirts(a special Harbor t-shirts)
+throughout the conference, so if you see one of us please don't be shy and say
+hello and you can get the same t-shirt!
+
+There are a few scheduled events / places to find us:
+
+* [**Harbor Project Meeting**](????)  
+Monday, November 6 | 1:00pm - 4:30pm GMT-5  
+???????  
+
+* [**Harbor Maintainers track**](https://sched.co/1R2sU)- [Vadim Bauer](https://twitter.com/vad1mo), [Yan Wang](https://twitter.com/wy65701436) and [Orlin Vasilev](https://twitter.com/OrlinVasilev) lead maintainers , will be presenting this edition of the maintainers track - [What’s New in Harbor, and How Can You Make Harbor Even Better?](https://sched.co/1R2sU)  
+
+
+* **Meet the Project Kiosk Booth** -  
+Find us at the CNCF Project Kiosks number P2-P on:  
+  - Tuesday, Nov 7th - 3:30pm - 8:00pm (local time)  
+  - Wednesday, Nov 8th - 2:00pm – 5:00pm (local time)  
+  - Thursday, Nov 9th - 12:30pm – 2:30pm (local time)  
+
+[Kiosk information here](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/project-engagement/#kiosk-information)  
+
+You can "book" a time with us on the Kiosk so we can expect you and be prepared for your topics!
+[Book slot here](https://calendly.com/d/3dz-97c-32f/meet-the-harbor-maintainers-at-the-kiosk?month=2023-11&date=2023-11-09)  
+
+We couldn't be more excited to join the community at this fun event and
+meet many of you in person. On a personal level, these events are
+really what make open source special: meeting those with whom you work on
+GitHub and Slack every day and discussing how to improve things moving
+forward IRL.
+
+By the way, mention this blog post and come by the kiosk or project meeting we have some goodies for you :)
+
+[Orlin Vasilev](https://twitter.com/OrlinVasilev)  
+Harbor Community Lead
+
