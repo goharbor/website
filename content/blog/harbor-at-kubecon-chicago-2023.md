@@ -28,8 +28,9 @@ There are a few scheduled events/places to find us:
 
 * [**Harbor Project Meeting**]  
 Monday, November 6 | 1:00 pm - 4:30 pm (local time)  
-Location: Marriott Marquis Hotel Chicago - Level 4 - room: Statistics
-* Room limit is 20 people! *
+Location: Marriott Marquis Hotel Chicago - Level 4 - room: Statistics  
+Connected to McCormick Place by skybridge. The skybridge at McCormick Place is on level 3.  
+* Room limit is 20 people! *  
 
 [Navigate from McCormick Place to Marriott](https://www.google.com/maps/dir/McCormick+Place,+2301+S+Martin+Luther+King+Dr,+Chicago,+IL+60616,+United+States/Marriott+Marquis+Chicago,+South+Prairie+Avenue,+Chicago,+IL,+USA/@41.8522539,-87.6208091,17z/data=!3m2!4b1!5s0x880e2c7f97d40151:0xcbd79d4cafb0da6f!4m14!4m13!1m5!1m1!1s0x880e2b8114325857:0xde54f80e4327f5e2!2m2!1d-87.6158294!2d41.8527221!1m5!1m1!1s0x880e2c7faee6dc13:0x3431ad87f88215cd!2m2!1d-87.6205363!2d41.8540186!3e2?entry=ttu)
   
