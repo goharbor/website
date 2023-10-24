@@ -2,7 +2,7 @@ title = "Harbor"
 baseURL = "https://goharbor.io"
 disableKinds = ["taxonomy", "taxonomyTerm"]
 ignoreFiles = ["README.md"]
-theme = [ "hugo-calendly-shortcode" , "goharbor" ]
+theme = [ "hugo-calendly-shortcode" ]
 [params]
 tagline = "Manage and serve container images in a secure environment"
 description = "Our mission is to be the trusted cloud native repository for Kubernetes"
