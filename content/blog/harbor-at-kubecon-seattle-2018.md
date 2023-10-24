@@ -48,7 +48,7 @@ We couldn't be more excited to join the community at this fun event and
 finally meet many of you in person. On a personal level, these events are
 really what make open source special: meeting those with whom you work on
 GitHub and Slack every day and discussing how to improve things moving
-forward IRL.
+forward in real life.
 
 By the way, mention this blog post and grab a free Harbor t-shirt at any one
 of the events listed above!

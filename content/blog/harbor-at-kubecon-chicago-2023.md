@@ -57,7 +57,7 @@ We couldn't be more excited to join the community at this fun event and
 meet many of you in person. On a personal level, these events are
 really what makes open source special: meeting those with whom you work on
 GitHub and Slack every day and discuss how to improve things moving
-forward IRL.
+forward in real life.
 
 By the way, mention this blog post and come by the kiosk or project meeting we have some goodies for you :)
 
