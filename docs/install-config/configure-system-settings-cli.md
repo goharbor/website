@@ -105,7 +105,7 @@ If there is a legacy user in your instance of Harbor, the authentication mode ca
 | Configure item name | Description                                                                                                                                                                         | Type    | Required | Default Value |
 | ------------ |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------| ----- | ----- |
 auth_mode | Authentication mode, it can be db_auth, ldap_auth, uaa_auth or oidc_auth                                                                                                            | string  
-primary_auth_mode | Set Identity Provider to be the primary auth method | boolean | false | false |
+primary_auth_mode | Set Identity Provider to be the primary auth method                                                                                                                        | boolean | optional | false |
 ldap_url | LDAP URL                                                                                                                                                                            | string  | required |
 ldap_base_dn | LDAP base DN                                                                                                                                                                        | string  | required(ldap_auth)
 ldap_filter | LDAP filter                                                                                                                                                                         | string  | optional
