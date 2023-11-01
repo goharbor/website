@@ -34,7 +34,7 @@ For information about how to manage your deployed Harbor instance, see [Reconfig
 
 By default, Harbor uses its own private key and certificate to authenticate with Docker. For information about how to optionally customize your configuration to use your own key and certificate, see [Customize the Harbor Token Service](customize-token-service.md).
 
-After installation, log into your Harbor via the web console to configure the instance under 'configuration'.  Harbor also provides a command line interface (CLI) that allows you to [Configure Harbor User Settings at the Command Line](configure-user-settings-cli.md).
+After installation, log into your Harbor via the web console to configure the instance under 'configuration'.  Harbor also provides a command line interface (CLI) that allows you to [Configure Harbor System Settings at the Command Line](configure-system-settings-cli.md).
 
 ## Harbor Components
 
@@ -45,8 +45,6 @@ The table below lists the some of the key components that are deployed when you 
 |Postgresql|13.3.0|
 |Redis|6.0.13|
 |Beego|1.9.0|
-|Chartmuseum|0.9.0|
 |Docker/distribution|2.7.1|
-|Docker/notary|0.6.1|
 |Helm|2.9.1|
 |Swagger-ui|3.22.1|

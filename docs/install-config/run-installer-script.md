@@ -8,15 +8,12 @@ Once you have configured `harbor.yml` copied from `harbor.yml.tmpl` and optional
 
 You can install Harbor in different configurations:
 
-- Just Harbor, without Notary, Trivy or Chart Repository Service
-- Harbor with Notary
+- Just Harbor, without Trivy
 - Harbor with Trivy
-- Harbor with Chart Repository Service
-- Harbor with two or all three of Notary, Trivy, and Chart Repository Service
 
-## Default installation without Notary, Trivy, or Chart Repository Service
+## Default installation without Trivy
 
-The default Harbor installation does not include Notary or Trivy service. Run the following command
+The default Harbor installation does not include Trivy service. Run the following command
 
 ```sh
 sudo ./install.sh
@@ -36,20 +33,6 @@ docker push reg.yourdomain.com/myproject/myrepo:mytag
 - If your installation of Harbor uses HTTP, you must add the option `--insecure-registry` to your client's Docker daemon and restart the Docker service. For more information, see [Connecting to Harbor via HTTP](#connect-http) below.
 {{< /important >}}
 
-## Installation with Notary
-
-To install Harbor with the Notary service, add the `--with-notary` parameter when you run `install.sh`:
-
-```sh
-sudo ./install.sh --with-notary
-```
-
-{{< note >}}
-For installation with Notary, you must configure Harbor to use HTTPS.
-{{< /note >}}
-
-For more information about Notary and Docker Content Trust, see [Content Trust](https://docs.docker.com/engine/security/trust/content_trust/) in the Docker documentation.
-
 ## Installation with Trivy
 To install Harbor with Trivy service, add the `--with-trivy` parameter when you run `install.sh`:
 
@@ -59,22 +42,6 @@ sudo ./install.sh --with-trivy
 
 For more information about Trivy, see the [Trivy documentation](https://github.com/aquasecurity/trivy).
 For more information about how to use Trivy in an webproxy environment see [Configure custom Certification Authorities for trivy](administration/vulnerability-scanning/configure-custom-certs.md)
-
-## Installation with Chart Repository Service
-
-To install Harbor with chart repository service, add the `--with-chartmuseum` parameter when you run `install.sh`:
-
-```
-sudo ./install.sh --with-chartmuseum
-```
-
-## Installation with Notary, Trivy, and Chart Repository Service
-
-If you want to install both Notary and chart repository service, specify all of the parameters in the same command:
-
-```
-sudo ./install.sh --with-notary --with-trivy --with-chartmuseum
-```
 
 ## Connecting to Harbor via HTTP {#connect-http}
 

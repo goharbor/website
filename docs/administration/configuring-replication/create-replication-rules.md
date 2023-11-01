@@ -27,7 +27,7 @@ You **can not** replicate from Harbor v1.x to v2.0 and later, and you **can not*
    * **Name**: Replicate resources with a given name by entering an artifact name or fragment.
    * **Tag**: Replicate resources with a given tag by entering a tag name or fragment. You can also specify matching/excluding for this filter.
    * **Label**: Replicate resources with a given label by using the drop-down menu to select from the available labels. You can also specify matching/excluding for this filter.
-   * **Resource**: Replicate images, charts, artifacts or all. Artifacts contain images and other OCI compatible resources.
+   * **Resource**: Replicate images, artifacts or all. Artifacts contain images and other OCI compatible resources.
 
    The name filter and tag filters support the following patterns:
 
@@ -54,10 +54,7 @@ You **can not** replicate from Harbor v1.x to v2.0 and later, and you **can not*
     * **Flattening 1 level**: Remove one level from the image hierarchy. For example, `a/b/c/d/img` replicates to `namespace/b/c/d/img`. This is the default selection.
     * **Flattening 2 levels**: Remove two levels from the image hierarchy. For example, `a/b/c/d/img` replicates to `namespace/c/d/img`
     * **Flattening 3 levels**: Remove three levels from the image hierarchy. For example, `a/b/c/d/img` replicates to `namespace/d/img`
-
-  {{< note >}}
-  Chartmusem expects chart name hierarchy to only include 2 levels. If you are creating a rule that will replicate Chartmusem charts, make sure that the destination chart name is formatted as `namespace/chart`.
-  {{< /note >}}
+   
 
 1. Use the Trigger Mode drop-down menu to select how and when to run the rule.
    * **Manual**: Replicate the resources manually when needed. **Note**: Deletion operations are not replicated.

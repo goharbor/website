@@ -103,10 +103,12 @@ The worker's table displays the details of the workers. The following table desc
 |**Job ID**|The ID of the current job that the worker is executing.|
 |**Started At**|The start time of the current job that the worker is executing.|
 |**Checked In At**|The check in time of the current job that the worker is executing.|
+|**Logs**|The log of the current job that the worker is executing.|
 
 Actions for workers:
 
 -- Click the **Free** button to stop the execution of the current job that the worker is executing to free the worker. The stop operation takes several minutes to complete, it depends on the job type.
+-- Click the link in the **Logs** column to view the log of the current job that the worker is executing.
   
 
   ## Steps to Withdraw an Execution

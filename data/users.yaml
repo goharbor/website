@@ -22,6 +22,9 @@
 - title: datayes
   logo: datayes-logo.png
   link: https://www.datayes.com/en/?lang=en-US
+- title: dynatrace
+  logo: dynatrace-logo.png
+  link: https://www.dynatrace.com/
 - title: hydsoft
   logo: hydsoft-logo.png
   link: http://www.hydsoft.com/en/
@@ -31,6 +34,9 @@
 - title: JD
   logo: jd.com-logo.png
   link: https://www.jd.com/
+- title: Nederlandse Spoorwegen
+  logo: nederlandse-spoorwegen-logo.png
+  link: https://www.ns.nl/
 - title: netease
   logo: netease-logo.png
   link: https://www.163yun.com/
@@ -40,6 +46,9 @@
 - title: OVHcloud
   logo: OVHcloud-logo.png
   link: https://www.ovhcloud.com/en-ie/
+- title: PITS Globale Datenrettungsdienste
+  logo: pits-globale-datenrettungsdienste.png
+  link: https://www.pitsdatenrettung.de/
 - title: talkingdata
   logo: talkingdata-logo.png
   link: https://www.talkingdata.com/

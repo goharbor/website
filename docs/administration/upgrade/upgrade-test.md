@@ -32,13 +32,12 @@ weight: 50
 
 1. Confirm users are exist and available(No need for VIC and LDAP Mode).  
 2. Confirm users have the correct role.  
-3. Confirm labels are existing and labeled correct.(No need for VIC)  
-4. Confirm notary signature correct.  
-5. Confirm endpoint exist.  
-6. Confirm replication rule exist and works well.  
-7. Confirm project level settings(publicly, content trust, scan) same as before.  
-8. Confirm system level settings(email token expire scan) same as before.  
-9. Confirm scan result the same as before upgrade.  
-10. Confirm access log the same as before upgrade.  
-11. Confirm repository info the same as before.  
-12. Confirm other image metadata(e.g. author, size) the same as before.
+3. Confirm labels are existing and labeled correct.(No need for VIC)   
+4. Confirm endpoint exist.  
+5. Confirm replication rule exist and works well.  
+6. Confirm project level settings(publicly, content trust, scan) same as before.  
+7. Confirm system level settings(email token expire scan) same as before.  
+8. Confirm scan result the same as before upgrade.  
+9. Confirm access log the same as before upgrade.  
+10. Confirm repository info the same as before.  
+11. Confirm other image metadata(e.g. author, size) the same as before.

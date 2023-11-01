@@ -32,7 +32,7 @@ to split multiple labels, e.g.: `label1`,`label2`,`labeln` and the relationship 
    and taken into account when calculating the phreating candidates, otherwise, they will be hidden and no influences to the policy.
    {{< /note >}}
 
-    - If a `Notary` server is installed and the **Deployment Security** configuration option **Enable content trust** is set,
+    - If the **Deployment Security** configuration option **Enable content trust** is set,
     **Only signed images** will also be available as a criteria for the preheating policy. This means that only images
     with valid signatures will be preheated.
     - If a vulnerability scanner is configured and the **Deployment Security** configuration option

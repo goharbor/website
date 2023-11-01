@@ -21,11 +21,6 @@ For each system robot account you are able to assign the following permissions,
 * List Tag
 * Create Scan
 * Stop Scan
-* Read Helm Chart
-* Create Helm Chart Version  
-* Delete Helm Chart Version
-* Create Helm Chart label
-* Delete Helm Chart label
 
 Depending on your needs you can assign a combination of these permissions to a system robot account to perform your desired tasks through the OCI client or Harbor API. Robot Accounts cannot log in to the Harbor interface.
 

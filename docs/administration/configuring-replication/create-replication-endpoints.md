@@ -24,7 +24,6 @@ You can also use an endpoint in a proxy cache project. Read more about how to [C
    - Ali Cloud Container Registry
    - Google Container Registry (and Google Cloud Artifact Registry)
    - Huawei SWR
-   - Artifact Hub
    - Gitlab
    - Quay
    - Jfrog Artifactory

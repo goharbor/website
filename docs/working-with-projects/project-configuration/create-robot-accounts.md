@@ -19,11 +19,6 @@ Harbor allows you to use a project robot account to automate running operations 
 * List Tag
 * Create Scan
 * Stop Scan
-* Read Helm Chart
-* Create Helm Chart Version  
-* Delete Helm Chart Version
-* Create Helm Chart label
-* Delete Helm Chart label
 
 A project robot account uses authenticates to your Harbor instance using a secret, allowing you to connect to your Harbor instance through the OCI client or Harbor API to automate tasks. Robot Accounts cannot log in to the Harbor interface.
 
