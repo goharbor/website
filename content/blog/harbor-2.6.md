@@ -98,7 +98,7 @@ The audit_log is used to record the image pull/push/delete operations so that ad
 #### Feature overview
 
 The log rotation feature provide a way to configure and schedule the purge operation to the audit log table. administrators could specify the operations need to delete and how long should the audit log be kept in database.
-The audit log forwarding feature allow user to forward the audit log to an existing sys log endpoint, such as Wavefront LogInsight, Logstash, and once the forward setting is configured, then the administrator could disable to log audit information in database.
+The audit log forwarding feature allow user to forward the audit log to an existing sys log endpoint, such as Wavefront LogInsight, Logstash, and once the forward setting is configured, then the administrator could deactivate to log audit information in database.
 
 #### Purge audit log
 After install Harbor 2.6.0, login to Harbor in browser, there is a new menu item named “Clean Up” under “Administration”. there are two tabs, “Garbage Collection” and “Log Rotation”
