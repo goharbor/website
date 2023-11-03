@@ -38,7 +38,7 @@ vi make/harbor.yml
 
 ### Compiling and Running
 
-You can compile the code by one of the three approaches:
+You can compile the code by one of the two approaches:
 
 #### I. Build with official Golang image
 
