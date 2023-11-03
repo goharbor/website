@@ -20,7 +20,7 @@ Harbor allows you to use a project robot account to automate running operations 
 * Create Scan
 * Stop Scan
 
-A project robot account uses authenticates to your Harbor instance using a secret, allowing you to connect to your Harbor instance through the OCI client or Harbor API to automate tasks. Robot Accounts cannot log in to the Harbor interface.
+A project robot account authenticates to your Harbor instance using a secret, allowing you to connect to your Harbor instance through the OCI client or Harbor API to automate tasks. Robot Accounts cannot log in to the Harbor interface.
 
 A project robot account can only perform actions within the project that it is created in, however, Harbor v2.2 introduces the ability for system administrators to create system robot accounts in addition to creating project robot account that can automate tasks across multiple projects. Read more about [system level robot accounts](../../administration/robot-accounts/).
 
