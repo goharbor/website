@@ -9,16 +9,16 @@ You can deploy Harbor on Kubernetes via helm to make it highly available. In thi
 
 - Kubernetes cluster 1.10+
 - Helm 2.8.0+
-- High available ingress controller (Harbor does not manage the external endpoint)
-- High available PostgreSQL 9.6+ (Harbor does not handle the deployment of HA of database)
-- High available Redis (Harbor does not handle the deployment of HA of Redis)
+- Highly available ingress controller (Harbor does not manage the external endpoint)
+- Highly available PostgreSQL 9.6+ (Harbor does not handle the deployment of HA of database)
+- Highly available Redis (Harbor does not handle the deployment of HA of Redis)
 - PVC that can be shared across nodes or external object storage
 
 ## Architecture
 
 Most of Harbor's components are stateless now. So we can simply increase the replica of the pods to make sure the components are distributed to multiple worker nodes, and leverage the "Service" mechanism of K8S to ensure the connectivity across pods.
 
-As for storage layer, it is expected that the user provide high available PostgreSQL, Redis cluster for application data and PVCs or object storage for storing images and charts.
+As for the storage layer, it is expected that the user provides a highly available PostgreSQL and Redis cluster for application data, as well as PVCs or object storage for storing images and charts.
 
 ![Harbor High Availability with Helm](../../img/ha.png)
 
