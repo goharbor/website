@@ -1,4 +1,6 @@
 # The Harbor website
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fgoharbor%2Fwebsite.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fgoharbor%2Fwebsite?ref=badge_shield)
+
 
 This repo houses the assets used to build the Harbor website, available at https://goharbor.io.
 
@@ -91,3 +93,7 @@ make check-internal-links
 ```
 
 This command builds the site (including drafts and future content), downloads the [htmltest](https://github.com/wjdp/htmltest) link checker into your local directory, and runs the checker in accordance with the configuration specified in [`.htmltest.yml`](./.htmltest.yml). Only internal links are checked and all errors are piped to stdout.
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fgoharbor%2Fwebsite.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fgoharbor%2Fwebsite?ref=badge_large)
