@@ -30,15 +30,15 @@ Before configuring an OIDC provider in Harbor, make sure that your provider is c
 
    ![LDAP authentication](../../../img/select-oidc-auth.png)
 1. Enter information about your OIDC provider.   
-   - **Primary Auth Mode**: Whether to use the OIDC mode as the primary auth mode. 
-     {{< note >}}
-     To override and login via DB is possible when visiting the URL '/account/sign-in' explicitly
-     {{< /note >}}
+   - **Primary Auth Mode**: Whether to use the OIDC mode as the primary auth mode.
+{{< note >}}
+To override and login via DB is possible when visiting the URL '/account/sign-in' explicitly
+{{< /note >}}   
    - **OIDC Provider Name**: The name of the OIDC provider.
    - **OIDC Provider Endpoint**: The URL of the endpoint of the OIDC provider.
    - **OIDC Client ID**: The client ID with which Harbor is registered as  client application with the OIDC provider.
    - **OIDC Client Secret**: The secret for the Harbor client application.
-   - **OIDC Group Filter**: The [regular expression](https://pkg.go.dev/regexp/syntax) to filter OIDC groups.Only the groups that match the provided regular express will be added to Harbor.
+   - **OIDC Group Filter**: The [regular expression](https://pkg.go.dev/regexp/syntax) to select matching groups from the `Group Claim Name` list . Matching groups are added to Harbor. This filter does not limit the users' capability to log in into Harbor.
    - **Group Claim Name**: The name of a custom group claim that you have configured in your OIDC provider, that includes the groups to add to Harbor.
    - **OIDC Admin Group**: The name of the admin group, if the ID token of the user shows that he is a member of this group, the user will have admin
      privilege in Harbor. **Note**: You can only set one Admin Group.  Please also make sure the value in this field matches the value of group item in ID token.  
