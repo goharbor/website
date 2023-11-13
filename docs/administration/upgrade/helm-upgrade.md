@@ -7,7 +7,7 @@ This guide is used to upgrade Harbor deployed by chart since version 0.3.0.
 
 ## Notes
 
-- As the database schema may change between different versions of Harbor, there is a progress to migrate the schema during the upgrade and the downtime cannot be avoid
+- As the database schema may change between different versions of Harbor, there is a process to migrate the schema during the upgrade and the downtime cannot be avoid
 - The database schema cannot be downgraded automatically, so the `helm rollback` is not supported
 
 ## Upgrade
