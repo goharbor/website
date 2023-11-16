@@ -86,7 +86,7 @@ Name | Description | Labels (Values) |Metric type
 
 To begin accessing your Harbor instance's metrics with Prometheus,
 1. Enable exposing metrics in your `harbor.yml` [configuration file](../../install-config/configure-yml-file.md) and set the port and path for metrics to be exposed on. Also see more about [reconfiguring your Harbor instance](../../install-config/reconfigure-manage-lifecycle/).
-1. Set up a Prometheus server, see the [Prometheus documentation](https://prometheus.io/docs/prometheus/latest/installation/) for more information on installing.  
+1. Set up a Prometheus server, see the [Prometheus documentation](https://prometheus.io/docs/prometheus/latest/installation/) for more information on installing.
 1. Configure your Prometheus config file to scrape Harbor metrics exposed at your configured port and path. Below is an example scrape config, see the Prometheus documentation for all available [scrape configuration options](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config).
 
     ```
@@ -122,7 +122,7 @@ To begin accessing your Harbor instance's metrics with Prometheus,
           static_configs:
             - targets: ['<harbor_instance>:<metrics_port>']
       ```
-1. Once you have configured your Prometheus server to collect your Harbor metrics, you can use [Grafana](https://grafana.com/docs/) to visualize your data. An [example Grafana dashboard](https://github.com/goharbor/harbor/blob/main/contrib/grafana-dashborad/metrics-example.json) is available in the Harbor repo to help you get started visualizing Harbor metrics.  
+1. Once you have configured your Prometheus server to collect your Harbor metrics, you can use [Grafana](https://grafana.com/docs/) to visualize your data. An [example Grafana dashboard](https://github.com/goharbor/harbor/blob/main/contrib/grafana-dashboard/metrics-example.json) is available in the Harbor repo to help you get started visualizing Harbor metrics.
 
 ### From a Kubernetes cluster
 
@@ -147,4 +147,4 @@ You can also use Prometheus to collect metrics from a Harbor instance deployed i
 
 2. Enable Harbor to expose metrics by updating your harbor-helm `values.yaml` file and set `metrics.enabled` to `true`. You can also edit the port and path the metrics are exposed on by updating the available harbor-helm chart [configuration options for metrics](https://github.com/goharbor/harbor-helm#configuration).
 
-Prometheus should now show your Harbor instance's metrics.  
+Prometheus should now show your Harbor instance's metrics.
