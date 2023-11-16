@@ -399,7 +399,7 @@ The `harbor.yml` file includes options to configure a UAA CA certificate. This a
 
 ## Configuring a Storage Backend {#backend}
 
-By default Harbor uses local storage for the registry, but you can optionally configure the `storage_service` setting so that Harbor uses external storage. For information about how to configure the storage backend of a registry for different storage providers, see the [Registry Configuration Reference](https://docs.docker.com/registry/configuration/#storage) in the Docker documentation. For example, if you use Openstack Swift as your storage backend, the parameters might resemble the following:
+By default Harbor uses local storage for the registry, but you can optionally configure the `storage_service` setting so that Harbor uses external storage. For information about how to configure the storage backend of a registry for different storage providers, see the [Distribution Configuration Reference](https://distribution.github.io/distribution/about/configuration/) in the Distribution Registry (previously Docker Registry) documentation. For example, if you use Openstack Swift as your storage backend, the parameters might resemble the following:
 
 ``` yaml
 storage_service:
