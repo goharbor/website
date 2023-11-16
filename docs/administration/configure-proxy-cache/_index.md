@@ -17,6 +17,7 @@ Harbor supports proxy caching for the following registries:
    - Google Container Registry
    - Quay
    - Github Container Registry
+   - JFrog Artifactory Registry
 
 {{< /note >}}
 
