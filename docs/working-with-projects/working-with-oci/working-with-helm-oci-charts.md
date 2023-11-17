@@ -67,4 +67,35 @@ e.g.
 ```sh
 helm install MyRelease oci://demo.goharbor.io/oci/demo --version 0.1.0
 ```
+
+## Creating and packaging the OCI Chart
+For full reference please check official [Helm documentation]()
+
+### Create the chart
+```sh
+helm create oci-chat-example
+```
+
+### Edit and make it usable
+Use your preferred method to edit the newly created chart.
+
+### Package
+```sh
+helm package oci-chat-example
+```
+
+### Push OCI Chart to Harbor Registry
+```sh
+helm push oci-chat-example-0.1.0.tgz oci://demo.goharbor.io/oci-charts
+```
+
 ## See you images in the Harbor Interface
+
+### You can see your OCI Helm Charts in your Harbor Project as any other artefact
+![Project View](../../../img/oci/oci-chart-main-view.png)
+
+### You can see all tags(versions)
+![Tags](../../../img/oci/oci-chart-tags.png)
+
+### Work with OCI Helm Charts from the UI
+![Actions](../../../img/oci/oci-chart-actions.png)
