@@ -51,6 +51,22 @@ Name | Description | Labels (Values) | Metric type
 `harbor_core_http_request_total` | The total number of requests | method (`GET`, `POST`, `HEAD`, `PATCH`, `PUT`), operation (values from `operationId` in [Harbor API](https://github.com/goharbor/harbor/blob/main/api/v2.0/swagger.yaml). Some legacy endpoints do not have an `operationId`, so the label value is `unknown`) | counter
 {{< /table >}}
 
+## Harbor Statistics Metrics
+Get the statistic information about the projects and repositories
+The data exposed as metrics are 1:1 taken from the statistics API `/api/v2.0/statistics`.
+
+{{< table caption="Statistics Metrics exposed by Harbor Core" >}}
+Name | Description | Labels (Values) | Metric type
+:---------|:------------|:-------|:-------
+`harbor_statistics_private_project_amount` "Amount of private projects" || gauge
+`harbor_statistics_private_repo_amount` | "Amount of private repositories" || gauge
+`harbor_statistics_public_project_amount` | "Amount of public projects" || gauge
+`harbor_statistics_public_repo_amount` | "Amount of public repositories" || gauge
+`harbor_statistics_total_project_amount` | Total amount of projects || gauge
+`harbor_statistics_total_repo_amount` | "Total amount of repositories" || gauge
+`harbor_statistics_total_storage_consumption` | Total storage used | | gauge
+{{< /table >}}
+
 ## Registry Metrics
 
 The following are metrics pulled from the Docker distribution and are available at `<harbor_instance>:<metrics_port>/<metrics_path>?comp=registry`.
