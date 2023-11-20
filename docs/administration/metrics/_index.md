@@ -64,7 +64,7 @@ Name | Description | Labels (Values) | Metric type
 `harbor_statistics_public_repo_amount` | "Amount of public repositories" || gauge
 `harbor_statistics_total_project_amount` | Total amount of projects || gauge
 `harbor_statistics_total_repo_amount` | "Total amount of repositories" || gauge
-`harbor_statistics_total_storage_consumption` | Total storage used | | gauge
+`harbor_statistics_total_storage_consumption` | Total storage used in bytes | | gauge
 {{< /table >}}
 
 ## Registry Metrics
