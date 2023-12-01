@@ -5,7 +5,7 @@ weight: 60
 
 By default, Harbor uses its own private key and certificate to authenticate with Docker clients. This topic describes how to optionally customize your configuration to use your own key and certificate.
 
-Harbor requires the Docker client to access the Harbor registry with a token. The procedure to generate a token is like [Docker Registry v2 authentication](https://github.com/docker/distribution/blob/master/docs/spec/auth/token.md). Firstly, you make a request to the token service for a token. The token is signed by the private key. After that, you make a new request with the token to the Harbor registry, Harbor registry verifies the token with the public key in the root cert bundle. Then Harbor registry authorizes the Docker client to push and pull images.
+Harbor requires the Docker client to access the Harbor registry with a token. The procedure to generate a token is like [Docker Registry v2 authentication](https://github.com/docker/distribution/blob/master/docs/content/spec/auth/token.md). Firstly, you make a request to the token service for a token. The token is signed by the private key. After that, you make a new request with the token to the Harbor registry, Harbor registry verifies the token with the public key in the root cert bundle. Then Harbor registry authorizes the Docker client to push and pull images.
 
 - If you do not already have a certificate, follow the instructions in [Generate a Root Certificate](#gen-cert) to generate a root certificate by using openSSL.
 - If you already have a certificate, go to [Provide the Certificate to Harbor](#provide-cert).
