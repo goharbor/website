@@ -42,10 +42,10 @@ The table below lists the some of the key components that are deployed when you 
 
 |Component|Version|
 |---|---|
-|Postgresql|13.3.0|
-|Redis|6.0.13|
-|Beego|1.9.0|
-|Docker/distribution|2.7.1|
+|Postgresql|13.10|
+|Redis|7.0.0|
+|Beego|2.0.6|
+|Docker/distribution|2.8.0|
 |Docker/notary|0.6.1|
 |Helm|2.9.1|
-|Swagger-ui|3.22.1|
+|Swagger-ui|4.17.1|
