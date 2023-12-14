@@ -36,7 +36,7 @@ You are able to schedule garbage colleciton on your Harbor interface from the **
     * **Hourly**: Run garbage collection at the beginning of every hour.
     * **Daily**: Run garbage collection at midnight every day.
     * **Weekly**: Run garbage collection at midnight every Saturday.
-    * **Custom**: Run garbage collection according to a `cron` job.
+    * **Custom**: Run garbage collection according to a `cron` task.
 
 1. For the **Workers** item, you are able to select the number of workers that can execute GC tasks in parallel.
 1. To **Allow garbage collection on untagged artifacts**, select the option. If you have this option turned on, the next time Garbage collect runs on your Harbor instance, Harbor will delete untagged artifacts and then perform garbage collection on them.
@@ -47,7 +47,7 @@ View garbage collection runs in the **Garbage Collection History** table on the 
 
 Each time you run garbage collection on your Harbor instance, Harbor will track some information about the run including:
 
-  * **Job ID:** Unique numerical value assigned by Harbor when a run is initiated.
+  * **Task ID:** Unique numerical value assigned by Harbor when a run is initiated.
   * **Trigger Type:** How the run was initiated, either Manual or by Schedule.
   * **Dry Run:** If the run was a dry run or not.
   * **Status:** Current status of the run.
@@ -61,12 +61,12 @@ Each time you run garbage collection on your Harbor instance, Harbor will track 
 
 ## Stop in Progress Garbage Collection
 
-You are able to stop any running garbage collection job from the Garbage Collection History table.
+You are able to stop any running garbage collection task from the Garbage Collection History table.
 
 1. Navigate to **Administration** > **Clean Up** page and select the **'Garbage Collection'** tab.
-1. In the **Garbage Collection History** table, click on the checkbox next to the Job Id of the running garbage collection. You can stop one or more running garbage collection jobs at one time.
+1. In the **Garbage Collection History** table, click on the checkbox next to the Task Id of the running garbage collection. You can stop one or more running garbage collection tasks at one time.
 1. Click **Stop** and then **Confirm** that you want to stop the garbage collection in the modal.
 
-    ![Select Garbage collection job from table](../../img/gc-stop-run.png)
+    ![Select Garbage collection task from table](../../img/gc-stop-run.png)
 
-This will only stop the garbage collection job from processing more artifacts. Harbor will not restore any artifact that has already been garbage collected.
+This will only stop the garbage collection task from processing more artifacts. Harbor will not restore any artifact that has already been garbage collected.
