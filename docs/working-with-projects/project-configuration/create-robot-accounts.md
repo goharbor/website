@@ -5,7 +5,7 @@ weight: 40
 
 Harbor allows you to use a project robot account to automate running operations for a project including,
 
-![Project permission candidates](../../../img/robotaccount/project-permission-candidates.png)
+![Project permission candidates](../../../img/robot-account/project-permission-candidates.png)
 
 A project robot account authenticates to your Harbor instance using a secret, allowing you to connect to your Harbor instance through the OCI client or Harbor API to automate tasks. Robot Accounts cannot log in to the Harbor interface.
 
@@ -45,8 +45,8 @@ You are only able to see project robot accounts from this page. Harbor administr
     {{< note >}}The **Push Repository** permission must be assigned with the **Pull Repository** permission. You are not able to assign the Push Repository permission by itself.
     {{< /note >}}
 
-    ![Add a robot account step 1](../../../img/robotaccount/create-project-robot-step1.png)
-    ![Add a robot account step 2](../../../img/robotaccount/create-project-robot-step1.png)
+    ![Add a robot account step 1](../../../img/robot-account/create-project-robot-step1.png)
+    ![Add a robot account step 2](../../../img/robot-account/create-project-robot-step1.png)
 
 1. Click **FINISH**.
 1. In the confirmation window, click **Export to File** to download the access token as a JSON file, or click the clipboard icon to copy its contents to the clipboard.
