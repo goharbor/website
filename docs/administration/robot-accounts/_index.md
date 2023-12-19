@@ -3,57 +3,59 @@ title: Create System Robot Accounts
 weight: 40
 ---
 
-Harbor v2.2 introduces the capability for administrators to create system robot accounts you can use you run automated actions in your Harbor instances. System robot accounts allow you to use a robot account to perform maintenance or repeated tasks across all or a subset of projects in your Harbor instance.
+Harbor incorporates the concept of system-wide robot accounts. An administrator can create a system-wide robot account covering multiple projects.
+System robot accounts are used to create non-user-scoped credentials to perform operations and API calls across multiple projects.
 
-For each system robot account you are able to assign the system permissions and specify the projects it covers. And for each of the specified projects you are able to assign the project permissions
+Each system robot account can have multiple system permissions and multiple project level permissions across multiple projects.
 
-You can refer to the [**Permission References**](#permission-references) to assign a combination of these permissions to a system robot account to perform your desired tasks through the OCI client or Harbor API. Robot Accounts cannot log in to the Harbor interface.
+The [**Permission References**](#permission-references) contains a list of permission and their operations.
+These permissions can be combined and assigned to a system robot account, allowing it to execute the desired tasks via an OCI client or the Harbor API. Robot Accounts cannot be used to log into the user interface.
 
-You are also able to create project scope robot account that only have access to a single project. Read more about [project robot accounts](../../working-with-projects/project-configuration/create-robot-accounts/).
+You can also create project-scoped robot accounts that have access limited to a single project. Read more about [project robot accounts](../../working-with-projects/project-configuration/create-robot-accounts/).
 
 ## View System Robot Accounts
 
-1. Log into your harbor instance as an administrator.
-1. Go to **Robot Accounts** item under **Administration**.
+1. Log into your Harbor instance as an administrator.
+1. In the sidebar select **Robot Accounts** in the **Administration section**.
 
-![System robot account page](../../img/robotaccount/system-robot-account-page.png)
+![System robot account page](../../img/robot-account/system-robot-account-page.png)
 
-This page lists all available system robot accounts for your Harbor instance. The table lists the following information for each system robot account,
+This page contains the lists of all existing system robot accounts in your Harbor instance. The table contains the following information for each system robot account:
 
 * The name of a system account. This is derived from robot account prefix configured for your Harbor instance and the name assigned to the account when it was created. A robot account name follows the format `<prefix><account_name>`. If you use the search function on this page, you only need to search for the account name without the prefix.
-* Enabled status shows if an account is enabled or deactivated.
-* The number of system permissions an account is assigned to. To see a full set of the assigned system permissions, click on the **PERMISSIONS** link.
+* Enabled status indicates whether an account is active or deactivated.
+* The count of system permissions an account is assigned to. To see a full set of the assigned system permissions, click on the **PERMISSIONS** link.
 
-    ![View all the system permissions](../../img/robotaccount/view-system-permissions.png)
-* The number of projects an account is associated with. To see a full list of the projects an account is associated with, click on the **PROJECT(S)** link.
+    ![View all the system permissions](../../img/robot-account/view-system-permissions.png)
+* The number of projects an account is associated with. Click on the **PROJECT(S)** link to see a full list of projects associated with an account.
 
     ![View list of all projects associated with a system robot account](../../img/list-robot-account-projects.png)
 
 * The created time shows when the robot account was created.
-* The time until the account expires. Calculated based on the created time and the expiration time set when creating the robot account.
-* The description of the system robot account.
+* The account expiration time. Calculated based on the created time and the expiration time set when creating the robot account.
+* The manually added description for the system robot account.
 
 
 ## Add a System Robot Account
 
-1. Log in to the Harbor interface with an account that has at least system administrator privileges.
+1. Log in to the Harbor interface, with system administrator privileges.
 1. Go to **Administration**, select a project, and select **Robot Accounts**.
 1. Click **New Robot Account**.
 
-    ![Create system robot account window](../../img/robotaccount/create-system-robot-account-step1.png)
+    ![Create system robot account window](../../img/robot-account/create-system-robot-account-step1.png)
 
 1. Enter a name and an optional description for this robot account.
-1. Set Expiration time for this robot account. By default the configured system default expiration time is used. You can also select **Never Expired** from the dropdown if you want to create a never expiring robot account.
+1. Set Expiration time for this robot account. By default the system configured expiration time is used. You can also select **Never Expired** from the dropdown if you want to create a never expiring robot account.
 1. Select the system permissions for this robot account.
 1. Select **Cover all projects** if you want to use this system robot account across all projects. Using this option means that this system robot account will be able to access all existing and future projects in your Harbor instance. You can select which permission to grant to the robot account.   
-    ![Cover all projects and select permissions](../../img/robotaccount/cover-all-project-and-select-permissions.png)
+    ![Cover all projects and select permissions](../../img/robot-account/cover-all-project-and-select-permissions.png)
 1. If you want this robot account to only cover certain projects or be granted certain permissions, use the project table to select the projects and permissions you want to assign to the system robot account. This table shows the each project name, the project creation time, and a dropdown list of permissions to assign the system robot account for that project.
 
-    ![Project table for assigning robot accounts](../../img/robotaccount/project-table-robot-account.png)
+    ![Project table for assigning robot accounts](../../img/robot-account/project-table-robot-account.png)
 
     Click the checkbox next to the project name to associate this robot account.
 
-    By default the table shows all projects in your Harbor instance. You are able to filter for projects using the **filter icon** to the right of Project Name header. Note that the project table may be broken into pages and only display a subset of projects at one time depending on how many project you have in your Harbor instance and how many project match your filter criteria.
+    By default the table shows all projects in your Harbor instance. You are able to filter for projects using the **filter icon** to the right of Project Name header. Note that the project table may be broken into pages and only display a subset of projects at one time depending on how many projects you have in your Harbor instance and how many projects match your filter criteria.
 
       ![Filter project names](../../img/robot-account-filter-project-name.png)
 
@@ -63,11 +65,11 @@ This page lists all available system robot accounts for your Harbor instance. Th
       {{< /note >}}
 
 
-    ![Set project permission](../../img/robotaccount/set-project-permissions.png)
+    ![Set project permission](../../img/robot-account/set-project-permissions.png)
 
     Click the **Reset All Project Permissions** dropdown to control which permissions are available for each project. Selecting or unselecting a permission will add or remove the permission for every project. Using this option will adjust permissions for all projects, not just the projects shown if you have filtered for a specific project name.
 
-    ![Reset robot account permissions](../../img/robotaccount/reset-robot-permissions.png)
+    ![Reset robot account permissions](../../img/robot-account/reset-robot-permissions.png)
 
     Click **Select All Projects** to associate the system robot account with all of the projects shown in the table. If you are filtering by project name, this option will only select the filtered projects.
 
@@ -84,7 +86,7 @@ This page lists all available system robot accounts for your Harbor instance. Th
 
    The new robot account appears as `<prefix>account_name` in the list of robot accounts. Read more about [robot account prefixes](#configure-robot-account-prefix).
 
-## Edit, Deactivate, or Delete a System Robot Account
+## Administration System Robot Account
 
 You are able to edit, deactivate, or delete a system robot account.
 
@@ -261,5 +263,5 @@ The below tables explain what a robot account can do with a specified permission
 
 
 {{< note >}}
-Public APIs are not included in the tables above because they can be accessed by any robot account
+Public APIs are not included in the tables above because they can be accessed by anyone.
 {{< /note >}}
