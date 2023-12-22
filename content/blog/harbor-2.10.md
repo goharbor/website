@@ -8,7 +8,7 @@ showPageInfo: true
 ---
 
 ### Harbor [2.10 Release](r210): Enhancements, Features, and More! 🚀
-![banner](../img/robot.jpg)
+![banner](../img/blog-2.10/robot.jpg)
 
 We're thrilled to announce the latest release of Harbor, version [2.10](r210)! This version brings a myriad of exciting new features, enhancements, and improvements that elevate user experience, security, and performance.
 
