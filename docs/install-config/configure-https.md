@@ -25,7 +25,7 @@ In a production environment, you should obtain a certificate from a CA. In a tes
    
     ```sh
     openssl req -x509 -new -nodes -sha512 -days 3650 \
-     -subj "/C=CN/ST=Beijing/L=Beijing/O=example/OU=Personal/CN=yourdomain.com" \
+     -subj "/C=CN/ST=Beijing/L=Beijing/O=example/OU=Personal/CN=MyPersonal Root CA" \
      -key ca.key \
      -out ca.crt
     ```
