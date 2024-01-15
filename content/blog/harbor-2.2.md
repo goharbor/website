@@ -87,7 +87,7 @@ In 2021, the team will focus on
   edge nodes
 - Increasing our involvement in Notary v2 upstream for better image
   provenance capabilities
-- Increasing our involvement in Docker Distribution upstream
+- Increasing our involvement in Distribution Distribution upstream
 - Strengthening ecosystem partnerships
 - Integrations with image scanner vendors like Twistlock and Qualys
 - Improving performance and scalability
@@ -127,14 +127,14 @@ contributions to the project!
 
 ## Collaborate with the Harbor Community
 
-Get updates on Twitter: [@project\_harbor](https://twitter.com/project_harbor)  
+Get updates on Twitter: [@project\_harbor](https://twitter.com/project_harbor)
 Chat with us on Slack: [#harbor](https://cloud-native.slack.com/messages/harbor)
 and [#harbor-dev](https://cloud-native.slack.com/messages/harbor-dev)
-on the[CNCF Slack](https://slack.cncf.io/)  
-Collaborate with us on [GitHub](https://github.com/goharbor/harbor)  
+on the[CNCF Slack](https://slack.cncf.io/)
+Collaborate with us on [GitHub](https://github.com/goharbor/harbor)
 Attend the [community meetings](https://github.com/goharbor/community/wiki/Harbor-Community-Meetings)
 
-Alex Xu  
-Harbor Maintainer  
-Senior Product Manager, VMware  
+Alex Xu
+Harbor Maintainer
+Senior Product Manager, VMware
 [@xaleeks](https://github.com/xaleeks)

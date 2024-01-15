@@ -28,9 +28,9 @@ Full article can be found [here](https://github.com/goharbor/perf/wiki/Cache-lay
 
 ### CVE export:
 #### Motivation
-Kubernetes and container adoption is witnessing widespread adoption as detailed within the [CNCF survey](https://www.cncf.io/announcements/2022/02/10/cncf-sees-record-kubernetes-and-container-adoption-in-2021-cloud-native-survey/) conducted in February 2022. This trend ultimately bolsters the most fundamental fact - container registries can no longer act as image stores. Instead container registries are now fundamental building blocks for the software supply chain within the cloud-native software realm and hence must expose features that allow the users to assess the software compliance of the images which are stored in the registry. One of the critical parameters for ensuring software compliance is assessing software vulnerabilities present within container images 
+Kubernetes and container adoption is witnessing widespread adoption as detailed within the [CNCF survey](https://www.cncf.io/announcements/2022/02/10/cncf-sees-record-kubernetes-and-container-adoption-in-2021-cloud-native-survey/) conducted in February 2022. This trend ultimately bolsters the most fundamental fact - container registries can no longer act as image stores. Instead container registries are now fundamental building blocks for the software supply chain within the cloud-native software realm and hence must expose features that allow the users to assess the software compliance of the images which are stored in the registry. One of the critical parameters for ensuring software compliance is assessing software vulnerabilities present within container images
 
-Harbor is an open-source enterprise-grade registry that extends the Docker distribution to provide features such as image vulnerability scanning, replication and activity auditing.
+Harbor is an open-source enterprise-grade registry that extends the Distribution distribution to provide features such as image vulnerability scanning, replication and activity auditing.
 With the upcoming 2.6.0 release, Harbor now exposes a mechanism to export CVE vulnerabilities for images to the  automation friendly CSV format. The functionality hence unlocks further visibility and control over the security posture of images and their distribution.
 
 #### Feature overview
@@ -93,7 +93,7 @@ For full information please check the [Harbor v2.6.0 official documentation](htt
 
 ### Purge and Forward Audit Log
 
-The audit_log is used to record the image pull/push/delete operations so that administrators could retrieve the history of the operation log. In a typical large Harbor server, there might be a large amount pull request and small amount of push request, delete request. Because the audit log is stored in database table, it cost of amount DB IO time and disk space to write the audit_log, it is better to provide a configurable way to log these information in either the file system or database. The audit_log table because of it is large size, it requires the DBA to create a job to clean up it periodically and it also cause the historical data cannot be retrieved. the purge and forward audit log feature provide a way to forward the audit log to external endpoint and purge the audit log table periodically. 
+The audit_log is used to record the image pull/push/delete operations so that administrators could retrieve the history of the operation log. In a typical large Harbor server, there might be a large amount pull request and small amount of push request, delete request. Because the audit log is stored in database table, it cost of amount DB IO time and disk space to write the audit_log, it is better to provide a configurable way to log these information in either the file system or database. The audit_log table because of it is large size, it requires the DBA to create a job to clean up it periodically and it also cause the historical data cannot be retrieved. the purge and forward audit log feature provide a way to forward the audit log to external endpoint and purge the audit log table periodically.
 
 #### Feature overview
 
@@ -159,17 +159,17 @@ Special thank you to all new contributors:
 
 ## Collaborate with the Harbor Community
 
-Get updates on Twitter: [@project\_harbor](https://twitter.com/project_harbor)  
+Get updates on Twitter: [@project\_harbor](https://twitter.com/project_harbor)
 Chat with us on Slack: [#harbor](https://cloud-native.slack.com/messages/harbor)
 and [#harbor-dev](https://cloud-native.slack.com/messages/harbor-dev)
-on the[CNCF Slack](https://slack.cncf.io)  
-Collaborate with us on [GitHub](https://github.com/goharbor/harbor)  
-Attend the [community meetings](https://github.com/goharbor/community/wiki/Harbor-Community-Meetings)  
+on the[CNCF Slack](https://slack.cncf.io)
+Collaborate with us on [GitHub](https://github.com/goharbor/harbor)
+Attend the [community meetings](https://github.com/goharbor/community/wiki/Harbor-Community-Meetings)
 
 &nbsp;
 &nbsp;
 
-Orlin Vasilev  
-Harbor Community Manager  
-GitHub: [@OrlinVasilev](https://github.com/OrlinVasilev)  
+Orlin Vasilev
+Harbor Community Manager
+GitHub: [@OrlinVasilev](https://github.com/OrlinVasilev)
 Twitter: [@OrlinVasilev](https://twitter.com/OrlinVasilev)
