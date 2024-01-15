@@ -7,11 +7,11 @@ date: 2019-09-18T01:00:00+04:00
 showPageInfo: true
 ---
 
-We are excited to announce the release of Harbor version 1.9, arguably one of our biggest releases packed with several long-awaited features that the open source community has asked for. Thanks to all the members of the community who made contributions to these features, and special thanks in particular to 360 Total Security, Hyland Software, NetEase Cloud, and VMware. With this release, Harbor introduces some key new features:    
-1.	Tag retention and project quotas that strengthen image lifecycle management and security  
-2.	Webhook notifications that enable the integration of Harbor with CI/CD tools  
-3.	Replication targets for the registry services of all the major cloud providers to let you replicate projects based on your business needs  
-4.	CVE exception policies and syslog integration that bring an additional layer of management and security capabilities to Harbor operators    
+We are excited to announce the release of Harbor version 1.9, arguably one of our biggest releases packed with several long-awaited features that the open source community has asked for. Thanks to all the members of the community who made contributions to these features, and special thanks in particular to 360 Total Security, Hyland Software, NetEase Cloud, and VMware. With this release, Harbor introduces some key new features:
+1.	Tag retention and project quotas that strengthen image lifecycle management and security
+2.	Webhook notifications that enable the integration of Harbor with CI/CD tools
+3.	Replication targets for the registry services of all the major cloud providers to let you replicate projects based on your business needs
+4.	CVE exception policies and syslog integration that bring an additional layer of management and security capabilities to Harbor operators
 
 Let’s deep dive into some of these features.
 
@@ -40,7 +40,7 @@ Harbor currently limits the ability to run certain images that have been scanned
 
 ## Replication Improvements
 
-Following the announcement in version 1.8 of cross-registry artifact replication between Harbor and registries such as Docker Hub and Huawei Cloud, version 1.9 expands these capabilities to most major cloud provider registries, such as Amazon Elastic Container Registry, Azure Container Registry, Google Container Registry, and Alibaba Container Registry.  Harbor enables seamless two-way replication to third-party registries to meet a multitude of needs and use cases.  
+Following the announcement in version 1.8 of cross-registry artifact replication between Harbor and registries such as Docker Hub and Huawei Cloud, version 1.9 expands these capabilities to most major cloud provider registries, such as Amazon Elastic Container Registry, Azure Container Registry, Google Container Registry, and Alibaba Container Registry.  Harbor enables seamless two-way replication to third-party registries to meet a multitude of needs and use cases.
 
 ## Community Call to Action
 
@@ -48,15 +48,15 @@ The 1.9 release saw more input and contributions from the community than ever be
 
 ## About Harbor
 
-[Harbor](http://github.com/goharbor/harbor) is an open source trusted cloud native registry project that stores, signs, and scans container images and Helm charts. Harbor extends the open source Docker Distribution by adding key enterprise-level features in authentication and access control (LDAP/AD as well as OIDC support with RBAC), two-way replication to other third-party registries, advanced online garbage collection, and authenticity and provenance capabilities through image scanning and signing.  Harbor deploys in under 30 minutes, can be fully managed through a single web console, and comes with a rich set of APIs.
+[Harbor](http://github.com/goharbor/harbor) is an open source trusted cloud native registry project that stores, signs, and scans container images and Helm charts. Harbor extends the open source Distribution/Distribution by adding key enterprise-level features in authentication and access control (LDAP/AD as well as OIDC support with RBAC), two-way replication to other third-party registries, advanced online garbage collection, and authenticity and provenance capabilities through image scanning and signing.  Harbor deploys in under 30 minutes, can be fully managed through a single web console, and comes with a rich set of APIs.
 
 ## Collaborate with the Harbor Community!
 
-Get updates on Twitter ([@project_harbor](https://twitter.com/project_harbor))  
-Chat with us on Slack ([#harbor](https://cloud-native.slack.com/messages/harbor) on the [CNCF Slack](https://slack.cncf.io/))  
-Collaborate with us on GitHub: [github.com/goharbor/harbor](https://github.com/goharbor/harbor)  
-  
-Alex Xu  
-Harbor Contributor  
-Product Manager, VMware  
-[github.com/xaleeks](http://github.com/xaleeks)  
+Get updates on Twitter ([@project_harbor](https://twitter.com/project_harbor))
+Chat with us on Slack ([#harbor](https://cloud-native.slack.com/messages/harbor) on the [CNCF Slack](https://slack.cncf.io/))
+Collaborate with us on GitHub: [github.com/goharbor/harbor](https://github.com/goharbor/harbor)
+
+Alex Xu
+Harbor Contributor
+Product Manager, VMware
+[github.com/xaleeks](http://github.com/xaleeks)
