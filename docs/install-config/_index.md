@@ -45,6 +45,6 @@ The table below lists the some of the key components that are deployed when you 
 |Postgresql|14.9|
 |Redis|7.0.12|
 |Beego|2.0.6|
-|Docker/distribution|2.8.2|
+|Distribution/Distribution|2.8.2|
 |Helm|2.9.1|
 |Swagger-ui|4.17.1|
