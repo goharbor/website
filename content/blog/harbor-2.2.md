@@ -87,7 +87,7 @@ In 2021, the team will focus on
   edge nodes
 - Increasing our involvement in Notary v2 upstream for better image
   provenance capabilities
-- Increasing our involvement in Distribution Distribution upstream
+- Increasing our involvement in Distribution/Distribution upstream
 - Strengthening ecosystem partnerships
 - Integrations with image scanner vendors like Twistlock and Qualys
 - Improving performance and scalability

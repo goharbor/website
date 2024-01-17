@@ -48,7 +48,7 @@ The 1.9 release saw more input and contributions from the community than ever be
 
 ## About Harbor
 
-[Harbor](http://github.com/goharbor/harbor) is an open source trusted cloud native registry project that stores, signs, and scans container images and Helm charts. Harbor extends the open source Distribution Distribution by adding key enterprise-level features in authentication and access control (LDAP/AD as well as OIDC support with RBAC), two-way replication to other third-party registries, advanced online garbage collection, and authenticity and provenance capabilities through image scanning and signing.  Harbor deploys in under 30 minutes, can be fully managed through a single web console, and comes with a rich set of APIs.
+[Harbor](http://github.com/goharbor/harbor) is an open source trusted cloud native registry project that stores, signs, and scans container images and Helm charts. Harbor extends the open source Distribution/Distribution by adding key enterprise-level features in authentication and access control (LDAP/AD as well as OIDC support with RBAC), two-way replication to other third-party registries, advanced online garbage collection, and authenticity and provenance capabilities through image scanning and signing.  Harbor deploys in under 30 minutes, can be fully managed through a single web console, and comes with a rich set of APIs.
 
 ## Collaborate with the Harbor Community!
 

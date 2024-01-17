@@ -3,7 +3,7 @@ title: Tag Immutability Rules
 weight: 85
 ---
 
-By default, users can repeatedly push an artifact with the same tag to a repository in Harbor. This causes the tag to migrate across the artifacts and every artifact that has its tag taken away becomes tagless. This is due to Distribution distribution upstream which does not enforce the mapping between an image tag and the image digest. This can be undesirable in certain cases, because the tag can no longer be trusted to identify the image version. The sha256 digest remains reliable and always points to the same build, but it is not rendered in a human-readable format.
+By default, users can repeatedly push an artifact with the same tag to a repository in Harbor. This causes the tag to migrate across the artifacts and every artifact that has its tag taken away becomes tagless. This is due to Distribution/Distribution upstream which does not enforce the mapping between an image tag and the image digest. This can be undesirable in certain cases, because the tag can no longer be trusted to identify the image version. The sha256 digest remains reliable and always points to the same build, but it is not rendered in a human-readable format.
 
 To prevent this, Harbor allows you to configure tag immutability at the project level, so that artifacts with certain tags cannot be pushed into Harbor if their tags match existing tags. This prevents existing artifacts from being overwritten. Tag immutability guarantees that an immutable tagged artifact cannot be deleted, and also cannot be altered in any way such as through re-pushing, re-tagging, or replication from another target registry.
 

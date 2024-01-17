@@ -30,7 +30,7 @@ Full article can be found [here](https://github.com/goharbor/perf/wiki/Cache-lay
 #### Motivation
 Kubernetes and container adoption is witnessing widespread adoption as detailed within the [CNCF survey](https://www.cncf.io/announcements/2022/02/10/cncf-sees-record-kubernetes-and-container-adoption-in-2021-cloud-native-survey/) conducted in February 2022. This trend ultimately bolsters the most fundamental fact - container registries can no longer act as image stores. Instead container registries are now fundamental building blocks for the software supply chain within the cloud-native software realm and hence must expose features that allow the users to assess the software compliance of the images which are stored in the registry. One of the critical parameters for ensuring software compliance is assessing software vulnerabilities present within container images
 
-Harbor is an open-source enterprise-grade registry that extends the Distribution distribution to provide features such as image vulnerability scanning, replication and activity auditing.
+Harbor is an open-source enterprise-grade registry that extends the Distribution/Distribution to provide features such as image vulnerability scanning, replication and activity auditing.
 With the upcoming 2.6.0 release, Harbor now exposes a mechanism to export CVE vulnerabilities for images to the  automation friendly CSV format. The functionality hence unlocks further visibility and control over the security posture of images and their distribution.
 
 #### Feature overview
