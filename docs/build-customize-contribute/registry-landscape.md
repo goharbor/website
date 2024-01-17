@@ -6,7 +6,7 @@ The cloud native ecosystem is moving rapidly—registries and their feature sets
 
 This table is maintained by contributions from the Harbor community. If you find something outdated or outright erroneous, please submit a PR and we'll fix it right away.
 
-| Feature                                                | Harbor | Docker Trusted Registry | Quay    | Cloud Providers (GCP, AWS, Azure) | Docker Distribution         | Artifactory | GitLab   |
+| Feature                                                | Harbor | Docker Trusted Registry | Quay    | Cloud Providers (GCP, AWS, Azure) | Distribution Distribution         | Artifactory | GitLab   |
 | -------------:                                         | :----: | :---------------------: | :-----: | :-------------------------------: | :-----------------:         | :---------: | :------: |
 | Ability to Determine Version of Binaries in Containers | ✓      | ✓                       | ✓       | ✗                                 | ✗                           | ?           | ?        |
 | Artifact Repository (rpms, git, jar, etc)              | ✗      | ✗                       | ✗       | ✗                                 | ✗                           | ✓           | partial  |
