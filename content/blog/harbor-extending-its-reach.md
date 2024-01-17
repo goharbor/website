@@ -59,7 +59,7 @@ Furthermore, leveraging Harbor’s webhooks, a notification can be triggered eac
 
 ## About Harbor
 
-[Harbor](https://goharbor.io/) is an open source registry that secures OCI artifacts with policies and role-based access control, ensures images are scanned and free from vulnerabilities, and signs images as trusted. Harbor extends the open-source Distribution Distribution, adds two-way replication to third-party registries, and can be fully managed through a web console or a rich set of APIs. Harbor, a CNCF Graduated project, delivers compliance, performance, and interoperability to help you consistently and securely manage artifacts across cloud native compute platforms like Kubernetes and Docker
+[Harbor](https://goharbor.io/) is an open source registry that secures OCI artifacts with policies and role-based access control, ensures images are scanned and free from vulnerabilities, and signs images as trusted. Harbor extends the open-source Distribution/Distribution, adds two-way replication to third-party registries, and can be fully managed through a web console or a rich set of APIs. Harbor, a CNCF Graduated project, delivers compliance, performance, and interoperability to help you consistently and securely manage artifacts across cloud native compute platforms like Kubernetes and Docker
 
 ## Collaborate with the Harbor Community!
 

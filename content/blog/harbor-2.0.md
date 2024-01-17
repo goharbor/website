@@ -166,7 +166,7 @@ Webinar on Harbor v2.0 on May 28, 2020 at 10:00am PDT by registering
 [Harbor](http://github.com/goharbor/harbor) is an open source, trusted
 cloud native registry project that stores, signs, and scans container
 images, Helm charts, and any other OCI-compliant artifacts. Harbor
-extends the open-source Distribution Distribution by adding key
+extends the open-source Distribution/Distribution by adding key
 enterprise-level features in authentication and access control (LDAP and
 AD as well as OIDC support for RBAC), two-way replication to and from
 other third-party registries, advanced garbage collection, and
