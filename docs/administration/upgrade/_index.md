@@ -21,7 +21,7 @@ Since the migration might alter the database schema and the settings of `harbor.
 ## Important Upgrade Notes
 
 - Again, you MUST backup your data before any data migration.
-- In Harbor v2.5, if you are using an external database, make sure the version of PostgreSQL >= 10.
+- In Harbor v2.9, if you are using an external database, make sure the version of PostgreSQL >= 12.
 
 ## Upgrading Harbor and Migrating Data
 
