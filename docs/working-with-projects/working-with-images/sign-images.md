@@ -9,11 +9,11 @@ This page describes how to start using Cosign and Notation to sign your artifact
 
 ## Use Cosign to sign artifacts
 
-Harbor v2.5 integrates support for [Cosign](https://github.com/sigstore/cosign), a OCI artifact signing and verification solution that is part of the [Sigstore project](https://github.com/sigstore).
+Harbor v2.5 integrates support for [Cosign](https://github.com/sigstore/cosign), an OCI artifact signing and verification solution that is part of the [Sigstore project](https://github.com/sigstore).
 
 Cosign signs OCI artifacts and pushes the generated signature into Harbor. This signature is stored as an artifact accessory along side the signed artifact. Harbor manages a link between the signed artifact and cosign signature, allowing you to apply things like [tag retention rules](../..//working-with-projects/working-with-images/create-tag-retention-rules/) and [immutable rules](../../working-with-projects/working-with-images/create-tag-immutability-rules/) to a signed artifact, and it will extend to both the signed artifact and the signature. In this way you can use Harbor's built in functionality to manage signed artifacts and Cosign signature accessories. Note that [Vulnerability scans](../../../administration/vulnerability-scanning/) of Cosign signatures are not supported.
 
-A key feature of using Cosign with Harbor is the ability use Harbor's [replication capabilities](../../administration/configuring-replication/) to replicate signatures with their associated signed artifact. This means that if a [replication rule](../../administration/configuring-replication/create-replication-rules/) applies to a signed artifact, Harbor will apply the replication rule to the signature in the same way it applies it to the signed artifact.
+A key feature of using Cosign with Harbor is the ability to use Harbor's [replication capabilities](../../administration/configuring-replication/) to replicate signatures with their associated signed artifact. This means that if a [replication rule](../../administration/configuring-replication/create-replication-rules/) applies to a signed artifact, Harbor will apply the replication rule to the signature in the same way it applies it to the signed artifact.
 
 * When replicating between Harbor instances, the target Harbor instance will maintain the link between the signed artifact and its associated signatures. You will be able to see the relationship between the two artifacts in the target Harbor interface, in the same way that you do in the source registry.
 
@@ -23,7 +23,7 @@ A key feature of using Cosign with Harbor is the ability use Harbor's [replicati
 
 ### Sign, upload, and view Cosign signatures in Harbor
 
-Before starting to sign with Cosign, you must have cosign installed locally and have a generated a private key. See the [Cosign documentation](https://github.com/sigstore/cosign) for more installation information.
+Before starting to sign with Cosign, you must have cosign installed locally and have generated a private key. See the [Cosign documentation](https://github.com/sigstore/cosign) for more installation information.
 
 Use the `cosign sign` command to sign an image and upload the Cosign signature to your Harbor instance. Replace `<harbor-instance>/<image/path>:<image-tag>` in the example below with your Harbor instance and the path to the image.
 
@@ -63,37 +63,166 @@ Note that Harbor's [garbage collection](../../administration/garbage-collection/
 
 Harbor doesn't support `cosign clean` to remove signatures as Harbor has chosen not to implement tag deletion which is used by `cosign clean`. See the [OCI distribution specification](https://github.com/opencontainers/distribution-spec/blob/main/spec.md#content-management) for more for more information on implantation requirements.
 
-## Use Notation(experimental) to sign artifacts with distribution spec v1.1 mode
-In order to use Notation, generate a certificate for signing artifacts.
+## Use Notation to sign and verify artifacts with distribution spec v1.1 mode
 
+Harbor supports configuring `http` and `https` domain. For security consideration, we use `https` domain name for secure image signing and verification in this section.
+
+###  Configure domain name
+* Prepare a registered domain name. `myharbor-registry.online` will be used as the domain name for this illustration.
+
+* Point a DNS record to the IPV4 address of your Harbor server.
+
+### Installing Certbot
+To enable secure HTTPS access to our Harbor registry, we need to obtain an SSL certificate from a Certificate Authority. Certbot will be used to obtain an SSL Certificate from [Let’s Encrypt](https://letsencrypt.org/).
+
+Use `apt` or `snap` to install certbot.
+
+```shell
+sudo apt install --classic certbot
+sudo certbot certonly --standalone -d myharbor-registry.online
 ```
+After Certbot successfully obtains a certificate for your domain, it will provide the file paths where the certificate and key files are stored.
+
+![certbot](../../../img/certbot.png)
+
+Please take note of these paths, as they will be required in a subsequent step.
+
+### Configure Harbor domain
+After downloading Harbor release package and extracting it. Update the `harbor.yml` file by setting the hostname to your domain name like in the example below:
+
+`hostname: myharbor-registry.online`
+
+Replace `myharbor-registry.online` with the domain name obtained from your domain registrar.
+
+Next, under `https`, update the path of cert and key files to where the certificate and key files are stored. For Example:
+
+![Harbor configuration](../../../img/config.png)
+
+### Run the Installation Script
+Execute the Harbor installation script:
+
+`sudo ./install.sh`
+
+When successful, you should see a similar message like below:
+
+![harbor installation script](../../../img/script.png)
+
+### Log in to Harbor
+Log in to Harbor using the following Docker command:
+
+`docker login -u admin -p Harbor12345 myharbor-registry.online`
+
+Replace `myharbor-registry.online` with your domain’s address and navigate to https://myharbor-registry.online in your browser to access the Harbor interface, then login using the default Harbor credentials.
+
+![Harbor registry dashboard](../../../img/dashboard.png)
+
+### Install Notation CLI
+Install the latest version on Linux. Follow the [installation guide](https://notaryproject.dev/docs/user-guides/installation/cli/) for other platforms and methods.
+
+`brew install notation`
+
+### Build and push an image to Harbor Registry
+Before pushing an image to Harbor, let's create a new project on Harbor called `notation-project` to store the image.
+
+Run the following commands to build and push the `wabbit-networks/net-monitor` container image to Harbor:
+
+```shell
+docker build -t myharbor-registry.online/notation-project/net-monitor:v1 https://github.com/wabbit-networks/net-monitor.git#main
+
+docker login myharbor-registry.online
+
+docker push myharbor-registry.online/notation-project/net-monitor:v1
+```
+
+![Harbor dashboard](../../../img/harbor-interface.png)
+
+Click on the pushed image: `notation-project/net-monitor` the “Signed” section has a red mark indicating that the artifact is unsigned.
+
+![harbor project page](../../../img/harbor-project-page.png)
+
+### Create an environment variable for the image digest
+After pushing the image, record the image’s digest from the output and use it to set an environment variable for easy referencing of the image.
+
+For example:
+
+`export IMAGE=myharbor-registry.online/notation-project/net-monitor@sha256:002c4cbeffe0579eaa87a6bf4b64d554db32e6857098164ed3e03398262310f1`
+
+### Generating a Test Key and Self-Signed Certificate:
+Use notation `cert generate-test` to generate a test RSA key for signing artifacts, and a self-signed `X.509` test certificate for verifying artifacts. Please note the self-signed certificate should be used for testing or development purposes only.
+
+```shell
 notation cert generate-test --default "wabbit-networks.io"
 ```
+Confirm that the signing key is correctly configured and certificate is stored in the trust store using the following commands:
 
-If your certificate has expired, delete the certificate before generating a new certificate.
-
-```
-notation key delete wabbit-networks.io
-rm NOTATION_CONFIG/localkeys/wabbit-networks.io.key
-notation cert delete --type ca --store wabbit-networks.io wabbit-networks.io.crt
-rm NOTATION_CONFIG/localkeys/wabbit-networks.io.crt
+```shell
+notation key ls
+notation cert ls
 ```
 
-Next, sign an image.  
+### Configure environment variables to authenticate to Harbor registry
+Set the `NOTATION_USERNAME` and `NOTATION_PASSWORD` environment variables to authenticate to Harbor registry.
 
+```shell
+export NOTATION_USERNAME="YOUR_REGISTRY_USERNAME"
+export NOTATION_PASSWORD="YOUR_REGISTRY_PASSWORD"
 ```
-notation sign -d --allow-referrers-api <your-image-address>
+
+Learn more about [authenticating with OCI-compliant registries
+](https://notaryproject.dev/docs/user-guides/how-to/registry-authentication/#configure-environment-variables-to-authenticate-to-an-oci-compliant-registry) in this documentation
+
+### Sign the image
+Use `notation sign` command to sign the container image:
+
+```shell
+notation sign $IMAGE
+```
+Once the image is successfully signed, the signed status is updated to a green tick and corresponding signature has been pushed to the registry.
+
+![signed image in Harbor registry](../../../img/signed-image.png)
+
+### Create a trust policy to verify the image
+To verify the container image, configure the trust policy to specify trusted identities that sign the artifacts, and level of signature verification to use. For more details, see trust policy spec.
+
+Create a JSON file with the following trust policy, for example:
+
+```shell
+cat <<EOF > ./trustpolicy.json
+{
+    "version": "1.0",
+    "trustPolicies": [
+        {
+            "name": "wabbit-networks-images",
+            "registryScopes": [ "*" ],
+            "signatureVerification": {
+                "level" : "strict"
+            },
+            "trustStores": [ "ca:wabbit-networks.io" ],
+            "trustedIdentities": [
+                "*"
+            ]
+        }
+    ]
+}
+EOF
+```
+Use `notation policy import` to import the trust policy configuration from a JSON file. For example:
+
+```shell
+notation policy import ./trustpolicy.json
 ```
 
+### Verify the image
+Use `notation verify` to verify signatures associated with the container image.
 
+```shell
+notation verify  $IMAGE
+```
 
-{{< note >}}
-Please set `NOTATION_EXPERIMENTAL=1` environment variable to enable `--allow-referrers-api` flag
-{{< /note >}}
+![Notation verified image](../../../img/verified-image.png)
 
+You can also check the signature digest and inspect the signature and its certificate information to make sure the image is produced by a trusted identity.
 
-To view the notation signatures in Harbor, log into the Harbor interface and navigate to the project that your signed artifact is located in.
-
-![View notation signature](../../../img/view-notation-signature.png)
+`notation inspect $IMAGE`
 
 See the [Notation documentation](https://notaryproject.dev/docs/) for more information.
