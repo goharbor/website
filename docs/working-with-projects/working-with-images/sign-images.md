@@ -64,120 +64,33 @@ Note that Harbor's [garbage collection](../../administration/garbage-collection/
 Harbor doesn't support `cosign clean` to remove signatures as Harbor has chosen not to implement tag deletion which is used by `cosign clean`. See the [OCI distribution specification](https://github.com/opencontainers/distribution-spec/blob/main/spec.md#content-management) for more for more information on implantation requirements.
 
 ## Use Notation to sign and verify artifacts with distribution spec v1.1 mode
-
-Harbor supports configuring `http` and `https` domain. For security consideration, we use `https` domain name for secure image signing and verification in this section.
-
-###  Configure domain name
-* Prepare a registered domain name. `myharbor-registry.online` will be used as the domain name for this illustration.
-
-* Point a DNS record to the IPV4 address of your Harbor server.
-
-### Installing Certbot
-To enable secure HTTPS access to our Harbor registry, we need to obtain an SSL certificate from a Certificate Authority. Certbot will be used to obtain an SSL Certificate from [Let’s Encrypt](https://letsencrypt.org/).
-
-Use `apt` or `snap` to install certbot.
-
-```shell
-sudo apt install --classic certbot
-sudo certbot certonly --standalone -d myharbor-registry.online
-```
-After Certbot successfully obtains a certificate for your domain, it will provide the file paths where the certificate and key files are stored.
-
-![certbot](../../../img/certbot.png)
-
-Please take note of these paths, as they will be required in a subsequent step.
-
-### Configure Harbor domain
-After downloading Harbor release package and extracting it. Update the `harbor.yml` file by setting the hostname to your domain name like in the example below:
-
-`hostname: myharbor-registry.online`
-
-Replace `myharbor-registry.online` with the domain name obtained from your domain registrar.
-
-Next, under `https`, update the path of cert and key files to where the certificate and key files are stored. For Example:
-
-![Harbor configuration](../../../img/config.png)
-
-### Run the Installation Script
-Execute the Harbor installation script:
-
-`sudo ./install.sh`
-
-When successful, you should see a similar message like below:
-
-![harbor installation script](../../../img/script.png)
-
-### Log in to Harbor
-Log in to Harbor using the following Docker command:
-
-`docker login -u admin -p Harbor12345 myharbor-registry.online`
-
-Replace `myharbor-registry.online` with your domain’s address and navigate to https://myharbor-registry.online in your browser to access the Harbor interface, then login using the default Harbor credentials.
-
-![Harbor registry dashboard](../../../img/dashboard.png)
+[Notation](https://notaryproject.dev/) is a standard-based tool and library for signing and verifying OCI artifacts. It generates signatures and associates them with OCI artifacts to ensure integrity for the supply chain.
 
 ### Install Notation CLI
 Install the latest version on Linux. Follow the [installation guide](https://notaryproject.dev/docs/user-guides/installation/cli/) for other platforms and methods.
 
 `brew install notation`
 
-### Build and push an image to Harbor Registry
-Before pushing an image to Harbor, let's create a new project on Harbor called `notation-project` to store the image.
-
-Run the following commands to build and push the `wabbit-networks/net-monitor` container image to Harbor:
-
-```shell
-docker build -t myharbor-registry.online/notation-project/net-monitor:v1 https://github.com/wabbit-networks/net-monitor.git#main
-
-docker login myharbor-registry.online
-
-docker push myharbor-registry.online/notation-project/net-monitor:v1
-```
-
-![Harbor dashboard](../../../img/harbor-interface.png)
-
-Click on the pushed image: `notation-project/net-monitor` the “Signed” section has a red mark indicating that the artifact is unsigned.
-
-![harbor project page](../../../img/harbor-project-page.png)
-
-### Create an environment variable for the image digest
-After pushing the image, record the image’s digest from the output and use it to set an environment variable for easy referencing of the image.
-
-For example:
-
-`export IMAGE=myharbor-registry.online/notation-project/net-monitor@sha256:002c4cbeffe0579eaa87a6bf4b64d554db32e6857098164ed3e03398262310f1`
-
 ### Generating a Test Key and Self-Signed Certificate:
-Use notation `cert generate-test` to generate a test RSA key for signing artifacts, and a self-signed `X.509` test certificate for verifying artifacts. Please note the self-signed certificate should be used for testing or development purposes only.
+Use notation `cert generate-test` to generate a test RSA key for signing artifacts, and a self-signed `X.509` test certificate for verifying artifacts. Please note the self-signed certificate should be used for testing or development purposes only. You should use CA-issued certificate in production.
 
 ```shell
 notation cert generate-test --default "wabbit-networks.io"
 ```
-Confirm that the signing key is correctly configured and certificate is stored in the trust store using the following commands:
-
-```shell
-notation key ls
-notation cert ls
-```
-
-### Configure environment variables to authenticate to Harbor registry
-Set the `NOTATION_USERNAME` and `NOTATION_PASSWORD` environment variables to authenticate to Harbor registry.
+### Authenticate to Harbor Registry
+To authenticate with the Harbor registry, set the following environment variables:
 
 ```shell
 export NOTATION_USERNAME="YOUR_REGISTRY_USERNAME"
 export NOTATION_PASSWORD="YOUR_REGISTRY_PASSWORD"
 ```
-
-Learn more about [authenticating with OCI-compliant registries
-](https://notaryproject.dev/docs/user-guides/how-to/registry-authentication/#configure-environment-variables-to-authenticate-to-an-oci-compliant-registry) in this documentation
-
-### Sign the image
-Use `notation sign` command to sign the container image:
+### Sign an existing image in Harbor
+Assuming you have configured HTTPS access and pushed an image to Harbor, you can use the `notation sign` command to sign the image.
 
 ```shell
-notation sign $IMAGE
+notation sign <harbor-domain>/<image-reference>
 ```
-Once the image is successfully signed, the signed status is updated to a green tick and corresponding signature has been pushed to the registry.
+Once the image is successfully signed, the signed status is updated to a green tick and the corresponding signature has been pushed to the registry.
 
 ![signed image in Harbor registry](../../../img/signed-image.png)
 
@@ -216,10 +129,8 @@ notation policy import ./trustpolicy.json
 Use `notation verify` to verify signatures associated with the container image.
 
 ```shell
-notation verify  $IMAGE
+notation verify <harbor-domain>/<image-reference>
 ```
-
-![Notation verified image](../../../img/verified-image.png)
 
 You can also check the signature digest and inspect the signature and its certificate information to make sure the image is produced by a trusted identity.
 
