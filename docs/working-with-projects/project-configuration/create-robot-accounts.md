@@ -5,20 +5,7 @@ weight: 40
 
 Harbor allows you to use a project robot account to automate running operations for a project including,
 
-* List Repository
-* Pull Repository
-* Push Repository
-* Delete Repository
-* Read Artifact
-* List Artifact
-* Delete Artifact
-* Create Artifact Label
-* Delete Artifact Label
-* Create Tag
-* Delete Tag
-* List Tag
-* Create Scan
-* Stop Scan
+![Project permission candidates](../../../img/robot-account/project-permission-candidates.png)
 
 A project robot account authenticates to your Harbor instance using a secret, allowing you to connect to your Harbor instance through the OCI client or Harbor API to automate tasks. Robot Accounts cannot log in to the Harbor interface.
 
@@ -40,9 +27,6 @@ This page lists all available project robot accounts for a project. The table li
 * The name of the robot account. This is derived from robot account prefix configured for your Harbor instance, the project name, and the name assigned to the robot account when it was created. A robot account name follows the format `<prefix><project_name>+<account_name>`. If you use the search function on this page, you only need to search for the account name without the prefix.
 * The enabled status shows if an account is enabled or deactivated.
 * Click the **Permission(s)** dropdown to view the permissions granted to the robot account.
-
-![View a project robot account permissions](../../../img/permissions-link.png)
-
 * The created time shows when the robot account was created.
 * The time until the project robot account expires. This is calculated based on the created time and the expiration time set when creating the project robot account.
 * The description of the project robot account.
@@ -56,14 +40,15 @@ You are only able to see project robot accounts from this page. Harbor administr
 1. Click **New Robot Account**.
 1. Enter a name and an optional description for this robot account.
 1. Set expiration time for this robot account, you can also select checkbox **Never Expired** if you want to create a never expiring robot account.
-1. Click **Permission(s)** to grant permission to the robot account. You can use the **Select All** and **Unselect All** buttons to quickly add or remove all permissions from a robot account.
+1. Go to the next step to grant permissions to the robot account. You can refer to the [**Permission References**](../../administration/robot-accounts/_index.md#permission-references) to assign a combination of the project permissions to this robot account.You can use the **Select All** and **Unselect All** buttons to quickly add or remove all permissions from a robot account.
 
     {{< note >}}The **Push Repository** permission must be assigned with the **Pull Repository** permission. You are not able to assign the Push Repository permission by itself.
     {{< /note >}}
 
-    ![Add a robot account](../../../img/add-robot-account-2.png)
+    ![Add a robot account step 1](../../../img/robot-account/create-project-robot-step1.png)
+    ![Add a robot account step 2](../../../img/robot-account/create-project-robot-step1.png)
 
-1. Click **Add**.
+1. Click **FINISH**.
 1. In the confirmation window, click **Export to File** to download the access token as a JSON file, or click the clipboard icon to copy its contents to the clipboard.
 
    ![copy_robot_account_token](../../../img/copy-robot-account-token.png)

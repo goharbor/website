@@ -56,13 +56,13 @@ To override and login via DB is possible when visiting the URL '/account/sign-in
 
 ### Log In to Harbor via an OIDC Provider
 
-When the Harbor system administrator has configured Harbor to authenticate via OIDC a **Login via OIDC Provider** button appears on the Harbor login page.  
+When the Harbor system administrator has configured Harbor to authenticate via OIDC a **LOGIN WITH ${your_oidc_provider_name}** button appears on the Harbor login page.  
 
 ![oidc_login](../../../img/oidc-login.png)
 
 **NOTE:** When Harbor is configured authentication via OIDC, the **LOGIN VIA LOCAL DB** button is for the local Harbor system administrator to log in.
     
-1. As a Harbor user, click the **Login via OIDC Provider** button.
+1. As a Harbor user, click the **LOGIN WITH ${your_oidc_provider_name}** button.
  
    This redirects you to the OIDC Provider for authentication, after the OIDC provider has authenticated you, you are redirected back to Harbor. 
 1. If this is the first time you are logging in to Harbor with OIDC, you will be onboarded to Harbor so that you have a user record in Harbor's database, which is used when adding you to projects, assigning roles, and so on.  The flow of this process depends on the configuration:
