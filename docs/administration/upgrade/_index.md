@@ -30,7 +30,7 @@ Since the migration might alter the database schema and the settings of `harbor.
 
     ```sh
     cd harbor
-    docker-compose down
+    docker compose down
     ```
 
 1. Back up Harbor's current files so that you can roll back to the current version if necessary.
