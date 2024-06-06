@@ -3,8 +3,8 @@
   <div class="columns is-multiline is-variable is-8">
     {{ range $users }}
     {{ $img := printf "img/logos/users-partners/%s" .logo | relURL }}
-    <div class="column is-one-quarter has-text-centered">
-      <a href="{{ .link }}"><img src="{{ $img }}" alt="{{ .title }} user logo"></a>
+    <div class="column is-one-quarter has-text-centered" style="display: flex;justify-content: center;flex-wrap: nowrap;align-items: center;">
+      <a href="{{ .link }}"><img src="{{ $img }}" alt="{{ .title }} user logo" style="max-height: 128px;margin: 20px;"></a>
     </div>
     {{ end }}
   </div>
