@@ -55,34 +55,34 @@ Harbor 2.11 is a testament to our commitment to delivering cutting-edge features
 
 Stay tuned for more updates and happy containerizing! 🚀
 
-##  Contributors 👏
+##  Contributors 👏(in alphabetical order)
 
-https://github.com/alrs
-https://github.com/tpoxa
-https://github.com/an-toine
-https://github.com/liubin
-https://github.com/blueswen
-https://github.com/hasonhai
-https://github.com/prima101112
-https://github.com/stonezdj
-https://github.com/wy65701436
-https://github.com/tkatkov
-https://github.com/LiuShuaiyi
-https://github.com/tostt
-https://github.com/zyyw
-https://github.com/testwill
-https://github.com/microyahoo
-https://github.com/twhiteman
-https://github.com/Iceber
-https://github.com/eltociear
-https://github.com/dependabot
-https://github.com/AllForNothing
-https://github.com/MinerYang
-https://github.com/xuelichao
-https://github.com/YangJiao0817
-https://github.com/ShengqiWang
-https://github.com/jm-nab
-https://github.com/majorteach
+[AllForNothing](https://github.com/AllForNothing)
+[alrs](https://github.com/alrs)
+[an-toine](https://github.com/an-toine)
+[blueswen](https://github.com/blueswen)
+[dependabot](https://github.com/dependabot)
+[eltociear](https://github.com/eltociear)
+[hasonhai](https://github.com/hasonhai)
+[Iceber](https://github.com/Iceber)
+[jm-nab](https://github.com/jm-nab)
+[liubin](https://github.com/liubin)
+[LiuShuaiyi](https://github.com/LiuShuaiyi)
+[majorteach](https://github.com/majorteach)
+[microyahoo](https://github.com/microyahoo)
+[MinerYang](https://github.com/MinerYang)
+[prima101112](https://github.com/prima101112)
+[ShengqiWang](https://github.com/ShengqiWang)
+[stonezdj](https://github.com/stonezdj)
+[testwill](https://github.com/testwill)
+[tkatkov](https://github.com/tkatkov)
+[tostt](https://github.com/tostt)
+[tpoxa](https://github.com/tpoxa)
+[twhiteman](https://github.com/twhiteman)
+[wy65701436](https://github.com/wy65701436)
+[xuelichao](https://github.com/xuelichao)
+[YangJiao0817](https://github.com/YangJiao0817)
+[zyyw](https://github.com/zyyw)
 
 This release wouldn't have been possible without the dedication and support of our growing community of contributors. Your efforts are invaluable!
 
