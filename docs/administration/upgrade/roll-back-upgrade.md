@@ -17,7 +17,7 @@ Harbor 2.2 is compiled by Golang 1.15 which deprecated self signed certificate w
 
     ```sh
     cd harbor
-    docker-compose down
+    docker compose down
     ```
 
 2. Remove current Harbor instance.
