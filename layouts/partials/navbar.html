@@ -68,13 +68,16 @@
 
           <div class="navbar-dropdown is-right">
             {{ range site.Params.versions }}
+            {{ $version := split .harborversion "." }}
+            {{ $majorVersion := index $version 0 }}
+            {{ $minorVersion := index $version 1 }}
             {{ $isLatest := eq . $latest }}
             <div class="navbar-item">
               <div class="columns">
                 <div class="column">
                   <a class="has-text-black" href="/docs/{{ .harborversion }}" data-proofer-ignore>
                     <span>
-                      {{ .harborversion }}
+                      {{ printf "%s.%s" $majorVersion $minorVersion }}
                     </span>
                     &nbsp;&nbsp;
                     {{ if $isLatest }}
