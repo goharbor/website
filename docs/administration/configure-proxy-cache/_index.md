@@ -14,6 +14,7 @@ Harbor supports proxy caching for the following registries:
    - Docker registry
    - AWS Elastic Container Registry
    - Azure Container Registry
+   - Alibaba Container Registry
    - Google Container Registry
    - Quay
    - Github Container Registry
