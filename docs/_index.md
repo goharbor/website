@@ -20,6 +20,10 @@ This section describes how users with the developer, maintainer, and project adm
 
 This section describes how developers can build from Harbor source code, customize their deployments, and contribute to the open-source Harbor project. [Read more](build-customize-contribute/_index.md)
 
+## Harbor CLI Documentation
+
+This section describes the functions and examples of each commands in the Harbor CLI.
+
 ## Access the Documentation Source Files
 
 The source files for this documentation set are located in the [Harbor repository on Github](https://github.com/goharbor/harbor/tree/release-2.8.0/docs).

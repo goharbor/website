@@ -89,4 +89,14 @@ This section describes how developers can build from Harbor source code, customi
 - [Registry Landscape](build-customize-contribute/registry-landscape.md)
 - [E2E Test Scripting Guide](build-customize-contribute/e2e_api_python_based_scripting_guide.md)
 
+## Harbor CLI Documentation
+
+This section describes the functions and examples of each commands in the Harbor CLI.
+
+- [harbor artifact](cli-docs/harbor-artifact.md)
+- [harbor project](cli-docs/harbor-project.md)
+- [harbor registry](cli-docs/harbor-registry.md)
+- [harbor repo](cli-docs/harbor-repo.md)
+- [harbor user](cli-docs/harbor-user.md)
+
 See also the list of [Articles from the Harbor Community](https://github.com/goharbor/harbor/blob/master/docs/README.md#articles-from-the-community).
