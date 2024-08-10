@@ -1,7 +1,14 @@
 {
+  "name": "website",
+  "type": "module",
+  "scripts": {
+    "generate-docs": "node ./scripts/generate-docs.js"
+  },
   "dependencies": {
     "autoprefixer": "^9.7.4",
     "bulma": "^0.8.0",
-    "postcss-cli": "^7.1.2"
+    "fs": "^0.0.1-security",
+    "postcss-cli": "^7.1.2",
+    "yaml": "^2.5.0"
   }
 }
