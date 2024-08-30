@@ -11,7 +11,7 @@ Harbor metrics show data related to
 * Runtime information from the [GO library](https://github.com/prometheus/client_golang)
 * Performance metrics about all API requests in core
 * Number of requests in flight in core
-* Metrics provided by the [docker distribution](https://github.com/distribution/distribution/blob/main/notifications/metrics.go) itself
+* Metrics provided by the [Distribution/Distribution](https://github.com/distribution/distribution/blob/main/notifications/metrics.go) itself
 * Some data related to business logic which already exist in the Harbor database
 
 Metrics are exposed by several Harbor components: `exporter`, `core`, `jobservice`, and `registry`. In addition to runtime and performance data, these components also expose Harbor specific metrics. The following sections list the available Harbor metrics.
@@ -53,7 +53,7 @@ Name | Description | Labels (Values) | Metric type
 
 ## Registry Metrics
 
-The following are metrics pulled from the Docker distribution and are available at `<harbor_instance>:<metrics_port>/<metrics_path>?comp=registry`.
+The following are metrics pulled from the Distribution/Distribution and are available at `<harbor_instance>:<metrics_port>/<metrics_path>?comp=registry`.
 
 {{< table caption="Metrics exposed by Harbor Core" >}}
 Name | Description | Labels (Values) |Metric type
@@ -86,7 +86,7 @@ Name | Description | Labels (Values) |Metric type
 
 To begin accessing your Harbor instance's metrics with Prometheus,
 1. Enable exposing metrics in your `harbor.yml` [configuration file](../../install-config/configure-yml-file.md) and set the port and path for metrics to be exposed on. Also see more about [reconfiguring your Harbor instance](../../install-config/reconfigure-manage-lifecycle/).
-1. Set up a Prometheus server, see the [Prometheus documentation](https://prometheus.io/docs/prometheus/latest/installation/) for more information on installing.  
+1. Set up a Prometheus server, see the [Prometheus documentation](https://prometheus.io/docs/prometheus/latest/installation/) for more information on installing.
 1. Configure your Prometheus config file to scrape Harbor metrics exposed at your configured port and path. Below is an example scrape config, see the Prometheus documentation for all available [scrape configuration options](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config).
 
     ```
@@ -122,7 +122,7 @@ To begin accessing your Harbor instance's metrics with Prometheus,
           static_configs:
             - targets: ['<harbor_instance>:<metrics_port>']
       ```
-1. Once you have configured your Prometheus server to collect your Harbor metrics, you can use [Grafana](https://grafana.com/docs/) to visualize your data. An [example Grafana dashboard](https://github.com/goharbor/harbor/blob/main/contrib/grafana-dashborad/metrics-example.json) is available in the Harbor repo to help you get started visualizing Harbor metrics.  
+1. Once you have configured your Prometheus server to collect your Harbor metrics, you can use [Grafana](https://grafana.com/docs/) to visualize your data. An [example Grafana dashboard](https://github.com/goharbor/harbor/blob/main/contrib/grafana-dashboard/metrics-example.json) is available in the Harbor repo to help you get started visualizing Harbor metrics.
 
 ### From a Kubernetes cluster
 
@@ -147,4 +147,4 @@ You can also use Prometheus to collect metrics from a Harbor instance deployed i
 
 2. Enable Harbor to expose metrics by updating your harbor-helm `values.yaml` file and set `metrics.enabled` to `true`. You can also edit the port and path the metrics are exposed on by updating the available harbor-helm chart [configuration options for metrics](https://github.com/goharbor/harbor-helm#configuration).
 
-Prometheus should now show your Harbor instance's metrics.  
+Prometheus should now show your Harbor instance's metrics.

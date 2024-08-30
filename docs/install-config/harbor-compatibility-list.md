@@ -10,7 +10,7 @@ This document provides compatibility information for all Harbor components.
 |     | Registries       | Pull Mode | Push Mode | Proxy Cache | Introduced in Release | Automated Pipeline Covered |
 |-----|------------------|-----------|-----------|-----------------------|-----------------------|---------------------------|
 | [Harbor](https://goharbor.io/)|  ![Harbor](../../img/replication-adapters/harbor-logo.png)|![Y](../../img/replication-adapters/right.png)|![Y](../../img/replication-adapters/right.png)|![Y](../../img/replication-adapters/right.png)| V1.8 | ![Y](../../img/replication-adapters/right.png) |
-| [distribution](https://github.com/docker/distribution) | ![distribution](../../img/replication-adapters/distribution.png)|![Y](../../img/replication-adapters/right.png)|![Y](../../img/replication-adapters/right.png)|![Y](../../img/replication-adapters/right.png)| V1.8 | ![Y](../../img/replication-adapters/right.png) |
+| [distribution](https://github.com/distribution/distribution) | ![distribution](../../img/replication-adapters/distribution.png)|![Y](../../img/replication-adapters/right.png)|![Y](../../img/replication-adapters/right.png)|![Y](../../img/replication-adapters/right.png)| V1.8 | ![Y](../../img/replication-adapters/right.png) |
 | [docker hub](https://hub.docker.com/) | ![docker hub](../../img/replication-adapters/docker-hub.png)|![Y](../../img/replication-adapters/right.png)|![Y](../../img/replication-adapters/right.png)|![Y](../../img/replication-adapters/right.png)| V1.8 | ![Y](../../img/replication-adapters/right.png) |
 | [Huawei SWR](https://www.huaweicloud.com/en-us/product/swr.html) | ![Huawei SWR](../../img/replication-adapters/hw.png)|![Y](../../img/replication-adapters/right.png)|![Y](../../img/replication-adapters/right.png)| ![N](../../img/replication-adapters/no.png) |V1.8 | ![N](../../img/replication-adapters/no.png) |
 | [GCR](https://cloud.google.com/container-registry/) | ![GCR](../../img/replication-adapters/gcr.png)|![Y](../../img/replication-adapters/right.png)|![Y](../../img/replication-adapters/right.png)| ![Y](../../img/replication-adapters/right.png)|V1.9 | ![Y](../../img/replication-adapters/right.png) |
@@ -50,7 +50,7 @@ This document provides compatibility information for all Harbor components.
 | [Sysdig Secure](https://github.com/sysdiglabs/harbor-scanner-sysdig-secure) |![Sysdig](../../img/scanners/sysdig.png) | Sysdig  | ![Y](../../img/replication-adapters/right.png) |  | v2.1.0 |
 | [TensorSecurity](https://github.com/tensorsecurity/harbor-scanner) |![TensorSecurity](../../img/scanners/tensorsecurity.png) | TensorSecurity | ![Y](../../img/replication-adapters/right.png) |  | v2.2.0 |
 | [ArksecScanner](https://github.com/arksec-cn)    |![Arksec](../../img/scanners/arksec.png)| Arksec    |![Y](../../img/replication-adapters/right.png)| | v2.4.0 |
-| [Cyberwatch](https://github.com/Cyberwatch)    |![Cyberwatch](../../img/scanners/cyberwatch.png)| [Cyberwatch](https://cyberwatch.fr/integrate-with-harbor-scans)    |![N](../../img/replication-adapters/no.png)|  | v2.8.0 |
+| [Cyberwatch](https://github.com/Cyberwatch)    |![Cyberwatch](../../img/scanners/cyberwatch.png)| [Cyberwatch](https://cyberwatch.fr/integrate-with-harbor-scans)    |![Y](../../img/replication-adapters/right.png)|  | v2.8.0 |
 
 
 {{< note >}}

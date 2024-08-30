@@ -13,6 +13,9 @@
 - title: bocoit
   logo: boco-logo.png
   link: http://www.boco.com.cn:8080/bocoit/
+- title: CERN
+  logo: cern-logo.png
+  link: https://www.home.cern/
 - title: china-mobile
   logo: china-mobile-logo.png
   link: http://www.chinamobileltd.com/
@@ -22,6 +25,9 @@
 - title: datayes
   logo: datayes-logo.png
   link: https://www.datayes.com/en/?lang=en-US
+- title: de-cix
+  logo: de-cix.png
+  link: https://www.de-cix.net
 - title: dynatrace
   logo: dynatrace-logo.png
   link: https://www.dynatrace.com/

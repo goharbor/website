@@ -3,8 +3,10 @@ title: Upgrade Harbor and Migrate Data
 weight: 45
 ---
 
-This guide covers upgrade and migration to v2.9.0. This guide only covers migration from v2.7.0 and later to the current version. If you are upgrading from an earlier version, refer to the migration guide for an earlier Harbor version.
+This guide covers upgrade and migration to v2.11.0. This guide only covers migration from v2.9.0 and later to the current version. If you are upgrading from an earlier version, refer to the migration guide for an earlier Harbor version.
 
+* [Upgrade to Harbor v2.9.0](/docs/2.9.0/administration/upgrade/)
+* [Upgrade to Harbor v2.8.0](/docs/2.8.0/administration/upgrade/)
 * [Upgrade to Harbor v2.7.0](/docs/2.7.0/administration/upgrade/)
 * [Upgrade to Harbor v2.6.0](/docs/2.6.0/administration/upgrade/)
 * [Upgrade to Harbor v2.5.0](/docs/2.5.0/administration/upgrade/)
@@ -21,7 +23,7 @@ Since the migration might alter the database schema and the settings of `harbor.
 ## Important Upgrade Notes
 
 - Again, you MUST backup your data before any data migration.
-- In Harbor v2.5, if you are using an external database, make sure the version of PostgreSQL >= 10.
+- In Harbor v2.9, if you are using an external database, make sure the version of PostgreSQL >= 12.
 
 ## Upgrading Harbor and Migrating Data
 

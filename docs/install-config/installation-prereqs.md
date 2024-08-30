@@ -21,7 +21,7 @@ The following table lists the software versions that must be installed on the ta
 
 |Software|Version|Description|
 |---|---|---|
-|Docker Engine|Version 17.06.0-ce+ or higher|For installation instructions, see [Docker Engine documentation](https://docs.docker.com/engine/installation/)|
+|Docker Engine|Version 20.10.10-ce+ or higher|For installation instructions, see [Docker Engine documentation](https://docs.docker.com/engine/installation/)|
 |Docker Compose|docker-compose (v1.18.0+) or docker compose v2 (docker-compose-plugin)|For installation instructions, see [Docker Compose documentation](https://docs.docker.com/compose/install/)|
 |OpenSSL|Latest is preferred|Used to generate certificate and keys for Harbor|
 

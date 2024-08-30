@@ -30,15 +30,15 @@ Before configuring an OIDC provider in Harbor, make sure that your provider is c
 
    ![LDAP authentication](../../../img/select-oidc-auth.png)
 1. Enter information about your OIDC provider.   
-   - **Primary Auth Mode**: Whether to use the OIDC mode as the primary auth mode. 
-     {{< note >}}
-     To override and login via DB is possible when visiting the URL '/account/sign-in' explicitly
-     {{< /note >}}
+   - **Primary Auth Mode**: Whether to use the OIDC mode as the primary auth mode.
+{{< note >}}
+To override and login via DB is possible when visiting the URL '/account/sign-in' explicitly
+{{< /note >}}   
    - **OIDC Provider Name**: The name of the OIDC provider.
    - **OIDC Provider Endpoint**: The URL of the endpoint of the OIDC provider.
    - **OIDC Client ID**: The client ID with which Harbor is registered as  client application with the OIDC provider.
    - **OIDC Client Secret**: The secret for the Harbor client application.
-   - **OIDC Group Filter**: The [regular expression](https://pkg.go.dev/regexp/syntax) to filter OIDC groups.Only the groups that match the provided regular express will be added to Harbor.
+   - **OIDC Group Filter**: The [regular expression](https://pkg.go.dev/regexp/syntax) to select matching groups from the `Group Claim Name` list . Matching groups are added to Harbor. This filter does not limit the users' capability to log in into Harbor.
    - **Group Claim Name**: The name of a custom group claim that you have configured in your OIDC provider, that includes the groups to add to Harbor.
    - **OIDC Admin Group**: The name of the admin group, if the ID token of the user shows that he is a member of this group, the user will have admin
      privilege in Harbor. **Note**: You can only set one Admin Group.  Please also make sure the value in this field matches the value of group item in ID token.  
@@ -56,13 +56,13 @@ Before configuring an OIDC provider in Harbor, make sure that your provider is c
 
 ### Log In to Harbor via an OIDC Provider
 
-When the Harbor system administrator has configured Harbor to authenticate via OIDC a **Login via OIDC Provider** button appears on the Harbor login page.  
+When the Harbor system administrator has configured Harbor to authenticate via OIDC a **LOGIN WITH ${your_oidc_provider_name}** button appears on the Harbor login page.  
 
 ![oidc_login](../../../img/oidc-login.png)
 
 **NOTE:** When Harbor is configured authentication via OIDC, the **LOGIN VIA LOCAL DB** button is for the local Harbor system administrator to log in.
     
-1. As a Harbor user, click the **Login via OIDC Provider** button.
+1. As a Harbor user, click the **LOGIN WITH ${your_oidc_provider_name}** button.
  
    This redirects you to the OIDC Provider for authentication, after the OIDC provider has authenticated you, you are redirected back to Harbor. 
 1. If this is the first time you are logging in to Harbor with OIDC, you will be onboarded to Harbor so that you have a user record in Harbor's database, which is used when adding you to projects, assigning roles, and so on.  The flow of this process depends on the configuration:

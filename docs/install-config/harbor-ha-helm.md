@@ -65,7 +65,7 @@ Configure the followings items in `values.yaml`, you can also set them as parame
 
 ## Installation
 
-Install the Harbor helm chart with a release name `my-release`:  
+Install the Harbor helm chart with a release name `my-release`:
 
 Helm 2:
 
