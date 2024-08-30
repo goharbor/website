@@ -16,7 +16,7 @@ In addition, Harbor uses `rsyslog` to collect the logs of each container. By def
 If Harbor does not start or functions incorrectly, run the following command to check whether all of Harbor's containers are in the `Up` state.
 
 ```
-sudo docker-compose ps
+sudo docker compose ps
         Name                     Command               State                    Ports
   -----------------------------------------------------------------------------------------------------------------------------
   harbor-core         /harbor/start.sh                 Up
