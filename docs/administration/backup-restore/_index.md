@@ -3,9 +3,9 @@ title: Backup And Restore Harbor With Velero
 weight: 50
 ---
 
-Backup and restore is important for disaster recovery and data migration scenarios. With a tool like [Velero](https://velero.io/), you can backup and restore your Harbor instances and avoid disruptions in service in the event of a disaster. Velero is is an open source tool you can use to safely backup and restore, perform disaster recovery, and migrate Kubernetes cluster resources and persistent volumes.
+Backup and restore is important for disaster recovery and data migration scenarios. With a tool like [Velero](https://velero.io/), you can backup and restore your Harbor instances and avoid disruptions in service in the event of a disaster. Velero is an open source tool you can use to safely backup and restore, perform disaster recovery, and migrate Kubernetes cluster resources and persistent volumes.
 
-The following tutorial shows how to use Velero to backup and restore a Harbor instance that has been deployed in a Kubernetes cluster using the Harbor helm chart. See more details about [How Velero Works](https://velero.io/docs/v1.9/how-velero-works/).
+The following tutorial shows how to use Velero to backup and restore a Harbor instance that has been deployed in a Kubernetes cluster using the Harbor helm chart. See more details about [How Velero Works](https://velero.io/docs/latest/how-velero-works/).
 
 {{< important >}}
 
@@ -20,7 +20,7 @@ The backup taken in this tutorial is crash consistent, not application consisten
 Install the Velero CLI and server according to the [official Velero documentation](https://velero.io/docs/latest/basic-install/).
 
 {{< note >}}
-Depending on the size of your data, you may need to increase the CPU or memory resources available to Velero, especially if you are using Restic. Refer to the [doc](https://velero.io/docs/latest/customize-installation/#customize-resource-requests-and-limits) for more information.
+Depending on the size of your data, you may need to increase the CPU or memory resources available to Velero. Refer to the [doc](https://velero.io/docs/latest/customize-installation/#customize-resource-requests-and-limits) for more information.
 {{< /note >}}
 
 ## Backup Harbor Instance
@@ -33,38 +33,38 @@ Depending on the size of your data, you may need to increase the CPU or memory r
 
 1. Select the check box **Repository Read Only** and click the **Save** button to save the configurations.
 
+### Label Resources to Exclude Redis Data from Backup
+In order to exclude the volume of Redis in backup, we need to label the Redis pod, PVC and PV with specific label:
+```shell
+# label the Pod of Redis, replace the namespace and Pod name with yours
+kubectl -n harbor label pod/harbor-redis-0 velero.io/exclude-from-backup=true
+# label the PVC of Redis, replace the namespace and PVC name with yours
+kubectl -n harbor label pvc/data-harbor-redis-0 velero.io/exclude-from-backup=true
+# label the PV of Redis, replace the namespace and PVC name with yours
+kubectl label pv/$(kubectl -n harbor get pvc data-harbor-redis-0 --template={{.spec.volumeName}}) velero.io/exclude-from-backup=true
+```
+
 ### Backup Harbor Instance
-According to the capability of the platform where Harbor is deployed, you can choose back up the PersistentVolumes with Snapshot or Restic:
+According to the capability of the platform where Harbor is deployed, you can choose back up the PersistentVolumes with Snapshot or File System Backup:
 * Snapshot  
-  If you want to use snapshots to backup the PersistentVolumes, make sure there is a [corresponding Velero plugin](https://velero.io/docs/v1.9/supported-providers/) for your Kubernetes provider.
-  1. In order to exclude the volume of Redis in backup, we need to label the Redis pod, PVC and PV with specific label:
-     ```shell
-      # label the Pod of Redis, replace the namespace and Pod name with yours
-      kubectl -n harbor label pod/harbor-redis-0 velero.io/exclude-from-backup=true
-      # label the PVC of Redis, replace the namespace and PVC name with yours
-      kubectl -n harbor label pvc/data-harbor-redis-0 velero.io/exclude-from-backup=true
-      # get the name of Redis PV, replace the namespace and PVC name with yours
-      kubectl -n harbor get pvc data-harbor-redis-0 --template={{.spec.volumeName}}
-      # label the PV of Redis, replace the pv-name with the one get from last command
-      kubectl label pv/pv-name velero.io/exclude-from-backup=true
-     ```
-  1. Back up Harbor
+  Depends on how Velero is installed, you can use the [CSI Snapshot](https://velero.io/docs/latest/csi/), [CSI Snapshot with Data Move](https://velero.io/docs/latest/csi-snapshot-data-movement/) or [Native Snapshot](https://velero.io/docs/latest/supported-providers/) to backup the PersistentVolumes:
+  1. Back up Harbor with CSI Snapshot or Native Snapshot
       ```shell
       # replace the namespace and backup name with yours
       velero backup create harbor-backup --include-namespaces harbor --snapshot-volumes --wait
       ```
-
-* Restic  
-  If you want to take volume snapshots but didn’t find a plugin for your provider, Velero has support for snapshotting using restic. Before using restic, you should review the Velero [restic integration](https://velero.io/docs/latest/restic/) page, and especially understand [restic limitations](https://velero.io/docs/latest/restic/#limitations).
-  1. Exclude the volume of Redis in backup
+  1. Back up Harbor with CSI Snapshot with Data Move
       ```shell
-      # replace the namespace and pod name with yours
-      kubectl -n harbor annotate pod/harbor-redis-0 backup.velero.io/backup-volumes-excludes=data
+      # replace the namespace and backup name with yours
+      velero backup create harbor-backup --include-namespaces harbor --snapshot-volumes --snapshot-move-data --wait
       ```
+
+* File System Backup  
+  Before using File System Backup, you should review the Velero [File System Backup](https://velero.io/docs/latest/file-system-backup/) page, and especially understand the [limitations](https://velero.io/docs/latest/file-system-backup/#limitations).
   1. Back up Harbor
       ```shell
       # replace the namespace and backup name with yours
-      velero backup create harbor-backup --include-namespaces harbor --default-volumes-to-restic --wait
+      velero backup create harbor-backup --include-namespaces harbor --default-volumes-to-fs-backup --wait
       ```
 
 ### Unset ReadOnly
