@@ -61,7 +61,7 @@ All the signatures associated with a signed artifact and will be deleted if the 
 
 Note that Harbor's [garbage collection](../../administration/garbage-collection/) will not remove any signature individually. In Harbor, Cosign signatures are treated like any other OCI artifact, except from the perspective of the garbage collector which can't see accessory artifacts, like Cosign signatures. For example, if you configure garbage collection for untagged artifacts, Harbor's garbage collector will not remove any signatures without a tag. If the signed artifact is untagged, and matches the configured garbage collect rule, it and any associated signatures will be deleted.
 
-Harbor doesn't support `cosign clean` to remove signatures as Harbor has chosen not to implement tag deletion which is used by `cosign clean`. See the [OCI distribution specification](https://github.com/opencontainers/distribution-spec/blob/main/spec.md#content-management) for more for more information on implantation requirements.
+Harbor doesn't support `cosign clean` to remove signatures as Harbor has chosen not to implement tag deletion which is used by `cosign clean`. See the [OCI distribution specification](https://github.com/opencontainers/distribution-spec/blob/main/spec.md#content-management) for more information on implantation requirements.
 
 ## Use Notation to sign and verify artifacts with distribution spec v1.1 mode
 [Notation](https://notaryproject.dev/) is a standard-based tool and library for signing and verifying OCI artifacts. It generates signatures and associates them with OCI artifacts to ensure integrity for the supply chain.
