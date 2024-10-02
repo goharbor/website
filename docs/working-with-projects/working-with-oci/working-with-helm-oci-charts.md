@@ -73,7 +73,7 @@ For full reference please check official [Helm documentation]()
 
 ### Create the chart
 ```sh
-helm create oci-chat-example
+helm create oci-chart-example
 ```
 
 ### Edit and make it usable
@@ -81,12 +81,12 @@ Use your preferred method to edit the newly created chart.
 
 ### Package
 ```sh
-helm package oci-chat-example
+helm package oci-chart-example
 ```
 
 ### Push OCI Chart to Harbor Registry
 ```sh
-helm push oci-chat-example-0.1.0.tgz oci://demo.goharbor.io/oci-charts
+helm push oci-chart-example-0.1.0.tgz oci://demo.goharbor.io/oci-charts
 ```
 
 ## See you images in the Harbor Interface
