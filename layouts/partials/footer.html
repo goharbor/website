@@ -8,57 +8,79 @@
       </div>
 
       <div class="column">
-        <a class="has-text-black is-small" target="_blank" href="{{ site.Params.github }}">
+        <div>
+          <a class="has-text-black is-small" target="_blank" href="{{ site.Params.github }}">
           <span class="icon">
             <i class="fab fa-github"></i>
           </span>
-          <span>
+            <span>
             GitHub
           </span>
-        </a>
-        <br/>
-        <a class="has-text-black is-small" target="_blank" href="{{ site.Params.logo_repo }}">
+          </a>
+        </div>
+        <div>
+          <a class="has-text-black is-small" target="_blank" href="{{ site.Params.status_page }}">
+            <span class="icon">
+              <i class="fa-solid fa-gauge"></i>
+            </span>
+            <span>
+              Community Registry Status
+            </span>
+          </a>
+        </div>
+        <div>
+          <a class="has-text-black is-small" target="_blank" href="{{ site.Params.logo_repo }}">
           <span class="icon">
             <i class="fa fa-palette"></i>
           </span>
-          <span>
+            <span>
             Logos
           </span>
-        </a>
+          </a>
+        </div>
       </div>
 
+
       <div class="column">
-        <a class="has-text-black is-small" target="_blank" href="{{ site.Params.slack }}">
+        <div>
+          <a class="has-text-black is-small" target="_blank" href="{{ site.Params.slack }}">
           <span class="icon">
             <i class="fab fa-slack"></i>
           </span>
-          <span>
+            <span>
             Slack
           </span>
-        </a>
-        <br/>
-        <a class="has-text-black is-small" target="_blank" href="https://twitter.com/{{ site.Params.twitter }}">
+          </a>
+        </div>
+        <div>
+          <a class="has-text-black is-small" target="_blank"
+             href="https://twitter.com/{{ site.Params.twitter }}">
           <span class="icon">
             <i class="fab fa-twitter"></i>
           </span>
-          <span>
+            <span>
             Twitter
           </span>
-        </a>
+          </a>
+        </div>
       </div>
     </div>
 
-    <hr class="thick" />
+    <hr class="thick"/>
 
     <div class="is-size-6 has-text-black has-text-weight-light">
       <p>
-        &copy; Harbor Authors {{ $year}} | Documentation Distributed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY-4.0</a>
+        &copy; Harbor Authors {{ $year}} | Documentation Distributed under <a
+        href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY-4.0</a>
       </p>
 
-      <br />
+      <br/>
 
       <p>
-        &copy; {{ $year }} <a href="https://linuxfoundation.org" target="_blank">The Linux Foundation</a>. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://linuxfoundation.org/trademark-usage" target="_blank">Trademark Usage</a> page.
+        &copy; {{ $year }} <a href="https://linuxfoundation.org" target="_blank">The Linux Foundation</a>. All
+        rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of
+        trademarks of The Linux Foundation, please see our <a
+        href="https://linuxfoundation.org/trademark-usage" target="_blank">Trademark Usage</a> page.
       </p>
     </div>
   </div>
