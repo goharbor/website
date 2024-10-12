@@ -61,7 +61,7 @@ for release in ${ALL_RELEASES}; do
     PREV_MINOR_VER=${CUR_MINOR_VER}
 done
 
-echo "Generating docs"
+echo "Generating Harbor CLI Docs"
 ./cli-docs.sh
 
 echo "Git version: ${GIT_VERSION}"
