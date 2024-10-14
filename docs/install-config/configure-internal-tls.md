@@ -16,7 +16,7 @@ User also can provide their own CA to generate the other certs. Just put certifi
 Besides, a user can also provide the certs for all components. However, there are some constraints for the certs:
 
 * First, all certs must be signed by a single unique CA
-* Second, the filename of the internal cert and `CN` field on cert file must follow the convention listed below'
+* Second, the filename of the internal cert and `CN` field on cert file must follow the convention listed below.
 * Third, because the self signed certificate without SAN was deprecated in Golang 1.5, you must add the SAN extension to your cert files when generating certs by yourself or the Harbor instance will not start up normally. The DNS name in SAN extension should the same as CN field in the table below. For more information please refer to [golang 1.5 release notes](https://golang.org/doc/go1.15#commonname) and [this issue](https://github.com/golang/go/issues/24151).
 
     |name|usage|CN|
