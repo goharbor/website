@@ -3,6 +3,7 @@ clean:
 
 prepare:
 	$(CURDIR)/load-docs.sh
+	$(CURDIR)/cli-docs.sh
 
 serve:
 	hugo server \
