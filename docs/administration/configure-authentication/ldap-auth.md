@@ -37,6 +37,8 @@ If you want to manage user authentication by using LDAP groups, you must enable 
    - **LDAP Scope**: The scope to search for LDAP/AD groups. Select from **Subtree**, **Base**, and **OneLevel**.
 
      ![LDAP group configuration](../../../img/ldap-groups.png)
+   - **LDAP Group Attached in Parallel**: Enable this option to attach group in parallel to avoid timeout in user login when there are too many groups assiciate with the LDAP user.
+     ![LDAP group attached in Parallel](../../../img/ldap-group-parallel.png) 
 1. Uncheck **LDAP Verify Cert** if the LDAP/AD server uses a self-signed or untrusted certificate.
 
    ![LDAP certificate verification](../../../img/ldap-cert-test.png)
