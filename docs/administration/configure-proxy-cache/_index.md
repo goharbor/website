@@ -52,7 +52,7 @@ A proxy cache project is able to use the same features available to a normal Har
 
 1. On the Projects page, click **New Project** and configure the new project information. See the [Create Projects](../../working-with-projects/create-projects/) documentation for more details.
 
-1. Click the **Proxy Cache** slider and then select your registry endpoint from the drop-down that appears.
+1. Click the **Proxy Cache** slider and then select your registry endpoint from the drop-down that appears. The Bandwidth is the pull image speed limit to the upstream registry, -1 means no limit.
 
     ![add proxy cache project](../../img/add-proxy-cache-project.png)
 
