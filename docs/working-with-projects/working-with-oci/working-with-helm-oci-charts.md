@@ -32,7 +32,7 @@ Harbor supports content trust through Cosign and Notation. If you have enforced 
 
 ## Pushing OCI Helm charts
 
-Before you can push an OCI Helm chart  to Harbor, you must create a project in the Harbor interface or use already existing one. For information about how to create a project, see [Create Projects](../create-projects/_index.md).
+Before you can push an OCI Helm chart to Harbor, you must create a project in the Harbor interface or use already existing one. For information about how to create a project, see [Create Projects](../create-projects/_index.md).
 
 {{< note >}}
 You cannot push charts and images to a proxy cache project. See more about [proxy cache projects](../../../administration/configure-proxy-cache/).
@@ -57,7 +57,7 @@ helm push example-0.1.0.tgz oci://demo.goharbor.io/oci
 
 ## Installing OCI Helm Chart
 
-If project is private you need to login first as shown above
+If the project is private, you need to login first as shown above.
 
 ```sh
 helm install <release_name> oci://<harbor_address>/<project>/<chart_name> --version <version>
@@ -69,7 +69,7 @@ helm install MyRelease oci://demo.goharbor.io/oci/demo --version 0.1.0
 ```
 
 ## Creating and packaging the OCI Chart
-For full reference please check official [Helm documentation]()
+For full reference please check official [Helm documentation](https://helm.sh/docs/topics/registries/).
 
 ### Create the chart
 ```sh
@@ -89,12 +89,12 @@ helm package oci-chart-example
 helm push oci-chart-example-0.1.0.tgz oci://demo.goharbor.io/oci-charts
 ```
 
-## See you images in the Harbor Interface
+## See your Helm charts in the Harbor Interface
 
 You can see your OCI Helm Charts in your Harbor Project as any other artifact
 ![Project View](../../../img/oci/oci-chart-main-view.png)
 
-You can see all tags(versions)
+You can see all tags (versions)
 ![Tags](../../../img/oci/oci-chart-tags.png)
 
 Work with OCI Helm Charts from the UI
