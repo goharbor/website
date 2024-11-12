@@ -22,6 +22,11 @@ youtube_video_id = "4zZiBcvZmgQ"
 alpine_js_version = "2.1.2"
 
 [[params.versions]]
+harborversion = "2.12.0"
+helmversion = "1.16"
+branchname = "release-2.12.0"
+
+[[params.versions]]
 harborversion = "2.11.0"
 helmversion = "1.15"
 branchname = "release-2.11.0"
