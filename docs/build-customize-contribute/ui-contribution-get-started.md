@@ -29,7 +29,7 @@ const HarborProxyConfig = [
       "/devcenter-api-2.0",
       "/swagger-ui.bundle.js"
     ],
-    "target": "${A Harbor server}",
+    "target": "${A Harbor server}",  // <-- This is where you need to specify your Harbor server
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"
