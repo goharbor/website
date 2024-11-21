@@ -19,7 +19,7 @@ You **can not** replicate from Harbor v1.x to v2.0 and later, and you **can not*
 1. Select **Push-based** or **Pull-based** replication, depending on whether you want to replicate artifacts to or from the remote registry.
 
    ![Replication mode](../../../img/replication-rule2.png)
-1. If you are creating a Pull-based rule, use the **Soure Registry** drop-down menu to select from the configured replication endpoints.
+1. If you are creating a Pull-based rule, use the **Source Registry** drop-down menu to select from the configured replication endpoints.
 1. For **Source resource filter**, identify the artifacts to replicate.  
 
    ![Replication filters](../../../img/replication-rule3.png)
