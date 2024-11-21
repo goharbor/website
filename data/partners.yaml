@@ -1,6 +1,9 @@
 - title: 8gears Container Registry
   logo: 8gears-container-registry.png
   link: https://container-registry.com/
+- title: alauda
+  logo: alauda-logo.png
+  link: https://www.alauda.io/
 - title: anchore
   logo: anchore-logo.png
   link: https://anchore.com/
