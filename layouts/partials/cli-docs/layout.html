@@ -1,0 +1,60 @@
+<section class="section">
+  <div class="container">
+    <div class="columns is-variable is-8">
+      <div class="column is-one-quarter">
+        <aside class="docs-menu is-sticky is-scrollable">
+          {{ partial "cli-docs/menu.html" . }}
+        </aside>
+      </div>
+
+      <div class="column is-half">
+        <div class="content is-constrained has-extra-bottom-padding is-medium">
+          {{ with .Content }}
+          {{ . }}
+          {{ end }}
+
+
+          {{ if (or .RegularPages .Sections) }}
+          {{ if .Content }}
+          <hr class="thick" />
+          {{ end }}
+
+          {{ with .Sections }}
+          <h2 id="subsections">
+            Subsections
+          </h2>
+
+          <ul>
+            {{ range . }}
+            <li>
+              <a href="{{ .RelPermalink }}">
+                {{ .Title }}
+              </a>
+            </li>
+            {{ end }}
+          </ul>
+          {{ end }}
+
+          {{ with .RegularPages }}
+          <h2 id="pages">
+            Pages in this section
+          </h2>
+
+          <ul>
+            {{ range . }}
+            <li>
+              <a href="{{ .RelPermalink }}">
+                {{ .Title }}
+              </a>
+            </li>
+            {{ end }}
+          </ul>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+
+      {{ partial "cli-docs/sidebar.html" . }}
+    </div>
+  </div>
+</section>
