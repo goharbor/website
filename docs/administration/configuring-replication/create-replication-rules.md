@@ -66,7 +66,7 @@ You **can not** replicate from Harbor v1.x to v2.0 and later, and you **can not*
    {{< /note >}}
 
    ![Trigger mode](../../../img/replication-rule5.png)
-1. Optionally set the maximum network bandwidth for each replication task, please pay attention to the number of concurrent executions, the default value is 10 for each job-service pod. The unit is kilo bytes per second, and -1 stands for unlimited bandwith. 
+1. Optionally set the maximum network bandwidth for each replication task, please pay attention to the number of concurrent executions, the default value is 10 for each job-service pod. The unit is kilo bytes per second, and -1 stands for unlimited bandwidth. 
 
    ![Bandwidth](../../../img/replication-rule7.png)
 
