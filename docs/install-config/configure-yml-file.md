@@ -360,12 +360,12 @@ The following table lists the additional, optional parameters that you can set t
   <tr>
     <td valign="top">&nbsp;</td>
     <td valign="top"><code>namespace</code></td>
-    <td valign="top">Namespace used to differenciate different harbor services, which will set to attribute with key <code>service.namespace</code></td>
+    <td valign="top">Namespace used to differentiate different harbor services, which will set to attribute with key <code>service.namespace</code></td>
   </tr>
     <tr>
     <td valign="top">&nbsp;</td>
     <td valign="top"><code>attributes</code></td>
-    <td valign="top">The attributes is a key value dict contains user defined customized attributes used to initialize trace provider, and all of these atributes will added to trace data</td>
+    <td valign="top">The attributes is a key value dict contains user defined customized attributes used to initialize trace provider, and all of these attributes will added to trace data</td>
   </tr>
   <tr>
     <td valign="top">&nbsp;</td>
@@ -382,7 +382,7 @@ The following table lists the additional, optional parameters that you can set t
     <td valign="top">&nbsp;</td>
     <td valign="top"><code>otel</code></td>
     <td valign="top"><ul>
-      <li><code>endpoint</code>: The hostname and port for otel compitable backend(for example <code>127.0.0.1:4318</code>).</li>
+      <li><code>endpoint</code>: The hostname and port for otel compatible backend(for example <code>127.0.0.1:4318</code>).</li>
       <li><code>url_path:</code>: The url path of endpoint(for example <code>127.0.0.1:4318</code>) </li>
       <li><code>compression:</code>: If enabling data compression</li>
       <li><code>insecure</code>: Ignore cert verification for otel backend </li>
