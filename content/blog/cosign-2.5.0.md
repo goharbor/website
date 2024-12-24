@@ -26,7 +26,9 @@ Full Documentation you will be able to find [here](https://goharbor.io/docs/2.5.
 We will have two instances harbor1 and harbor2, project "cosign" and replication rule(push based) between harbor1-to-harbor2, using robo-account.  
 
 Check out a video of this demo:
-<iframe width="560" height="315" src="https://www.youtube.com/embed/u8nxky-6Q9c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
+<div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+    <iframe src="https://www.youtube.com/embed/4zZiBcvZmgQ" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 #### 1. Install two instances with cosig(and notary) enabled
    In our setup we use [offline installer](https://goharbor.io/docs/2.5.0/install-config/download-installer/).
