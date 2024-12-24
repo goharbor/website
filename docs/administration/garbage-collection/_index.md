@@ -26,7 +26,7 @@ To avoid triggering the garbage collection process too frequently, the availabil
 
 ## Schedule Garbage Collection
 
-You are able to schedule garbage colleciton on your Harbor interface from the **'Garbage Collection'** tab on the **Administration** > **Clean Up** page of the Harbor interface.
+You are able to schedule garbage collection on your Harbor interface from the **'Garbage Collection'** tab on the **Administration** > **Clean Up** page of the Harbor interface.
 
 1. Use the drop down-menu to select how often to run garbage collection.
 
