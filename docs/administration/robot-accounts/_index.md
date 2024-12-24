@@ -134,7 +134,7 @@ The same prefix is used for all robot accounts, including both system and projec
 To use a robot account in an automated process, for example a script, use `docker login` and provide the credentials of the robot account.
 
 ```
-docker login <harbor_address<>
+docker login <harbor_address>
 Username: <prefix><account_name>
 Password: <secret>
 ```
