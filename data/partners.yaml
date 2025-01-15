@@ -7,21 +7,12 @@
 - title: anchore
   logo: anchore-logo.png
   link: https://anchore.com/
-- title: arksec
-  logo: arksec-logo.png
-  link: https://arksec.cn/
 - title: aquasecurity
   logo: aquasec-logo.png
   link: https://www.aquasec.com
-- title: bingocloud
-  logo: bingo-logo.png
-  link: http://www.bingocloud.cn/
 - title: dosec
   logo: dosec-logo.png
   link: https://www.dosec.cn/
-- title: caicloud
-  logo: caicloud-logo.png
-  link: https://caicloud.io/
 - title: cloudchef
   logo: cloudchef-logo.png
   link: http://www.cloudchef.io/
