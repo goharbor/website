@@ -5,10 +5,10 @@ author:
 description: "Introducing Cosign in Harbor v2.5.0"
 date: 2022-04-11T12:00:00+04:00
 ---
-![Cosign](https://raw.githubusercontent.com/sigstore/cosign/main/images/logo.svg)
+![Cosign](https://raw.githubusercontent.com/sigstore/community/main/artwork/cosign/horizontal/color/sigstore_cosign-horizontal-color.svg)
 
-TL;DR;  
-Artifact signing and signature verification are critical security capabilities that allow you to verify the integrity of an artifact. Harbor supports content trust through integrations with [Notary](https://github.com/notaryproject/notary) and [Cosign](https://github.com/sigstore/cosign).  
+TL;DR;
+Artifact signing and signature verification are critical security capabilities that allow you to verify the integrity of an artifact. Harbor supports content trust through integrations with [Notary](https://github.com/notaryproject/notary) and [Cosign](https://github.com/sigstore/cosign).
 
 Harbor v2.5 integrates support for [Cosign](https://github.com/sigstore/cosign), a OCI artifact signing and verification solution that is part of the [Sigstore project](https://github.com/sigstore).
 
@@ -20,10 +20,10 @@ A key feature of using Cosign with Harbor is the ability use Harbor's [replicati
 
 Full Documentation you will be able to find [here](https://goharbor.io/docs/2.5.0/working-with-projects/working-with-images/sign-images/)
 
-## Demo Setup 
+## Demo Setup
 **Configure two Harbor instances with Cosign enabled(default in v2.5.0) per repo and configure replication**
 
-We will have two instances harbor1 and harbor2, project "cosign" and replication rule(push based) between harbor1-to-harbor2, using robo-account.  
+We will have two instances harbor1 and harbor2, project "cosign" and replication rule(push based) between harbor1-to-harbor2, using robo-account.
 
 Check out a video of this demo:
 <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
@@ -84,7 +84,7 @@ Setup Replication from harbor1 -> harbor2:
 
 #### 7. Create cosign key-pair
 To be able to perform the follwing steps you need to have "cosign" installed.
-Here are the [instructions](https://docs.sigstore.dev/cosign/installation/) for the installation.  
+Here are the [instructions](https://docs.sigstore.dev/cosign/installation/) for the installation.
 
 ```
 $ cosign generate-key-pair
@@ -100,7 +100,7 @@ export COSIGN_PASSWORD=Your_Super_P1$$w0rD
 ```
 
 #### 8. Push and sign Image
-Use your cosign-demo user to sign into the first Harbor instance.  
+Use your cosign-demo user to sign into the first Harbor instance.
 
 ```
 $ docker login harbor1.orlix.org
@@ -174,22 +174,22 @@ The following checks were performed on each of these signatures:
 ```
 
 Both verification returns result and exit code zero which indicates for valid signature!
-As well the digest is the same! 
+As well the digest is the same!
 
-Hurray!!!  
+Hurray!!!
 
-### Collaborate with the Harbor Community!  
+### Collaborate with the Harbor Community!
 
-Join the [Harbor Community][community] meetings and distribution lists  
-Get updates on Twitter at [@project_harbor][twitter]  
-Chat with us on Slack at [#harbor][users-slack] on the [CNCF Slack][cncf-slack]  
-Collaborate with us on GitHub: [github.com/goharbor/harbor](https://github.com/goharbor/harbor)  
+Join the [Harbor Community][community] meetings and distribution lists
+Get updates on Twitter at [@project_harbor][twitter]
+Chat with us on Slack at [#harbor][users-slack] on the [CNCF Slack][cncf-slack]
+Collaborate with us on GitHub: [github.com/goharbor/harbor](https://github.com/goharbor/harbor)
 
 
 
-[Orlin Vasilev](https://twitter.com/OrlinVasilev)  
-Harbor Community Manager  
-[github.com/OrlinVasilev](https://github.com/OrlinVasilev)  
+[Orlin Vasilev](https://twitter.com/OrlinVasilev)
+Harbor Community Manager
+[github.com/OrlinVasilev](https://github.com/OrlinVasilev)
 
 [community]: https://goharbor.io/community/
 [users-slack]: https://cloud-native.slack.com/archives/CC1E09J6S
