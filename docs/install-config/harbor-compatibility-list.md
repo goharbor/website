@@ -46,6 +46,7 @@ This document provides compatibility information for all Harbor components.
 | [Trivy](https://github.com/aquasecurity/harbor-scanner-trivy)|![Trivy](../../img/scanners/trivy.png)| Aqua    |![Y](../../img/replication-adapters/right.png)| ![Y](../../img/replication-adapters/right.png) | v1.10 |
 | [CSP](https://github.com/aquasecurity/harbor-scanner-aqua)   |![Aqua](../../img/scanners/aqua.png)| Aqua    | ![Y](../../img/replication-adapters/right.png) | N | v1.10 |
 | [DoSec](https://github.com/dosec-cn/harbor-scanner/blob/master/README_en.md)|![DoSec](../../img/scanners/dosec.png)    | DoSec    | ![Y](../../img/replication-adapters/right.png) | N | v1.10 |
+| [CarbonBlack](https://github.com/vmware/carbon-black-adapter-for-harbor)|![Carbon Black](../../img/scanners/carbonblack.png)    | CarbonBlack    | ![Y](../../img/replication-adapters/right.png) | N | v1.10 |
 
 {{< note >}}
 * `Evaluated` means that the scanner implementation has been officially tested and verified.
