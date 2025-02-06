@@ -17,7 +17,7 @@ At the event, attendees were treated to insightful presentations and discussions
 <br>
 [Harbor and the world of SBOMs](https://www.youtube.com/watch?v=6Lnx1Q6J_kc)
 <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-    <iframe src="https://www.youtube.com/watch?v=6Lnx1Q6J_kc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/6Lnx1Q6J_kc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <br>
 
@@ -27,7 +27,7 @@ For those who couldn't attend, here's an engaging interview with the Harbor team
 [Interview with Harbor Team](https://youtu.be/T1vQ2LMCx6o)
 
 <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-    <iframe src="https://youtu.be/T1vQ2LMCx6o" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/T1vQ2LMCx6o" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 
@@ -38,13 +38,14 @@ Additionally, Orlin Vasilev video took the mainstage during the keynote sessions
 [Harbor Project Update by Orlin Vasilev](https://youtu.be/Oif5wQ8UC0s)
 
 <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-    <iframe src="https://youtu.be/Oif5wQ8UC0s" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/Oif5wQ8UC0s" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
+## Maintainers track
 [Harbor Maintainers talk - Project Update by Orlin Vasilev](https://youtu.be/4wD6f4M-1Xs)
 
 <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-    <iframe src="https://youtu.be/4wD6f4M-1Xs" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/4wD6f4M-1Xs" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 ![London](../img/kc-london-2025.png) 
@@ -78,5 +79,9 @@ The excitement is building, and the Harbor team is eager to share their innovati
 
 <br>
 <br>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5a6a85e (Add blog for KubeCon with videos)
 [Orlin Vasilev](https://x.com/OrlinVasilev)  
 Harbor Team
