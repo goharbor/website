@@ -2,6 +2,7 @@
 title: "Project Harbor Shines at KubeCon NA 2024 in Salt Lake City but what about London?"
 author:
   name: "Orlin Vasilev"
+date: 2025-02-07T12:00:00+04:00
 description: "The Harbor team ak KubeCon"
 showPageInfo: true
 ---
@@ -79,9 +80,6 @@ The excitement is building, and the Harbor team is eager to share their innovati
 
 <br>
 <br>
-<<<<<<< HEAD
-=======
 
->>>>>>> 5a6a85e (Add blog for KubeCon with videos)
 [Orlin Vasilev](https://x.com/OrlinVasilev)  
 Harbor Team
