@@ -31,7 +31,7 @@ In this case, you cannot delete tag `v1` as it's an immutable tag and you cannot
 
 1. Click **Add Rule**.
 
-    - In the **Respositories** row, enter a comma-separated list of repositories to which to either apply or exclude from the rule by selecting either **matching** or **excluding** from the drop-down menu.
+    - In the **Repositories** row, enter a comma-separated list of repositories to which to either apply or exclude from the rule by selecting either **matching** or **excluding** from the drop-down menu.
     - In the **Tags** row, enter a comma-separated list of tags to which to either apply or exclude from the rule by selecting either **matching** or **excluding** from the drop-down menu.
 
       ![Add an immutability rule](../../../img/add-immutability-rule.png)
@@ -48,10 +48,10 @@ In this case, you cannot delete tag `v1` as it's an immutable tag and you cannot
 
 To make all tags for all repositories in the project immutable, set the following options:
 
-- Set **For the respositories** to **matching** and enter `**`.
+- Set **For the repositories** to **matching** and enter `**`.
 - Set **Tags** to **matching** and enter `**`.
 
 To allow the tags `rc`, `test`, and `nightly` to be overwritten but make all other tags immutable, set the following options:
 
-- Set **For the respositories** to **matching** and enter `**`.
+- Set **For the repositories** to **matching** and enter `**`.
 - Set **Tags** to **excluding** and enter `rc,test,nightly`.
