@@ -3,7 +3,7 @@ title: "Project Harbor Shines at KubeCon NA 2024 in Salt Lake City but what abou
 author:
   name: "Orlin Vasilev"
 date: 2025-02-07T12:00:00+04:00
-description: "The Harbor team ak KubeCon"
+description: "Harbor team at KubeCon"
 showPageInfo: true
 ---
 
