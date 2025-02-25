@@ -1,210 +1,80 @@
 <div class="community-connect-container">
-  <!-- Slack Section -->
-  <div class="connect-card">
-    <h2 class="section-title">
-      <i class="fab fa-slack has-text-success"></i>
-      Chat with us on the CNCF Slack
-    </h2>
-    
-    <div class="slack-channels">
-      <a href="https://cloud-native.slack.com/messages/harbor" class="channel-button">
-        <div class="channel-content">
-          <i class="fab fa-slack"></i>
-          <div class="channel-info">
-            <span class="channel-name">#harbor</span>
-            <span class="channel-description">for end-user discussions</span>
-          </div>
+    <!-- Slack Section -->
+    <div class="connect-card">
+        <h2 class="section-title">
+            <i class="fab fa-slack has-text-success"></i>
+            Chat with us on the CNCF Slack
+        </h2>
+
+        <div class="slack-channels">
+            <a href="https://cloud-native.slack.com/messages/harbor" class="channel-button">
+                <div class="channel-content">
+                    <i class="fab fa-slack"></i>
+                    <div class="channel-info">
+                        <span class="channel-name">#harbor</span>
+                        <span class="channel-description">for end-user discussions</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://cloud-native.slack.com/messages/harbor" class="channel-button">
+                <div class="channel-content">
+                    <i class="fab fa-slack"></i>
+                    <div class="channel-info">
+                        <span class="channel-name">#harbor-dev</span>
+                        <span class="channel-description">for development of Harbor</span>
+                    </div>
+                </div>
+            </a>
+
+            <div class="slack-note">
+                <i class="fas fa-info-circle"></i>
+                <p>To access the CNCF slack, you need an invitation from
+                    <a href="https://slack.cncf.io/" target="_blank">slack.cncf.io</a>
+                </p>
+            </div>
         </div>
-      </a>
-      
-      <a href="https://cloud-native.slack.com/messages/harbor" class="channel-button">
-        <div class="channel-content">
-          <i class="fab fa-slack"></i>
-          <div class="channel-info">
-            <span class="channel-name">#harbor-dev</span>
-            <span class="channel-description">for development of Harbor</span>
-          </div>
+    </div>
+
+    <!-- Distribution Lists Section -->
+    <div class="connect-card">
+        <h2 class="section-title">
+            <i class="fas fa-envelope has-text-success"></i>
+            Distribution Lists
+        </h2>
+
+        <p class="section-description">
+            There are two distribution lists for Harbor, one for users and one for developers:
+        </p>
+
+        <div class="lists-container">
+            <div class="list-card">
+                <h3 class="list-header-inline">
+                    <i class="fas fa-users has-text-success"></i>
+                    User Group
+                </h3>
+                <p>
+                    Join Harbor's user email group at
+                    <a href="https://lists.cncf.io/g/harbor-users" target="_blank">
+                        lists.cncf.io/g/harbor-users
+                    </a>
+                    to get Harbor's news, features, and releases, or to provide suggestions and feedback.
+                </p>
+            </div>
+
+            <div class="list-card">
+                <h3 class="list-header-inline">
+                    <i class="fas fa-laptop has-text-success"></i>
+                    Developer Group
+                </h3>
+                <p>
+                    Join Harbor's developer group at
+                    <a href="https://lists.cncf.io/g/harbor-dev" target="_blank">
+                        lists.cncf.io/g/harbor-dev
+                    </a>
+                    for updates related to development and contribution.
+                </p>
+            </div>
         </div>
-      </a>
-      
-      <div class="slack-note">
-        <i class="fas fa-info-circle"></i>
-        <p>To access the CNCF slack, you need an invitation from 
-          <a href="https://slack.cncf.io/" target="_blank">slack.cncf.io</a>
-        </p>
-      </div>
     </div>
-  </div>
-
-  <!-- Distribution Lists Section -->
-  <div class="connect-card">
-    <h2 class="section-title">
-      <i class="fas fa-envelope has-text-success"></i>
-      Distribution Lists
-    </h2>
-
-    <p class="section-description">
-      There are two distribution lists for Harbor, one for users and one for developers:
-    </p>
-
-    <div class="lists-container">
-      <div class="list-card">
-        <h3 class="list-header-inline">
-          <i class="fas fa-users has-text-success"></i>
-          User Group
-        </h3>
-        <p>
-          Join Harbor's user email group at 
-          <a href="https://lists.cncf.io/g/harbor-users" target="_blank">
-            lists.cncf.io/g/harbor-users
-          </a> 
-          to get Harbor's news, features, and releases, or to provide suggestions and feedback.
-        </p>
-      </div>
-
-      <div class="list-card">
-        <h3 class="list-header-inline">
-          <i class="fas fa-laptop has-text-success"></i>
-          Developer Group
-        </h3>
-        <p>
-          Join Harbor's developer group at 
-          <a href="https://lists.cncf.io/g/harbor-dev" target="_blank">
-            lists.cncf.io/g/harbor-dev
-          </a> 
-          for updates related to development and contribution.
-        </p>
-      </div>
-    </div>
-  </div>
 </div>
-
-<style>
-.community-connect-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  padding: 2rem;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.connect-card {
-  background: white;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.section-title {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-  color: #333;
-}
-
-.has-text-success {
-  color: #48BB78 !important;
-}
-
-.slack-channels {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.channel-button {
-  background: #4A154B;
-  color: white;
-  padding: 1rem;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.channel-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(74, 21, 75, 0.2);
-}
-
-.channel-content {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.channel-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.channel-name {
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-.channel-description {
-  font-size: 0.9rem;
-  opacity: 0.9;
-}
-
-.slack-note {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: #f7fafc;
-  padding: 1rem;
-  border-radius: 8px;
-  margin-top: 1rem;
-}
-
-.lists-container {
-  display: grid;
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-}
-
-.list-card {
-  background: #f7fafc;
-  padding: 1.5rem;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
-
-.list-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.list-header-inline {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-  color: #2D3748;
-  font-size: 1.25rem;
-}
-
-a {
-  color: #2B6CB0;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-a:hover {
-  color: #2C5282;
-}
-
-@media (max-width: 768px) {
-  .community-connect-container {
-    grid-template-columns: 1fr;
-    padding: 1rem;
-  }
-  
-  .connect-card {
-    padding: 1.5rem;
-  }
-}
-</style>

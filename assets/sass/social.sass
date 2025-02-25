@@ -1,0 +1,103 @@
+.community-connect-container
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
+  gap: 2rem
+  padding: 2rem
+  max-width: 1400px
+  margin: 0 auto
+
+.connect-card
+  background: white
+  border-radius: 12px
+  padding: 2rem
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)
+
+.section-title
+  display: flex
+  align-items: center
+  gap: 1rem
+  font-size: 1.5rem
+  margin-bottom: 1.5rem
+  color: #333
+
+.has-text-success
+  color: #48BB78 !important
+
+.slack-channels
+  display: flex
+  flex-direction: column
+  gap: 1rem
+
+.channel-button
+  background: #4A154B
+  color: white
+  padding: 1rem
+  border-radius: 8px
+  text-decoration: none
+  transition: all 0.3s ease
+  &:hover
+    transform: translateY(-2px)
+    box-shadow: 0 4px 12px rgba(74, 21, 75, 0.2)
+
+.channel-content
+  display: flex
+  align-items: center
+  gap: 1rem
+
+.channel-info
+  display: flex
+  flex-direction: column
+
+.channel-name
+  font-weight: bold
+  font-size: 1.1rem
+
+.channel-description
+  font-size: 0.9rem
+  opacity: 0.9
+
+.slack-note
+  display: flex
+  align-items: center
+  gap: 0.75rem
+  background: #f7fafc
+  padding: 1rem
+  border-radius: 8px
+  margin-top: 1rem
+
+.lists-container
+  display: grid
+  gap: 1.5rem
+  margin-top: 1.5rem
+
+.list-card
+  background: #f7fafc
+  padding: 1.5rem
+  border-radius: 8px
+  transition: all 0.3s ease
+  &:hover
+    transform: translateY(-2px)
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1)
+
+.list-header-inline
+  display: flex
+  align-items: center
+  gap: 0.75rem
+  margin-bottom: 1rem
+  color: #2D3748
+  font-size: 1.25rem
+
+a
+  color: #2B6CB0
+  text-decoration: none
+  transition: color 0.2s ease
+  &:hover
+    color: #2C5282
+
+@media (max-width: 768px)
+  .community-connect-container
+    grid-template-columns: 1fr
+    padding: 1rem
+
+  .connect-card
+    padding: 1.5rem
