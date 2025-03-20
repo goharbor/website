@@ -38,13 +38,11 @@ After installation, log into your Harbor via the web console to configure the in
 
 ## Harbor Components
 
-The table below lists the some of the key components that are deployed when you deploy Harbor.
+The table below lists some of the key components deployed with Harbor.
 
-|Component|Version|
-|---|---|
-|Postgresql|14.10|
-|Redis|7.2.2|
-|Beego|2.0.6|
-|Distribution/Distribution|2.8.3|
-|Helm|2.9.1|
-|Swagger-ui|5.9.1|
+| Component                 | Version |
+|---------------------------|---------|
+| Postgresql                | 14.10   |
+| Redis                     | 7.2.2   |
+| Distribution/Distribution | 2.8.3   |
+| Trivy                     | v0.60.0 |
