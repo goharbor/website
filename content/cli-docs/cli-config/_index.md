@@ -49,7 +49,7 @@ To switch to another credential set, run:
 ```bash
 harbor login --name <name-of-credential>
 ```
-The CLI will then set the specified credential as the active one, eliminating the need to manually edit your configuration files. This will overwrite the `current
+The CLI will then set the specified credential as the active one, eliminating the need to manually edit your configuration files. This will overwrite the `current-credential-name`.
 
 
 ## Configuration Hierarchy (Highest to Lowest Priority)
