@@ -5,7 +5,7 @@ weight: 25
 
 # Harbor CLI Encryption Guide
 
-This document provides an overview of how Harbor CLI encrypts sensitive data and offers recommendations for different runtime environments.
+This document provides an overview of how Harbor CLI encrypts sensitive data and offers recommendations for different runtime environments. While the Harbor CLI configuration file manages your credentials, passwords themselves are never stored in plain text. Instead, they are secured using the AES-GCM encryption described below. For details on how to configure and manage these credentials, please refer to the [Harbor CLI Config Management documentation](../cli-config).
 
 ## Overview of Encryption
 Harbor CLI secures credentials using AES-GCM encryption. An encryption key is automatically generated and stored in one of several keyring backends, depending on your environment:

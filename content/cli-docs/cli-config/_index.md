@@ -13,7 +13,7 @@ Harbor CLI is a flexible command-line tool that lets you manage various Harbor e
 
 
 ## Understanding the Configuration Structure
-The Harbor CLI can manage multiple credentials and keep track of which credential is currently active. This setup allows you to maintain separate contexts for different Harbor instances or user accounts without having to rewrite configuration files manually.
+The Harbor CLI can manage multiple credentials and keep track of which credential is currently active. This setup allows you to maintain separate contexts for different Harbor instances or user accounts without having to rewrite configuration files manually. While the Harbor CLI configuration file manages your credentials, passwords themselves are never stored in plain text. Instead, they are secured using the AES-GCM encryption described in the [Harbor CLI Encryption documentation](../cli-config).
 
 ### Example Configuration File
 Below is a simplified example of a typical Harbor CLI configuration file:
