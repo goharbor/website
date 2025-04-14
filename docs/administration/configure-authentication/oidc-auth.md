@@ -49,6 +49,7 @@ To override and login via DB is possible when visiting the URL '/account/sign-in
        ![OIDC settings](../../../img/oidc-auth-setting.png)
 1. Uncheck **Verify Certificate** if the OIDC Provider uses a self-signed or untrusted certificate.
 1. Check the **Automatic onboarding** if you don't want user to set his username in Harbor during his first login.  When this option is checked, the attribute **Username Claim** must be set, Harbor will read the value of this claim from ID token and use it as the username for onboarding the user.  Therefore, you must make sure the value you set in **Username Claim** is included in the ID token returned by the OIDC provider you set, otherwise there will be a system error when Harbor tries to onboard the user.
+1. Check the **OIDC Session Logout** if you want to terminate the user's current session with the OIDC provider after they log out from Harbor.
 1. Verify that the Redirect URI that you configured in your OIDC provider is the same as the one displayed at the bottom of the page. 
        ![OIDC_auto_onboarding](../../../img/oidc-cert-verifi-auto-onboard.png)
 1. Click **Test OIDC Server** to make sure that your configuration is correct.
