@@ -2,11 +2,14 @@
 {{ $thisPage     := .RelPermalink }}
 {{ $docsSections := where site.Sections "Section" "docs" }}
 {{ $version      := index (split .File.Path "/") 1 }}
+{{ $versionNumbers := split $version "." }}
+{{ $majorVersion := index $versionNumbers 0 }}
+{{ $minorVersion := index $versionNumbers 1 }}
 
 <aside class="menu">
   <p class="menu-label">
     <a href="/docs/{{ $version }}">
-      Harbor version {{ $version }}
+      Harbor version {{ $majorVersion }}.{{ $minorVersion }}
     </a>
   </p>
 
