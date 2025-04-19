@@ -31,6 +31,7 @@ Name | Description | Labels (Values) | Metric type
 `harbor_artifact_pulled` |	Number of images pulled in a project |	project_name | gauge
 `harbor_project_artifact_total` | Total number of artifacts type in a project | artifact_type , project_name, public (`true`,`false`) | gauge
 `harbor_health` | Current status of Harbor | | gauge
+`harbor_registry_info` | Information about the registry | description, insecure (`true`,`false`), name, status (`healthy`,`unhealthy`), type (`harbor`,`docker-hub`,`docker-registry`,`huawei-SWR`,`google-gcr`,`aws-ecr`,`azure-acr`,`ali-acr`,`jfrog-artifactory`,`quay`,`gitlab`,`dtr`,`tencent-tcr`,`github-ghcr`,`volcengine-cr`), url | gauge
 `harbor_system_info` | Information about your Harbor instance | auth_mode (`db_auth`, `ldap_auth`, `uaa_auth`, `http_auth`, `oidc_auth`), harbor_version, self_registration(`true`,`false`) | gauge
 `harbor_up`| Running status of Harbor components  | component (`chartmuseum`, `core`, `database`, `jobservice`, `portal`, `redis`, `registry`, `registryctl`, `trivy`) | gauge
 `harbor_task_queue_size` | The total number of tasks per type in the queue | instance, job, type  | gauge
