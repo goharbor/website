@@ -57,7 +57,7 @@ You can also use an endpoint in a proxy cache project. Read more about how to [C
 
 ## Access ID and Secret Configuration
 
-- AWS ECR adapters should use access keys, not a username and password.The access key should have sufficient permissions, such as storagepermission.
+- AWS ECR adapters should use access keys, not a username and password. The access key should have sufficient permissions, such as storagepermission.
 - Google GCR adapters should use the entire JSON key generated in the service account. The namespace should start with the project ID.
 - Quay Registry
    - Supported scope
