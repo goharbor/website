@@ -29,7 +29,7 @@ docker push reg.yourdomain.com/myproject/myrepo:mytag
 ```
 
 {{< important >}}
-- If your installation of Harbor uses HTTPS, you must provide the Harbor certificates to the Docker client. For information, see [Configure HTTPS Access to Harbor](configure-https.md#provide-the-certificates-to-harbor-and-docker).
+- If your installation of Harbor uses HTTPS, you must provide the Harbor certificates to the Docker client. For information, see [Configure HTTPS Access to Harbor](../configure-https).
 - If your installation of Harbor uses HTTP, you must add the option `--insecure-registry` to your client's Docker daemon and restart the Docker service. For more information, see [Connecting to Harbor via HTTP](#connect-http) below.
 {{< /important >}}
 
