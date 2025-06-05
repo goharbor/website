@@ -1,27 +1,23 @@
 ---
-title: harbor artifact tags list
-weight: 90
+title: harbor quota view
+weight: 30
 ---
-## harbor artifact tags list
+## harbor quota view
 
 ### Description
 
-##### List tags of an artifact
+##### get quota by quota ID
 
 ```sh
-harbor artifact tags list [flags]
-```
-
-### Examples
-
-```sh
-harbor artifact tags list <project>/<repository>/<reference>
+harbor quota view [quotaID] [flags]
 ```
 
 ### Options
 
 ```sh
-  -h, --help   help for list
+  -h, --help                  help for view
+      --project-id string     Get quota by project ID
+      --project-name string   Get quota by project-name
 ```
 
 ### Options inherited from parent commands
@@ -34,5 +30,5 @@ harbor artifact tags list <project>/<repository>/<reference>
 
 ### SEE ALSO
 
-* [harbor artifact tags](harbor-artifact-tags.md)	 - Manage tags of an artifact
+* [harbor quota](harbor-quota.md)	 - Manage quotas
 

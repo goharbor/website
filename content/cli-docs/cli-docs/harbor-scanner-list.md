@@ -1,21 +1,15 @@
 ---
-title: harbor artifact tags list
-weight: 90
+title: harbor scanner list
+weight: 50
 ---
-## harbor artifact tags list
+## harbor scanner list
 
 ### Description
 
-##### List tags of an artifact
+##### List scanners
 
 ```sh
-harbor artifact tags list [flags]
-```
-
-### Examples
-
-```sh
-harbor artifact tags list <project>/<repository>/<reference>
+harbor scanner list [flags]
 ```
 
 ### Options
@@ -34,5 +28,5 @@ harbor artifact tags list <project>/<repository>/<reference>
 
 ### SEE ALSO
 
-* [harbor artifact tags](harbor-artifact-tags.md)	 - Manage tags of an artifact
+* [harbor scanner](harbor-scanner.md)	 - scanner commands
 

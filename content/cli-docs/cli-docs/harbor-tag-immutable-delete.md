@@ -1,21 +1,15 @@
 ---
-title: harbor artifact tags delete
-weight: 80
+title: harbor tag immutable delete
+weight: 0
 ---
-## harbor artifact tags delete
+## harbor tag immutable delete
 
 ### Description
 
-##### Delete a tag of an artifact
+##### delete immutable rule
 
 ```sh
-harbor artifact tags delete [flags]
-```
-
-### Examples
-
-```sh
-harbor artifact tags delete <project>/<repository>/<reference> <tag>
+harbor tag immutable delete [flags]
 ```
 
 ### Options
@@ -34,5 +28,5 @@ harbor artifact tags delete <project>/<repository>/<reference> <tag>
 
 ### SEE ALSO
 
-* [harbor artifact tags](harbor-artifact-tags.md)	 - Manage tags of an artifact
+* [harbor tag immutable](harbor-tag-immutable.md)	 - Manage Immutability rules in the project
 

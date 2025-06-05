@@ -1,21 +1,15 @@
 ---
-title: harbor artifact tags list
-weight: 90
+title: harbor tag immutable list
+weight: 40
 ---
-## harbor artifact tags list
+## harbor tag immutable list
 
 ### Description
 
-##### List tags of an artifact
+##### list all immutable tag rule of project
 
 ```sh
-harbor artifact tags list [flags]
-```
-
-### Examples
-
-```sh
-harbor artifact tags list <project>/<repository>/<reference>
+harbor tag immutable list [flags]
 ```
 
 ### Options
@@ -34,5 +28,5 @@ harbor artifact tags list <project>/<repository>/<reference>
 
 ### SEE ALSO
 
-* [harbor artifact tags](harbor-artifact-tags.md)	 - Manage tags of an artifact
+* [harbor tag immutable](harbor-tag-immutable.md)	 - Manage Immutability rules in the project
 
