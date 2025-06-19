@@ -1,0 +1,28 @@
+<!-- This file now only contains the LOGIC for the outdated docs banner. -->
+<!-- It calls the new reusable "banner.html" partial to do the actual display. -->
+
+{{ $latestVersionWithV := .Site.Params.latest_version }}
+{{ $isVersioned := "" }}
+
+{{/* Use a regex that finds versions like "2.3" OR "2.3.0" */}}
+{{ with (findRE `^/docs/([0-9]+\.[0-9]+(\.[0-9]+)?)/` .RelPermalink) }}
+  {{ $isVersioned = . }}
+{{ end }}
+
+{{ if $isVersioned }}
+  {{ $currentVersionRaw := index (findRE `([0-9]+\.[0-9]+(\.[0-9]+)?)` .RelPermalink) 0 }}
+  {{ $currentVersionWithV := printf "v%s" $currentVersionRaw }}
+
+  {{ if ne $currentVersionWithV $latestVersionWithV }}
+
+    {{/* --- Prepare the message for the banner --- */}}
+    {{ $latestVersionRaw := strings.TrimPrefix "v" $latestVersionWithV }}
+    {{ $latestURL := replace .RelPermalink $currentVersionRaw $latestVersionRaw }}
+    {{ $link := printf `<a href="%s">Click here to go to the same page in the %s docs.</a>` ($latestURL | relURL) $latestVersionWithV }}
+    {{ $message := printf "You are viewing documentation for Harbor <strong>%s</strong>, which is an older version. We recommend using the latest version of the documentation.<br/><br/>%s" $currentVersionWithV $link }}
+
+    {{/* --- Now, call our new reusable banner component --- */}}
+    {{ partial "banner.html" (dict "title" "Outdated Documentation" "message" $message "type" "warning") }}
+
+  {{ end }}
+{{ end }}

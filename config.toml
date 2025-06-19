@@ -20,6 +20,7 @@ dev_group = "https://lists.cncf.io/g/harbor-dev"
 logo_repo = "https://github.com/cncf/artwork/tree/master/projects/harbor"
 youtube_video_id = "4zZiBcvZmgQ"
 alpine_js_version = "2.1.2"
+latest_version = "v2.13.0"
 
 [[params.versions]]
 harborversion = "2.13.0"

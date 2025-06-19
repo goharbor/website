@@ -1,0 +1,23 @@
+<!-- This is the code for the NEW reusable banner: layouts/partials/banner.html -->
+
+{{/*
+  This is a reusable banner component.
+  It expects a dictionary of parameters:
+  - .title: The title of the banner (e.g., "Outdated Documentation").
+  - .message: The body content of the banner. Can contain HTML.
+  - .type: The style of the banner (e.g., "warning", "info", "success", "danger").
+*/}}
+
+<div class="container">
+  <article class="message {{ with .type }}is-{{ . }}{{ else }}is-info{{ end }}">
+    {{ with .title }}
+      <div class="message-header">
+        <p>{{ . }}</p>
+      </div>
+    {{ end }}
+    <div class="message-body">
+      {{ .message | safeHTML }}
+    </div>
+  </article>
+  <br/> <!-- Add a little space after the banner -->
+</div>

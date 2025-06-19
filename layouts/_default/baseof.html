@@ -1,3 +1,5 @@
+<!-- This is the complete and correct final code for layouts/_default/baseof.html -->
+
 {{ $lang := site.LanguageCode }}
 {{ $home := .IsHome }}
 <!DOCTYPE html>
@@ -22,6 +24,27 @@
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-TKWH5SPC');</script>
     <!-- End Analytics -->
+
+    <!-- =================================================================== -->
+    <!-- START: Your Canonical URL Addition -->
+    <!-- =================================================================== -->
+    {{ $isVersioned := "" }}
+    {{ with (findRE `^/docs/([0-9]+\.[0-9]+)/` .RelPermalink) }}
+      {{ $isVersioned = . }}
+    {{ end }}
+    {{ if $isVersioned }}
+      {{ $currentVersionRaw := index (findRE `([0-9]+\.[0-9]+)` .RelPermalink) 0 }}
+      {{ $latestVersionWithV := .Site.Params.latest_version }}
+      {{/* For the canonical URL, we always point to 'main' */}}
+      {{ $canonicalURL := replace .RelPermalink $currentVersionRaw "main" }}
+      <link rel="canonical" href="{{ $canonicalURL | absURL }}">
+    {{ else }}
+      <link rel="canonical" href="{{ .Permalink }}">
+    {{ end }}
+    <!-- =================================================================== -->
+    <!-- END: Your Canonical URL Addition -->
+    <!-- =================================================================== -->
+
   </head>
   <body class="is-page has-navbar-fixed-top">
     <!-- Analytics if (noscript) -->
@@ -30,6 +53,14 @@
     <!-- Analytics if  (noscript) -->
     <main class="is-main">
       {{ partial "navbar.html" . }}
+
+      <!-- =================================================================== -->
+      <!-- START: Your Version Banner Addition -->
+      <!-- =================================================================== -->
+      {{ partial "version-banner.html" . }}
+      <!-- =================================================================== -->
+      <!-- END: Your Version Banner Addition -->
+      <!-- =================================================================== -->
 
       {{ block "main" . }}
       {{ end }}
