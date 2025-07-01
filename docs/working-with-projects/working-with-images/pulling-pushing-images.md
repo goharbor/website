@@ -62,6 +62,16 @@ Push the image:
 ```sh
 docker push <harbor_address>/demo/ubuntu:14.04
 ```
+**Understanding the Image Name Structure**
+
+In Harbor, a fully qualified image name has three main parts: <project_name>/<repository_name>:<tag>. This is a critical concept for pushing images and configuring deployment tools.
+
+Using the example <harbor_address>/demo/ubuntu:14.04:
+demo: This is the Project you created in the Harbor UI.
+ubuntu: This is the Repository name inside the demo project. A repository holds all the tags for a single image.
+14.04: This is the Tag, which usually represents a specific version of the image.
+
+When configuring deployment tools (like Kubernetes or Kamal), ensure your target image name is set to the format <project_name>/<repository_name>
 
 ### Pushing Windows Images
 
