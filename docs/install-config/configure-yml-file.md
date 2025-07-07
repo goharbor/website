@@ -314,11 +314,6 @@ The following table lists the additional, optional parameters that you can set t
   </tr>
   <tr>
     <td valign="top">&nbsp;</td>
-    <td valign="top"><code>chartmuseum_db_index</code></td>
-    <td valign="top">Database index for Chart museum.</td>
-  </tr>
-  <tr>
-    <td valign="top">&nbsp;</td>
     <td valign="top"><code>trivy_db_index</code></td>
     <td valign="top">Database index for Trivy adapter.</td>
   </tr>

@@ -11,7 +11,6 @@ VERSIONTAG         | The tag for harbor image, default:dev
 DEVFLAG            | Build model flag, default: true
 GOBUILDIMAGE       | Golang image to compile harbor go source code.
 TRIVYFLAG          | Whether to enable trivy in harbor, default:false
-CHARTFLAG          | Whether to enable chartmuseum in harbor, default:false
 HTTPPROXY          | Clarity proxy to build UI.
 
 ## Targets
