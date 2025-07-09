@@ -15,6 +15,8 @@ With **Gitless GitOps**, you eliminate the need for a Git repository entirely an
 
 ## Background: The Universal OCI Artifact Hub
 
+![The Universal OCI Artifact Hub](../img/harbor-as-universal-oci-hub.png)
+
 The Universal OCI Artifact Hub leverages the OCI Distribution specification to extend support far beyond traditional container images, encompassing arbitrary artifacts such as Helm charts, SBOMs and binary blobs. Registries now expose a generic artifactType field and implement the referrers API, enabling users to link related artifacts—like signatures and SBOMs—and discover them more easily.
 
 Starting with OCI Spec v1.1.0, this broad artifact support became officially part of the standard, formalizing functionality that some implementations had already adopted by using OCI registries as general-purpose artifact hubs.
