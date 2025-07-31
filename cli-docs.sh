@@ -10,9 +10,9 @@ LATEST_TAG=$(
   awk -F/ '{print $3}'
 )
 
-# # Step 3: Clone the repository at the latest tag
+# Step 3: Clone the repository at the latest tag
 git clone --depth 1 --branch "$LATEST_TAG" "$HARBOR_CLI_REPO" harbor-cli 
-# git clone --depth 1 --branch main "$HARBOR_CLI_REPO" harbor-cli 
+
 # Step 4: Copy the CLI documentation to the website directory
 HARBOR_CLI_DOCS="harbor-cli/doc/"
 WEBSITE_CLI_DOCS="content/cli-docs"
