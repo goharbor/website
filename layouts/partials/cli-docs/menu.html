@@ -28,7 +28,8 @@
       {{ with .RegularPages }}
       {{ if $showSection }}
       <ul>
-        {{ range . }}
+        <!-- {{ range . }} -->
+        {{ range (.ByTitle) }}
         {{ $isThisPage := eq .RelPermalink $thisPage }}
         <li>
           <a {{ if $isThisPage }} class="is-active"{{ end }} href="{{ .RelPermalink }}">
@@ -42,7 +43,8 @@
     </li>
     {{ end }}
 
-    {{ range .RegularPages }}
+    <!-- {{ range .RegularPages }} -->
+    {{ range (.RegularPages.ByTitle) }}
     {{ $isThisPage := eq $thisPage .RelPermalink }}
 
     <li>
