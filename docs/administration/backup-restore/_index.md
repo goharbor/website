@@ -9,7 +9,7 @@ The following tutorial shows how to use Velero to backup and restore a Harbor in
 
 {{< important >}}
 
-This tutorial only backs up a subset of Harbor's resources and data, including all Harbor related Kubernetes resources (Deployments, StatefulSets, Services, ConfigMaps, etc.) and data in the PersistentVolumes of Harbor's internal database, registry, chartmuseum, jobservice and Trivy.
+This tutorial only backs up a subset of Harbor's resources and data, including all Harbor related Kubernetes resources (Deployments, StatefulSets, Services, ConfigMaps, etc.) and data in the PersistentVolumes of Harbor's internal database, registry, jobservice and Trivy.
 
 Harbor's Redis data is not backed up, see the [Limitations](#limitations) section for more details of the potential impact to your Harbor instance.
 
