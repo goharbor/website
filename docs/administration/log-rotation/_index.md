@@ -50,7 +50,7 @@ View the purge runs in the **Purge History** table. Harbor tracks information ab
 
 1. Log in to the Harbor interface with an account that has Harbor system administrator privileges.
 1. Go to **Configuration** and select **System Settings**.
-1. In the **Audit Log Forward Syslog Endpoint** row, add your syslog endpoint. If the you installed Harbor with docker-compose, the local syslog endpoint is `harbor-log:10514`.
+1. In the **Audit Log Forward Syslog Endpoint** row, add your syslog endpoint. If you installed Harbor with docker-compose, the local syslog endpoint is `harbor-log:10514`.
 1. If you have configured an endpoint to forward audit logs, you can select the checkbox to **Skip Audit Log Database**. When selected, Harbor will not keep any records of audit logs in its database, but will forward all logs to your configured endpoint immediately.
 
 ![Audit log forward endpoint settings](../../img/audit-log-endpoint.png)
