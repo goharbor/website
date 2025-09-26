@@ -46,3 +46,4 @@ Thumbs.db
 *.un~
 .idea/
 .hugo_build.lock
+.tool-versions
