@@ -42,7 +42,7 @@ The table below lists the some of the key components that are deployed when you 
 
 |Component|Version|
 |---|---|
-|Postgresql|15.12|
+|Postgresql|15.10|
 |Redis|7.2.6|
 |Beego|2.3.4|
 |Distribution/Distribution|2.8.3|
