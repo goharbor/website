@@ -14,7 +14,7 @@ Tracing data are exposed by serveral Harbor components: `core`, `jobservice`, `r
 | Data                     | Component   | Example                                                      |
 | :----------------------- | :---------- | :----------------------------------------------------------- |
 | Received HTTP Request    | Core        | Every HTTP request (like operation on harbor UI, push image, etc. ) |
-| Client Sent HTTP Request | Core        | core access other services via HTTP(like health check, proxy to chartmuseum, call job service API, etc.) |
+| Client Sent HTTP Request | Core        | core access other services via HTTP(like health check, call job service API, etc.) |
 | Request ID               | Core        | Every http tracing will added a `X-Request-ID` , which will help to find the log |
 | Database Transaction     | Core        | Every Operation that triggered DB transaction(like create project, push image to harbor, etc) |
 | Received HTTP Request    | Jobservice  | Every HTTP request(like health check, call from core, etc.)  |

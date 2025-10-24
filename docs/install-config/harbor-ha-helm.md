@@ -51,22 +51,19 @@ Configure the followings items in `values.yaml`, alternatively they can be set v
 - **Storage**
   - It's recommended that a `StorageClass` that supports sharing across nodes in a `ReadWriteMany` manner to provision volumes to store images, charts and job logs is used, this allows for scaling of components to meet demand. If such a volume type isn't your default storageClass, this will need to be set in the following locations:
     - `persistence.persistentVolumeClaim.registry.storageClass`
-    - `persistence.persistentVolumeClaim.chartmuseum.storageClass`
     - `persistence.persistentVolumeClaim.jobservice.storageClass`.
   - If such a `StorageClass` is used, the associated accessMode needs to be set `ReadWriteMany` for the following fields: 
     - `persistence.persistentVolumeClaim.registry.accessMode`
-    - `persistence.persistentVolumeClaim.chartmuseum.accessMode`
     - `persistence.persistentVolumeClaim.jobservice.accessMode`
   - Alternatively, use existing PVCs to store data by setting:
     - `persistence.persistentVolumeClaim.registry.existingClaim`
-    - `persistence.persistentVolumeClaim.chartmuseum.existingClaim`
     - `persistence.persistentVolumeClaim.jobservice.existingClaim`
   - Finally, if you have no StorageClass that supports `ReadWriteMany` or don't wish to, external object storage can be used instead to store images and charts and store the job logs in database. To enable external object storage set the `persistence.imageChartStorage.type` to the value you want to use and fill the corresponding section and set `jobservice.jobLogger` to `database`.
     - Note: For those whom wish to use S3, IRSA support is in progress upstream.
     - An example AWS IAM policy is available [upstream](https://distribution.github.io/distribution/storage-drivers/s3/)
 
 - **Replica**
-  - Set `portal.replicas`, `core.replicas`, `jobservice.replicas`, `registry.replicas`, `chartmuseum.replicas`, to `n`(`n`>=2).
+  - Set `portal.replicas`, `core.replicas`, `jobservice.replicas`, `registry.replicas` to `n`(`n`>=2).
 
 ## Installation
 
