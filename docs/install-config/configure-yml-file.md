@@ -152,10 +152,30 @@ You can use certificates that are signed by a trusted third-party CA, or you can
     <td valign="top"><code>max_job_workers</code></td>
     <td valign="top">The maximum number of replication workers in the job service. For each image replication job, a worker synchronizes all tags of a repository to the remote destination. Increasing this number allows more concurrent replication jobs in the system. However, since each worker consumes a certain amount of network/CPU/IO resources, set the value of this attribute based on the hardware resource of the host. The default is 10.</td>
   </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>job_loggers</code></td>
+    <td valign="top">List of backends used by the job service to store job logs. Supported values are <code>STD_OUTPUT</code>, <code>FILE</code> and <code>DB</code>. At least one logger should be provided. Example:<pre><code>jobservice:
+  job_loggers:
+    - STD_OUTPUT
+    - FILE
+    - DB
+</code></pre>When using <code>FILE</code>, job logs are persisted on disk. When using <code>DB</code> job logs are stored in the configured database.</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>logger_sweeper_duration</code></td>
+    <td valign="top">(Optional) Interval duration for the job log sweeper which cleans up old job logs. Value is a duration string such as <code>24h</code> or <code>168h</code> (7 days). If omitted a sensible default is used by the jobservice.</td>
+  </tr>
 <tr>
     <td valign="top"><code>notification</code></td>
     <td valign="top"><code>webhook_job_max_retry</code></td>
     <td valign="top">Set the maximum number of retries for web hook jobs. The default is 10.</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>webhook_job_http_client_timeout</code></td>
+    <td valign="top">(Optional) Timeout for the HTTP client used to deliver webhook job payloads. Specify a duration string such as <code>5s</code>, <code>30s</code>, or <code>1m</code>. If omitted, a reasonable default is used by the notification service.</td>
   </tr>
   <tr>
     <td valign="top"><code>log</code></td>
