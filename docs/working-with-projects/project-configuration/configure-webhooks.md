@@ -895,5 +895,5 @@ As a Harbor system administrator, you can enable and deactivate webhook notifica
 1. Scroll down and check or uncheck the **Webhooks enabled** check box.
 
 
-    ![Enable/deactivate webhooks](../../../img/webhooks4.png)
+    ![Enable/deactivate webhooks](../../../img/webhook/global_config.png)
 
