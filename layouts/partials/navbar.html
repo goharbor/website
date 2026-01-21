@@ -67,6 +67,17 @@
           </p>
 
           <div class="navbar-dropdown is-right">
+            <div class="navbar-item">
+              <div class="columns">
+                <div class="column">
+                  <a class="has-text-black" href="/cli-docs" data-proofer-ignore>
+                    <span>
+                      Harbor CLI Docs
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
             {{ range site.Params.versions }}
             {{ $isLatest := eq . $latest }}
             <div class="navbar-item">
