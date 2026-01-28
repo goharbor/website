@@ -89,7 +89,7 @@ helm package oci-chart-example
 helm push oci-chart-example-0.1.0.tgz oci://demo.goharbor.io/oci-charts
 ```
 
-## See you images in the Harbor Interface
+## See your images in the Harbor Interface
 
 You can see your OCI Helm Charts in your Harbor Project as any other artifact
 ![Project View](../../../img/oci/oci-chart-main-view.png)
