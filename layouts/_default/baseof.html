@@ -15,7 +15,17 @@
     {{ if $home }}
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     {{ end }}
-    <!-- Analytics -->
+    
+    {{/* Theme initialization - prevents flash of unstyled content */}}
+    <script>
+      (function() {
+        const theme = localStorage.getItem('harbor-theme') || 
+                     (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+    
+    {{/* Analytics */}}
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=

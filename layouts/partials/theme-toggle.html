@@ -1,0 +1,37 @@
+{{/* Theme Toggle Component */}}
+{{/* Uses Alpine.js v2 for reactivity and localStorage for persistence */}}
+
+<div 
+  class="navbar-item theme-toggle-wrapper"
+  x-data="{ 
+    theme: 'light',
+    init() {
+      // Initialize theme from localStorage or system preference
+      const savedTheme = localStorage.getItem('harbor-theme');
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      this.theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+      this.applyTheme();
+    },
+    applyTheme() {
+      document.documentElement.setAttribute('data-theme', this.theme);
+      localStorage.setItem('harbor-theme', this.theme);
+    },
+    toggleTheme() {
+      this.theme = this.theme === 'light' ? 'dark' : 'light';
+      this.applyTheme();
+    }
+  }"
+  x-init="init()"
+>
+  <button 
+    @click="toggleTheme()"
+    class="theme-toggle"
+    :aria-label="theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'"
+    :title="theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'"
+    type="button"
+  >
+    <span class="icon">
+      <i :class="theme === 'light' ? 'fas fa-moon' : 'fas fa-sun'"></i>
+    </span>
+  </button>
+</div>

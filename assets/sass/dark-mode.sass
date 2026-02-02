@@ -1,0 +1,393 @@
+// Dark Mode Styles for Harbor Website
+// Implements theming using CSS custom properties and Bulma overrides
+
+// Define CSS custom properties for light theme (default)
+\:root
+  // Background colors
+  --color-background: #ffffff
+  --color-background-bis: whitesmoke
+  --color-surface: #ffffff
+  --color-card: #ffffff
+  
+  // Text colors
+  --color-text: #363636
+  --color-text-strong: #363636
+  --color-text-light: #7a7a7a
+  
+  // Brand colors
+  --color-primary: #4495d7
+  --color-secondary: #60b932
+  --color-link: #4495d7
+  --color-link-hover: #3082c4
+  
+  // UI element colors
+  --color-border: #dbdbdb
+  --color-navbar-bg: #ffffff
+  --color-footer-bg: #fafafa
+  --color-code-bg: #f5f5f5
+  --color-code-text: #363636
+  
+  // Shadows
+  --shadow-sm: 0 2px 3px rgba(10, 10, 10, 0.1)
+  --shadow-md: 0 8px 16px rgba(10, 10, 10, 0.1)
+
+// Dark theme overrides
+[data-theme="dark"]
+  // Background colors
+  --color-background: #1a1a1a
+  --color-background-bis: #252525
+  --color-surface: #2d2d2d
+  --color-card: #2d2d2d
+  
+  // Text colors
+  --color-text: #e0e0e0
+  --color-text-strong: #ffffff
+  --color-text-light: #b0b0b0
+  
+  // Brand colors (adjusted for better contrast on dark backgrounds)
+  --color-primary: #60b0ff
+  --color-secondary: #7ed957
+  --color-link: #60b0ff
+  --color-link-hover: #80c0ff
+  
+  // UI element colors
+  --color-border: #404040
+  --color-navbar-bg: #1f1f1f
+  --color-footer-bg: #1f1f1f
+  --color-code-bg: #2a2a2a
+  --color-code-text: #e0e0e0
+  
+  // Shadows (lighter for dark theme)
+  --shadow-sm: 0 2px 3px rgba(0, 0, 0, 0.3)
+  --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.4)
+  
+  // Apply dark mode styles
+  background-color: var(--color-background) !important
+  
+  body
+    background-color: var(--color-background) !important
+    color: var(--color-text) !important
+  
+  // Navbar theming
+  .navbar
+    background-color: var(--color-navbar-bg) !important
+    
+    .navbar-item,
+    .navbar-link
+      color: var(--color-text) !important
+      
+      &:hover,
+      &:focus
+        background-color: var(--color-background-bis) !important
+        color: var(--color-text-strong) !important
+    
+    .navbar-burger span
+      background-color: var(--color-text) !important
+    
+    .navbar-dropdown
+      background-color: var(--color-navbar-bg) !important
+      border-color: var(--color-border) !important
+      
+      .navbar-item
+        color: var(--color-text) !important
+        
+        &:hover
+          background-color: var(--color-background-bis) !important
+          color: var(--color-text-strong) !important
+        
+        a
+          color: var(--color-text) !important
+          
+          &:hover
+            color: var(--color-text-strong) !important
+  
+  // Footer theming
+  .footer
+    background-color: var(--color-footer-bg) !important
+    
+    .has-text-black,
+    a
+      color: var(--color-text) !important
+      
+      &:hover
+        color: var(--color-link-hover) !important
+  
+  // Hero sections
+  .hero
+    &.has-background-white-bis,
+    &.is-small
+      background-color: var(--color-background-bis) !important
+    
+    .title,
+    .subtitle
+      color: var(--color-text-strong) !important
+    
+    .has-text-dark
+      color: var(--color-text-strong) !important
+  
+  // Section backgrounds - make black sections darker for contrast
+  section.has-background-black
+    background-color: #000000 !important
+  
+  // Preserve blue border under headings
+  hr.color
+    background-color: var(--color-primary) !important
+
+  
+  // All headings - ensure they're light in dark mode
+  h1, h2, h3, h4, h5, h6
+    color: var(--color-text-strong) !important
+  
+  .title,
+  .subtitle
+    color: var(--color-text-strong) !important
+  
+  // Bulma title classes
+  .is-1, .is-2, .is-3, .is-4, .is-5, .is-6
+    color: var(--color-text-strong) !important
+  
+  // Card theming
+  .card
+    background-color: var(--color-card) !important
+    box-shadow: var(--shadow-md) !important
+    
+    .card-content
+      color: var(--color-text) !important
+      background-color: var(--color-card) !important
+  
+  // Buttons
+  .button
+    &.is-white
+      background-color: var(--color-surface) !important
+      color: var(--color-text) !important
+      border-color: var(--color-border) !important
+      
+      &:hover
+        background-color: var(--color-background-bis) !important
+        border-color: var(--color-text-light) !important
+    
+    &.is-primary,
+    &.is-info,
+    &.is-link
+      color: #ffffff !important
+      
+      &:hover
+        color: #ffffff !important
+    
+    &.is-outlined
+      &.is-inverted
+        background-color: transparent !important
+        border-color: var(--color-text) !important
+        color: var(--color-text) !important
+        
+        &:hover
+          background-color: var(--color-text) !important
+          color: var(--color-background) !important
+
+  
+  // Code blocks
+  code,
+  pre
+    background-color: var(--color-code-bg) !important
+    color: var(--color-code-text) !important
+  
+  .content
+    color: var(--color-text) !important
+    
+    pre
+      background-color: var(--color-code-bg) !important
+    
+    code
+      background-color: var(--color-code-bg) !important
+      color: var(--color-code-text) !important
+    
+    h1, h2, h3, h4, h5, h6
+      color: var(--color-text-strong) !important
+    
+    p, li, td, th
+      color: var(--color-text) !important
+  
+  // Links
+  a:not(.button)
+    color: var(--color-link) !important
+    
+    &:hover
+      color: var(--color-link-hover) !important
+  
+  // Ensure button links have proper colors
+  a.button
+    &.is-primary,
+    &.is-info,
+    &.is-link,
+    &.is-twitter-blue
+      color: #ffffff !important
+      
+      &:hover
+        color: #ffffff !important
+
+  
+  // Tables
+  .table
+    background-color: var(--color-surface) !important
+    color: var(--color-text) !important
+    
+    thead
+      background-color: var(--color-background-bis) !important
+      
+      th
+        color: var(--color-text-strong) !important
+        border-color: var(--color-border) !important
+    
+    tbody
+      tr
+        background-color: var(--color-surface) !important
+        
+        &:hover
+          background-color: var(--color-background-bis) !important
+        
+        td
+          border-color: var(--color-border) !important
+          color: var(--color-text) !important
+  
+  // Menu (sidebar navigation)
+  .menu
+    .menu-label
+      color: var(--color-text-light) !important
+    
+    .menu-list
+      a
+        color: var(--color-text) !important
+        
+        &:hover
+          background-color: var(--color-background-bis) !important
+          color: var(--color-text-strong) !important
+        
+        &.is-active
+          background-color: var(--color-background-bis) !important
+          color: var(--color-primary) !important
+  
+  // Tags
+  .tag
+    background-color: var(--color-background-bis) !important
+    color: var(--color-text) !important
+    
+    &.is-success
+      background-color: var(--color-secondary) !important
+      color: #ffffff !important
+    
+    &.is-light
+      background-color: var(--color-surface) !important
+      color: var(--color-text) !important
+  
+  // Modal
+  .modal
+    .modal-background
+      background-color: rgba(10, 10, 10, 0.86) !important
+    
+    .modal-content
+      background-color: var(--color-surface) !important
+  
+  // Horizontal rules
+  hr
+    background-color: var(--color-border) !important
+    
+    &.thick
+      background-color: var(--color-border) !important
+  
+  // Search bar
+  #search-bar,
+  input.input
+    background-color: var(--color-surface) !important
+    color: var(--color-text) !important
+    border-color: var(--color-border) !important
+    
+    &::placeholder
+      color: var(--color-text-light) !important
+  
+  // Sections
+  .section
+    background-color: var(--color-background) !important
+  
+  // Columns
+  .column
+    color: var(--color-text) !important
+  
+  // Icons with text colors
+  .has-text-primary
+    color: var(--color-primary) !important
+  
+  .has-text-secondary
+    color: var(--color-secondary) !important
+  
+  // Level component
+  .level
+    .level-item
+      color: var(--color-text) !important
+  
+  // Media component
+  .media
+    .media-content
+      color: var(--color-text) !important
+  
+  // List component
+  .list
+    .list-item
+      background-color: var(--color-surface) !important
+      color: var(--color-text) !important
+      
+      &:hover
+        background-color: var(--color-background-bis) !important
+
+// Theme toggle button styles
+.theme-toggle
+  background: transparent
+  border: none
+  cursor: pointer
+  padding: 0.5rem
+  display: flex
+  align-items: center
+  justify-content: center
+  transition: transform 0.2s ease
+  
+  &:hover
+    transform: scale(1.1)
+  
+  &:focus
+    outline: none
+  
+  .icon
+    font-size: 1.25rem
+    color: var(--color-text)
+    transition: color 0.3s ease
+
+
+// Smooth transitions for theme switching
+[data-theme="dark"],
+[data-theme="light"]
+  transition: background-color 0.3s ease, color 0.3s ease
+  
+  *
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease
+
+// Respect user's motion preferences
+@media (prefers-reduced-motion: reduce)
+  [data-theme="dark"],
+  [data-theme="light"]
+    transition: none !important
+    
+    *
+      transition: none !important
+
+// Print styles (always light)
+@media print
+  [data-theme="dark"]
+    background-color: white !important
+    color: black !important
+    
+    body,
+    .navbar,
+    .footer,
+    .card
+      background-color: white !important
+      color: black !important
+
