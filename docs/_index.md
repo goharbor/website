@@ -22,6 +22,6 @@ This section describes how developers can build from Harbor source code, customi
 
 ## Access the Documentation Source Files
 
-The source files for this documentation set are located in the [Harbor repository on Github](https://github.com/goharbor/harbor/tree/release-2.8.0/docs).
+The source files for this documentation set are located in the [Harbor repository on GitHub](https://github.com/goharbor/harbor/tree/release-2.8.0/docs).
 
-For the previous versions of the docs, go to the [`docs` folder in the Github repository](https://github.com/goharbor/harbor/tree/main/docs) and select the appropriate `release-X.Y.Z` branch.
+For the previous versions of the docs, go to the [`docs` folder in the GitHub repository](https://github.com/goharbor/harbor/tree/main/docs) and select the appropriate `release-X.Y.Z` branch.

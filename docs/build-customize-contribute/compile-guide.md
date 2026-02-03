@@ -142,7 +142,7 @@ make clean -e VERSIONTAG=[TAG]
 ```
 
 {{< note >}}
-If new code has been added to Github, the git commit TAG will change. Better use this command to clean up images and files of the previous TAG.
+If new code has been added to GitHub, the git commit TAG will change. Better use this command to clean up images and files of the previous TAG.
 {{< /note >}}
 
 #### By default, the make process creates a development build. To create a release build of Harbor, set the below flag to false.
