@@ -38,6 +38,12 @@ The next time a user requests that image, Harbor checks the image's latest manif
 
 As of Harbor v2.1.1, Harbor proxy cache fires a HEAD request to determine whether any layer of a cached image has been updated in the Docker Hub registry. Using this method to check the target registry will not trigger the [Docker Hub rate limiter](https://www.docker.com/blog/scaling-docker-to-serve-millions-more-developers-network-egress/). If any image layer was updated, the proxy cache will pull the new image, which will count towards the Docker Hub rate limiter.
 
+{{< note >}}
+Proxy cache follows upstream registry authentication challenges (for example, `WWW-Authenticate: Bearer realm="..."`) to obtain tokens.
+The token service endpoint can be different from the registry host (for example, Docker Hub).
+Only configure proxy cache endpoints that are within your trust boundary, and use least-privilege credentials for the upstream access account.
+{{< /note >}}
+
 ## Create Proxy Cache Project
 
 To set up a proxy cache, a Harbor system administrators can create a proxy cache project that connects to a target registry using a registry endpoint.
@@ -66,4 +72,3 @@ To start using the proxy cache, configure your docker pull commands or pod manif
 ```bash
 > docker pull <harbor_server_name>/<proxy_project_name>/goharbor/harbor-core:dev
 ```
-
