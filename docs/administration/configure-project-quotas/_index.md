@@ -41,7 +41,7 @@ When setting project quotas, it is useful to know how Harbor calculates storage 
   {{< note >}}
   When users push an image, the manifest is pushed last, after all of the associated blobs have been pushed successfully to the registry. If several images are pushed concurrently and if there is an insufficient number of tags left in the quota for all of them, images are accepted in the order that their manifests arrive. Consequently, an attempt to push an image might not be immediately rejected for exceeding the quota. This is because there was availability in the tag quota when the push was initiated, but by the time the manifest arrived the quota had been exhausted.
   {{< /note >}}
-- Shared blobs are only computed once per project. In Docker, blob sharing is defined globally. In Harbor, blob sharing is defined at the project level. As a consequence, overall storage usage can be greater than the actual disk capacity.
+- Shared blobs are computed once per project for quota accounting purposes. In Docker Distribution, blob storage is globally deduplicated. In Harbor, quota usage is tracked at the project level, so a blob referenced by multiple projects may be counted once in each project’s usage, even though the underlying blob storage may be shared. As a consequence, overall storage usage can be greater than the actual disk capacity.
 - Retagging images reserves and releases resources: 
   -  If you retag an image within a project,  the storage usage does not change because there are no new blobs or manifests.
   - If you retag an image from one project to another, the storage usage will increase.
