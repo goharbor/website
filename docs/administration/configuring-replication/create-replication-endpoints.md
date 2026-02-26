@@ -47,6 +47,12 @@ You can also use an endpoint in a proxy cache project. Read more about how to [C
    If you plan to use this endpoint with a proxy cache project, the access accounts you provide here enables the proxy cache project to pull every image from the target registry that the access account has permission to pull.
    {{< /note >}}
 
+   {{< note >}}
+   When an endpoint is used for proxy cache, Harbor may obtain tokens by following the upstream `WWW-Authenticate: Bearer realm="..."` challenge.
+   The token service can be hosted on a different domain from the registry.
+   Configure only trusted upstream registries/endpoints and use least-privilege access credentials.
+   {{< /note >}}
+
 1. Optionally, select the **Verify Remote Cert** check box.
 
    Deselect the check box if the remote registry uses a self-signed or untrusted certificate.
