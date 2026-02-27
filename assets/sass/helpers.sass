@@ -13,7 +13,7 @@
 
 .is-hero-logo
   +logo(60%, 75%)
-  
+
 .is-footer-logo
   +logo(40%, 75%)
 
@@ -62,6 +62,7 @@ hr.color
   +touch
     margin-right: 0.5rem
 
+
 .content
   .img
     &:hover
@@ -72,7 +73,7 @@ hr.color
     display: block
     overflow-x: auto
     white-space: nowrap
-    
+
 .is-page
   display: flex
   flex-direction: column
@@ -80,3 +81,92 @@ hr.color
 
   .is-main
     flex: 1
+
+
+// ---- NEW TABLE MODAL + WRAPPER STYLES ----
+
+.table-expanded
+  position: fixed
+  top: 5vh
+  left: 5vw
+  width: 90vw
+  height: 90vh
+  background: white
+  z-index: 9999
+  overflow: auto
+  padding: 1.5rem
+  white-space: normal
+  border-radius: 6px
+  box-shadow: 0 0 20px rgba(0,0,0,0.08)
+
+  table
+    width: 100%
+    table-layout: auto
+    white-space: normal
+    border-collapse: collapse
+
+  th, td
+    border: 1px solid rgba(0,0,0,0.08)
+    padding: 0.5rem 0.75rem
+    vertical-align: top
+
+  // ---- NEW FIXED CLOSE BUTTON ----
+  .table-close-btn
+    position: sticky          // keeps button visible during scroll
+    top: 0.5rem
+    float: right
+    margin-bottom: 1rem
+    background: rgba(255,255,255,0.9)
+    border: 1px solid rgba(0,0,0,0.12)
+    padding: 0.35rem 0.5rem
+    border-radius: 4px
+    font-size: 1rem
+    cursor: pointer
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06)
+    z-index: 10000
+
+  .table-close-btn:focus
+    outline: none
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.06)
+
+
+// ---- OVERLAY ----
+
+.table-modal-overlay
+  position: fixed
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  background: rgba(255,255,255,0.35)
+  -webkit-backdrop-filter: blur(6px)
+  backdrop-filter: blur(6px)
+  z-index: 10
+
+
+// ---- TABLE LIST PAGE WRAPPING ----
+
+.table-wrapper
+  position: relative
+  margin-bottom: 1.25rem
+
+  .table-scroll
+    overflow-x: auto
+    -webkit-overflow-scrolling: touch
+
+  .table-enlarge-btn
+    position: absolute
+    top: 0.5rem
+    right: 0.5rem
+    background: rgba(0,0,0,0.6)
+    color: white
+    border: none
+    padding: 0.35rem 0.5rem
+    border-radius: 3px
+    cursor: pointer
+    font-size: 0.85rem
+    z-index: 2
+
+  .table-enlarge-btn:focus
+    outline: none
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.12)
