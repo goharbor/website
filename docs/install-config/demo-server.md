@@ -16,7 +16,7 @@ When using the demo server, please take note of the conditions of use.
  - The demo server only allows you to test user functionalities. You cannot test administrator functionalities. To test administrator functionalities and advanced features, set up a Harbor instance.
  - Do not push images >100MB to the demo server, as it has limited storage capacity.
 
-If you encounter any problems while using the demo server, open an [issue on Github](https://github.com/goharbor/harbor/issues) or contact the Harbor team on [Slack](https://github.com/goharbor/harbor#community).
+If you encounter any problems while using the demo server, open an [issue on GitHub](https://github.com/goharbor/harbor/issues) or contact the Harbor team on [Slack](https://github.com/goharbor/harbor#community).
 
 ## Access the Demo Server ##
 
