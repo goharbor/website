@@ -6,7 +6,7 @@
 {{ $versions := site.Params.versions }}
 {{ $latest   := index $versions 0 }}
 {{ $isDocs   := eq .Section "docs" }}
-{{ $version  := index (split .File.Path "/") 1 }}
+{{ $version  := "" }}{{ with .File }}{{ $version = index (split .Path "/") 1 }}{{ end }}
 {{ $isLatest := eq $version $latest }}
 <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation" x-data="{ open: false }">
   <div class="container">
