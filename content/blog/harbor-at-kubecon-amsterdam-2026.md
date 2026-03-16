@@ -1,4 +1,3 @@
-```markdown
 ---
 title: "Project Harbor at KubeCon + CloudNativeCon Europe 2026 in Amsterdam"
 author:
@@ -73,8 +72,6 @@ This is the perfect place to:
 
 ![Project Pavilion Map – Harbor Booth Location](../img/kubecon-eu-2026-project-pavilion-map.png)
 
-*(Map will be added/updated later with Harbor booth location highlighted.)*
-
 ## Growing the Harbor Ecosystem
 
 Over the past year, Harbor has continued to expand its capabilities around **artifact management, security scanning, policy enforcement, and supply chain security**. The project remains deeply integrated with the broader CNCF ecosystem and continues to evolve alongside technologies like Kubernetes, OCI artifacts, and modern DevSecOps workflows.
@@ -102,4 +99,3 @@ If you’re passionate about **secure software supply chains, artifact managemen
 
 [Orlin Vasilev](https://x.com/OrlinVasilev)  
 Harbor Team
-```
