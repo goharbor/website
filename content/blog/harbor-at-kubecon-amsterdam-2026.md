@@ -3,7 +3,7 @@
 title: "Project Harbor at KubeCon + CloudNativeCon Europe 2026 in Amsterdam"
 author:
   name: "Orlin Vasilev"
-date: 2026-03-16T12:00:00+02:00
+date: 2026-03-15T12:00:00+02:00
 description: "Harbor team at KubeCon Europe 2026"
 showPageInfo: true
 ---
