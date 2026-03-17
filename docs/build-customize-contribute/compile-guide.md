@@ -89,6 +89,7 @@ The `Makefile` contains these configurable parameters:
 | COMPILETAG          | Compile model flag, default: compile_normal (local golang build) |
 | TRIVYFLAG           | Trivy mode flag, default: false                                  |
 | HTTPPROXY           | NPM http proxy for Clarity UI builder                            |
+| NPM_REGISTRY        | NPM registry override                                            |
 | REGISTRYSERVER      | Remote registry server IP address                                |
 | REGISTRYUSER        | Remote registry server user name                                 |
 | REGISTRYPASSWORD    | Remote registry server user password                             |
