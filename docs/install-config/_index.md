@@ -28,6 +28,12 @@ If installation fails, see [Troubleshooting Harbor Installation](troubleshoot-in
 
 You can also use Helm to install Harbor on a Kubernetes cluster, to make Harbor highly available. For information about installing Harbor with Helm on a Kubernetes cluster, see [Deploying Harbor with High Availability via Helm](harbor-ha-helm.md).
 
+## Guided Installation via KubeStellar Console
+
+[KubeStellar Console](https://console.kubestellar.io) offers a guided installation mission for Harbor that walks you through the entire deployment process. The guided install includes pre-flight checks, step-by-step instructions, validation of each stage, built-in troubleshooting, and rollback support.
+
+To start the guided Harbor installation, visit: https://console.kubestellar.io/missions/install-harbor
+
 ## Post-Installation Configuration
 
 For information about how to manage your deployed Harbor instance, see [Reconfigure Harbor and Manage the Harbor Lifecycle](reconfigure-manage-lifecycle.md).
