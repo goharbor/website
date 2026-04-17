@@ -41,6 +41,7 @@ Configure the followings items in `values.yaml`, alternatively they can be set v
   - Configure the ingress url`expose.ingress.hosts.core`.
 - **External URL**
   - Configure the url `externalURL`, this is used to populate the docker/helm commands shown on portal as well as the token service URL returned to docker clients.
+    Note that the url must be a domain root eg. `harbor.example.com`, harbor-helm doesn't support running on a path. See [this discussion](https://github.com/goharbor/harbor-helm/discussions/1323).
 - **External PostgreSQL**
   - Set `database.type` to `external` and fill the information in `database.external` section.
   - An empty database needs to be created, by default the database is set to `registry`, this however can be changed by setting `coreDatabase`.
