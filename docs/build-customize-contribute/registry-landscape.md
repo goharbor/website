@@ -1,34 +1,34 @@
 ---
-title: Registry Landscape
+title: Paesaggio del registro
 ---
 
-The cloud native ecosystem is moving rapidly—registries and their feature sets are no exception. We've made our best effort to survey the container registry landscape and compare to our core feature set.
+L'ecosistema nativo del cloud si sta muovendo rapidamente: i registri e i relativi set di funzionalità non fanno eccezione. Abbiamo fatto del nostro meglio per esaminare il panorama dei container registry e confrontarlo con il nostro set di funzionalità principali.
 
-This table is maintained by contributions from the Harbor community. If you find something outdated or outright erroneous, please submit a PR and we'll fix it right away.
+Questa tabella è mantenuta dai contributi della comunità Harbor. Se trovi qualcosa di obsoleto o completamente errato, invia un PR e lo sistemeremo immediatamente.
 
-| Feature                                                | Harbor | Docker Trusted Registry | Quay    | Cloud Providers (GCP, AWS, Azure) | Distribution/Distribution         | Artifactory | GitLab   |
+| Caratteristica | Harbor | Docker Registro attendibile | Banchina | Provider cloud (GCP, AWS, Azure) | Distribuzione/Distribuzione | Artifabbrica | GitLab |
 | -------------:                                         | :----: | :---------------------: | :-----: | :-------------------------------: | :-----------------:         | :---------: | :------: |
-| Ability to Determine Version of Binaries in Containers | ✓      | ✓                       | ✓       | ✗                                 | ✗                           | ?           | ?        |
-| Artifact Repository (rpms, git, jar, etc)              | ✗      | ✗                       | ✗       | ✗                                 | ✗                           | ✓           | partial  |
-| Audit Logs                                             | ✓      | ✓                       | ✓       | ✓                                 | ✗                           | ✓           | ✓        |
-| Content Trust and Validation                           | ✓      | ✓                       | ✓       | ✗                                 | partial                     | partial     | ✗        |
-| Custom TLS Certificates                                | ✓      | ✓                       | ✓       | ✗                                 | ✓                           | ✓           | ✓        |
-| Helm Chart Repository Manager                          | ✓      | ✗                       | partial | ✗                                 | ✗                           | ✓           | ✗        |
-| LDAP-based Auth                                        | ✓      | ✓                       | ✓       | partial                           | ✗                           | ✓           | ✓        |
-| Local Auth                                             | ✓      | ✓                       | ✓       | ✓                                 | ✗                           | ✓           | ✓        |
-| Metrics       | ✓      | ✓                       | ✓       | ✓                           | ✓                           | ✓           | ✓        |
-| Multi-Tenancy (projects, teams, namespaces, etc)       | ✓      | ✓                       | ✓       | partial                           | ✗                           | ✓           | ✓        |
-| Open Source                                            | ✓      | partial                 | ✓       | ✗                                 | ✓                           | partial     | partial  |
-| Project Quotas (by storage consumption)                | ✓      | ✗                       | ✓       | partial                           | ✗                           | ✗           | ✗        |
-| Replication between instances                          | ✓      | ✓                       | ✓       | n/a                               | ✗                           | ✓           | ✗        |
-| Replication between non-instances                      | ✓      | ✗                       | ✓       | n/a                               | ✗                           | ✗           | ✗        |
-| Robot Accounts for Helm Charts                         | ✓      | ✗                       | ✗       | ?                                 | ✗                           | ✗           | ✗        |
-| Robot Accounts for Images                              | ✓      | ?                       | ✓       | ?                                 | ✗                           | ?           | ?        |
-| Role-Based Access Control                              | ✓      | ✓                       | ✓       | ✓                                 | ✗                           | ✓           | ✗        |
-| Single Sign On (OIDC)                                  | ✓      | ✓                       | ✓       | ✓                                 | ✗                           | partial     | ✗        |
-| Tag Retention Policy                                   | ✓      | ✗                       | ✓       | ✗                                 | ✗                           | ✗           | ✗        |
-| Upstream Registry Proxy Cache                          | ✓      | ✓                       | ✗       | ✗                                 | ✓                           | ✓           | ✗        |
-| Vulnerability Scanning & Monitoring                    | ✓      | ✓                       | ✓       | ✗                                 | ✗                           | ✓           | partial  |
-| Vulnerability Scanning Plugin Framework                | ✓      | ✗                       | ✓       | ✗                                 | ✗                           | ✗           | ✗        |
-| Vulnerability Allowlisting                             | ✓      | ✗                       | ✗       | ✗                                 | ✗                           | ✗           | ✗        |
-| Webhooks                                               | ✓      | ✓                       | ✓       | ✓                                 | ✓                           | ✓           | ✓        |
+| Capacità di determinare la versione dei file binari nei contenitori | ✓ | ✓ | ✓ | ✗ | ✗ | ?           | ?        |
+| Repository di artefatti (rpms, git, jar, ecc.) | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | parziale |
+| Registri di controllo | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ | ✓ |
+| Affidabilità e convalida dei contenuti | ✓ | ✓ | ✓ | ✗ | parziale | parziale | ✗ |
+| Certificati TLS personalizzati | ✓ | ✓ | ✓ | ✗ | ✓ | ✓ | ✓ |
+| Helm Gestore archivio grafici | ✓ | ✗ | parziale | ✗ | ✗ | ✓ | ✗ |
+| Autenticazione basata su LDAP | ✓ | ✓ | ✓ | parziale | ✗ | ✓ | ✓ |
+| Autenticazione locale | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ | ✓ |
+| Metriche | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Multi-tenancy (progetti, team, spazi dei nomi, ecc.) | ✓ | ✓ | ✓ | parziale | ✗ | ✓ | ✓ |
+| Open Source | ✓ | parziale | ✓ | ✗ | ✓ | parziale | parziale |
+| Quote del progetto (per consumo di spazio di archiviazione) | ✓ | ✗ | ✓ | parziale | ✗ | ✗ | ✗ |
+| Replica tra istanze | ✓ | ✓ | ✓ | n/a | ✗ | ✓ | ✗ |
+| Replica tra non istanze | ✓ | ✗ | ✓ | n/a | ✗ | ✗ | ✗ |
+| Conti robot per grafici Helm | ✓ | ✗ | ✗ | ?                                 | ✗ | ✗ | ✗ |
+| Account robot per immagini | ✓ | ?                       | ✓ | ?                                 | ✗ | ?           | ?        |
+| Controllo degli accessi basato sui ruoli | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ | ✗ |
+| Accesso singolo (OIDC) | ✓ | ✓ | ✓ | ✓ | ✗ | parziale | ✗ |
+| Politica di conservazione dei tag | ✓ | ✗ | ✓ | ✗ | ✗ | ✗ | ✗ |
+| Cache proxy del registro a monte | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✗ |
+| Scansione e monitoraggio delle vulnerabilità | ✓ | ✓ | ✓ | ✗ | ✗ | ✓ | parziale |
+| Framework del plugin per la scansione delle vulnerabilità | ✓ | ✗ | ✓ | ✗ | ✗ | ✗ | ✗ |
+| Inserimento nella lista consentita delle vulnerabilità | ✓ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ |
+| Webhook | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |

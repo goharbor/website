@@ -1,19 +1,19 @@
 ---
-title: Troubleshooting Harbor Installation
+title: Risoluzione dei problemi di installazione Harbor
 weight: 50
 ---
 
-The following sections help you to solve problems when installing Harbor.
+Le seguenti sezioni aiutano a risolvere i problemi durante l'installazione di Harbor.
 
-## Access Harbor Logs
+## Accedi ai registri Harbor
 
-By default, registry data is persisted in the host's `/data/` directory. This data remains unchanged even when Harbor's containers are removed and/or recreated, you can edit the `data_volume` in `harbor.yml` file to change this directory.
+Per impostazione predefinita, i dati registry vengono mantenuti nella directory `/data/` dell'host. Questi dati rimangono invariati anche quando i contenitori di Harbor vengono rimossi e/o ricreati, è possibile modificare il file `data_volume` nel file `harbor.yml` per cambiare questa directory.
 
-In addition, Harbor uses `rsyslog` to collect the logs of each container. By default, these log files are stored in the directory `/var/log/harbor/` on the target host for troubleshooting, also you can change the log directory in `harbor.yml`.
+Inoltre, Harbor utilizza `rsyslog` per raccogliere i log di ciascun container. Per impostazione predefinita, questi file di registro vengono archiviati nella directory `/var/log/harbor/` sull'host di destinazione per la risoluzione dei problemi; inoltre è possibile modificare la directory di registro in `harbor.yml`.
 
-## Harbor Does Not Start or Functions Incorrectly
+## Harbor non si avvia o funziona in modo errato
 
-If Harbor does not start or functions incorrectly, run the following command to check whether all of Harbor's containers are in the `Up` state.
+Se Harbor non si avvia o funziona in modo errato, eseguire il comando seguente per verificare se tutti i contenitori di Harbor sono nello stato `Up`.
 
 ```
 sudo docker compose ps
@@ -30,35 +30,35 @@ sudo docker compose ps
   registryctl         /harbor/start.sh                 Up
 ```
 
-If a container is not in the `Up` state, check the log file for that container in `/var/log/harbor`. For example, if the `harbor-core` container is not running, look at the `core.log` log file.
+Se un contenitore non è nello stato `Up`, controllare il file di registro per quel contenitore in `/var/log/harbor`. Ad esempio, se il contenitore `harbor-core` non è in esecuzione, esaminare il file di registro `core.log`.
 
-## Using `nginx` or Load Balancing
+## Utilizzo di `nginx` o bilanciamento del carico
 
-If Harbor is running behind an `nginx` proxy or elastic load balancing, open the file `common/config/nginx/nginx.conf` and search for the following line.
+Se Harbor è in esecuzione dietro un proxy `nginx` o un bilanciamento del carico elastico, aprire il file `common/config/nginx/nginx.conf` e cercare la riga seguente.
 
 ```
 proxy_set_header X-Forwarded-Proto $scheme;
 ```
 
-If the proxy already has similar settings, remove it from the sections `location /`, `location /v2/` and `location /service/` and redeploy Harbor. For instructions about how to redeploy Harbor, see [Reconfigure Harbor and Manage the Harbor Lifecycle](reconfigure-manage-lifecycle.md).
+Se il proxy ha già impostazioni simili, rimuovilo dalle sezioni `location /`, `location /v2/` e `location /service/` e ridistribuisci Harbor. Per istruzioni su come ridistribuire Harbor, vedere [Riconfigurare Harbor e gestire il ciclo di vita Harbor](reconfigure-manage-lifecycle.md).
 
-## Troubleshoot HTTPS Connections {#https}
+## Risoluzione dei problemi relativi alle connessioni HTTPS {#https}
 
-If you use an intermediate certificate from a certificate issuer, merge the intermediate certificate with your own certificate to create a certificate bundle. Run the following command.
+Se utilizzi un certificato intermedio di un emittente di certificato, unisci il certificato intermedio con il tuo certificato per creare un pacchetto di certificati. Esegui il comando seguente.
 
 ```
 cat intermediate-certificate.pem >> yourdomain.com.crt
 ```
-When the Docker daemon runs on certain operating systems, you might need to trust the certificate at the OS level. For example, run the following commands.
+Quando il demone Docker viene eseguito su determinati sistemi operativi, potrebbe essere necessario considerare attendibile il certificato a livello di sistema operativo. Ad esempio, esegui i seguenti comandi.
 
-- Ubuntu:
+-Ubuntu:
 
     ```sh
     cp yourdomain.com.crt /usr/local/share/ca-certificates/yourdomain.com.crt 
     update-ca-certificates
     ```
 
-- Red Hat (CentOS etc):
+- Red Hat (CentOS ecc):
 
     ```sh
     cp yourdomain.com.crt /etc/pki/ca-trust/source/anchors/yourdomain.com.crt

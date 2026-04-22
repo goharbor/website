@@ -1,101 +1,101 @@
 ---
-title: Working with OCI Helm Charts
+title: Lavorare con i grafici OCI Helm
 weight: 65
 ---
 
-With the release of Helm 3.8.0, Helm is able to store and work with charts in container registries, as an alternative to Helm repositories. This feature, which used to be an experimental feature, is now generally available.
+Con il rilascio di Helm 3.8.0, Helm è in grado di archiviare e lavorare con i grafici nei registri dei contenitori, come alternativa ai repository Helm. Questa funzionalità, che in passato era sperimentale, è ora disponibile a tutti.
 
-Please see Helm documentation on [storing charts in OCI](https://helm.sh/blog/storing-charts-in-oci/).
+Consultare la documentazione Helm su [memorizzare le carte in OCI](https://helm.sh/blog/storing-charts-in-oci/).
 
-## Pulling Helm Charts
+## Estrazione dei grafici Helm
 
-If the project that the helm chart belongs to is private, you must sign in first:
+Se il progetto a cui appartiene l'helmer chart è privato, devi prima accedere:
 
 ```sh
 helm registry login <harbor_address>
 ```
 
-You can now pull a chart:
+Ora puoi estrarre un grafico:
 
 ```sh
 helm pull oci://<harbor_address>/<project>/<chart_name> --version <version>
 ```
 
-e.g.
+per esempio.
 ```sh
 helm pull oci://demo.goharbor.io/oci/demo --version 0.1.0
 ```
 
 {{< important >}}
-Harbor supports content trust through Cosign and Notation. If you have enforced content trust in your project, you will not be able to pull an unsigned image. Read more about [implementing content trust](../../project-configuration/implementing-content-trust/).
+Harbor supporta l'attendibilità dei contenuti tramite Cosign e Notation. Se hai imposto l'attendibilità dei contenuti nel tuo progetto, non sarai in grado di estrarre un'immagine non firmata. Ulteriori informazioni su [implementare la fiducia nei contenuti](../../project-configuration/implementing-content-trust/).
 {{< /important >}}
 
-## Pushing OCI Helm charts
+## Stiamo spingendo i grafici OCI Helm
 
-Before you can push an OCI Helm chart  to Harbor, you must create a project in the Harbor interface or use already existing one. For information about how to create a project, see [Create Projects](../create-projects/_index.md).
+Prima di poter inviare un grafico OCI Helm a Harbor, è necessario creare un progetto nell'interfaccia Harbor o utilizzarne uno già esistente. Per informazioni su come creare un progetto, vedere [Crea progetti](../create-projects/_index.md).
 
 {{< note >}}
-You cannot push charts and images to a proxy cache project. See more about [proxy cache projects](../../../administration/configure-proxy-cache/).
+Non è possibile inviare grafici e immagini a un progetto di cache proxy. Scopri di più su [progetti di cache proxy](../../../administration/configure-proxy-cache/).
 {{< /note >}}
 
-First, log in from Docker client:
+Innanzitutto, accedi dal client Docker:
 
 ```sh
 helm registry login <harbor_address>
 ```
 
-Push the OCI Helm Chart:
+Visualizza il grafico OCI Helm:
 
 ```sh
 helm push <chart_name_and_version>.tgz oci://<harbor_address>/<project>
 ```
 
-e.g.
+per esempio.
 ```sh
 helm push example-0.1.0.tgz oci://demo.goharbor.io/oci
 ```
 
-## Installing OCI Helm Chart
+## Installazione del grafico OCI Helm
 
-If project is private you need to login first as shown above
+Se il progetto è privato devi prima effettuare il login come mostrato sopra
 
 ```sh
 helm install <release_name> oci://<harbor_address>/<project>/<chart_name> --version <version>
 ```
 
-e.g.
+per esempio.
 ```sh
 helm install MyRelease oci://demo.goharbor.io/oci/demo --version 0.1.0
 ```
 
-## Creating and packaging the OCI Chart
-For full reference please check official [Helm documentation]()
+## Creazione e confezionamento del grafico OCI
+Per un riferimento completo, consultare la [documentazione ufficiale Helm]()
 
-### Create the chart
+### Crea il grafico
 ```sh
 helm create oci-chart-example
 ```
 
-### Edit and make it usable
-Use your preferred method to edit the newly created chart.
+### Modificalo e rendilo utilizzabile
+Utilizza il tuo metodo preferito per modificare il grafico appena creato.
 
-### Package
+### Pacchetto
 ```sh
 helm package oci-chart-example
 ```
 
-### Push OCI Chart to Harbor Registry
+### Invia il grafico OCI al registro Harbor
 ```sh
 helm push oci-chart-example-0.1.0.tgz oci://demo.goharbor.io/oci-charts
 ```
 
-## See your images in the Harbor Interface
+## Guarda le tue immagini nell'interfaccia Harbor
 
-You can see your OCI Helm Charts in your Harbor Project as any other artifact
-![Project View](../../../img/oci/oci-chart-main-view.png)
+Puoi vedere i tuoi grafici OCI Helm nel tuo progetto Harbor come qualsiasi altro artefatto
+![Vista del progetto](../../../img/oci/oci-chart-main-view.png)
 
-You can see all tags(versions)
-![Tags](../../../img/oci/oci-chart-tags.png)
+Puoi vedere tutti i tag (versioni)
+![Tag](../../../img/oci/oci-chart-tags.png)
 
-Work with OCI Helm Charts from the UI
-![Actions](../../../img/oci/oci-chart-actions.png)
+Lavora con i grafici OCI Helm da UI
+![Azioni](../../../img/oci/oci-chart-actions.png)

@@ -1,92 +1,93 @@
-Harbor Documentation
+Documentazione Harbor
 
-This is the main table of contents for the Harbor 2.1.x documentation.
+Questo è il sommario principale della documentazione Harbor 2.1.x.
 
-## Harbor Installation and Configuration
+## Harbor Installazione e configurazione
 
-This section describes how to install Harbor and perform the required initial configurations. These day 1 operations are performed by the Harbor Administrator.
+Questa sezione descrive come installare Harbor ed eseguire le configurazioni iniziali richieste. Queste operazioni del giorno 1 vengono eseguite dall'amministratore Harbor.
 
-- [Introduction](install-config/_index.md)
-- [Test Harbor with the Demo Server](install-config/demo-server.md)
-- [Harbor Compatibility List](install-config/harbor-compatibility-list.md)
-- [Harbor Installation Prerequisites](install-config/installation-prereqs.md)
-- [Download the Harbor Installer](install-config/download-installer.md)
-- [Configure HTTPS Access to Harbor](install-config/configure-https.md)
-- [Configure the Harbor YML File](install-config/configure-yml-file.md)
-- [Run the Installer Script](install-config/run-installer-script.md)
-- [Deploying Harbor with High Availability via Helm](install-config/harbor-ha-helm.md)
-- [Troubleshooting Harbor Installation](install-config/troubleshoot-installation.md)
-- [Reconfigure Harbor and Manage the Harbor Lifecycle](install-config/reconfigure-manage-lifecycle.md)
-- [Customize the Harbor Token Service](install-config/customize-token-service.md)
-- [Configure Harbor Settings at the Command Line](install-config/configure-system-settings-cli.md)
+-[Introduzione](install-config/_index.md)
+-[Prova Harbor con il server demo](install-config/demo-server.md)
+-[Elenco compatibilità Harbor](install-config/harbor-compatibility-list.md)
+-[Harbor Prerequisiti di installazione](install-config/installation-prereqs.md)
+-[Scarica il programma di installazione Harbor](install-config/download-installer.md)
+-[Configura HTTPS Accesso a Harbor](install-config/configure-https.md)
+-[Configura il file YML Harbor](install-config/configure-yml-file.md)
+-[Esegui lo script di installazione](install-config/run-installer-script.md)
+-[Distribuzione di Harbor con disponibilità elevata tramite Helm](install-config/harbor-ha-helm.md)
+-[Risoluzione dei problemi di installazione Harbor](install-config/troubleshoot-installation.md)
+-[Riconfigurare Harbor e gestire il ciclo di vita Harbor](install-config/reconfigure-manage-lifecycle.md)
+-[Personalizza il servizio token Harbor](install-config/customize-token-service.md)
+-[Configura le impostazioni Harbor dalla riga di comando](install-config/configure-system-settings-cli.md)
 
-## Harbor Administration
+## Harbor Amministrazione
 
-This section describes how to use and maintain Harbor after deployment. These day 2 operations are performed by the Harbor Administrator.
+Questa sezione descrive come utilizzare e gestire Harbor dopo la distribuzione. Queste operazioni del giorno 2 vengono eseguite dall'amministratore Harbor.
 
-- [Introduction](administration/_index.md)
-- [Configuring Authentication](administration/configure-authentication/_index.md)
-   - [Configure Database Authentication](administration/configure-authentication/db-auth.md)
-   - [Configure LDAP/Active Directory Authentication](administration/configure-authentication/ldap-auth.md)
-   - [Configure OIDC Provider Authentication](administration/configure-authentication/oidc-auth.md)
-- [Managing Users](administration/managing-users/_index.md)
-    - [User Permissions By Role](administration/managing-users/user-permissions-by-role.md)
-    - [Create User Accounts in Database Mode](administration/managing-users/create-users-db.md)
-- [Configure Global Settings](administration/general-settings/_index.md)
-- [Configure Project Quotas](administration/configure-project-quotas/_index.md)
-- [Configuring Replication](administration/configuring-replication/_index.md)
-    - [Create Replication Endpoints](administration/configuring-replication/create-replication-endpoints.md)
-    - [Create Replication Rules](administration/configuring-replication/create-replication-rules.md)
-    - [Manage Replications](administration/configuring-replication/manage-replications.md)
-- [Vulnerability Scanning](administration/vulnerability-scanning/_index.md)
-    - [Connect Harbor to Additional Vulnerability Scanners](administration/vulnerability-scanning/pluggable-scanners.md)
-    - [Scan Individual Images](administration/vulnerability-scanning/scan-individual-image.md)
-    - [Scan All Images](administration/vulnerability-scanning/scan-all-images.md)
-    - [Schedule Scans](administration/vulnerability-scanning/schedule-scans.md)
-    - [Import Vulnerability Data to an Offline Harbor instance](administration/vulnerability-scanning/import-vulnerability-data.md)
-    - [Configure System-Wide CVE Allowlists](administration/vulnerability-scanning/configure-system-allowlist.md)
-- [Garbage Collection](administration/garbage-collection/_index.md)
-- [Upgrade Harbor and Migrate Data](administration/upgrade/upgrade-migrate-data.md)
-  - [Upgrading Harbor Deployed with Helm](administration/upgrade/helm-upgrade.md)
-  - [Roll Back an Upgrade](administration/upgrade/roll-back-upgrade.md)
-  - [Test Harbor Upgrade](administration/upgrade/upgrade-test.md)
-- [Configure P2P Preheat](administration/p2p-preheat/_index.md)
-- [User-defined OCI artifact](administration/user-defined-OCI-artifact/_index.md)
+-[Introduzione](administration/_index.md)
+-[Configurazione dell'autenticazione](administration/configure-authentication/_index.md)
+   -[Configura l'autenticazione del database](administration/configure-authentication/db-auth.md)
+   -[Configurare l'autenticazione LDAP/Active Directory](administration/configure-authentication/ldap-auth.md)
+   -[Configurare l'autenticazione del provider OIDC](administration/configure-authentication/oidc-auth.md)
+-[Gestione degli utenti](administration/managing-users/_index.md)
+    -[Autorizzazioni utente per ruolo](administration/managing-users/user-permissions-by-role.md)
+    -[Crea account utente in modalità database](administration/managing-users/create-users-db.md)
+-[Configura le impostazioni globali](administration/general-settings/_index.md)
+-[Configura le quote del progetto](administration/configure-project-quotas/_index.md)
+-[Configurazione della replica](administration/configuring-replication/_index.md)
+    -[Creare endpoint di replica](administration/configuring-replication/create-replication-endpoints.md)
+    -[Creare regole di replica](administration/configuring-replication/create-replication-rules.md)
+    -[Gestire le repliche](administration/configuring-replication/manage-replications.md)
+-[Scansione delle vulnerabilità](administration/vulnerability-scanning/_index.md)
+    -[Connetti Harbor a ulteriori scanner di vulnerabilità](administration/vulnerability-scanning/pluggable-scanners.md)
+    -[Scansione di singole immagini](administration/vulnerability-scanning/scan-individual-image.md)
+    -[Scansiona tutte le immagini](administration/vulnerability-scanning/scan-all-images.md)
+    -[Pianifica scansioni](administration/vulnerability-scanning/schedule-scans.md)
+    -[Importa i dati sulle vulnerabilità in un'istanza Harbor offline](administration/vulnerability-scanning/import-vulnerability-data.md)
+    -[Configurare liste consentite CVE a livello di sistema](administration/vulnerability-scanning/configure-system-allowlist.md)
+-[Raccolta dei rifiuti](administration/garbage-collection/_index.md)
+-[Aggiorna Harbor e migra i dati](administration/upgrade/upgrade-migrate-data.md)
+  -[Aggiornamento di Harbor Distribuito con Helm](administration/upgrade/helm-upgrade.md)
+  -[Ripristina un aggiornamento](administration/upgrade/roll-back-upgrade.md)
+  -[Prova l'aggiornamento Harbor](administration/upgrade/upgrade-test.md)
+-[Configura il preriscaldamento P2P](administration/p2p-preheat/_index.md)
+-[Artefatto OCI definito dall'utente](administration/user-defined-OCI-artifact/_index.md)
 
-## Working with Harbor Projects
+## Lavorare con progetti Harbor
 
-This section describes how users with the developer, maintainer, and project administrator roles manage and participate in Harbor projects.
+Questa sezione descrive il modo in cui gli utenti con ruoli di sviluppatore, manutentore e amministratore del progetto gestiscono e partecipano ai progetti Harbor.
 
-- [Introduction](working-with-projects/_index.md)
-- [Create Projects](working-with-projects/create-projects/_index.md)
-    - [Assign Users to a Project](working-with-projects/add-users.md)
-- [Project Configuration](working-with-projects/project-configuration/_index.md)
-    - [Access and Search Project Logs](working-with-projects/access-project-logs.md)
-    - [Create Robot Accounts](working-with-projects/create-robot-accounts.md)
-    - [Configure Webhook Notifications](working-with-projects/configure-webhooks.md)
-    - [Configure a Per-Project CVE Allowlist](working-with-projects/configure-project-allowlist.md)
-    - [Implementing Content Trust](working-with-projects/implementing-content-trust.md)
-- [Working with Images, Tags, and Helm Charts](working-with-projects/working-with-images.md)
-    - [Pulling and Pushing Images](working-with-projects/pulling-pushing-images.md)
-    - [Create Labels](working-with-projects/create-labels.md)
-    - [Retag Images](working-with-projects/retagging-images.md)
-    - [Create Tag Retention Rules](working-with-projects/create-tag-retention-rules.md)
-    - [Create Tag Immutability  Rules](working-with-projects/create-tag-immutability-rules.md)
-    - [Manage Kubernetes Packages with Helm Charts](working-with-projects/managing-helm-charts.md)
-    - [Preheat Images](working-with-projects/working-with-images/preheat-images.md)
-- [Using API Explorer](working-with-projects/using-api-explorer/_index.md)
+-[Introduzione](working-with-projects/_index.md)
+-[Crea progetti](working-with-projects/create-projects/_index.md)
+    -[Assegnare utenti a un progetto](working-with-projects/add-users.md)
+-[Configurazione del progetto](working-with-projects/project-configuration/_index.md)
+    -[Accedi e cerca i log del progetto](working-with-projects/access-project-logs.md)
+    -[Crea account robot](working-with-projects/create-robot-accounts.md)
+    -[Configura le notifiche Webhook](working-with-projects/configure-webhooks.md)
+    -[Configura una lista consentita CVE per progetto](working-with-projects/configure-project-allowlist.md)
+    -[Implementazione della fiducia nei contenuti](working-with-projects/implementing-content-trust.md)
+-[Lavorare con immagini, tag e grafici Helm](working-with-projects/working-with-images.md)
+    -[Tirare e spingere immagini](working-with-projects/pulling-pushing-images.md)
+    -[Crea etichette](working-with-projects/create-labels.md)
+    -[Ricodifica immagini](working-with-projects/retagging-images.md)
+    -[Crea regole di conservazione dei tag](working-with-projects/create-tag-retention-rules.md)
+    -[Crea regole di immutabilità dei tag](working-with-projects/create-tag-immutability-rules.md)
+    -[Gestisci i pacchetti Kubernetes con i grafici Helm](working-with-projects/managing-helm-charts.md)
+    -[Preriscaldare le immagini](working-with-projects/working-with-images/preheat-images.md)
+-[Utilizzo di API Explorer](working-with-projects/using-api-explorer/_index.md)
 
-## Build, Customize, and Contribute to Harbor
+## Costruisci, personalizza e contribuisci a Harbor
 
-This section describes how developers can build from Harbor source code, customize their deployments, and contribute to the open-source Harbor project.
+Questa sezione descrive come gli sviluppatori possono creare dal codice sorgente Harbor, personalizzare le proprie distribuzioni e contribuire al progetto Harbor open source.
 
-- [Build Harbor from Source Code](build-customize-contribute/compile-guide.md)
-- [Developing the Harbor Frontend](build-customize-contribute/ui-contribution-get-started.md)
-- [Customize the Harbor Look & Feel ](build-customize-contribute/customize-look-feel.md)
-- [Developing for Internationalization](build-customize-contribute/developer-guide-i18n.md)
-- [Using Make](build-customize-contribute/use-make.md)
-- [View and test Harbor REST API via Swagger](build-customize-contribute/configure-swagger.md)
-- [Registry Landscape](build-customize-contribute/registry-landscape.md)
-- [E2E Test Scripting Guide](build-customize-contribute/e2e_api_python_based_scripting_guide.md)
+-[Costruisci Harbor dal codice sorgente](build-customize-contribute/compile-guide.md)
+-[Sviluppo del frontend Harbor](build-customize-contribute/ui-contribution-get-started.md)
+-[Personalizza l'aspetto e la sensazione di Harbor ](build-customize-contribute/customize-look-feel.md)
+-[Sviluppare per l'internazionalizzazione](build-customize-contribute/developer-guide-i18n.md)
+-[Utilizzando Crea](build-customize-contribute/use-make.md)
+-[Visualizza e prova Harbor REST API tramite Swagger](build-customize-contribute/configure-swagger.md)
+-[Paesaggio del registro](build-customize-contribute/registry-landscape.md)
+-[Guida allo scripting dei test E2E](build-customize-contribute/e2e_api_python_based_scripting_guide.md)
 
-See also the list of [Articles from the Harbor Community](https://github.com/goharbor/harbor/blob/master/docs/README.md#articles-from-the-community).
+Vedi anche l'elenco di [Articoli dalla comunità Harbor](https://github.com/goharbor/harbor/blob/master/docs/README.md#articles-from-the-community).
+

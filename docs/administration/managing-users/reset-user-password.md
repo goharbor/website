@@ -1,21 +1,21 @@
 ---
-title: Reset User Password in Database Mode
+title: Reimposta la password utente in modalità database
 weight: 25
 ---
 
-In database authentication mode, the Harbor system administrator can reset passwords for the specified users.
+Nella modalità di autenticazione del database, l'amministratore di sistema Harbor può reimpostare le password per gli utenti specificati.
 
-1. Log in to the Harbor interface with an account that has Harbor system administrator privileges.
-1. Under **Administration**, go to **Users**.
+1. Accedere all'interfaccia Harbor con un account che disponga dei privilegi di amministratore di sistema Harbor.
+1. In **Amministrazione**, vai a **Utenti**.
 
-   ![User_list](../../../img/create-user.png)
-1. Select an user then click the **Reset Password** button under the **Actions** dropdown.
+   ![Elenco_utenti](../../../img/create-user.png)
+1. Seleziona un utente, quindi fai clic sul pulsante **Reimposta password** nel menu a discesa **Azioni**.
 
-   ![Reset_user_password](../../../img/reset-user-password.png)
-1. Enter a new password for the selected user.
+   ![Reimposta_utente_password](../../../img/reset-user-password.png)
+1. Immettere una nuova password per l'utente selezionato.
 
-   ![Enter_new_password](../../../img/enter-new-password.png)
+   ![Inserisci_nuova_password](../../../img/enter-new-password.png)
 
-- You are not allowed to reset your own password
-- The new password must contain at least 8 characters with 1 lowercase letter, 1 uppercase letter and 1 numeric character
+- Non è consentito reimpostare la propria password
+- La nuova password deve contenere almeno 8 caratteri con 1 lettera minuscola, 1 lettera maiuscola e 1 carattere numerico
 

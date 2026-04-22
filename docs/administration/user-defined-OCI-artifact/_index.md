@@ -1,30 +1,30 @@
 ---
-title: User-defined OCI artifact
+title: Artefatto OCI definito dall'utente
 weight: 25
 ---
 
-Harbor now expands support for Machine Learning on K8s datamodels such as Kubeflow datamodels. Actually, they are still OCI artifacts.
-These artifacts follow Harbor-specific configuration so that harbor can show their rich metadata in a way and their icons. They are called user-defined OCI artifact.
+Harbor ora espande il supporto per il machine learning sui modelli di dati K8 come i modelli di dati Kubeflow. In realtà, sono ancora artefatti OCI.
+Questi artefatti seguono la configurazione specifica di Harbor in modo che Harbor possa mostrare i loro ricchi metadati in un modo e le loro icone. Sono chiamati artefatti OCI definiti dall'utente.
 
 
-## Harbor-specific Configuration
+## Configurazione specifica per Harbor
 
-The Harbor-specific configuration defines annotations keys in the manifest of an OCI artifact.
+La configurazione specifica di Harbor definisce le chiavi di annotazione nel manifest di un artefatto OCI.
 
-- **```io.goharbor.artifact.v1alpha1.skip-list```** string  
-It is in ```manifest.config.annotations```.  
-OPTIONAL property. The list of skip keys. Harbor will ignore these keys in configuration JSON layer. The value for this key should be type string separated by comma.
+- **```io.goharbor.artifact.v1alpha1.skip-list```** stringa  
+È in ```manifest.config.annotations```.  
+Immobile FACOLTATIVO. L'elenco delle chiavi di salto. Harbor ignorerà questi tasti nel livello di configurazione JSON. Il valore di questa chiave deve essere di tipo stringa separato da virgola.
 
-- **```io.goharbor.artifact.v1alpha1.icon```** empty string  
-It is in ```manifest.layers[].annotations```.  
-The identifier of artifact icon. The value for this key should be empty string. Only key will be processed, the value will not be used.
-If an icon is used by artifacts, the icon must be a layer of artifacts when building artifacts.
-Note: The mediaType of icons support "image/gif, image/png, image/jpeg".
+- **```io.goharbor.artifact.v1alpha1.icon```** stringa vuota  
+È in ```manifest.layers[].annotations```.  
+L'identificatore dell'icona dell'artefatto. Il valore di questa chiave deve essere una stringa vuota. Verrà elaborata solo la chiave, il valore non verrà utilizzato.
+Se un'icona viene utilizzata dagli artefatti, l'icona deve essere uno strato di artefatti quando si costruiscono artefatti.
+Nota: il mediaType delle icone supporta "image/gif, image/png, image/jpeg".
 
 
-## Example OCI Manifest
+## Esempio OCI Manifesto
 
-Example showing a user-defined OCI artifact:
+Esempio che mostra un artefatto OCI definito dall'utente:
 
 ```
 {
@@ -55,5 +55,5 @@ Example showing a user-defined OCI artifact:
 }
 ```
 
-## User-defined OCI Artifact Example
-If you are interested in user-defined OCI artifact, [ORMB](https://github.com/kleveross/ormb) is a great example.
+## Esempio di artefatto OCI definito dall'utente
+Se sei interessato all'artefatto OCI definito dall'utente, [ORMB](https://github.com/kleveross/ormb) è un ottimo esempio.

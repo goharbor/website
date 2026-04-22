@@ -1,172 +1,172 @@
 ---
-title: Create Tag Retention Rules
+title: Crea regole di conservazione dei tag
 weight: 80
 ---
 
-A repository can rapidly accumulate a large number of artifacts, many of which might not be required after a given time or once they have been superseded by a subsequent artifact build. These excess artifacts can obviously consume large quantities of storage capacity. As a Harbor system administrator, you can define rules that govern how many artifacts of a given repository to retain, or for how long to retain certain artifacts. 
+Un repository può accumulare rapidamente un gran numero di artefatti, molti dei quali potrebbero non essere più necessari dopo un dato periodo di tempo o una volta sostituiti da una successiva creazione di artefatti. Questi artefatti in eccesso possono ovviamente consumare grandi quantità di capacità di archiviazione. In qualità di amministratore di sistema Harbor, puoi definire regole che regolano il numero di artefatti di un determinato repository da conservare o per quanto tempo conservare determinati artefatti. 
 
-## How Tag Retention Rules Work
+## Come funzionano le regole di conservazione dei tag
 
-You define tag retention rules on projects and can specify which repositories you want to apply it to. This allows for greater granularity when defining your retention rules. As the name suggests, when you define a retention rule for a repository, you are identifying which tags to retain. You do not define rules to explicitly remove tags. Rather, when you set a rule, any tags in a repository that are not identified as being eligible for retention are discarded. The `OR` algorithm is used between rules.
+Puoi definire le regole di conservazione dei tag sui progetti e specificare a quali repository desideri applicarle. Ciò consente una maggiore granularità nella definizione delle regole di conservazione. Come suggerisce il nome, quando definisci una regola di conservazione per un repository, identifichi quali tag conservare. Non definisci regole per rimuovere esplicitamente i tag. Piuttosto, quando imposti una regola, tutti i tag in un repository che non sono identificati come idonei alla conservazione vengono eliminati. L'algoritmo `OR` viene utilizzato tra le regole.
 
-A tag retention rule has 3 filters that are applied sequentially, as described in the following table.
+Una regola di conservazione dei tag dispone di 3 filtri applicati in sequenza, come descritto nella tabella seguente.
 
-|Order|Filter|Description|
+|Ordine|Filtro|Descrizione|
 |---|---|---|
-|First|Repository or repositories|Identity the tags on which to apply the rule. You can identify repositories that either have a certain name or name fragment, or that do not have that name or name fragment. Wild cards (for example `*repo`, `repo*`, and `**`) are permitted. The repository filter is applied first to mark the repositories to which to apply the retention rule. The identified repositories are earmarked for further matching based on the tag criteria. No action is taken on the nonspecified repositories at this stage.|
-|Second|Quantity to retain|Set which tags to retain either by specifying a maximum number of tags, or by specifying a maximum period for which to retain tags.|
-|Third|Tags to retain|Identify the tag or tags on which to apply the rule. You can identify tags that either have a certain name or name fragment, or that do not have that name or name fragment. Wild cards (for example `*tag`, `tag*`, and `**`) are permitted. Use the checkbox to select whether untagged artifacts should be captured as part of the set of artifacts eligible for tag retention.|
+|Primo|Repository o repository|Identificazione dei tag su cui applicare la regola. È possibile identificare i repository che hanno un determinato nome o frammento di nome oppure che non hanno quel nome o frammento di nome. Sono consentiti i caratteri jolly (ad esempio `*repo`, `repo*` e `**`). Il filtro del repository viene applicato per primo per contrassegnare i repository a cui applicare la regola di conservazione. I repository identificati sono destinati a ulteriori corrispondenze in base ai criteri dei tag. In questa fase non viene intrapresa alcuna azione sui repository non specificati.|
+|Secondo|Quantità da conservare|Imposta quali tag conservare specificando un numero massimo di tag o specificando un periodo massimo per il quale conservare i tag.|
+|Terzo|Tag da conservare|Identificare il tag o i tag su cui applicare la regola. È possibile identificare i tag che hanno un determinato nome o frammento di nome oppure che non hanno quel nome o frammento di nome. Sono consentiti i caratteri jolly (ad esempio `*tag`, `tag*` e `**`). Utilizza la casella di controllo per selezionare se gli elementi senza tag devono essere acquisiti come parte dell'insieme di elementi idonei per la conservazione dei tag.|
 
-For information about how the `**` wildcard is applied, see https://github.com/bmatcuk/doublestar#patterns.
+Per informazioni su come viene applicato il carattere jolly `**`, vedere https://github.com/bmatcuk/doublestar#patterns.
 
-### Example 1
+### Esempio 1
 
-- You have 5 repositories in a project, repositories A to E.
-  - Repository A has 102 artifacts with 2 untagged, all of which have been pulled in the last week.
-  - Repositories B to E each have 7 artifacts with 1 untagged artifact, none of which have been pulled in the last month.
-- You set the repository filter to `**`, meaning that all repositories in the project are included.
-- You set the retention policy to retain the 10 most recently pulled artifacts in each repository.
-- You set the tag filter to `**`, keep "untagged artifacts" unchecked, meaning that all artifacts with at least one tag in the repository are included.
+- Hai 5 repository in un progetto, repository da A a E.
+  - Il repository A contiene 102 artefatti di cui 2 senza tag, tutti estratti nell'ultima settimana.
+  - I repository da B a E hanno ciascuno 7 artefatti con 1 artefatto senza tag, nessuno dei quali è stato estratto nell'ultimo mese.
+- Imposta il filtro del repository su `**`, il che significa che tutti i repository nel progetto sono inclusi.
+- Imposta la politica di conservazione per conservare i 10 artefatti estratti più di recente in ciascun repository.
+- Imposta il filtro tag su `**`, mantieni deselezionati gli "artefatti senza tag", il che significa che tutti gli artefatti con almeno un tag nel repository vengono inclusi.
 
-In this example the rule retains the 10 most recently pulled tagged artifacts in repository A, and the 6 of the artifacts in each of the 4 repositories B to E. So, a total of 34 artifacts are retained in the project. 
-In other words, the rule does not treat all of the artifacts in repositories A to E as a single pool from which to choose the 10 most recent artifacts. 
-So, even if the 11th to 100th tags in repository A have been pulled more recently than any of the tags in repositories B to E, all of the tagged artifacts in repositories B to E are retained, because each of those repositories has fewer than 10 tags, and all untagged artifacts are deleted.
+In questo esempio la regola conserva i 10 artefatti con tag estratti più recentemente nel repository A e i 6 artefatti in ciascuno dei 4 repository da B a E. Pertanto, nel progetto vengono conservati un totale di 34 artefatti. 
+In altre parole, la regola non tratta tutti gli artefatti nei repository da A a E come un unico pool da cui scegliere i 10 artefatti più recenti. 
+Pertanto, anche se i tag dall'11° al 100° nel repository A sono stati estratti più recentemente rispetto a qualsiasi tag nei repository da B a E, tutti gli artefatti con tag nei repository da B a E vengono conservati, perché ciascuno di questi repository ha meno di 10 tag e tutti gli artefatti senza tag vengono eliminati.
 
-### Example 2
+### Esempio 2
 
-This example uses the same project and repositories as example 1, but sets the retention policy to retain the artifacts in each repository that have been pulled in the last 7 days.
+Questo esempio utilizza lo stesso progetto e gli stessi repository dell'esempio 1, ma imposta la policy di conservazione per conservare gli artefatti in ogni repository che sono stati estratti negli ultimi 7 giorni.
 
-In this case, all of the 100 tagged artifacts in repository A are retained because they have been pulled in the last 7 days. None of the artifacts in repositories B to E are retained, because none of them has been pulled in the last week. In this example, 100 artifacts are retained, as opposed to 34 artifacts in example 1.
-And all untagged artifacts are deleted.
+In questo caso, tutti i 100 artefatti contrassegnati nel repository A vengono conservati perché sono stati estratti negli ultimi 7 giorni. Nessuno degli artefatti nei repository da B a E viene conservato, perché nessuno di essi è stato rimosso nell'ultima settimana. In questo esempio vengono mantenuti 100 artefatti, rispetto ai 34 artefatti dell'esempio 1.
+E tutti gli artefatti senza tag vengono eliminati.
 
-### Example 3
+### Esempio 3
 
-This example uses the same project and repositories as example 2, but checked "untagged artifacts", then all artifacts in repository A are retained.
+Questo esempio utilizza lo stesso progetto e gli stessi repository dell'esempio 2, ma selezionando "artefatti senza tag", tutti gli artefatti nel repository A vengono conservati.
 
-In this case, all of the 103 artifacts in repository A are retained because they have been pulled in the last 7 days. None of the artifacts in repositories B to E are retained, because none of them has been pulled in the last week. In this example, 103 artifacts are retained, as opposed to 100 artifacts in example 2.
-And all untagged artifacts are retained.
+In questo caso, tutti i 103 artefatti nel repository A vengono conservati perché sono stati estratti negli ultimi 7 giorni. Nessuno degli artefatti nei repository da B a E viene conservato, perché nessuno di essi è stato rimosso nell'ultima settimana. In questo esempio vengono mantenuti 103 artefatti, rispetto ai 100 artefatti dell'esempio 2.
+E tutti gli artefatti senza tag vengono conservati.
 
-### Tag Retention Rules and Native Docker Tag Deletion
+### Regole di conservazione dei tag ed eliminazione dei tag nativi Docker
 
-**Note**: If an artifact has several tags, and only a partial set of tags are matched via the retention policy, then the artifact and all its tags will be retained. In other words, retention is matched at the tag level but retention / deletion is carried out at the artifact level, with retention fully preserving the artifact including all of its tags. 
+**Nota**: se un artefatto ha diversi tag e solo un set parziale di tag viene abbinato tramite il criterio di conservazione, l'artefatto e tutti i relativi tag verranno conservati. In altre parole, la conservazione viene effettuata a livello di tag, ma la conservazione/eliminazione viene eseguita a livello di artefatto, con la conservazione che preserva completamente l'artefatto inclusi tutti i relativi tag. 
 
-For example, you have following tags, listed according to their push time, and all of them refer to the same SHA digest:
+Ad esempio, hai i seguenti tag, elencati in base al loro tempo di push, e tutti si riferiscono allo stesso digest SHA:
 
-- `harbor-1.8`, pushed 8/14/2019 01:00am
-- `harbor-release`, pushed 8/14/2019 03:00am
-- `harbor-nightly`, pushed 8/14/2019 06:00am
-- `harbor-latest`, pushed 8/14/2019 09:00am
+- `harbor-1.8`, inviato il 14/08/2019 alle 01:00
+- `harbor-release`, inviato il 14/08/2019 alle 03:00
+- `harbor-nightly`, inviato il 14/08/2019 alle 06:00
+- `harbor-latest`, inviato il 14/08/2019 alle 09:00
 
-You configure a retention policy to retain the two latest tags that match `harbor-*`, so that `harbor-nightly` and `harbor-latest` are retained. However, since all tags refer to the same SHA digest, this policy would also retain the tags `harbor-1.8` and `harbor-release`, so all tags are retained.
+Configurare un criterio di conservazione per conservare i due tag più recenti che corrispondono a `harbor-*`, in modo che vengano conservati `harbor-nightly` e `harbor-latest`. Tuttavia, poiché tutti i tag fanno riferimento allo stesso digest SHA, questa policy manterrebbe anche i tag `harbor-1.8` e `harbor-release`, quindi tutti i tag verranno conservati.
 
-## Combining Rules on a Repository
+## Combinazione di regole su un repository
 
-You can define up to 15 rules per project. You can apply multiple rules to a repository or set of repositories. When you apply multiple rules to a repository, they are applied with `OR` logic rather than with `AND` logic. In this way, there is no prioritization of application of the rules on a given repository. Rules run concurrently in the background, and the resulting sets from each rule are combined at the end of the run.
+È possibile definire fino a 15 regole per progetto. È possibile applicare più regole a un repository o a un set di repository. Quando si applicano più regole a un repository, queste vengono applicate con la logica `OR` anziché con la logica `AND`. In questo modo non esiste alcuna priorità nell’applicazione delle regole su un dato repository. Le regole vengono eseguite contemporaneamente in background e i set risultanti da ciascuna regola vengono combinati alla fine dell'esecuzione.
 
-### Example 4
+### Esempio 4
 
-This example uses the same project and repositories as examples 1 and 2, but sets two rules:
+Questo esempio utilizza lo stesso progetto e gli stessi repository degli esempi 1 e 2, ma imposta due regole:
 
-- Rule 1: Retain all of the artifacts in each repository that have been pulled in the last 7 days.
-- Rule 2: Retain a maximum number of 10 artifacts in each repository.
+- Regola 1: conservare in ciascun repository tutti gli artefatti estratti negli ultimi 7 giorni.
+- Regola 2: conservare un numero massimo di 10 artefatti in ciascun repository.
 
-For repository A, rule 1 retains all of the 100 tagged artifacts because they have all been pulled in the last week. Rule 2 retains the 10 most recently pulled artifacts. So, since the two rules are applied with an `OR` relationship, all 100 artifacts are retained in repository A.
+Per il repository A, la regola 1 conserva tutti i 100 artefatti contrassegnati perché sono stati tutti estratti nell'ultima settimana. La regola 2 conserva i 10 artefatti estratti più recentemente. Pertanto, poiché le due regole vengono applicate con una relazione `OR`, tutti i 100 artefatti vengono conservati nel repository A.
 
-For repositories B-E, rule 1 will retain 0 artifacts as no artifacts are pulled in the last week. Rule 2 will retain all 6 artifacts because 6 < 10. So, since the two rules are applied with an `OR` relationship, for repositories B-E, each repository will keep all 6 artifacts.
+Per i repository B-E, la regola 1 manterrà 0 artefatti poiché nell'ultima settimana non è stato estratto alcun artefatto. La regola 2 manterrà tutti e 6 gli artefatti perché 6 < 10. Pertanto, poiché le due regole vengono applicate con una relazione `OR`, per i repository B-E, ciascun repository manterrà tutti e 6 gli artefatti.
 
-In this example, all of the artifacts are retained.
+In questo esempio, tutti gli artefatti vengono mantenuti.
 
-### Example 5
+### Esempio 5
 
-This example uses a different repository to the previous examples.
+Questo esempio utilizza un repository diverso dagli esempi precedenti.
 
-- You have a repository that has 12 tags:
+- Hai un repository con 12 tag:
 
-  |Production|Release Candidate|Release|
+  |Produzione|Candidato al rilascio|Rilascio|
   |---|---|---|
   |`2.1-your_repo-prod`|`2.1-your_repo-rc`|`2.1-your_repo-release`|
   |`2.2-your_repo-prod`|`2.2-your_repo-rc`|`2.2-your_repo-release`|
   |`3.1-your_repo-prod`|`3.1-your_repo-rc`|`3.1-your_repo-release`|
   |`4.4-your_repo-prod`|`4.4-your_repo-rc`|`4.4-your_repo-release`| 
 
-- You define two tag retention rules on this repository:
-  - Retain the 10 most recently pushed artifacts that start with `2`.
-  - Retain the 10 most recently pushed artifacts that end with `-prod`.
+- Definisci due regole di conservazione dei tag su questo repository:
+  - Conserva i 10 artefatti inseriti più di recente che iniziano con `2`.
+  - Conserva i 10 artefatti pubblicati più di recente che terminano con `-prod`.
 
-In this example, the rules are applied to the following 8 tags:
+In questo esempio, le regole vengono applicate ai seguenti 8 tag:
 
-- `2.1-your_repo-prod`
-- `2.1-your_repo-rc`
-- `2.1-your_repo-release`
-- `2.2-your_repo-prod`
-- `2.2-your_repo-rc`
-- `2.2-your_repo-release`
-- `3.1-your_repo-prod`
-- `4.4-your_repo-prod`
+-`2.1-your_repo-prod`
+-`2.1-your_repo-rc`
+-`2.1-your_repo-release`
+-`2.2-your_repo-prod`
+-`2.2-your_repo-rc`
+-`2.2-your_repo-release`
+-`3.1-your_repo-prod`
+-`4.4-your_repo-prod`
 
-Because there are no untagged artifacts, checking the checkbox makes no difference.
+Poiché non sono presenti artefatti senza tag, selezionare la casella di controllo non fa alcuna differenza.
 
-## How Tag Retention Rules Interact with Project Quotas
+## Come le regole di conservazione dei tag interagiscono con le quote del progetto
 
-The Harbor system administrator can set a maximum on the number of tags that a project can contain and the amount of storage that it can consume. For information about project quotas, see [Configure Project Quotas](../../administration/configure-project-quotas/_index.md). 
+L'amministratore di sistema Harbor può impostare un numero massimo di tag che un progetto può contenere e la quantità di spazio di archiviazione che può consumare. Per informazioni sulle quote del progetto, vedere [Configura le quote del progetto](../../administration/configure-project-quotas/_index.md). 
 
-If you set a quota on a project, this quota cannot be exceeded. The quota is applied to a project even if you set a retention rule that would exceed it. In other words, you cannot use retention rules to bypass quotas.
+Se imposti una quota su un progetto, questa quota non può essere superata. La quota viene applicata a un progetto anche se imposti una regola di conservazione che la supererebbe. In altre parole, non è possibile utilizzare le regole di conservazione per aggirare le quote.
 
-## Configure Tag Retention Rules
+## Configura le regole di conservazione dei tag
 
-1. Log in to the Harbor interface with an account that has at least project administrator privileges.
-1. Go to **Projects**, select a project, select **Policy**, and select **Tag Retention**.
+1. Accedi all'interfaccia Harbor con un account che disponga almeno dei privilegi di amministratore del progetto.
+1. Vai a **Progetti**, seleziona un progetto, seleziona **Politica** e seleziona **Conservazione tag**.
 
-   ![Tag options](../../../img/tag-retention1.png)
-1. Click **Add Rule** to add a rule.
-1. In the **Repositories** drop-down menu, select **matching** or **excluding**.
-  ![Select repositories](../../../img/tag-retention2.png)
-1. In the **Repositories** text box, identify the repositories on which to apply the rule.
+   ![Opzioni dei tag](../../../img/tag-retention1.png)
+1. Fare clic su **Aggiungi regola** per aggiungere una regola.
+1. Nel menu a discesa **Repository**, seleziona **corrispondente** o **escluso**.
+  ![Seleziona repository](../../../img/tag-retention2.png)
+1. Nella casella di testo **Repository**, identificare i repository su cui applicare la regola.
   
-   You can define the repositories on which to apply the rule by entering the following information:
+   È possibile definire i repository su cui applicare la regola inserendo le seguenti informazioni:
   
-   - A repository name, for example `my_repo_1`.
-   - A comma-separated list of repository names, for example `my_repo_1,my_repo_2,your_repo_3`.
-   - A partial repository name with wildcards, for example `my_*`, `*_3`, or `*_repo_*`.
-   - `**` to apply the rule to all of the repositories in the project. 
+   - Un nome di repository, ad esempio `my_repo_1`.
+   - Un elenco separato da virgole di nomi di repository, ad esempio `my_repo_1,my_repo_2,your_repo_3`.
+   - Un nome di repository parziale con caratteri jolly, ad esempio `my_*`, `*_3` o `*_repo_*`.
+   - `**` per applicare la regola a tutti i repository del progetto. 
   
-   If you selected **matching**, the rule is applied to the repositories you identified. If you selected **excluding**, the rule is applied to all of the repositories in the project except for the ones that you identified.
-1. In the **By artifact count or number of days** drop-down menu, define how many tags to retain or the period to retain tags.
-  ![Select retention criteria](../../../img/tag-retention3.png)
+   Se hai selezionato **corrispondenza**, la regola viene applicata ai repository identificati. Se hai selezionato **escluso**, la regola viene applicata a tutti i repository del progetto ad eccezione di quelli identificati.
+1. Nel menu a discesa **Per conteggio artefatti o numero di giorni**, definire il numero di tag da conservare o il periodo di conservazione dei tag.
+  ![Seleziona i criteri di conservazione](../../../img/tag-retention3.png)
   
-   |Option|Description|
+   |Opzione|Descrizione|
    |---|---|
-   |**retain the most recently pushed # artifacts**|Enter the maximum number of artifacts to retain, keeping the ones that have been pushed most recently. There is no maximum age for an artifact.|
-   |**retain the most recently pulled # artifacts**|Enter the maximum number of artifacts to retain, keeping only the ones that have been pulled recently. There is no maximum age for an artifact.|
-   |**retain the artifacts pushed within the last # days**|Enter the number of days to retain artifacts, keeping only the ones that have been pushed during this period. There is no maximum number of artifacts.|
-   |**retain the artifacts pulled within the last # days**|Enter the number of days to retain artifacts, keeping only the ones that have been pulled during this period. There is no maximum number of artifacts.|
-   |**retain always**|Always retain the artifacts identified by this rule.| 
+   |**conserva gli # artefatti inviati più di recente**|Immetti il ​​numero massimo di artefatti da conservare, mantenendo quelli inviati più di recente. Non esiste un'età massima per un artefatto.|
+   |**conserva gli # artefatti estratti più recentemente**|Inserisci il numero massimo di artefatti da conservare, mantenendo solo quelli estratti di recente. Non esiste un'età massima per un artefatto.|
+   |**conserva gli artefatti inviati negli ultimi # giorni**|Immetti il ​​numero di giorni per cui conservare gli artefatti, conservando solo quelli che sono stati inviati durante questo periodo. Non esiste un numero massimo di artefatti.|
+   |**conserva gli artefatti estratti negli ultimi # giorni**|Inserisci il numero di giorni per cui conservare gli artefatti, conservando solo quelli che sono stati estratti durante questo periodo. Non esiste un numero massimo di artefatti.|
+   |**conserva sempre**|Conserva sempre gli artefatti identificati da questa regola.| 
 
-1. In the **Tags** drop-down menu, select **matching** or **excluding**.
-1. In the **Tags** text box, identify the tags on which to apply the rule.
+1. Nel menu a discesa **Tag**, seleziona **corrispondenti** o **esclusi**.
+1. Nella casella di testo **Tag**, identificare i tag a cui applicare la regola.
   
-   You can define the tags on which to apply the rule by entering the following information:
+   È possibile definire i tag su cui applicare la regola inserendo le seguenti informazioni:
   
-   - A tag name, for example `my_tag_1`.
-   - A comma-separated list of tag names, for example `my_tag_1,my_tag_2,your_tag_3`.
-   - A partial tag name with wildcards, for example `my_*`, `*_3`, or `*_tag_*`.
-   - `**` to apply the rule to all of the tags in the project. 
+   - Un nome tag, ad esempio `my_tag_1`.
+   - Un elenco di nomi di tag separati da virgole, ad esempio `my_tag_1,my_tag_2,your_tag_3`.
+   - Un nome tag parziale con caratteri jolly, ad esempio `my_*`, `*_3` o `*_tag_*`.
+   - `**` per applicare la regola a tutti i tag del progetto. 
   
-   If you selected **matching**, the rule is applied to the tags you identified. If you selected **excluding**, the rule is applied to all of the tags in the repository except for the ones that you identified.
-1. Click **Add** to save the rule.
-1. (Optional) Click **Add Rule** to add more rules, up to a maximum of 15 per project.
-1. (Optional) Under Schedule, click **Edit** and select how often to run the rule.
+   Se hai selezionato **corrispondente**, la regola viene applicata ai tag identificati. Se hai selezionato **escluso**, la regola viene applicata a tutti i tag nel repository tranne quelli identificati.
+1. Fare clic su **Aggiungi** per salvare la regola.
+1. (Facoltativo) Fare clic su **Aggiungi regola** per aggiungere più regole, fino a un massimo di 15 per progetto.
+1. (Facoltativo) In Pianificazione, fare clic su **Modifica** e selezionare la frequenza con cui eseguire la regola.
 
-   ![Select retention criteria](../../../img/tag-retention4.png)
+   ![Seleziona i criteri di conservazione](../../../img/tag-retention4.png)
    
-   If you select **Custom**, enter a cron job command to schedule the rule. 
+   Se selezioni **Personalizzato**, inserisci un comando cron job per pianificare la regola. 
   
-   **NOTE**: If you define multiple rules, the schedule is applied to all of the rules. You cannot schedule different rules to run at different times. 
-1. Click **Dry Run** to test the rule or rules that you have defined.
-1. Click **Run Now** to run the rule immediately.
+   **NOTA**: se definisci più regole, la pianificazione viene applicata a tutte le regole. Non è possibile pianificare regole diverse da eseguire in momenti diversi. 
+1. Fare clic su **Esecuzione di prova** per testare la regola o le regole definite.
+1. Fare clic su **Esegui ora** per eseguire immediatamente la regola.
 
-**WARNING**: You cannot revert a rule after you run it. It is strongly recommended to perform a dry run before you run rules. 
+**ATTENZIONE**: non è possibile annullare una regola dopo averla eseguita. Si consiglia vivamente di eseguire un'esecuzione di prova prima di eseguire le regole. 
 
-To modify an existing rule, use the **Action** drop-down menu next to a rule to deactivate, edit, or delete that rule. 
+Per modificare una regola esistente, utilizza il menu a discesa **Azione** accanto a una regola per disattivarla, modificarla o eliminarla. 
 
-![Modify tag retention rules](../../../img/tag-retention5.png)
+![Modifica le regole di conservazione dei tag](../../../img/tag-retention5.png)

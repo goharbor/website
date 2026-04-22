@@ -1,103 +1,103 @@
 ---
-title: Sign Artifacts with Cosign or Notation
+title: Firma gli artefatti con Cosign o Notation
 weight: 92
 ---
 
-Artifact signing and signature verification are critical security capabilities that allow you to verify the integrity of an artifact. Harbor supports content trust through integrations with [Cosign](https://github.com/sigstore/cosign) and [Notation](https://github.com/notaryproject/notation).
+La firma degli artefatti e la verifica della firma sono funzionalità di sicurezza critiche che consentono di verificare l'integrità di un artefatto. Harbor supporta l'attendibilità dei contenuti attraverso le integrazioni con [Cosign](https://github.com/sigstore/cosign) e [Notation](https://github.com/notaryproject/notation).
 
-This page describes how to start using Cosign and Notation to sign your artifacts. A project administrator can configure a project to [enforce content trust](../..//working-with-projects/project-configuration/implementing-content-trust#enforce-content-trust), making it required for all artifacts to be signed before they can be pulled from a Harbor registry.
+Questa pagina descrive come iniziare a utilizzare Cosign e Notation per firmare i tuoi artefatti. Un amministratore di progetto può configurare un progetto su [imporre la fiducia nei contenuti](../..//working-with-projects/project-configuration/implementing-content-trust#enforce-content-trust), rendendo necessario che tutti gli artefatti siano firmati prima che possano essere estratti da un Harbor registry.
 
-## Use Cosign to sign artifacts
+## Usa Cosign per firmare artefatti
 
-Harbor v2.5 integrates support for [Cosign](https://github.com/sigstore/cosign), an OCI artifact signing and verification solution that is part of the [Sigstore project](https://github.com/sigstore).
+Harbor v2.5 integra il supporto per [Cosign](https://github.com/sigstore/cosign), una soluzione di firma e verifica degli artefatti OCI che fa parte di [Progetto Sigstore](https://github.com/sigstore).
 
-Cosign signs OCI artifacts and pushes the generated signature into Harbor. This signature is stored as an artifact accessory along side the signed artifact. Harbor manages a link between the signed artifact and cosign signature, allowing you to apply things like [tag retention rules](../..//working-with-projects/working-with-images/create-tag-retention-rules/) and [immutable rules](../../working-with-projects/working-with-images/create-tag-immutability-rules/) to a signed artifact, and it will extend to both the signed artifact and the signature. In this way you can use Harbor's built in functionality to manage signed artifacts and Cosign signature accessories. Note that [Vulnerability scans](../../../administration/vulnerability-scanning/) of Cosign signatures are not supported.
+Cosign firma gli artefatti OCI e inserisce la firma generata in Harbor. Questa firma viene archiviata come accessorio dell'artefatto insieme all'artefatto firmato. Harbor gestisce un collegamento tra l'artefatto firmato e la firma cosign, consentendo di applicare elementi come [regole di conservazione dei tag](../..//working-with-projects/working-with-images/create-tag-retention-rules/) e [regole immutabili](../../working-with-projects/working-with-images/create-tag-immutability-rules/) a un artefatto firmato e si estenderà sia all'artefatto firmato che alla firma. In questo modo è possibile utilizzare la funzionalità integrata di Harbor per gestire gli artefatti firmati e gli accessori di firma Cosign. Tieni presente che le firme [Scansioni delle vulnerabilità](../../../administration/vulnerability-scanning/) di Cosign non sono supportate.
 
-A key feature of using Cosign with Harbor is the ability to use Harbor's [replication capabilities](../../administration/configuring-replication/) to replicate signatures with their associated signed artifact. This means that if a [replication rule](../../administration/configuring-replication/create-replication-rules/) applies to a signed artifact, Harbor will apply the replication rule to the signature in the same way it applies it to the signed artifact.
+Una caratteristica fondamentale dell'utilizzo di Cosign con Harbor è la possibilità di utilizzare [capacità di replica](../../administration/configuring-replication/) di Harbor per replicare le firme con l'artefatto firmato associato. Ciò significa che se un [regola di replica](../../administration/configuring-replication/create-replication-rules/) si applica a un artefatto firmato, Harbor applicherà la regola di replica alla firma nello stesso modo in cui la applica all'artefatto firmato.
 
-* When replicating between Harbor instances, the target Harbor instance will maintain the link between the signed artifact and its associated signatures. You will be able to see the relationship between the two artifacts in the target Harbor interface, in the same way that you do in the source registry.
+* Durante la replica tra istanze Harbor, l'istanza Harbor di destinazione manterrà il collegamento tra l'artefatto firmato e le firme associate. Sarai in grado di vedere la relazione tra i due artefatti nell'interfaccia Harbor di destinazione, nello stesso modo in cui la fai nell'interfaccia registry di origine.
 
-* When replicating from Harbor to another target registry type, the target registry will not manage the link between the signed artifact and any associated signatures. You will see the subject manifest and signatures as coordinating artifacts under the same repository.
+* Durante la replica da Harbor a un altro tipo registry di destinazione, il registry di destinazione non gestirà il collegamento tra l'artefatto firmato e le eventuali firme associate. Vedrai il manifest dell'oggetto e le firme come artefatti di coordinamento nello stesso repository.
 
-**Note:** Only Manual and Scheduled replications "Trigger Modes" are applicable. Event-based replication is not possible at the moment due to the chicken and egg situation, you cannot replication image which is not signed, but you cannot replicate signature without image.
+**Nota:** sono applicabili solo le repliche manuali e pianificate "Modalità di attivazione". La replica basata sugli eventi non è al momento possibile a causa della situazione dell'uovo e della gallina, non è possibile replicare un'immagine che non è firmata, ma non è possibile replicare la firma senza immagine.
 
-### Sign, upload, and view Cosign signatures in Harbor
+### Firma, carica e visualizza le firme Cosign in Harbor
 
-Before starting to sign with Cosign, you must have cosign installed locally and have generated a private key. See the [Cosign documentation](https://github.com/sigstore/cosign) for more installation information.
+Prima di iniziare a firmare con Cosign, è necessario aver installato localmente cosign e aver generato una chiave privata. Vedere [Documentazione Cosign](https://github.com/sigstore/cosign) per ulteriori informazioni sull'installazione.
 
-Use the `cosign sign` command to sign an image and upload the Cosign signature to your Harbor instance. Replace `<harbor-instance>/<image/path>:<image-tag>` in the example below with your Harbor instance and the path to the image.
+Utilizza il comando `cosign sign` per firmare un'immagine e caricare la firma Cosign nella tua istanza Harbor. Sostituisci `<harbor-instance>/<image/path>:<image-tag>` nell'esempio seguente con la tua istanza Harbor e il percorso dell'immagine.
 
 ```
 cosign sign --key cosign.key <harbor-instance>/<image/path>:<image-tag>
 ```
 
-After entering the password for your cosign private key, cosign will sign the image and upload the generated signature to your Harbor instance. You can view all signatures for a signed artifact in the Harbor interface.
+Dopo aver inserito la password per la chiave privata cosign, cosign firmerà l'immagine e caricherà la firma generata nella tua istanza Harbor. È possibile visualizzare tutte le firme per un artefatto firmato nell'interfaccia Harbor.
 
-1. Log into the Harbor interface and navigate to the project that your signed artifact is located in.
+1. Accedi all'interfaccia Harbor e vai al progetto in cui si trova il tuo artefatto firmato.
 
-    ![Image with cosign signature](../../../img/image-with-cosign-signature.png)
+    ![Immagine con firma cosign](../../../img/image-with-cosign-signature.png)
 
-1. If the artifact has an associated cosign signature accessory, you can click the > icon to display the Accessories table.
+1. Se all'artefatto è associato un accessorio di firma cosign, è possibile fare clic sull'icona > per visualizzare la tabella Accessori.
 
-    ![Expand accessories table](../../../img/expand-accessories-table.png)
+    ![Espandi la tabella degli accessori](../../../img/expand-accessories-table.png)
 
-    The Accessories table lists all associated cosign signatures that have been pushed to the project. This table shows the Accessory name, Type, Size, and Created Time.
+    La tabella Accessori elenca tutte le firme cosign associate che sono state inviate al progetto. Questa tabella mostra il nome, il tipo, la dimensione e l'ora di creazione dell'accessorio.
 
-    ![View accessories table](../../../img/view-accessories-table.png)
+    ![Visualizza la tabella degli accessori](../../../img/view-accessories-table.png)
 
-### Delete Cosign signatures
+### Elimina le firme Cosign
 
-You can delete a Cosign signature individually through the Harbor interface.
+È possibile eliminare una firma Cosign individualmente tramite l'interfaccia Harbor.
 
-1. Log into the Harbor interface and navigate to the project that your signed artifact is located in and expand the accessories table.
+1. Accedi all'interfaccia Harbor e vai al progetto in cui si trova il tuo manufatto firmato ed espandi la tabella degli accessori.
 
-    ![Expand accessories table](../../../img/expand-accessories-table.png)
+    ![Espandi la tabella degli accessori](../../../img/expand-accessories-table.png)
 
-1. Click on the **three vertical dot icon** next to the signature you want to delete and then click Delete.
+1. Fai clic sull'**icona dei tre punti verticali** accanto alla firma che desideri eliminare, quindi fai clic su Elimina.
 
-    ![Delete cosign signature](../../../img/cosign-signaure-delete.png)
+    ![Elimina la firma del cofirmatario](../../../img/cosign-signaure-delete.png)
 
-All the signatures associated with a signed artifact and will be deleted if the signed artifact is deleted.
+Tutte le firme associate a un artefatto firmato verranno eliminate se l'artefatto firmato viene eliminato.
 
-Note that Harbor's [garbage collection](../../administration/garbage-collection/) will not remove any signature individually. In Harbor, Cosign signatures are treated like any other OCI artifact, except from the perspective of the garbage collector which can't see accessory artifacts, like Cosign signatures. For example, if you configure garbage collection for untagged artifacts, Harbor's garbage collector will not remove any signatures without a tag. If the signed artifact is untagged, and matches the configured garbage collect rule, it and any associated signatures will be deleted.
+Tieni presente che [raccolta rifiuti](../../administration/garbage-collection/) di Harbor non rimuoverà alcuna firma individualmente. In Harbor, le firme Cosign vengono trattate come qualsiasi altro artefatto OCI, tranne dalla prospettiva del garbage collector che non può vedere artefatti accessori, come le firme Cosign. Ad esempio, se si configura la garbage collection per gli artefatti senza tag, il garbage collector di Harbor non rimuoverà alcuna firma senza tag. Se l'elemento firmato non è contrassegnato e corrisponde alla regola di Garbage Collect configurata, esso e tutte le firme associate verranno eliminati.
 
-Harbor doesn't support `cosign clean` to remove signatures as Harbor has chosen not to implement tag deletion which is used by `cosign clean`. See the [OCI distribution specification](https://github.com/opencontainers/distribution-spec/blob/main/spec.md#content-management) for more information on implantation requirements.
+Harbor non supporta `cosign clean` per rimuovere le firme poiché Harbor ha scelto di non implementare l'eliminazione dei tag utilizzata da `cosign clean`. Consulta [Specifica di distribuzione OCI](https://github.com/opencontainers/distribution-spec/blob/main/spec.md#content-management) per ulteriori informazioni sui requisiti di impianto.
 
-## Use Notation to sign and verify artifacts with distribution spec v1.1 mode
-[Notation](https://notaryproject.dev/) is a standard-based tool and library for signing and verifying OCI artifacts. It generates signatures and associates them with OCI artifacts to ensure integrity for the supply chain.
+## Utilizza Notation per firmare e verificare gli artefatti con la modalità specifica di distribuzione v1.1
+[Notation](https://notaryproject.dev/) è uno strumento e una libreria basati su standard per la firma e la verifica degli artefatti OCI. Genera firme e le associa agli artefatti OCI per garantire l'integrità della catena di approvvigionamento.
 
-### Install Notation CLI
-Install the latest version on Linux. Follow the [installation guide](https://notaryproject.dev/docs/user-guides/installation/cli/) for other platforms and methods.
+### Installa Notation CLI
+Installa l'ultima versione su Linux. Segui [guida all'installazione](https://notaryproject.dev/docs/user-guides/installation/cli/) per altre piattaforme e metodi.
 
 `brew install notation`
 
-### Generating a Test Key and Self-Signed Certificate:
-Use notation `cert generate-test` to generate a test RSA key for signing artifacts, and a self-signed `X.509` test certificate for verifying artifacts. Please note the self-signed certificate should be used for testing or development purposes only. You should use CA-issued certificate in production.
+### Generazione di una chiave di prova e di un certificato autofirmato:
+Utilizzare la notazione `cert generate-test` per generare una chiave RSA di prova per firmare gli artefatti e un certificato di test `X.509` autofirmato per verificare gli artefatti. Tieni presente che il certificato autofirmato deve essere utilizzato solo a scopo di test o sviluppo. È necessario utilizzare il certificato emesso dalla CA in produzione.
 
 ```shell
 notation cert generate-test --default "wabbit-networks.io"
 ```
-### Authenticate to Harbor Registry
-To authenticate with the Harbor registry, set the following environment variables:
+### Autenticarsi nel registro Harbor
+Per autenticarsi con Harbor registry, impostare le seguenti variabili di ambiente:
 
 ```shell
 export NOTATION_USERNAME="YOUR_REGISTRY_USERNAME"
 export NOTATION_PASSWORD="YOUR_REGISTRY_PASSWORD"
 ```
-### Sign an existing image in Harbor
-Assuming you have configured HTTPS access and pushed an image to Harbor, you can use the `notation sign` command to sign the image.
+### Firma un'immagine esistente in Harbor
+Supponendo di aver configurato l'accesso HTTPS e di aver inviato un'immagine a Harbor, è possibile utilizzare il comando `notation sign` per firmare l'immagine.
 
 ```shell
 notation sign <harbor-domain>/<image-reference>
 ```
-Once the image is successfully signed, the signed status is updated to a green tick and the corresponding signature has been pushed to the registry.
+Una volta che l'immagine è stata firmata con successo, lo stato firmato viene aggiornato in un segno di spunta verde e la firma corrispondente è stata inviata a registry.
 
-![signed image in Harbor registry](../../../img/signed-image.png)
+![immagine firmata in Harbor registry](../../../img/signed-image.png)
 
-### Create a trust policy to verify the image
-To verify the container image, configure the trust policy to specify trusted identities that sign the artifacts, and level of signature verification to use. For more details, see trust policy spec.
+### Crea una policy di attendibilità per verificare l'immagine
+Per verificare l'immagine del contenitore, configurare la policy di attendibilità per specificare le identità attendibili che firmano gli artefatti e il livello di verifica della firma da utilizzare. Per ulteriori dettagli, vedere le specifiche della policy di attendibilità.
 
-Create a JSON file with the following trust policy, for example:
+Crea un file JSON con la seguente policy di attendibilità, ad esempio:
 
 ```shell
 cat <<EOF > ./trustpolicy.json
@@ -119,21 +119,21 @@ cat <<EOF > ./trustpolicy.json
 }
 EOF
 ```
-Use `notation policy import` to import the trust policy configuration from a JSON file. For example:
+Utilizzare `notation policy import` per importare la configurazione della politica di attendibilità da un file JSON. Per esempio:
 
 ```shell
 notation policy import ./trustpolicy.json
 ```
 
-### Verify the image
-Use `notation verify` to verify signatures associated with the container image.
+### Verifica l'immagine
+Utilizza `notation verify` per verificare le firme associate all'immagine del contenitore.
 
 ```shell
 notation verify <harbor-domain>/<image-reference>
 ```
 
-You can also check the signature digest and inspect the signature and its certificate information to make sure the image is produced by a trusted identity.
+Puoi anche controllare il digest della firma e ispezionare la firma e le informazioni sul certificato per assicurarti che l'immagine sia prodotta da un'identità attendibile.
 
 `notation inspect $IMAGE`
 
-See the [Notation documentation](https://notaryproject.dev/docs/) for more information.
+Per ulteriori informazioni vedere [Documentazione Notation](https://notaryproject.dev/docs/).

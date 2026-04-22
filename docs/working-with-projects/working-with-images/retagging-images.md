@@ -1,19 +1,19 @@
 ---
-title: Retagging Artifacts
+title: Ricodifica degli artefatti
 weight: 75
 ---
 
-User with sufficient privileges can copy artifacts in Harbor to different repositories and projects. For example, you can copy images as follows:
+L'utente con privilegi sufficienti può copiare gli artefatti in Harbor in repository e progetti diversi. Ad esempio, puoi copiare le immagini come segue:
 
-- `release/app:stg`  -->  `release/app:prd`
-- `develop/app:v1.0` --> `release/app:v1.0`
+-`release/app:stg` --> `release/app:prd`
+-`develop/app:v1.0` --> `release/app:v1.0`
 
-To copy an artifact, you must have read permission (guest role or above) in the source project and write permission (developer role or above) in the target project.
+Per copiare un artefatto, è necessario disporre dell'autorizzazione di lettura (ruolo ospite o superiore) nel progetto di origine e dell'autorizzazione di scrittura (ruolo di sviluppatore o superiore) nel progetto di destinazione.
 
-In the Harbor interface, select the artifact to copy, and click `Copy`.
+Nell'interfaccia Harbor, selezionare l'artefatto da copiare e fare clic su `Copy`.
 
-![retag artifact](../../../img/retag1.png)
+![retaggare l'artefatto](../../../img/retag1.png)
 
-In the Retag window, enter the project name, repository name, the new tag name, and click **Confirm**. 
+Nella finestra Ricodifica, inserisci il nome del progetto, il nome del repository, il nuovo nome del tag e fai clic su **Conferma**. 
 
-![retag artifact](../../../img/retag2.png)
+![retaggare l'artefatto](../../../img/retag2.png)

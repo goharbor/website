@@ -1,36 +1,36 @@
 ---
-title: Configure Webhook Notifications
+title: Configura le notifiche Webhook
 weight: 45
 ---
 
-If you are a project administrator, you can configure a connection from a project in Harbor to a webhook endpoint. If you configure webhooks, Harbor notifies the webhook endpoint of certain events that occur in the project. Webhooks allow you to integrate Harbor with other tools to streamline continuous integration and development processes.
+Se sei un amministratore di progetto, puoi configurare una connessione da un progetto in Harbor a un endpoint webhook. Se configuri i webhook, Harbor notifica all'endpoint del webhook determinati eventi che si verificano nel progetto. I webhook consentono di integrare Harbor con altri strumenti per semplificare i processi di integrazione e sviluppo continui.
 
-The action that is taken upon receiving a notification from a Harbor project depends on your continuous integration and development processes. For example, by configuring Harbor to send a `POST` request to a webhook listener at an endpoint of your choice, you can trigger a build and deployment of an application whenever there is a change to an image in the repository.
+L'azione intrapresa dopo aver ricevuto una notifica da un progetto Harbor dipende dai processi di integrazione e sviluppo continui. Ad esempio, configurando Harbor per inviare una richiesta `POST` a un ascoltatore webhook su un endpoint di tua scelta, puoi attivare una compilazione e una distribuzione di un'applicazione ogni volta che viene apportata una modifica a un'immagine nel repository.
 
-### Supported Events
+### Eventi supportati
 
-You can define multiple webhook endpoints per project. Harbor supports two kinds of endpoints currently,  `HTTP`  and `SLACK`. Webhook notifications provide information about events in JSON format and are delivered by `HTTP` or `HTTPS POST` to an existing webhhook endpoint URL or Slack address that you provide. There are 2 JSON formats supported for the webhook payload, `Default` is the format that has always existed, and the data structure has not changed from the previous versions, except that it has been named, `CloudEvents` is the format which organizes the payload data as following the spec of [CloudEvents](https://cloudevents.io/). The following table describes the events that trigger notifications and the contents of each notification.
+È possibile definire più endpoint webhook per progetto. Harbor supporta attualmente due tipi di endpoint, `HTTP` e `SLACK`. Le notifiche Webhook forniscono informazioni sugli eventi nel formato JSON e vengono recapitate da `HTTP` o `HTTPS POST` a un URL endpoint webhhook esistente o a un indirizzo Slack fornito dall'utente. Sono supportati 2 formati JSON per il payload del webhook, `Default` è il formato che è sempre esistito e la struttura dei dati non è cambiata rispetto alle versioni precedenti, tranne che è stato nominato, `CloudEvents` è il formato che organizza i dati del payload come seguendo le specifiche di [CloudEvents](https://cloudevents.io/). Nella tabella seguente vengono descritti gli eventi che attivano le notifiche e il contenuto di ciascuna notifica.
 
-|Event|Webhook Event Type|Contents of Notification|
+|Evento|Webhook Tipo evento|Contenuto della notifica|
 |---|---|---|
-|Push artifact to registry|`PUSH_ARTIFACT`|Repository namespace name, repository name, resource URL, tags, manifest digest, artifact name, push time timestamp, username of user who pushed artifact|
-|Pull artifact from registry|`PULL_ARTIFACT`|Repository namespace name, repository name, manifest digest, artifact name, pull time timestamp, username of user who pulled artifact|
-|Delete artifact from registry|`DELETE_ARTIFACT`|Repository namespace name, repository name, manifest digest, artifact name, artifact size, delete time timestamp, username of user who deleted image|
-|Artifact scan completed|`SCANNING_COMPLETED`|Repository namespace name, repository name, tag scanned, artifact name, number of critical issues, number of major issues, number of minor issues, last scan status, scan completion time timestamp, username of user who performed scan|
-|Artifact scan stopped | `SCANNING_STOPPED` | Repository namespace name, repository name, tag scanned, artifact name, scan status|
-|Artifact scan failed|`SCANNING_FAILED`|Repository namespace name, repository name, tag scanned, artifact name, error that occurred, username of user who performed scan|
-|Project quota exceeded|`QUOTA_EXCEED`|Repository namespace name, repository name, tags, manifest digest, artifact name, push time timestamp, username of user who pushed artifact|
-|Project quota near threshold|`QUOTA_WARNING`|Repository namespace name, repository name, tags, manifest digest, artifact name, push time timestamp, username of user who pushed artifact|
-|Artifact replication status changed|`REPLICATION`|Repository namespace name, repository name, tags, manifest digest, artifact name, push time timestamp, username of user who trigger the replication|
-|Artifact tag retention finished|`TAG_RETENTION`|Repository namespace name, repository name, the number of total and retained, the rule of retention, deleted artifacts results|
+|Invia l'artefatto a registry|`PUSH_ARTIFACT`|Nome dello spazio dei nomi del repository, nome del repository, URL della risorsa, tag, digest del manifest, nome dell'artefatto, timestamp del push, nome utente dell'utente che ha inviato l'artefatto|
+|Estrai l'artefatto da registry|`PULL_ARTIFACT`|Nome dello spazio dei nomi del repository, nome del repository, digest del manifest, nome dell'artefatto, timestamp del pull, nome utente dell'utente che ha estratto l'artefatto|
+|Elimina artefatto da registry|`DELETE_ARTIFACT`|Nome spazio dei nomi repository, nome repository, digest manifest, nome artefatto, dimensione artefatto, timestamp di eliminazione, nome utente dell'utente che ha eliminato l'immagine|
+|Scansione dell'elemento completata|`SCANNING_COMPLETED`|Nome dello spazio dei nomi del repository, nome del repository, tag analizzato, nome dell'elemento, numero di problemi critici, numero di problemi principali, numero di problemi minori, stato dell'ultima scansione, timestamp di completamento della scansione, nome utente dell'utente che ha eseguito la scansione|
+|Scansione artefatto interrotta | `SCANNING_STOPPED` | Nome dello spazio dei nomi del repository, nome del repository, tag analizzato, nome dell'elemento, stato della scansione|
+|Scansione dell'elemento non riuscita|`SCANNING_FAILED`|Nome dello spazio dei nomi del repository, nome del repository, tag analizzato, nome dell'elemento, errore verificatosi, nome utente dell'utente che ha eseguito la scansione|
+|Quota progetto superata|`QUOTA_EXCEED`|Nome spazio dei nomi del repository, nome del repository, tag, digest del manifest, nome dell'artefatto, timestamp del push, nome utente dell'utente che ha inviato l'artefatto|
+|Quota progetto vicina alla soglia|`QUOTA_WARNING`|Nome spazio dei nomi del repository, nome del repository, tag, digest del manifest, nome dell'artefatto, timestamp del push, nome utente dell'utente che ha inviato l'artefatto|
+|Lo stato della replica dell'artefatto è cambiato|`REPLICATION`|Nome dello spazio dei nomi del repository, nome del repository, tag, digest del manifesto, nome dell'artefatto, timestamp del push, nome utente dell'utente che ha attivato la replica|
+|Conservazione tag artefatto terminata|`TAG_RETENTION`|Nome dello spazio dei nomi del repository, nome del repository, numero totale e conservato, regola di conservazione, risultati degli artefatti eliminati|
 
-#### Payload Format
+#### Formato del carico utile
 
-The webhook notification is delivered in JSON format. The following example shows the JSON notification for different event types when using `HTTP` kind endpoint:
+La notifica del webhook viene consegnata nel formato JSON. L'esempio seguente mostra la notifica JSON per diversi tipi di eventi quando si utilizza l'endpoint del tipo `HTTP`:
 
-##### Artifact pushed
+##### Artefatto spinto
 
-*Default*
+*Predefinito*
 
 ```json
 {
@@ -56,7 +56,7 @@ The webhook notification is delivered in JSON format. The following example show
 }
 ```
 
-*CloudEvents*
+*Eventi Cloud*
 
 ```json
 {
@@ -89,9 +89,9 @@ The webhook notification is delivered in JSON format. The following example show
 }
 ```
 
-##### Artifact pulled
+##### Artefatto estratto
 
-*Default*
+*Predefinito*
 
 ```json
 {
@@ -118,7 +118,7 @@ The webhook notification is delivered in JSON format. The following example show
 
 ```
 
-*CloudEvents*
+*Eventi Cloud*
 
 ```json
 {
@@ -149,9 +149,9 @@ The webhook notification is delivered in JSON format. The following example show
 }
 ```
 
-##### Artifact deleted
+##### Artefatto eliminato
 
-*Default*
+*Predefinito*
 
 ```json
 {
@@ -177,7 +177,7 @@ The webhook notification is delivered in JSON format. The following example show
 }
 ```
 
-*CloudEvents*
+*Eventi Cloud*
 
 ```json
 {
@@ -208,9 +208,9 @@ The webhook notification is delivered in JSON format. The following example show
 }
 ```
 
-##### Scanning completed
+##### Scansione completata
 
-*Default*
+*Predefinito*
 
 ```json
 {
@@ -256,7 +256,7 @@ The webhook notification is delivered in JSON format. The following example show
 ```
 
 
-*CloudEvents*
+*Eventi Cloud*
 
 ```json
 {
@@ -306,9 +306,9 @@ The webhook notification is delivered in JSON format. The following example show
 }
 ```
 
-##### Scanning stopped
+##### Scansione interrotta
 
-*Default*
+*Predefinito*
 
 ```json
 {
@@ -344,7 +344,7 @@ The webhook notification is delivered in JSON format. The following example show
 }
 ```
 
-*CloudEvents*
+*Eventi Cloud*
 
 ```json
 {
@@ -386,9 +386,9 @@ The webhook notification is delivered in JSON format. The following example show
 ```
 
 
-##### Scanning failed
+##### Scansione non riuscita
 
-*Default*
+*Predefinito*
 
 ```json
 {
@@ -424,7 +424,7 @@ The webhook notification is delivered in JSON format. The following example show
 }
 ```
 
-*CloudEvents*
+*Eventi Cloud*
 
 ```json
 {
@@ -465,9 +465,9 @@ The webhook notification is delivered in JSON format. The following example show
 }
 ```
 
-##### Quota exceeded
+##### Quota superata
 
-*Default*
+*Predefinito*
 
 ```json
 {
@@ -493,7 +493,7 @@ The webhook notification is delivered in JSON format. The following example show
 }
 ```
 
-*CloudEvents*
+*Eventi Cloud*
 
 ```json
 {
@@ -524,9 +524,9 @@ The webhook notification is delivered in JSON format. The following example show
 }
 ```
 
-##### Quota near threshold
+##### Quota prossima alla soglia
 
-*Default*
+*Predefinito*
 
 ```json
 {
@@ -552,7 +552,7 @@ The webhook notification is delivered in JSON format. The following example show
 }
 ```
 
-*CloudEvents*
+*Eventi Cloud*
 
 ```json
 {
@@ -583,9 +583,9 @@ The webhook notification is delivered in JSON format. The following example show
 }
 ```
 
-##### Replication status changed
+##### Lo stato della replica è cambiato
 
-*Default*
+*Predefinito*
 
 ```json
 {
@@ -624,7 +624,7 @@ The webhook notification is delivered in JSON format. The following example show
 }
 ```
 
-*CloudEvents*
+*Eventi Cloud*
 
 ```json
 {
@@ -668,9 +668,9 @@ The webhook notification is delivered in JSON format. The following example show
 }
 ```
 
-##### Tag retention finished
+##### Conservazione dei tag terminata
 
-*Default*
+*Predefinito*
 
 ```json
 {
@@ -720,7 +720,7 @@ The webhook notification is delivered in JSON format. The following example show
 }
 ```
 
-*CloudEvents*
+*Eventi Cloud*
 
 ```json
 {
@@ -775,7 +775,7 @@ The webhook notification is delivered in JSON format. The following example show
 }
 ```
 
-Notice that only http type endpoint supports select `Default` or `CloudEvents` format, when you select the Slack type, and fill a Slack incoming webhook URL as endpoint, the message you received in Slack will be a rich text like the following.
+Tieni presente che solo l'endpoint di tipo http supporta la selezione del formato `Default` o `CloudEvents`, quando selezioni il tipo Slack e inserisci un URL webhook in entrata Slack come endpoint, il messaggio ricevuto in Slack sarà un testo ricco come il seguente.
 
 ```json
 Harbor webhook events
@@ -801,68 +801,68 @@ event_data:
 }
 ```
 
-### Webhook Endpoint Recommendations
+### Webhook Raccomandazioni sugli endpoint
 
-There are two kinds of endpoints.  For `HTTP` the endpoint that receives the webhook should ideally have a webhook listener that is capable of interpreting the payload and acting upon the information it contains. For example, running a shell script.
+Esistono due tipi di endpoint.  Per `HTTP` l'endpoint che riceve il webhook dovrebbe idealmente avere un ascoltatore del webhook in grado di interpretare il payload e agire in base alle informazioni in esso contenute. Ad esempio, eseguendo uno script di shell.
 
-And for Slack endpoint, you should follow the [guide of Slack incoming webhook](https://api.slack.com/messaging/webhooks).
+E per l'endpoint Slack, dovresti seguire [guida del webhook in entrata di Slack](https://api.slack.com/messaging/webhooks).
 
-### Example Use Cases
+### Esempi di casi d'uso
 
-You can configure your continuous integration and development infrastructure so that it performs the following types of operations when it receives a webhook notification from Harbor.
+Puoi configurare la tua infrastruttura di integrazione e sviluppo continuo in modo che esegua i seguenti tipi di operazioni quando riceve una notifica webhook da Harbor.
 
-- Artifact push:
-  - Trigger a new build immediately following a push on selected repositories or tags.
-  - Notify services or applications that use the artifact that a new artifact is available and pull it.
-  - Scan the artifact using Trivy.
-  - Replicate the artifact to remote registries.
-- Image scanning:
-  - If a vulnerability is found, rescan the image or replicate it to another registry.
-  - If the scan passes, deploy the image.
+- Spinta degli artefatti:
+  - Attiva una nuova build immediatamente dopo un push su repository o tag selezionati.
+  - Notifica ai servizi o alle applicazioni che utilizzano l'artefatto che è disponibile un nuovo artefatto ed esegui il pull.
+  - Scansiona l'artefatto utilizzando Trivy.
+  - Replicare l'artefatto nei registri remoti.
+- Scansione delle immagini:
+  - Se viene rilevata una vulnerabilità, eseguire nuovamente la scansione dell'immagine o replicarla su un altro registry.
+  - Se la scansione ha esito positivo, distribuire l'immagine.
 
-### Configure Webhooks
+### Configura i webhook
 
-1. Log in to the Harbor interface with an account that has at least project administrator privileges.
+1. Accedi all'interfaccia Harbor con un account che disponga almeno dei privilegi di amministratore del progetto.
 
-1. Go to **Projects**, select a project, and select **Webhooks**.
+1. Vai su **Progetti**, seleziona un progetto e seleziona **Webhook**.
 
-    ![Webhooks option](../../../img/webhook/navbar.png)
+    ![Opzione webhook](../../../img/webhook/navbar.png)
 
-1. Select notify type `HTTP`, so the webhook will be send to a HTTP endpoint.
+1. Selezionare il tipo di notifica `HTTP`, in modo che il webhook venga inviato a un endpoint HTTP.
 
-1. Select payload format as `Default` or `CloudEvents` when choose the `HTTP` notify type.
+1. Selezionare il formato del payload come `Default` o `CloudEvents` quando si sceglie il tipo di notifica `HTTP`.
 
-1. Select events that you want to subscribe.
+1. Seleziona gli eventi a cui vuoi iscriverti.
 
-1. Enter the URL for your webhook endpoint listener.
+1. Inserisci l'URL per il listener dell'endpoint webhook.
 
-1. If your webhook listener implements authentication, enter the authentication header.
+1. Se il tuo ascoltatore webhook implementa l'autenticazione, inserisci l'intestazione di autenticazione.
 
-1. To implement `HTTPS POST` instead of `HTTP POST`, select the **Verifiy Remote Certficate** check box.
+1. Per implementare `HTTPS POST` invece di `HTTP POST`, selezionare la casella di controllo **Verifica certificato remoto**.
 
-    ![Webhook URL](../../../img/webhook/policy.png)
+    ![URL Webhook](../../../img/webhook/policy.png)
 
-1. Click **Add** to create the webhook.
+1. Fare clic su **Aggiungi** per creare il webhook.
 
-You can modify the webhook, you can also `Enable` or `Deactivate` the webhook.
+Puoi modificare il webhook, puoi anche `Enable` o `Deactivate` il webhook.
 
-### Webhook Job Histories
+### Webhook Storie di lavoro
 
-1. Click the radio box of one webhook policy, then will list the recent webhook executions in the following section.
+1. Fare clic sulla casella di opzione di una policy webhook, quindi verranno elencate le recenti esecuzioni webhook nella sezione seguente.
 
-    ![Webhook executions](../../../img/webhook/executions.png)
+    ![Esecuzioni Webhook](../../../img/webhook/executions.png)
 
-1. Select one webhook execution, then will redirect to the tasks page under this execution.
+1. Seleziona un'esecuzione del webhook, quindi reindirizzerà alla pagina delle attività sotto questa esecuzione.
 
-    ![Webhook tasks](../../../img/webhook/tasks.png)
+    ![compiti Webhook](../../../img/webhook/tasks.png)
 
-1. Click the log button of one task, then will redirect to the page to show the webhook job logs.
+1. Fare clic sul pulsante di registro di un'attività, quindi verrà reindirizzato alla pagina per mostrare i registri dei lavori del webhook.
 
-    ![Webhook logs](../../../img/webhook/job_log.png)
+    ![Registri Webhook](../../../img/webhook/job_log.png)
 
-If a webhook notification fails to send, or if it receives an HTTP error response with a code other than `2xx`, the notification is re-sent based on the configuration that you set in `harbor.yml`.
+Se una notifica webhook non viene inviata o se riceve una risposta di errore HTTP con un codice diverso da `2xx`, la notifica viene inviata nuovamente in base alla configurazione impostata in `harbor.yml`.
 
-*Docker Compose*
+*Docker Componi*
 
 ```yaml
 notification:
@@ -887,13 +887,13 @@ jobservice:
     webhook_job_http_client_timeout: 3 # in seconds
 ```
 
-### Globally Enable and Deactivate Webhooks
+### Abilita e disattiva globalmente i webhook
 
-As a Harbor system administrator, you can enable and deactivate webhook notifications for all projects.
+In qualità di amministratore di sistema Harbor, puoi abilitare e disattivare le notifiche webhook per tutti i progetti.
 
-1. Go to **Configuration** > **System Settings**.
-1. Scroll down and check or uncheck the **Webhooks enabled** check box.
+1. Vai su **Configurazione** > **Impostazioni di sistema**.
+1. Scorri verso il basso e seleziona o deseleziona la casella di controllo **Webhook abilitati**.
 
 
-    ![Enable/deactivate webhooks](../../../img/webhook/global_config.png)
+    ![Abilita/disattiva i webhook](../../../img/webhook/global_config.png)
 

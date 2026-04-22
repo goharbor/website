@@ -1,19 +1,19 @@
 ---
-title: Configure Global Settings
+title: Configura le impostazioni globali
 weight: 20
 ---
 
-You can configure Harbor to set the registry in read-only mode, and configure Harbor so that only system administrators can create projects.
+È possibile configurare Harbor per impostare registry in modalità di sola lettura e configurare Harbor in modo che solo gli amministratori di sistema possano creare progetti.
 
-## Make the Registry Read Only
+## Rendi il registro di sola lettura
 
-You can set Harbor to read-only mode. In read-only mode, Harbor allows `docker pull` but prevents `docker push` and the deletion of repositories and tags.
+È possibile impostare Harbor in modalità di sola lettura. In modalità di sola lettura, Harbor consente `docker pull` ma impedisce `docker push` e l'eliminazione di repository e tag.
 
-![Read-only mode](../../img/read-only.png)
+![Modalità di sola lettura](../../img/read-only.png)
 
-If it set to true, deleting repositories, tags and pushing images are not permitted.
+Se impostato su true, non è consentito eliminare repository, tag e inviare immagini.
 
-![browse project](../../img/read-only-enable.png)
+![sfoglia progetto](../../img/read-only-enable.png)
 
 ```sh
 docker push 10.117.169.182/demo/ubuntu:14.04
@@ -22,25 +22,25 @@ The push refers to a repository [10.117.169.182/demo/ubuntu]
 denied: The system is in read only mode. Any modification is prohibited.
 ```
 
-## Set Who Can Create Projects
+## Imposta chi può creare progetti
 
-Use the **Project Creation** drop-down menu to set which users can create projects. Select **Everyone** to allow all users to create projects. Select **Admin Only** to allow only users with the Harbor system administrator role to create projects.
+Utilizza il menu a discesa **Creazione progetto** per impostare quali utenti possono creare progetti. Seleziona **Tutti** per consentire a tutti gli utenti di creare progetti. Selezionare **Solo amministratore** per consentire solo agli utenti con il ruolo di amministratore di sistema Harbor di creare progetti.
 
-![browse project](../../img/new-proj-create.png)
+![sfoglia progetto](../../img/new-proj-create.png)
 
-## Retain image last pull time on scanning
+## Conserva l'ora dell'ultima estrazione dell'immagine durante la scansione
 
-By default, a vulnerability scanner(e.g. Trivy) will update the image's last `pull time` when the image is scanned. This affects the **Tag Retention Rules** based on pull time. If you want to eliminate this effect, you can enable this option to avoid updating the pull time on scanning. 
+Per impostazione predefinita, uno scanner di vulnerabilità (ad esempio Trivy) aggiornerà l'ultimo `pull time` dell'immagine quando l'immagine viene scansionata. Ciò influisce sulle **Regole di conservazione dei tag** in base al tempo di pull. Se desideri eliminare questo effetto, puoi abilitare questa opzione per evitare di aggiornare il tempo di pull durante la scansione. 
 
-![browse project](../../img/skip-pull-time.png)
+![sfoglia progetto](../../img/skip-pull-time.png)
 
-## Set a banner message on the Harbor UI
+## Imposta un messaggio banner su Harbor UI
 
-Set a custom banner message that will be displayed on the top of the Harbor UI， then every user including anonymous users can see the banner message.
+Imposta un messaggio banner personalizzato che verrà visualizzato nella parte superiore di Harbor UI, quindi ogni utente, inclusi gli utenti anonimi, potrà vedere il messaggio banner.
 
-- **Message Content**: Enter your message content in the text area. This field is required.
-- **Message Type**: Select a message type, each message type has its corresponding style.
-- **Closable**: Decide whether the banner message can be closed temporarily.
-- **Duration**: Set the display time period of the banner message, which is from 0:00 of the start date to 0:00 of the end date. This field is required.
+- **Contenuto del messaggio**: inserisci il contenuto del messaggio nell'area di testo. Questo campo è obbligatorio.
+- **Tipo di messaggio**: seleziona un tipo di messaggio, ogni tipo di messaggio ha il suo stile corrispondente.
+- **Chiudibile**: Decidi se il messaggio banner può essere chiuso temporaneamente.
+- **Durata**: imposta il periodo di tempo di visualizzazione del messaggio banner, ovvero dalle 0:00 della data di inizio alle 0:00 della data di fine. Questo campo è obbligatorio.
 
-![Banner Message](../../img/banner-message.png)
+![Messaggio sullo striscione](../../img/banner-message.png)

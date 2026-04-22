@@ -1,387 +1,387 @@
 ---
-title: Configure the Harbor YML File
+title: Configura il file YML Harbor
 weight: 35
 ---
 
-You set system level parameters for Harbor in the `harbor.yml` file that is contained in the installer package. These parameters take effect when you run the `install.sh` script to install or reconfigure Harbor.
+Impostare i parametri a livello di sistema per Harbor nel file `harbor.yml` contenuto nel pacchetto di installazione. Questi parametri diventano effettivi quando si esegue lo script `install.sh` per installare o riconfigurare Harbor.
 
-After the initial deployment and after you have started Harbor, you perform additional configuration in the Harbor Web Portal.
+Dopo la distribuzione iniziale e dopo aver avviato Harbor, eseguire una configurazione aggiuntiva nel portale Web Harbor.
 
-## Required Parameters
+## Parametri obbligatori
 
-The table below lists the parameters that must be set when you deploy Harbor. By default, all of the required parameters are uncommented in the `harbor.yml` file. The optional parameters are commented with `#`. You do not necessarily need to change the values of the required parameters from the defaults that are provided, but these parameters must remain uncommented. At the very least, you must update the `hostname` parameter.
+La tabella seguente elenca i parametri che devono essere impostati quando si distribuisce Harbor. Per impostazione predefinita, tutti i parametri richiesti non sono commentati nel file `harbor.yml`. I parametri opzionali sono commentati con `#`. Non è necessariamente necessario modificare i valori dei parametri richiesti rispetto a quelli predefiniti forniti, ma questi parametri devono rimanere senza commenti. Come minimo è necessario aggiornare il parametro `hostname`.
 
-**IMPORTANT**: Harbor does not ship with any certificates. In versions up to and including 1.9.x, by default Harbor uses HTTP to serve registry requests. This is acceptable only in air-gapped test or development environments. In production environments, always use HTTPS.
+**IMPORTANTE**: Harbor non viene spedito con alcun certificato. Nelle versioni fino alla 1.9.x inclusa, per impostazione predefinita Harbor utilizza HTTP per servire le richieste registry. Ciò è accettabile solo in ambienti di test o di sviluppo con air gap. Negli ambienti di produzione, utilizzare sempre HTTPS.
 
-You can use certificates that are signed by a trusted third-party CA, or you can use self-signed certificates. For information about how to create a CA, and how to use a CA to sign a server certificate and a client certificate, see [Configuring Harbor with HTTPS Access](configure-https.md).
+È possibile utilizzare certificati firmati da un'autorità di certificazione di terze parti attendibile oppure certificati autofirmati. Per informazioni su come creare una CA e su come utilizzare una CA per firmare un certificato server e un certificato client, vedere [Configurazione di Harbor con HTTPS Accesso](configure-https.md).
 
 <table border="0">
   <caption>
-    Required Parameters for Harbor Deployment
+    Parametri richiesti per la distribuzione Harbor
   </caption>
   <tr>
-    <th scope="col">Parameter</th>
-    <th scope="col">Sub-parameters</th>
-    <th scope="col">Description and Additional Parameters </th>
+    <th scope="col">Parametro</th>
+    <th scope="col">Sottoparametri</th>
+    <th scope="col">Descrizione e parametri aggiuntivi </th>
   </tr>
   <tr>
     <td valign="top"><code>hostname</code></td>
-    <td valign="top">None</td>
-    <td valign="top">Specify the IP address or the fully qualified domain name (FQDN) of the target host on which to deploy Harbor. This is the address at which you access the Harbor Portal and the registry service. For example, <code>192.168.1.10</code> or <code>reg.yourdomain.com</code>. The registry service must be accessible to external clients, so do not specify <code>localhost</code>, <code>127.0.0.1</code>, or <code>0.0.0.0</code> as the hostname.</td>
+    <td valign="top">Nessuno</td>
+    <td valign="top">Specificare l'indirizzo IP o il nome di dominio completo (FQDN) dell'host di destinazione su cui distribuire Harbor. Questo è l'indirizzo al quale accedi al Portale Harbor e al servizio registry. Ad esempio, <code>192.168.1.10</code> o <code>reg.yourdomain.com</code>. Il servizio registry deve essere accessibile a client esterni, quindi non specificare <code>localhost</code>, <code>127.0.0.1</code> o <code>0.0.0.0</code> come nome host.</td>
   </tr>
   <tr>
     <td valign="top"><code>http</code></td>
-    <td valign="top">&nbsp;</td>
-    <td valign="top">Do not use HTTP in production environments. Using HTTP is acceptable only in air-gapped test or development environments that do not have a connection to the external internet. Using HTTP in environments that are not air-gapped exposes you to man-in-the-middle attacks.</td>
+    <td valign="top"></td>
+    <td valign="top">Non utilizzare HTTP in ambienti di produzione. L'utilizzo di HTTP è accettabile solo in ambienti di test o sviluppo con air gap che non dispongono di una connessione a Internet esterna. L'utilizzo di HTTP in ambienti privi di air gap espone ad attacchi man-in-the-middle.</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>port</code></td>
-    <td valign="top">Port number for HTTP, for both Harbor portal and Docker commands. The default is 80.</td>
+    <td valign="top">Numero di porta per HTTP, sia per il portale Harbor che per i comandi Docker. Il valore predefinito è 80.</td>
   </tr>
   <tr>
     <td valign="top"><code>https</code></td>
-    <td valign="top">&nbsp;</td>
-    <td valign="top">Use HTTPS to access the Harbor Portal and the token/notification service. Always use HTTPS in production environments and environments that are not air-gapped.
+    <td valign="top"></td>
+    <td valign="top">Utilizzare HTTPS per accedere al portale Harbor e al servizio token/notifica. Utilizzare sempre HTTPS in ambienti di produzione e ambienti privi di intercapedini.
       </td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>port</code></td>
-    <td valign="top">The port number for HTTPS, for both Harbor portal and Docker commands. The default is 443.</td>
+    <td valign="top">Il numero di porta per HTTPS, sia per il portale Harbor che per i comandi Docker. Il valore predefinito è 443.</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>certificate</code></td>
-    <td valign="top">The path to the SSL certificate.</td>
+    <td valign="top">Il percorso del certificato SSL.</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>private_key</code></td>
-    <td valign="top">The path to the SSL key.</td>
+    <td valign="top">Il percorso della chiave SSL.</td>
   </tr>
 
   <tr>
     <td valign="top"><code>internal_tls</code></td>
-    <td valign="top">&nbsp;</td>
-    <td valign="top"> Use HTTPS to communicate between harbor components</td>
+    <td valign="top"></td>
+    <td valign="top"> Utilizzare HTTPS per comunicare tra i componenti del porto</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>enabled</code></td>
-    <td valign="top">Set this flag to <code>true</code> means internal tls is enabled</td>
+    <td valign="top">Imposta questo flag su <code>true</code> significa che il tls interno è abilitato</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>dir</code></td>
-    <td valign="top">The path to the directory that contains internal certs and keys</td>
+    <td valign="top">Il percorso della directory che contiene i certificati e le chiavi interni</td>
   </tr>
 
   <tr>
     <td valign="top"><code>harbor_admin_password</code></td>
-    <td valign="top">None</td>
-    <td valign="top">Set an initial password for the Harbor system administrator. This password is only used on the first time that Harbor starts. On subsequent logins, this setting is ignored and the administrator's password is set in the Harbor Portal. The default username and password are <code>admin</code> and <code>Harbor12345</code>.</td>
+    <td valign="top">Nessuno</td>
+    <td valign="top">Impostare una password iniziale per l'amministratore di sistema Harbor. Questa password viene utilizzata solo la prima volta che si avvia Harbor. Agli accessi successivi, questa impostazione viene ignorata e la password dell'amministratore viene impostata nel portale Harbor. Il nome utente e la password predefiniti sono <code>admin</code> e <code>Harbor12345</code>.</td>
   </tr>
   <tr>
     <td valign="top"><code>database</code></td>
-    <td valign="top">&nbsp;</td>
-    <td valign="top">Use a local PostgreSQL database. You can optionally configure an external database, in which case you can deactivate this option.</td>
+    <td valign="top"></td>
+    <td valign="top">Utilizzare un database PostgreSQL locale. Facoltativamente è possibile configurare un database esterno, nel qual caso è possibile disattivare questa opzione.</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>password</code></td>
-    <td valign="top">Set the root password for the local database. You must change this password for production deployments.</td>
+    <td valign="top">Imposta la password root per il database locale. È necessario modificare questa password per le distribuzioni di produzione.</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>max_idle_conns</code></td>
-    <td valign="top">The maximum number of connections in the idle connection pool. If it <=0, no idle connections are retained.</td>
+    <td valign="top">Il numero massimo di connessioni nel pool di connessioni inattivo. Se è <=0, no idle connections are retained.</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>max_open_conns</code></td>
-    <td valign="top">The maximum number of open connections to the database. If it <= 0, then there is no limit on the number of open connections.</td>
+    <td valign="top">Il numero massimo di connessioni aperte al database. Se è <= 0, then there is no limit on the number of open connections.</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>conn_max_lifetime</code></td>
-    <td valign="top">The maximum amount of time a connection may be reused. If it <= 0, connections are not closed due to a connection's age.</td>
+    <td valign="top">Il periodo di tempo massimo in cui una connessione può essere riutilizzata. Se è <= 0, connections are not closed due to a connection's age.</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>conn_max_idle_time</code></td>
-    <td valign="top">The maximum amount of time a connection may be idle. If it <= 0, connections are not closed due to a connection's idle time.</td>
+    <td valign="top">Il periodo di tempo massimo in cui una connessione può rimanere inattiva. Se è <= 0, connections are not closed due to a connection's idle time.</td>
   </tr>
   <tr>
     <td valign="top"><code>data_volume</code></td>
-    <td valign="top">None</td>
-    <td valign="top">The location on the target host in which to store Harbor's data. This data remains unchanged even when Harbor's containers are removed and/or recreated. You can optionally configure external storage, in which case deactivate this option and enable <code>storage_service</code>. The default is <code>/data</code>.</td>
+    <td valign="top">Nessuno</td>
+    <td valign="top">La posizione sull'host di destinazione in cui archiviare i dati di Harbor. Questi dati rimangono invariati anche quando i contenitori di Harbor vengono rimossi e/o ricreati. Facoltativamente è possibile configurare l'archiviazione esterna, nel qual caso disattivare questa opzione e abilitare <code>storage_service</code>. L'impostazione predefinita è <code>/data</code>.</td>
   </tr>
   <tr>
     <td valign="top"><code>trivy</code></td>
-    <td valign="top">&nbsp;</td>
-    <td valign="top">Configure Trivy scanner.</td>
+    <td valign="top"></td>
+    <td valign="top">Configura scanner Trivy.</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>ignore_unfixed</code></td>
-    <td valign="top">Set the flag to <code>true</code> to display only fixed vulnerabilities. The default value is <code>false</code></td>
+    <td valign="top">Imposta il flag su <code>true</code> per visualizzare solo le vulnerabilità risolte. Il valore predefinito è <code>false</code></td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>security_check</code></td>
-    <td valign="top">Comma-separated list of what security issues to detect. Possible values are <code>vuln</code>, <code>config</code> and <code>secret</code>. Defaults to <code>vuln</code>.</td>
+    <td valign="top">Elenco separato da virgole dei problemi di sicurezza da rilevare. I valori possibili sono <code>vuln</code>, <code>config</code> e <code>secret</code>. Il valore predefinito è <code>vuln</code>.</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>skip_update</code></td>
-    <td valign="top">You might want to enable this flag in test or CI/CD environments to avoid GitHub rate limiting issues. If the flag is enabled you have to download the <code>trivy-offline.tar.gz</code> archive manually, extract and the <code>trivy.db</code> and <code>metadata.json</code> files and mount them in the <code>/home/scanner/.cache/trivy/db/trivy.db</code> path in container. The default value is <code>false</code></td>
+    <td valign="top">Potresti voler abilitare questo flag negli ambienti di test o CI/CD per evitare problemi di limitazione della velocità di GitHub. Se il flag è abilitato è necessario scaricare manualmente l'archivio <code>trivy-offline.tar.gz</code>, estrarre i file <code>trivy.db</code> e <code>metadata.json</code> e montarli nel percorso <code>/home/scanner/.cache/trivy/db/trivy.db</code> nel contenitore. Il valore predefinito è <code>false</code></td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>insecure</code></td>
-    <td valign="top">Set the flag to <code>true</code> to skip verifying registry certificate. The default value is <code>false</code></td>
+    <td valign="top">Imposta il flag su <code>true</code> per saltare la verifica del certificato registry. Il valore predefinito è <code>false</code></td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>github_token</code></td>
-    <td valign="top">Set the GitHub access token to download Trivy DB. Trivy DB is downloaded by Trivy from the GitHub release page. Anonymous downloads from GitHub are subject to the limit of 60 requests per hour. Normally such rate limit is enough for production operations. If, for any reason, it's not enough, you could increase the rate limit to 5000 requests per hour by specifying the GitHub access token. For more details on GitHub rate limiting please consult https://developer.github.com/v3/#rate-limiting .You can create a GitHub token by following the instructions in https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line</td>
+    <td valign="top">Impostare il token di accesso GitHub per scaricare Trivy DB. Trivy DB viene scaricato da Trivy dalla pagina di rilascio di GitHub. I download anonimi da GitHub sono soggetti al limite di 60 richieste all'ora. Normalmente tale limite tariffario è sufficiente per le operazioni di produzione. Se, per qualsiasi motivo, non fosse sufficiente, potresti aumentare il limite di velocità a 5000 richieste all'ora specificando il token di accesso GitHub. Per maggiori dettagli sulla limitazione della velocità di GitHub consultare https://developer.github.com/v3/#rate-limiting. È possibile creare un token GitHub seguendo le istruzioni in https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line</td>
   </tr>
   <tr>
     <td valign="top"><code>jobservice</code></td>
     <td valign="top"><code>max_job_workers</code></td>
-    <td valign="top">The maximum number of replication workers in the job service. For each image replication job, a worker synchronizes all tags of a repository to the remote destination. Increasing this number allows more concurrent replication jobs in the system. However, since each worker consumes a certain amount of network/CPU/IO resources, set the value of this attribute based on the hardware resource of the host. The default is 10.</td>
+    <td valign="top">Il numero massimo di lavoratori di replica nel servizio processi. Per ogni processo di replica dell'immagine, un lavoratore sincronizza tutti i tag di un repository con la destinazione remota. L'aumento di questo numero consente più processi di replica simultanei nel sistema. Tuttavia, poiché ciascun lavoratore consuma una certa quantità di risorse di rete/CPU/IO, imposta il valore di questo attributo in base alla risorsa hardware dell'host. Il valore predefinito è 10.</td>
   </tr>
 <tr>
     <td valign="top"><code>notification</code></td>
     <td valign="top"><code>webhook_job_max_retry</code></td>
-    <td valign="top">Set the maximum number of retries for web hook jobs. The default is 10.</td>
+    <td valign="top">Imposta il numero massimo di tentativi per i lavori hook web. Il valore predefinito è 10.</td>
   </tr>
   <tr>
     <td valign="top"><code>log</code></td>
-    <td valign="top">&nbsp;</td>
-    <td valign="top">Configure logging. Harbor uses `rsyslog` to collect the logs for each container.</td>
+    <td valign="top"></td>
+    <td valign="top">Configura registrazione. Harbor utilizza `rsyslog` per raccogliere i log per ciascun contenitore.</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>level</code></td>
-    <td valign="top">Set the logging level to <code>debug</code>, <code>info</code>, <code>warning</code>, <code>error</code>, or <code>fatal</code>. The default is <code>info</code>.</td>
+    <td valign="top">Impostare il livello di registrazione su <code>debug</code>, <code>info</code>, <code>warning</code>, <code>error</code> o <code>fatal</code>. L'impostazione predefinita è <code>info</code>.</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>local</code></td>
-    <td valign="top">Set the log retention parameters:<ul>
-          <li><code>rotate_count</code>: Log files are rotated <code>rotate_count</code> times before being removed. If count is 0, old versions are removed rather than rotated. The default is 50.</li>
-          <li><code>rotate_size</code>: Log files are rotated only if they grow bigger than <code>rotate_size</code> bytes. Use <code>k</code> for kilobytes, <code>M</code> for megabytes, and <code>G</code> for gigabytes.  <code>100</code>, <code>100k</code>, <code>100M</code> and <code>100G</code> are all valid values. The default is 200M.</li>
-          <li><code>location</code>: Set the directory in which to store the logs. The default is <code>/var/log/harbor</code>.</li>
+    <td valign="top">Impostare i parametri di conservazione del registro:<ul>
+          <li><code>rotate_count</code>: i file di registro vengono ruotati <code>rotate_count</code> volte prima di essere rimossi. Se count è 0, le vecchie versioni vengono rimosse anziché ruotate. Il valore predefinito è 50.</li>
+          <li><code>rotate_size</code>: i file di registro vengono ruotati solo se diventano più grandi di <code>rotate_size</code> byte. Utilizza <code>k</code> per kilobyte, <code>M</code> per megabyte e <code>G</code> per gigabyte.  <code>100</code>, <code>100k</code>, <code>100M</code> e <code>100G</code> sono tutti valori validi. L'impostazione predefinita è 200M.</li>
+          <li><code>location</code>: impostare la directory in cui archiviare i registri. Il valore predefinito è <code>/var/log/harbor</code>.</li>
         </ul></td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>external_endpoint</code></td>
-    <td valign="top">Enable this option to forward logs to a syslog server.
+    <td valign="top">Abilitare questa opzione per inoltrare i registri a un server syslog.
       <ul>
-        <li><code>protocol</code>: Transport protocol for the syslog server. Default is TCP.</li>
-        <li><code>host</code>: The URL of the syslog server.</li>
-        <li><code>port</code>: The port on which the syslog server listens</li>
-    </ul>    </td>
+        <li><code>protocol</code>: protocollo di trasporto per il server syslog. L'impostazione predefinita è TCP.</li>
+        <li><code>host</code>: l'URL del server syslog.</li>
+        <li><code>port</code>: la porta su cui è in ascolto il server syslog</li>
+    </ul> </td>
   </tr>
   <tr>
     <td valign="top"><code>proxy</code></td>
-    <td valign="top">&nbsp;</td>
-    <td valign="top">Configure proxies to be used by trivy-adapter, the replication jobservice, and Harbor. Leave blank if no proxies are required. Some proxies have whitelist settings, if Trivy is enabled, you need to add the following urls to the proxy server whitelist: <code>github.com</code>, <code>github-releases.githubusercontent.com</code>, and <code>*.s3.amazonaws.com.</code></td>
+    <td valign="top"></td>
+    <td valign="top">Configura i proxy da utilizzare da trivy-adapter, il servizio di replicazione e Harbor. Lasciare vuoto se non sono richiesti proxy. Alcuni proxy dispongono di impostazioni di whitelist, se Trivy è abilitato, è necessario aggiungere i seguenti URL alla whitelist del server proxy: <code>github.com</code>, <code>github-releases.githubusercontent.com</code> e <code>*.s3.amazonaws.com.</code></td>
   </tr>
     <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>http_proxy</code></td>
-    <td valign="top">Configure an HTTP proxy, for example,  <code>http://my.proxy.com:3128</code>.</td>
+    <td valign="top">Configurare un proxy HTTP, ad esempio <code>http://my.proxy.com:3128</code>.</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>https_proxy</code></td>
-    <td valign="top">Configure an HTTPS proxy, for example,  <code>http://my.proxy.com:3128</code>.</td>
+    <td valign="top">Configurare un proxy HTTPS, ad esempio <code>http://my.proxy.com:3128</code>.</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>no_proxy</code></td>
-    <td valign="top">Configure when not to use a proxy, for example, <code>127.0.0.1,localhost,core,registry</code>.</td>
+    <td valign="top">Configurare quando non utilizzare un proxy, ad esempio, <code>127.0.0.1,localhost,core,registry</code>.</td>
   </tr>
   <tr>
     <td valign="top"><code>cache</code></td>
-    <td valign="top">&nbsp;</td>
-    <td valign="top">Configure cache layer for your Harbor instance. When enabled, Harbor will cache some Harbor resources (for example, artifacts, projects, or project metadata) using Redis, reducing the amount of time and resources used for repeated requests for the same Harbor resource. It's strongly recommended that you enable this feature on Harbor instances with high concurrent pull request rates to improve Harbor's overall performance. For more details on the cache layer implementation and performance improvements, see the <a href="https://github.com/goharbor/perf/wiki/Cache-layer">Cache Layer wiki page</a>.</td>
+    <td valign="top"></td>
+    <td valign="top">Configura il livello cache per la tua istanza Harbor. Se abilitato, Harbor memorizzerà nella cache alcune risorse Harbor (ad esempio, artefatti, progetti o metadati di progetto) utilizzando Redis, riducendo la quantità di tempo e risorse utilizzate per richieste ripetute per la stessa risorsa Harbor. Si consiglia vivamente di abilitare questa funzionalità sulle istanze Harbor con tassi di richieste pull simultanee elevate per migliorare le prestazioni complessive di Harbor. Per ulteriori dettagli sull'implementazione del livello cache e sui miglioramenti delle prestazioni, vedere la pagina wiki <a href="https://github.com/goharbor/perf/wiki/Cache-layer">Cache Layer</a>.</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>enabled</code></td>
-    <td valign="top">Default is <code>false</code>, set to <code>true</code> to enable Harbor's cache layer.</td>
+    <td valign="top">L'impostazione predefinita è <code>false</code>, impostata su <code>true</code> per abilitare il livello cache di Harbor.</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>expire_hours</code></td>
-    <td valign="top">Configure the cache expiration limit in hours. Default is 24. </td>
+    <td valign="top">Configura il limite di scadenza della cache in ore. L'impostazione predefinita è 24. </td>
   </tr>
 </table>
 
-## Optional Parameters
+## Parametri facoltativi
 
-The following table lists the additional, optional parameters that you can set to configure your Harbor deployment beyond the minimum required settings. To enable a setting, you must uncomment it in `harbor.yml` by deleting the leading `#` character.
+Nella tabella seguente sono elencati i parametri facoltativi aggiuntivi che è possibile impostare per configurare la distribuzione Harbor oltre le impostazioni minime richieste. Per abilitare un'impostazione, è necessario rimuoverla dal commento in `harbor.yml` eliminando il carattere `#` iniziale.
 
 <table border="0">
   <caption>
-    Optional Parameters for Harbor
+    Parametri opzionali per Harbor
   </caption>
   <tr>
-    <th scope="col">Parameter</th>
-    <th scope="col">Sub-Parameters</th>
-    <th scope="col">Description and Additional Parameters </th>
+    <th scope="col">Parametro</th>
+    <th scope="col">Sottoparametri</th>
+    <th scope="col">Descrizione e parametri aggiuntivi </th>
   </tr>
   <tr>
     <td valign="top"><code>external_url</code></td>
-    <td valign="top">None</td>
-    <td valign="top">Enable this option to use an external proxy. When  enabled, the hostname is no longer used.</td>
+    <td valign="top">Nessuno</td>
+    <td valign="top">Abilita questa opzione per utilizzare un proxy esterno. Quando abilitato, il nome host non viene più utilizzato.</td>
   </tr>
   <tr>
   <tr>
     <td valign="top"><code>storage_service</code></td>
-    <td valign="top">&nbsp;</td>
-    <td valign="top">By default, Harbor stores images and charts on your local filesystem. In a production environment, you might want to use another storage backend instead of the local filesystem. The parameters listed below are the configurations for the registry. See *Configuring Storage Backend* below for more information about how to configure a different backend.</td>
+    <td valign="top"></td>
+    <td valign="top">Per impostazione predefinita, Harbor memorizza immagini e grafici sul file system locale. In un ambiente di produzione, potresti voler utilizzare un altro backend di archiviazione anziché il file system locale. I parametri elencati di seguito sono le configurazioni per registry. Consulta *Configurazione del backend di archiviazione* di seguito per ulteriori informazioni su come configurare un backend diverso.</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>ca_bundle</code></td>
-    <td valign="top">The path to the custom root CA certificate, which is injected into the trust store of registry and chart repository containers. This is usually needed if internal storage uses a self signed certificate.</td>
+    <td valign="top">Il percorso del certificato CA radice personalizzato, che viene inserito nell'archivio attendibilità di registry e nei contenitori del repository di grafici. Di solito è necessario se la memoria interna utilizza un certificato autofirmato.</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>filesystem</code></td>
-    <td valign="top">The default is <code>filesystem</code>, but you can set <code>azure</code>, <code>gcs</code>, <code>s3</code>, <code>swift</code> and <code>oss</code>. For information about how to configure other backends, see <a href="#backend">Configuring a Storage Backend</a> below. Set <code>maxthreads</code> to limit the number of threads to the external provider. The default is 100.</td>
+    <td valign="top">L'impostazione predefinita è <code>filesystem</code>, ma è possibile impostare <code>azure</code>, <code>gcs</code>, <code>s3</code>, <code>swift</code> e <code>oss</code>. Per informazioni su come configurare altri backend, vedere <a href="#backend">Configurazione di un backend di archiviazione</a> di seguito. Imposta <code>maxthreads</code> per limitare il numero di thread al provider esterno. Il valore predefinito è 100.</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>redirect</code></td>
-    <td valign="top">Set <code>deactivate</code> to <code>true</code> when you want to deactivate registry redirect</td>
+    <td valign="top">Imposta <code>deactivate</code> su <code>true</code> quando desideri disattivare registry reindirizzamento</td>
   </tr>
   <tr>
     <td valign="top"><code>external_database</code></td>
-    <td valign="top">&nbsp;</td>
-    <td valign="top">Configure external database settings, if you deactivate the local database option. Currently, Harbor only supports PostgreSQL database. You must create a database for Harbor core. The tables are generated automatically when Harbor starts up.</td>
+    <td valign="top"></td>
+    <td valign="top">Configurare le impostazioni del database esterno, se si disattiva l'opzione del database locale. Attualmente, Harbor supporta solo il database PostgreSQL. È necessario creare un database per il core Harbor. Le tabelle vengono generate automaticamente all'avvio di Harbor.</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>harbor</code></td>
-    <td valign="top"><p>Configure an external database for Harbor data.</p>
+    <td valign="top"><p>Configurare un database esterno per i dati Harbor.</p>
       <ul>
-        <li><code>host</code>: Hostname of the Harbor database.</li>
-        <li><code>port</code>: Database port.</li>
-        <li><code>db_name</code>: Database name.</li>
-        <li><code>username</code>: Username to connect to the core Harbor database.</li>
-        <li><code>password</code>: Password for the account you set in <code>username</code>.</li>
-        <li><code>ssl_mode</code>: Enable SSL mode.</li>
-        <li><code>max_idle_conns</code>: The maximum number of connections in the idle connection pool. If &lt;=0 no idle connections are retained. The default value is 2.</li>
-        <li><code>max_open_conns</code>: The maximum number of open connections to the database. If &lt;= 0 there is no limit on the number of open connections. The default value is 0.</li>
-    </ul>      </td>
+        <li><code>host</code>: nome host del database Harbor.</li>
+        <li><code>port</code>: porta database.</li>
+        <li><code>db_name</code>: nome del database.</li>
+        <li><code>username</code>: nome utente per connettersi al database principale Harbor.</li>
+        <li><code>password</code>: password per l'account impostato in <code>username</code>.</li>
+        <li><code>ssl_mode</code>: abilita la modalità SSL.</li>
+        <li><code>max_idle_conns</code>: il numero massimo di connessioni nel pool di connessioni inattive. Se &lt;=0 non viene mantenuta alcuna connessione inattiva. Il valore predefinito è 2.</li>
+        <li><code>max_open_conns</code>: il numero massimo di connessioni aperte al database. Se &lt;= 0 non c'è limite al numero di connessioni aperte. Il valore predefinito è 0.</li>
+    </ul> </td>
   </tr>
   <tr>
     <td valign="top"><code>external_redis</code></td>
-    <td valign="top">&nbsp;</td>
-    <td valign="top">Configure an external Redis instance.</td>
+    <td valign="top"></td>
+    <td valign="top">Configura un'istanza Redis esterna.</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>host</code></td>
-    <td valign="top">redis_host:redis_port of the external Redis instance. If you are using Sentinel mode, this part should be host_sentinel1:port_sentinel1,host_sentinel2:port_sentinel2</td>
+    <td valign="top">redis_host:redis_port dell'istanza Redis esterna. Se stai utilizzando la modalità Sentinel, questa parte dovrebbe essere host_sentinel1:port_sentinel1,host_sentinel2:port_sentinel2</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>sentinel_master_set</code></td>
-    <td valign="top">Only set this when using Sentinel mode</td>
+    <td valign="top">Impostarlo solo quando si utilizza la modalità Sentinel</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>password</code></td>
-    <td valign="top">Password to connect to the external Redis instance.</td>
+    <td valign="top">Password per connettersi all'istanza Redis esterna.</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>registry_db_index</code></td>
-    <td valign="top">Database index for Harbor registry.</td>
+    <td valign="top">Indice del database per Harbor registry.</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>jobservice_db_index</code></td>
-    <td valign="top">Database index for jobservice.</td>
+    <td valign="top">Indice database per jobservice.</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>trivy_db_index</code></td>
-    <td valign="top">Database index for Trivy adapter.</td>
+    <td valign="top">Indice database per adattatore Trivy.</td>
   </tr>
   <tr>
     <td valign="top"><code>metric</code></td>
-    <td valign="top">&nbsp;</td>
-    <td valign="top">Configure exposing Harbor instance metrics to a specified port and path</td>
+    <td valign="top"></td>
+    <td valign="top">Configura l'esposizione dei parametri dell'istanza Harbor a una porta e un percorso specificati</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>enabled</code></td>
-    <td valign="top">Enable exposing metrics on your Harbor instance by setting this to <code>true</code>. Default is <code>false</code></td>
+    <td valign="top">Abilita l'esposizione dei parametri sulla tua istanza Harbor impostandola su <code>true</code>. L'impostazione predefinita è <code>false</code></td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>port</code></td>
-    <td valign="top">Port metrics are exposed on. Default is <code>9090</code></td>
+    Le metriche <td valign="top">Port sono esposte su. L'impostazione predefinita è <code>9090</code></td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>path</code></td>
-    <td valign="top">Path metrics are exposed on. Default is <code>/metrics</code></td>
+    Le metriche <td valign="top">Path sono esposte su. L'impostazione predefinita è <code>/metrics</code></td>
   </tr>
   <tr>
     <td valign="top"><code>trace</code></td>
-    <td valign="top">&nbsp;</td>
-    <td valign="top">Configure exposing Distributed tracing data</td>
+    <td valign="top"></td>
+    <td valign="top">Configurare l'esposizione dei dati di tracciamento distribuito</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>enabled</code></td>
-    <td valign="top">Enable exposing tracing on your Harbor instance by setting this to <code>true</code>. Default is <code>false</code></td>
+    <td valign="top">Abilita l'esposizione della traccia sulla tua istanza Harbor impostandola su <code>true</code>. L'impostazione predefinita è <code>false</code></td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>sample_rate</code></td>
-    <td valign="top">Set the sample rate of tracing. For example, set sample_rate to <code>1</code> if you wanna sampling 100% of trace data; set <code>0.5</code> if you wanna sampling 50% of trace data, and so forth </td>
+    <td valign="top">Imposta la frequenza di campionamento del tracciamento. Ad esempio, imposta sample_rate su <code>1</code> se desideri campionare il 100% dei dati di traccia; impostare <code>0.5</code> se si desidera campionare il 50% dei dati di traccia, e così via </td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>namespace</code></td>
-    <td valign="top">Namespace used to differentiate different harbor services, which will set to attribute with key <code>service.namespace</code></td>
+    <td valign="top">Namespace utilizzato per differenziare i diversi servizi portuali, che verrà impostato per attribuire con la chiave <code>service.namespace</code></td>
   </tr>
     <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>attributes</code></td>
-    <td valign="top">The attributes is a key value dict contains user defined customized attributes used to initialize trace provider, and all of these attributes will added to trace data</td>
+    <td valign="top">Gli attributi sono un valore chiave dict contenente attributi personalizzati definiti dall'utente utilizzati per inizializzare il provider di traccia e tutti questi attributi verranno aggiunti ai dati di traccia</td>
   </tr>
   <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>jaeger</code></td>
     <td valign="top"><ul>
-      <li><code>endpoint</code>: The url of endpoint(for example <code>http://127.0.0.1:14268/api/traces</code>). set endpoint means export to jaeger collector via http.</li>
-      <li><code>username:</code>: Username used to connect endpoint. Left empty if not needed.</li>
-      <li><code>password:</code>: Password used to connect endpoint. Left empty if not needed.</li>
-      <li><code>agent_host</code>: The host name of jaeger agent. Set agent_host means export data to jaeger agent via udp. </li>
-      <li><code>agent_port:</code>: The port name of jaeger agent.</li>
+      <li><code>endpoint</code>: l'URL dell'endpoint (ad esempio <code>http://127.0.0.1:14268/api/traces</code>). impostare l'endpoint significa esportare su Jaeger Collector tramite http.</li>
+      <li><code>username:</code>: nome utente utilizzato per connettere l'endpoint. Lasciato vuoto se non necessario.</li>
+      <li><code>password:</code>: password utilizzata per connettere l'endpoint. Lasciato vuoto se non necessario.</li>
+      <li><code>agent_host</code>: il nome host dell'agente Jaeger. Impostare agent_host significa esportare i dati nell'agente Jaeger tramite udp. </li>
+      <li><code>agent_port:</code>: il nome della porta di jaeger agent.</li>
     </ul></td>
   </tr>
    <tr>
-    <td valign="top">&nbsp;</td>
+    <td valign="top"></td>
     <td valign="top"><code>otel</code></td>
     <td valign="top"><ul>
-      <li><code>endpoint</code>: The hostname and port for otel compatible backend(for example <code>127.0.0.1:4318</code>).</li>
-      <li><code>url_path:</code>: The url path of endpoint(for example <code>127.0.0.1:4318</code>) </li>
-      <li><code>compression:</code>: If enabling data compression</li>
-      <li><code>insecure</code>: Ignore cert verification for otel backend </li>
-      <li><code>timeout:</code>: The timeout of data transfer</li>
+      <li><code>endpoint</code>: il nome host e la porta per il backend compatibile con otel (ad esempio <code>127.0.0.1:4318</code>).</li>
+      <li><code>url_path:</code>: il percorso dell'URL dell'endpoint (ad esempio <code>127.0.0.1:4318</code>) </li>
+      <li><code>compression:</code>: se si abilita la compressione dei dati</li>
+      <li><code>insecure</code>: ignora la verifica del certificato per il backend otel </li>
+      <li><code>timeout:</code>: il timeout del trasferimento dati</li>
     </ul></td>
   </tr>
 </table>
@@ -389,12 +389,12 @@ The following table lists the additional, optional parameters that you can set t
 
 
 {{< note >}}
-The `harbor.yml` file includes options to configure a UAA CA certificate. This authentication mode is not recommended and is not documented.
+Il file `harbor.yml` include opzioni per configurare un certificato CA UAA. Questa modalità di autenticazione non è consigliata e non è documentata.
 {{< /note >}}
 
-## Configuring a Storage Backend {#backend}
+## Configurazione di un backend di archiviazione {#backend}
 
-By default Harbor uses local storage for the registry, but you can optionally configure the `storage_service` setting so that Harbor uses external storage. For information about how to configure the storage backend of a registry for different storage providers, see the [Distribution Configuration Reference](https://distribution.github.io/distribution/about/configuration/) in the Distribution Registry (previously Docker Registry) documentation. For example, if you use Openstack Swift as your storage backend, the parameters might resemble the following:
+Per impostazione predefinita, Harbor utilizza la memoria locale per registry, ma è possibile configurare facoltativamente l'impostazione `storage_service` in modo che Harbor utilizzi la memoria esterna. Per informazioni su come configurare il backend di archiviazione di un registry per diversi provider di archiviazione, consultare la documentazione [Riferimento alla configurazione della distribuzione](https://distribution.github.io/distribution/about/configuration/) nel registro di distribuzione (in precedenza registro Docker). Ad esempio, se utilizzi Openstack Swift come backend di archiviazione, i parametri potrebbero essere simili ai seguenti:
 
 ``` yaml
 storage_service:
@@ -411,6 +411,7 @@ storage_service:
     disabled: false
 ```
 
-## What to Do Next
+## Cosa fare dopo
 
-To install Harbor, [Run the Installer Script](run-installer-script.md).
+Per installare Harbor, [Esegui lo script di installazione](run-installer-script.md).
+

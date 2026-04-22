@@ -1,6 +1,6 @@
 ---
-title: Working with OCI Artifacts   
+title: Lavorare con gli artefatti OCI   
 weight: 70
 ---
 
-This section describes how to work with OCI artifacts like OCI Helm chart or used defined OCI artifacts.
+Questa sezione descrive come lavorare con gli artefatti OCI come il grafico OCI Helm o con gli artefatti OCI definiti utilizzati.

@@ -1,20 +1,20 @@
 ---
-title: Harbor Administration
+title: Harbor Amministrazione
 weight: 10
 ---
 
-This section describes how to configure and maintain Harbor after deployment. These operations are performed by the Harbor system administrator. The Harbor system administrator performs global configuration operations that apply to the whole Harbor instance.
+Questa sezione descrive come configurare e gestire Harbor dopo la distribuzione. Queste operazioni vengono eseguite dall'amministratore del sistema Harbor. L'amministratore di sistema Harbor esegue operazioni di configurazione globale che si applicano all'intera istanza Harbor.
 
-The operations that are performed by the Harbor system administrator are the following.
+Le operazioni che vengono eseguite dall'amministratore del sistema Harbor sono le seguenti.
 
-- Select database, LDAP/Active Directory, or OIDC based authentication. For information, see [Configuring Authentication](configure-authentication).
-- Add users in database authentication mode and assign the system administrator role to other users. For information, see [Managing Users](managing-users).
-- Configure global settings, such as setting the registry to read-only mode, and restriction who can create projects. For information, see [Configure Global Settings](general-settings).
-- Apply resource quotas to projects. For information, see [Configure Project Quotas](configure-project-quotas).
-- Set up replication of images between Harbor and another Harbor instance or a 3rd party replication target. For information, see [Configuring Replication](configuring-replication).
-- Set up vulnerability scanners to check the images in the registry for CVE vulnerabilities. For information, see [Vulnerability Scanning](vulnerability-scanning).
-- Perform garbage collection, to remove unnecessary data from Harbor. For information, see [Garbage Collection](garbage-collection).
-- Manage audit logs by configuring an audit log retention window and setting a syslog endpoint to forward audit logs. For information, see [Log Rotation](log-rotation).
-- Upgrade Harbor when a new version becomes available. For information, see [Upgrading Harbor](upgrade).
-- Set up P2P preheat provider instances to preheat the specified images into the P2P network. For information, see [P2P preheat](p2p-preheat).
-- Details of defining a user-defined OCI artifact so that Harbor can manage it. For information, see [user-defined OCI artifact](user-defined-OCI-artifact).
+- Selezionare l'autenticazione basata sul database, LDAP/Active Directory o OIDC. Per informazioni, vedere [Configurazione dell'autenticazione](configure-authentication).
+- Aggiungi utenti in modalità di autenticazione del database e assegna il ruolo di amministratore di sistema ad altri utenti. Per informazioni, vedere [Gestione degli utenti](managing-users).
+- Configurare le impostazioni globali, come l'impostazione di registry in modalità di sola lettura e la restrizione su chi può creare progetti. Per informazioni, vedere [Configura le impostazioni globali](general-settings).
+- Applicare quote di risorse ai progetti. Per informazioni, vedere [Configura le quote del progetto](configure-project-quotas).
+- Configurare la replica delle immagini tra Harbor e un'altra istanza Harbor o una destinazione di replica di terze parti. Per informazioni, vedere [Configurazione della replica](configuring-replication).
+- Configurare gli scanner delle vulnerabilità per controllare le immagini in registry per le vulnerabilità CVE. Per informazioni, vedere [Scansione delle vulnerabilità](vulnerability-scanning).
+- Eseguire la raccolta dei rifiuti, per rimuovere i dati non necessari da Harbor. Per informazioni, vedere [Raccolta dei rifiuti](garbage-collection).
+- Gestisci i log di controllo configurando una finestra di conservazione dei log di controllo e impostando un endpoint syslog per inoltrare i log di controllo. Per informazioni, vedere [Rotazione del registro](log-rotation).
+- Aggiorna Harbor quando diventa disponibile una nuova versione. Per informazioni, vedere [Aggiornamento di Harbor](upgrade).
+- Configura le istanze del provider di preriscaldamento P2P per preriscaldare le immagini specificate nella rete P2P. Per informazioni, vedere [Preriscaldamento P2P](p2p-preheat).
+- Dettagli sulla definizione di un artefatto OCI definito dall'utente in modo che Harbor possa gestirlo. Per informazioni, vedere [artefatto OCI definito dall'utente](user-defined-OCI-artifact).

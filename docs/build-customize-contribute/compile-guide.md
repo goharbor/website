@@ -1,56 +1,56 @@
 ---
-title: Build Harbor from Source Code
+title: Costruisci Harbor dal codice sorgente
 ---
 
-This guide provides instructions for developers to build and run Harbor from source code.
+Questa guida fornisce istruzioni agli sviluppatori per creare ed eseguire Harbor dal codice sorgente.
 
-## Step 1: Prepare for a build environment for Harbor
+## Passaggio 1: prepararsi per un ambiente di compilazione per Harbor
 
-Harbor is deployed as several Docker containers and most of the code is written in Go language. The build environment requires Docker, Docker Compose and golang development environment. Please install the below prerequisites:
+Harbor viene distribuito come diversi contenitori Docker e la maggior parte del codice è scritto in linguaggio Go. L'ambiente di compilazione richiede Docker, Docker Compose e l'ambiente di sviluppo golang. Installare i prerequisiti seguenti:
 
-| Software       | Required Version |
+| Software | Versione richiesta |
 | -------------- | ---------------- |
-| docker         | 17.05 +          |
-| docker-compose | 1.18.0 +         |
-| python         | 2.7 +            |
-| git            | 1.9.1 +          |
-| make           | 3.81 +           |
-| golang\*       | 1.15.6 +         |
+| finestra mobile | 17.05 + |
+| finestra mobile-componi | 1.18.0 + |
+| pitone | 2,7 + |
+| git | 1.9.1 + |
+| fare | 3,81 + |
+| golang\* | 1.15.6 + |
 
-\*optional, required if you use your own Golang environment.
+\*opzionale, richiesto se usi il tuo ambiente Golang.
 
-## Step 2: Getting the source code
+## Passaggio 2: ottenere il codice sorgente
 
 ```sh
 git clone https://github.com/goharbor/harbor
 ```
 
-## Step 3: Building and installing Harbor
+## Passaggio 3: creazione e installazione di Harbor
 
-### Configuration
+### Configurazione
 
-Copy the file **make/harbor.yml.tmpl** to **make/harbor.yml**, and make necessary configuration changes such as hostname, admin password and mail server. Refer to [Harbor Installation and Configuration](../install-config/_index.md) for more info.
+Copia il file **make/harbor.yml.tmpl** in **make/harbor.yml** e apporta le modifiche necessarie alla configurazione come nome host, password amministratore e server di posta. Fare riferimento a [Harbor Installazione e configurazione](../install-config/_index.md) per ulteriori informazioni.
 
 ```sh
 cd harbor
 vi make/harbor.yml
 ```
 
-### Compiling and Running
+### Compilazione ed esecuzione
 
-You can compile the code by one of the two approaches:
+È possibile compilare il codice mediante uno dei due approcci:
 
-#### I. Build with official Golang image
+#### I. Costruisci con l'immagine ufficiale di Golang
 
-- Build, install and bring up Harbor:
+- Costruisci, installa e visualizza Harbor:
 
     ```sh
     make install COMPILETAG=compile_golangimage
     ```
 
-#### II. Compile code with your own Golang environment, then build Harbor
+#### II. Compila il codice con il tuo ambiente Golang, quindi crea Harbor
 
-- Move source code to `$GOPATH`:
+- Sposta il codice sorgente in `$GOPATH`:
 
     ```sh
     mkdir $GOPATH/src/github.com/goharbor/
@@ -58,94 +58,94 @@ You can compile the code by one of the two approaches:
     mv harbor $GOPATH/src/github.com/goharbor/.
     ```
 
-- Build, install and run Harbor:
+- Costruisci, installa ed esegui Harbor:
 
     ```sh
     cd $GOPATH/src/github.com/goharbor/harbor
     $ make install
     ```
 
-### Verify your installation
+### Verifica l'installazione
 
-If everything works properly, you will see this message:
+Se tutto funziona correttamente, vedrai questo messaggio:
 
 ```sh
 ...
 Start complete. You can visit harbor now.
 ```
 
-Refer to [Reconfigure Harbor and Manage the Harbor Lifecycle](../install-config/reconfigure-manage-lifecycle.md) for more information about managing your Harbor instance.
+Fare riferimento a [Riconfigurare Harbor e gestire il ciclo di vita Harbor](../install-config/reconfigure-manage-lifecycle.md) per ulteriori informazioni sulla gestione dell'istanza Harbor.
 
-## Appendix
+## Appendice
 
-- Using the Makefile
+- Utilizzando il Makefile
 
-The `Makefile` contains these configurable parameters:
+`Makefile` contiene questi parametri configurabili:
 
-| Variable            | Description                                                      |
+| Variabile | Descrizione |
 | ------------------- | ---------------------------------------------------------------- |
-| BASEIMAGE           | Container base image, default: photon                            |
-| DEVFLAG             | Build model flag, default: dev                                   |
-| COMPILETAG          | Compile model flag, default: compile_normal (local golang build) |
-| TRIVYFLAG           | Trivy mode flag, default: false                                  |
-| HTTPPROXY           | NPM http proxy for Clarity UI builder                            |
-| REGISTRYSERVER      | Remote registry server IP address                                |
-| REGISTRYUSER        | Remote registry server user name                                 |
-| REGISTRYPASSWORD    | Remote registry server user password                             |
-| REGISTRYPROJECTNAME | Project name on remote registry server                           |
-| VERSIONTAG          | Harbor images tag, default: dev                                  |
-| PKGVERSIONTAG       | Harbor online and offline version tag, default:dev               |
+| IMMAGINE BASE | Immagine base del contenitore, predefinita: photon |
+| DEVFLAG | Flag del modello di build, predefinito: dev |
+| COMPILETAG | Compila il flag del modello, predefinito: compile_normal (build golang locale) |
+| TRIVYFLAG | Flag di modalità Trivy, impostazione predefinita: false |
+| HTTPPROXY | Proxy http NPM per il builder Clarity UI |
+| SERVERREGISTRAZIONE | Indirizzo IP del server registry remoto |
+| UTENTEREGISTRAZIONE | Nome utente del server registry remoto |
+| PASSWORD REGISTRAZIONE | Password utente server remoto registry |
+| REGISTRONOMEPROGETTO | Nome del progetto sul server registry remoto |
+| TAG VERSIONE | Tag immagini Harbor, predefinito: dev |
+| PKGVERSIONTAG | Harbor Tag della versione online e offline, predefinito:dev |
 
-- Predefined targets:
+- Obiettivi predefiniti:
 
-| Target                 | Description                                                                                                                 |
+| Obiettivo | Descrizione |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| all                    | prepare env, compile binaries, build images and install images                                                              |
-| prepare                | prepare env                                                                                                                 |
-| compile                | compile ui and jobservice code                                                                                              |
-| compile_portal         | compile portal code                                                                                                         |
-| compile_ui             | compile ui binary                                                                                                           |
-| compile_jobservice     | compile jobservice binary                                                                                                   |
-| build                  | build Harbor docker images (default: using build_photon)                                                                    |
-| build_photon           | build Harbor docker images from Photon OS base image                                                                        |
-| install                | compile binaries, build images, prepare specific version of compose file and startup Harbor instance                        |
-| start                  | startup Harbor instance                                                          |
-| down                   | shutdown Harbor instance                                                          |
-| package_online         | prepare online install package                                                                                              |
-| package_offline        | prepare offline install package                                                                                             |
-| pushimage              | push Harbor images to specific registry server                                                                              |
-| cleanall               | remove binary, Harbor images, specific version docker-compose file, specific version tag and online/offline install package |
-| cleanbinary            | remove ui and jobservice binary                                                                                             |
-| cleanimage             | remove Harbor images                                                                                                        |
-| cleandockercomposefile | remove specific version docker-compose                                                                                      |
-| cleanversiontag        | remove specific version tag                                                                                                 |
-| cleanpackage           | remove online/offline install package                                                                                       |
+| tutto | preparare env, compilare file binari, creare immagini e installare immagini |
+| preparare | preparare env |
+| compilare | compilare l'interfaccia utente e il codice del servizio lavoro |
+| compile_portale | compilare il codice del portale |
+| compile_ui | compilare il binario dell'interfaccia utente |
+| compile_jobservice | compilare il binario di jobservice |
+| costruire | costruire immagini docker Harbor (impostazione predefinita: utilizzando build_photon) |
+| build_fotone | creare immagini docker Harbor dall'immagine di base del sistema operativo Photon |
+| installa | compilare file binari, creare immagini, preparare una versione specifica del file di composizione e avviare l'istanza Harbor |
+| inizio | istanza Harbor di avvio |
+| giù | arresto istanza Harbor |
+| pacchetto_online | preparare il pacchetto di installazione online |
+| pacchetto_offline | preparare il pacchetto di installazione offline |
+| immagine push | inviare le immagini Harbor al server registry specifico |
+| tutto pulito | rimuovere il file binario, le immagini Harbor, il file docker-compose della versione specifica, il tag della versione specifica e il pacchetto di installazione online/offline |
+| pulitobinario | rimuovere l'interfaccia utente e il binario di jobservice |
+| immagine pulita | rimuovere le immagini Harbor |
+| cleandockercomposefile | rimuovere la versione specifica docker-compose |
+| tagversionepulita | rimuovere il tag di versione specifico |
+| pacchetto pulito | rimuovere il pacchetto di installazione online/offline |
 
-#### EXAMPLE:
+#### ESEMPIO:
 
-#### Push Harbor images to specific registry server
+#### Invia le immagini Harbor al server registry specifico
 
 ```sh
 make pushimage -e DEVFLAG=false REGISTRYSERVER=[$SERVERADDRESS] REGISTRYUSER=[$USERNAME] REGISTRYPASSWORD=[$PASSWORD] REGISTRYPROJECTNAME=[$PROJECTNAME]
 ```
 
-**Note**: need to add "/" at the end of REGISTRYSERVER. If REGISTRYSERVER is not set, images will be pushed directly to Docker Hub.
+**Nota**: è necessario aggiungere "/" alla fine di REGISTRYSERVER. Se REGISTRYSERVER non è impostato, le immagini verranno inviate direttamente all'hub Docker.
 
 ```sh
 make pushimage -e DEVFLAG=false REGISTRYUSER=[$USERNAME] REGISTRYPASSWORD=[$PASSWORD] REGISTRYPROJECTNAME=[$PROJECTNAME]
 ```
 
-#### Clean up binaries and images of a specific version
+#### Pulisci i file binari e le immagini di una versione specifica
 
 ```sh
 make clean -e VERSIONTAG=[TAG]
 ```
 
 {{< note >}}
-If new code has been added to GitHub, the git commit TAG will change. Better use this command to clean up images and files of the previous TAG.
+Se è stato aggiunto un nuovo codice a GitHub, il TAG commit git cambierà. Meglio utilizzare questo comando per ripulire immagini e file del TAG precedente.
 {{< /note >}}
 
-#### By default, the make process creates a development build. To create a release build of Harbor, set the below flag to false.
+#### Per impostazione predefinita, il processo make crea una build di sviluppo. Per creare una build di rilascio di Harbor, imposta il flag seguente su false.
 
 ```sh
 make XXXX -e DEVFLAG=false
