@@ -32,7 +32,7 @@ Name | Description | Labels (Values) | Metric type
 `harbor_project_artifact_total` | Total number of artifacts type in a project | artifact_type , project_name, public (`true`,`false`) | gauge
 `harbor_health` | Current status of Harbor | | gauge
 `harbor_system_info` | Information about your Harbor instance | auth_mode (`db_auth`, `ldap_auth`, `uaa_auth`, `http_auth`, `oidc_auth`), harbor_version, self_registration(`true`,`false`) | gauge
-`harbor_up`| Running status of Harbor components  | component (`chartmuseum`, `core`, `database`, `jobservice`, `portal`, `redis`, `registry`, `registryctl`, `trivy`) | gauge
+`harbor_up`| Running status of Harbor components  | component (`core`, `database`, `jobservice`, `portal`, `redis`, `registry`, `registryctl`, `trivy`) | gauge
 `harbor_task_queue_size` | The total number of tasks per type in the queue | instance, job, type  | gauge
 `harbor_task_queue_latency` | How long ago the next job to be processed was enqueued per type | instance, job, type | gauge
 `harbor_task_scheduled_total` | 	Number of scheduled tasks | instance, job | gauge

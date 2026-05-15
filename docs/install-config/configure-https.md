@@ -3,6 +3,10 @@ title: Configure HTTPS Access to Harbor
 weight: 30
 ---
 
+**Important: Using Existing Third-Party Certificates**
+
+If you already have a TLS certificate and key from a trusted authority (e.g., Let's Encrypt, DigiCert, GoDaddy), you can skip the self-signed certificate generation steps on this page. Simply place your certificate and key files on the Harbor host and provide their paths in the `harbor.yml` file, as described in ./configure-yml-file.md. This is the recommended approach for all production environments.
+
 By default, Harbor does not ship with certificates. It is possible to deploy Harbor without security, so that you can connect to it over HTTP. However, using HTTP is acceptable only in air-gapped test or development environments that do not have a connection to the external internet. Using HTTP in environments that are not air-gapped exposes you to man-in-the-middle attacks. In production environments, always use HTTPS. 
 
 To configure HTTPS, you must create SSL certificates. You can use certificates that are signed by a trusted third-party CA, or you can use self-signed certificates. This section describes how to use [OpenSSL](https://www.openssl.org/) to create a CA, and how to use your CA to sign a server certificate and a client certificate. You can use other CA providers, for example [Let's Encrypt](https://letsencrypt.org/).
@@ -84,32 +88,37 @@ The certificate usually contains a `.crt` file and a `.key` file, for example, `
 
 ## Provide the Certificates to Harbor and Docker
 
-After generating the `ca.crt`, `yourdomain.com.crt`, and `yourdomain.com.key` files, you must provide them to Harbor and to Docker, and reconfigure Harbor to use them.
+After generating the `ca.crt`, `yourdomain.com.crt`, and `yourdomain.com.key` files for your self-signed certificate, you must provide them to Harbor and to the Docker daemon.
 
-1. Copy the server certificate and key into the certficates folder on your Harbor host.
+1. Create the Certificate Directory for Harbor.
+
+    The `/data/cert/` directory is the default location where Harbor looks for its certificates, but this directory does not exist by default. You must create it first.
+
+    ```sh
+    sudo mkdir -p /data/cert/
+
+1. Copy the Server Certificate and Key to the Harbor Directory
 
     ```sh
     cp yourdomain.com.crt /data/cert/
-    cp yourdomain.com.key /data/cert/
+    sudo cp yourdomain.com.key /data/cert/
     ```
 
-1. Convert `yourdomain.com.crt` to `yourdomain.com.cert`, for use by Docker.
+1. Configure the Docker Daemon to Trust the Certificate
 
-    The Docker daemon interprets `.crt` files as CA certificates and `.cert` files as client certificates.
+    To allow the Docker client to push and pull images, the Docker daemon must also trust the certificate so ,convert your server certificate from .crt to .cert, as the Docker daemon requires this extension.
 
     ```sh
-    openssl x509 -inform PEM -in yourdomain.com.crt -out yourdomain.com.cert
+    openssl x509 -inform PEM -in yourdomain.com.crt -out yourdomain.com.cer
     ```
-
-1. Copy the server certificate, key and CA files into the Docker certificates folder on the Harbor host. You must create the appropriate folders first.
+    Next, create a dedicated directory for your Harbor domain and copy all three certificate files into it.
 
     ```sh
+    mkdir -p /etc/docker/certs.d/yourdomain.com/
     cp yourdomain.com.cert /etc/docker/certs.d/yourdomain.com/
     cp yourdomain.com.key /etc/docker/certs.d/yourdomain.com/
     cp ca.crt /etc/docker/certs.d/yourdomain.com/
     ```
-
-    If you mapped the default `nginx` port 443 to a different port, create the folder `/etc/docker/certs.d/yourdomain.com:port`, or `/etc/docker/certs.d/harbor_IP:port`.
 
 1. Restart Docker Engine.
 
@@ -119,14 +128,14 @@ After generating the `ca.crt`, `yourdomain.com.crt`, and `yourdomain.com.key` fi
 
 You might also need to trust the certificate at the OS level. See [Troubleshooting Harbor Installation](troubleshoot-installation.md#https) for more information.
 
-The following example illustrates a configuration that uses custom certificates.
+The following example illustrates the final directory structure for Docker, which uses your custom certificates.
 
 ```
 /etc/docker/certs.d/
     └── yourdomain.com:port
-       ├── yourdomain.com.cert  <-- Server certificate signed by CA
-       ├── yourdomain.com.key   <-- Server key signed by CA
-       └── ca.crt               <-- Certificate authority that signed the registry certificate
+       ├── yourdomain.com.cert
+       ├── yourdomain.com.key
+       └── ca.crt             
 ```
 
 ## Deploy or Reconfigure Harbor

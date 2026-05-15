@@ -3,7 +3,7 @@ title: User-defined OCI artifact
 weight: 25
 ---
 
-Harbor now can expands support for Machine Learning on K8s datamodels such as Kubeflow datamodels. Actually, they are still OCI artifacts.
+Harbor now expands support for Machine Learning on K8s datamodels such as Kubeflow datamodels. Actually, they are still OCI artifacts.
 These artifacts follow Harbor-specific configuration so that harbor can show their rich metadata in a way and their icons. They are called user-defined OCI artifact.
 
 

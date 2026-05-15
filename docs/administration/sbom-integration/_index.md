@@ -8,7 +8,7 @@ It provides transparency by listing dependencies, their versions, and associated
 This visibility helps engineers as well as software systems track and manage potential security issues effectively.
 
 Since version 2.11 Harbor supports now automatic generation of SBOMs in combination with its default scanner - Trivy.
-Addition to that, users can also click the `GENERATE SBOM` button to manually generate an SBOM of a given artifact.
+Additionally, users can also click the `GENERATE SBOM` button to manually generate an SBOM of a given artifact.
 
 ## Automatic Generation of SBOMs during Image Push
 

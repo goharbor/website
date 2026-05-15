@@ -3,7 +3,7 @@ title: Configure Internal TLS communication between Harbor Component
 weight: 30
 ---
 
- By default, The internal communication between Harbor's component (harbor-core,harbor-jobservice,proxy,harbor-portal,registry,registryctl,trivy_adapter,chartmuseum) use HTTP protocol which might not be secure enough for some production environment. Since Harbor v2.0, TLS can be used for this internal network. In production environments, always use HTTPS is a recommended best practice.
+ By default, The internal communication between Harbor's component (harbor-core,harbor-jobservice,proxy,harbor-portal,registry,registryctl,trivy_adapter) use HTTP protocol which might not be secure enough for some production environment. Since Harbor v2.0, TLS can be used for this internal network. In production environments, always use HTTPS is a recommended best practice.
 
 This functionality is introduced via the `internal_tls` in `harbor.yml` file. To enabled internal TLS, set `enabled` to `true` and set the `dir` value to the path of directory that contains the internal cert files.
 

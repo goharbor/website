@@ -17,19 +17,20 @@ You can also use an endpoint in a proxy cache project. Read more about how to [C
 
    The endpoint can be another Harbor instance, or a non-Harbor registry. Currently, the following non-Harbor registries are supported:
 
-   - Docker Hub
-   - Docker registry
+   - Alibaba Cloud Container Registry
    - AWS Elastic Container Registry
    - Azure Container Registry
-   - Ali Cloud Container Registry
+   - Docker Hub
+   - Docker registry
+   - Github Container Registry
    - Google Container Registry (and Google Cloud Artifact Registry)
-   - Huawei SWR
-   - Gitlab
-   - Quay
+   - Huawei SoftWare Repository for Container
    - Jfrog Artifactory
+   - Tencent Container Registry
+   - VolcEngine Container Registry
 
    {{< note >}}
-   If you plan to use this endpoint in a proxy cache project, note that they only support Harbor, Docker Hub, AWS Elastic Container Registry, Azure Container Registry, Google Container Registry/Google Cloud Artifact Registry, and Quay registries. Read more about how to [Configure Proxy Cache](../../configure-proxy-cache/).
+   If you plan to use this endpoint in a proxy cache project, note that they only support Harbor, Alibaba Cloud Container Registry, Azure Container Registry, Docker Hub, Docker registry, AWS Elastic Container Registry, Google Container Registry/Google Cloud Artifact Registry, Github Container Registry, and Jfrog Artifactory registries. Read more about how to [Configure Proxy Cache](../../configure-proxy-cache/).
    {{< /note >}}
 
    ![Replication providers](../../../img/replication-endpoint2.png)
@@ -45,6 +46,12 @@ You can also use an endpoint in a proxy cache project. Read more about how to [C
 
    {{< note >}}
    If you plan to use this endpoint with a proxy cache project, the access accounts you provide here enables the proxy cache project to pull every image from the target registry that the access account has permission to pull.
+   {{< /note >}}
+
+   {{< note >}}
+   When an endpoint is used for proxy cache, Harbor may obtain tokens by following the upstream `WWW-Authenticate: Bearer realm="..."` challenge.
+   The token service can be hosted on a different domain from the registry.
+   Configure only trusted upstream registries/endpoints and use least-privilege access credentials.
    {{< /note >}}
 
 1. Optionally, select the **Verify Remote Cert** check box.

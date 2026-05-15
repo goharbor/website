@@ -73,3 +73,9 @@ The installation processes are almost the same for the online and offline instal
 
 - To secure the connections to Harbor, see [Configure HTTPS Access to Harbor](configure-https.md).
 - To configure your Harbor installation, see [Configure the Harbor YML File](configure-yml-file.md).
+
+### Notes on the Installer Directory
+
+You can extract the Harbor installer in any location. The user running the installation script must have permissions to execute Docker commands (usually by being in the `docker` group).
+
+This directory is used only for installation and configuration. It is not where Harbor's permanent data is stored. All Harbor services run inside Docker containers, and their data is stored in Docker volumes. You should keep this directory so you can manage your Harbor instance later (e.g., for upgrades or configuration changes).

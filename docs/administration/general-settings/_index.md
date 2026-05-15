@@ -38,9 +38,9 @@ By default, a vulnerability scanner(e.g. Trivy) will update the image's last `pu
 
 Set a custom banner message that will be displayed on the top of the Harbor UI， then every user including anonymous users can see the banner message.
 
-- **Message Content**: Enter your message content in the text area. This filed is required.
+- **Message Content**: Enter your message content in the text area. This field is required.
 - **Message Type**: Select a message type, each message type has its corresponding style.
 - **Closable**: Decide whether the banner message can be closed temporarily.
-- **Duration**: Set the display time period of the banner message, which is from 0:00 of the start date to 0:00 of the end date. This filed is required.
+- **Duration**: Set the display time period of the banner message, which is from 0:00 of the start date to 0:00 of the end date. This field is required.
 
 ![Banner Message](../../img/banner-message.png)

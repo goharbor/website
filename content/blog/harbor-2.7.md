@@ -80,7 +80,7 @@ With the development of edge compute, the image registry such as Harbor be deplo
 * Add JFrog Artifactory As Supported Proxy-Cache Registry Source by @erismaster in [17738](https://github.com/goharbor/harbor/pull/17738)
 * Sort group search result by most match order by @stonezdj in [17708](https://github.com/goharbor/harbor/pull/17708)
 
-### Deprications
+### Deprecations
 
 * Start the deprecation of Chartmuseum from v2.6.0 and begin to remove in v2.8.0. More details, please refer to the [discussion](https://github.com/goharbor/harbor/discussions/15057).
 * Start the deprecation of Notary(signer&server) from v2.6.0 and begin to remove in v2.8.0. More details, please refer to the [discussion](https://github.com/goharbor/harbor/discussions/16612).

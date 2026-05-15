@@ -1,7 +1,7 @@
 {{ $thisSection  := .CurrentSection.RelPermalink }}
 {{ $thisPage     := .RelPermalink }}
 {{ $docsSections := where site.Sections "Section" "docs" }}
-{{ $version      := index (split .File.Path "/") 1 }}
+{{ $version      := "" }}{{ with .File }}{{ $version = index (split .Path "/") 1 }}{{ end }}
 
 <aside class="menu">
   <p class="menu-label">
@@ -12,7 +12,7 @@
 
   {{ range $docsSections }}
   {{ range .Sections }} <!-- all docs versions -->
-  {{ $thisVersion := index (split .File.Path "/") 1 }}
+  {{ $thisVersion := "" }}{{ with .File }}{{ $thisVersion = index (split .Path "/") 1 }}{{ end }}
   {{ if eq $thisVersion $version }} <!-- version filter -->
   {{ range .Sections }} <!-- sections within version -->
   {{ $isThisPage := eq .RelPermalink $thisPage }}
