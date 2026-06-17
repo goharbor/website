@@ -9,7 +9,7 @@ After the initial creation of a project, you can configure or reconfigure its pr
 1. Go to **Projects** and select a project.
 1. Select the **Configuration** tab.
 1. To make all repositories under the project accessible to everyone, select the `Public` checkbox, or deselect this checkbox to make the project private.
-1. To prevent un-signed images under the project from being pulled, select the `Prevent vulnerable images from running` checkbox.
+1. To prevent unscanned images under the project from being pulled, select the `Prevent unscanned images from running` checkbox.
 
 ![browse project](../../img/project-configuration.png)
 
@@ -26,6 +26,7 @@ You can configure projects so that images with vulnerabilities cannot be run, an
 1. Log in to the Harbor interface with an account that has at least project administrator privileges.
 1. Go to **Projects** and select a project.
 1. Select the **Configuration** tab.
+1. To prevent unscanned images under the project from being pulled, select the **Prevent unscanned images from running** checkbox.
 1. To prevent vulnerable images under the project from being pulled, select the **Prevent vulnerable images from running** checkbox.
 
    ![Prevent vulnerable images from running](../../img/prevent-vulnerable-images.png)
