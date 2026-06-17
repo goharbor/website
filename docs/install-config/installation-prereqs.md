@@ -1,44 +1,44 @@
 ---
-title: Harbor Installation Prerequisites
+title: Harbor Prerequisiti di installazione
 weight: 20
 ---
 
-Harbor can be deployed to a Docker host using Docker Compose, or to a Kubernetes cluster using Helm.
+Harbor può essere distribuito su un host Docker utilizzando Docker Compose o su un cluster Kubernetes utilizzando Helm.
 
-### Resource Requirement
+### Requisiti di risorse
 
-The table below outlines the minimum and recommended resource requirement for deploying Harbor.
+La tabella seguente illustra i requisiti di risorse minimi e consigliati per la distribuzione di Harbor.
 
-| Resource | Minimum | Recommended |
+| Risorsa | Minimo | Consigliato |
 |----------|---------|-------------|
-| CPU      | 2 CPU   | 4 CPU       |
-| Mem      | 4 GB    | 8 GB        |
-| Disk     | 40 GB   | 160 GB      |
+| CPU | 2CPU | 4CPU |
+| Mem | 4GB | 8GB |
+| Disco | 40GB | 160GB |
 
-### Software Stack Requirements Compose
+### Requisiti dello stack software Componi
 
-The following table lists the software versions that must be installed on the target host.
+Nella tabella seguente sono elencate le versioni software che devono essere installate sull'host di destinazione.
 
-| Software       | Version              | Description                                                           |
+| Software | Versione | Descrizione |
 |----------------|----------------------|-----------------------------------------------------------------------|
-| Docker Engine  | Version > 20.10      | [Docker Engine Installation](https://docs.docker.com/engine/install/) |
-| Docker Compose | Docker compose > 2.3 | Docker Compose is part of Docker Engine                               |
-| OpenSSL        | Latest (optional)    | Used to generate certificate and keys for Harbor                      |
+| Docker Motore | Versione > 20.10 | [Docker Installazione del motore](https://docs.docker.com/engine/install/) |
+| Docker Componi | Docker componi > 2.3 | Docker Compose fa parte di Docker Engine |
+| OpenSSL | Ultime (facoltativo) | Utilizzato per generare certificato e chiavi per Harbor |
 
-### Network ports
+### Porte di rete
 
-Harbor requires that the following ports be open on the target host.
+Harbor richiede che le seguenti porte siano aperte sull'host di destinazione.
 
-| Port | Protocol | Description                                                                                                        |
+| Porto | Protocollo | Descrizione |
 |------|----------|--------------------------------------------------------------------------------------------------------------------|
-| 443  | HTTPS    | Harbor portal and core API accept HTTPS requests on this port. You can change this port in the configuration file. |
-| 80   | HTTP     | Harbor portal and core API accept HTTP requests on this port. You can change this port in the configuration file.  |
+| 443| HTTPS | Il portale Harbor e il core API accettano richieste HTTPS su questa porta. È possibile modificare questa porta nel file di configurazione. |
+| 80| HTTP | Il portale Harbor e il core API accettano richieste HTTP su questa porta. È possibile modificare questa porta nel file di configurazione.  |
 
 
-## Install Harbor on Kubernetes 
+## Installa Harbor su Kubernetes 
 
-To install docker with Helm, see the dedicated repository [github.com/goharbor/harbor-helm](https://github.com/goharbor/harbor-helm)
+Per installare docker con Helm consultare il repository dedicato [github.com/goharbor/harbor-helm](https://github.com/goharbor/harbor-helm)
 
-## Next Steps
+## Passaggi successivi
 
-[Download the Harbor Installer](download-installer.md).
+[Scarica il programma di installazione Harbor](download-installer.md).

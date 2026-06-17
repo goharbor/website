@@ -1,103 +1,103 @@
 ---
-title: Configure OIDC Provider Authentication
+title: Configurare l'autenticazione del provider OIDC
 weight: 25
 ---
 
-If you select OpenID Connect (OIDC) authentication, users log in to the Harbor interface via an OIDC single sign-on (SSO) provider, such as Okta, KeyCloak, or dex. In this case, you do not create user accounts in Harbor.
+Se si seleziona l'autenticazione OpenID Connect (OIDC), gli utenti accedono all'interfaccia Harbor tramite un provider Single Sign-On (SSO) OIDC, come Okta, KeyCloak o dex. In questo caso, non crei account utente in Harbor.
 
 {{< important >}}
-You can change the authentication mode from database to OIDC only if no local users have been added to the database. If there is at least one user other than `admin` in the Harbor database, you cannot change the authentication mode.
+È possibile modificare la modalità di autenticazione da database a OIDC solo se al database non sono stati aggiunti utenti locali. Se nel database Harbor è presente almeno un utente diverso da `admin`, non è possibile modificare la modalità di autenticazione.
 {{< /important >}}
 
-Because the users are managed by the OIDC provider, self-registration, creating users, deleting users, changing passwords, and resetting passwords are not supported in OIDC authentication mode.
+Poiché gli utenti sono gestiti dal provider OIDC, l'autoregistrazione, la creazione di utenti, l'eliminazione di utenti, la modifica delle password e la reimpostazione delle password non sono supportate nella modalità di autenticazione OIDC.
 
-### Configure Your OIDC Provider
+### Configura il tuo fornitore OIDC
 
-You must configure your OIDC provider so that you can use it with Harbor. For precise information about how to perform these configurations, see the documentation for your OIDC provider.
+È necessario configurare il provider OIDC in modo da poterlo utilizzare con Harbor. Per informazioni precise su come eseguire queste configurazioni, consultare la documentazione del proprio provider OIDC.
 
-- Set up the users and groups that will use the OIDC provider to log in to Harbor. You do not need to assign any specific OIDC roles to users or groups as these do not get mapped to Harbor roles.
-- The URL of the OIDC provider endpoint, known as the Authorization Server in OAuth terminology, must service the well-known URI for its configuration document. For more information about the configuration document, see the [OpenID documentation](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationRequest).
-- To manage users by using OIDC groups, create a custom group claim that contains all of the user groups that you want to register in Harbor. The group claim must be mapped in the ID token that is sent to Harbor when users log in. You can enable the `memberof` feature on the OIDC provider. With the `memberof` feature, the OIDC user entity's `memberof` attribute is updated when the group entity's `member` attribute is updated, for example by adding or removing an OIDC user from the OIDC group.
-- Register Harbor as a client application with the OIDC provider. Associate Harbor's callback URI to the client application as a `redirectURI`. This is the address to which the OIDC provider sends ID tokens.
+- Configurare gli utenti e i gruppi che utilizzeranno il provider OIDC per accedere a Harbor. Non è necessario assegnare ruoli OIDC specifici a utenti o gruppi poiché questi non vengono mappati ai ruoli Harbor.
+- L'URL dell'endpoint del provider OIDC, noto come server di autorizzazione nella terminologia OAuth, deve servire l'URI noto per il relativo documento di configurazione. Per ulteriori informazioni sul documento di configurazione, consultare [Documentazione OpenID](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationRequest).
+- Per gestire gli utenti utilizzando i gruppi OIDC, creare un'attestazione di gruppo personalizzata che contenga tutti i gruppi di utenti che si desidera registrare in Harbor. L'attestazione di gruppo deve essere mappata nel token ID inviato a Harbor quando gli utenti accedono. È possibile abilitare la funzionalità `memberof` sul provider OIDC. Con la funzione `memberof`, l'attributo `memberof` dell'entità utente OIDC viene aggiornato quando l'attributo `member` dell'entità gruppo viene aggiornato, ad esempio aggiungendo o rimuovendo un utente OIDC dal gruppo OIDC.
+- Registrare Harbor come applicazione client presso il provider OIDC. Associa l'URI di callback di Harbor all'applicazione client come `redirectURI`. Questo è l'indirizzo al quale il provider OIDC invia i token ID.
 
-### Configure an OIDC Provider in Harbor
+### Configura un provider OIDC in Harbor
 
-Before configuring an OIDC provider in Harbor, make sure that your provider is configured correctly according to the preceding section.
+Prima di configurare un provider OIDC in Harbor, assicurati che il tuo provider sia configurato correttamente secondo la sezione precedente.
 
-1. Log in to the Harbor interface with an account that has Harbor system administrator privileges.
-1. Under **Administration**, go to **Configuration** and select the **Authentication** tab.
-1. Use the **Auth Mode** drop-down menu to select **OIDC**.
+1. Accedere all'interfaccia Harbor con un account che disponga dei privilegi di amministratore di sistema Harbor.
+1. In **Amministrazione**, vai a **Configurazione** e seleziona la scheda **Autenticazione**.
+1. Utilizzare il menu a discesa **Modalità autenticazione** per selezionare **OIDC**.
 
-   ![LDAP authentication](../../../img/select-oidc-auth.png)
-1. Enter information about your OIDC provider.   
-   - **Primary Auth Mode**: Whether to use the OIDC mode as the primary auth mode.
+   ![Autenticazione LDAP](../../../img/select-oidc-auth.png)
+1. Inserisci le informazioni sul tuo fornitore OIDC.   
+   - **Modalità di autenticazione primaria**: se utilizzare la modalità OIDC come modalità di autenticazione primaria.
 {{< note >}}
-To override and login via DB is possible when visiting the URL '/account/sign-in' explicitly
+È possibile eseguire l'override e accedere tramite DB visitando esplicitamente l'URL "/account/sign-in".
 {{< /note >}}   
-   - **OIDC Provider Name**: The name of the OIDC provider.
-   - **OIDC Provider Endpoint**: The URL of the endpoint of the OIDC provider.
-   - **OIDC Client ID**: The client ID with which Harbor is registered as  client application with the OIDC provider.
-   - **OIDC Client Secret**: The secret for the Harbor client application.
-   - **OIDC Group Filter**: The [regular expression](https://pkg.go.dev/regexp/syntax) to select matching groups from the `Group Claim Name` list . Matching groups are added to Harbor. This filter does not limit the users' capability to log in into Harbor.
-   - **Group Claim Name**: The name of a custom group claim that you have configured in your OIDC provider, that includes the groups to add to Harbor.
-   - **OIDC Admin Group**: The name of the admin group, if the ID token of the user shows that he is a member of this group, the user will have admin
-     privilege in Harbor. **Note**: You can only set one Admin Group.  Please also make sure the value in this field matches the value of group item in ID token.  
-   - **OIDC Scope**: A comma-separated string listing the scopes to be used during authentication. 
+   - **Nome provider OIDC**: il nome del provider OIDC.
+   - **OIDC Provider Endpoint**: l'URL dell'endpoint del provider OIDC.
+   - **OIDC ID client**: l'ID client con cui Harbor è registrato come applicazione client presso il provider OIDC.
+   - **OIDC Segreto client**: il segreto per l'applicazione client Harbor.
+   - **Filtro gruppo OIDC**: [espressione regolare](https://pkg.go.dev/regexp/syntax) per selezionare i gruppi corrispondenti dall'elenco `Group Claim Name`. I gruppi corrispondenti vengono aggiunti a Harbor. Questo filtro non limita la capacità degli utenti di accedere a Harbor.
+   - **Nome attestazione gruppo**: il nome di un'attestazione di gruppo personalizzata configurata nel provider OIDC, che include i gruppi da aggiungere a Harbor.
+   - **OIDC Gruppo di amministratori**: il nome del gruppo di amministratori, se il token ID dell'utente mostra che è un membro di questo gruppo, l'utente avrà l'amministratore
+     privilegio in Harbor. **Nota**: puoi impostare un solo gruppo di amministrazione.  Assicurati inoltre che il valore in questo campo corrisponda al valore dell'elemento del gruppo nel token ID.  
+   - **OIDC Ambito**: una stringa separata da virgole che elenca gli ambiti da utilizzare durante l'autenticazione. 
    
-       The OIDC scope must contain `openid` and usually also contains `profile` and `email`. To obtain refresh tokens it should also contain `offline_access`. If you are using OIDC groups, a scope must identify the group claim. Check with your OIDC provider administrator for precise details of how to identify the group claim scope, as this differs from vendor to vendor.
+       L'ambito OIDC deve contenere `openid` e solitamente contiene anche `profile` e `email`. Per ottenere i token di aggiornamento dovrebbe contenere anche `offline_access`. Se si utilizzano gruppi OIDC, un ambito deve identificare l'attestazione del gruppo. Rivolgiti all'amministratore del tuo fornitore OIDC per dettagli precisi su come identificare l'ambito della rivendicazione di gruppo, poiché varia da fornitore a fornitore.
        
-       ![OIDC settings](../../../img/oidc-auth-setting.png)
-1. Uncheck **Verify Certificate** if the OIDC Provider uses a self-signed or untrusted certificate.
-1. Check the **Automatic onboarding** if you don't want user to set his username in Harbor during his first login.  When this option is checked, the attribute **Username Claim** must be set, Harbor will read the value of this claim from ID token and use it as the username for onboarding the user.  Therefore, you must make sure the value you set in **Username Claim** is included in the ID token returned by the OIDC provider you set, otherwise there will be a system error when Harbor tries to onboard the user.
-1. Check the **OIDC Session Logout** if you want to terminate the user's current session with the OIDC provider after they log out from Harbor.
-1. Verify that the Redirect URI that you configured in your OIDC provider is the same as the one displayed at the bottom of the page. 
+       ![Impostazioni OIDC](../../../img/oidc-auth-setting.png)
+1. Deseleziona **Verifica certificato** se il provider OIDC utilizza un certificato autofirmato o non attendibile.
+1. Seleziona **Onboarding automatico** se non desideri che l'utente imposti il ​​suo nome utente in Harbor durante il suo primo accesso.  Quando questa opzione è selezionata, l'attributo **Username Claim** deve essere impostato, Harbor leggerà il valore di questa attestazione dal token ID e lo utilizzerà come nome utente per l'onboarding dell'utente.  Pertanto, devi assicurarti che il valore impostato in **Username Claim** sia incluso nel token ID restituito dal provider OIDC impostato, altrimenti si verificherà un errore di sistema quando Harbor tenta di eseguire l'onboarding dell'utente.
+1. Selezionare **OIDC Session Logout** se si desidera terminare la sessione corrente dell'utente con il provider OIDC dopo che si è disconnesso da Harbor.
+1. Verifica che l'URI di reindirizzamento configurato nel tuo provider OIDC sia lo stesso visualizzato in fondo alla pagina. 
        ![OIDC_auto_onboarding](../../../img/oidc-cert-verifi-auto-onboard.png)
-1. Click **Test OIDC Server** to make sure that your configuration is correct.
-1. Click **Save** to complete the configuration.
+1. Fare clic su **Test server OIDC** per assicurarsi che la configurazione sia corretta.
+1. Fare clic su **Salva** per completare la configurazione.
 
-### Log In to Harbor via an OIDC Provider
+### Accedi a Harbor tramite un provider OIDC
 
-When the Harbor system administrator has configured Harbor to authenticate via OIDC a **LOGIN WITH ${your_oidc_provider_name}** button appears on the Harbor login page.  
+Quando l'amministratore di sistema Harbor ha configurato Harbor per l'autenticazione tramite OIDC, nella pagina di accesso di Harbor viene visualizzato il pulsante **LOGIN WITH ${your_oidc_provider_name}**.  
 
 ![oidc_login](../../../img/oidc-login.png)
 
-**NOTE:** When Harbor is configured authentication via OIDC, the **LOGIN VIA LOCAL DB** button is for the local Harbor system administrator to log in.
+**NOTA:** Quando Harbor è configurata con l'autenticazione tramite OIDC, il pulsante **LOGIN TRAMITE DB LOCALE** consente all'amministratore di sistema Harbor locale di accedere.
     
-1. As a Harbor user, click the **LOGIN WITH ${your_oidc_provider_name}** button.
+1. Come utente Harbor, fai clic sul pulsante **ACCEDI CON ${your_oidc_provider_name}**.
  
-   This redirects you to the OIDC Provider for authentication, after the OIDC provider has authenticated you, you are redirected back to Harbor. 
-1. If this is the first time you are logging in to Harbor with OIDC, you will be onboarded to Harbor so that you have a user record in Harbor's database, which is used when adding you to projects, assigning roles, and so on.  The flow of this process depends on the configuration:
-   1.  If the option **Automatic onboarding** is not checked, a dialog will be displayed for specifying a user name for Harbor to associate with your OIDC username.
-       ![Specify Harbor username for OIDC](../../../img/oidc-onboard-dlg.png)
-       If the username is already taken, you are prompted to choose another one.
-   2.  If the option **Automatic onboarding** is checked, you will not be prompted to set the user name, instead, Harbor will try to extract the user name from ID token via the claim set in **Username Claim** and automatically onboard the user using this username.
+   Questo ti reindirizza al provider OIDC per l'autenticazione, dopo che il provider OIDC ti ha autenticato, verrai reindirizzato a Harbor. 
+1. Se è la prima volta che accedi a Harbor con OIDC, verrai integrato in Harbor in modo da avere un record utente nel database di Harbor, che viene utilizzato quando ti aggiungi a progetti, assegni ruoli e così via.  Il flusso di questo processo dipende dalla configurazione:
+   1. Se l'opzione **Onboarding automatico** non è selezionata, verrà visualizzata una finestra di dialogo per specificare un nome utente per Harbor da associare al nome utente OIDC.
+       ![Specificare il nome utente Harbor per OIDC](../../../img/oidc-onboard-dlg.png)
+       Se il nome utente è già in uso, ti verrà richiesto di sceglierne un altro.
+   2. Se l'opzione **Onboarding automatico** è selezionata, non ti verrà richiesto di impostare il nome utente, invece, Harbor proverà a estrarre il nome utente dal token ID tramite l'attestazione impostata in **Username Claim** e a eseguire automaticamente l'onboarding dell'utente utilizzando questo nome utente.
 
-### Using OIDC from the Docker or Helm CLI
+### Utilizzo di OIDC da Docker o Helm CLI
 
-After you have authenticated via OIDC and logged into the Harbor interface for the first time, you can use the Docker or Helm CLI to access Harbor.
+Dopo aver effettuato l'autenticazione tramite OIDC e aver effettuato l'accesso all'interfaccia Harbor per la prima volta, è possibile utilizzare Docker o Helm CLI per accedere a Harbor.
 
-The Docker and Helm CLIs cannot handle redirection for OIDC, so Harbor provides a CLI secret for use when logging in from Docker or Helm. This is only available when Harbor uses OIDC authentication.  
+Le CLI Docker e Helm non possono gestire il reindirizzamento per OIDC, quindi Harbor fornisce un segreto CLI da utilizzare quando si accede da Docker o Helm. Questo è disponibile solo quando Harbor utilizza l'autenticazione OIDC.  
 
-1. Log in to Harbor with an OIDC user account.
-1. Click your username at the top of the screen and select **User Profile**.
+1. Accedi a Harbor con un account utente OIDC.
+1. Fai clic sul tuo nome utente nella parte superiore dello schermo e seleziona **Profilo utente**.
 
-   ![Access user profile](../../../img/user-profile.png)
-1. Click the clipboard icon to copy the CLI secret associated with your account.
+   ![Accedi al profilo utente](../../../img/user-profile.png)
+1. Fai clic sull'icona degli appunti per copiare il segreto CLI associato al tuo account.
 
-   ![Copy CLI secret](../../../img/profile-dlg.png)
-1. Optionally click the **...** icon in your user profile to display buttons for automatically generating or manually creating a new CLI secret.
+   ![Copia il segreto CLI](../../../img/profile-dlg.png)
+1. Facoltativamente, fare clic sull'icona **...** nel profilo utente per visualizzare i pulsanti per generare automaticamente o creare manualmente un nuovo segreto CLI.
 
-   ![Copy CLI secret](../../../img/generate-create-new-secret.png) 
+   ![Copia il segreto CLI](../../../img/generate-create-new-secret.png) 
 
-   A user can only have one CLI secret, so when a new secret is generated or create, the old one becomes invalid.
-1. If you generated a new CLI secret, click the clipboard icon to copy it.
+   Un utente può avere solo un segreto CLI, quindi quando viene generato o creato un nuovo segreto, quello vecchio diventa non valido.
+1. Se hai generato un nuovo segreto CLI, fai clic sull'icona degli appunti per copiarlo.
 
-You can now use your CLI secret as the password when logging in to Harbor from the Docker or Helm CLI.
+Ora puoi utilizzare il tuo segreto CLI come password quando accedi a Harbor da Docker o Helm CLI.
 
 <pre>
 docker login -u testuser -p <i>cli_secret</i> jt-dev.local.goharbor.io
 </pre>
 
 {{< note >}}
-The CLI secret is associated with the OIDC ID token. Harbor will try to refresh the token, so the CLI secret will be valid after the ID token expires. However, if the OIDC Provider does not provide a refresh token or the refresh fails, the CLI secret becomes invalid. In this case, log out and log back in to Harbor via your OIDC provider so that Harbor can get a new ID token. The CLI secret will then work again.
+Il segreto CLI è associato al token ID OIDC. Harbor tenterà di aggiornare il token, quindi il segreto CLI sarà valido dopo la scadenza del token ID. Tuttavia, se il provider OIDC non fornisce un token di aggiornamento o l'aggiornamento non riesce, il segreto CLI diventa non valido. In questo caso, disconnettersi e accedere nuovamente a Harbor tramite il provider OIDC in modo che Harbor possa ottenere un nuovo token ID. Il segreto CLI funzionerà quindi di nuovo.
 {{< /note >}}

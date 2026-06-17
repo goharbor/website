@@ -1,14 +1,14 @@
 ---
-title: Configuring Replication
+title: Configurazione della replica
 weight: 30
 ---
 
-Replication allows users to replicate resources, namely images and charts, between Harbor and non-Harbor registries, in both pull or push mode.
+La replica consente agli utenti di replicare risorse, ovvero immagini e grafici, tra registri Harbor e non Harbor, sia in modalità pull che push.
 
-When the Harbor system administrator has set a replication rule, all resources, and any associated Cosign signatures, that match the defined filter patterns are replicated to the destination registry when the triggering condition is met. Each resource that is replicated starts a replication task. If the namespace does not exist in the destination registry, a new namespace is created automatically. If it already exists and the user account that is configured in the replication policy does not have write privileges in it, the process fails. Member information is not replicated.  
+Quando l'amministratore di sistema Harbor ha impostato una regola di replica, tutte le risorse e le eventuali firme Cosign associate che corrispondono ai modelli di filtro definiti vengono replicate nella destinazione registry quando viene soddisfatta la condizione di attivazione. Ogni risorsa replicata avvia un'attività di replica. Se lo spazio dei nomi non esiste nella destinazione registry, viene creato automaticamente un nuovo spazio dei nomi. Se esiste già e l'account utente configurato nella politica di replica non dispone di privilegi di scrittura, il processo non riesce. Le informazioni sui membri non vengono replicate.  
 
-There might be some delay during replication based on the condition of the network. If a replication task fails, it is re-scheduled for a few minutes later and retried several times.  
+Potrebbe verificarsi un ritardo durante la replica in base alle condizioni della rete. Se un'attività di replica fallisce, viene riprogrammata per alcuni minuti e riprovata più volte.  
 
 {{< note >}}
-Due to API changes, replication between different versions of Harbor is not supported.
+A causa delle modifiche API, la replica tra diverse versioni di Harbor non è supportata.
 {{< /note >}}

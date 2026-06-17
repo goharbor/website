@@ -1,126 +1,126 @@
 ---
-title: Preheat Images
+title: Preriscaldare le immagini
 weight: 30
 ---
 
-Before you can preheat images, a system administrator must first configure a P2P provider instance. See more about [configuring P2P preheating in Harbor](../../administration/p2p-preheat/manage-preheat-providers.md).
+Prima di poter preriscaldare le immagini, un amministratore di sistema deve prima configurare un'istanza del provider P2P. Scopri di più su [configurazione del preriscaldamento P2P in Harbor](../../administration/p2p-preheat/manage-preheat-providers.md).
 
-In Harbor the preheat action is policy driven, and is scoped to the project within which it's created. This means when a
-project administrator creates a preheat policy under a specified project, that policy only applies to images managed
-under that project.
+In Harbor l'azione di preriscaldamento è guidata da policy ed è limitata al progetto all'interno del quale viene creata. Ciò significa che quando a
+l'amministratore del progetto crea una politica di preriscaldamento in un progetto specifico, tale politica si applica solo alle immagini gestite
+nell'ambito di quel progetto.
 
-## Create Preheat Policy
+## Crea politica di preriscaldamento
 
-To preheat images, you need to create a preheat policy first.
+Per preriscaldare le immagini, è necessario prima creare una policy di preriscaldamento.
 
-1. Go to **Projects** and open your project from the project list.
-1. Open the **P2P Preheat** tab and then click **+ NEW POLICY** button to open the policy creation dialog.
-  ![policy creation dialog](../../../img/p2p-preheat/policy-creation-dialog.png)
-1. For the **Provider**, select a pre-configured preheat provider instance as target from the dropdown list.
-1. Input a suitable name and description(optional) for the policy to identify and describe your creating policy.
-1. Set the repository filter(required) by following the [doublestar pattern](https://github.com/bmatcuk/doublestar#patterns).
-1. Set the tags filter(required) by following the same [doublestar pattern](https://github.com/bmatcuk/doublestar#patterns).
-1. Optionally, set the labels filter. Only images with matching labels will be put into the candidate list. Use comma
-to split multiple labels, e.g.: `label1`,`label2`,`labeln` and the relationship among multiple labels is **AND**.
-1. Under certain conditions(deployment security is configured), more criteria may be visible in the policy.
-   ![extra criteria](../../../img/p2p-preheat/more-criteria-in-policy.png)
+1. Vai su **Progetti** e apri il tuo progetto dall'elenco dei progetti.
+1. Aprire la scheda **Preriscaldamento P2P** e quindi fare clic sul pulsante **+ NUOVA POLICY** per aprire la finestra di dialogo di creazione della policy.
+  ![finestra di dialogo per la creazione della politica](../../../img/p2p-preheat/policy-creation-dialog.png)
+1. Per **Provider**, selezionare un'istanza del provider di preriscaldamento preconfigurata come destinazione dall'elenco a discesa.
+1. Inserisci un nome e una descrizione adeguati (facoltativi) per la policy per identificare e descrivere la policy in fase di creazione.
+1. Impostare il filtro del repository (richiesto) seguendo [motivo a doppia stella](https://github.com/bmatcuk/doublestar#patterns).
+1. Impostare il filtro dei tag (richiesto) seguendo lo stesso [motivo a doppia stella](https://github.com/bmatcuk/doublestar#patterns).
+1. Facoltativamente, impostare il filtro delle etichette. Solo le immagini con etichette corrispondenti verranno inserite nell'elenco dei candidati. Usa la virgola
+per dividere più etichette, es.: `label1`,`label2`,`labeln` e la relazione tra più etichette è **AND**.
+1. In determinate condizioni (la sicurezza della distribuzione è configurata), nella policy potrebbero essere visibili più criteri.
+   ![criteri aggiuntivi](../../../img/p2p-preheat/more-criteria-in-policy.png)
 
    {{< note >}}
-   The criteria **Only signed images** and **No vulnerability severity of [severity] and above** are directly inherited
-   from corresponding settings of the project configuration. They cannot be changed in the preheat policy, and the only
-   way to change them is via project configuration. If they're configured, they will be visible in the preheat policy
-   and taken into account when calculating the phreating candidates, otherwise, they will be hidden and no influences to the policy.
+   I criteri **Solo immagini firmate** e **Nessuna vulnerabilità con gravità pari o superiore a [gravità]** vengono ereditati direttamente
+   dalle impostazioni corrispondenti della configurazione del progetto. Non possono essere modificati nella politica di preriscaldamento e sono gli unici
+   il modo per modificarli è tramite la configurazione del progetto. Se sono configurati, saranno visibili nella politica di preriscaldamento
+   e presi in considerazione nel calcolo dei candidati al phraating, altrimenti rimarranno nascosti e non influenzeranno la politica.
    {{< /note >}}
 
-    - If the **Deployment Security** configuration option **Enable content trust** is set,
-    **Only signed images** will also be available as a criteria for the preheating policy. This means that only images
-    with valid signatures will be preheated.
-    - If a vulnerability scanner is configured and the **Deployment Security** configuration option
-**Prevent vulnerable images from pulling** is set, **No vulnerability severity of [severity] and above**
-will also be available as a preheating criteria. With this criteria, only the images whose vulnerability severity match the
-criteria can be taken into account.
+    - Se è impostata l'opzione di configurazione **Sicurezza distribuzione** **Abilita attendibilità dei contenuti**,
+    **Solo le immagini firmate** saranno disponibili anche come criterio per la politica di preriscaldamento. Ciò significa che solo le immagini
+    con firme valide verrà preriscaldato.
+    - Se è configurato uno scanner di vulnerabilità e l'opzione di configurazione **Sicurezza distribuzione**
+**Previene l'estrazione di immagini vulnerabili** è impostato, **Nessuna gravità di vulnerabilità pari a [gravità] e superiore**
+sarà disponibile anche come criterio di preriscaldamento. Con questo criterio, solo le immagini la cui gravità di vulnerabilità corrisponde a
+i criteri possono essere presi in considerazione.
 
-1. For the policy **trigger**, there are multiple ways supported, choose the proper one based on your use case.
-    - **Manual**: manually start the preheating process.
-    - **Schedule**: set CRON style schedule to periodically start the preheating process.
-      * some pre-defined cron schedule patterns are provided: `Hourly`,`Daily` and `Weekly`.
-      * customize your own cron schedule by following the [cron guide](https://en.wikipedia.org/wiki/Cron)
-        - e.g.: `*/15 0 * * *`, execute policy every 15 minutes at every midnight
-    - **Event-based**: check if the image should be preheated when the related events occurred, the events includes:
-      * **OnPush**: when the image has been pushed to Harbor
-      * **OnScanComplete**: when the image has been scanned successfully (no action when scan failed)
-      * **OnLabel**: when the image has been marked with labels (no action when a label is removed)
+1. Per la policy **trigger**, sono supportate diverse modalità, scegli quella adeguata in base al tuo caso d'uso.
+    - **Manuale**: avvia manualmente il processo di preriscaldamento.
+    - **Programma**: imposta il programma in stile CRON per avviare periodicamente il processo di preriscaldamento.
+      * vengono forniti alcuni modelli di pianificazione cron predefiniti: `Hourly`,`Daily` e `Weekly`.
+      * personalizza il tuo programma cron seguendo [guida cron](https://en.wikipedia.org/wiki/Cron)
+        - es.: `*/15 0 * * *`, esegue la policy ogni 15 minuti ad ogni mezzanotte
+    - **Basato su eventi**: controlla se l'immagine deve essere preriscaldata quando si sono verificati gli eventi correlati, gli eventi includono:
+      * **OnPush**: quando l'immagine è stata spostata su Harbor
+      * **OnScanComplete**: quando l'immagine è stata scansionata con successo (nessuna azione quando la scansione non è riuscita)
+      * **OnLabel**: quando l'immagine è stata contrassegnata con etichette (nessuna azione quando un'etichetta viene rimossa)
 
    {{< note >}}
-   When an event occurs, the preheating process is not started immediately. Instead an evaluation process is launched.
-   The evaluation process will traverse the existing event-based preheat policies under the project where the target
-   image bound in the event is pushed. If the target image matches the pre-defined filters and criteria of some
-   event-based preheat policies, then the matched event-based preheat policies with fixed source image will be executed
-   to complete the preheating process.
+   Quando si verifica un evento, il processo di preriscaldamento non viene avviato immediatamente. Viene invece avviato un processo di valutazione.
+   Il processo di valutazione attraverserà le politiche di preriscaldamento basate sugli eventi esistenti nell'ambito del progetto in cui l'obiettivo
+   l'immagine associata all'evento viene inviata. Se l'immagine di destinazione corrisponde ai filtri e ai criteri predefiniti di alcuni
+   politiche di preriscaldamento basate sugli eventi, verranno eseguite le politiche di preriscaldamento basate sugli eventi corrispondenti con l'immagine di origine fissa
+   per completare il processo di preriscaldamento.
    {{< /note >}}
 
-1. Click **ADD** button to save the policy.
+1. Fare clic sul pulsante **AGGIUNGI** per salvare la policy.
 
-## Manage Preheat Policy
+## Gestisci la politica di preriscaldamento
 
-1. Go to **Projects** and open your project from the project list.
-1. Open the **P2P Preheat** tab, all the existing preheat policies are listed in the datagrid view.
-   ![preheat policy list](../../../img/p2p-preheat/policy-list.png)
-1. Select the policy by checking the checkbox at front of the row, click **ACTIONS** to open the drop down menu.
-1. Click **Execute** to start the execution of the selected policy immediately.
-1. Click **Deactivate**/**Enable** to deactivate/enable the selected policy.
+1. Vai su **Progetti** e apri il tuo progetto dall'elenco dei progetti.
+1. Aprire la scheda **P2P Preriscaldamento**, tutte le politiche di preriscaldamento esistenti sono elencate nella vista griglia dati.
+   ![elenco delle politiche di preriscaldamento](../../../img/p2p-preheat/policy-list.png)
+1. Seleziona la policy selezionando la casella di controllo nella parte anteriore della riga, fai clic su **AZIONI** per aprire il menu a discesa.
+1. Fare clic su **Esegui** per avviare immediatamente l'esecuzione della policy selezionata.
+1. Fare clic su **Disattiva**/**Abilita** per disattivare/abilitare la policy selezionata.
 
    {{< note >}}
-   A deactivated policy cannot be executed.
+   Non è possibile eseguire una policy disattivata.
    {{< /note >}}
 
-1. Click **Edit** to open the edit dialog and do modifications to the selected policy.
-1. Click **Delete** to delete the selected policy.
+1. Fare clic su **Modifica** per aprire la finestra di dialogo di modifica e apportare modifiche alla policy selezionata.
+1. Fare clic su **Elimina** per eliminare la policy selezionata.
 
    {{< note >}}
-   If the executions of the selected policy are still in progress, the deletion will be rejected.
+   Se le esecuzioni della policy selezionata sono ancora in corso, l'eliminazione verrà rifiutata.
    {{< /note >}}
 
-## Manage Executions of Preheat Policy
+## Gestisci le esecuzioni della politica di preriscaldamento
 
-1. Select the policy by clicking the radio button at the front of the row. If the policy has been executed before, the
-relevant executions will be listed in the execution data grid.
-   ![policy execution](../../../img/p2p-preheat/policy-execution.png)
-1. For each execution, you can find the following data:
-    - ID: identity of the execution with a hyperlink pointing to the detailed page
-    - Status: `Success`,`Error` and `Running`
-    - Trigger: the trigger way of the execution, it can be `Manual`,`Scheduled` and `Event-based`
-    - Start Time: the start time of the execution (rendered as local time format)
-    - Duration: the overall duration of the execution
-    - Success Rate: each execution may contain multiple tasks, the percent of the success ones over the total
+1. Selezionare la policy facendo clic sul pulsante di opzione nella parte anteriore della riga. Se la policy è stata eseguita in precedenza, il file
+le esecuzioni rilevanti saranno elencate nella griglia dei dati di esecuzione.
+   ![esecuzione delle politiche](../../../img/p2p-preheat/policy-execution.png)
+1. Per ogni esecuzione è possibile trovare i seguenti dati:
+    - ID: identità dell'esecuzione con un collegamento ipertestuale che punta alla pagina dettagliata
+    - Stato: `Success`,`Error` e `Running`
+    - Trigger: il modo di trigger dell'esecuzione, può essere `Manual`,`Scheduled` e `Event-based`
+    - Start Time: l'ora di inizio dell'esecuzione (resa nel formato dell'ora locale)
+    - Durata: la durata complessiva dell'esecuzione
+    - Tasso di successo: ogni esecuzione può contenere più attività, la percentuale di quelle di successo sul totale
 
    {{< note >}}
-   For the `Error` status, there will be a small info icon with tooltip that containing the error message next to it.
-   For the `Success` status, if there are no images matching the filters and criteria defined in the policy, a small
-   info icon with tooltip which indicates that no images to preheat will be placed next to it.
+   Per lo stato `Error`, accanto ad essa sarà presente una piccola icona informativa con un tooltip contenente il messaggio di errore.
+   Per lo stato `Success`, se non sono presenti immagini che corrispondono ai filtri e ai criteri definiti nella policy, verrà visualizzato un piccolo
+   icona informazioni con descrizione comando che indica che accanto ad essa non verranno posizionate immagini da preriscaldare.
    {{< /note >}}
 
-1. Click the ID hyperlink to open the detailed page of the execution.
-   ![execution details](../../../img/p2p-preheat/execution-details.png)
+1. Fare clic sul collegamento ipertestuale ID per aprire la pagina dettagliata dell'esecuzione.
+   ![dettagli di esecuzione](../../../img/p2p-preheat/execution-details.png)
 
    {{< note >}}
-   An execution record may contain multiple preheating tasks because multiple images may meet the policy's criteria.
+   Un record di esecuzione può contenere più attività di preriscaldamento poiché più immagini possono soddisfare i criteri della policy.
    {{< /note >}}
 
-1.  Besides the general info, you can also find a simple metrics grouped by the status of tasks:
-    - **SUCCESS**: how many tasks have been finished
-    - **FAILURE**: how many tasks are failed to complete
-    - **IN PROGRESS**: how many tasks are under running
-    - **STOPPED**: how many tasks have been stopped
-1. All the related tasks of the execution are listed in the task data grid. You can find more detailed info of the task:
-    - **Artifact**: which artifact is preheating
-    - **Status**: the status of this preheating task
-    - **Digest**: the digest of the preheating image
-    - **Type**: the artifact type of the preheating artifact
-    - **Start Time**: the start time of this preheating task
-    - **Duration**: the overall duration of this preheating task
-    - **Logs**: a hyperlink to open the task logs for checking more details of this preheating task
+1. Oltre alle informazioni generali, puoi anche trovare semplici metriche raggruppate in base allo stato delle attività:
+    - **SUCCESSO**: quante attività sono state completate
+    - **FAILURE**: quante attività non sono state completate
+    - **IN CORSO**: quante attività sono in esecuzione
+    - **STOPPED**: quante attività sono state interrotte
+1. Tutte le attività correlate all'esecuzione sono elencate nella griglia dei dati dell'attività. Puoi trovare informazioni più dettagliate sull'attività:
+    - **Artefatto**: quale artefatto si sta preriscaldando
+    - **Stato**: lo stato di questa attività di preriscaldamento
+    - **Digest**: il digest dell'immagine di preriscaldamento
+    - **Tipo**: la tipologia dell'artefatto di preriscaldo
+    - **Ora di inizio**: l'ora di inizio di questa attività di preriscaldamento
+    - **Durata**: la durata complessiva di questa operazione di preriscaldamento
+    - **Log**: un collegamento ipertestuale per aprire i registri delle attività per controllare maggiori dettagli di questa attività di preriscaldamento
 
    {{< note >}}
-   Harbor only supports preheating images so the value of `Type` will always be `image`.
+   Harbor supporta solo il preriscaldamento delle immagini, quindi il valore di `Type` sarà sempre `image`.
    {{< /note >}}

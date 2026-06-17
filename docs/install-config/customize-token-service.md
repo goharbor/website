@@ -1,50 +1,50 @@
 ---
-title: Customize the Harbor Token Service
+title: Personalizza il servizio token Harbor
 weight: 60
 ---
 
-By default, Harbor uses its own private key and certificate to authenticate with Docker clients. This topic describes how to optionally customize your configuration to use your own key and certificate.
+Per impostazione predefinita, Harbor utilizza la propria chiave privata e il proprio certificato per autenticarsi con i client Docker. Questo argomento descrive come personalizzare facoltativamente la configurazione per utilizzare la propria chiave e il proprio certificato.
 
-Harbor requires the Docker client to access the Harbor registry with a token. The procedure to generate a token is like [Distribution Registry v2 authentication](https://github.com/distribution/distribution/blob/main/docs/content/spec/auth/token.md). Firstly, you make a request to the token service for a token. The token is signed by the private key. After that, you make a new request with the token to the Harbor registry, Harbor registry verifies the token with the public key in the root cert bundle. Then Harbor registry authorizes the Docker client to push and pull images.
+Harbor richiede che il client Docker acceda a Harbor registry con un token. La procedura per generare un token è come [Autenticazione del registro di distribuzione v2](https://github.com/distribution/distribution/blob/main/docs/content/spec/auth/token.md). Innanzitutto, fai una richiesta al servizio token per un token. Il token è firmato dalla chiave privata. Successivamente, esegui una nuova richiesta con il token a Harbor registry, Harbor registry verifica il token con la chiave pubblica nel bundle del certificato root. Quindi Harbor registry autorizza il client Docker a eseguire il push e il pull delle immagini.
 
-- If you do not already have a certificate, follow the instructions in [Generate a Root Certificate](#gen-cert) to generate a root certificate by using openSSL.
-- If you already have a certificate, go to [Provide the Certificate to Harbor](#provide-cert).
+- Se non disponi già di un certificato, segui le istruzioni in [Genera un certificato radice](#gen-cert) per generare un certificato root utilizzando openSSL.
+- Se hai già un certificato, vai su [Fornire il certificato a Harbor](#provide-cert).
 
-## Generate a Root Certificate {#gen-cert}
+## Genera un certificato radice {#gen-cert}
 
-1. Generate a private key.
+1. Genera una chiave privata.
 
    ```sh
    openssl genrsa -out private_key.pem 4096
    ```
 
-1. Generate a certificate.
+1. Genera un certificato.
 
    ```sh
    openssl req -new -x509 -key private_key.pem -out root.crt -days 3650
    ```
 
-1. Enter information to include in your certificate request.
+1. Inserisci le informazioni da includere nella richiesta di certificato.
 
-   What you are about to enter is what is called a Distinguished Name or a DN. There are quite a few fields but you can leave some of them blank. For some fields there is a default value. If you enter `.`, the field is left blank.
+   Quello che stai per inserire è quello che viene chiamato Nome distinto o DN. Ci sono parecchi campi ma puoi lasciarne alcuni vuoti. Per alcuni campi esiste un valore predefinito. Se inserisci `.`, il campo rimane vuoto.
 
-   - Country Name (2 letter code) [AU]:
-   - State or Province Name (full name) [Some-State]:
-   - Locality Name (eg, city) []:
-   - Organization Name (eg, company) [Internet Widgits Pty Ltd]:
-   - Organizational Unit Name (eg, section) []:
-   - Common Name (eg,  server FQDN or YOUR name) []:
-   - Email Address []:
+   - Nome del Paese (codice a 2 lettere) [AU]:
+   - Nome dello Stato o della Provincia (nome completo) [Alcuni Stati]:
+   - Nome della località (ad esempio, città) []:
+   - Nome dell'organizzazione (ad esempio, azienda) [Internet Widgits Pty Ltd]:
+   - Nome dell'unità organizzativa (es. sezione) []:
+   - Nome comune (ad esempio, FQDN del server o il TUO nome) []:
+   - Indirizzo e-mail []:
 
-   After you run these commands, the files `private_key.pem` and `root.crt` are created in the current directory.
+   Dopo aver eseguito questi comandi, i file `private_key.pem` e `root.crt` vengono creati nella directory corrente.
 
-## Provide the Certificate to Harbor {#provide-cert}
+## Fornisci il certificato a Harbor {#provide-cert}
 
-See [Run the Installer Script](run-installer-script.md) or [Reconfigure Harbor and Manage the Harbor Lifecycle](reconfigure-manage-lifecycle.md) to install or reconfigure Harbor. After you run `./install` or `./prepare`, Harbor generates several configuration files. You need to replace the original private key and certificate with your own key and certificate.
+Vedere [Esegui lo script di installazione](run-installer-script.md) o [Riconfigurare Harbor e gestire il ciclo di vita Harbor](reconfigure-manage-lifecycle.md) per installare o riconfigurare Harbor. Dopo aver eseguito `./install` o `./prepare`, Harbor genera diversi file di configurazione. È necessario sostituire la chiave privata e il certificato originali con la propria chiave e il proprio certificato.
 
-1. Replace the default key and certificate.
+1. Sostituisci la chiave e il certificato predefiniti.
 
-   Assuming that the new key and certificate are in `/root/cert`, and `/srv/harbor/data` was specified as `data_volume` run the following commands:
+   Supponendo che la nuova chiave e il certificato siano in `/root/cert` e che `/srv/harbor/data` sia stato specificato come `data_volume`, eseguire i seguenti comandi:
 
    ```sh
    cd config/ui
@@ -52,10 +52,10 @@ See [Run the Installer Script](run-installer-script.md) or [Reconfigure Harbor a
    cp /root/cert/root.crt /srv/harbor/data/secret/registry/root.crt
    ```
 
-1. Go back to the `make` directory, and start Harbor by using following command:
+1. Torna alla directory `make` e avvia Harbor utilizzando il seguente comando:
 
    ```sh
    docker compose up -d
    ```
 
-1. Push and pull images to and from Harbor to check that your own certificate works.
+1. Spingere e tirare le immagini da e verso Harbor per verificare che il proprio certificato funzioni.

@@ -1,63 +1,63 @@
 ---
-title: Security Hub
+title: Polo della sicurezza
 weight: 43
 ---
 
-The Security Hub provides administrators with a comprehensive and centralized overview of the present security status of artifacts stored within the Harbor registry. Unlike the artifact-centric vulnerability view, the Security Hub provides a holistic view of all vulnerabilities across the registry and across all artifacts.
+Il Security Hub fornisce agli amministratori una panoramica completa e centralizzata dell'attuale stato di sicurezza degli artefatti archiviati in Harbor registry. A differenza della visualizzazione delle vulnerabilità incentrata sugli artefatti, Security Hub fornisce una visione olistica di tutte le vulnerabilità su registry e su tutti gli artefatti.
 
-You can access the Security Hub via the Harbor UI Navigation or direct URL:
+È possibile accedere a Security Hub tramite la navigazione Harbor UI o l'URL diretto:
 
-1. Method 1: Accessing the Security Hub via UI Navigation
+1. Metodo 1: accesso a Security Hub tramite navigazione UI
 
-   - Login to Harbor as a user with admin permissions, locate and click on the "Administration" option in the Harbor UI.
+   - Accedi a Harbor come utente con autorizzazioni di amministratore, individua e fai clic sull'opzione "Amministrazione" in Harbor UI.
 
-   - Within the Administration section, find and click on the "Interrogation Service" section.
+   - All'interno della sezione Amministrazione, trova e fai clic sulla sezione "Servizio interrogatori".
 
-   - The Security Hub tab can be found on the "Interrogation Service" settings page. Click on it.
+   - La scheda Security Hub è disponibile nella pagina delle impostazioni "Servizio di interrogazione". Fare clic su di esso.
 
-2. Method 2: Accessing the Security Hub via Direct URL:
+2. Metodo 2: accesso a Security Hub tramite URL diretto:
 
-   - Open your web browser, and enter the following URL in the address bar: `https://<harbor-domain>/harbor/interrogation-services/security-hub`.
+   - Apri il browser web e inserisci il seguente URL nella barra degli indirizzi: `https://<harbor-domain>/harbor/interrogation-services/security-hub`.
  
-   Note: Replace <harbor-domain> with the appropriate domain or IP address of your Harbor instance
+   Nota: sostituisci <harbor-domain> con il dominio o l'indirizzo IP appropriato della tua istanza Harbor
 
-The page title displays the total count of artifacts and scanned artifacts.
+Il titolo della pagina visualizza il conteggio totale di artefatti e artefatti scansionati.
 
-## Total Vulnerabilities
+## Vulnerabilità totali
 
-The first card shows the total number of vulnerabilities found in the scanned images. The total number is broken up into severity groups with their respective occurrences.
+La prima scheda mostra il numero totale di vulnerabilità riscontrate nelle immagini scansionate. Il numero totale è suddiviso in gruppi di gravità con i rispettivi eventi.
 
-![Total Vulnerabilities](../../img/security-hub/total_vulnerabilities.png)
-
-
-## Top 5 Most Dangerous Artifacts
-
-The second card shows the top 5 most dangerous artifacts found in scanned artifacts. It ranks the severe artifacts according to the number of vulnerabilities and their severity levels. Clicking on an artifact, the vulnerability table will query all vulnerabilities found in the selected artifact.
-
-![Most Dangerous Artifacts](../../img/security-hub/dangerous_artifacts.png)
+![Vulnerabilità totali](../../img/security-hub/total_vulnerabilities.png)
 
 
-## Top 5 Most Dangerous CVEs
+## I 5 manufatti più pericolosi
 
-The third card shows the top 5 most dangerous CVEs found in scanned artifacts. it sorts the dangerous CVEs by the number of artifacts and their severity levels found in the artifacts. When click the CVE, the search vulnerabilities table displays all vulnerabilities found in artifacts.
+La seconda scheda mostra i primi 5 artefatti più pericolosi trovati negli artefatti scansionati. Classifica gli artefatti gravi in ​​base al numero di vulnerabilità e ai relativi livelli di gravità. Cliccando su un artefatto, la tabella delle vulnerabilità interrogherà tutte le vulnerabilità trovate nell'artefatto selezionato.
 
-![Most Dangerous CVEs](../../img/security-hub/dangerous_cves.png)
+![Gli artefatti più pericolosi](../../img/security-hub/dangerous_artifacts.png)
 
-## Search Vulnerabilities
 
-The search vulnerabilities panel allows you to search the vulnerabilities by the CVE ID, severity, project, repository, digest or tag etc. the search result will be shown in the table below.
+## I 5 CVE più pericolosi
 
-![Search Vulnerabilities](../../img/security-hub/search_vulnerabilities.png)
+La terza scheda mostra i primi 5 CVE più pericolosi trovati negli artefatti scansionati. ordina i CVE pericolosi in base al numero di artefatti e ai livelli di gravità riscontrati negli artefatti. Quando si fa clic sul CVE, la tabella delle vulnerabilità di ricerca visualizza tutte le vulnerabilità trovate negli artefatti.
 
-Supported search fields:
+![CVE più pericolosi](../../img/security-hub/dangerous_cves.png)
 
-| Query condition  | Description                                                                                                                                                 |
+## Vulnerabilità della ricerca
+
+Il pannello delle vulnerabilità di ricerca consente di cercare le vulnerabilità in base all'ID CVE, alla gravità, al progetto, al repository, al digest o al tag ecc. Il risultato della ricerca verrà mostrato nella tabella seguente.
+
+![Cerca vulnerabilità](../../img/security-hub/search_vulnerabilities.png)
+
+Campi di ricerca supportati:
+
+| Condizione della query | Descrizione |
 | ------------- |-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| CVE ID  | Search vulnerability information by CVE ID, for performance consideration, cve_id condition is required to query the vulnerability info, support exact match |
-| Severity        | Search vulnerability information by severity level, support exact match                                                                                     |
-| CVSS3        | Search vulnerability information by cvss v3 score range                                                                                                     |
-| Project Name  | Search vulnerability information by project name, support exact match                                                                                       |
-| Digest     | Search vulnerability information by artifact digest, support exact match                                                                                    |
-| Repository Name | Search vulnerability information by repository name, support exact match                                                                                    |
-| Package | Search vulnerability information by package name, support exact match                                                                                       |
-| Tag | Search vulnerability information by tag name, support exact match                                                                                           |
+| ID CVE | Cerca informazioni sulla vulnerabilità in base all'ID CVE, per considerazioni sulle prestazioni, è richiesta la condizione cve_id per interrogare le informazioni sulla vulnerabilità, supporta la corrispondenza esatta |
+| Gravità | Cerca informazioni sulla vulnerabilità in base al livello di gravità, supporta la corrispondenza esatta |
+| CVSS3 | Cerca informazioni sulla vulnerabilità in base all'intervallo di punteggio cvss v3 |
+| Nome del progetto | Cerca informazioni sulla vulnerabilità in base al nome del progetto, supporta la corrispondenza esatta |
+| Digerire | Cerca informazioni sulla vulnerabilità in base al digest degli artefatti, supporta la corrispondenza esatta |
+| Nome del repository | Cerca informazioni sulla vulnerabilità in base al nome del repository, supporta la corrispondenza esatta |
+| Pacchetto | Cerca informazioni sulla vulnerabilità in base al nome del pacchetto, supporta la corrispondenza esatta |
+| Etichetta | Cerca informazioni sulla vulnerabilità in base al nome del tag, supporta la corrispondenza esatta |

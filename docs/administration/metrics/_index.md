@@ -1,93 +1,93 @@
 ---
-title: Access Metrics
+title: Metriche di accesso
 weight: 37
 ---
 
-Harbor exposes some key metrics needed for operators and administrators to monitor how your Harbor instance is running in real time. Observability is a key feature for operating a service in production and using this data you can identify abnormal statuses and make informed decisions to fix issues when an error occurs. Harbor exposes metrics using the  [Prometheus data model](https://prometheus.io/docs/concepts/data_model/) so you can easily start scraping your Harbor instance's metrics using Prometheus.
+Harbor espone alcuni parametri chiave necessari agli operatori e agli amministratori per monitorare il modo in cui l'istanza Harbor viene eseguita in tempo reale. L'osservabilità è una caratteristica fondamentale per il funzionamento di un servizio in produzione e utilizzando questi dati è possibile identificare stati anomali e prendere decisioni informate per risolvere i problemi quando si verifica un errore. Harbor espone i parametri utilizzando [Modello dati Prometeo](https://prometheus.io/docs/concepts/data_model/) in modo da poter iniziare facilmente ad analizzare i parametri della tua istanza Harbor utilizzando Prometheus.
 
-In Harbor v2.2 and later you are able to enable metrics in your Harbor [configuration file](../../install-config/configure-yml-file.md). Harbor metrics are available at `<harbor_instance>:<metrics_port>/<metrics_path>` based on your configured values.
+In Harbor v2.2 e versioni successive puoi abilitare le metriche nel tuo Harbor [file di configurazione](../../install-config/configure-yml-file.md). Le metriche Harbor sono disponibili su `<harbor_instance>:<metrics_port>/<metrics_path>` in base ai valori configurati.
 
-Harbor metrics show data related to
-* Runtime information from the [GO library](https://github.com/prometheus/client_golang)
-* Performance metrics about all API requests in core
-* Number of requests in flight in core
-* Metrics provided by the [Distribution/Distribution](https://github.com/distribution/distribution/blob/main/notifications/metrics.go) itself
-* Some data related to business logic which already exist in the Harbor database
+Le metriche Harbor mostrano i dati relativi a
+* Informazioni di runtime da [VAI biblioteca](https://github.com/prometheus/client_golang)
+* Metriche delle prestazioni su tutte le richieste API nel core
+* Numero di richieste in volo in core
+* Metriche fornite dallo stesso [Distribuzione/Distribuzione](https://github.com/distribution/distribution/blob/main/notifications/metrics.go)
+* Alcuni dati relativi alla logica aziendale già esistenti nel database Harbor
 
-Metrics are exposed by several Harbor components: `exporter`, `core`, `jobservice`, and `registry`. In addition to runtime and performance data, these components also expose Harbor specific metrics. The following sections list the available Harbor metrics.
+Le metriche sono esposte da diversi componenti Harbor: `exporter`, `core`, `jobservice` e `registry`. Oltre ai dati di runtime e prestazioni, questi componenti espongono anche metriche specifiche di Harbor. Le sezioni seguenti elencano le metriche Harbor disponibili.
 
-## Harbor Exporter Metrics
+## Metriche dell'esportatore Harbor
 
-The `exporter` component metrics relate to your Harbor instance configuration and collects some data from the Harbor database. Metrics are available at `<harbor_instance>:<metrics_port>/<metrics_path>`.
+Le metriche del componente `exporter` si riferiscono alla configurazione dell'istanza Harbor e raccolgono alcuni dati dal database Harbor. Le metriche sono disponibili su `<harbor_instance>:<metrics_port>/<metrics_path>`.
 
 {{< table caption="Metrics exposed by the Harbor Exporter" >}}
-Name | Description | Labels (Values) | Metric type
+Nome | Descrizione | Etichette (Valori) | Tipo metrico
 :---------|:------------|:-------|:-------
-`harbor_project_total` |	Total number of public and private projects | public (`true`,`false`) | gauge
-`harbor_project_repo_total` |	Total number of repositories in a project |	public (`true`,`false`),  project_name | gauge
-`harbor_project_member_total` |	Total number of members in a project |	project_name | gauge
-`harbor_project_quota_usage_byte` |	Total used resources of a project |	project_name | gauge
-`harbor_project_quota_byte` |	Quota set in a project |	project_name | gauge
-`harbor_artifact_pulled` |	Number of images pulled in a project |	project_name | gauge
-`harbor_project_artifact_total` | Total number of artifacts type in a project | artifact_type , project_name, public (`true`,`false`) | gauge
-`harbor_health` | Current status of Harbor | | gauge
-`harbor_system_info` | Information about your Harbor instance | auth_mode (`db_auth`, `ldap_auth`, `uaa_auth`, `http_auth`, `oidc_auth`), harbor_version, self_registration(`true`,`false`) | gauge
-`harbor_up`| Running status of Harbor components  | component (`core`, `database`, `jobservice`, `portal`, `redis`, `registry`, `registryctl`, `trivy`) | gauge
-`harbor_task_queue_size` | The total number of tasks per type in the queue | instance, job, type  | gauge
-`harbor_task_queue_latency` | How long ago the next job to be processed was enqueued per type | instance, job, type | gauge
-`harbor_task_scheduled_total` | 	Number of scheduled tasks | instance, job | gauge
-`harbor_task_concurrency` | 	Total number of concurrent tasks per type on a pool | instance, job, pool, type | gauge
+`harbor_project_total` |	Numero totale di progetti pubblici e privati ​​| pubblico (`true`,`false`) | misura
+`harbor_project_repo_total` |	Numero totale di repository in un progetto |	pubblico (`true`,`false`), nome_progetto | misura
+`harbor_project_member_total` |	Numero totale di membri in un progetto |	nome_progetto | misura
+`harbor_project_quota_usage_byte` |	Totale risorse utilizzate di un progetto |	nome_progetto | misura
+`harbor_project_quota_byte` |	Quota fissata in un progetto |	nome_progetto | misura
+`harbor_artifact_pulled` |	Numero di immagini estratte in un progetto |	nome_progetto | misura
+`harbor_project_artifact_total` | Numero totale di tipi di artefatti in un progetto | tipo_artefatto , nome_progetto, pubblico (`true`,`false`) | misura
+`harbor_health` | Stato attuale di Harbor | | misura
+`harbor_system_info` | Informazioni sulla tua istanza Harbor | modalità_autenticazione (`db_auth`, `ldap_auth`, `uaa_auth`, `http_auth`, `oidc_auth`), versione_porto, auto_registrazione (`true`,`false`) | misura
+`harbor_up`| Stato di funzionamento dei componenti Harbor | componente (`core`, `database`, `jobservice`, `portal`, `redis`, `registry`, `registryctl`, `trivy`) | misura
+`harbor_task_queue_size` | Il numero totale di attività per tipo nella coda | istanza, lavoro, tipo | misura
+`harbor_task_queue_latency` | Quanto tempo fa è stato accodato il lavoro successivo da elaborare per tipo | istanza, lavoro, tipo | misura
+`harbor_task_scheduled_total` | 	Numero di attività pianificate | istanza, lavoro | misura
+`harbor_task_concurrency` | 	Numero totale di attività simultanee per tipo in un pool | istanza, lavoro, pool, tipo | misura
 {{< /table >}}
 
-## Harbor Core Metrics
+## Harbor Metriche fondamentali
 
-The following are metrics pulled from the Harbor core pod and are available at `<harbor_instance>:<metrics_port>/<metrics_path>?comp=core`.
+Quelli che seguono sono i parametri estratti dal core pod Harbor e sono disponibili su `<harbor_instance>:<metrics_port>/<metrics_path>?comp=core`.
 
 {{< table caption="Metrics exposed by Harbor Core" >}}
-Name | Description | Labels (Values) | Metric type
+Nome | Descrizione | Etichette (Valori) | Tipo metrico
 :---------|:------------|:-------|:-------
-`harbor_core_http_inflight_requests` | The total number of requests | operation (values from `operationId` in [Harbor API](https://github.com/goharbor/harbor/blob/main/api/v2.0/swagger.yaml). Some legacy endpoints do not have an `operationId`, so the label value is `unknown`) | gauge
-`harbor_core_http_request_duration_seconds` | The time duration of the requests | method (`GET`, `POST`, `HEAD`, `PATCH`, `PUT`), operation (values from `operationId` in [Harbor API](https://github.com/goharbor/harbor/blob/main/api/v2.0/swagger.yaml). Some legacy endpoints do not have an `operationId`, so the label value is `unknown`), quantile | summary
-`harbor_core_http_request_total` | The total number of requests | method (`GET`, `POST`, `HEAD`, `PATCH`, `PUT`), operation (values from `operationId` in [Harbor API](https://github.com/goharbor/harbor/blob/main/api/v2.0/swagger.yaml). Some legacy endpoints do not have an `operationId`, so the label value is `unknown`) | counter
+`harbor_core_http_inflight_requests` | Il numero totale di richieste | operazione (valori da `operationId` in [Harbor API](https://github.com/goharbor/harbor/blob/main/api/v2.0/swagger.yaml). Alcuni endpoint legacy non hanno un `operationId`, quindi il valore dell'etichetta è `unknown`) | misura
+`harbor_core_http_request_duration_seconds` | La durata temporale delle richieste | metodo (`GET`, `POST`, `HEAD`, `PATCH`, `PUT`), operazione (valori da `operationId` in [Harbor API](https://github.com/goharbor/harbor/blob/main/api/v2.0/swagger.yaml). Alcuni endpoint legacy non hanno un `operationId`, quindi il valore dell'etichetta è `unknown`), quantile | riepilogo
+`harbor_core_http_request_total` | Il numero totale di richieste | metodo (`GET`, `POST`, `HEAD`, `PATCH`, `PUT`), operazione (valori da `operationId` in [Harbor API](https://github.com/goharbor/harbor/blob/main/api/v2.0/swagger.yaml). Alcuni endpoint legacy non hanno un `operationId`, quindi il valore dell'etichetta è `unknown`) | contatore
 {{< /table >}}
 
-## Registry Metrics
+## Metriche del registro
 
-The following are metrics pulled from the Distribution/Distribution and are available at `<harbor_instance>:<metrics_port>/<metrics_path>?comp=registry`.
+I seguenti sono parametri estratti dalla Distribuzione/Distribuzione e sono disponibili su `<harbor_instance>:<metrics_port>/<metrics_path>?comp=registry`.
 
 {{< table caption="Metrics exposed by Harbor Core" >}}
-Name | Description | Labels (Values) |Metric type
+Nome | Descrizione | Etichette (valori) |Tipo metrico
 :---------|:------------|:-------|:-------
-`registry_http_in_flight_requests` | The in-flight HTTP requests | handler | gauge
-`registry_http_request_duration_seconds_bucket` `registry_http_request_duration_seconds_sum` `registry_http_request_duration_seconds_count` | The HTTP request latencies in seconds | handler, method (`GET`, `POST`, `HEAD`, `PATCH`, `PUT`), le | histogram
-`registry_http_request_size_bytes_bucket registry_http_request_size_bytes_sum registry_http_request_size_bytes_count` | The HTTP request sizes in bytes | handler, le | histogram
-`registry_http_requests_total` | Total number of HTTP requests made | code,handler,method,le | counter
-`registry_http_response_size_bytes_bucket` `registry_http_response_size_bytes_sum` `registry_http_response_size_bytes_count` | The HTTP response sizes in bytes | handler,le | histogram
-`registry_storage_action_seconds_bucket` `registry_storage_action_seconds_sum` `registry_storage_action_seconds_count`| The number of seconds that the storage action takes | action,driver,le | histogram
-`registry_storage_cache_total` | The number of cache request received | type | gauge
+`registry_http_in_flight_requests` | Il HTTP in volo richiede | gestore | misura
+`registry_http_request_duration_seconds_bucket` `registry_http_request_duration_seconds_sum` `registry_http_request_duration_seconds_count` | Il HTTP richiede latenze in secondi | gestore, metodo (`GET`, `POST`, `HEAD`, `PATCH`, `PUT`), le | istogramma
+`registry_http_request_size_bytes_bucket registry_http_request_size_bytes_sum registry_http_request_size_bytes_count` | Le dimensioni richieste da HTTP sono in byte | gestore, le | istogramma
+`registry_http_requests_total` | Numero totale di richieste HTTP effettuate | codice,gestore,metodo,le | contatore
+`registry_http_response_size_bytes_bucket` `registry_http_response_size_bytes_sum` `registry_http_response_size_bytes_count` | Le dimensioni della risposta HTTP sono in byte | gestore,le | istogramma
+`registry_storage_action_seconds_bucket` `registry_storage_action_seconds_sum` `registry_storage_action_seconds_count`| Il numero di secondi impiegati dall'azione di archiviazione | azione,autista,le | istogramma
+`registry_storage_cache_total` | Il numero di richieste di cache ricevute | digitare | misura
 {{< /table >}}
 
-## Harbor Jobservice metrics
+## Harbor Metriche del servizio di lavoro
 
-The following are metrics pulled from the Harbor Jobservice and are available at `<harbor_instance>:<metrics_port>/<metrics_path>?comp=jobservice`.
+Di seguito sono riportati i parametri estratti dal Jobservice Harbor e disponibili presso `<harbor_instance>:<metrics_port>/<metrics_path>?comp=jobservice`.
 
 {{< table caption="Metrics exposed by Harbor Jobservice" >}}
-Name | Description | Labels (Values) |Metric type
+Nome | Descrizione | Etichette (valori) |Tipo metrico
 :---------|:------------|:-------|:-------
-`harbor_jobservice_info` |  The information of Jobservice | instance, job, node, pool, workers | gauge
-`harbor_jobservice_task_total` |  The number of processed tasks per job type | instance, job, status, type | counter
-`harbor_jobservice_task_process_time_seconds` | The duration of the task processing time | instance, job, quantile, status, type | summary
+`harbor_jobservice_info` |  Le informazioni di Jobservice | istanza, lavoro, nodo, pool, lavoratori | misura
+`harbor_jobservice_task_total` |  Il numero di attività elaborate per tipo di lavoro | istanza, lavoro, stato, tipo | contatore
+`harbor_jobservice_task_process_time_seconds` | La durata del tempo di elaborazione dell'attività | istanza, lavoro, quantile, stato, tipo | riepilogo
 
 {{< /table >}}
 
 
 
-## Scraping Metrics with Prometheus
+## Raschiare le metriche con Prometeo
 
-To begin accessing your Harbor instance's metrics with Prometheus,
-1. Enable exposing metrics in your `harbor.yml` [configuration file](../../install-config/configure-yml-file.md) and set the port and path for metrics to be exposed on. Also see more about [reconfiguring your Harbor instance](../../install-config/reconfigure-manage-lifecycle/).
-1. Set up a Prometheus server, see the [Prometheus documentation](https://prometheus.io/docs/prometheus/latest/installation/) for more information on installing.
-1. Configure your Prometheus config file to scrape Harbor metrics exposed at your configured port and path. Below is an example scrape config, see the Prometheus documentation for all available [scrape configuration options](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config).
+Per iniziare ad accedere ai parametri della tua istanza Harbor con Prometheus,
+1. Abilita le metriche di esposizione nel tuo `harbor.yml` [file di configurazione](../../install-config/configure-yml-file.md) e imposta la porta e il percorso su cui esporre le metriche. Vedi anche di più su [riconfigurando la tua istanza Harbor](../../install-config/reconfigure-manage-lifecycle/).
+1. Configurare un server Prometheus, consultare [Documentazione di Prometeo](https://prometheus.io/docs/prometheus/latest/installation/) per ulteriori informazioni sull'installazione.
+1. Configura il file di configurazione di Prometheus per analizzare le metriche Harbor esposte sulla porta e sul percorso configurati. Di seguito è riportato un esempio di configurazione di scrape, consultare la documentazione di Prometheus per tutti gli [raschiare le opzioni di configurazione](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config) disponibili.
 
     ```
       scrape_configs:
@@ -122,13 +122,13 @@ To begin accessing your Harbor instance's metrics with Prometheus,
           static_configs:
             - targets: ['<harbor_instance>:<metrics_port>']
       ```
-1. Once you have configured your Prometheus server to collect your Harbor metrics, you can use [Grafana](https://grafana.com/docs/) to visualize your data. An [example Grafana dashboard](https://github.com/goharbor/harbor/blob/main/contrib/grafana-dashboard/metrics-example.json) is available in the Harbor repo to help you get started visualizing Harbor metrics.
+1. Dopo aver configurato il server Prometheus per raccogliere le metriche Harbor, puoi utilizzare [Grafana](https://grafana.com/docs/) per visualizzare i tuoi dati. Nel repository Harbor è disponibile un [esempio dashboard Grafana](https://github.com/goharbor/harbor/blob/main/contrib/grafana-dashboard/metrics-example.json) per aiutarti a iniziare a visualizzare le metriche Harbor.
 
-### From a Kubernetes cluster
+### Da un cluster Kubernetes
 
-You can also use Prometheus to collect metrics from a Harbor instance deployed in your Kubernetes cluster. You should already have [installed  Prometheus](https://github.com/prometheus-community/helm-charts) and set up to pull metrics from your cluster.
+Puoi anche utilizzare Prometheus per raccogliere parametri da un'istanza Harbor distribuita nel tuo cluster Kubernetes. Dovresti già avere [installato Prometeo](https://github.com/prometheus-community/helm-charts) e configurarlo per estrarre i parametri dal tuo cluster.
 
-1. Create a ServiceMonitor in Prometheus for Harbor.
+1. Creare un ServiceMonitor in Prometheus per Harbor.
 
     ```
     apiVersion: monitoring.coreos.com/v1
@@ -145,6 +145,6 @@ You can also use Prometheus to collect metrics from a Harbor instance deployed i
       - port: metrics
     ```
 
-2. Enable Harbor to expose metrics by updating your harbor-helm `values.yaml` file and set `metrics.enabled` to `true`. You can also edit the port and path the metrics are exposed on by updating the available harbor-helm chart [configuration options for metrics](https://github.com/goharbor/harbor-helm#configuration).
+2. Abilita Harbor per esporre le metriche aggiornando il file `values.yaml` del timone del porto e imposta `metrics.enabled` su `true`. Puoi anche modificare il porto e il percorso su cui sono esposti i parametri aggiornando la carta porto-timone disponibile [opzioni di configurazione per le metriche](https://github.com/goharbor/harbor-helm#configuration).
 
-Prometheus should now show your Harbor instance's metrics.
+Prometheus dovrebbe ora mostrare i parametri della tua istanza Harbor.

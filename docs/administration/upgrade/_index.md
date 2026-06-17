@@ -1,83 +1,83 @@
 ---
-title: Upgrade Harbor and Migrate Data
+title: Aggiorna Harbor e migra i dati
 weight: 45
 ---
 
-This guide covers upgrade and migration to v2.14.0. This guide only covers migration from v2.11.0 and later to the current version. If you are upgrading from an earlier version, refer to the migration guide for an earlier Harbor version.
+Questa guida copre l'aggiornamento e la migrazione alla versione v2.14.0. Questa guida copre solo la migrazione dalla versione 2.11.0 e successive alla versione corrente. Se stai effettuando l'aggiornamento da una versione precedente, fai riferimento alla guida alla migrazione per una versione Harbor precedente.
 
-* [Upgrade to Harbor v2.12.0](/docs/2.12.0/administration/upgrade/)
-* [Upgrade to Harbor v2.11.0](/docs/2.11.0/administration/upgrade/)
-* [Upgrade to Harbor v2.10.0](/docs/2.10.0/administration/upgrade/)
-* [Upgrade to Harbor v2.9.0](/docs/2.9.0/administration/upgrade/)
-* [Upgrade to Harbor v2.8.0](/docs/2.8.0/administration/upgrade/)
-* [Upgrade to Harbor v2.7.0](/docs/2.7.0/administration/upgrade/)
-* [Upgrade to Harbor v2.6.0](/docs/2.6.0/administration/upgrade/)
-* [Upgrade to Harbor v2.5.0](/docs/2.5.0/administration/upgrade/)
-* [Upgrade to Harbor v2.4.0](/docs/2.4.0/administration/upgrade/)
-* [Upgrade to Harbor v2.3.0](/docs/2.3.0/administration/upgrade/)
+*[Aggiorna a Harbor v2.12.0](/docs/2.12.0/administration/upgrade/)
+*[Aggiorna a Harbor v2.11.0](/docs/2.11.0/administration/upgrade/)
+*[Aggiorna a Harbor v2.10.0](/docs/2.10.0/administration/upgrade/)
+*[Aggiorna a Harbor v2.9.0](/docs/2.9.0/administration/upgrade/)
+*[Aggiorna a Harbor v2.8.0](/docs/2.8.0/administration/upgrade/)
+*[Aggiorna a Harbor v2.7.0](/docs/2.7.0/administration/upgrade/)
+*[Aggiorna a Harbor v2.6.0](/docs/2.6.0/administration/upgrade/)
+*[Aggiorna a Harbor v2.5.0](/docs/2.5.0/administration/upgrade/)
+*[Aggiorna a Harbor v2.4.0](/docs/2.4.0/administration/upgrade/)
+*[Aggiorna a Harbor v2.3.0](/docs/2.3.0/administration/upgrade/)
 
 
 
-If you are upgrading a Harbor instance that you deployed with Helm, see [Upgrading Harbor Deployed with Helm](helm-upgrade.md).
+Se stai aggiornando un'istanza Harbor distribuita con Helm, consulta [Aggiornamento di Harbor Distribuito con Helm](helm-upgrade.md).
 
-When upgrading an existing Harbor instance to a newer version, you might need to migrate the settings in `harbor.yml`.
-Since the migration might alter the database schema and the settings of `harbor.yml`, you should **always** back up your data before any migration.
+Quando si aggiorna un'istanza Harbor esistente a una versione più recente, potrebbe essere necessario eseguire la migrazione delle impostazioni in `harbor.yml`.
+Poiché la migrazione potrebbe alterare lo schema del database e le impostazioni di `harbor.yml`, dovresti **sempre** eseguire il backup dei tuoi dati prima di qualsiasi migrazione.
 
-## Important Upgrade Notes
+## Note importanti sull'aggiornamento
 
-- Again, you MUST backup your data before any data migration.
-- In Harbor v2.9, if you are using an external database, make sure the version of PostgreSQL >= 12.
+- Ancora una volta, DEVI eseguire il backup dei tuoi dati prima di qualsiasi migrazione dei dati.
+- In Harbor v2.9, se stai utilizzando un database esterno, assicurati che la versione di PostgreSQL >= 12.
 
-## Upgrading Harbor and Migrating Data
+## Aggiornamento di Harbor e migrazione dei dati
 
-1. Log in to the Harbor host and, if it is still running, stop and remove the existing Harbor instance.
+1. Accedere all'host Harbor e, se è ancora in esecuzione, arrestare e rimuovere l'istanza Harbor esistente.
 
     ```sh
     cd harbor
     docker compose down
     ```
 
-1. Back up Harbor's current files so that you can roll back to the current version if necessary.
+1. Eseguire il backup dei file correnti di Harbor in modo da poter tornare alla versione corrente, se necessario.
 
     ```sh
     mv harbor /my_backup_dir/harbor
     ```
 
-1. Back up the database, which by default is in the directory `/data/database`.
+1. Eseguire il backup del database, che per impostazione predefinita si trova nella directory `/data/database`.
 
     ```sh
     cp -r /data/database /my_backup_dir/
     ```
 
-1. Get the latest Harbor release package from [https://github.com/goharbor/harbor/releases](https://github.com/goharbor/harbor/releases) and extract it.
+1. Ottieni l'ultimo pacchetto di rilascio Harbor da [https://github.com/goharbor/harbor/releases](https://github.com/goharbor/harbor/releases) ed estrailo.
 
-   For more information see [Download the Harbor Installer](../../install-config/download-installer.md).
+   Per ulteriori informazioni vedere [Scarica il programma di installazione Harbor](../../install-config/download-installer.md).
 
-1. Before upgrading Harbor, perform migration.
+1. Prima di aggiornare Harbor, eseguire la migrazione.
 
-    The migration tool is in harbor-prepare tools delivered as a docker image. You can pull the image from docker hub. in the following command:
+    Lo strumento di migrazione è incluso negli strumenti di preparazione del porto forniti come immagine docker. Puoi estrarre l'immagine dall'hub docker. nel seguente comando:
 
     ```sh
     docker pull goharbor/prepare:[tag]
     ```
 
-    Alternatively, if you are using an offline installer package, you can load it from the image tarball that is included in the offline installer package. Replace [tag] with the new Harbor version, for example v1.10.0, in the following command:
+    In alternativa, se stai utilizzando un pacchetto di installazione offline, puoi caricarlo dal file tar dell'immagine incluso nel pacchetto di installazione offline. Sostituisci [tag] con la nuova versione Harbor, ad esempio v1.10.0, nel seguente comando:
 
     ```sh
     tar zxf <offline package>
     docker image load -i harbor/harbor.[version].tar.gz
     ```
 
-1. Copy the `/path/to/old/harbor.yml` to `harbor.yml` and upgrade it.
+1. Copia `/path/to/old/harbor.yml` in `harbor.yml` e aggiornalo.
 
     ```sh
     docker run -it --rm -v /:/hostfs goharbor/prepare:[tag] migrate -i ${path to harbor.yml}
     ```
 
-    **NOTE:** The schema upgrade and data migration of the database is performed by core when Harbor starts. If the migration fails, check the core log to debug.
+    **NOTA:** l'aggiornamento dello schema e la migrazione dei dati del database vengono eseguiti dal core all'avvio di Harbor. Se la migrazione fallisce, controlla il log principale per eseguire il debug.
 
-1. In the `./harbor` directory, run the `./install.sh` script to install the new Harbor instance.
+1. Nella directory `./harbor`, eseguire lo script `./install.sh` per installare la nuova istanza Harbor.
 
-   To install Harbor with Trivy, see [Run the Installer Script](../../install-config/run-installer-script.md) for more information.
+   Per installare Harbor con Trivy, vedere [Esegui lo script di installazione](../../install-config/run-installer-script.md) per ulteriori informazioni.
 
-If you need to roll back to the previous version of Harbor, see [Roll Back from an Upgrade](roll-back-upgrade.md).
+Se è necessario tornare alla versione precedente di Harbor, vedere [Rollback da un aggiornamento](roll-back-upgrade.md).

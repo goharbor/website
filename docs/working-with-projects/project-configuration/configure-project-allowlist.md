@@ -1,32 +1,32 @@
 ---
-title: Configure a Per-Project CVE Allowlist
+title: Configura una lista consentita CVE per progetto
 weight: 50
 ---
 
-When you run vulnerability scans, images that are subject to Common Vulnerabilities and Exposures (CVE) are identified. According to the severity of the CVE and your security settings, these images might not be permitted to run. You can create allowlists of CVEs to ignore during vulnerability scanning. 
+Quando si eseguono scansioni di vulnerabilità, vengono identificate le immagini soggette a vulnerabilità ed esposizioni comuni (CVE). A seconda della gravità del CVE e delle impostazioni di sicurezza, l'esecuzione di queste immagini potrebbe non essere consentita. È possibile creare liste consentite di CVE da ignorare durante la scansione delle vulnerabilità. 
 
-Harbor administrators can set a system-wide CVE allowlist. For information about site-wide CVE allowlists, see [Configure System-Wide CVE Allowlists](../../administration/vulnerability-scanning/configure-system-allowlist.md). By default, the system allowlist is applied to all projects. You can configure different CVE allowlists for individual projects, that override the system allowlist. 
+Gli amministratori Harbor possono impostare una lista consentita CVE a livello di sistema. Per informazioni sulle liste consentite CVE a livello di sito, vedere [Configurare liste consentite CVE a livello di sistema](../../administration/vulnerability-scanning/configure-system-allowlist.md). Per impostazione predefinita, la lista consentita del sistema viene applicata a tutti i progetti. È possibile configurare diverse liste consentite CVE per singoli progetti, che sovrascrivono la lista consentita del sistema. 
 
-1. Go to **Projects**, select a project, and select **Configuration**.
-1. Under **CVE allowlist**, select **Project allowlist**.
+1. Vai su **Progetti**, seleziona un progetto e seleziona **Configurazione**.
+1. In **Lista consentita CVE**, seleziona **Lista consentita progetto**.
 
-    ![Project CVE allowlist](../../../img/cve-allowlist5.png)
+    ![Lista consentita CVE del progetto](../../../img/cve-allowlist5.png)
 
-1. Optionally click **Copy From System** to add all of the CVE IDs from the system CVE allowlist to this project allowlist.
-1. Click **Add** and enter a list of additional CVE IDs to ignore during vulnerability scanning of this project.
+1. Facoltativamente, fare clic su **Copia dal sistema** per aggiungere tutti gli ID CVE dalla lista consentita CVE del sistema a questa lista consentita del progetto.
+1. Fare clic su **Aggiungi** e inserire un elenco di ID CVE aggiuntivi da ignorare durante la scansione delle vulnerabilità di questo progetto.
 
-    ![Add project CVEs](../../../img/cve-allowlist6.png)
+    ![Aggiungi CVE di progetto](../../../img/cve-allowlist6.png)
 
-    Either use a comma-separated list or newlines to add multiple CVE IDs to the list.
+    Utilizza un elenco separato da virgole o un ritorno a capo per aggiungere più ID CVE all'elenco.
 
-1. Click **Add** at the bottom of the window to add the CVEs to the project allowlist.
-1. Optionally uncheck the **Never expires** checkbox and use the calendar selector to set an expiry date for the allowlist.
-1. Click **Save** at the bottom of the page to save your settings.
+1. Fai clic su **Aggiungi** nella parte inferiore della finestra per aggiungere i CVE alla lista consentita del progetto.
+1. Facoltativamente, deseleziona la casella di controllo **Non scade mai** e utilizza il selettore del calendario per impostare una data di scadenza per la lista consentita.
+1. Fai clic su **Salva** nella parte inferiore della pagina per salvare le impostazioni.
 
-After you have created a project allowlist, you can remove CVE IDs from the list by clicking the delete button next to it in the list. You can click **Add** at any time to add more CVE IDs to this project allowlist. 
+Dopo aver creato una lista consentita di progetti, puoi rimuovere gli ID CVE dall'elenco facendo clic sul pulsante Elimina accanto ad esso nell'elenco. Puoi fare clic su **Aggiungi** in qualsiasi momento per aggiungere altri ID CVE alla lista consentita di questo progetto. 
 
-If CVEs are added to the system allowlist after you have created a project allowlist, click **Copy From System** to add the new entries from the system allowlist to the project allowlist. 
+Se i CVE vengono aggiunti alla lista consentita del sistema dopo aver creato una lista consentita del progetto, fai clic su **Copia dal sistema** per aggiungere le nuove voci dalla lista consentita del sistema alla lista consentita del progetto. 
 
 {{< note >}}
-If CVEs are deleted from the system allowlist after you have created a project allowlist, and if you added the system allowlist to the project allowlist, you must manually remove the deleted CVEs from the project allowlist. If you click **Copy From System** after CVEs have been deleted from the system allowlist, the deleted CVEs are not automatically removed from the project allowlist.
+Se i CVE vengono eliminati dalla lista consentita del sistema dopo aver creato una lista consentita del progetto e se hai aggiunto la lista consentita del sistema alla lista consentita del progetto, devi rimuovere manualmente i CVE eliminati dalla lista consentita del progetto. Se fai clic su **Copia dal sistema** dopo che i CVE sono stati eliminati dalla lista consentita del sistema, i CVE eliminati non verranno rimossi automaticamente dalla lista consentita del progetto.
 {{< /note >}}

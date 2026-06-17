@@ -1,59 +1,59 @@
 ---
-title: Create Projects
+title: Crea progetti
 weight: 20
 ---
 
-A project in Harbor contains all repositories of an application. Images cannot be pushed to Harbor before a project is created. Role-Based Access Control (RBAC) is applied to projects, so that only users with the appropriate roles can perform certain operations.
+Un progetto in Harbor contiene tutti i repository di un'applicazione. Non è possibile inviare immagini a Harbor prima della creazione di un progetto. Ai progetti viene applicato il controllo degli accessi basato sui ruoli (RBAC), in modo che solo gli utenti con i ruoli appropriati possano eseguire determinate operazioni.
 
-There are two types of project in Harbor:
+Esistono due tipi di progetto in Harbor:
 
-* **Public**: Any user can pull images from this project. This is a convenient way for you to share repositories with others.
-* **Private**: Only users who are members of the project can pull images
+* **Pubblico**: qualsiasi utente può estrarre immagini da questo progetto. Questo è un modo conveniente per condividere i repository con altri.
+* **Privato**: solo gli utenti membri del progetto possono estrarre le immagini
 
 {{< note >}}
-A Harbor system administrator can also create a proxy cache project. See more about how to [Configure a Proxy Cache](../../administration/configure-proxy-cache/) project.
+Un amministratore di sistema Harbor può anche creare un progetto di cache proxy. Scopri di più su come realizzare il progetto [Configura una cache proxy](../../administration/configure-proxy-cache/).
 {{< /note >}}
 
-You create different projects to which you assign users so that they can push and pull image repositories. You also configure project-specific settings. When you first deploy Harbor, a default public project named `library` is created.
+Crei diversi progetti a cui assegni gli utenti in modo che possano eseguire il push e il pull dei repository di immagini. Inoltre si configurano le impostazioni specifiche del progetto. Quando distribuisci Harbor per la prima volta, viene creato un progetto pubblico predefinito denominato `library`.
 
-## Prerequisites
+## Prerequisiti
 
-Log in to Harbor with a Harbor administrator or project administrator account.
+Accedi a Harbor con un account amministratore Harbor o amministratore del progetto.
 
-## Procedure
+## Procedura
 
-1. Go to **Projects** and click **New Project**.
-1. Provide a name for the project.
-1. (Optional) Check the **Public** check box to make the project public.
+1. Vai su **Progetti** e fai clic su **Nuovo progetto**.
+1. Fornire un nome per il progetto.
+1. (Facoltativo) Selezionare la casella di controllo **Pubblico** per rendere pubblico il progetto.
 
-    If you set the project to **Public**, any user can pull images from this project. If you leave the project set to **Private**, only users who are members of the project can pull images. You can toggle projects from public to private, or the reverse, at any moment after you create the project.
+    Se imposti il ​​progetto su **Pubblico**, qualsiasi utente può estrarre immagini da questo progetto. Se lasci il progetto impostato su **Privato**, solo gli utenti membri del progetto potranno estrarre le immagini. Puoi alternare i progetti da pubblico a privato o viceversa in qualsiasi momento dopo aver creato il progetto.
 
-    ![create project](../../img/new-create-project.png)
+    ![creare progetto](../../img/new-create-project.png)
 
-5. Click **OK**.
+5. Fare clic su **OK**.
 
-After the project is created, you can browse summary, repositories, helm charts, members, labels, scanner, p2p preheat, policy, robot accounts, logs and configuration using the navigation tab.
+Dopo aver creato il progetto, puoi sfogliare riepilogo, repository, grafici timone, membri, etichette, scanner, preriscaldamento p2p, policy, account robot, log e configurazione utilizzando la scheda di navigazione.
 
-![browse project](../../img/new-browse-project.png)
+![sfoglia progetto](../../img/new-browse-project.png)
 
-There are two views to show repositories, list view and card view, you can switch between them by clicking the corresponding icon.
+Sono disponibili due visualizzazioni per mostrare i repository, visualizzazione elenco e visualizzazione schede, puoi passare dall'una all'altra facendo clic sull'icona corrispondente.
 
-![browse repositories](../../img/browse-project-repositories.png)
+![sfogliare i repository](../../img/browse-project-repositories.png)
 
-Project properties can be changed by clicking "Configuration".
+Le proprietà del progetto possono essere modificate facendo clic su "Configurazione".
 
-* To make all repositories under the project accessible to everyone, select the `Public` checkbox.
+* Per rendere accessibili a tutti tutti i repository del progetto, seleziona la casella di controllo `Public`.
 
-* To prevent un-signed images under the project from being pulled, select the `Prevent vulnerable images from running` checkbox. For more information about content trust, see [Implementing Content Trust](../project-configuration/implementing-content-trust.md).
+* Per evitare che le immagini non firmate nel progetto vengano estratte, seleziona la casella di controllo `Prevent vulnerable images from running`. Per ulteriori informazioni sull'attendibilità del contenuto, vedere [Implementazione della fiducia nei contenuti](../project-configuration/implementing-content-trust.md).
 
-![browse project](../../img/project-configuration.png)
+![sfoglia progetto](../../img/project-configuration.png)
 
 
-## Searching Projects, Repositories and Helm charts
-Entering a keyword in the search field at the top lists all matching projects, repositories and helm charts. The search result includes both public and private repositories you have access to.
+## Ricerca di progetti, repository e grafici Helm
+Inserendo una parola chiave nel campo di ricerca in alto vengono elencati tutti i progetti, i repository e i grafici timone corrispondenti. Il risultato della ricerca include sia i repository pubblici che quelli privati ​​a cui hai accesso.
 
-![browse project](../../img/new-search.png)
+![sfoglia progetto](../../img/new-search.png)
 
-## What to Do Next
+## Cosa fare dopo
 
-[Assign Users to a Project](add-users.md)
+[Assegnare utenti a un progetto](add-users.md)

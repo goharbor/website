@@ -1,16 +1,16 @@
 ---
-title: Configuring Authentication
+title: Configurazione dell'autenticazione
 weight: 10
 ---
 
-Harbor supports different modes for authenticating users and managing user accounts. You should select an authentication mode as soon as you deploy Harbor.
+Harbor supporta diverse modalità per l'autenticazione degli utenti e la gestione degli account utente. Dovresti selezionare una modalità di autenticazione non appena distribuisci Harbor.
 
 {{< important >}}
-If you create user accounts in the Harbor database, Harbor is locked in database mode. You cannot change to a different authentication mode after creating local users.
+Se crei account utente nel database Harbor, Harbor è bloccato in modalità database. Non è possibile passare a una modalità di autenticazione diversa dopo aver creato gli utenti locali.
 {{< /important >}}
 
-- [Database Authentication](db-auth.md): You create and manage user accounts directly in Harbor. The user accounts are stored in the Harbor database.
-- [LDAP/Active Directory Authentication](ldap-auth.md): You connect Harbor to an external LDAP/Active Directory server. The user accounts are created and managed by your LDAP/AD provider.
-- [OIDC Provider Authentication](oidc-auth.md): You connect Harbor to an external OIDC provider. The user accounts are created and managed by your OIDC provider.
+- [Autenticazione del database](db-auth.md): crei e gestisci gli account utente direttamente in Harbor. Gli account utente sono memorizzati nel database Harbor.
+- [LDAP/Active Directory Autenticazione](ldap-auth.md): colleghi Harbor a un server LDAP/Active Directory esterno. Gli account utente vengono creati e gestiti dal provider LDAP/AD.
+- [OIDC Autenticazione del fornitore](oidc-auth.md): colleghi Harbor a un provider OIDC esterno. Gli account utente vengono creati e gestiti dal tuo provider OIDC.
 
-The Harbor interface offers an option to configure UAA authentication. This authentication mode is not recommended and is not documented in this guide.
+L'interfaccia Harbor offre un'opzione per configurare l'autenticazione UAA. Questa modalità di autenticazione non è consigliata e non è documentata in questa guida.

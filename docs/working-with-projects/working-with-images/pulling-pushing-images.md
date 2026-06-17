@@ -1,81 +1,81 @@
 ---
-title: Pulling and Pushing Images in the Docker Client
+title: Estrazione e push di immagini nel client Docker
 weight: 65
 ---
 
-Harbor optionally supports HTTP connections, however the Docker client always attempts to connect to registries by first using HTTPS. If Harbor is configured for HTTP, you must configure your Docker client so that it can connect to insecure registries. In your Docker client is not configured for insecure registries, you will see the following error when you attempt to pull or push images to Harbor:
+Harbor supporta facoltativamente le connessioni HTTP, tuttavia il client Docker tenta sempre di connettersi ai registri utilizzando prima HTTPS. Se Harbor è configurato per HTTP, è necessario configurare il client Docker in modo che possa connettersi a registri non sicuri. Se il tuo client Docker non è configurato per registri non sicuri, vedrai il seguente errore quando tenti di estrarre o inviare immagini a Harbor:
 
 <pre>
 Error response from daemon: Get https://<i>myregistrydomain.com</i>/v1/users/: dial tcp <i>myregistrydomain.com</i>:443 getsockopt: connection refused.
 </pre>
 
-For information about how to add insecure registries to your Docker client, see [Connecting to Harbor via HTTP](../../install-config/run-installer-script.md#connect-http).
+Per informazioni su come aggiungere registri non sicuri al client Docker, vedere [Connessione a Harbor tramite HTTP](../../install-config/run-installer-script.md#connect-http).
 
-You also see this error if Harbor uses HTTPS with an unknown CA certificate. In this case, obtain the registry's CA certificate, and copy it to <code>/etc/docker/certs.d/<i>myregistrydomain.com</i>/ca.crt</code>.
+Questo errore viene visualizzato anche se Harbor utilizza HTTPS con un certificato CA sconosciuto. In questo caso, ottenere il certificato CA di registry e copiarlo in <code>/etc/docker/certs.d/<i>myregistrydomain.com</i>/ca.crt</code>.
 
 {{< note >}}
-Harbor only supports the Registry V2 API. You must use Docker client 1.6.0 or higher when pushing and pulling images.
+Harbor supporta solo il registro V2 API. È necessario utilizzare il client Docker 1.6.0 o versione successiva quando si inviano ed estraggono immagini.
 {{< /note >}}
 
-## Pulling Images
+## Estrazione di immagini
 
-If the project that the image belongs to is private, you must sign in first:
+Se il progetto a cui appartiene l'immagine è privato, devi prima accedere:
 
 ```sh
 docker login <harbor_address>
 ```
 
-You can now pull an image:
+Ora puoi estrarre un'immagine:
 
 ```sh
 docker pull <harbor_address>/library/ubuntu:14.04
 ```
 
 {{< important >}}
-Harbor supports content trust through Cosign and Notation. If you have enforced content trust in your project, you will not be able to pull an unsigned image. Read more about [implementing content trust](../../project-configuration/implementing-content-trust/).
+Harbor supporta l'attendibilità dei contenuti tramite Cosign e Notation. Se hai imposto l'attendibilità dei contenuti nel tuo progetto, non sarai in grado di estrarre un'immagine non firmata. Ulteriori informazioni su [implementare la fiducia nei contenuti](../../project-configuration/implementing-content-trust/).
 {{< /important >}}
 
-## Pushing Images
+## Invio di immagini
 
-Before you can push an image to Harbor, you must create a corresponding project in the Harbor interface. For information about how to create a project, see [Create Projects](../create-projects/_index.md).
+Prima di poter inviare un'immagine a Harbor, è necessario creare un progetto corrispondente nell'interfaccia Harbor. Per informazioni su come creare un progetto, vedere [Crea progetti](../create-projects/_index.md).
 
-To push Windows images to your Harbor instance, you also must set your docker daemon to `allow-nondistributable-artifacts`. For more information see [Pushing Windows Images](#pushing-windows-images).
+Per inviare immagini Windows all'istanza Harbor, devi anche impostare il daemon docker su `allow-nondistributable-artifacts`. Per ulteriori informazioni vedere [Invio di immagini di Windows](#pushing-windows-images).
 
 {{< note >}}
-You cannot push images to a proxy cache project. See more about [proxy cache projects](../../../administration/configure-proxy-cache/).
+Non è possibile inviare immagini a un progetto di cache proxy. Scopri di più su [progetti di cache proxy](../../../administration/configure-proxy-cache/).
 {{< /note >}}
 
-First, log in from Docker client:
+Innanzitutto, accedi dal client Docker:
 
 ```sh
 docker login <harbor_address>
 ```
 
-Tag the image:
+Tagga l'immagine:
 
 ```sh
 docker tag ubuntu:14.04 <harbor_address>/demo/ubuntu:14.04
 ```
 
-Push the image:
+Spingi l'immagine:
 
 ```sh
 docker push <harbor_address>/demo/ubuntu:14.04
 ```
-**Understanding the Image Name Structure**
+**Comprendere la struttura del nome dell'immagine**
 
-In Harbor, a fully qualified image name has three main parts: <project_name>/<repository_name>:<tag>. This is a critical concept for pushing images and configuring deployment tools.
+In Harbor, un nome di immagine completo è composto da tre parti principali: <project_name>/<repository_name>:<tag>. Questo è un concetto fondamentale per il push delle immagini e la configurazione degli strumenti di distribuzione.
 
-Using the example <harbor_address>/demo/ubuntu:14.04:
-demo: This is the Project you created in the Harbor UI.
-ubuntu: This is the Repository name inside the demo project. A repository holds all the tags for a single image.
-14.04: This is the Tag, which usually represents a specific version of the image.
+Usando l'esempio <harbor_address>/demo/ubuntu:14.04:
+demo: questo è il progetto che hai creato in Harbor UI.
+ubuntu: questo è il nome del repository all'interno del progetto demo. Un repository contiene tutti i tag per una singola immagine.
+14.04: Questo è il Tag, che solitamente rappresenta una versione specifica dell'immagine.
 
-When configuring deployment tools (like Kubernetes or Kamal), ensure your target image name is set to the format <project_name>/<repository_name>
+Quando configuri gli strumenti di distribuzione (come Kubernetes o Kamal), assicurati che il nome dell'immagine di destinazione sia impostato sul formato <project_name>/<repository_name>
 
-### Pushing Windows Images
+### Invio di immagini di Windows
 
-If you plan to push Windows images to your Harbor instance, you must configure your docker daemon to allow pushing restricted artifacts by setting `allow-nondistributable-artifacts` in your `daemon.json` file.
+Se prevedi di inviare immagini Windows alla tua istanza Harbor, devi configurare il tuo daemon docker per consentire l'invio di artefatti limitati impostando `allow-nondistributable-artifacts` nel tuo file `daemon.json`.
 
 ```
 {
@@ -83,34 +83,34 @@ If you plan to push Windows images to your Harbor instance, you must configure y
 }
 ```
 
-For more information on the `allow-nondistributable-artifacts` setting, see [Docker's documentation](https://docs.docker.com/engine/reference/commandline/dockerd/#allow-push-of-nondistributable-artifacts).
+Per ulteriori informazioni sull'impostazione `allow-nondistributable-artifacts`, vedere [La documentazione di Docker](https://docs.docker.com/engine/reference/commandline/dockerd/#allow-push-of-nondistributable-artifacts).
 
-## Add Descriptions to Repositories
+## Aggiungi descrizioni ai repository
 
-After pushing an image, the project administrator can add information to describe the repository.
+Dopo aver inviato un'immagine, l'amministratore del progetto può aggiungere informazioni per descrivere il repository.
 
-Go into the repository and select the **Info** tab, and click the **Edit** button. Enter a description and click **Save** to save the description.
+Accedi al repository e seleziona la scheda **Informazioni**, quindi fai clic sul pulsante **Modifica**. Inserisci una descrizione e fai clic su **Salva** per salvare la descrizione.
 
-![edit info](../../../img/edit-description.png)
+![modifica informazioni](../../../img/edit-description.png)
 
-## Download the Harbor Certificate
+## Scarica il certificato Harbor
 
-Users can click the **Registry Certificate** button to download the registry certificate. If there is no **Registry Certificate** button, copy your server certificate into the directory `<your-data_volume>/ca_download/` and name it `ca.cert`.
+Gli utenti possono fare clic sul pulsante **Certificato di registro** per scaricare il certificato registry. Se non è presente il pulsante **Certificato di registro**, copia il certificato del server nella directory `<your-data_volume>/ca_download/` e chiamalo `ca.cert`.
 
-![browse project](../../../img/download-harbor-certs.png)
+![sfoglia progetto](../../../img/download-harbor-certs.png)
 
-## Deleting Repositories
+## Eliminazione di repository
 
-Deleting repositories involves two steps.
+L'eliminazione dei repository prevede due passaggi.
 
-First, you delete a repository in the Harbor interface. This is soft deletion. You can delete the entire repository or just one of its tags. After the soft deletion, the repository is no longer managed by Harbor, however, the repository files remain in the Harbor storage.
+Innanzitutto, elimini un repository nell'interfaccia Harbor. Questa è un'eliminazione graduale. Puoi eliminare l'intero repository o solo uno dei suoi tag. Dopo l'eliminazione temporanea, il repository non è più gestito da Harbor, tuttavia, i file del repository rimangono nell'archivio Harbor.
 
-![browse project](../../../img/new-delete-repo.png)
+![sfoglia progetto](../../../img/new-delete-repo.png)
 
-Next, delete the repository files by running [garbage collection](../../administration/garbage-collection/_index.md) in the Harbor interface.
+Successivamente, elimina i file del repository eseguendo [raccolta rifiuti](../../administration/garbage-collection/_index.md) nell'interfaccia Harbor.
 
-## Pulling Images from Harbor in Kubernetes
-Kubernetes users can easily deploy pods with images stored in Harbor. The settings are similar to those of any other private registry. There are two issues to be aware of:
+## Estrazione di immagini da Harbor in Kubernetes
+Gli utenti Kubernetes possono distribuire facilmente pod con immagini archiviate in Harbor. Le impostazioni sono simili a quelle di qualsiasi altro registry privato. Ci sono due questioni di cui essere consapevoli:
 
-1. When your Harbor instance is hosting HTTP and the certificate is self-signed, you must modify `daemon.json` on each work node of your cluster. For information, see https://docs.docker.com/registry/insecure/#deploy-a-plain-http-registry.
-2. If your pod references an image under a private project, you must create a secret with the credentials of a user who has permission to pull images from the project. For information, see https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/.
+1. Quando la tua istanza Harbor ospita HTTP e il certificato è autofirmato, devi modificare `daemon.json` su ciascun nodo di lavoro del tuo cluster. Per informazioni vedere https://docs.docker.com/registry/insecure/#deploy-a-plain-http-registry.
+2. Se il tuo pod fa riferimento a un'immagine in un progetto privato, devi creare un segreto con le credenziali di un utente che dispone dell'autorizzazione per estrarre immagini dal progetto. Per informazioni vedere https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/.

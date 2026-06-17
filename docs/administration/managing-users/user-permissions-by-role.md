@@ -1,67 +1,67 @@
 ---
-title: User Permissions By Role
+title: Autorizzazioni utente per ruolo
 weight: 20
 ---
 
-Users have different abilities depending on the role they have in a project.
+Gli utenti hanno capacità diverse a seconda del ruolo che hanno in un progetto.
 
-On public projects all users will be able to see the list of repositories, images, image vulnerabilities, helm charts and helm chart versions, pull images, retag images (need push permission for destination image), download helm charts, download helm chart versions.
+Sui progetti pubblici tutti gli utenti potranno vedere l'elenco di repository, immagini, vulnerabilità delle immagini, grafici helm e versioni dei grafici helm, estrarre immagini, ritaggare immagini (è necessaria l'autorizzazione push per l'immagine di destinazione), scaricare grafici helm, scaricare versioni dei grafici helm.
 
-System admin have all permissions for the project.
+L'amministratore di sistema ha tutte le autorizzazioni per il progetto.
 
-## Project members permissions
+## Autorizzazioni dei membri del progetto
 
-The following table depicts the various user permission levels in a project.
+La tabella seguente illustra i vari livelli di autorizzazione utente in un progetto.
 
-| Action                                  | Limited Guest | Guest | Developer | Maintainer | Project Admin |
+| Azione | Ospite limitato | Ospite | Sviluppatore | Manutentore | Amministratore del progetto |
 | --------------------------------------- | ------------- | ----- | --------- | ------ | ------------- |
-| See the project configurations          | ✓             | ✓     | ✓         | ✓      | ✓             |
-| Edit the project configurations         |               |       |           |        | ✓             |
-| See a list of project members           |               | ✓     | ✓         | ✓      | ✓             |
-| Create/edit/delete project members      |               |       |           |        | ✓             |
-| See a list of project logs              |               | ✓     | ✓         | ✓      | ✓             |
-| See a list of project replications      |               |       |           | ✓      | ✓             |
-| See a list of project replication jobs  |               |       |           |        | ✓             |
-| See a list of project labels            |               |       |           | ✓      | ✓             |
-| Create/edit/delete project labels       |               |       |           | ✓      | ✓             |
-| See a list of repositories              | ✓             | ✓     | ✓         | ✓      | ✓             |
-| Create repositories                     |               |       | ✓         | ✓      | ✓             |
-| Edit/delete repositories                |               |       |           | ✓      | ✓             |
-| See a list of images                    | ✓             | ✓     | ✓         | ✓      | ✓             |
-| Retag image                             |               | ✓     | ✓         | ✓      | ✓             |
-| Pull image                              | ✓             | ✓     | ✓         | ✓      | ✓             |
-| Push image                              |               |       | ✓         | ✓      | ✓             |
-| Scan/delete image                       |               |       |           | ✓      | ✓             |
-| Add scanners to Harbor  *               |               |       |           |        |               |
-| Edit scanners in projects               |               |       |           |        | ✓             |
-| See a list of image vulnerabilities     | ✓             | ✓     | ✓         | ✓      | ✓             |
-| Create list of project vulnerabilities  |               |       | ✓         | ✓      | ✓             |
-| Read list of project vulnerabilities    |               |       | ✓         | ✓      | ✓             |
-| Export list of project vulnerabilities  |               |       | ✓         | ✓      | ✓             |
-| See image build history                 | ✓             | ✓     | ✓         | ✓      | ✓             |
-| Add/Remove labels of image              |               |       | ✓         | ✓      | ✓             |
-| See a list of helm charts               | ✓             | ✓     | ✓         | ✓      | ✓             |
-| Download helm charts                    | ✓             | ✓     | ✓         | ✓      | ✓             |
-| Upload helm charts                      |               |       | ✓         | ✓      | ✓             |
-| Delete helm charts                      |               |       |           | ✓      | ✓             |
-| See a list of helm chart versions       | ✓             | ✓     | ✓         | ✓      | ✓             |
-| Download helm chart versions            | ✓             | ✓     | ✓         | ✓      | ✓             |
-| Upload helm chart versions              |               |       | ✓         | ✓      | ✓             |
-| Delete helm chart versions              |               |       |           | ✓      | ✓             |
-| Add/Remove labels of helm chart version |               |       | ✓         | ✓      | ✓             |
-| See a list of project robots            |               |       |           | ✓      | ✓             |
-| Create/edit/delete project robots       |               |       |           |        | ✓             |
-| See configured CVE allowlist            | ✓             | ✓     | ✓         | ✓      | ✓             |
-| Create/edit/remove CVE allowlist        |               |       |           |        | ✓             |
-| View webhook events                     |               |       |           | ✓      | ✓             |
-| Add new webhook events                  |               |       |           |        | ✓             |
-| Enable/deactivate webhooks              |               |       |           |        | ✓             |
-| Create/delete tag retention rules       |               |       | ✓         | ✓      | ✓             |
-| Enable/deactivate tag retention rules   |               |       | ✓         | ✓      | ✓             |
-| Create/delete tag immutability rules    |               |       |           | ✓      | ✓             |
-| Enable/deactivate tag immutability rules|               |       |           | ✓      | ✓             |
-| See project quotas                      | ✓             | ✓     | ✓         | ✓      | ✓             |
-| Edit project quotas  *                  |               |       |           |        |               |
-| Delete Project                          |               |       |           |        | ✓             |
+| Vedi le configurazioni del progetto | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Modifica le configurazioni del progetto |               |       |           |        | ✓ |
+| Visualizza l'elenco dei membri del progetto |               | ✓ | ✓ | ✓ | ✓ |
+| Crea/modifica/elimina membri del progetto |               |       |           |        | ✓ |
+| Visualizza un elenco dei registri del progetto |               | ✓ | ✓ | ✓ | ✓ |
+| Visualizza un elenco delle repliche del progetto |               |       |           | ✓ | ✓ |
+| Visualizza un elenco di processi di replica del progetto |               |       |           |        | ✓ |
+| Visualizza un elenco di etichette di progetto |               |       |           | ✓ | ✓ |
+| Crea/modifica/elimina etichette di progetto |               |       |           | ✓ | ✓ |
+| Visualizza un elenco di repository | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Crea repository |               |       | ✓ | ✓ | ✓ |
+| Modifica/elimina repository |               |       |           | ✓ | ✓ |
+| Visualizza un elenco di immagini | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Ricodifica immagine |               | ✓ | ✓ | ✓ | ✓ |
+| Estrai immagine | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Spingi immagine |               |       | ✓ | ✓ | ✓ |
+| Scansiona/elimina immagine |               |       |           | ✓ | ✓ |
+| Aggiungi scanner a Harbor * |               |       |           |        |               |
+| Modifica scanner nei progetti |               |       |           |        | ✓ |
+| Visualizza un elenco delle vulnerabilità dell'immagine | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Creare un elenco delle vulnerabilità del progetto |               |       | ✓ | ✓ | ✓ |
+| Leggi l'elenco delle vulnerabilità del progetto |               |       | ✓ | ✓ | ✓ |
+| Esporta elenco delle vulnerabilità del progetto |               |       | ✓ | ✓ | ✓ |
+| Visualizza la cronologia della creazione di immagini | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Aggiungi/Rimuovi etichette dell'immagine |               |       | ✓ | ✓ | ✓ |
+| Visualizza un elenco di carte timone | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Scarica le carte del timone | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Carica le carte del timone |               |       | ✓ | ✓ | ✓ |
+| Elimina grafici timone |               |       |           | ✓ | ✓ |
+| Visualizza un elenco delle versioni della mappa del timone | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Scarica le versioni della mappa del timone | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Carica le versioni della mappa del timone |               |       | ✓ | ✓ | ✓ |
+| Elimina le versioni della carta timone |               |       |           | ✓ | ✓ |
+| Aggiungi/Rimuovi etichette della versione della mappa del timone |               |       | ✓ | ✓ | ✓ |
+| Visualizza un elenco di robot di progetto |               |       |           | ✓ | ✓ |
+| Crea/modifica/elimina robot di progetto |               |       |           |        | ✓ |
+| Consulta la lista consentita CVE configurata | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Crea/modifica/rimuovi lista consentita CVE |               |       |           |        | ✓ |
+| Visualizza eventi webhook |               |       |           | ✓ | ✓ |
+| Aggiungi nuovi eventi webhook |               |       |           |        | ✓ |
+| Abilita/disattiva webhook |               |       |           |        | ✓ |
+| Crea/elimina regole di conservazione dei tag |               |       | ✓ | ✓ | ✓ |
+| Abilita/disattiva le regole di conservazione dei tag |               |       | ✓ | ✓ | ✓ |
+| Crea/elimina le regole di immutabilità dei tag |               |       |           | ✓ | ✓ |
+| Abilita/disattiva le regole di immutabilità dei tag|               |       |           | ✓ | ✓ |
+| Vedi quote del progetto | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Modifica quote progetto * |               |       |           |        |               |
+| Elimina progetto |               |       |           |        | ✓ |
 
-&ast; Only the Harbor system administrator can edit project quotas and add new scanners.
+&ast; Solo l'amministratore di sistema Harbor può modificare le quote del progetto e aggiungere nuovi scanner.
