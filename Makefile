@@ -1,10 +1,23 @@
+HUGO_VERSION_REQUIRED="v0.74.0"
+EXTENDED_REQUIRED="extended"
+
+check_hugo_version:
+	@version=$$(hugo version | head -n 1 | awk '{print $$5}' | sed 's/-.*//'); \
+	extended=$$(hugo version | head -n 1 | grep -o 'extended'); \
+	if [ "$$version" != "$(HUGO_VERSION_REQUIRED)" ] || [ "$$extended" != "$(EXTENDED_REQUIRED)" ]; then \
+		echo "Error: Current Hugo version is $$version. AND is not $(HUGO_VERSION_REQUIRED) extended version."; \
+		exit 1; \
+	else \
+		echo "Hugo version $$version is correct and is extended version."; \
+	fi
+
 clean:
 	rm -rf public resources
 
 prepare:
 	$(CURDIR)/load-docs.sh
 
-serve:
+serve: check_hugo_version
 	hugo server \
 		--bind 0.0.0.0 \
 		--buildDrafts \
