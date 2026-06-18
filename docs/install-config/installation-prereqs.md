@@ -37,7 +37,7 @@ Harbor requires that the following ports be open on the target host.
 
 ## Install Harbor on Kubernetes 
 
-To install docker with Helm, see the dedicated repository [github.com/goharbor/harbor-helm](https://github.com/goharbor/harbor-helm)
+To install Harbor with Helm, see the dedicated repository [github.com/goharbor/harbor-helm](https://github.com/goharbor/harbor-helm)
 
 ## Next Steps
 
