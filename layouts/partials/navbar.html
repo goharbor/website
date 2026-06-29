@@ -51,7 +51,7 @@
         {{ $name := .Name }}
         {{ $isHere := eq .URL $here }}
         {{ $isExternal := hasPrefix .URL "http" }}
-        <a class="navbar-item has-text-weight-bold{{ if $isHere }} is-active{{ end }}" href="{{ .URL }}"{{ if $isExternal }} target="_blank"{{ end }} data-proofer-ignore>
+        <a class="navbar-item has-text-weight-bold{{ if $isHere }} is-active{{ end }}" href="{{ .URL }}"{{ if $isExternal }} target="_blank" rel="noopener noreferrer"{{ end }} data-proofer-ignore>
           {{ $name }}
         </a>
         {{ end }}
