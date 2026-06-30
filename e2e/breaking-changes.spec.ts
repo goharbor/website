@@ -23,19 +23,16 @@ test.describe('Hugo breaking changes are fixed', () => {
     expect(innerHTML.length).toBeGreaterThan(0);
   });
 
-  test('disableKinds "term" works without taxonomy warnings', async ({ page }) => {
-    // Start page load and capture any console errors
-    let hasWarnings = false;
-    page.on('console', msg => {
-      if (msg.type() === 'error' || msg.text().includes('taxonomy')) {
-        hasWarnings = true;
-      }
-    });
+  test('disableKinds "term" produces no taxonomy pages', async () => {
+    // The disableKinds config prevents taxonomy/term pages from being built.
+    // Verify the built output has no taxonomy index pages.
+    const publicDir = path.join(process.cwd(), 'public');
 
-    await page.goto('/');
+    const taxonomyDir = path.join(publicDir, 'tags');
+    const termDir = path.join(publicDir, 'categories');
 
-    // No warnings should have been logged about taxonomyTerm
-    expect(hasWarnings).toBe(false);
+    expect(fs.existsSync(taxonomyDir)).toBe(false);
+    expect(fs.existsSync(termDir)).toBe(false);
   });
 
   test('custom output format _redirects is generated', async () => {
