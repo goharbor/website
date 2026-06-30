@@ -1,8 +1,8 @@
 {
   "dependencies": {
-    "autoprefixer": "^9.7.4",
-    "bulma": "^0.8.0",
-    "postcss-cli": "^7.1.2"
+    "autoprefixer": "^10.5.2",
+    "bulma": "^1.0.4",
+    "postcss-cli": "^11.0.1"
   },
   "devDependencies": {
     "@playwright/test": "^1.48.0"
