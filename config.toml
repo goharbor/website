@@ -1,6 +1,6 @@
 title = "Harbor"
 baseURL = "https://goharbor.io"
-disableKinds = ["taxonomy", "taxonomyTerm"]
+disableKinds = ["taxonomy", "term"]
 ignoreFiles = ["README.md"]
 
 [params]
@@ -163,7 +163,7 @@ weight = 4
 home = [ "HTML", "REDIRECTS" ]
 
 [mediaTypes."text/netlify"]
-delimiter = ""
+suffixes = []
 
 [outputFormats.REDIRECTS]
 mediaType = "text/netlify"

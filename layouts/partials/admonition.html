@@ -10,11 +10,11 @@
       <div class="content">
         {{ with .title }}
         <p class="title">
-          {{ . | markdownify }}
+          {{ . | string | markdownify }}
         </p>
         {{ end }}
 
-        {{ .content | markdownify }}
+        {{ .content | string | markdownify }}
       </div>
     </div>
   </div>
