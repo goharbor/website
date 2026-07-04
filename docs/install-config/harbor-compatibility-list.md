@@ -51,6 +51,7 @@ This document provides compatibility information for all Harbor components.
 | [TensorSecurity](https://github.com/tensorsecurity/harbor-scanner) |![TensorSecurity](../../img/scanners/tensorsecurity.png) | TensorSecurity | ![Y](../../img/replication-adapters/right.png) |  | v2.2.0 |
 | [ArksecScanner](https://github.com/arksec-cn)    |![Arksec](../../img/scanners/arksec.png)| Arksec    |![Y](../../img/replication-adapters/right.png)| | v2.4.0 |
 | [Cyberwatch](https://github.com/Cyberwatch)    |![Cyberwatch](../../img/scanners/cyberwatch.png)| [Cyberwatch](https://cyberwatch.fr/integrate-with-harbor-scans)    |![Y](../../img/replication-adapters/right.png)|  | v2.8.0 |
+| [Carbon Black](https://github.com/vmware/carbon-black-adapter-for-harbor) | Carbon Black | VMware |![Y](../../img/replication-adapters/right.png)| | v2.0.0 |
 
 
 {{< note >}}
