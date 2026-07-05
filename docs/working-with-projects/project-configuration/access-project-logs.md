@@ -1,34 +1,34 @@
 ---
-title: Access and Search Project Logs
+title: Accedi e cerca i log del progetto
 weight: 35
 ---
 
-Harbor keeps a log of all of the operations that users perform in a project. You can apply filters to help you to search the logs.
+Harbor conserva un registro di tutte le operazioni eseguite dagli utenti in un progetto. Puoi applicare filtri per aiutarti a cercare nei log.
 
-## Prerequisites
+## Prerequisiti
 
-Log in to Harbor with a Harbor administrator, project administrator, maintainer, developer, or guest account.
+Accedi a Harbor con un account amministratore Harbor, amministratore di progetto, manutentore, sviluppatore o ospite.
 
-## Procedure
+## Procedura
 
-1. Go to **Projects**, select a project, and select **Logs**.
+1. Vai a **Progetti**, seleziona un progetto e seleziona **Registri**.
 
-    ![View logs](../../../img/project-logs.png)
+    ![Visualizza i registri](../../../img/project-logs.png)
 
-    All logs for the project are displayed.
+    Vengono visualizzati tutti i registri del progetto.
 
-1. Click the **Search** icon and start typing to filter the logs by name.
+1. Fai clic sull'icona **Cerca** e inizia a digitare per filtrare i registri per nome.
  
-    ![Filter logs](../../../img/log-filter.png)
+    ![Filtra i log](../../../img/log-filter.png)
 
-1. Click **Advanced**.
+1. Fare clic su **Avanzate**.
 
-    ![Advanced log search](../../../img/log-search-advanced.png)
+    ![Ricerca avanzata dei registri](../../../img/log-search-advanced.png)
 
-1. Use the **Operations** drop-down menu to filter by operation type.
+1. Utilizza il menu a discesa **Operazioni** per filtrare in base al tipo di operazione.
 
-    ![Search logs by operation type](../../../img/new-project-log.png)
+    ![Cerca i log per tipo di operazione](../../../img/new-project-log.png)
 
-1. Click the calendar icons to enter dates between which to search for logs of the types you set in the **Operations** drop-down menu. 
+1. Fare clic sulle icone del calendario per inserire le date entro le quali cercare i registri dei tipi impostati nel menu a discesa **Operazioni**. 
 
-    ![Filter logs by date](../../../img/log-search-advanced-date.png)
+    ![Filtra i registri per data](../../../img/log-search-advanced-date.png)

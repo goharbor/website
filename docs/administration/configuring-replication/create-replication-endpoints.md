@@ -1,78 +1,78 @@
 ---
-title: Creating Replication Endpoints
+title: Creazione di endpoint di replica
 weight: 20
 ---
 
-To replicate image repositories from one instance of Harbor to another Harbor or non-Harbor registry, you first create replication endpoints.
+Per replicare i repository di immagini da un'istanza di Harbor a un'altra Harbor o non Harbor registry, devi prima creare endpoint di replica.
 
 {{< note >}}
-You can also use an endpoint in a proxy cache project. Read more about how to [Configure Proxy Cache](../../configure-proxy-cache/).
+Puoi anche utilizzare un endpoint in un progetto di cache proxy. Ulteriori informazioni su come eseguire [Configura cache proxy](../../configure-proxy-cache/).
 {{< /note >}}
 
-1. Go to **Registries** and click the **+ New Endpoint** button.
+1. Vai a **Registri** e fai clic sul pulsante **+ Nuovo endpoint**.
 
-   ![New replication endpoint](../../../img/replication-endpoint1.png)
+   ![Nuovo endpoint di replica](../../../img/replication-endpoint1.png)
 
-1. For **Provider**, use the drop-down menu to select the type of registry to set up as a replication endpoint.
+1. Per **Provider**, utilizzare il menu a discesa per selezionare il tipo di registry da configurare come endpoint di replica.
 
-   The endpoint can be another Harbor instance, or a non-Harbor registry. Currently, the following non-Harbor registries are supported:
+   L'endpoint può essere un'altra istanza Harbor o un'istanza non Harbor registry. Attualmente sono supportati i seguenti registri non Harbor:
 
-   - Alibaba Cloud Container Registry
-   - AWS Elastic Container Registry
-   - Azure Container Registry
-   - Docker Hub
-   - Docker registry
-   - Github Container Registry
-   - Google Container Registry (and Google Cloud Artifact Registry)
-   - Huawei SoftWare Repository for Container
-   - Jfrog Artifactory
-   - Tencent Container Registry
-   - VolcEngine Container Registry
-
-   {{< note >}}
-   If you plan to use this endpoint in a proxy cache project, note that they only support Harbor, Alibaba Cloud Container Registry, Azure Container Registry, Docker Hub, Docker registry, AWS Elastic Container Registry, Google Container Registry/Google Cloud Artifact Registry, Github Container Registry, and Jfrog Artifactory registries. Read more about how to [Configure Proxy Cache](../../configure-proxy-cache/).
-   {{< /note >}}
-
-   ![Replication providers](../../../img/replication-endpoint2.png)
-
-1. Enter a suitable name and description for the new replication endpoint.
-1. Enter the full URL of the registry to set up as a replication endpoint.
-
-   For example, to replicate to another Harbor instance, enter https://harbor_instance_address:443. The registry must exist and be running before you create the endpoint.
-
-1. Enter the Access ID and Access Secret for the endpoint registry instance.
-
-   Use an account that has the appropriate privileges on that registry, or an account that has write permission on the corresponding project in a Harbor registry. See more information about [Access ID and Secret Configuration](#access-id-and-secret-configuration).
+   - Registro dei contenitori Alibaba Cloud
+   - Registro dei contenitori elastici AWS
+   - Registro contenitori di Azure
+   -Mozzo Docker
+   -Dockerregistry
+   - Registro dei contenitori Github
+   - Google Container Registry (e Google Cloud Artifact Registry)
+   - Repository software Huawei per contenitore
+   - Artifabbrica Jfrog
+   - Registro dei contenitori Tencent
+   - Registro dei contenitori VolcEngine
 
    {{< note >}}
-   If you plan to use this endpoint with a proxy cache project, the access accounts you provide here enables the proxy cache project to pull every image from the target registry that the access account has permission to pull.
+   Se prevedi di utilizzare questo endpoint in un progetto di cache proxy, tieni presente che supportano solo i registri Harbor, Alibaba Cloud Container Registry, Azure Container Registry, Docker Hub, Docker registry, AWS Elastic Container Registry, Google Container Registry/Google Cloud Artifact Registry, Github Container Registry e Jfrog Artifactory. Ulteriori informazioni su come eseguire [Configura cache proxy](../../configure-proxy-cache/).
+   {{< /note >}}
+
+   ![Fornitori di replica](../../../img/replication-endpoint2.png)
+
+1. Immettere un nome e una descrizione adeguati per il nuovo endpoint di replica.
+1. Immettere l'URL completo di registry da configurare come endpoint di replica.
+
+   Ad esempio, per replicare su un'altra istanza Harbor, immettere https://harbor_instance_address:443. registry deve esistere ed essere in esecuzione prima di creare l'endpoint.
+
+1. Immettere l'ID di accesso e il segreto di accesso per l'istanza registry dell'endpoint.
+
+   Utilizzare un account che disponga dei privilegi appropriati su quello registry o un account che disponga dell'autorizzazione di scrittura sul progetto corrispondente in uno Harbor registry. Visualizza ulteriori informazioni su [ID di accesso e configurazione segreta](#access-id-and-secret-configuration).
+
+   {{< note >}}
+   Se prevedi di utilizzare questo endpoint con un progetto cache proxy, gli account di accesso forniti qui consentono al progetto cache proxy di estrarre ogni immagine dal registry di destinazione per cui l'account di accesso è autorizzato a estrarre.
    {{< /note >}}
 
    {{< note >}}
-   When an endpoint is used for proxy cache, Harbor may obtain tokens by following the upstream `WWW-Authenticate: Bearer realm="..."` challenge.
-   The token service can be hosted on a different domain from the registry.
-   Configure only trusted upstream registries/endpoints and use least-privilege access credentials.
+   Quando un endpoint viene utilizzato per la cache proxy, Harbor può ottenere token seguendo la sfida `WWW-Authenticate: Bearer realm="..."` upstream.
+   Il servizio token può essere ospitato su un dominio diverso da registry.
+   Configura solo registri/endpoint upstream attendibili e utilizza credenziali di accesso con privilegi minimi.
    {{< /note >}}
 
-1. Optionally, select the **Verify Remote Cert** check box.
+1. Facoltativamente, selezionare la casella di controllo **Verifica certificato remoto**.
 
-   Deselect the check box if the remote registry uses a self-signed or untrusted certificate.
+   Deselezionare la casella di controllo se il telecomando registry utilizza un certificato autofirmato o non attendibile.
 
-1. Click **Test Connection**.
-1. When you have successfully tested the connection, click **OK**.
+1. Fare clic su **Verifica connessione**.
+1. Una volta testato con successo la connessione, fare clic su **OK**.
 
-## Access ID and Secret Configuration
+## ID di accesso e configurazione segreta
 
-- AWS ECR adapters should use access keys, not a username and password.The access key should have sufficient permissions, such as storagepermission.
-- Google GCR adapters should use the entire JSON key generated in the service account. The namespace should start with the project ID.
-- Quay Registry
-   - Supported scope
-      - [Quay.io](https://quay.io) (cloud version) does not allow to create namespaces (organizations) automaticaly, due to Recaptcha enabled on the Quay.io side.
-      - [RedHat Quay](https://www.openshift.com/products/quay) (enterprise on-premises version) is fully supported (tested on v3.2.0)
-      - [Project Quay](https://github.com/quay/quay) (open sourced version) is also supported theoretically, but has not been tested yet.
-   - Authorization
-      - If you are connecting to a registry without authorization, keep Access ID and Access Secret empty.
-      - If you are connecting to a registry with authorization, you don't need to input an Access ID. Harbor uses json_file as the default Access ID. Input your Access Secret in json format, example:
+- Gli adattatori AWS ECR devono utilizzare chiavi di accesso, non nome utente e password. La chiave di accesso deve disporre di autorizzazioni sufficienti, ad esempio l'autorizzazione di archiviazione.
+- Gli adattatori Google GCR devono utilizzare l'intera chiave JSON generata nell'account del servizio. Lo spazio dei nomi dovrebbe iniziare con l'ID progetto.
+- Registro delle banchine
+   - Ambito supportato
+      - [Quay.io](https://quay.io) (versione cloud) non consente di creare automaticamente spazi dei nomi (organizzazioni), a causa di Recaptcha abilitato sul lato Quay.io.
+      - [RedHat Quay](https://www.openshift.com/products/quay) (versione aziendale locale) è completamente supportato (testato su v3.2.0)
+      - Anche [Progetto Quay](https://github.com/quay/quay) (versione open source) è teoricamente supportato, ma non è stato ancora testato.
+   - Autorizzazione
+      - Se ci si connette a uno registry senza autorizzazione, lasciare vuoti ID accesso e Segreto accesso.
+      - Se ci si connette a uno registry con autorizzazione, non è necessario inserire un ID di accesso. Harbor utilizza json_file come ID di accesso predefinito. Inserisci il tuo segreto di accesso in formato json, ad esempio:
       ```
       {
       "oauth2_token": "YmQZ1QZENVmOD6v9kENzmfptNVhgBuy5oVl85eGV", // optional
@@ -80,18 +80,18 @@ You can also use an endpoint in a proxy cache project. Read more about how to [C
       "docker_cli_password": "q6NVazikNqIf4coiQ+JvV4iqiCpkNjE0DLX8ZMQuFRbkHk5iMv6/hd4WdV3W3nyX"
       }
       ```
-      - `oauth2_token` is required only if you want to create an organization automatically.
-      - `account_name` is your login name. Its not recommended to use a robot account because a robot account can not access different organization's repositories.
-      - `docker_cli_password` is your cli password. You can generate this on the Quay ui page.
+      - `oauth2_token` è necessario solo se si desidera creare un'organizzazione automaticamente.
+      - `account_name` è il tuo nome di accesso. Non è consigliabile utilizzare uno robot account perché uno robot account non può accedere ai repository di diverse organizzazioni.
+      - `docker_cli_password` è la tua password cli. Puoi generarlo nella pagina dell'interfaccia utente di Quay.
 
    {{< note >}} Harbor does not support Docker registry manifest schema1 in Quay registries. {{< /note >}}
 
-## Managing Registries
+## Gestione dei registri
 
-You can list, add, edit and delete registries under **Administration** -> **Registries**. Only registries which are not referenced by any rules can be deleted.
+Puoi elencare, aggiungere, modificare ed eliminare i registri in **Amministrazione** -> **Registri**. È possibile eliminare solo i registri a cui non fa riferimento alcuna regola.
 
-![browse project](../../../img/manage-registry.png)
+![sfoglia progetto](../../../img/manage-registry.png)
 
-## What to Do Next
+## Cosa fare dopo
 
-After you configure replication endpoints, see [Creating a Replication Rule](create-replication-rules.md).
+Dopo aver configurato gli endpoint di replica, vedere [Creazione di una regola di replica](create-replication-rules.md).

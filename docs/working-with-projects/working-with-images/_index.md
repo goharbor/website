@@ -1,6 +1,6 @@
 ---
-title: Working with Images and Tags
+title: Lavorare con immagini e tag
 weight: 60
 ---
 
-This section describes how to work with images and tags in Harbor.
+Questa sezione descrive come lavorare con immagini e tag in Harbor.

@@ -1,27 +1,27 @@
 ---
-title: Harbor 2.14 Documentation
+title: Harbor 2.14 Documentazione
 ---
 
-Welcome to the Harbor 2.14.x documentation. This documentation includes all of the information that you need to install, configure, and use Harbor.
+Benvenuti nella documentazione di Harbor 2.14.x. Questa documentazione include tutte le informazioni necessarie per installare, configurare e utilizzare Harbor.
 
-## Harbor Installation and Configuration
+## Harbor Installazione e configurazione
 
-This section describes how to install Harbor and perform the required initial configuration. These day 1 operations are performed by the Harbor Administrator. [Read more](install-config/_index.md)
+Questa sezione descrive come installare Harbor ed eseguire la configurazione iniziale richiesta. Queste operazioni del giorno 1 vengono eseguite dall'amministratore Harbor. [Per saperne di più](install-config/_index.md)
 
-## Harbor Administration
+## Harbor Amministrazione
 
-This section describes how to use and maintain your Harbor registry instance after deployment. These day 2 operations are performed by the Harbor Administrator. [Read more](administration/_index.md)
+Questa sezione descrive come utilizzare e gestire l'istanza Harbor registry dopo la distribuzione. Queste operazioni del giorno 2 vengono eseguite dall'amministratore Harbor. [Per saperne di più](administration/_index.md)
 
-## Working with Harbor Projects
+## Lavorare con progetti Harbor
 
-This section describes how users with the developer, maintainer, and project administrator roles manage users, and create, configure, and participate in Harbor projects. [Read more](working-with-projects/_index.md)
+Questa sezione descrive il modo in cui gli utenti con ruoli di sviluppatore, manutentore e amministratore del progetto gestiscono gli utenti e creano, configurano e partecipano a progetti Harbor. [Per saperne di più](working-with-projects/_index.md)
 
-## Building, Customizing, and Contributing to Harbor
+## Costruire, personalizzare e contribuire a Harbor
 
-This section describes how developers can build from Harbor source code, customize their deployments, and contribute to the open-source Harbor project. [Read more](build-customize-contribute/_index.md)
+Questa sezione descrive come gli sviluppatori possono creare dal codice sorgente Harbor, personalizzare le proprie distribuzioni e contribuire al progetto Harbor open source. [Per saperne di più](build-customize-contribute/_index.md)
 
-## Access the Documentation Source Files
+## Accedi ai file sorgente della documentazione
 
-The source files for this documentation set are located in the [Harbor repository on GitHub](https://github.com/goharbor/harbor/tree/release-2.8.0/docs).
+I file sorgente per questo set di documentazione si trovano in [Repository Harbor su GitHub](https://github.com/goharbor/harbor/tree/release-2.8.0/docs).
 
-For the previous versions of the docs, go to the [`docs` folder in the GitHub repository](https://github.com/goharbor/harbor/tree/main/docs) and select the appropriate `release-X.Y.Z` branch.
+Per le versioni precedenti dei documenti, vai alla [`docs` folder nel repository GitHub](https://github.com/goharbor/harbor/tree/main/docs) e seleziona il ramo `release-X.Y.Z` appropriato.

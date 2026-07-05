@@ -1,46 +1,46 @@
 ---
-title: Configure LDAP/Active Directory Authentication
+title: Configurare l'autenticazione LDAP/Active Directory
 weight: 20
 ---
 
-If you select LDAP/AD authentication, users whose credentials are stored in an external LDAP or AD server can log in to Harbor directly. In this case, you do not create user accounts in Harbor.
+Se si seleziona l'autenticazione LDAP/AD, gli utenti le cui credenziali sono archiviate in un server LDAP o AD esterno possono accedere direttamente a Harbor. In questo caso, non crei account utente in Harbor.
 
 {{< important >}}
-You can change the authentication mode from database to LDAP only if no local users have been added to the database. If there is at least one user other than `admin` in the Harbor database, you cannot change the authentication mode.
+È possibile modificare la modalità di autenticazione da database a LDAP solo se al database non sono stati aggiunti utenti locali. Se nel database Harbor è presente almeno un utente diverso da `admin`, non è possibile modificare la modalità di autenticazione.
 {{< /important >}}
 
-Because the users are managed by LDAP or AD, self-registration, creating users, deleting users, changing passwords, and resetting passwords are not supported in LDAP/AD authentication mode.  
+Poiché gli utenti sono gestiti da LDAP o AD, l'autoregistrazione, la creazione di utenti, l'eliminazione di utenti, la modifica delle password e la reimpostazione delle password non sono supportate nella modalità di autenticazione LDAP/AD.  
 
-If you want to manage user authentication by using LDAP groups, you must enable the `memberof` feature on the LDAP/AD server. With the `memberof` feature, the LDAP/AD user entity's `memberof` attribute is updated when the group entity's `member` attribute is updated, for example by adding or removing an LDAP/AD user from the LDAP/AD group. This feature is enabled by default in Active Directory. For information about how to enable and verify `memberof` overlay in OpenLDAP, see [this technical note](https://technicalnotes.wordpress.com/2014/04/19/openldap-setup-with-memberof-overlay).
+Se si desidera gestire l'autenticazione utente utilizzando i gruppi LDAP, è necessario abilitare la funzione `memberof` sul server LDAP/AD. Con la funzione `memberof`, l'attributo `memberof` dell'entità utente LDAP/AD viene aggiornato quando l'attributo `member` dell'entità gruppo viene aggiornato, ad esempio aggiungendo o rimuovendo un utente LDAP/AD dal gruppo LDAP/AD. Questa funzione è abilitata per impostazione predefinita in Active Directory. Per informazioni su come abilitare e verificare l'overlay `memberof` in OpenLDAP, vedere [questa nota tecnica](https://technicalnotes.wordpress.com/2014/04/19/openldap-setup-with-memberof-overlay).
 
-1. Log in to the Harbor interface with an account that has Harbor system administrator privileges.
-1. Under **Administration**, go to **Configuration** and select the **Authentication** tab.
-1. Use the **Auth Mode** drop-down menu to select **LDAP**.
+1. Accedere all'interfaccia Harbor con un account che disponga dei privilegi di amministratore di sistema Harbor.
+1. In **Amministrazione**, vai a **Configurazione** e seleziona la scheda **Autenticazione**.
+1. Utilizzare il menu a discesa **Modalità autenticazione** per selezionare **LDAP**.
 
-   ![LDAP authentication](../../../img/select-ldap-auth.png)
-1. Enter the address of your LDAP server, for example `ldaps://10.162.16.194`.
-1. Enter information about your LDAP server.
+   ![Autenticazione LDAP](../../../img/select-ldap-auth.png)
+1. Inserisci l'indirizzo del tuo server LDAP, ad esempio `ldaps://10.162.16.194`.
+1. Inserisci le informazioni sul tuo server LDAP.
 
-   - **LDAP Search DN** and **LDAP Search Password**: When a user logs in to Harbor with their LDAP username and password, Harbor uses these values to bind to the LDAP/AD server. For example, `cn=admin,dc=example.com`.
-   - **LDAP Base DN**: Harbor looks up the user under the LDAP Base DN entry, including the subtree. For example, `dc=example.com`.
-   - **LDAP Filter**: The filter to search for LDAP/AD users. For example, `objectclass=user`.
-   - **LDAP UID**: An attribute, for example `uid`, or `cn`, that is used to match a user with the username. If a match is found, the user's password is verified by a bind request to the LDAP/AD server.
-   - **LDAP Scope**: The scope to search for LDAP/AD users. Select from **Subtree**, **Base**, and **OneLevel**.
+   - **LDAP DN di ricerca** e **LDAP Password di ricerca**: quando un utente accede a Harbor con il nome utente e la password LDAP, Harbor utilizza questi valori per collegarsi al server LDAP/AD. Ad esempio, `cn=admin,dc=example.com`.
+   - **LDAP Base DN**: Harbor cerca l'utente nella voce LDAP Base DN, incluso il sottoalbero. Ad esempio, `dc=example.com`.
+   - **Filtro LDAP**: il filtro per cercare gli utenti LDAP/AD. Ad esempio, `objectclass=user`.
+   - **LDAP UID**: un attributo, ad esempio `uid` o `cn`, utilizzato per abbinare un utente al nome utente. Se viene trovata una corrispondenza, la password dell'utente viene verificata mediante una richiesta di collegamento al server LDAP/AD.
+   - **LDAP Ambito**: l'ambito per cercare gli utenti LDAP/AD. Selezionare tra **Sottostruttura**, **Base** e **Un livello**.
 
-     ![Basic LDAP configuration](../../../img/ldap-auth.png)  
-1. If you want to manage user authentication with LDAP groups, configure the group settings.
-   - **LDAP Group Base DN**: The base DN from which to lookup a group in LDAP/AD. For example, `ou=groups,dc=example,dc=com`. This field cannot be empty when LDAP group feature is enabled.
-   - **LDAP Group Filter**: The filter to search for LDAP/AD groups. for OpenLDAP: `objectclass=groupOfNames`. for Active Directory: `objectclass=group`. This field cannot be empty when LDAP group feature is enabled.
-   - **LDAP Group GID**: The attribute used to name an LDAP/AD group. For example, `cn`. This field cannot be empty when LDAP group feature is enabled.
-   - **LDAP Group Admin DN**: All LDAP/AD users in this group DN have Harbor system administrator privileges.
-   - **LDAP Group Membership**: The user attribute usd to identify a user as a member of a group. By default this is `memberof`.
-   - **LDAP Scope**: The scope to search for LDAP/AD groups. Select from **Subtree**, **Base**, and **OneLevel**.
+     ![Configurazione base LDAP](../../../img/ldap-auth.png)  
+1. Se si desidera gestire l'autenticazione dell'utente con i gruppi LDAP, configurare le impostazioni del gruppo.
+   - **LDAP DN base gruppo**: il DN base da cui cercare un gruppo in LDAP/AD. Ad esempio, `ou=groups,dc=example,dc=com`. Questo campo non può essere vuoto quando la funzione di gruppo LDAP è abilitata.
+   - **Filtro gruppo LDAP**: il filtro per cercare i gruppi LDAP/AD. per OpenLDAP: `objectclass=groupOfNames`. per Active Directory: `objectclass=group`. Questo campo non può essere vuoto quando la funzione di gruppo LDAP è abilitata.
+   - **LDAP GID gruppo**: l'attributo utilizzato per denominare un gruppo LDAP/AD. Ad esempio, `cn`. Questo campo non può essere vuoto quando la funzione di gruppo LDAP è abilitata.
+   - **LDAP DN amministratore gruppo**: tutti gli utenti LDAP/AD in questo DN gruppo hanno privilegi di amministratore di sistema Harbor.
+   - **LDAP Appartenenza al gruppo**: l'attributo utente usd per identificare un utente come membro di un gruppo. Per impostazione predefinita è `memberof`.
+   - **LDAP Ambito**: l'ambito per la ricerca dei gruppi LDAP/AD. Selezionare tra **Sottostruttura**, **Base** e **Un livello**.
 
-     ![LDAP group configuration](../../../img/ldap-groups.png)
-   - **LDAP Group Attached in Parallel**: Enable this option to attach group in parallel to avoid timeout in user login when there are too many groups assiciate with the LDAP user.
-     ![LDAP group attached in Parallel](../../../img/ldap-group-parallel.png) 
-1. Uncheck **LDAP Verify Cert** if the LDAP/AD server uses a self-signed or untrusted certificate.
+     ![Configurazione del gruppo LDAP](../../../img/ldap-groups.png)
+   - **LDAP Gruppo allegato in parallelo**: abilitare questa opzione per allegare un gruppo in parallelo per evitare timeout nell'accesso dell'utente quando ci sono troppi gruppi associati all'utente LDAP.
+     ![Gruppo LDAP collegato in parallelo](../../../img/ldap-group-parallel.png) 
+1. Deselezionare **LDAP Verify Cert** se il server LDAP/AD utilizza un certificato autofirmato o non attendibile.
 
-   ![LDAP certificate verification](../../../img/ldap-cert-test.png)
-1. Click **Test LDAP Server** to make sure that your configuration is correct.
-1. Click **Save** to complete the configuration.
+   ![Verifica del certificato LDAP](../../../img/ldap-cert-test.png)
+1. Fare clic su **Test server LDAP** per assicurarsi che la configurazione sia corretta.
+1. Fare clic su **Salva** per completare la configurazione.

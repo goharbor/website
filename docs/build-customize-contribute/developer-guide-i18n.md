@@ -1,22 +1,22 @@
 ---
-title: Developing for Internationalization
+title: Sviluppare per l'internazionalizzazione
 ---
 
 {{< note >}}
-All the files you created should use UTF-8 encoding.
+Tutti i file che hai creato dovrebbero utilizzare la codifica UTF-8.
 {{< /note >}}
 
-There are several translations available for the Harbor portal. See the available [translation files](https://github.com/goharbor/harbor/tree/main/src/portal/src/i18n/lang) for a full list of available languages.
+Sono disponibili diverse traduzioni per il portale Harbor. Consulta [file di traduzione](https://github.com/goharbor/harbor/tree/main/src/portal/src/i18n/lang) disponibile per un elenco completo delle lingue disponibili.
 
 {{< note >}}
-Harbor only officially supports the English and Chinese translations, and both languages are verified for each release. If you plan to use another translation, its recommended that you verify the translations are correct for your Harbor version before implementing.
+Harbor supporta ufficialmente solo le traduzioni in inglese e cinese ed entrambe le lingue vengono verificate per ogni versione. Se prevedi di utilizzare un'altra traduzione, ti consigliamo di verificare che le traduzioni siano corrette per la tua versione Harbor prima dell'implementazione.
 {{< /note >}}
 
-Use the steps below to add a translation for a new language to the Harbor portal.
+Utilizzare i passaggi seguenti per aggiungere una traduzione per una nuova lingua al portale Harbor.
 
-1. In the folder `src/portal/src/i18n/lang`, copy json file `en-us-lang.json` to a new file and rename it to `<language>-<locale>-lang.json` .
+1. Nella cartella `src/portal/src/i18n/lang`, copia il file json `en-us-lang.json` in un nuovo file e rinominalo in `<language>-<locale>-lang.json`.
 
-    The file contains a JSON object including all the key-value pairs of UI strings:
+    Il file contiene un oggetto JSON che include tutte le coppie chiave-valore delle stringhe UI:
 
     ```javascript
     {
@@ -29,9 +29,9 @@ Use the steps below to add a translation for a new language to the Harbor portal
     }
     ```
 
-    In the file `<language>-<locale>-lang.json`, translate all the values into your language. Do not change any keys.
+    Nel file `<language>-<locale>-lang.json`, traduci tutti i valori nella tua lingua. Non modificare nessuna chiave.
 
-2. Add the language to the set of supported languages in `src/portal/src/app/shared/entities/shared.const.ts`:
+2. Aggiungi la lingua al set di lingue supportate in `src/portal/src/app/shared/entities/shared.const.ts`:
 
     ```typescript
     export const LANGUAGES = {
@@ -42,7 +42,7 @@ Use the steps below to add a translation for a new language to the Harbor portal
     ```
    
 {{< note >}}
-For `LOCALE_DATA`, You need to import it correctly:
+Per `LOCALE_DATA`, è necessario importarlo correttamente:
 ```typescript
 import locale_en 
   from '@angular/common/locales/en';
@@ -51,11 +51,11 @@ import locale_zh_CN
 ```
 {{< /note >}}
 
-3. Next, refer to [Build Harbor from Source Code](compile-guide.md) to rebuild and restart Harbor.
+3. Successivamente, fare riferimento a [Costruisci Harbor dal codice sorgente](compile-guide.md) per ricostruire e riavviare Harbor.
 
-## Contributing localizations to Harbor
-If you'd like to [contribute your localization file](https://github.com/goharbor/harbor/blob/main/CONTRIBUTING.md) to the Harbor project, please make a pull request with the changes from the instructions above. Please do your best to make sure your translations are correct and easily understood by speakers of that language.
+## Contribuire alle localizzazioni a Harbor
+Se desideri [contribuisci con il tuo file di localizzazione](https://github.com/goharbor/harbor/blob/main/CONTRIBUTING.md) al progetto Harbor, effettua una richiesta pull con le modifiche rispetto alle istruzioni sopra. Fai del tuo meglio per assicurarti che le traduzioni siano corrette e facilmente comprensibili da chi parla quella lingua.
 
-Finding reviewers for a translation PR is best effort, maintainers may not be able to review the pull request because they do not speak or read the language of your contribution. If you know of another community member who can help with reviewing the pull request, make sure to tag them when you open the PR. You should also plan to attend a community meeting to raise awareness for your pull request and ask the community for help reviewing.
+Trovare revisori per una traduzione PR è il massimo sforzo, i manutentori potrebbero non essere in grado di rivedere la richiesta pull perché non parlano o leggono la lingua del tuo contributo. Se conosci un altro membro della comunità che può aiutarti a rivedere la richiesta pull, assicurati di taggarlo quando apri il PR. Dovresti anche pianificare di partecipare a una riunione della comunità per aumentare la consapevolezza della tua richiesta pull e chiedere aiuto alla comunità per la revisione.
 
-Your contribution may still be accepted without additional reviews even if we aren't able to find someone to review the translations in your pull request.
+Il tuo contributo potrebbe comunque essere accettato senza ulteriori revisioni anche se non riusciamo a trovare qualcuno che revisioni le traduzioni nella tua richiesta pull.

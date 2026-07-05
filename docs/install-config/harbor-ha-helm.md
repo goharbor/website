@@ -1,83 +1,84 @@
 ---
-title: Deploying Harbor with High Availability via Helm
+title: Distribuzione di Harbor con disponibilità elevata tramite Helm
 weight: 40
 ---
 
-You can deploy Harbor on Kubernetes via helm to make it highly available. In this way, if one of the nodes on which Harbor is running becomes unavailable, users do not experience interruptions of service.
+Puoi distribuire Harbor su Kubernetes tramite helm per renderlo altamente disponibile. In questo modo, se uno dei nodi su cui è in esecuzione Harbor diventa non disponibile, gli utenti non subiscono interruzioni del servizio.
 
-## Prerequisites
+## Prerequisiti
 
-- Kubernetes cluster 1.10+
-- Helm 2.8.0+
-- Highly available ingress controller (Harbor does not manage the external endpoint)
-- Highly available PostgreSQL 9.6+ (Harbor does not handle the deployment of HA of database)
-- Highly available Redis (Harbor does not handle the deployment of HA of Redis)
-  - Please note that Harbor presently doesnt support Redis Clusters or TLS based connections. Although work is currently underway to enable TLS based authentication.
-- PVC that can be shared across nodes or external object storage
-  - See [Architecture](#architecture), but to allow harbor to scale, each function/component needs to be able to read/write to a shared persistent volume.
+-Cluster Kubernetes 1.10+
+-Helm 2.8.0+
+- Controller di ingresso ad alta disponibilità (Harbor non gestisce l'endpoint esterno)
+- PostgreSQL 9.6+ ad alta disponibilità (Harbor non gestisce la distribuzione di HA del database)
+- Redis ad alta disponibilità (Harbor non gestisce la distribuzione di HA di Redis)
+  - Tieni presente che Harbor attualmente non supporta cluster Redis o connessioni basate su TLS. Sebbene siano attualmente in corso i lavori per abilitare l'autenticazione basata su TLS.
+- PVC che può essere condiviso tra nodi o archiviazione di oggetti esterni
+  - Vedere [Architettura](#architecture), ma per consentire la scalabilità di Harbor, ogni funzione/componente deve essere in grado di leggere/scrivere su un volume persistente condiviso.
 
-## Architecture
+## Architettura
 
-Most of Harbor's components are stateless now. So we can simply increase the replica of the pods to make sure the components are distributed to multiple worker nodes, and leverage the "Service" mechanism of K8S to ensure the connectivity across pods.
+La maggior parte dei componenti di Harbor ora sono senza stato. Quindi possiamo semplicemente aumentare la replica dei pod per assicurarci che i componenti siano distribuiti su più nodi di lavoro e sfruttare il meccanismo "Servizio" di K8S per garantire la connettività tra i pod.
 
-As for the storage layer, it is expected that the user provides a highly available PostgreSQL and Redis cluster for application data, as well as PVCs or object storage for storing images and charts.
+Per quanto riguarda il livello di archiviazione, si prevede che l'utente fornisca un cluster PostgreSQL e Redis ad alta disponibilità per i dati dell'applicazione, nonché PVC o archiviazione di oggetti per l'archiviazione di immagini e grafici.
 
-![Harbor High Availability with Helm](../../img/ha.png)
+![Harbor Alta disponibilità con Helm](../../img/ha.png)
 
-## Download Chart
+## Scarica il grafico
 
-Download Harbor helm chart:
+Scarica la tabella del timone Harbor:
 
 ```bash
 helm repo add harbor https://helm.goharbor.io
 helm fetch harbor/harbor --untar
 ```
 
-## Configuration
+## Configurazione
 
-Configure the followings items in `values.yaml`, alternatively they can be set via `--set` flag during running `helm install`:
+Configurare i seguenti elementi in `values.yaml`, in alternativa possono essere impostati tramite il flag `--set` durante l'esecuzione di `helm install`:
 
-- **Ingress Rule**
-  - Configure the ingress url`expose.ingress.hosts.core`.
-- **External URL**
-  - Configure the url `externalURL`, this is used to populate the docker/helm commands shown on portal as well as the token service URL returned to docker clients.
-    Note that the url must be a domain root eg. `harbor.example.com`, harbor-helm doesn't support running on a path. See [this discussion](https://github.com/goharbor/harbor-helm/discussions/1323).
-- **External PostgreSQL**
-  - Set `database.type` to `external` and fill the information in `database.external` section.
-  - An empty database needs to be created, by default the database is set to `registry`, this however can be changed by setting `coreDatabase`.
-- **External Redis**
-  - Set the `redis.type` to `external` and fill the information in `redis.external` section.
-  - Harbor introduced redis `Sentinel` mode support in 2.1.0. To enable set `sentinelMasterSet` and `host` using the following pattern `<host_sentinel1>:<port_sentinel1>,<host_sentinel2>:<port_sentinel2>,<host_sentinel3>:<port_sentinel3>`. You can also refer to this [guide](https://community.pivotal.io/s/article/How-to-setup-HAProxy-and-Redis-Sentinel-for-automatic-failover-between-Redis-Master-and-Slave-servers) to setup a HAProxy before Redis to expose a single entry point.
-  - As noted in the prerequisites Harbor doesn't currently support TLS or Redis Clustering.
-- **Storage**
-  - It's recommended that a `StorageClass` that supports sharing across nodes in a `ReadWriteMany` manner to provision volumes to store images, charts and job logs is used, this allows for scaling of components to meet demand. If such a volume type isn't your default storageClass, this will need to be set in the following locations:
-    - `persistence.persistentVolumeClaim.registry.storageClass`
-    - `persistence.persistentVolumeClaim.jobservice.storageClass`.
-  - If such a `StorageClass` is used, the associated accessMode needs to be set `ReadWriteMany` for the following fields: 
-    - `persistence.persistentVolumeClaim.registry.accessMode`
-    - `persistence.persistentVolumeClaim.jobservice.accessMode`
-  - Alternatively, use existing PVCs to store data by setting:
-    - `persistence.persistentVolumeClaim.registry.existingClaim`
-    - `persistence.persistentVolumeClaim.jobservice.existingClaim`
-  - Finally, if you have no StorageClass that supports `ReadWriteMany` or don't wish to, external object storage can be used instead to store images and charts and store the job logs in database. To enable external object storage set the `persistence.imageChartStorage.type` to the value you want to use and fill the corresponding section and set `jobservice.jobLogger` to `database`.
-    - Note: For those whom wish to use S3, IRSA support is in progress upstream.
-    - An example AWS IAM policy is available [upstream](https://distribution.github.io/distribution/storage-drivers/s3/)
+- **Regola di ingresso**
+  - Configurare l'url`expose.ingress.hosts.core` di ingresso.
+- **URL esterno**
+  - Configurare l'URL `externalURL`, questo viene utilizzato per popolare i comandi docker/helm mostrati sul portale nonché l'URL del servizio token restituito ai client docker.
+    Tieni presente che l'URL deve essere una radice del dominio, ad es. `harbor.example.com`, il timone del porto non supporta la corsa su un sentiero. Vedi [questa discussione](https://github.com/goharbor/harbor-helm/discussions/1323).
+- **PostgreSQL esterno**
+  - Impostare `database.type` su `external` e inserire le informazioni nella sezione `database.external`.
+  - È necessario creare un database vuoto, di default il database è impostato su `registry`, questo tuttavia può essere modificato impostando `coreDatabase`.
+- **Redis esterno**
+  - Impostare `redis.type` su `external` e inserire le informazioni nella sezione `redis.external`.
+  - Harbor ha introdotto il supporto della modalità Redis `Sentinel` nella versione 2.1.0. Per abilitare impostare `sentinelMasterSet` e `host` utilizzando il seguente schema `<host_sentinel1>:<port_sentinel1>,<host_sentinel2>:<port_sentinel2>,<host_sentinel3>:<port_sentinel3>`. Puoi anche fare riferimento a questo [guida](https://community.pivotal.io/s/article/How-to-setup-HAProxy-and-Redis-Sentinel-for-automatic-failover-between-Redis-Master-and-Slave-servers) per configurare un HAProxy prima di Redis per esporre un singolo punto di ingresso.
+  - Come indicato nei prerequisiti, Harbor attualmente non supporta TLS o Redis Clustering.
+- **Magazzinaggio**
+  - Si consiglia di utilizzare un `StorageClass` che supporti la condivisione tra nodi in modo `ReadWriteMany` per fornire volumi per archiviare immagini, grafici e registri di lavoro, ciò consente il ridimensionamento dei componenti per soddisfare la domanda. Se tale tipo di volume non è la storageClass predefinita, sarà necessario impostarla nelle seguenti posizioni:
+    -`persistence.persistentVolumeClaim.registry.storageClass`
+    -`persistence.persistentVolumeClaim.jobservice.storageClass`.
+  - Se si utilizza un `StorageClass` di questo tipo, è necessario impostare l'accessMode associato `ReadWriteMany` per i seguenti campi: 
+    -`persistence.persistentVolumeClaim.registry.accessMode`
+    -`persistence.persistentVolumeClaim.jobservice.accessMode`
+  - In alternativa, utilizzare i PVC esistenti per archiviare i dati impostando:
+    -`persistence.persistentVolumeClaim.registry.existingClaim`
+    -`persistence.persistentVolumeClaim.jobservice.existingClaim`
+  - Infine, se non si dispone di StorageClass che supporti `ReadWriteMany` o non si desidera, è possibile utilizzare l'archiviazione di oggetti esterni per archiviare immagini e grafici e archiviare i registri dei lavori nel database. Per abilitare la memorizzazione di oggetti esterni impostare `persistence.imageChartStorage.type` sul valore che si desidera utilizzare e riempire la sezione corrispondente e impostare `jobservice.jobLogger` su `database`.
+    - Nota: per coloro che desiderano utilizzare S3, il supporto IRSA è in corso a monte.
+    - Un esempio di policy AWS IAM è disponibile [a monte](https://distribution.github.io/distribution/storage-drivers/s3/)
 
 - **Replica**
-  - Set `portal.replicas`, `core.replicas`, `jobservice.replicas`, `registry.replicas` to `n`(`n`>=2).
+  - Impostare `portal.replicas`, `core.replicas`, `jobservice.replicas`, `registry.replicas` su `n`(`n`>=2).
 
-## Installation
+## Installazione
 
-Install the Harbor helm chart with a release name `my-release`:
+Installa la carta timone Harbor con un nome di versione `my-release`:
 
-Helm 2:
+Helm2:
 
 ```bash
 helm install --name my-release harbor/
 ```
 
-Helm 3:
+Helm3:
 
 ```bash
 helm install my-release harbor/
 ```
+

@@ -1,21 +1,21 @@
 ---
-title: Create User Accounts in Database Mode
+title: Crea account utente in modalità database
 weight: 25
 ---
 	
-In database authentication mode, the Harbor system administrator creates user accounts manually. 
+Nella modalità di autenticazione del database, l'amministratore di sistema Harbor crea manualmente gli account utente. 
 
-1. Log in to the Harbor interface with an account that has Harbor system administrator privileges.
-1. Under **Administration**, go to **Users**.
+1. Accedere all'interfaccia Harbor con un account che disponga dei privilegi di amministratore di sistema Harbor.
+1. In **Amministrazione**, vai a **Utenti**.
 
-    ![Create user account](../../../img/create-user.png)
-1. Click **New User**.
-1. Enter information about the new user.
+    ![Crea un account utente](../../../img/create-user.png)
+1. Fare clic su **Nuovo utente**.
+1. Immettere le informazioni sul nuovo utente.
 
-    ![Provide user information](../../../img/new-user.png)
+    ![Fornire informazioni sull'utente](../../../img/new-user.png)
 
-    - The username must be unique in the Harbor system
-    - The email address must be unique in the Harbor system
-    - The password must contain at least 8 characters with 1 lowercase letter, 1 uppercase letter and 1 numeric character
+    - Il nome utente deve essere univoco nel sistema Harbor
+    - L'indirizzo email deve essere univoco nel sistema Harbor
+    - La password deve contenere almeno 8 caratteri con 1 lettera minuscola, 1 lettera maiuscola e 1 carattere numerico
 
-If users forget their password, they need to ask the administrator to [reset their password](./reset-user-password.md)
+Se gli utenti dimenticano la password, devono chiedere all'amministratore di [reimpostare la password](./reset-user-password.md)

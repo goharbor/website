@@ -1,18 +1,18 @@
 ---
-title: Implementing Content Trust
+title: Implementazione della fiducia nei contenuti
 weight: 55
 ---
 
-Artifact signing and signature verification are critical security capabilities that allow you to verify the integrity of an artifact. Harbor supports content trust through integrations with [Cosign](https://github.com/sigstore/cosign) and [Notation](https://github.com/notaryproject/notation), ensuring that only signed and verified images are pulled from your Harbor instance.
+La firma degli artefatti e la verifica della firma sono funzionalità di sicurezza critiche che consentono di verificare l'integrità di un artefatto. Harbor supporta l'attendibilità dei contenuti attraverso le integrazioni con [Cosign](https://github.com/sigstore/cosign) e [Notation](https://github.com/notaryproject/notation), garantendo che solo le immagini firmate e verificate vengano estratte dall'istanza Harbor.
 
-This page describes how to [enforce content trust](#enforce-content-trust) using a default Harbor deployment policy. For more information on using Cosign and Notation with Harbor, see more how to [Sign Artifacts with Cosign and Notation](../../working-with-images/sign-images).
+Questa pagina descrive come eseguire [imporre la fiducia nei contenuti](#enforce-content-trust) utilizzando una policy di distribuzione Harbor predefinita. Per ulteriori informazioni sull'utilizzo di Cosign e Notation con Harbor, vedere ulteriori informazioni su come utilizzare [Firma gli artefatti con Cosign e Notation](../../working-with-images/sign-images).
 
-## Enforce deployment security
+## Applica la sicurezza della distribuzione
 
-As a project administrator, you are able to enforce deployment security by activating the default deployment policy for Cosign or Notation for a given project.
+In qualità di amministratore del progetto, puoi rafforzare la sicurezza della distribuzione attivando la politica di distribuzione predefinita per Cosign o Notation per un determinato progetto.
 
-1. Log into the Harbor interface and navigate to the Configuration tab for the Project you want to enforce content trust on.
-1. Select the checkbox for **Cosign** or **Notation**. When checked, Harbor will only allow verified images to be pulled from the project. Verified images are determined by Cosign or Notation, depending on the policy you have checked. You are able to select both options if you wish for both policies to be enforced. If you have both Cosign and Notation policies enforced, then images will need to be signed by both Cosign and Notation to be pulled.
-1. Click **Save**.
+1. Accedi all'interfaccia Harbor e vai alla scheda Configurazione per il progetto su cui desideri applicare l'attendibilità del contenuto.
+1. Selezionare la casella di controllo **Cosign** o **Notation**. Se selezionato, Harbor consentirà solo l'estrazione dal progetto di immagini verificate. Le immagini verificate sono determinate da Cosign o Notation, a seconda della politica che hai controllato. Puoi selezionare entrambe le opzioni se desideri che entrambe le politiche vengano applicate. Se sono applicate sia le politiche Cosign che Notation, le immagini dovranno essere firmate sia da Cosign che da Notation per essere estratte.
+1. Fare clic su **Salva**.
 
-  ![Enable deployment security in project configuration page](../../../img/enable-deployment-security.png)
+  ![Abilita la sicurezza della distribuzione nella pagina di configurazione del progetto](../../../img/enable-deployment-security.png)

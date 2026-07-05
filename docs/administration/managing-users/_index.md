@@ -1,33 +1,33 @@
 ---
-title: Managing Users
+title: Gestione degli utenti
 weight: 15
 ---
 
-Harbor manages images through projects. You provide access to these images to users by including the users in projects and assigning one of the following roles to them.
+Harbor gestisce le immagini attraverso progetti. Fornisci l'accesso a queste immagini agli utenti includendo gli utenti nei progetti e assegnando loro uno dei seguenti ruoli.
 
 ![RBAC](../../img/rbac.png)
 
-* **Limited Guest**: A Limited Guest does not have full read privileges for a project. They can pull images but cannot push, and they cannot see logs or the other members of a project. For example, you can create limited guests for users from different organizations who share access to a project.
-* **Guest**: Guest has read-only privilege for a specified project. They can pull and retag images, but cannot push.
-* **Developer**: Developer has read and write privileges for a project.
-* **Maintainer**: Maintainer has elevated permissions beyond those of 'Developer' including the ability to scan images, view replications jobs, and delete images and helm charts.
-* **ProjectAdmin**: When creating a new project, you will be assigned the "ProjectAdmin" role to the project. Besides read-write privileges, the "ProjectAdmin" also has some management privileges, such as adding and removing members, starting a vulnerability scan.
+* **Ospite limitato**: un ospite limitato non dispone dei privilegi di lettura completi per un progetto. Possono estrarre immagini ma non possono inviarle e non possono vedere i registri o gli altri membri di un progetto. Ad esempio, puoi creare ospiti limitati per utenti di diverse organizzazioni che condividono l'accesso a un progetto.
+* **Ospite**: l'ospite ha privilegi di sola lettura per un progetto specifico. Possono estrarre e ricodificare le immagini, ma non possono spingere.
+* **Sviluppatore**: lo sviluppatore dispone dei privilegi di lettura e scrittura per un progetto.
+* **Manutentore**: il manutentore dispone di autorizzazioni elevate oltre a quelle dello "Sviluppatore", inclusa la possibilità di scansionare immagini, visualizzare lavori di replica ed eliminare immagini e grafici helm.
+* **ProjectAdmin**: quando crei un nuovo progetto, ti verrà assegnato il ruolo "ProjectAdmin" al progetto. Oltre ai privilegi di lettura e scrittura, il "ProjectAdmin" ha anche alcuni privilegi di gestione, come aggiungere e rimuovere membri, avviare una scansione di vulnerabilità.
 
-Besides the above roles, there are two system-level roles:
+Oltre ai ruoli di cui sopra, esistono due ruoli a livello di sistema:
 
-* **Harbor system administrator**: "Harbor system administrator" has the most privileges. In addition to the privileges mentioned above, "Harbor system administrator" can also list all projects, set an ordinary user as administrator, delete users and set vulnerability scan policy for all images. The public project "library" is also owned by the administrator.
-* **Anonymous**: When a user is not logged in, the user is considered as an "Anonymous" user. An anonymous user has no access to private projects and has read-only access to public projects.
+* **Amministratore di sistema Harbor**: "Amministratore di sistema Harbor" ha il maggior numero di privilegi. Oltre ai privilegi sopra menzionati, "l'amministratore di sistema Harbor" può anche elencare tutti i progetti, impostare un utente normale come amministratore, eliminare utenti e impostare criteri di scansione delle vulnerabilità per tutte le immagini. Anche la "biblioteca" del progetto pubblico è di proprietà dell'amministratore.
+* **Anonimo**: quando un utente non ha effettuato l'accesso, viene considerato un utente "Anonimo". Un utente anonimo non ha accesso ai progetti privati ​​e ha accesso di sola lettura ai progetti pubblici.
 
-For full details of the permissions of the different roles, see [User Permissions By Role](user-permissions-by-role.md).
+Per i dettagli completi sulle autorizzazioni dei diversi ruoli, vedere [Autorizzazioni utente per ruolo](user-permissions-by-role.md).
 
-If you run Harbor in database authentication mode, you create user accounts directly in the Harbor interface. For information about how to create local user accounts, see [Create User Accounts in Database Mode](create-users-db.md).
+Se esegui Harbor in modalità di autenticazione del database, crei account utente direttamente nell'interfaccia Harbor. Per informazioni su come creare account utente locali, vedere [Crea account utente in modalità database](create-users-db.md).
 
-If you run Harbor in LDAP/AD or OIDC authentication mode, you create and manage user accounts in your LDAP/AD or OIDC provider. Harbor obtains the users from the LDAP/AD or OIDC server and displays them in the **Users** tab of the Harbor interface.
+Se esegui Harbor in modalità di autenticazione LDAP/AD o OIDC, crei e gestisci gli account utente nel tuo provider LDAP/AD o OIDC. Harbor ottiene gli utenti dal server LDAP/AD o OIDC e li visualizza nella scheda **Utenti** dell'interfaccia Harbor.
 
-## Assigning the Harbor System Administrator Role
+## Assegnazione del ruolo di amministratore di sistema Harbor
 
-Harbor system administrators can assign the Harbor system administrator role to other users by selecting usernames and clicking **Set as Administrator** in the **Users** tab.
+Gli amministratori di sistema Harbor possono assegnare il ruolo di amministratore di sistema Harbor ad altri utenti selezionando i nomi utente e facendo clic su **Imposta come amministratore** nella scheda **Utenti**.
 
-![browse project](../../img/new-set-admin-remove-user.png)
+![sfoglia progetto](../../img/new-set-admin-remove-user.png)
 
-To delete users, select a user and click `DELETE`. When deleting the user, its privilege will be removed. for LDAP/AD or OIDC authentication mode, it just delete the user data in Harbor, not in the LDAP/AD or OIDC.
+Per eliminare utenti, selezionare un utente e fare clic su `DELETE`. Quando si elimina l'utente, i suoi privilegi verranno rimossi. per la modalità di autenticazione LDAP/AD o OIDC, elimina semplicemente i dati utente in Harbor, non in LDAP/AD o OIDC.

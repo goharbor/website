@@ -1,72 +1,72 @@
 ---
-title: Garbage Collection
+title: Raccolta dei rifiuti
 weight: 40
 ---
 
-When you delete images from Harbor, space is not automatically freed up. You must run garbage collection to free up space by removing blobs that are no longer referenced by a manifest from the file system.
+Quando si eliminano immagini da Harbor, lo spazio non viene liberato automaticamente. È necessario eseguire la Garbage Collection per liberare spazio rimuovendo dal file system i BLOB a cui non fa più riferimento un manifesto.
 
-## Run Garbage Collection
+## Esegui la Garbage Collection
 
-1. Log in to the Harbor interface with an account that has Harbor system administrator privileges.
-1. Expand **Administration**, and select **Clean Up**.
-1. Select the **'Garbage Collection'** tab.
+1. Accedere all'interfaccia Harbor con un account che disponga dei privilegi di amministratore di sistema Harbor.
+1. Espandi **Amministrazione** e seleziona **Pulizia**.
+1. Seleziona la scheda **'Raccolta rifiuti'**.
 
-    ![Garbage collection](../../img/garbage-collection.png)
+    ![Raccolta dei rifiuti](../../img/garbage-collection.png)
 
-1. For the **Workers** item, you are able to select the number of workers that can execute GC tasks in parallel.
-1. To **Allow garbage collection on untagged artifacts**, select the option. If you have this option turned on, the next time Garbage collect runs on your Harbor instance, Harbor will delete untagged artifacts and then perform garbage collection on them.
-1. To dry run garbage collection, click **DRY RUN**.
-1. To run garbage collection immediately, click **GC Now**.
+1. Per la voce **Lavoratori**, è possibile selezionare il numero di lavoratori che possono eseguire attività GC in parallelo.
+1. Per **Consentire la garbage collection sugli artefatti senza tag**, selezionare l'opzione. Se questa opzione è attivata, la prossima volta che Garbage Collect verrà eseguito sull'istanza Harbor, Harbor eliminerà gli artefatti senza tag e quindi eseguirà la Garbage Collection su di essi.
+1. Per eseguire la garbage collection in prova, fare clic su **DRY RUN**.
+1. Per eseguire immediatamente la garbage collection, fare clic su **GC Now**.
 
-**DRY RUN** prints the blobs eligible for deletion and a rough estimation of free up space without removing any data.
+**DRY RUN** stampa i BLOB idonei per l'eliminazione e una stima approssimativa dello spazio liberato senza rimuovere alcun dato.
 
-To avoid damaging the uploading artifact, the garbage collection introduces a time windows(2 hours) to reserve the recent uploaded layers. Garbage collection does not sweep the manifest & blob files that have a timestamp in the time window. Harbor runs garbage collection without interrupting your ability to continue use Harbor, for example you are able to push, pull, or delete artifacts while garbage collection is running.
+Per evitare di danneggiare l'artefatto in caricamento, la garbage collection introduce una finestra temporale (2 ore) per riservare i layer caricati di recente. La Garbage Collection non elimina i file manifest e BLOB che hanno un timestamp nella finestra temporale. Harbor esegue la garbage collection senza interrompere la possibilità di continuare a utilizzare Harbor, ad esempio è possibile eseguire il push, il pull o eliminare gli artefatti mentre è in esecuzione la garbage collection.
 
-To avoid triggering the garbage collection process too frequently, the availability of the **GC Now** button is restricted. Garbage collection can be only run once per minute.
+Per evitare di attivare troppo frequentemente il processo di Garbage Collection, la disponibilità del pulsante **GC Now** è limitata. La raccolta dei rifiuti può essere eseguita solo una volta al minuto.
 
-## Schedule Garbage Collection
+## Pianifica la raccolta dei rifiuti
 
-You are able to schedule garbage collection on your Harbor interface from the **'Garbage Collection'** tab on the **Administration** > **Clean Up** page of the Harbor interface.
+È possibile pianificare la raccolta dei rifiuti sull'interfaccia Harbor dalla scheda **'Raccolta dei rifiuti'** nella pagina **Amministrazione** > **Pulizia** dell'interfaccia Harbor.
 
-1. Use the drop down-menu to select how often to run garbage collection.
+1. Utilizzare il menu a discesa per selezionare la frequenza con cui eseguire la garbage collection.
 
-    ![Schedule garbage collection](../../img/gc-policy.png)
+    ![Pianifica la raccolta dei rifiuti](../../img/gc-policy.png)
 
-    * **None**: No garbage collection is scheduled.
-    * **Hourly**: Run garbage collection at the beginning of every hour.
-    * **Daily**: Run garbage collection at midnight every day.
-    * **Weekly**: Run garbage collection at midnight every Saturday.
-    * **Custom**: Run garbage collection according to a `cron` task.
+    * **Nessuno**: non è pianificata alcuna raccolta dei rifiuti.
+    * **Ogni ora**: esegue la raccolta dei rifiuti all'inizio di ogni ora.
+    * **Giornaliero**: esegui la raccolta dei rifiuti ogni giorno a mezzanotte.
+    * **Settimanale**: esegui la raccolta dei rifiuti ogni sabato a mezzanotte.
+    * **Personalizzato**: esegue la raccolta dei rifiuti in base a un'attività `cron`.
 
-1. For the **Workers** item, you are able to select the number of workers that can execute GC tasks in parallel.
-1. To **Allow garbage collection on untagged artifacts**, select the option. If you have this option turned on, the next time Garbage collect runs on your Harbor instance, Harbor will delete untagged artifacts and then perform garbage collection on them.
-1. Click **Save**.
+1. Per la voce **Lavoratori**, è possibile selezionare il numero di lavoratori che possono eseguire attività GC in parallelo.
+1. Per **Consentire la garbage collection sugli artefatti senza tag**, selezionare l'opzione. Se questa opzione è attivata, la prossima volta che Garbage Collect verrà eseguito sull'istanza Harbor, Harbor eliminerà gli artefatti senza tag e quindi eseguirà la Garbage Collection su di essi.
+1. Fare clic su **Salva**.
 
-## View Garbage Collection History
-View garbage collection runs in the **Garbage Collection History** table on the **'Garbage Collection'** tab on the **Administration** > **Clean Up** page of the Harbor interface.
+## Visualizza la cronologia della Garbage Collection
+Visualizza le esecuzioni della Garbage Collection nella tabella **Cronologia Garbage Collection** nella scheda **'Garbage Collection'** nella pagina **Amministrazione** > **Pulisci** dell'interfaccia Harbor.
 
-Each time you run garbage collection on your Harbor instance, Harbor will track some information about the run including:
+Ogni volta che esegui la garbage collection sull'istanza Harbor, Harbor terrà traccia di alcune informazioni sull'esecuzione, tra cui:
 
-  * **Task ID:** Unique numerical value assigned by Harbor when a run is initiated.
-  * **Trigger Type:** How the run was initiated, either Manual or by Schedule.
-  * **Dry Run:** If the run was a dry run or not.
-  * **Status:** Current status of the run.
-  * **Details:** Garbage collection details.
-  * **Creation Time:** Time the run started.
-  * **Update time:** The last time the run was updated.
-  * **Logs:** A link to the logs generated by the run. If you are performing a Dry Run, this will include an estimate of the artifacts that will be garbage collected.
+  * **ID attività:** Valore numerico univoco assegnato da Harbor quando viene avviata un'esecuzione.
+  * **Tipo di attivazione:** modalità di avvio della corsa, manuale o pianificata.
+  * **Prova a secco:** Se la corsa è stata una prova a secco oppure no.
+  * **Stato:** Stato attuale della corsa.
+  * **Dettagli:** Dettagli sulla raccolta dei rifiuti.
+  * **Ora di creazione:** Ora di inizio della corsa.
+  * **Ora di aggiornamento:** L'ultima volta che la corsa è stata aggiornata.
+  * **Log:** un collegamento ai log generati dalla corsa. Se stai eseguendo un'esecuzione di prova, questa includerà una stima degli artefatti che verranno sottoposti a Garbage Collection.
 
-  ![Garbage collection history](../../img/gc-history.png)
+  ![Storia della raccolta dei rifiuti](../../img/gc-history.png)
 
 
-## Stop in Progress Garbage Collection
+## Arresto della Garbage Collection in corso
 
-You are able to stop any running garbage collection task from the Garbage Collection History table.
+È possibile interrompere qualsiasi attività di Garbage Collection in esecuzione dalla tabella Cronologia Garbage Collection.
 
-1. Navigate to **Administration** > **Clean Up** page and select the **'Garbage Collection'** tab.
-1. In the **Garbage Collection History** table, click on the checkbox next to the Task Id of the running garbage collection. You can stop one or more running garbage collection tasks at one time.
-1. Click **Stop** and then **Confirm** that you want to stop the garbage collection in the modal.
+1. Vai alla pagina **Amministrazione** > **Pulizia** e seleziona la scheda **'Raccolta rifiuti'**.
+1. Nella tabella **Cronologia Garbage Collection**, fai clic sulla casella di controllo accanto all'ID attività della Garbage Collection in esecuzione. È possibile interrompere contemporaneamente una o più attività di Garbage Collection in esecuzione.
+1. Fai clic su **Interrompi** e poi su **Conferma** che desideri interrompere la raccolta dei rifiuti nella modalità modale.
 
-    ![Select Garbage collection task from table](../../img/gc-stop-run.png)
+    ![Seleziona l'attività di raccolta dei rifiuti dalla tabella](../../img/gc-stop-run.png)
 
-This will only stop the garbage collection task from processing more artifacts. Harbor will not restore any artifact that has already been garbage collected.
+Ciò impedirà solo all'attività di Garbage Collection di elaborare più artefatti. Harbor non ripristinerà alcun artefatto che sia già stato sottoposto a garbage collection.

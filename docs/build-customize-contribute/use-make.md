@@ -1,50 +1,50 @@
 ---
-title: Using Make
+title: Utilizzando Crea
 ---
 
-## Variables
+## Variabili
 
-Variable           | Description
+Variabile | Descrizione
 -------------------|-------------
-BASEIMAGETAG       | The tag for base image, default:dev
-VERSIONTAG         | The tag for harbor image, default:dev
-DEVFLAG            | Build model flag, default: true
-GOBUILDIMAGE       | Golang image to compile harbor go source code.
-TRIVYFLAG          | Whether to enable trivy in harbor, default:false
-HTTPPROXY          | Clarity proxy to build UI.
+BASEIMAGETAG | Il tag per l'immagine di base, default:dev
+TAG VERSIONE | Il tag per l'immagine del porto, default:dev
+DEVFLAG | Flag del modello di creazione, predefinito: true
+GOBUILDIMMAGINE | Immagine Golang per compilare il codice sorgente di Harbor Go.
+TRIVYFLAG | Se abilitare le curiosità in Harbor, default:false
+HTTPPROXY | Proxy di chiarezza per creare UI.
 
-## Targets
+## Obiettivi
 
-Target              | Description
+Obiettivo | Descrizione
 --------------------|-------------
-all                 | prepare env, compile binaries, build images and install images
-prepare             | prepare env
-compile             | compile core and jobservice code
-compile_core        | compile core binary
-compile_jobservice  | compile jobservice binary
-build               | build Harbor docker images
-build_base_docker   | build Harbor docker base images
-install             | compile binaries, build images, prepare specific version of compose file and startup Harbor instance
-start               | startup Harbor instance
-down                | shutdown Harbor instance
-package_online      | prepare online install package
-package_offline     | prepare offline install package
-pushimage           | push Harbor images to specific registry server
-cleanall            | remove binary, Harbor images, specific version docker-compose file, specific version tag and online/offline install package
-cleanbinary         | remove core and jobservice binary
-cleanimage          | remove Harbor images
-cleandockercomposefile  | remove specific version docker-compose
-cleanpackage        | remove online/offline install package
+tutto | preparare env, compilare file binari, creare immagini e installare immagini
+preparare | preparare l'env
+compilare | compilare il codice core e jobservice
+compile_core | compilare il file binario principale
+compile_jobservice | compilare il binario di jobservice
+costruire | creare immagini della finestra mobile Harbor
+build_base_docker | creare immagini di base della finestra mobile Harbor
+installa | compilare file binari, creare immagini, preparare una versione specifica del file di composizione e avviare l'istanza Harbor
+inizio | avviare l'istanza Harbor
+giù | arresto dell'istanza Harbor
+pacchetto_online | preparare il pacchetto di installazione online
+pacchetto_offline | preparare il pacchetto di installazione offline
+immagine push | inviare le immagini Harbor al server registry specifico
+tutto pulito | rimuovere il file binario, le immagini Harbor, il file docker-compose della versione specifica, il tag della versione specifica e il pacchetto di installazione online/offline
+pulitobinario | rimuovere il binario core e jobservice
+immagine pulita | rimuovere le immagini Harbor
+cleandockercomposefile | rimuovere la versione specifica docker-compose
+pacchetto pulito | rimuovere il pacchetto di installazione online/offline
 
-## Examples
+## Esempi
 
-### Build and run harbor from source code
+### Costruisci ed esegui Harbor dal codice sorgente
 
 ```sh
 make install
 ```
 
-### Package offline installer
+### Programma di installazione offline del pacchetto
 
 ```sh
 make package_offline

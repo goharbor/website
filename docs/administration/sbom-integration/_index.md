@@ -1,74 +1,75 @@
 ---
-title: SBOM Generation Capabilities
+title: Funzionalità di generazione SBOM
 weight: 43
 ---
 
-Software Bill of Materials (SBOM) acts as an inventory list, documenting all components used in a software project.
-It provides transparency by listing dependencies, their versions, and associated licenses present it the software or container image.
-This visibility helps engineers as well as software systems track and manage potential security issues effectively.
+La distinta materiali del software (SBOM) funge da elenco di inventario, documentando tutti i componenti utilizzati in un progetto software.
+Fornisce trasparenza elencando le dipendenze, le relative versioni e le licenze associate che presentano il software o l'immagine del contenitore.
+Questa visibilità aiuta gli ingegneri e i sistemi software a monitorare e gestire in modo efficace potenziali problemi di sicurezza.
 
-Since version 2.11 Harbor supports now automatic generation of SBOMs in combination with its default scanner - Trivy.
-Additionally, users can also click the `GENERATE SBOM` button to manually generate an SBOM of a given artifact.
+Dalla versione 2.11 Harbor supporta ora la generazione automatica di SBOM in combinazione con il suo scanner predefinito: Trivy.
+Inoltre, gli utenti possono anche fare clic sul pulsante `GENERATE SBOM` per generare manualmente un SBOM di un determinato artefatto.
 
-## Automatic Generation of SBOMs during Image Push
+## Generazione automatica di SBOM durante il push delle immagini
 
-To automatically generate an SBOM for images pushed to Harbor,
-users need to navigate to the `Configuration` tab of
-the project where an image was pushed.
-Then select the checkbox of `SBOM generation` and click `SAVE` button afterward.
+Per generare automaticamente un SBOM per le immagini inviate a Harbor,
+gli utenti devono accedere alla scheda `Configuration` di
+il progetto in cui è stata inviata un'immagine.
+Quindi selezionare la casella di controllo `SBOM generation` e successivamente fare clic sul pulsante `SAVE`.
 
-![Enable SBOM auto generation configuration](../../img/sbom-integration/1_enable_auto_generate_sbom.png)
+![Abilita la configurazione di generazione automatica SBOM](../../img/sbom-integration/1_enable_auto_generate_sbom.png)
 
-After the configuration change,
-newly pushed artifacts `docker push ...` to this project will automatically trigger the SBOM generation process
-using the assigned scanner defined in the Scanner section.
+Dopo la modifica della configurazione,
+gli artefatti appena inseriti `docker push ...` in questo progetto attiveranno automaticamente il processo di generazione SBOM
+utilizzando lo scanner assegnato definito nella sezione Scanner.
 
-![SBOM automatically generated](../../img/sbom-integration/2_sbom_accessory.png)
+![SBOM generato automaticamente](../../img/sbom-integration/2_sbom_accessory.png)
 
-In the project artifact page,
-users can see the SBOM details link as shown in the above image.
-By clicking on the "SBOM Details" (Inside the yellow rectangle),
-users will be redirected to the SBOM details page.
+Nella pagina degli artefatti del progetto,
+gli utenti possono vedere il collegamento dei dettagli SBOM come mostrato nell'immagine sopra.
+Cliccando su "Dettagli SBOM" (All'interno del rettangolo giallo),
+gli utenti verranno reindirizzati alla pagina dei dettagli SBOM.
 
-A table with package name, its current version,
-and package license will become visible,
-including a download link `DOWNLOAD SBOM`
-to download the file containing full SBOM details in SPDX format.
+Una tabella con il nome del pacchetto, la sua versione corrente,
+e la licenza del pacchetto diventerà visibile,
+incluso un collegamento per il download `DOWNLOAD SBOM`
+per scaricare il file contenente i dettagli completi di SBOM in formato SPDX.
 
-![SBOM details](../../img/sbom-integration/3_sbom_details.png)
+![Dettagli SBOM](../../img/sbom-integration/3_sbom_details.png)
 
-## Manual SBOM Generation for Container Images With Harbor
+## Generazione manuale di SBOM per immagini di contenitori con Harbor
 
-In case the automatic SBOM generation is not enabled or desired,
-Users can selectively generate SBOMs for container images.
-Navigate to the artifact page
-and select the images for which the SBOM should be generated.
-After one or more images are selected,
-the Button `GENERATE SBOM` will become available.
-It is also possible
-to abort the SBOM generation inside the `ACTIONS` drop-down menu.
+Nel caso in cui la generazione automatica SBOM non sia abilitata o desiderata,
+Gli utenti possono generare selettivamente SBOM per le immagini del contenitore.
+Passare alla pagina dell'artefatto
+e selezionare le immagini per le quali deve essere generato il SBOM.
+Dopo aver selezionato una o più immagini,
+il pulsante `GENERATE SBOM` diventerà disponibile.
+È anche possibile
+per interrompere la generazione SBOM nel menu a discesa `ACTIONS`.
 
-![SBOM manual generation and stopping](../../img/sbom-integration/4_stop_manual_generate_sbom.png)
+![SBOM generazione e arresto manuale](../../img/sbom-integration/4_stop_manual_generate_sbom.png)
 
-## How to delete an SBOM
+## Come eliminare un SBOM
 
-An SBOM accessory can be deleted individually as shown below by clicking on the three vertical dot icon 
-next to the SBOM accessory you want to delete and then click the `Delete` option.
+Un accessorio SBOM può essere eliminato individualmente come mostrato di seguito facendo clic sull'icona dei tre punti verticali 
+accanto all'accessorio SBOM che si desidera eliminare e quindi fare clic sull'opzione `Delete`.
 
-![SBOM deletion individually](../../img/sbom-integration/5_delete_sbom_individually.png)
+![Cancellazione SBOM individualmente](../../img/sbom-integration/5_delete_sbom_individually.png)
 
-After the deletion,
-the SBOM accessory will be removed from the artifact and hence not visible in the UI anymore.
+Dopo la cancellazione,
+l'accessorio SBOM verrà rimosso dal manufatto e quindi non più visibile nello UI.
 
-![No SBOM accessory](../../img/sbom-integration/7_no_sbom_after_delete.png)
+![Nessun accessorio SBOM](../../img/sbom-integration/7_no_sbom_after_delete.png)
 
-The final and physical deletion of the SBOM will be performed during the garbage collection process.
+L'eliminazione definitiva e fisica di SBOM verrà eseguita durante il processo di garbage collection.
 
-An SBOM can also be deleted along with its subject artifact, as shown below.
+È anche possibile eliminare un SBOM insieme al relativo artefatto soggetto, come mostrato di seguito.
 
-![SBOM deletion together with subject artifact](../../img/sbom-integration/9_delete_sbom_with_subject_artifact.png)
+![Cancellazione SBOM insieme all'artefatto del soggetto](../../img/sbom-integration/9_delete_sbom_with_subject_artifact.png)
 
-## SBOM Replication
+## SBOM Replica
 
-Users can create a pull-based or pushed-based replication rule
-to replicate a set of artifacts together with their corresponding SBOM from a source Harbor registry to a destination Harbor registry.
+Gli utenti possono creare una regola di replica basata su pull o push
+per replicare una serie di artefatti insieme ai corrispondenti SBOM da una sorgente Harbor registry a una destinazione Harbor registry.
+

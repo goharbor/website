@@ -1,41 +1,41 @@
 ---
-title: Repositories
+title: Repository
 weight: 75
 ---
 
-A repository is a collection of artifacts.  Since version v2.0, in addition to container images, Harbor can manage different kinds of artifacts that are bundled in OCI-compatible format, such as helm chart (requires helm v3), CNAB, OPA bundle, etc.
+Un repository è una raccolta di artefatti.  Dalla versione v2.0, oltre alle immagini contenitore, Harbor può gestire diversi tipi di artefatti raggruppati in un formato compatibile con OCI, come grafico helm (richiede helm v3), CNAB, bundle OPA, ecc.
 
-### List Repositories
+### Elenca i repository
 
-Click your project to enter the project detail page after successful logging in.  Click the "Repositories" tab to view the list of of repositories. 
+Fai clic sul tuo progetto per accedere alla pagina dei dettagli del progetto dopo aver effettuato l'accesso. Fai clic sulla scheda "Repository" per visualizzare l'elenco dei repository. 
 
 ![list_repositories](../../../img/list-repositories.png)
 
-### Description of a repository
+### Descrizione di un repository
 
-Click the repository, then click the "Info" tab.  You can view the description of the project.  Users with project admin, maintainer or developer role can click the "Edit" button to edit the description.  You can style the description via Markdown syntax.
+Fare clic sul repository, quindi fare clic sulla scheda "Informazioni".  È possibile visualizzare la descrizione del progetto.  Gli utenti con ruolo di amministratore, manutentore o sviluppatore del progetto possono fare clic sul pulsante "Modifica" per modificare la descrizione.  Puoi definire lo stile della descrizione tramite la sintassi Markdown.
 
-![edit_repository_description](../../../img/edit-repository-description.png)
+![modifica_repository_descrizione](../../../img/edit-repository-description.png)
 
-### List artifacts in a repository
+### Elenca gli artefatti in un repository
 
-Click the "Artifacts" tab to view the list of artifacts in a repository.
-Each artifact is identified by its sha256 digest in the list of artifacts, and different types of artifacts can be distinguished by the icon on the left of the digest.  Hover your mouse on the icon you can see the name of the type.  
+Fare clic sulla scheda "Artefatti" per visualizzare l'elenco degli artefatti in un repository.
+Ogni artefatto è identificato dal suo digest sha256 nell'elenco degli artefatti e i diversi tipi di artefatti possono essere distinti dall'icona a sinistra del digest.  Passando il mouse sull'icona puoi vedere il nome del tipo.  
 
-By clicking the icon in the column **Pull Command**, the command to pull the artifact in the row of the icon will be copied to the clipboard.  
-The column **Annotations** in the grid shows the manifest annotations of the artifact, which are a set of key-value pairs.  More details about the annotations please refer to [OCI Annotations](https://github.com/opencontainers/image-spec/blob/master/annotations.md).
-The column **Push Time** in the grid shows the time each artifact is pushed to the registry.
+Facendo clic sull'icona nella colonna **Comando di estrazione**, il comando per estrarre l'artefatto nella riga dell'icona verrà copiato negli appunti.  
+La colonna **Annotazioni** nella griglia mostra le annotazioni manifest dell'artefatto, che sono un insieme di coppie chiave-valore.  Maggiori dettagli sulle annotazioni fare riferimento a [OCI Annotazioni](https://github.com/opencontainers/image-spec/blob/master/annotations.md).
+La colonna **Tempo di invio** nella griglia mostra l'ora in cui ciascun artefatto viene inviato a registry.
 
 ![list_artifacts](../../../img/list-artifacts.png)
 
-By clicking the search icon in the top right of the list of artifacts, you can user different types of filters to filter the items in the artifact list.  You can choose to filter by type, tags, labels.  Particularly, if you choose to filter by tags, you can choose to view only the tagged or untagged artifacts.
+Facendo clic sull'icona di ricerca in alto a destra nell'elenco degli artefatti, è possibile utilizzare diversi tipi di filtri per filtrare gli elementi nell'elenco degli artefatti.  Puoi scegliere di filtrare per tipologia, tag, etichette.  In particolare, se si sceglie di filtrare per tag, è possibile scegliere di visualizzare solo gli artefatti contrassegnati o non contrassegnati.
 
 ![filter_artifacts](../../../img/filter-artifacts.png)
 
-Since Harbor v2.0.0, [Image index](https://raw.githubusercontent.com/opencontainers/image-spec/master/image-index.md) can also be managed as an artifact in a repository.  If an artifact is an index, there will be a folder icon on the right side of its digest.
+A partire da Harbor v2.0.0, [Indice delle immagini](https://raw.githubusercontent.com/opencontainers/image-spec/master/image-index.md) può anche essere gestito come artefatto in un repository.  Se un artefatto è un indice, ci sarà un'icona di cartella sul lato destro del suo digest.
 
-![image_index](../../../img/index-icon.png)
+![indice_immagine](../../../img/index-icon.png)
 
-Click the folder icon, you can see the list of artifacts that is referenced by the index.  The artifacts in this view is read only.  i.e. You can not remove an artifact from an index via Harbor's UI, and none of the actions like 'copy digest', 'add labels', 'copy' are available.
+Facendo clic sull'icona della cartella è possibile visualizzare l'elenco degli artefatti a cui fa riferimento l'indice.  Gli artefatti in questa visualizzazione sono di sola lettura.  ovvero non è possibile rimuovere un artefatto da un indice tramite UI di Harbor e nessuna delle azioni come "copia digest", "aggiungi etichette", "copia" è disponibile.
 
-![index_detail](../../../img/index-detail.png)
+![indice_dettaglio](../../../img/index-detail.png)

@@ -1,31 +1,31 @@
 ---
-title: Configure HTTPS Access to Harbor
+title: Configura HTTPS Accesso a Harbor
 weight: 30
 ---
 
-**Important: Using Existing Third-Party Certificates**
+**Importante: utilizzo di certificati di terze parti esistenti**
 
-If you already have a TLS certificate and key from a trusted authority (e.g., Let's Encrypt, DigiCert, GoDaddy), you can skip the self-signed certificate generation steps on this page. Simply place your certificate and key files on the Harbor host and provide their paths in the `harbor.yml` file, as described in ./configure-yml-file.md. This is the recommended approach for all production environments.
+Se disponi già di un certificato TLS e di una chiave di un'autorità attendibile (ad esempio Let's Encrypt, DigiCert, GoDaddy), puoi saltare i passaggi per la generazione del certificato autofirmato in questa pagina. È sufficiente posizionare il certificato e i file della chiave sull'host Harbor e fornire i relativi percorsi nel file `harbor.yml`, come descritto in ./configure-yml-file.md. Questo è l'approccio consigliato per tutti gli ambienti di produzione.
 
-By default, Harbor does not ship with certificates. It is possible to deploy Harbor without security, so that you can connect to it over HTTP. However, using HTTP is acceptable only in air-gapped test or development environments that do not have a connection to the external internet. Using HTTP in environments that are not air-gapped exposes you to man-in-the-middle attacks. In production environments, always use HTTPS. 
+Per impostazione predefinita, Harbor non viene fornito con certificati. È possibile implementare Harbor senza sicurezza, in modo da potersi connettere tramite HTTP. Tuttavia, l'utilizzo di HTTP è accettabile solo in ambienti di test o di sviluppo con air gap che non dispongono di una connessione a Internet esterna. L'utilizzo di HTTP in ambienti privi di air gap espone ad attacchi man-in-the-middle. Negli ambienti di produzione, utilizzare sempre HTTPS. 
 
-To configure HTTPS, you must create SSL certificates. You can use certificates that are signed by a trusted third-party CA, or you can use self-signed certificates. This section describes how to use [OpenSSL](https://www.openssl.org/) to create a CA, and how to use your CA to sign a server certificate and a client certificate. You can use other CA providers, for example [Let's Encrypt](https://letsencrypt.org/).
+Per configurare HTTPS, è necessario creare certificati SSL. È possibile utilizzare certificati firmati da un'autorità di certificazione di terze parti attendibile oppure certificati autofirmati. Questa sezione descrive come utilizzare [OpenSSL](https://www.openssl.org/) per creare una CA e come utilizzare la CA per firmare un certificato server e un certificato client. Puoi utilizzare altri provider CA, ad esempio [Crittifichiamo](https://letsencrypt.org/).
 
-The procedures below assume that your Harbor registry's hostname is `yourdomain.com`, and that its DNS record points to the host on which you are running Harbor. 
+Le procedure seguenti presuppongono che il nome host del tuo Harbor registry sia `yourdomain.com` e che il suo record DNS punti all'host su cui stai eseguendo Harbor. 
 
-## Generate a Certificate Authority Certificate
+## Genera un certificato dell'autorità di certificazione
 
-In a production environment, you should obtain a certificate from a CA. In a test or development environment, you can generate your own CA. To generate a CA certficate, run the following commands. 
+In un ambiente di produzione è necessario ottenere un certificato da una CA. In un ambiente di test o di sviluppo è possibile generare la propria CA. Per generare un certificato CA, eseguire i seguenti comandi. 
 
-1. Generate a CA certificate private key.
+1. Generare una chiave privata del certificato CA.
 
     ```sh
     openssl genrsa -out ca.key 4096
     ```
 
-1. Generate the CA certificate.
+1. Generare il certificato CA.
 
-   Adapt the values in the `-subj` option to reflect your organization. If you use an FQDN to connect your Harbor host, you must specify it as the common name (`CN`) attribute.
+   Adatta i valori nell'opzione `-subj` per riflettere la tua organizzazione. Se utilizzi un FQDN per connettere il tuo host Harbor, devi specificarlo come attributo nome comune (`CN`).
    
     ```sh
     openssl req -x509 -new -nodes -sha512 -days 3650 \
@@ -34,19 +34,19 @@ In a production environment, you should obtain a certificate from a CA. In a tes
      -out ca.crt
     ```
 
-## Generate a Server Certificate
+## Genera un certificato server
 
-The certificate usually contains a `.crt` file and a `.key` file, for example, `yourdomain.com.crt` and `yourdomain.com.key`.
+Il certificato solitamente contiene un file `.crt` e un file `.key`, ad esempio `yourdomain.com.crt` e `yourdomain.com.key`.
 
-1. Generate a private key.
+1. Genera una chiave privata.
 
     ```sh
     openssl genrsa -out yourdomain.com.key 4096
     ```
 
-1. Generate a certificate signing request (CSR).
+1. Generare una richiesta di firma del certificato (CSR).
 
-   Adapt the values in the `-subj` option to reflect your organization. If you use an FQDN to connect your Harbor host, you must specify it as the common name (`CN`) attribute and use it in the key and CSR filenames.
+   Adatta i valori nell'opzione `-subj` per riflettere la tua organizzazione. Se utilizzi un FQDN per connettere il tuo host Harbor, devi specificarlo come attributo nome comune (`CN`) e utilizzarlo nella chiave e nei nomi dei file CSR.
 
     ```sh
     openssl req -sha512 -new \
@@ -55,9 +55,9 @@ The certificate usually contains a `.crt` file and a `.key` file, for example, `
         -out yourdomain.com.csr
     ```
 
-1. Generate an x509 v3 extension file.
+1. Genera un file con estensione x509 v3.
 
-    Regardless of whether you're using either an FQDN or an IP address to connect to your Harbor host, you must create this file so that you can generate a certificate for your Harbor host that complies with the Subject Alternative Name (SAN) and x509 v3 extension requirements. Replace the `DNS` entries to reflect your domain.
+    Indipendentemente dal fatto che tu stia utilizzando un FQDN o un indirizzo IP per connetterti al tuo host Harbor, devi creare questo file in modo da poter generare un certificato per il tuo host Harbor conforme ai requisiti del nome alternativo soggetto (SAN) e dell'estensione x509 v3. Sostituisci le voci `DNS` per riflettere il tuo dominio.
 
     ```sh
     cat > v3.ext <<-EOF
@@ -74,9 +74,9 @@ The certificate usually contains a `.crt` file and a `.key` file, for example, `
     EOF
     ```
 
-1. Use the `v3.ext` file to generate a certificate for your Harbor host.
+1. Utilizza il file `v3.ext` per generare un certificato per il tuo host Harbor.
    
-    Replace the `yourdomain.com` in the CSR and CRT file names with the Harbor host name.
+    Sostituisci `yourdomain.com` nei nomi dei file CSR e CRT con il nome host Harbor.
 
     ```sh
     openssl x509 -req -sha512 -days 3650 \
@@ -86,13 +86,13 @@ The certificate usually contains a `.crt` file and a `.key` file, for example, `
         -out yourdomain.com.crt
     ```
 
-## Provide the Certificates to Harbor and Docker
+## Fornisci i certificati a Harbor e Docker
 
-After generating the `ca.crt`, `yourdomain.com.crt`, and `yourdomain.com.key` files for your self-signed certificate, you must provide them to Harbor and to the Docker daemon.
+Dopo aver generato i file `ca.crt`, `yourdomain.com.crt` e `yourdomain.com.key` per il certificato autofirmato, è necessario fornirli a Harbor e al daemon Docker.
 
-1. Create the Certificate Directory for Harbor.
+1. Creare la directory dei certificati per Harbor.
 
-    The `/data/cert/` directory is the default location where Harbor looks for its certificates, but this directory does not exist by default. You must create it first.
+    La directory `/data/cert/` è la posizione predefinita in cui Harbor cerca i propri certificati, ma questa directory non esiste per impostazione predefinita. Devi prima crearlo.
 
     ```sh
     sudo mkdir -p /data/cert/
@@ -100,8 +100,8 @@ After generating the `ca.crt`, `yourdomain.com.crt`, and `yourdomain.com.key` fi
 1. Copy the Server Certificate and Key to the Harbor Directory
 
     ```sh
-    cp yourdomain.com.crt /data/cert/
-    sudo cp yourdomain.com.key /data/cert/
+    cp tuodominio.com.crt /data/cert/
+    sudo cp tuodominio.com.key /data/cert/
     ```
 
 1. Configure the Docker Daemon to Trust the Certificate
@@ -109,21 +109,21 @@ After generating the `ca.crt`, `yourdomain.com.crt`, and `yourdomain.com.key` fi
     To allow the Docker client to push and pull images, the Docker daemon must also trust the certificate so ,convert your server certificate from .crt to .cert, as the Docker daemon requires this extension.
 
     ```sh
-    openssl x509 -inform PEM -in yourdomain.com.crt -out yourdomain.com.cer
+    openssl x509 -inform PEM -in tuodominio.com.crt -out tuodominio.com.cer
     ```
     Next, create a dedicated directory for your Harbor domain and copy all three certificate files into it.
 
     ```sh
-    mkdir -p /etc/docker/certs.d/yourdomain.com/
-    cp yourdomain.com.cert /etc/docker/certs.d/yourdomain.com/
-    cp yourdomain.com.key /etc/docker/certs.d/yourdomain.com/
-    cp ca.crt /etc/docker/certs.d/yourdomain.com/
+    mkdir -p /etc/docker/certs.d/tuodominio.com/
+    cp tuodominio.com.cert /etc/docker/certs.d/tuodominio.com/
+    cp tuodominio.com.key /etc/docker/certs.d/tuodominio.com/
+    cp ca.crt /etc/docker/certs.d/tuodominio.com/
     ```
 
 1. Restart Docker Engine.
 
     ```sh
-    systemctl restart docker
+    systemctl riavvia la finestra mobile
     ```
 
 You might also need to trust the certificate at the OS level. See [Troubleshooting Harbor Installation](troubleshoot-installation.md#https) for more information.
@@ -132,9 +132,9 @@ The following example illustrates the final directory structure for Docker, whic
 
 ```
 /etc/docker/certs.d/
-    └── yourdomain.com:port
-       ├── yourdomain.com.cert
-       ├── yourdomain.com.key
+    └── tuodominio.com:porta
+       ├── tuodominio.com.cert
+       ├── tuodominio.com.chiave
        └── ca.crt             
 ```
 
@@ -149,7 +149,7 @@ If you already deployed Harbor with HTTP and want to reconfigure it to use HTTPS
     Harbor uses an `nginx` instance as a reverse proxy for all services. You use the `prepare` script to configure `nginx` to use HTTPS. The `prepare` is in the Harbor installer bundle, at the same level as the `install.sh` script.
 
     ```sh
-    ./prepare
+    ./preparare
     ```
 
 1. If Harbor is running, stop and remove the existing instance. 
@@ -157,13 +157,13 @@ If you already deployed Harbor with HTTP and want to reconfigure it to use HTTPS
     Your image data remains in the file system, so no data is lost.
 
     ```sh
-    docker compose down -v
+    la finestra mobile compone -v
     ```
 
 1. Restart Harbor:
 
     ```sh
-    docker compose up -d
+    la finestra mobile compone -d
     ```
 
 ## Verify the HTTPS Connection
@@ -179,13 +179,13 @@ After setting up HTTPS for Harbor, you can verify the HTTPS connection by perfor
 * Log into Harbor from the Docker client.
 
     ```sh
-    docker login yourdomain.com
+    docker accedi a tuodominio.com
     ```
 
     If you've mapped `nginx` 443 port to a different port,add the port in the `login` command.
 
     ```sh
-    docker login yourdomain.com:port
+    docker accedi al tuodominio.com:porta
     ```
    
 ## What to Do Next

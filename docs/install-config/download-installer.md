@@ -1,46 +1,46 @@
 ---
-title: Download the Harbor Installer
+title: Scarica il programma di installazione Harbor
 weight: 25
 ---
 
-You can download the Harbor installers from the [official releases](https://github.com/goharbor/harbor/releases) page. Download either the online installer or the offline installer. 
+È possibile scaricare i programmi di installazione Harbor dalla pagina [comunicati ufficiali](https://github.com/goharbor/harbor/releases). Scarica il programma di installazione online o quello offline. 
 
-- **Online installer:** The online installer downloads the Harbor images from Docker hub. For this reason, the installer is very small in size.
+- **Programma di installazione online:** Il programma di installazione online scarica le immagini Harbor dall'hub Docker. Per questo motivo l'installatore è di dimensioni molto ridotte.
 
-- **Offline installer:** Use the offline installer if the host to which are deploying Harbor does not have a connection to the Internet. The offline installer contains pre-built images, so it is larger than the online installer.
+- **Programma di installazione offline:** utilizzare il programma di installazione offline se l'host su cui si sta distribuendo Harbor non dispone di una connessione a Internet. Il programma di installazione offline contiene immagini predefinite, quindi è più grande del programma di installazione online.
 
-The installation processes are almost the same for the online and offline installers.
+I processi di installazione sono quasi gli stessi per i programmi di installazione online e offline.
 
-## Download and Unpack the Installer
+## Scarica e decomprimi il programma di installazione
 
-1. Go to the [Harbor releases page](https://github.com/goharbor/harbor/releases). 
-1. Download the online or offline installer for the version you want to install.
-1. Optionally download the corresponding `*.asc` file to verify that the package is genuine. 
+1. Vai a [Harbor pubblica la pagina](https://github.com/goharbor/harbor/releases). 
+1. Scarica il programma di installazione online o offline per la versione che desideri installare.
+1. Facoltativamente, scarica il file `*.asc` corrispondente per verificare che il pacchetto sia autentico. 
   
-   The `*.asc` file is an OpenPGP key file. Perform the following steps to verify that the downloaded bundle is genuine. 
+   Il file `*.asc` è un file di chiave OpenPGP. Eseguire i seguenti passaggi per verificare che il pacchetto scaricato sia autentico. 
    
-   1. Obtain the public key for the `*.asc` file.
+   1. Ottenere la chiave pubblica per il file `*.asc`.
       
       ```sh
       gpg --keyserver hkps://keyserver.ubuntu.com --receive-keys 644FF454C0B4115C
       ```
       
-      You should see the message ` public key "Harbor-sign (The key for signing Harbor build) <jiangd@vmware.com>" imported`
-   1. Verify that the package is genuine by running one of the following commands.
+      Dovresti vedere il messaggio ` public key "Harbor-sign (The key for signing Harbor build) <jiangd@vmware.com>" imported`
+   1. Verifica che il pacchetto sia autentico eseguendo uno dei seguenti comandi.
 
-      - Online installer:
+      - Programma di installazione in linea:
 
          ```sh
          gpg -v --keyserver hkps://keyserver.ubuntu.com --verify harbor-online-installer-version.tgz.asc
          ```
 
-      - Offline installer:
+      - Programma di installazione offline:
 
          ```sh
          gpg -v --keyserver hkps://keyserver.ubuntu.com --verify harbor-offline-installer-version.tgz.asc
          ```
       
-      The `gpg` command verifies that the bundle's signature matches that of the `*.asc` key file. You should see confirmation that the signature is correct.
+      Il comando `gpg` verifica che la firma del bundle corrisponda a quella del file chiave `*.asc`. Dovresti vedere la conferma che la firma è corretta.
       
       ```sh
       gpg: armor header: Version: GnuPG v1
@@ -55,27 +55,27 @@ The installation processes are almost the same for the online and offline instal
       gpg: binary signature, digest algorithm SHA1, key algorithm rsa4096
       ```
 
-1. Use `tar` to extract the installer package:
+1. Utilizzare `tar` per estrarre il pacchetto di installazione:
 
-   - Online installer:
+   - Programma di installazione in linea:
 
       ```sh
       bash $ tar xzvf harbor-online-installer-version.tgz
       ```
 
-   - Offline installer:
+   - Programma di installazione offline:
    
       ```sh
       bash $ tar xzvf harbor-offline-installer-version.tgz
       ```
    
-## Next Steps
+## Passaggi successivi
 
-- To secure the connections to Harbor, see [Configure HTTPS Access to Harbor](configure-https.md).
-- To configure your Harbor installation, see [Configure the Harbor YML File](configure-yml-file.md).
+- Per proteggere le connessioni a Harbor, vedere [Configura HTTPS Accesso a Harbor](configure-https.md).
+- Per configurare l'installazione Harbor, vedere [Configura il file YML Harbor](configure-yml-file.md).
 
-### Notes on the Installer Directory
+### Note sulla directory dell'installatore
 
-You can extract the Harbor installer in any location. The user running the installation script must have permissions to execute Docker commands (usually by being in the `docker` group).
+È possibile estrarre il programma di installazione Harbor in qualsiasi posizione. L'utente che esegue lo script di installazione deve disporre delle autorizzazioni per eseguire i comandi Docker (solitamente essendo nel gruppo `docker`).
 
-This directory is used only for installation and configuration. It is not where Harbor's permanent data is stored. All Harbor services run inside Docker containers, and their data is stored in Docker volumes. You should keep this directory so you can manage your Harbor instance later (e.g., for upgrades or configuration changes).
+Questa directory viene utilizzata solo per l'installazione e la configurazione. Non è qui che vengono archiviati i dati permanenti di Harbor. Tutti i servizi Harbor vengono eseguiti all'interno di contenitori Docker e i relativi dati vengono archiviati in volumi Docker. Dovresti conservare questa directory in modo da poter gestire la tua istanza Harbor in un secondo momento (ad esempio, per aggiornamenti o modifiche alla configurazione).

@@ -1,92 +1,92 @@
 ---
-title: Creating a Replication Rule
+title: Creazione di una regola di replica
 weight: 25
 ---
 
-A replication endpoint must exist before you create a replication rule. To create an endpoint, follow the instructions in [Creating Replication Endpoints](create-replication-endpoints.md).
+È necessario che esista un endpoint di replica prima di creare una regola di replica. Per creare un endpoint, seguire le istruzioni in [Creazione di endpoint di replica](create-replication-endpoints.md).
 
 {{< note >}}
-Because of major API changes in the v2.0 release to support [OCI](https://github.com/opencontainers/distribution-spec).
-You **can not** replicate from Harbor v1.x to v2.0 and later, and you **can not** replicate artifacts with **manifest list** from v2.0 and later to v1.x.
+A causa delle importanti modifiche API nella versione v2.0 per supportare [OCI](https://github.com/opencontainers/distribution-spec).
+**Non puoi** replicare da Harbor v1.x a v2.0 e successive e **non puoi** replicare artefatti con **elenco manifest** da v2.0 e successive a v1.x.
 {{< /note >}}
 
-1. Log in to the Harbor interface with an account that has Harbor system administrator privileges.
-1. Expand **Administration**, and select **Replications**.
+1. Accedere all'interfaccia Harbor con un account che disponga dei privilegi di amministratore di sistema Harbor.
+1. Espandere **Amministrazione** e selezionare **Repliche**.
 
-   ![Add a replication rule](../../../img/replication-rule1.png)
-1. Click **New Replication Rule**.
-1. Provide a name and description for the replication rule.
-1. Select **Push-based** or **Pull-based** replication, depending on whether you want to replicate artifacts to or from the remote registry.
+   ![Aggiungi una regola di replica](../../../img/replication-rule1.png)
+1. Fare clic su **Nuova regola di replica**.
+1. Fornire un nome e una descrizione per la regola di replica.
+1. Selezionare la replica **Basata su push** o **Basata su pull**, a seconda se si desidera replicare gli artefatti da o verso il registry remoto.
 
-   ![Replication mode](../../../img/replication-rule2.png)
-1. If you are creating a Pull-based rule, use the **Soure Registry** drop-down menu to select from the configured replication endpoints.
-1. For **Source resource filter**, identify the artifacts to replicate.  
+   ![Modalità di replica](../../../img/replication-rule2.png)
+1. Se stai creando una regola basata su pull, utilizza il menu a discesa **Soure Registry** per selezionare dagli endpoint di replica configurati.
+1. Per **Filtro risorsa di origine**, identificare gli artefatti da replicare.  
 
-   ![Replication filters](../../../img/replication-rule3.png)
+   ![Filtri di replica](../../../img/replication-rule3.png)
 
-   * **Name**: Replicate resources with a given name by entering an artifact name or fragment.
-   * **Tag**: Replicate resources with a given tag by entering a tag name or fragment. You can also specify matching/excluding for this filter.
-   * **Label**: Replicate resources with a given label by using the drop-down menu to select from the available labels. You can also specify matching/excluding for this filter.
-   * **Resource**: Replicate images, artifacts or all. Artifacts contain images and other OCI compatible resources.
+   * **Nome**: replica le risorse con un determinato nome inserendo il nome o il frammento di un artefatto.
+   * **Tag**: replica le risorse con un determinato tag inserendo il nome o il frammento di un tag. Puoi anche specificare la corrispondenza/esclusione per questo filtro.
+   * **Etichetta**: replica le risorse con una determinata etichetta utilizzando il menu a discesa per selezionare tra le etichette disponibili. Puoi anche specificare la corrispondenza/esclusione per questo filtro.
+   * **Risorsa**: replica immagini, artefatti o tutto. Gli artefatti contengono immagini e altre risorse compatibili con OCI.
 
-   The name filter and tag filters support the following patterns:
+   Il filtro nome e i filtri tag supportano i seguenti modelli:
 
-   * **\***: Matches any sequence of non-separator characters `/`.
-   * **\*\***: Matches any sequence of characters, including path separators `/`. Note that the doublestar must appear as a path component by itself. A pattern such as /path\*\* is invalid and will be treated the same as /path*, but /path\*/\*\* should achieve the desired result.
-   * **?**: Matches any single non-separator character `/`.
-   * **{alt1,...}**: Matches a sequence of characters if one of the comma-separated alternatives matches.
+   * **\***: corrisponde a qualsiasi sequenza di caratteri non separatori `/`.
+   * **\*\***: corrisponde a qualsiasi sequenza di caratteri, inclusi i separatori di percorso `/`. Tieni presente che la stella doppia deve apparire di per sé come componente del percorso. Un modello come /path\*\* non è valido e verrà trattato allo stesso modo di /path*, ma /path\*/\*\* dovrebbe ottenere il risultato desiderato.
+   * **?**: corrisponde a qualsiasi singolo carattere non separatore `/`.
+   * **{alt1,...}**: corrisponde a una sequenza di caratteri se corrisponde una delle alternative separate da virgole.
 
-   **NOTE:** You must add `library` if you want to replicate the official artifacts of Docker Hub. For example, `library/hello-world` matches the official hello-world artifacts.  
+   **NOTA:** È necessario aggiungere `library` se si desidera replicare gli artefatti ufficiali dell'hub Docker. Ad esempio, `library/hello-world` corrisponde agli artefatti ufficiali di Hello World.  
 
-   Pattern | String(Match or not)
+   Modello | Stringa (corrisponde o no)
    ---------- | -------
-   `library/*`      | `library/hello-world`(Y)<br> `library/my/hello-world`(N)
-   `library/**`     | `library/hello-world`(Y)<br> `library/my/hello-world`(Y)
+   `library/*` | `library/hello-world`(Y)<br> `library/my/hello-world`(N)
+   `library/**` | `library/hello-world`(Y)<br> `library/my/hello-world`(Y)
    `{library,goharbor}/**` | `library/hello-world`(Y)<br> `goharbor/harbor-core`(Y)<br> `google/hello-world`(N)
-   `1.?`      | `1.0`(Y)<br> `1.01`(N)
-1. If you are creating a Push-based replication rule, use the **Destination Registry** drop-down menu to select from the configured replication endpoints.
-1. For **Destination Namespace**, enter the name of the namespace in which to replicate resources in the  text box. If you do not enter a namespace, resources are placed in the same namespace as in the source registry.
+   `1.?` | `1.0`(Y)<br> `1.01`(N)
+1. Se stai creando una regola di replica basata su push, utilizza il menu a discesa **Registro di destinazione** per selezionare dagli endpoint di replica configurati.
+1. Per **Spazio dei nomi di destinazione**, immettere il nome dello spazio dei nomi in cui replicare le risorse nella casella di testo. Se non inserisci uno spazio dei nomi, le risorse vengono inserite nello stesso spazio dei nomi dell'origine registry.
 
-1. Use the Destination Flattening drop-down to select how you want Harbor treat to image hierarchy when replicating images. Depending on what you select, Harbor will remove the same number of levels from the image's hierarchy, starting from the left, when replicating an image into your chosen destination namespace.
+1. Utilizzare il menu a discesa Appiattimento destinazione per selezionare il modo in cui si desidera che Harbor tratti la gerarchia delle immagini durante la replica delle immagini. A seconda di ciò che selezioni, Harbor rimuoverà lo stesso numero di livelli dalla gerarchia dell'immagine, a partire da sinistra, quando replichi un'immagine nello spazio dei nomi di destinazione scelto.
 
-    * **Flatten All Levels**: Remove all hierarchy from the replicated image. For example, `a/b/c/d/img` replicates to `namespace/img`. This is the default behavior of replication in v2.2 and before. All replication rules created before upgrading to v2.3.0 will default to using this flattening option after upgrade.
-    * **No Flattening**: Use the same hierarchy when replicating an image. For example, `a/b/c/d/img` replicates to `namespace/a/b/c/d/img`.
-    * **Flattening 1 level**: Remove one level from the image hierarchy. For example, `a/b/c/d/img` replicates to `namespace/b/c/d/img`. This is the default selection.
-    * **Flattening 2 levels**: Remove two levels from the image hierarchy. For example, `a/b/c/d/img` replicates to `namespace/c/d/img`
-    * **Flattening 3 levels**: Remove three levels from the image hierarchy. For example, `a/b/c/d/img` replicates to `namespace/d/img`
+    * **Unisci tutti i livelli**: rimuove tutta la gerarchia dall'immagine replicata. Ad esempio, `a/b/c/d/img` si replica in `namespace/img`. Questo è il comportamento predefinito della replica nella versione 2.2 e precedenti. Tutte le regole di replica create prima dell'aggiornamento alla versione 2.3.0 utilizzeranno per impostazione predefinita questa opzione di appiattimento dopo l'aggiornamento.
+    * **Nessun appiattimento**: utilizza la stessa gerarchia durante la replica di un'immagine. Ad esempio, `a/b/c/d/img` si replica in `namespace/a/b/c/d/img`.
+    * **Appiattimento di 1 livello**: rimuove un livello dalla gerarchia delle immagini. Ad esempio, `a/b/c/d/img` si replica in `namespace/b/c/d/img`. Questa è la selezione predefinita.
+    * **Appiattimento di 2 livelli**: rimuove due livelli dalla gerarchia dell'immagine. Ad esempio, `a/b/c/d/img` si replica in `namespace/c/d/img`
+    * **Appiattimento di 3 livelli**: rimuove tre livelli dalla gerarchia delle immagini. Ad esempio, `a/b/c/d/img` si replica in `namespace/d/img`
    
 
-1. Use the Trigger Mode drop-down menu to select how and when to run the rule.
-   * **Manual**: Replicate the resources manually when needed. **Note**: Deletion operations are not replicated.
-   * **Scheduled**: Replicate the resources periodically by defining a cron job. **Note**: Deletion operations are not replicated.
-   * **Event Based**: When a new resource is pushed to the project, or an artifact is retagged, it is replicated to the remote registry immediately. If you select the **Delete remote resources when locally deleted**, if you delete an artifact, it is automatically deleted from the replication target.
+1. Utilizzare il menu a discesa Modalità di attivazione per selezionare come e quando eseguire la regola.
+   * **Manuale**: replica le risorse manualmente quando necessario. **Nota**: le operazioni di eliminazione non vengono replicate.
+   * **Pianificato**: replica periodicamente le risorse definendo un processo cron. **Nota**: le operazioni di eliminazione non vengono replicate.
+   * **Basato su eventi**: quando una nuova risorsa viene inviata al progetto o un artefatto viene ritaggato, viene immediatamente replicato sul registry remoto. Se selezioni **Elimina risorse remote quando eliminate localmente**, se elimini un artefatto, verrà automaticamente eliminato dalla destinazione di replica.
 
    {{< note >}}
-   You can filter artifacts for replication based on the labels that are applied to the artifacts. However, changing a label on an artifact does not trigger replication. Event-based replication is limited to pushing, retagging, and deleting artifacts.
+   È possibile filtrare gli artefatti per la replica in base alle etichette applicate agli artefatti. Tuttavia, la modifica di un'etichetta su un artefatto non attiva la replica. La replica basata sugli eventi è limitata al push, alla ricodifica e all'eliminazione degli artefatti.
    {{< /note >}}
 
-   ![Trigger mode](../../../img/replication-rule5.png)
-1. Optionally set the maximum network bandwidth for each replication task, please pay attention to the number of concurrent executions, the default value is 10 for each job-service pod. The unit is kilo bytes per second, and -1 stands for unlimited bandwidth. 
+   ![Modalità di attivazione](../../../img/replication-rule5.png)
+1. Facoltativamente, imposta la larghezza di banda di rete massima per ciascuna attività di replica, presta attenzione al numero di esecuzioni simultanee, il valore predefinito è 10 per ciascun pod di servizio lavoro. L'unità è kilobyte al secondo e -1 sta per larghezza di banda illimitata. 
 
-   ![Bandwidth](../../../img/replication-rule7.png)
+   ![Larghezza di banda](../../../img/replication-rule7.png)
 
    {{< note >}}
-   There's a known issue [15708](https://github.com/goharbor/harbor/issues/15708), that if you limit the bandwidth too slow, and stop the replication job, it may take quite a long time to really release the job worker to run a new job.
+   Esiste un problema noto [15708](https://github.com/goharbor/harbor/issues/15708), secondo cui se si limita la larghezza di banda troppo lentamente e si interrompe il processo di replica, potrebbe essere necessario molto tempo per rilasciare effettivamente l'operatore del lavoro per eseguire un nuovo lavoro.
    {{< /note >}}
-1. Optionally select the Override checkbox to force replicated resources to replace resources at the destination with the same name.
+1. Facoltativamente, seleziona la casella di controllo Sostituisci per forzare le risorse replicate a sostituire le risorse nella destinazione con lo stesso nome.
 
-   ![Override](../../../img/replication-rule8.png)
-1. Optionally select the Copy by chunk checkbox to enable the artifact blobs copied by chunks, currently only supported for source and destination registry are both harbor, but you can enable this by calling harbor API manually for other type registries.
-   ![Copy by chunk](../../../img/replication-rule9.png)
+   ![Sostituisci](../../../img/replication-rule8.png)
+1. Selezionare facoltativamente la casella di controllo Copia per blocco per abilitare i BLOB di artefatti copiati da blocchi, attualmente supportati solo per origine e destinazione registry sono entrambi Harbor, ma è possibile abilitarlo chiamando manualmente Harbor API per altri registri di tipo.
+   ![Copia per pezzo](../../../img/replication-rule9.png)
 
    {{< note >}}
-   Copy by chunk has not been verified officially between harbor and other type registries. The default chunk size is 10MB, you can override it by setting env `REPLICATION_CHUNK_SIZE` in the jobservice, the value should be united as bytes, for example `10MB=1024*1024*10` then you should set `REPLICATION_CHUNK_SIZE=10485760`.
+   La copia per pezzo non è stata verificata ufficialmente tra i registri portuali e altri tipi. La dimensione predefinita del blocco è 10 MB, puoi sovrascriverla impostando env `REPLICATION_CHUNK_SIZE` nel jobservice, il valore dovrebbe essere unito in byte, ad esempio `10MB=1024*1024*10` quindi dovresti impostare `REPLICATION_CHUNK_SIZE=10485760`.
    {{< /note >}}
-1. Optionally select the Single active replication checkbox to enable skipping of executions until the previous active execution finishes, avoiding the execution of the same replication rules multiple times in parallel.
-   ![Single active replication](../../../img/replication-rule10.png)
+1. Selezionare facoltativamente la casella di controllo Singola replica attiva per abilitare il salto delle esecuzioni fino al termine dell'esecuzione attiva precedente, evitando l'esecuzione delle stesse regole di replica più volte in parallelo.
+   ![Singola replica attiva](../../../img/replication-rule10.png)
 
-1. Click **Save** to create the replication rule.
+1. Fare clic su **Salva** per creare la regola di replica.
 
-## What to Do Next
+## Cosa fare dopo
 
-After you create a replication rule, see [Running Replication Manually](manage-replications.md).
+Dopo aver creato una regola di replica, vedere [Esecuzione manuale della replica](manage-replications.md).

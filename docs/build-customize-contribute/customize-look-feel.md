@@ -1,12 +1,12 @@
 ---
-title: Customize the Look and Feel of Harbor
+title: Personalizza l'aspetto di Harbor
 ---
 
-The primary look & feel of Harbor supports to be customized with several simple steps. All the relevant customization in configurations are saved in the `setting.json` file under `$HARBOR_DIR/src/portal/src` folder with `json` format and will be loaded when Harbor is launched. 
+L'aspetto primario di Harbor può essere personalizzato con diversi semplici passaggi. Tutte le personalizzazioni rilevanti nelle configurazioni vengono salvate nel file `setting.json` nella cartella `$HARBOR_DIR/src/portal/src` con formato `json` e verranno caricate all'avvio di Harbor. 
 
-## Configure
+## Configura
 
-Open the `setting.json` file, you'll see the default content as shown below:
+Apri il file `setting.json`, vedrai il contenuto predefinito come mostrato di seguito:
 
 ```json
 {
@@ -24,18 +24,18 @@ Open the `setting.json` file, you'll see the default content as shown below:
 }
 ```
 
-Change the values of configuration if you want to override the default style to your own. Here are references:
+Modifica i valori di configurazione se desideri sovrascrivere lo stile predefinito con il tuo. Ecco i riferimenti:
 
-* **headerBgColor**: The background color of the page header, support either HEX or RGB value. e.g: `#004a70` and `rgb(210,110,235)`.
-  - **darkMode**: The background color of the page header for the dark mode.
-  - **lightMode**: The background color of the page header for the light mode.
-* **loginBgImg**: The name path of the background image displayed in the login page, e.g: 'login_bg.png'. The image file should be put in the `images` folder. Suggest the size of this image should be bigger than 800px*600px.
-* **loginTitle**: The full product title displayed in the login page.
-* **Product**: Contain metadata / description of the product.
-  - **name**: The name of the product.
-  - **logo**: The name path of the product logo, e.g: 'logo.png'. The image file should be put in the `images` folder.
-  - **introductions**: The introduction about the product, which are displayed in the `About` dialog.
+* **headerBgColor**: il colore di sfondo dell'intestazione della pagina, supporta il valore HEX o RGB. es: `#004a70` e `rgb(210,110,235)`.
+  - **darkMode**: il colore di sfondo dell'intestazione della pagina per la modalità oscura.
+  - **lightMode**: il colore di sfondo dell'intestazione della pagina per la modalità luce.
+* **loginBgImg**: il percorso del nome dell'immagine di sfondo visualizzata nella pagina di accesso, ad esempio: 'login_bg.png'. Il file immagine deve essere inserito nella cartella `images`. Suggerisci che la dimensione di questa immagine dovrebbe essere maggiore di 800px*600px.
+* **loginTitle**: il titolo completo del prodotto visualizzato nella pagina di accesso.
+* **Prodotto**: contiene metadati/descrizione del prodotto.
+  - **nome**: Il nome del prodotto.
+  - **logo**: il percorso del nome del logo del prodotto, ad esempio: 'logo.png'. Il file immagine deve essere inserito nella cartella `images`.
+  - **introduzioni**: l'introduzione sul prodotto, che viene visualizzata nella finestra di dialogo `About`.
 
-## Build
+## Costruire
 
-Once the `setting.json` configurations has been updated, re-[build](#configure) your product to apply the new changes.
+Una volta aggiornate le configurazioni `setting.json`, re-[costruire](#configure) il prodotto per applicare le nuove modifiche.

@@ -1,18 +1,18 @@
 ---
-title: Developing the Harbor Frontend
+title: Sviluppo del frontend Harbor
 ---
 
-If you already have a harbor backend environment, you can build a frontend development environment with the following
-configuration.
+Se disponi già di un ambiente backend Harbor, puoi creare un ambiente di sviluppo frontend con quanto segue
+configurazione.
 
-1. Open the terminal and run the following command to copy "proxy.config.mjs.temp" file to "proxy.config.mjs".
+1. Aprire il terminale ed eseguire il comando seguente per copiare il file "proxy.config.mjs.temp" in "proxy.config.mjs".
     ```sh
     cd harbor/src/portal
     cp proxy.config.mjs.temp proxy.config.mjs
     ```
 
-   **NOTE:** You should specify an available Harbor hostname. And you can specify the agent if you work behind a
-   corporate proxy.
+   **NOTA:** è necessario specificare un nome host Harbor disponibile. E puoi specificare l'agente se lavori dietro a
+   delega aziendale.
 
 ```js
 import HttpsProxyAgent from 'https-proxy-agent';
@@ -57,16 +57,16 @@ function setupForCorporateProxy(proxyConfig) {
 export default setupForCorporateProxy(HarborProxyConfig);  
 ```
 
-2. Install npm packages and 3rd-party dependencies.
+2. Installa i pacchetti npm e le dipendenze di terze parti.
 
     ```sh
     npm install
     ```
 
-3. Execute the following command，serve Harbor locally.
+3. Eseguire il comando seguente, servire Harbor localmente.
 
     ```sh
     npm run start
     ```
 
-4. Then you can visit the Harbor by address: https://localhost:4200.
+4. Quindi puoi visitare Harbor tramite l'indirizzo: https://localhost:4200.

@@ -1,55 +1,55 @@
 ---
-title: Assign Users to a Project
+title: Assegnare utenti a un progetto
 weight: 25
 ---
 
-You can add individual users to an existing project and assign a role to them. You can add an LDAP/AD or OIDC user to the project members if you  use LDAP/AD or OIDC authentication, or a user that you have already created if you use database authentication. If you use LDAP/AD or OIDC authentication, you can add groups to projects and assign a role to the group.
+Puoi aggiungere singoli utenti a un progetto esistente e assegnare loro un ruolo. È possibile aggiungere un utente LDAP/AD o OIDC ai membri del progetto se si utilizza l'autenticazione LDAP/AD o OIDC oppure un utente già creato se si utilizza l'autenticazione del database. Se si utilizza l'autenticazione LDAP/AD o OIDC, è possibile aggiungere gruppi ai progetti e assegnare un ruolo al gruppo.
 
-For more information about users and roles in Harbor, see [User Permissions By Role](../../administration/managing-users/user-permissions-by-role.md).
+Per ulteriori informazioni su utenti e ruoli in Harbor, vedere [Autorizzazioni utente per ruolo](../../administration/managing-users/user-permissions-by-role.md).
 
-## Add Individual Members to Projects 
+## Aggiungi singoli membri ai progetti 
 
-1. Log in to the Harbor interface with an account that has at least project administrator privileges.
-1. Go to **Projects** and select a project. 
-1. Select the **Members** tab and click **+User**.
+1. Accedi all'interfaccia Harbor con un account che disponga almeno dei privilegi di amministratore del progetto.
+1. Vai su **Progetti** e seleziona un progetto. 
+1. Seleziona la scheda **Membri** e fai clic su **+Utente**.
 
-   ![browse project](../../../img/project-members.png)
-1. Enter the name of an existing database, LDAP/AD, or OIDC user and select a role for this user.
+   ![sfoglia progetto](../../../img/project-members.png)
+1. Immettere il nome di un database esistente, utente LDAP/AD o OIDC e selezionare un ruolo per questo utente.
 
-   ![browse project](../../../img/new-add-member.png)
-1. Optionally select one or more members, click **Action**, and select a different role for the user or users, or select **Remove** to remove them from the project.
+   ![sfoglia progetto](../../../img/new-add-member.png)
+1. Facoltativamente, seleziona uno o più membri, fai clic su **Azione** e seleziona un ruolo diverso per l'utente o gli utenti oppure seleziona **Rimuovi** per rimuoverli dal progetto.
 
-   ![browse project](../../../img/new-remove-update-member.png)
+   ![sfoglia progetto](../../../img/new-remove-update-member.png)
 
-## Add LDAP/AD Groups to Projects
+## Aggiungi gruppi LDAP/AD ai progetti
 
-1. Log in to the Harbor interface with an account that has at least project administrator privileges.
-1. Go to **Projects** and select a project. 
-1. Select the **Members** tab and click **+Group**.
+1. Accedi all'interfaccia Harbor con un account che disponga almeno dei privilegi di amministratore del progetto.
+1. Vai su **Progetti** e seleziona un progetto. 
+1. Seleziona la scheda **Membri** e fai clic su **+Gruppo**.
 
-   ![Add group](../../../img/add-group.png)
-1. Enter the name of a group that you have already used in Harbor and assign a role to that group.
+   ![Aggiungi gruppo](../../../img/add-group.png)
+1. Inserisci il nome di un gruppo che hai già utilizzato in Harbor e assegna un ruolo a quel gruppo.
 
-   ![Screenshot of add group dialog](../../../img/ldap-group-addgroup-dialog.png)
+   ![Screenshot della finestra di dialogo Aggiungi gruppo](../../../img/ldap-group-addgroup-dialog.png)
    
 
-Once an LDAP group has been assigned a role in a project, all LDAP/AD users in this group have the privileges of the role you assigned to the group. If a user has both user-level role and group-level role, these privileges are merged.
+Una volta assegnato un ruolo in un progetto a un gruppo LDAP, tutti gli utenti LDAP/AD in questo gruppo avranno i privilegi del ruolo assegnato al gruppo. Se un utente ha sia un ruolo a livello di utente che un ruolo a livello di gruppo, questi privilegi vengono uniti.
 
-If a user in the LDAP group has admin privilege, the user has the same privileges as the Harbor system administrator.
+Se un utente nel gruppo LDAP dispone dei privilegi di amministratore, l'utente avrà gli stessi privilegi dell'amministratore di sistema Harbor.
 
-## Add OIDC Groups to Projects
+## Aggiungi gruppi OIDC ai progetti
 
-To be able to add OIDC groups to projects, your OIDC provider and Harbor instance must be configured correctly. For information about how to configure OIDC so that Harbor can use groups, see [OIDC Provider Authentication](../../administration/configure-authentication/oidc-auth.md).
+Per poter aggiungere gruppi OIDC ai progetti, il provider OIDC e l'istanza Harbor devono essere configurati correttamente. Per informazioni su come configurare OIDC in modo che Harbor possa utilizzare i gruppi, vedere [OIDC Autenticazione del fornitore](../../administration/configure-authentication/oidc-auth.md).
 
-1. Log in to the Harbor interface with an account that has at least project administrator privileges.
-1. Go to **Projects** and select a project. 
-1. Select the **Members** tab and click **+Group**.
+1. Accedi all'interfaccia Harbor con un account che disponga almeno dei privilegi di amministratore del progetto.
+1. Vai su **Progetti** e seleziona un progetto. 
+1. Seleziona la scheda **Membri** e fai clic su **+Gruppo**.
 
-   ![Add group](../../../img/add-group.png)
-1. Enter the name of a group that already exists in your OIDC provider and assign a role to that group.
+   ![Aggiungi gruppo](../../../img/add-group.png)
+1. Inserisci il nome di un gruppo già esistente nel tuo provider OIDC e assegna un ruolo a quel gruppo.
 
-   ![Add group](../../../img/add-oidc-group.png)
+   ![Aggiungi gruppo](../../../img/add-oidc-group.png)
 
 {{< note >}}
-Unlike with LDAP groups, Harbor cannot check whether OIDC groups exist when you add them to a project. If you mistype the group name, or if the group does not exist in your OIDC provider, Harbor still creates the group.
+A differenza dei gruppi LDAP, Harbor non può verificare se esistono gruppi OIDC quando li aggiungi a un progetto. Se si digita in modo errato il nome del gruppo o se il gruppo non esiste nel provider OIDC, Harbor crea comunque il gruppo.
 {{< /note >}}

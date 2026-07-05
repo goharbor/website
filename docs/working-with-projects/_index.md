@@ -1,6 +1,6 @@
 ---
-title: Working with Projects
+title: Lavorare con i progetti
 weight: 15
 ---
 
-This section describes how users with the developer, maintainer, and project administrator roles manage and participate in Harbor projects. The Harbor administrator can also perform all of these tasks.
+Questa sezione descrive il modo in cui gli utenti con ruoli di sviluppatore, manutentore e amministratore del progetto gestiscono e partecipano ai progetti Harbor. Anche l'amministratore Harbor può eseguire tutte queste attività.

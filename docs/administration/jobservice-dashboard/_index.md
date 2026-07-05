@@ -1,128 +1,128 @@
 ---
-title: Job Service Dashboard
+title: Dashboard del servizio di lavoro
 weight: 45
 ---
 
-The job service dashboard is a web-based interface that allows you to view and manage jobs that are running in the Harbor job service. It is available at `https://<harbor_url>/harbor/job-service-dashboard/`. You can use the dashboard to view the status of job queues, the schedule of jobs, and the status of the job service pools and workers. you can also use it to stop pending or running jobs, or pause or resume the job service queue.
+Il dashboard del servizio lavori è un'interfaccia basata sul Web che consente di visualizzare e gestire i lavori in esecuzione nel servizio lavori Harbor. È disponibile presso `https://<harbor_url>/harbor/job-service-dashboard/`. È possibile utilizzare il dashboard per visualizzare lo stato delle code di lavoro, la pianificazione dei lavori e lo stato dei pool e dei lavoratori dei servizi di lavoro. puoi anche usarlo per interrompere i lavori in sospeso o in esecuzione oppure per mettere in pausa o riprendere la coda del servizio lavori.
 
-## View Job Service Queue Status
+## Visualizza lo stato della coda del servizio lavori
 
-1. Log in to the Harbor Web interface with an account that has Harbor system administrator privileges.
-1. Expand **Administration**, and select **Job Service Dashboard**.
+1. Accedere all'interfaccia Web Harbor con un account che disponga dei privilegi di amministratore di sistema Harbor.
+1. Espandere **Amministrazione** e selezionare **Dashboard servizio lavori**.
 
-In the job service dashboard, you can view the status of the job service queue, the job service pools, and the job service workers.
+Nel dashboard del servizio di lavoro è possibile visualizzare lo stato della coda del servizio di lavoro, dei pool di servizi di lavoro e degli addetti ai servizi di lavoro.
 
-![Job service dashboard](../../img/jobservice-dashboard/jobservice-dashboard.png)
+![Cruscotto dei servizi per il lavoro](../../img/jobservice-dashboard/jobservice-dashboard.png)
 
-The following table describes the information that is displayed in the dashboard.
+La tabella seguente descrive le informazioni visualizzate nel dashboard.
 
-|Field|Description|Actions|
+|Campo|Descrizione|Azioni|
 |:---|:---|:---|
-|**Pending Jobs In Queues**|The job service queue is a FIFO queue that stores jobs to be executed. Total displays the count of queue type, and the top 2 queues| **Stop All**: stop all jobs in all queues |
-|**Schedules**|The job service pool is a pool of workers that execute jobs, display the total count of schedules and show its status | **Pause All**: Pause all running job schedule, **Resume All**: Resume all paused job schedule |
-|**Workers**| The job service worker is a goroutine that executes jobs, it displays the free/total workers| **Free All**: stop the execution of running jobs to free all workers |
+|**Lavori in sospeso nelle code**|La coda del servizio lavori è una coda FIFO che memorizza i lavori da eseguire. Totale visualizza il conteggio del tipo di coda e le prime 2 code| **Interrompi tutto**: interrompe tutti i lavori in tutte le code |
+|**Pianificazioni**|Il pool di servizi di lavoro è un pool di lavoratori che eseguono lavori, visualizzano il conteggio totale delle pianificazioni e ne mostrano lo stato | **Pausa tutto**: sospende tutta la pianificazione dei lavori in esecuzione, **Riprendi tutto**: riprendi tutta la pianificazione dei lavori in pausa |
+|**Lavoratori**| L'addetto al servizio di lavoro è una goroutine che esegue lavori, visualizza i lavoratori liberi/totali| **Liberi tutti**: interrompe l'esecuzione dei lavori in corso per liberare tutti i lavoratori |
 
-## View Job Queue Details
+## Visualizza i dettagli della coda dei lavori
 
-In the job service dashboard, click the **Job Queues** tab.
+Nel dashboard del servizio di lavoro, fai clic sulla scheda **Code di lavori**.
 
-![Job queues](../../img/jobservice-dashboard/jobqueues.png)
+![Code di lavoro](../../img/jobservice-dashboard/jobqueues.png)
 
-The **Job Queues** tab displays the detail of job queues. The following table describes the information that is displayed in the **Job Queues** tab.
+La scheda **Code di lavori** visualizza i dettagli delle code di lavori. La seguente tabella descrive le informazioni visualizzate nella scheda **Code di lavori**.
 
-|Field|Description|
+|Campo|Descrizione|
 |:---|:---|
-|**Job Type**|The name of the job queue.|
-|**Pending Count**|The number of jobs that are waiting to be executed in the queue.|
-|**Latency**|The waiting time of the current queue, it indicate how long tasks in the queue have already waited.|
-|**Paused**|The paused status of job queue.|
+|**Tipo di lavoro**|Il nome della coda di lavori.|
+|**Conteggio in attesa**|Il numero di lavori in attesa di essere eseguiti nella coda.|
+|**Latenza**|Il tempo di attesa della coda corrente, indica per quanto tempo le attività nella coda hanno già aspettato.|
+|**In pausa**|Lo stato in pausa della coda dei lavori.|
 
-Actions for each job queue:
+Azioni per ciascuna coda di lavoro:
 
-- Click the **Stop** button to stop all jobs in the queue. it will remove all jobs from the queue and mark their status as "Stopped".
-- Click the **Pause** button to pause the job queue.
-- Click the **Resume** button to resume the job queue.
+- Fare clic sul pulsante **Stop** per interrompere tutti i lavori in coda. rimuoverà tutti i lavori dalla coda e contrassegnerà il loro stato come "Stopped".
+- Fare clic sul pulsante **Pausa** per mettere in pausa la coda dei lavori.
+- Fare clic sul pulsante **Riprendi** per riprendere la coda dei lavori.
 
-Job Types
+Tipi di lavoro
 
-  | Type Name | Description |
+  | Digitare Nome | Descrizione |
   |:---|:---|
-  | `GARBAGE_COLLECTION` | Job queue for garbage collection. |
-  | `IMAGE_SCAN` | Job queue for image scan. |
-  | `P2P_PREHEAT` | Job queue for p2p preheat related task. |
-  | `PURGE_AUDIT` | Job queue for purge audit log. |
-  | `REPLICATION` | Job queue for image replication. |
-  | `RETENTION` | Job queue for tag retention. |
-  | `SCAN_DATA_EXPORT` | Job queue for export CVE data. |
-  | `SCHEDULER` | Job queue for all periodical tasks, if it is paused, all periodical schedule will not be triggered. |
-  | `SLACK` | Job queue for sending slack message. |
-  | `SYSTEM_ARTIFACT_CLEANUP` | Job queue for cleanup system artifact, used by export CVE feature. |
-  | `WEBHOOK` | Job queue for web hook task. |
+  | `GARBAGE_COLLECTION` | Coda di lavori per la garbage collection. |
+  | `IMAGE_SCAN` | Coda di lavori per la scansione delle immagini. |
+  | `P2P_PREHEAT` | Coda di lavori per attività relativa al preriscaldamento p2p. |
+  | `PURGE_AUDIT` | Coda di processi per l'eliminazione del registro di controllo. |
+  | `REPLICATION` | Coda di processi per la replica dell'immagine. |
+  | `RETENTION` | Coda di lavori per la conservazione dei tag. |
+  | `SCAN_DATA_EXPORT` | Coda di lavori per l'esportazione dei dati CVE. |
+  | `SCHEDULER` | Coda di lavori per tutte le attività periodiche, se è in pausa, tutta la pianificazione periodica non verrà attivata. |
+  | `SLACK` | Coda di lavori per l'invio di messaggi slack. |
+  | `SYSTEM_ARTIFACT_CLEANUP` | Coda di processi per l'artefatto del sistema di pulizia, utilizzata dalla funzione di esportazione CVE. |
+  | `WEBHOOK` | Coda di processi per l'attività hook web. |
 
-**NOTE** The **Pause** and **Resume** operation just stop the worker from consuming jobs in the job queue, it does not stop the job task submission, neither change job status in the job queue.
+**NOTA** L'operazione **Pausa** e **Riprendi** impedisce semplicemente al lavoratore di consumare lavori nella coda dei lavori, non interrompe l'invio dell'attività del lavoro, né modifica lo stato del lavoro nella coda dei lavori.
 
-## View Schedule Details
+## Visualizza i dettagli del programma
 
-In the job service dashboard, click the **Schedules** tab.
+Nel dashboard del servizio di lavoro, fai clic sulla scheda **Programmazioni**.
    
-   ![Schedules](../../img/jobservice-dashboard/schedules.png)
+   ![Orari](../../img/jobservice-dashboard/schedules.png)
 
-The **Schedules** tab displays the details of the job schedules. The following table describes the information that is displayed in the Schedules tab.
+La scheda **Pianificazioni** visualizza i dettagli delle pianificazioni dei lavori. La seguente tabella descrive le informazioni visualizzate nella scheda Pianificazioni.
 
-|Field|Description|
+|Campo|Descrizione|
 |:---|:---|
-|**ID**|The ID of the job schedule.|
-|**Vendor Type**|The vendor type of the job service schedule.|
-|**Vendor ID**|The vendor id of the job schedule. empty if there is no vendor id.|
-|**Cron**|The cron expression of the schedule.|
-|**Create Time**|The created time of the job schedule.|
+|**ID**|L'ID della pianificazione del lavoro.|
+|**Tipo fornitore**|Il tipo di fornitore della pianificazione del servizio lavoro.|
+|**ID fornitore**|L'ID fornitore della pianificazione del lavoro. vuoto se non è presente alcun ID fornitore.|
+|**Cron**|L'espressione cron della pianificazione.|
+|**Ora di creazione**|L'ora di creazione della pianificazione del lavoro.|
 
 
-## View Worker Details
+## Visualizza i dettagli del lavoratore
 
-  In the job service dashboard, click the **Workers** tab.
+  Nel dashboard dei servizi per il lavoro, fai clic sulla scheda **Lavoratori**.
 
-  ![Workers](../../img/jobservice-dashboard/workers.png)
+  ![Lavoratori](../../img/jobservice-dashboard/workers.png)
 
-  The worker pools table displays the details of the worker pools. The following table describes the information that is displayed in the Workers tab. When you click a worker pool in the table, workes of this pool is displayed in the worker's table.
+  La tabella dei pool di lavoratori mostra i dettagli dei pool di lavoratori. La seguente tabella descrive le informazioni visualizzate nella scheda Lavoratori. Quando fai clic su un pool di lavoratori nella tabella, i lavori di questo pool vengono visualizzati nella tabella dei lavoratori.
 
-|Field|Description|
+|Campo|Descrizione|
 |:---|:---|
-|**Worker Pool ID**|The ID of the worker pool.|
-|**PID**|The process the worker pool.|
-|**Start At**|The start time of the worker pool.|
-|**Heartbeat At**|The heartbeat time of the worker pool.|
-|**Concurrency**|The concurrency of worker pool.|
+|**ID pool di nodi di lavoro**|L'ID del pool di nodi di lavoro.|
+|**PID**|Il processo del pool di nodi di lavoro.|
+|**Inizia alle**|L'ora di inizio del pool di nodi di lavoro.|
+|**Heartbeat a**|L'ora dell'heartbeat del pool di nodi di lavoro.|
+|**Concorrenza**|La concorrenza del pool di nodi di lavoro.|
 
-The worker's table displays the details of the workers. The following table describes the information that is displayed in the Workers tab.
+La tabella dei lavoratori visualizza i dettagli dei lavoratori. La seguente tabella descrive le informazioni visualizzate nella scheda Lavoratori.
 
-|Field|Description|
+|Campo|Descrizione|
 |:---|:---|
-|**Worker ID**|The ID of the worker.|
-|**Job Name**| The job name of the current job that the worker is executing.|
-|**Job ID**|The ID of the current job that the worker is executing.|
-|**Started At**|The start time of the current job that the worker is executing.|
-|**Checked In At**|The check in time of the current job that the worker is executing.|
-|**Logs**|The log of the current job that the worker is executing.|
+|**ID lavoratore**|L'ID del lavoratore.|
+|**Nome lavoro**| Il nome del lavoro corrente che il lavoratore sta eseguendo.|
+|**ID lavoro**|L'ID del lavoro corrente che il lavoratore sta eseguendo.|
+|**Iniziato alle**|L'ora di inizio del lavoro corrente che il lavoratore sta eseguendo.|
+|**Check-in alle**|L'ora di check-in del lavoro corrente che il lavoratore sta eseguendo.|
+|**Log**|Il log del lavoro corrente che il lavoratore sta eseguendo.|
 
-Actions for workers:
+Azioni per i lavoratori:
 
--- Click the **Free** button to stop the execution of the current job that the worker is executing to free the worker. The stop operation takes several minutes to complete, it depends on the job type.
--- Click the link in the **Logs** column to view the log of the current job that the worker is executing.
+-- Fare clic sul pulsante **Libero** per interrompere l'esecuzione del lavoro corrente che il lavoratore sta eseguendo per liberare il lavoratore. Il completamento dell'operazione di arresto richiede diversi minuti, a seconda del tipo di lavoro.
+-- Fare clic sul collegamento nella colonna **Registri** per visualizzare il registro del lavoro corrente che l'operatore sta eseguendo.
   
 
-  ## Steps to Withdraw an Execution
+  ## Passaggi per ritirare un'esecuzione
 
-  Because an execution might contains one or many tasks, some of then might be in pending state, some of them might be in running state. Stop running tasks might not stop whole the execution. You can use the following steps to stop the overall execution.
+  Poiché un'esecuzione potrebbe contenere una o più attività, alcune di esse potrebbero essere in stato di attesa, altre potrebbero essere in stato di esecuzione. L'interruzione delle attività in esecuzione potrebbe non interrompere l'intera esecuzione. È possibile utilizzare i seguenti passaggi per interrompere l'esecuzione complessiva.
 
-  1. Go to the Harbor job service dashboard with an account that has Harbor system administrator privileges.
-  2. Click the **Job Queues** tab, and click the **Stop** button to stop all jobs in the queue.
-  3. Click the **Workers** tab, and click the **Free** button to stop the execution of the current job which the worker is working on to free the worker.
-  4. Wait and check the execution status to become **Stopped**.
+  1. Vai al dashboard del servizio di lavoro Harbor con un account che dispone dei privilegi di amministratore di sistema Harbor.
+  2. Fare clic sulla scheda **Code di lavori**, quindi fare clic sul pulsante **Stop** per interrompere tutti i lavori in coda.
+  3. Fare clic sulla scheda **Lavoratori** e fare clic sul pulsante **Libero** per interrompere l'esecuzione del lavoro corrente su cui sta lavorando il lavoratore per liberare il lavoratore.
+  4. Attendere e verificare che lo stato dell'esecuzione diventi **Stopped**.
 
-  Sometimes, you don't want to remove this scheduled task from job queue. To let workers to work on other types of jobs, you can pause/resume the job queue.
+  A volte, non vuoi rimuovere questa attività pianificata dalla coda dei lavori. Per consentire ai lavoratori di lavorare su altri tipi di lavori, puoi mettere in pausa/riprendere la coda dei lavori.
   
-  1. Go to the Harbor job service dashboard with an account that has Harbor system administrator privileges.
-  2. Click the **Job Queues** tab, and click the **Pause** button to pause all jobs in the queue.
-  3. Wait the job service workers to work on other type of jobs.
-  4. Click the **Resume** button to resume the job queue.
+  1. Vai al dashboard del servizio di lavoro Harbor con un account che dispone dei privilegi di amministratore di sistema Harbor.
+  2. Fare clic sulla scheda **Code di lavori**, quindi fare clic sul pulsante **Pausa** per mettere in pausa tutti i lavori nella coda.
+  3. Attendere che gli addetti ai servizi per il lavoro lavorino su altri tipi di lavori.
+  4. Fare clic sul pulsante **Riprendi** per riprendere la coda dei lavori.

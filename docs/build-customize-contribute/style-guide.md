@@ -1,292 +1,292 @@
 ---
-title: "Documentation Style Guide"
+title: "Guida allo stile della documentazione"
 ---
 
-_This style guide is adapted from the [Kubernetes style guide](https://kubernetes.io/docs/contribute/style/style-guide/)._
+_Questa guida di stile è adattata da [Guida allo stile Kubernetes](https://kubernetes.io/docs/contribute/style/style-guide/)._
 
-This page outlines writing style guidelines for the Harbor documentation and you should use it as a reference as you write or edit content. These are guidelines, not rules. Use your best judgment as you write documentation, and feel free to propose changes to these guidelines.
+Questa pagina delinea le linee guida sullo stile di scrittura per la documentazione Harbor e dovresti usarla come riferimento mentre scrivi o modifichi il contenuto. Queste sono linee guida, non regole. Usa il tuo miglior giudizio mentre scrivi la documentazione e sentiti libero di proporre modifiche a queste linee guida.
 
-Changes to the style guide are made by the Harbor maintainers as a group. To propose a change or addition create an [issue/PR](https://github.com/goharbor/harbor/issues), or come to a [community meeting](/community) to discuss your suggestions.
+Le modifiche alla guida di stile vengono apportate dai manutentori di Harbor come gruppo. Per proporre una modifica o un'aggiunta crea un [problema/PR](https://github.com/goharbor/harbor/issues), oppure vieni a un [incontro comunitario](/community) per discutere i tuoi suggerimenti.
 
-The Harbor documentation uses the [Goldmark](https://gohugo.io/getting-started/configuration-markup/#goldmark) Markdown renderer.
+La documentazione Harbor utilizza il renderer [Marchio d'oro](https://gohugo.io/getting-started/configuration-markup/#goldmark) Markdown.
 
-## Content best practices
-### Use present tense
+## Migliori pratiche sui contenuti
+### Usa il tempo presente
 
 {{< table caption="Do and Don't - Use present tense" >}}
-|Do|Don't|
+|Fai|Non|
 |--- |--- |
-|This command starts a proxy.|This command will start a proxy.|
+|Questo comando avvia un proxy.|Questo comando avvia un proxy.|
 {{< /table >}}
 
-Exception: Use future or past tense if it is required to convey the correct meaning.
+Eccezione: utilizzare il futuro o il passato se è necessario trasmettere il significato corretto.
 
-### Use active voice
+### Usa la voce attiva
 
 {{< table caption="Do and Don't - Use active voice" >}}
-|Do|Don't|
+|Fai|Non|
 |--- |--- |
-|You can explore the API using a browser.|The API can be explored using a browser.|
-|The YAML file specifies the replica count.|The replica count is specified in the YAML file.|
+|È possibile esplorare API utilizzando un browser.|È possibile esplorare API utilizzando un browser.|
+|Il file YAML specifica il conteggio delle repliche.|Il conteggio delle repliche è specificato nel file YAML.|
 {{< /table >}}
 
-Exception: Use passive voice if active voice leads to an awkward sentence construction.
+Eccezione: utilizzare la voce passiva se la voce attiva porta a una costruzione della frase scomoda.
 
-### Use simple and direct language
+### Usa un linguaggio semplice e diretto
 
-Use simple and direct language. Avoid using unnecessary phrases, such as saying "please."
+Utilizza un linguaggio semplice e diretto. Evita di usare frasi non necessarie, come dire "per favore".
 
 {{< table caption="Do and Don't - Use simple and direct language" >}}
-|Do|Don't|
+|Fai|Non|
 |--- |--- |
-|To create a ReplicaSet, ...|In order to create a ReplicaSet, ...|
-|See the configuration file.|Please see the configuration file.|
-|View the Pods.|With this next command, we'll view the Pods.|
+|Per creare un ReplicaSet, ...|Per creare un ReplicaSet, ...|
+|Consulta il file di configurazione.|Consulta il file di configurazione.|
+|Visualizza i pod.|Con questo comando successivo, visualizzeremo i pod.|
 {{< /table >}}
 
-### Address the reader as "you"
+### Rivolgiti al lettore chiamandolo "tu"
 
 {{< table caption="Do and Don't - Addressing the reader" >}}
-|Do|Don't|
+|Fai|Non|
 |--- |--- |
-|You can create a Deployment by ...|We'll create a Deployment by ...|
-|In the preceding output, you can see...|In the preceding output, we can see ...|
+|Puoi creare una distribuzione entro...|Creeremo una distribuzione entro...|
+|Nell'output precedente puoi vedere...|Nell'output precedente puoi vedere...|
 {{< /table >}}
 
-### Avoid Latin phrases
+### Evita le frasi latine
 
-Prefer English terms over Latin abbreviations.
+Preferire i termini inglesi alle abbreviazioni latine.
 
 {{< table caption="Do and Don't - Avoid Latin phrases" >}}
-|Do|Don't|
+|Fai|Non|
 |--- |--- |
-|For example, ...|e.g., ...|
-|That is, ...|i.e., ...|
+|Ad esempio, ...|ad esempio, ...|
+|Cioè, ...|cioè, ...|
 {{< /table >}}
 
-Exception: Use "etc." for et cetera.
+Eccezione: utilizzare "ecc." per eccetera.
 
-## Patterns to avoid
+## Schemi da evitare
 
 
-### Avoid using "we"
+### Evita di usare "noi"
 
-Using "we" in a sentence can be confusing, because the reader might not know
-whether they're part of the "we" you're describing.
+Usare "noi" in una frase può creare confusione, perché il lettore potrebbe non saperlo
+se fanno parte del "noi" che stai descrivendo.
 
 {{< table caption="Do and Don't - Avoid using we" >}}
-|Do|Don't|
+|Fai|Non|
 |--- |--- |
-|Version 1.4 includes ...|In version 1.4, we have added ...|
-|Kubernetes provides a new feature for ...|We provide a new feature ...|
-|This page teaches you how to use Pods.|In this page, we are going to learn about Pods.|
+|La versione 1.4 include...|Nella versione 1.4 abbiamo aggiunto...|
+|Kubernetes fornisce una nuova funzionalità per...|Forniamo una nuova funzionalità...|
+|Questa pagina ti insegna come utilizzare i Pod.|In questa pagina impareremo a conoscere i Pod.|
 {{< /table >}}
 
-### Avoid jargon and idioms
+### Evita gergo e modi di dire
 
-Many readers speak English as a second language. Avoid jargon and idioms to help them understand better.
+Molti lettori parlano inglese come seconda lingua. Evita il gergo e gli idiomi per aiutarli a capire meglio.
 
 {{< table caption="Do and Don't - Avoid jargon and idioms" >}}
-|Do|Don't|
+|Fai|Non|
 |--- |--- |
-|Internally, ...|Under the hood, ...|
-|Create a new cluster.|Turn up a new cluster.|
+|Internamente, ...|Sotto il cofano, ...|
+|Crea un nuovo cluster.|Attiva un nuovo cluster.|
 {{< /table >}}
 
-### Avoid statements about the future or that will soon be out of date
+### Evita affermazioni sul futuro o che presto diventeranno obsolete
 
-Avoid making promises or giving hints about the future. If you need to talk about
-a beta feature, put the text under a heading that identifies it as beta
-information.
+Evita di fare promesse o dare suggerimenti sul futuro. Se hai bisogno di parlarne
+una funzionalità beta, inserisci il testo sotto un titolo che lo identifichi come beta
+informazioni.
 
-Also avoid words like “recently”, "currently" and "new." A feature that is new today might not be
-considered new in a few months.
+Evita anche parole come "recentemente", "attualmente" e "nuovo". Una funzionalità che oggi è nuova potrebbe non esserlo
+considerato nuovo in pochi mesi.
 
 {{< table caption="Do and Don't - Avoid statements that will soon be out of date" >}}
-|Do|Don't|
+|Fai|Non|
 |--- |--- |
-|In version 1.4, ...|In the current version, ...|
-|The Federation feature provides ...|The new Federation feature provides ...|
+|Nella versione 1.4, ...|Nella versione attuale, ...|
+|La funzionalità Federazione fornisce...|La nuova funzionalità Federazione fornisce...|
 {{< /table >}}
 
-### Language
+### Lingua
 
-This documentation uses U.S. English spelling and grammar.
+Questa documentazione utilizza l'ortografia e la grammatica dell'inglese americano.
 
-## Documentation formatting standards
+## Standard di formattazione della documentazione
 
-### Use angle brackets for placeholders
+### Utilizza le parentesi angolari per i segnaposto
 
-Use angle brackets for placeholders. Tell the reader what a placeholder represents.
+Utilizzare le parentesi angolari per i segnaposto. Spiega al lettore cosa rappresenta un segnaposto.
 
-1. Display information about a Pod:
+1. Visualizza le informazioni su un Pod:
 
-        kubectl describe pod <pod-name> -n <namespace>
+        kubectl descrive il pod <pod-name> -n <namespace>
 
-    If the pod is in the default namespace, you can omit the '-n' parameter.
+    Se il pod si trova nello spazio dei nomi predefinito, puoi omettere il parametro '-n'.
 
-### Use bold for user interface elements
+### Usa il grassetto per gli elementi dell'interfaccia utente
 
 {{< table caption="Do and Don't - Bold interface elements" >}}
-|Do|Don't|
+|Fai|Non|
 |--- |--- |
-|Click **Fork**.|Click "Fork".|
-|Select **Other**.|Select "Other".|
+|Fare clic su **Biforcazione**.|Fare clic su "Biforcazione".|
+|Seleziona **Altro**.|Seleziona "Altro".|
 {{< /table >}}
 
-### Use code style for filenames, directories, paths, object field names and namespaces
+### Utilizza lo stile del codice per nomi di file, directory, percorsi, nomi di campi oggetto e spazi dei nomi
 {{< table caption="Do and Don't - Use code style for filenames, directories, paths, object field names and namespaces" >}}
-|Do|Don't|
+|Fai|Non|
 |--- |--- |
-|Open the `envars.yaml` file.|Open the envars.yaml file.|
-|Go to the `/docs/tutorials` directory.|Go to the /docs/tutorials directory.|
-|Open the `/_data/concepts.yaml` file.|Open the /\_data/concepts.yaml file.|
+|Apri il file `envars.yaml`.|Apri il file envars.yaml.|
+|Vai alla directory `/docs/tutorials`.|Vai alla directory /docs/tutorials.|
+|Apri il file `/_data/concepts.yaml`.|Apri il file /\_data/concepts.yaml.|
 {{< /table >}}
 
 
-### Use punctuation inside quotes
+### Usa la punteggiatura tra virgolette
 {{< table caption="Do and Don't - Use code style for filenames, directories, paths, object field names and namespaces" >}}
-|Do|Don't|
+|Fai|Non|
 |--- |--- |
-|events are recorded with an associated "stage."|events are recorded with an associated "stage".|
-|The copy is called a "fork."|The copy is called a "fork".|
+|gli eventi vengono registrati con un "palcoscenico" associato |gli eventi vengono registrati con un "palcoscenico" associato |
+|La copia si chiama "fork".|La copia si chiama "fork".|
 {{< /table >}}
 
-Exception: When the quoted word is a user input.
+Eccezione: quando la parola tra virgolette è un input dell'utente.
 
-Example:
-* My user ID is “IM47g”.
-* Did you try the password “mycatisawesome”?
+Esempio:
+* Il mio ID utente è "IM47g".
+* Hai provato la password "mycatisawesome"?
 
-## Inline code formatting
+## Formattazione del codice in linea
 
 
-### Use code style for inline code and commands
+### Usa lo stile del codice per il codice e i comandi in linea
 
-For inline code in an HTML document, use the `<code>` tag. In a Markdown
-document, use the backtick (`` ` ``).
+Per il codice in linea in un documento HTML, utilizzare il tag `<code>`. In un ribasso
+documento, utilizzare il backtick (`` ` ``).
 
 {{< table caption="Do and Don't - Use code style for filenames, directories, paths, object field names and namespaces" >}}
-|Do|Don't|
+|Fai|Non|
 |--- |--- |
-|The `kubectl run` command creates a Deployment.|The "kubectl run" command creates a Deployment.|
-|For declarative management, use `kubectl apply`.|For declarative management, use "kubectl apply".|
-|Use single backticks to enclose inline code. For example, `var example = true`.|Use two asterisks (`**`) or an underscore (`_`) to enclose inline code. For example, **var example = true**.|
-|Use triple backticks (\`\`\`) before and after a multi-line block of code for fenced code blocks.|Use multi-line blocks of code to create diagrams, flowcharts, or other illustrations.|
-|Use meaningful variable names that have a context.|Use variable names such as 'foo','bar', and 'baz' that are not meaningful and lack context.|
-|Remove trailing spaces in the code.|Add trailing spaces in the code, where these are important, because a screen reader will read out the spaces as well.|
+|Il comando `kubectl run` crea una distribuzione.|Il comando "kubectl run" crea una distribuzione.|
+|Per la gestione dichiarativa, utilizzare `kubectl apply`.|Per la gestione dichiarativa, utilizzare "kubectl apply".|
+|Utilizzare singoli apici inversi per racchiudere il codice in linea. Ad esempio, `var example = true`.|Utilizza due asterischi (`**`) o un carattere di sottolineatura (`_`) per racchiudere il codice in linea. Ad esempio, **var esempio = true**.|
+|Utilizza tripli apici inversi (\`\`\`) prima e dopo un blocco di codice su più righe per blocchi di codice recintati.|Utilizza blocchi di codice su più righe per creare diagrammi, diagrammi di flusso o altre illustrazioni.|
+|Utilizza nomi di variabili significativi che abbiano un contesto.|Utilizza nomi di variabili come 'foo','bar' e 'baz' che non hanno significato e mancano di contesto.|
+|Rimuovi gli spazi finali nel codice.|Aggiungi spazi finali nel codice, dove sono importanti, perché anche un'utilità per la lettura dello schermo leggerà gli spazi.|
 {{< /table >}}
 
-### Use normal style for string and integer field values
+### Usa lo stile normale per i valori dei campi stringa e interi
 
-For field values of type string or integer, use normal style without quotation marks.
+Per i valori dei campi di tipo stringa o intero, utilizzare lo stile normale senza virgolette.
 
 {{< table caption="Do and Don't - Use normal style for string and integer field values" >}}
-|Do|Don't|
+|Fai|Non|
 |--- |--- |
-|Set the value of `imagePullPolicy` to `Always`.|Set the value of `imagePullPolicy` to "Always".|
-|Set the value of `image` to `nginx:1.16`.|Set the value of `image` to nginx:1.16.|
-|Set the value of the `replicas` field to `2`.|Set the value of the `replicas` field to 2.|
+|Imposta il valore di `imagePullPolicy` su `Always`.|Imposta il valore di `imagePullPolicy` su "Sempre".|
+|Imposta il valore di `image` su `nginx:1.16`.|Imposta il valore di `image` su nginx:1.16.|
+|Imposta il valore del campo `replicas` su `2`.|Imposta il valore del campo `replicas` su 2.|
 {{< /table >}}
 
-## Code snippet formatting
+## Formattazione dello snippet di codice
 
 
-### Don't include the command prompt
+### Non includere il prompt dei comandi
 
 {{< table caption="Do and Don't - Don't include the command prompt" >}}
-|Do|Don't|
+|Fai|Non|
 |--- |--- |
-|kubectl get pods|$ kubectl get pods|
+|kubectl get pod|$ kubectl get pod|
 {{< /table >}}
 
-### Separate commands from output
+### Comandi separati dall'output
 
-Verify that the Pod is running on your chosen node:
+Verifica che il Pod sia in esecuzione sul nodo scelto:
 
 ```
 kubectl get pods --output=wide
 ```
 
-The output is similar to this:
+L'output è simile a questo:
 
 ```
 NAME     READY     STATUS    RESTARTS   AGE    IP           NODE
 nginx    1/1       Running   0          13s    10.200.0.4   worker0
 ```
 
-## Harbor word list
+## Harbor elenco di parole
 
 
-A list of Harbor-specific terms and words to be used consistently across the site.
+Un elenco di termini e parole specifici di Harbor da utilizzare in modo coerente in tutto il sito.
 
 {{< table caption="Harbor word list" >}}
-|Trem|Usage|
+|Trem|Utilizzo|
 |--- |--- |
-|Kubernetes|Kubernetes should always be capitalized.|
-|Harbor|Harbor should always be capitalized.|
-|Docker|Docker should always be capitalized.|
-|Allowlist|Use allowlist instead of whitelist.|
-|Denylist|Use denylist instead of blacklist.|
+|Kubernetes|Kubernetes deve sempre essere maiuscolo.|
+|Harbor|Harbor deve sempre essere maiuscolo.|
+|Docker|Docker deve sempre essere maiuscolo.|
+|Lista consentita|Utilizza la lista consentita invece della lista bianca.|
+|Lista negata|Utilizza la lista negata invece della lista nera.|
 {{< /table >}}
 
-## Markdown elements
+## Elementi di riduzione
 
-### Headings
-People accessing this documentation may use a screen reader or other assistive technology (AT). [Screen readers](https://en.wikipedia.org/wiki/Screen_reader) are linear output devices, they output items on a page one at a time. If there is a lot of content on a page, you can use headings to give the page an internal structure. A good page structure helps all readers to easily navigate the page or filter topics of interest.
+### Intestazioni
+Le persone che accedono a questa documentazione possono utilizzare uno screen reader o altre tecnologie assistive (AT). [Lettori di schermo](https://en.wikipedia.org/wiki/Screen_reader) sono dispositivi di output lineari, emettono elementi su una pagina uno alla volta. Se una pagina contiene molti contenuti, puoi utilizzare i titoli per conferire alla pagina una struttura interna. Una buona struttura della pagina aiuta tutti i lettori a navigare facilmente nella pagina o a filtrare gli argomenti di interesse.
 
 {{< table caption="Do and Don't - Headings" >}}
-|Do|Don't|
+|Fai|Non|
 |--- |--- |
-|Include a title on each page or blog post.|Include more than one title headings (#) in a page.|
-|Use ordered headings to provide a meaningful high-level outline of your content.|Use headings level 4 through 6, unless it is absolutely necessary. If your content is that detailed, it may need to be broken into separate articles.|
-|Use title case for headings. For example, **Extend Kubectl With Plugins**|Use sentence case for headings. For example, **Extend kubectl with plugins**|
+|Includi un titolo in ogni pagina o post del blog.|Includi più titoli (#) in una pagina.|
+|Utilizza titoli ordinati per fornire una descrizione significativa di alto livello dei tuoi contenuti.|Utilizza titoli dal livello 4 al 6, a meno che non sia assolutamente necessario. Se il tuo contenuto è così dettagliato, potrebbe essere necessario suddividerlo in articoli separati.|
+|Utilizzare maiuscole e minuscole per i titoli. Ad esempio, **Estendi Kubectl con i plugin**|Utilizza maiuscole/minuscole per i titoli. Ad esempio, **Estendi kubectl con i plugin**|
 {{< /table >}}
 
-### Paragraphs
+### Paragrafi
 
 {{< table caption="Do and Don't - Paragraphs" >}}
 
-|Do|Don't|
+|Fai|Non|
 |--- |--- |
-|Try to keep paragraphs under 6 sentences.|Write long-winded paragraphs.|
-|Use three hyphens (`---`) to create a horizontal rule for breaks in paragraph content.|Use horizontal rules for decoration.|
+|Cerca di mantenere i paragrafi sotto le 6 frasi.|Scrivi paragrafi prolissi.|
+|Utilizza tre trattini (`---`) per creare un filetto orizzontale per le interruzioni nel contenuto del paragrafo.|Utilizza filetti orizzontali per la decorazione.|
 {{< /table >}}
 
-### Links
+### Collegamenti
 
 {{< table caption="Do and Don't - Links" >}}
-|Do|Don't|
+|Fai|Non|
 |--- |--- |
-| Write hyperlinks that give you context for the content they link to. For example: Certain ports are open on your machines. See [check required ports](#check-required-ports) for more details.|Use ambiguous terms such as “click here”. For example: Certain ports are open on your machines. See [here](#check-required-ports) for more details.|
-|Write Markdown-style links: `[link text](URL)`. For example: `[community meeting agenda](https://hackmd.io/Jq6F5zqZR7S80CeDWUklkA)` and the output is  [community meeting agenda](https://hackmd.io/Jq6F5zqZR7S80CeDWUklkA).|Write HTML-style links: `<a href="/media/examples/link-element-example.css" target="_blank">Visit our tutorial!</a>`|
+| Scrivi collegamenti ipertestuali che forniscano il contesto per il contenuto a cui si collegano. Ad esempio: alcune porte sono aperte sulle tue macchine. Vedi [controllare le porte richieste](#check-required-ports) per maggiori dettagli.|Utilizza termini ambigui come "fai clic qui". Ad esempio: alcune porte sono aperte sulle tue macchine. Vedi [Qui](#check-required-ports) per maggiori dettagli.|
+|Scrivi link in stile Markdown: `[link text](URL)`. Ad esempio: `[community meeting agenda](https://hackmd.io/Jq6F5zqZR7S80CeDWUklkA)` e l'output è [ordine del giorno degli incontri comunitari](https://hackmd.io/Jq6F5zqZR7S80CeDWUklkA).|Scrivi collegamenti in stile HTML: `<a href="/media/examples/link-element-example.css" target="_blank">Visit our tutorial!</a>`|
 {{< /table >}}
 
 
-### Lists
+### Elenchi
 
-Group items in a list that are related to each other and need to appear in a specific order or to indicate a correlation between multiple items. When a screen reader comes across a list—whether it is an ordered or unordered list—it will be announced to the user that there is a group of list items. The user can then use the arrow keys to move up and down between the various items in the list.
-Website navigation links can also be marked up as list items; after all they are nothing but a group of related links.
+Raggruppa elementi in un elenco che sono correlati tra loro e devono essere visualizzati in un ordine specifico o per indicare una correlazione tra più elementi. Quando un'utilità per la lettura dello schermo incontra un elenco, indipendentemente dal fatto che si tratti di un elenco ordinato o non ordinato, verrà annunciato all'utente che esiste un gruppo di elementi dell'elenco. L'utente può quindi utilizzare i tasti freccia per spostarsi su e giù tra le varie voci dell'elenco.
+I collegamenti di navigazione del sito Web possono anche essere contrassegnati come elementi di elenco; dopotutto non sono altro che un insieme di link correlati.
 
- - End each item in a list with a period if one or more items in the list are complete sentences. For the sake of consistency, normally either all items or none should be complete sentences.
+ - Termina ogni elemento dell'elenco con un punto se uno o più elementi dell'elenco sono frasi complete. Per motivi di coerenza, normalmente tutti gli elementi o nessuno dovrebbero essere frasi complete.
 
-  - Ordered lists that are part of an incomplete introductory sentence can be in lowercase and punctuated as if each item was a part of the introductory sentence.
+  - Gli elenchi ordinati che fanno parte di una frase introduttiva incompleta possono essere scritti in minuscolo e punteggiati come se ogni elemento facesse parte della frase introduttiva.
 
- - Use the number one (`1.`) for ordered lists.
+ - Utilizzare il numero uno (`1.`) per gli elenchi ordinati.
 
- - Use (`+`), (`*`), or (`-`) for unordered lists - be consistent within the same document.
+ - Utilizzare (`+`), (`*`) o (`-`) per elenchi non ordinati: essere coerenti all'interno dello stesso documento.
 
- - Leave a blank line after each list.
+ - Lascia una riga vuota dopo ogni elenco.
 
- - Indent nested lists with four spaces (for example, ⋅⋅⋅⋅).
+ - Rientra gli elenchi nidificati con quattro spazi (ad esempio, ⋅⋅⋅⋅).
 
- - List items may consist of multiple paragraphs. Each subsequent paragraph in a list item must be indented by either four spaces or one tab.
+ - Le voci dell'elenco possono essere costituite da più paragrafi. Ogni paragrafo successivo in una voce di elenco deve essere rientrato di quattro spazi o di una tabulazione.
 
-### Tables
+### Tabelle
 
-The semantic purpose of a data table is to present tabular data. Sighted users can quickly scan the table but a screen reader goes through line by line. A table [caption](https://www.w3schools.com/tags/tag_caption.asp) is used to create a descriptive title for a data table. Assistive technologies (AT) use the HTML table caption element to identify the table contents to the user within the page structure.
+Lo scopo semantico di una tabella dati è presentare dati tabulari. Gli utenti vedenti possono scansionare rapidamente la tabella ma uno screen reader scorre riga per riga. Una tabella [didascalia](https://www.w3schools.com/tags/tag_caption.asp) viene utilizzata per creare un titolo descrittivo per una tabella di dati. Le tecnologie assistive (AT) utilizzano l'elemento didascalia della tabella HTML per identificare il contenuto della tabella all'utente all'interno della struttura della pagina.
 
-If you need to create a table, create the table in markdown and use the table [Hugo shortcode](https://gohugo.io/content-management/shortcodes/) to include a caption.
+Se devi creare una tabella, crea la tabella in markdown e utilizza la tabella [Codice breve Hugo](https://gohugo.io/content-management/shortcodes/) per includere una didascalia.
 
 ```
 {{</* table caption="Configuration parameters" >}}
@@ -297,4 +297,4 @@ Parameter | Description | Default
 {{< /table */>}}
 
 ```
-**Note:** This shortcode does not support markdown reference-style links. Use inline-style links in tables. See more information about [markdown link styles](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#links).
+**Nota:** questo shortcode non supporta i link in stile riferimento al markdown. Utilizza collegamenti in stile in linea nelle tabelle. Visualizza ulteriori informazioni su [stili di collegamento di ribasso](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#links).

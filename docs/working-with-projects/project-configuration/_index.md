@@ -1,50 +1,50 @@
 ---
-title: Project Configuration
+title: Configurazione del progetto
 weight: 30
 ---
 
-After the initial creation of a project, you can configure or reconfigure its properties in the **Configuration** tab for that project.
+Dopo la creazione iniziale di un progetto, puoi configurare o riconfigurare le sue proprietà nella scheda **Configurazione** per quel progetto.
 
-1. Log in to the Harbor interface with an account that has at least project administrator privileges.
-1. Go to **Projects** and select a project.
-1. Select the **Configuration** tab.
-1. To make all repositories under the project accessible to everyone, select the `Public` checkbox, or deselect this checkbox to make the project private.
-1. To prevent un-signed images under the project from being pulled, select the `Prevent vulnerable images from running` checkbox.
+1. Accedi all'interfaccia Harbor con un account che disponga almeno dei privilegi di amministratore del progetto.
+1. Vai su **Progetti** e seleziona un progetto.
+1. Seleziona la scheda **Configurazione**.
+1. Per rendere tutti i repository del progetto accessibili a tutti, seleziona la casella di controllo `Public` oppure deseleziona questa casella di controllo per rendere il progetto privato.
+1. Per evitare che le immagini non firmate nel progetto vengano estratte, seleziona la casella di controllo `Prevent vulnerable images from running`.
 
-![browse project](../../img/project-configuration.png)
+![sfoglia progetto](../../img/project-configuration.png)
 
-## Searching projects and repositories
+## Ricerca di progetti e repository
 
-Enter a keyword in the search field at the top to list all matching projects and repositories. The search result includes both public and private repositories you have access to.  
+Inserisci una parola chiave nel campo di ricerca in alto per elencare tutti i progetti e i repository corrispondenti. Il risultato della ricerca include sia i repository pubblici che quelli privati ​​a cui hai accesso.  
 
-![browse project](../../img/new-search.png)
+![sfoglia progetto](../../img/new-search.png)
 
-## Configure Vulnerability Settings in Projects
+## Configura le impostazioni di vulnerabilità nei progetti
 
-You can configure projects so that images with vulnerabilities cannot be run, and to automatically scan images as soon as they are pushed into the project.
+È possibile configurare i progetti in modo che le immagini con vulnerabilità non possano essere eseguite e per scansionare automaticamente le immagini non appena vengono inserite nel progetto.
 
-1. Log in to the Harbor interface with an account that has at least project administrator privileges.
-1. Go to **Projects** and select a project.
-1. Select the **Configuration** tab.
-1. To prevent vulnerable images under the project from being pulled, select the **Prevent vulnerable images from running** checkbox.
+1. Accedi all'interfaccia Harbor con un account che disponga almeno dei privilegi di amministratore del progetto.
+1. Vai su **Progetti** e seleziona un progetto.
+1. Seleziona la scheda **Configurazione**.
+1. Per impedire che le immagini vulnerabili del progetto vengano estratte, seleziona la casella di controllo **Impedisci l'esecuzione delle immagini vulnerabili**.
 
-   ![Prevent vulnerable images from running](../../img/prevent-vulnerable-images.png)
+   ![Impedisci l'esecuzione di immagini vulnerabili](../../img/prevent-vulnerable-images.png)
 
-1. Select the severity level of vulnerabilities to prevent images from running.
+1. Selezionare il livello di gravità delle vulnerabilità per impedire l'esecuzione delle immagini.
 
-   ![Set vulnerability threshold](../../img/set-vulnerability-threshold.png)
+   ![Imposta la soglia di vulnerabilità](../../img/set-vulnerability-threshold.png)
 
-   Images cannot be pulled if their level is equal to or higher than the selected level of severity. Harbor does not prevent images with a vulnerability severity of `negligible` from running.
-1. To activate an immediate vulnerability scan on new images that are pushed to the project, select the **Automatically scan images on push** check box.
+   Non è possibile estrarre le immagini se il loro livello è uguale o superiore al livello di gravità selezionato. Harbor non impedisce l'esecuzione di immagini con un livello di vulnerabilità pari a `negligible`.
+1. Per attivare una scansione di vulnerabilità immediata sulle nuove immagini inviate al progetto, selezionare la casella di controllo **Scansiona automaticamente le immagini al momento del push**.
 
-   ![Automatically scan images on push](../../img/scan-on-push.png)
+   ![Scansione automatica delle immagini al momento del push](../../img/scan-on-push.png)
 
-Harbor also supports additional deployment security options, allowing you to [implement content trust](../../working-with-projects/project-configuration/implementing-content-trust/) on your Harbor instance.
+Harbor supporta anche opzioni di sicurezza di distribuzione aggiuntive, consentendoti di eseguire [implementare la fiducia nei contenuti](../../working-with-projects/project-configuration/implementing-content-trust/) sulla tua istanza Harbor.
 
-## Build history
+## Costruisci la storia
 
-Build history makes it easy to see the contents of a container image, find the code which builds an image, or locate the image for a source repository.
+La cronologia delle build semplifica la visualizzazione del contenuto di un'immagine del contenitore, la ricerca del codice che crea un'immagine o l'individuazione dell'immagine per un repository di origine.
 
-In Harbor portal, enter your project, select the repository, click on the link of artifact you'd like to see its build history, the detail page will be opened. Then switch to `Build History` tab, you can see the build history information.
+Nel portale Harbor, inserisci il tuo progetto, seleziona il repository, fai clic sul collegamento dell'artefatto di cui desideri vedere la cronologia di creazione, verrà aperta la pagina dei dettagli. Quindi passa alla scheda `Build History`, puoi vedere le informazioni sulla cronologia della build.
 
-![build history](../../img/build-history.png)
+![costruire la storia](../../img/build-history.png)

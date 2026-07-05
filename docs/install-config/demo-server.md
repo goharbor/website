@@ -1,60 +1,60 @@
 ---
-title: Test Harbor with the Demo Server
+title: Prova Harbor con il server demo
 weight: 10
 ---
 
-The Harbor team has made available a demo Harbor instance that you can use to experiment with Harbor and test its functionalities.
+Il team Harbor ha reso disponibile un'istanza demo Harbor che puoi utilizzare per sperimentare Harbor e testarne le funzionalità.
 
-When using the demo server, please take note of the conditions of use.
+Quando si utilizza il server demo, prestare attenzione alle condizioni di utilizzo.
 
-## Conditions of Use of the Demo Server ##
+## Condizioni di utilizzo del Demo Server ##
 
- - The demo server is reserved for experimental use only, to allow you to test Harbor functionality. 
- - Do not upload sensitive images to the demo server. 
- - The demo server is not a production environment. The Harbor team is not responsible for any loss of data, functionality, or service that might result from its use.
- - The demo server is cleaned and reset every two days.
- - The demo server only allows you to test user functionalities. You cannot test administrator functionalities. To test administrator functionalities and advanced features, set up a Harbor instance.
- - Do not push images >100MB to the demo server, as it has limited storage capacity.
+ - Il server demo è riservato solo per uso sperimentale, per consentirti di testare la funzionalità Harbor. 
+ - Non caricare immagini sensibili sul server demo. 
+ - Il server demo non è un ambiente di produzione. Il team Harbor non è responsabile per eventuali perdite di dati, funzionalità o servizi che potrebbero derivare dal suo utilizzo.
+ - Il server demo viene pulito e ripristinato ogni due giorni.
+ - Il server demo consente solo di testare le funzionalità dell'utente. Non è possibile testare le funzionalità dell'amministratore. Per testare le funzionalità dell'amministratore e le caratteristiche avanzate, configura un'istanza Harbor.
+ - Non inviare immagini superiori a 100 MB al server demo, poiché ha una capacità di archiviazione limitata.
 
-If you encounter any problems while using the demo server, open an [issue on GitHub](https://github.com/goharbor/harbor/issues) or contact the Harbor team on [Slack](https://github.com/goharbor/harbor#community).
+Se riscontri problemi durante l'utilizzo del server demo, apri un [problema su GitHub](https://github.com/goharbor/harbor/issues) o contatta il team Harbor su [Lento](https://github.com/goharbor/harbor#community).
 
-## Access the Demo Server ##
+## Accedi al server demo ##
 
-1. Go to  [https://demo.goharbor.io](https://demo.goharbor.io).
-1. Click **Sign up for an account**.
-1. Create a user account by providing a username, your email address, your name, and a password.
-1. Log in to the Harbor interface using the account you created.
-1. Explore the default project, `library`.
-1. Click  **New Project** to create your own project.
+1. Vai a [https://demo.goharbor.io](https://demo.goharbor.io).
+1. Fai clic su **Registrati per un account**.
+1. Crea un account utente fornendo un nome utente, il tuo indirizzo email, il tuo nome e una password.
+1. Accedi all'interfaccia Harbor utilizzando l'account che hai creato.
+1. Esplora il progetto predefinito, `library`.
+1. Fai clic su **Nuovo progetto** per creare il tuo progetto.
 
-    For information about how to create a project, see [Create a  Project](../working-with-projects/create-projects/_index.md).
+    Per informazioni su come creare un progetto, vedere [Crea un progetto](../working-with-projects/create-projects/_index.md).
 
-1. Open a Docker client and log in to Harbor with the credentials that you created above.
+1. Apri un client Docker e accedi a Harbor con le credenziali che hai creato sopra.
 
     ```sh
     docker login demo.goharbor.io
     ```
 
-1. Create a very simple `Dockerfile` with the following contents.
+1. Crea un semplicissimo `Dockerfile` con i seguenti contenuti.
 
     ```dockerfile
     FROM busybox:latest
     ```
 
-1. Build an image from this Dockerfile and tag it.
+1. Crea un'immagine da questo Dockerfile e taggala.
 
     ```sh
     docker build -t demo.goharbor.io/your-project/test-image .
     ```
 
-1. Push the image to your project in Harbor.
+1. Invia l'immagine al tuo progetto in Harbor.
 
     ```sh
     docker push demo.goharbor.io/your-project/test-image
     ```
 
-1. In the Harbor interface, go to **Projects** > *your_project* >  **Repositories** to view the image repository that you pushed to your Harbor project.
+1. Nell'interfaccia Harbor, vai su **Progetti** > *tuo_progetto* > **Repository** per visualizzare il repository di immagini che hai inviato al tuo progetto Harbor.
 
-## What to Do Next ##
+## Cosa fare dopo ##
 
-See the [Harbor Installation Prerequisites](installation-prereqs.md).
+Vedi [Harbor Prerequisiti di installazione](installation-prereqs.md).

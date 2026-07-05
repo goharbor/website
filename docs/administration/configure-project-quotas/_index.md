@@ -1,49 +1,49 @@
 ---
-title: Configure Project Quotas
+title: Configura le quote del progetto
 weight: 25
 ---
 
-To exercise control over resource use, as a Harbor system administrator you can set  quotas on projects. You can limit the amount of storage capacity that a project can consume. You can set default quotas that apply to all projects globally.
+Per esercitare il controllo sull'utilizzo delle risorse, in qualità di amministratore di sistema Harbor puoi impostare quote sui progetti. È possibile limitare la quantità di capacità di archiviazione che un progetto può consumare. Puoi impostare quote predefinite che si applicano a tutti i progetti a livello globale.
 
 {{< note >}}
-Default quotas apply to projects that are created after you set or change the default quota. The default quota is not applied to projects that already existed before you set it.
+Le quote predefinite si applicano ai progetti creati dopo aver impostato o modificato la quota predefinita. La quota predefinita non viene applicata ai progetti già esistenti prima della sua impostazione.
 {{< /note >}}
 
-You can also set quotas on individual projects. If you set a global default quota and you set different quotas on individual projects, the per-project quotas are applied.
+Puoi anche impostare quote su singoli progetti. Se imposti una quota predefinita globale e imposti quote diverse su singoli progetti, verranno applicate le quote per progetto.
 
-By default, all projects have unlimited quotas for storage use. 
+Per impostazione predefinita, tutti i progetti hanno quote illimitate per l'utilizzo dello spazio di archiviazione. 
 
-1. Select the **Project Quotas** view.
+1. Selezionare la visualizzazione **Quote progetto**.
 
-    ![Project quotas](../../img/project-quota1.png)
-1. To set global default quotas on all projects, click **Edit**.
+    ![Quote del progetto](../../img/project-quota1.png)
+1. Per impostare quote predefinite globali su tutti i progetti, fare clic su **Modifica**.
 
-    ![Project quotas](../../img/project-quota2.png)
+    ![Quote del progetto](../../img/project-quota2.png)
 
-    1. For **Default storage consumption**, enter the maximum quantity of storage that any project can consume, selecting `MiB`, `GiB`, or `TiB` from the drop-down menu, or enter `-1` to set the default to unlimited.  
-    ![Project quotas](../../img/project-quota3.png)
+    1. Per **Consumo di spazio di archiviazione predefinito**, immettere la quantità massima di spazio di archiviazione che qualsiasi progetto può consumare, selezionando `MiB`, `GiB` o `TiB` dal menu a discesa oppure immettere `-1` per impostare l'impostazione predefinita su illimitato.  
+    ![Quote del progetto](../../img/project-quota3.png)
 
-    1. Click **OK**.
-1. To set quotas on an individual project, select the project and then click **Edit**.
-    ![Project quotas](../../img/project-quota4.png)
-    1. For **Default storage consumption**, enter the maximum quantity of storage that this individual project can consume, selecting `MiB`, `GiB`, or `TiB` from the drop-down menu.
+    1. Fare clic su **OK**.
+1. Per impostare le quote su un singolo progetto, selezionare il progetto e quindi fare clic su **Modifica**.
+    ![Quote del progetto](../../img/project-quota4.png)
+    1. Per **Consumo di spazio di archiviazione predefinito**, inserisci la quantità massima di spazio di archiviazione che questo singolo progetto può consumare, selezionando `MiB`, `GiB` o `TiB` dal menu a discesa.
 
-After you set quotas, you can see how much of their quotas each project has consumed.
+Dopo aver impostato le quote, puoi vedere la quantità di quote consumate da ciascun progetto.
 
-![Project quotas](../../img/project-quota5.png)
+![Quote del progetto](../../img/project-quota5.png)
 
-### How Harbor Calculates Resource Usage
+### Come Harbor calcola l'utilizzo delle risorse
 
-When setting project quotas, it is useful to know how Harbor calculates storage use, especially in relation to image pushing, retagging, and garbage collection.
+Quando si impostano le quote del progetto, è utile sapere come Harbor calcola l'utilizzo dello spazio di archiviazione, in particolare in relazione al push delle immagini, alla ricodifica e alla raccolta dei rifiuti.
 
-- Harbor computes image size when blobs and manifests are pushed from the Docker client.
+- Harbor calcola la dimensione dell'immagine quando BLOB e manifest vengono inviati dal client Docker.
 
   {{< note >}}
-  When users push an image, the manifest is pushed last, after all of the associated blobs have been pushed successfully to the registry. If several images are pushed concurrently and if there is an insufficient number of tags left in the quota for all of them, images are accepted in the order that their manifests arrive. Consequently, an attempt to push an image might not be immediately rejected for exceeding the quota. This is because there was availability in the tag quota when the push was initiated, but by the time the manifest arrived the quota had been exhausted.
+  Quando gli utenti inviano un'immagine, il manifest viene inviato per ultimo, dopo che tutti i BLOB associati sono stati inviati correttamente a registry. Se vengono inviate più immagini contemporaneamente e se nella quota rimane un numero insufficiente di tag per tutte, le immagini vengono accettate nell'ordine in cui arrivano i relativi manifest. Di conseguenza, un tentativo di pubblicare un'immagine potrebbe non essere immediatamente rifiutato per aver superato la quota. Questo perché la quota di tag era disponibile quando è stato avviato il push, ma quando è arrivato il manifest la quota era stata esaurita.
   {{< /note >}}
-- Shared blobs are only computed once per project. In Docker, blob sharing is defined globally. In Harbor, blob sharing is defined at the project level. As a consequence, overall storage usage can be greater than the actual disk capacity.
-- Retagging images reserves and releases resources: 
-  -  If you retag an image within a project,  the storage usage does not change because there are no new blobs or manifests.
-  - If you retag an image from one project to another, the storage usage will increase.
-- During garbage collection, Harbor frees the storage used by untagged blobs in the project.
-- Helm chart size is not calculated.
+- I BLOB condivisi vengono calcolati solo una volta per progetto. In Docker, la condivisione BLOB è definita a livello globale. In Harbor, la condivisione BLOB è definita a livello di progetto. Di conseguenza, l'utilizzo complessivo dello spazio di archiviazione può essere maggiore della capacità effettiva del disco.
+- La ricodifica delle immagini riserva e rilascia risorse: 
+  - Se ricodifica un'immagine all'interno di un progetto, l'utilizzo dello spazio di archiviazione non cambia perché non sono presenti nuovi BLOB o manifest.
+  - Se ricodifica un'immagine da un progetto a un altro, l'utilizzo dello spazio di archiviazione aumenterà.
+- Durante la Garbage Collection, Harbor libera lo spazio di archiviazione utilizzato dai BLOB senza tag nel progetto.
+- La dimensione del grafico Helm non viene calcolata.

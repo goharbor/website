@@ -1,52 +1,52 @@
 ---
-title: Harbor Installation and Configuration
+title: Harbor Installazione e configurazione
 weight: 5
 ---
 
-This section describes how to perform a new installation of Harbor.
+Questa sezione descrive come eseguire una nuova installazione di Harbor.
 
-If you are upgrading from a previous version of Harbor, you might need to update the configuration file and migrate your data to fit the database schema of the later version. For information about upgrading, see [Upgrading Harbor](../administration/upgrade/_index.md).
+Se stai effettuando l'aggiornamento da una versione precedente di Harbor, potrebbe essere necessario aggiornare il file di configurazione e migrare i dati per adattarli allo schema del database della versione successiva. Per informazioni sull'aggiornamento, vedere [Aggiornamento di Harbor](../administration/upgrade/_index.md).
 
-Before you install Harbor, you can test the latest version of Harbor on a demo environment maintained by the Harbor team. For information, see [Test Harbor with the Demo Server](demo-server.md).
+Prima di installare Harbor, è possibile testare l'ultima versione di Harbor in un ambiente demo gestito dal team Harbor. Per informazioni, vedere [Prova Harbor con il server demo](demo-server.md).
 
-Harbor supports integration with different 3rd-party replication adapters for replicating data, OIDC adapters for authN/authZ, and scanner adapters for vulnerability scanning of container images. For information about the supported adapters, see the [Harbor Compatibility List](harbor-compatibility-list.md).
+Harbor supporta l'integrazione con diversi adattatori di replica di terze parti per la replica dei dati, adattatori OIDC per authN/authZ e adattatori scanner per la scansione delle vulnerabilità delle immagini del contenitore. Per informazioni sugli adattatori supportati, vedere [Elenco compatibilità Harbor](harbor-compatibility-list.md).
 
-## Installation Process
+## Processo di installazione
 
-The standard Harbor installation process involves the following stages:
+Il processo di installazione standard di Harbor prevede le seguenti fasi:
 
-1. Make sure that your target host meets the [Harbor Installation Prerequisites](installation-prereqs.md).
-1. [Download the Harbor Installer](download-installer.md)
-1. [Configure HTTPS Access to Harbor](configure-https.md)
-1. [Configure the Harbor YML File](configure-yml-file.md)
-1. [Configure Enabling Internal TLS](configure-internal-tls.md)
-1. [Run the Installer Script](run-installer-script.md)
+1. Assicurati che il tuo host di destinazione soddisfi [Harbor Prerequisiti di installazione](installation-prereqs.md).
+1.[Scarica il programma di installazione Harbor](download-installer.md)
+1.[Configura HTTPS Accesso a Harbor](configure-https.md)
+1.[Configura il file YML Harbor](configure-yml-file.md)
+1.[Configurare l'abilitazione di TLS interno](configure-internal-tls.md)
+1.[Esegui lo script di installazione](run-installer-script.md)
 
-If installation fails, see [Troubleshooting Harbor Installation](troubleshoot-installation.md).
+Se l'installazione non riesce, vedere [Risoluzione dei problemi di installazione Harbor](troubleshoot-installation.md).
 
-## Deploy Harbor on Kubernetes
+## Distribuisci Harbor su Kubernetes
 
-You can also use Helm to install Harbor on a Kubernetes cluster, to make Harbor highly available. For information about installing Harbor with Helm on a Kubernetes cluster, see [Deploying Harbor with High Availability via Helm](harbor-ha-helm.md).
+È inoltre possibile utilizzare Helm per installare Harbor su un cluster Kubernetes, per rendere Harbor altamente disponibile. Per informazioni sull'installazione di Harbor con Helm su un cluster Kubernetes, vedere [Distribuzione di Harbor con disponibilità elevata tramite Helm](harbor-ha-helm.md).
 
-## Post-Installation Configuration
+## Configurazione post-installazione
 
-For information about how to manage your deployed Harbor instance, see [Reconfigure Harbor and Manage the Harbor Lifecycle](reconfigure-manage-lifecycle.md).
+Per informazioni su come gestire l'istanza Harbor distribuita, consulta [Riconfigurare Harbor e gestire il ciclo di vita Harbor](reconfigure-manage-lifecycle.md).
 
-By default, Harbor uses its own private key and certificate to authenticate with Docker. For information about how to optionally customize your configuration to use your own key and certificate, see [Customize the Harbor Token Service](customize-token-service.md).
+Per impostazione predefinita, Harbor utilizza la propria chiave privata e il proprio certificato per autenticarsi con Docker. Per informazioni su come personalizzare facoltativamente la configurazione per utilizzare la propria chiave e il proprio certificato, vedere [Personalizza il servizio token Harbor](customize-token-service.md).
 
-After installation, log into your Harbor via the web console to configure the instance under 'configuration'.  Harbor also provides a command line interface (CLI) that allows you to [Configure Harbor System Settings at the Command Line](configure-system-settings-cli.md).
+Dopo l'installazione, accedi al tuo Harbor tramite la console web per configurare l'istanza in "configurazione".  Harbor fornisce anche un'interfaccia a riga di comando (CLI) che consente di eseguire [Configurare le impostazioni di sistema Harbor dalla riga di comando](configure-system-settings-cli.md).
 
-## Harbor Components
+## Harbor Componenti
 
-The table below lists the some of the key components that are deployed when you deploy Harbor.
+La tabella seguente elenca alcuni dei componenti chiave che vengono distribuiti quando si distribuisce Harbor.
 
-|Component|Version|
+|Componente|Versione|
 |---|---|
 |Postgresql|15.10|
 |Redis|7.2.6|
 |Beego|2.3.4|
-|Distribution/Distribution|2.8.3|
+|Distribuzione/Distribuzione|2.8.3|
 |Helm|2.9.1|
-|Swagger-ui|5.9.1|
+|Spavalderia-ui|5.9.1|
 
-* The postgresql and redis version might be updated in the minor patch. 
+* La versione postgresql e redis potrebbe essere aggiornata nella patch minore. 

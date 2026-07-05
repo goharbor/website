@@ -1,13 +1,13 @@
 ---
-title: Tagging Artifacts
+title: Etichettatura degli artefatti
 weight: 75
 ---
 
-Harbor v2.0 now supports OCI images and OCI image indexes ([OCI Image Index Specification](https://github.com/opencontainers/image-spec/blob/master/image-index.md)). An OCI image index (or OCI index) is a higher level manifest which points to a list of image manifests, ideal for one or more platforms.  Both the index itself and the images referenced within are referred to as artifacts in Harbor parlance. An OCI index could hold another OCI index and so on and so forth.  For any artifact referenced by an OCI index, the referenced artifact is known as the child artifact and the OCI index referencing the artifact is known as the parent artifact.  We can also say that the child artifact belongs to the parent artifact or is a part of the parent artifact.  
+Harbor v2.0 ora supporta immagini OCI e indici di immagini OCI ([OCI Specifiche dell'indice delle immagini](https://github.com/opencontainers/image-spec/blob/master/image-index.md)). Un indice di immagini OCI (o indice OCI) è un manifest di livello superiore che punta a un elenco di manifest di immagini, ideale per una o più piattaforme.  Sia l'indice stesso che le immagini a cui si fa riferimento vengono definiti artefatti nel gergo Harbor. Un indice OCI potrebbe contenere un altro indice OCI e così via.  Per qualsiasi artefatto a cui fa riferimento un indice OCI, l'artefatto a cui si fa riferimento è noto come artefatto figlio e l'indice OCI che fa riferimento all'artefatto è noto come artefatto genitore.  Possiamo anche dire che l'artefatto figlio appartiene all'artefatto genitore o è una parte dell'artefatto genitore.  
 
-Users can add as many tags to any artifact as they wish without impacting the artifact digest or the associated storage. For an OCI index, users can add tags to the parent as well as add tags to the individual referenced artifacts within. Tags added to the parent artifact are not automatically inherited by the children artifacts. You can tag artifacts on the Harbor web console as follows:
+Gli utenti possono aggiungere tutti i tag che desiderano a qualsiasi artefatto senza influire sul digest dell'artefatto o sullo spazio di archiviazione associato. Per un indice OCI, gli utenti possono aggiungere tag all'indice principale nonché aggiungere tag ai singoli artefatti a cui si fa riferimento all'interno. I tag aggiunti all'artefatto padre non vengono ereditati automaticamente dagli artefatti figli. È possibile contrassegnare gli artefatti sulla console Web Harbor come segue:
 
-In the Harbor interface, click on an artifact to see its current set of tags, then click 'ADD TAG', specify the name and click 'OK'
+Nell'interfaccia Harbor, fare clic su un artefatto per visualizzare il set corrente di tag, quindi fare clic su "AGGIUNGI TAG", specificare il nome e fare clic su "OK"
 
-![add artifact](../../../img/addtag1.png)
+![aggiungi artefatto](../../../img/addtag1.png)
 

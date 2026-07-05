@@ -1,15 +1,15 @@
 ---
-title: Reconfigure Harbor and Manage the Harbor Lifecycle
+title: Riconfigurare Harbor e gestire il ciclo di vita Harbor
 weight: 55
 ---
 
-You use `docker-compose` to manage the lifecycle of Harbor. This topic provides some useful commands. You must run the commands in the directory in which `docker-compose.yml` is located.
+Utilizzi `docker-compose` per gestire il ciclo di vita di Harbor. Questo argomento fornisce alcuni comandi utili. È necessario eseguire i comandi nella directory in cui si trova `docker-compose.yml`.
 
-See the [Docker Compose command-line reference](https://docs.docker.com/compose/reference/) for more information about `docker-compose`.
+Vedere [Docker Componi il riferimento della riga di comando](https://docs.docker.com/compose/reference/) per ulteriori informazioni su `docker-compose`.
 
-## Stop Harbor
+## Interrompi Harbor
 
-To stop Harbor, run the following command.
+Per arrestare Harbor, eseguire il comando seguente.
 
 ```sh
 sudo docker compose stop
@@ -24,9 +24,9 @@ Stopping harbor-db          ... done
 Stopping harbor-log         ... done
 ```
 
-## Restart Harbor
+## Riavvia Harbor
 
-To restart Harbor, run the following command.
+Per riavviare Harbor, eseguire il comando seguente.
 
 ```sh
 sudo docker compose start
@@ -41,49 +41,49 @@ Starting jobservice  ... done
 Starting proxy       ... done
 ```
 
-## Reconfigure Harbor
+## Riconfigura Harbor
 
-To reconfigure Harbor, perform the following steps.
+Per riconfigurare Harbor, eseguire i seguenti passaggi.
 
-1. Stop Harbor.
+1. Interrompere Harbor.
 
     ```sh
     sudo docker compose down -v
     ```
 
-1. Update `harbor.yml`.
+1. Aggiorna `harbor.yml`.
 
     ```sh
     vim harbor.yml
     ```
 
-1. Run the `prepare` script to populate the configuration.
+1. Eseguire lo script `prepare` per popolare la configurazione.
 
     ```sh
     sudo ./prepare
     ```
 
-    To reconfigure Harbor to install Trivy, include the component in the `prepare` command.
+    Per riconfigurare Harbor per installare Trivy, includere il componente nel comando `prepare`.
 
     ```sh
     sudo ./prepare --with-trivy
     ```
 
-1. Re-create and start the Harbor instance.
+1. Ricreare e avviare l'istanza Harbor.
 
     ```sh
     sudo docker compose up -d
     ```
 
-## Other Commands
+## Altri comandi
 
-Remove Harbor's containers but keep all of the image data and Harbor's database files in the file system:
+Rimuovi i contenitori di Harbor ma mantieni tutti i dati dell'immagine e i file del database di Harbor nel file system:
 
 ```sh
 sudo docker compose down -v
 ```
 
-Remove the Harbor database and image data before performing a clean re-installation:
+Rimuovere il database Harbor e i dati immagine prima di eseguire una reinstallazione pulita:
 
 ```sh
 rm -r /data/database
