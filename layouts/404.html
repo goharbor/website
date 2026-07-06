@@ -16,7 +16,7 @@
           {{ $isHere := eq .URL $here }}
           {{ $isExternal := hasPrefix .URL "http" }}
             <li>
-              <a class="" href="{{ .URL }}"{{ if $isExternal }} target="_blank"{{ end }} data-proofer-ignore>
+              <a class="" href="{{ .URL }}"{{ if $isExternal }} target="_blank" rel="noopener noreferrer"{{ end }} data-proofer-ignore>
               {{ .Name }}
               </a>
             </li>
