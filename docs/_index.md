@@ -1,8 +1,8 @@
 ---
-title: Harbor 2.14 Documentation
+title: Harbor v2.15.0 Documentation
 ---
 
-Welcome to the Harbor 2.14.x documentation. This documentation includes all of the information that you need to install, configure, and use Harbor.
+Welcome to the Harbor v2.15.0 documentation. This documentation includes all of the information that you need to install, configure, and use Harbor.
 
 ## Harbor Installation and Configuration
 
