@@ -8,6 +8,21 @@
     apiKey: 'a1ac053087a2434d93fa11c329a47adb',
     indexName: 'goharbor',
     inputSelector: '#search-bar',
+    transformData: function(hits) {
+      hits.forEach(function(hit) {
+        var match = hit.url.match(/\/docs\/([^\/]+)\//);
+        if (match && match[1]) {
+          var version = match[1];
+          if (hit.hierarchy && hit.hierarchy.lvl0) {
+            hit.hierarchy.lvl0 += " (" + version + ")";
+          }
+          if (hit._highlightResult && hit._highlightResult.hierarchy && hit._highlightResult.hierarchy.lvl0) {
+            hit._highlightResult.hierarchy.lvl0.value += " (" + version + ")";
+          }
+        }
+      });
+      return hits;
+    },
     debug: false
   });
 </script>
