@@ -11,8 +11,9 @@
     transformData: function(hits) {
       hits.forEach(function(hit) {
         var match = hit.url.match(/\/docs\/([^\/]+)\//);
-        if (match && match[1]) {
-          var version = match[1];
+        hit._versionInfo = match ? match[1] : "";
+        if (hit._versionInfo) {
+          var version = hit._versionInfo;
           if (hit.hierarchy && hit.hierarchy.lvl0) {
             hit.hierarchy.lvl0 += " (" + version + ")";
           }
@@ -21,6 +22,23 @@
           }
         }
       });
+
+      var getWeight = function(v) {
+        if (!v) return -1;
+        if (v === 'edge') return 10000000;
+        if (v === 'main' || v === 'latest') return 9999999;
+        var p = v.split('.');
+        var w = 0;
+        for (var i = 0; i < p.length; i++) {
+          w += (parseInt(p[i]) || 0) * Math.pow(1000, 2 - i);
+        }
+        return w;
+      };
+
+      hits.sort(function(a, b) {
+        return getWeight(b._versionInfo) - getWeight(a._versionInfo);
+      });
+
       return hits;
     },
     debug: false
