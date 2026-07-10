@@ -109,7 +109,7 @@ After generating the `ca.crt`, `yourdomain.com.crt`, and `yourdomain.com.key` fi
     To allow the Docker client to push and pull images, the Docker daemon must also trust the certificate so ,convert your server certificate from .crt to .cert, as the Docker daemon requires this extension.
 
     ```sh
-    openssl x509 -inform PEM -in yourdomain.com.crt -out yourdomain.com.cer
+    openssl x509 -inform PEM -in yourdomain.com.crt -out yourdomain.com.cert
     ```
     Next, create a dedicated directory for your Harbor domain and copy all three certificate files into it.
 
