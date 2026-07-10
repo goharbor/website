@@ -25,8 +25,7 @@
 
       var getWeight = function(v) {
         if (!v) return -1;
-        if (v === 'edge') return 10000000;
-        if (v === 'main' || v === 'latest') return 9999999;
+        if (v === 'edge' || v === 'main' || v === 'latest') return 0;
         var p = v.split('.');
         var w = 0;
         for (var i = 0; i < p.length; i++) {
