@@ -8,6 +8,7 @@
     apiKey: 'a1ac053087a2434d93fa11c329a47adb',
     indexName: 'goharbor',
     inputSelector: '#search-bar',
+    algoliaOptions: { hitsPerPage: 50 },
     transformData: function(hits) {
       hits.forEach(function(hit) {
         var match = hit.url.match(/\/docs\/([^\/]+)\//);
@@ -38,7 +39,8 @@
         return getWeight(b._versionInfo) - getWeight(a._versionInfo);
       });
 
-      return hits;
+      // Keep only top 5 hits to prevent the dropdown from getting too long
+      return hits.slice(0, 5);
     },
     debug: false
   });
