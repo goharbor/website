@@ -7,7 +7,7 @@ You can configure Harbor to set the registry in read-only mode, and configure Ha
 
 ## Make the Registry Read Only
 
-You can set Harbor to read-only mode. In read-only mode, Harbor allows `docker pull` but prevents `docker push` and the deletion of repositories and tags.
+You can set Harbor to read-only mode. In read-only mode, Harbor prevents `docker push` and the deletion of repositories and tags. `docker pull` may not work with newer versions of Docker client due to additional requests made during pull; use `skopeo pull` or `skopeo copy` as an alternative.
 
 ![Read-only mode](../../img/read-only.png)
 
@@ -16,8 +16,8 @@ If it set to true, deleting repositories, tags and pushing images are not permit
 ![browse project](../../img/read-only-enable.png)
 
 ```sh
-docker push 10.117.169.182/demo/ubuntu:14.04
-The push refers to a repository [10.117.169.182/demo/ubuntu]
+docker push harbor.example.com/demo/ubuntu:14.04
+The push refers to a repository [harbor.example.com/demo/ubuntu]
 0271b8eebde3: Preparing 
 denied: The system is in read only mode. Any modification is prohibited.
 ```
