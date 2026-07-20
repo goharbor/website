@@ -20,7 +20,12 @@ GIT_VERSION=$(git --version)
 if [[ -z ${OFFLINE} ]]; then
     git fetch ${REPOSITORY_URL:-https://github.com/goharbor/website.git}
 fi
-ALL_RELEASES=$(git ls-remote https://github.com/goharbor/website | grep release | awk -F/ '{print $3}' | sort -r -V)
+# Match only real release refs of the form "release-<major>.<minor>[.<patch>]"
+# (tags and branches). Anchoring the version to the end of the ref name avoids
+# picking up unrelated refs such as "release/v2.15.0-doc" (which yielded a bare
+# "release") or "revert-...-release-2.15.0-doc-update". -u drops the duplicate
+# tag/branch pairs that share the same name.
+ALL_RELEASES=$(git ls-remote --refs https://github.com/goharbor/website | grep -oE 'release-[0-9]+\.[0-9]+(\.[0-9]+)?$' | sort -r -V -u)
 RELEASES=()
 PREV_MAJOR_VER="-1"
 PREV_MINOR_VER="-1"
@@ -38,10 +43,13 @@ for release in ${ALL_RELEASES}; do
       continue
     fi
 
-    SEMVER_REGEX='[^0-9]*\([0-9]*\)[.]\([0-9]*\)[.]\([0-9]*\)\([0-9A-Za-z-]*\)'
-    CUR_MAJOR_VER=$(echo ${CUR_SEM_VER} | sed -e "s#${SEMVER_REGEX}#\1#")
-    CUR_MINOR_VER=$(echo ${CUR_SEM_VER} | sed -e "s#${SEMVER_REGEX}#\2#")
-    CUR_PATCH_VER=$(echo ${CUR_SEM_VER} | sed -e "s#${SEMVER_REGEX}#\3#")
+    # Split on "." so that two-component versions such as "1.10" parse cleanly.
+    # The previous sed-based SEMVER_REGEX assumed three components and left
+    # non-matching input untouched, so "1.10" became major="1.10" and broke the
+    # integer comparisons below with "invalid arithmetic operator" errors.
+    CUR_MAJOR_VER=$(echo "${CUR_SEM_VER}" | cut -d. -f1)
+    CUR_MINOR_VER=$(echo "${CUR_SEM_VER}" | cut -d. -f2)
+    CUR_PATCH_VER=$(echo "${CUR_SEM_VER}" | cut -d. -f3)
 
     # ignore versions from before we used this static site generator
     if [[ (${CUR_MAJOR_VER} -lt 1) || \
