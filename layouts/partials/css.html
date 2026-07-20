@@ -1,11 +1,13 @@
-{{- $inServerMode := .Site.IsServer }}
+<!-- Bulma framework -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css" />
+{{- $inServerMode := hugo.IsServer }}
 {{- $includePaths := (slice "node_modules") }}
-{{- $sass         := "sass/style.sass" }}
+{{- $sass         := "sass/style.scss" }}
 {{- $cssOutput    := "css/style.css" }}
 {{- $devOpts      := (dict "targetPath" $cssOutput "includePaths" $includePaths "enableSourceMap" true) }}
 {{- $prodOpts     := (dict "targetPath" $cssOutput "includePaths" $includePaths "outputStyle" "compressed") }}
 {{- $cssOpts      := cond $inServerMode $devOpts $prodOpts }}
-{{- $css          := resources.Get $sass | resources.ExecuteAsTemplate $sass . | toCSS $cssOpts }}
+{{- $css          := resources.Get $sass | resources.ExecuteAsTemplate $sass . | css.Sass $cssOpts }}
 {{- if $inServerMode }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}">
 {{- else }}
