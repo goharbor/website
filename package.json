@@ -3,5 +3,13 @@
     "autoprefixer": "^10.5.2",
     "bulma": "^1.0.4",
     "postcss-cli": "^11.0.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.0"
+  },
+  "scripts": {
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:debug": "playwright test --debug"
   }
 }

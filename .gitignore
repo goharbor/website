@@ -47,3 +47,8 @@ Thumbs.db
 *.un~
 .idea/
 .hugo_build.lock
+
+# Playwright test artifacts #
+######################
+test-results/
+playwright-report/
