@@ -1,0 +1,113 @@
+name: Test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 0.163.3
+          extended: true
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Load documentation content
+        run: make prepare
+
+      - name: Build site
+        run: make production-build
+
+      - name: Upload build output
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: build-output
+          path: public/
+          retention-days: 5
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 0.163.3
+          extended: true
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Download build output
+        uses: actions/download-artifact@v4
+        with:
+          name: build-output
+          path: public/
+
+      - name: Load documentation content
+        run: make prepare
+
+      - name: Run E2E tests
+        run: npm run test:e2e
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for trailing whitespace
+        run: |
+          if grep -r '[[:space:]]$' --include='*.md' --include='*.toml' --include='*.yaml' --include='*.yml' .; then
+            echo "❌ Found trailing whitespace"
+            exit 1
+          fi
+          echo "✅ No trailing whitespace"
+
+      - name: Validate YAML files
+        run: |
+          for file in .github/workflows/*.yml; do
+            echo "Checking $file..."
+            if ! python3 -c "import yaml; yaml.safe_load(open('$file'))"; then
+              echo "❌ Invalid YAML: $file"
+              exit 1
+            fi
+          done
+          echo "✅ All YAML files valid"
