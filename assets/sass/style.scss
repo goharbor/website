@@ -1,0 +1,276 @@
+@charset "utf-8";
+
+// Dynamic font imports via Hugo templates
+{{ $fonts := site.Params.fonts }}
+{{ if $fonts }}
+{{ $fontSlice := (slice) }}
+{{ range $fonts }}
+{{ $fontSlice = $fontSlice | append (printf "%s:%s" (replace .name " " "+") (delimit .sizes ",")) }}
+{{ end }}
+{{ $fontsUrl := printf "https://fonts.googleapis.com/css?family=%s" (delimit $fontSlice "|") }}
+@import url("{{ $fontsUrl }}");
+{{ end }}
+
+{{ with site.Params.font_awesome_version }}
+{{ $fontAwesomeUrl := printf "https://use.fontawesome.com/releases/v%s/css/all.css" . }}
+@import url("{{ $fontAwesomeUrl }}");
+{{ end }}
+
+// Override Bulma 1.0.4 font family to match live site
+:root {
+  --bulma-family-primary: "PT Sans", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  --bulma-family-secondary: "PT Sans", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+// Also set body/button/input directly to match live site exactly
+body, button, input, select, textarea {
+  font-family: "PT Sans", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+// Override Bulma 1.0.4 color system via HSL components
+// primary: #4495d7 = hsl(207, 65%, 55%)
+// secondary/link: #4495d7 = hsl(207, 65%, 55%)
+// info: #60b932 = hsl(100, 57%, 46%)
+:root {
+  --bulma-primary-h: 207deg;
+  --bulma-primary-s: 65%;
+  --bulma-primary-l: 55%;
+  --bulma-link-h: 207deg;
+  --bulma-link-s: 65%;
+  --bulma-link-l: 55%;
+  --bulma-info-h: 100deg;
+  --bulma-info-s: 57%;
+  --bulma-info-l: 46%;
+}
+
+// Custom color utilities
+.has-text-secondary { color: #60b932 !important; }
+a.has-text-secondary:hover, a.has-text-secondary:focus { color: #4b9127 !important; }
+.has-background-secondary { background-color: #60b932 !important; }
+
+.has-text-twitter-blue { color: #1da1f2 !important; }
+a.has-text-twitter-blue:hover, a.has-text-twitter-blue:focus { color: #0d95e8 !important; }
+
+.has-text-slack-green { color: #2EB67D !important; }
+a.has-text-slack-green:hover, a.has-text-slack-green:focus { color: #1e8a5e !important; }
+
+// Custom button colors
+.button.is-twitter-blue {
+  background-color: #1da1f2;
+  color: #fff;
+  &:hover, &:focus { background-color: #0d95e8; color: #fff; }
+}
+
+.button.is-slack-green {
+  background-color: #2EB67D;
+  color: #fff;
+  &:hover, &:focus { background-color: #1e8a5e; color: #fff; }
+}
+
+// Remove Bulma 1.0.4 active background on navbar items
+a.navbar-item.is-active {
+  background-color: transparent !important;
+  color: inherit !important;
+}
+
+// Site-specific styles
+.content figure {
+  margin: 0px;
+}
+
+.navbar {
+  height: 4rem;
+
+  .navbar-item img {
+    max-height: 2.4rem;
+  }
+}
+
+.menu .menu-label {
+  font-size: 1rem;
+}
+
+.navbar .navbar-dropdown {
+  border-radius: 0;
+  border-top: none;
+}
+
+.list {
+  border-radius: 0;
+}
+
+.modal .modal-content {
+  width: 50%;
+}
+
+// Admonitions
+@mixin admonition($color) {
+  margin: 1.5rem 0;
+  border: 2.5px solid $color;
+  border-radius: 5px;
+  padding: 1.5rem 2rem;
+  font-size: 1.1rem;
+
+  .title {
+    font-size: 1.35rem;
+    margin-bottom: 1rem;
+  }
+
+  .icon {
+    color: $color;
+  }
+}
+
+.admonition {
+  &.is-danger {
+    @include admonition(#f14668);
+  }
+  &.is-info {
+    @include admonition(#209cee);
+  }
+  &.is-requirement {
+    @include admonition(#9d38d6);
+  }
+  &.is-success {
+    @include admonition(#48c774);
+  }
+  &.is-warning {
+    @include admonition(#ffdd57);
+  }
+}
+
+// Helpers
+.is-sticky {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 4rem + 2rem;
+}
+
+@mixin logo($d, $t) {
+  @media screen and (min-width: 1024px) {
+    width: $d;
+  }
+  @media screen and (max-width: 1023px) {
+    width: $t;
+  }
+}
+
+.is-cncf-logo {
+  @include logo(40%, 75%);
+}
+
+.is-hero-logo {
+  @include logo(60%, 75%);
+}
+
+.is-footer-logo {
+  @include logo(40%, 75%);
+}
+
+.is-constrained {
+  max-width: 80ch;
+}
+
+.is-scrollable {
+  overflow-y: auto;
+}
+
+.has-extra-bottom-padding {
+  padding-bottom: 8rem;
+}
+
+.content {
+  .highlight,
+  li .highlight {
+    margin-bottom: 1rem;
+  }
+}
+
+hr.thick {
+  margin: 3rem 0;
+}
+
+hr.color {
+  background-color: #4495d7;
+  width: 3rem;
+  height: 0.35rem;
+  margin-bottom: 2rem;
+
+  &.secondary {
+    background-color: #60b932;
+  }
+  &.black {
+    background-color: #0a0a0a;
+  }
+}
+
+.has-extra-card-content-padding {
+  padding: 2.5rem;
+}
+
+.has-extra-media-bottom-padding {
+  margin-bottom: 2rem;
+}
+
+.has-margin-right {
+  @media screen and (min-width: 1024px) {
+    margin-right: 0.75rem;
+  }
+  @media screen and (max-width: 1023px) {
+    margin-right: 0.5rem;
+  }
+}
+
+.content {
+  .img {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  table {
+    table-layout: fixed;
+    word-wrap: break-word;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+.is-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  .is-main {
+    flex: 1;
+  }
+}
+
+// TOC
+.toc {
+  line-height: 125%;
+
+  #TableOfContents {
+    > ul > li {
+      line-height: 1.3;
+
+      > a {
+        font-weight: 700;
+        color: #121212;
+        font-size: 1rem;
+      }
+
+      > ul {
+        display: none;
+      }
+
+      a {
+        color: #363636;
+      }
+
+      & + li {
+        margin-top: 0.75rem;
+      }
+    }
+  }
+}
