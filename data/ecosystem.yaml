@@ -1,0 +1,12 @@
+- title: Harbor Helm Chart
+  description: The official Helm chart for deploying Harbor on Kubernetes clusters.
+  link: https://github.com/goharbor/harbor-helm
+- title: Terraform Provider for Harbor
+  description: A Terraform provider for managing Harbor resources like projects, users, and registries.
+  link: https://github.com/goharbor/terraform-provider-harbor
+- title: Harbor Next
+  description: The next generation of Harbor projects and architecture.
+  link: https://github.com/container-registry/harbor-next
+- title: Harbor Satellite
+  description: A lightweight Harbor extension for edge deployments and proxying.
+  link: https://github.com/container-registry/harbor-satellite

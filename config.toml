@@ -155,9 +155,14 @@ url = "/community"
 weight = 3
 
 [[menu.main]]
+name = "Ecosystem"
+url = "/ecosystem"
+weight = 4
+
+[[menu.main]]
 name = "Blog"
 url = "/blog"
-weight = 4
+weight = 5
 
 [outputs]
 home = [ "HTML", "REDIRECTS" ]

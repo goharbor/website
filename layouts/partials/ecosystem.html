@@ -1,0 +1,17 @@
+{{ $projects := site.Data.ecosystem }}
+<div class="container">
+  <div class="columns is-multiline">
+    {{ range $projects }}
+    <div class="column is-one-third">
+      <div class="card" style="height: 100%; display: flex; flex-direction: column;">
+        <div class="card-content" style="flex-grow: 1;">
+          <p class="title is-4"><a href="{{ .link }}" target="_blank" rel="noopener noreferrer">{{ .title }}</a></p>
+          <div class="content">
+            {{ .description }}
+          </div>
+        </div>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</div>
