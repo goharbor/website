@@ -26,7 +26,7 @@ If installation fails, see [Troubleshooting Harbor Installation](troubleshoot-in
 
 ## Quick Installation
 
-You can run a script that deploys Harbor to Ubuntu 18.04 with a single command. For information, see [Deploy Harbor with the Quick Installation Script](quick-install-script.md).
+You can run a script that deploys Harbor to Ubuntu 24.04 with a single command. For information, see [Deploy Harbor with the Quick Installation Script](quick-install-script.md).
 
 ## Deploy Harbor on Kubernetes
 
