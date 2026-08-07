@@ -11,9 +11,13 @@
        @click="closeModal()"
        style="display: none;"></div>
 
+  {{/* Escape is bound to the window, not the dialog: a stray focus outside the
+       modal would otherwise leave no way to close it from the keyboard. */}}
   <div class="search-modal" role="dialog" aria-modal="true" aria-label="Search goharbor.io"
+       x-ref="modal"
        x-show="open"
-       @keydown.escape.prevent="closeModal()"
+       @keydown.escape.window.prevent="open && closeModal()"
+       @keydown="trapFocus($event)"
        style="display: none;">
 
     <div class="search-modal__header">
@@ -26,6 +30,11 @@
              type="text"
              placeholder="Search Harbor docs and site..."
              aria-label="Search query"
+             role="combobox"
+             aria-controls="search-results-list"
+             aria-autocomplete="list"
+             :aria-expanded="totalResults.length > 0"
+             :aria-activedescendant="activeDescendantId()"
              x-ref="searchInput"
              x-model="query"
              @input.debounce.150ms="search()"
@@ -43,6 +52,7 @@
     <div class="search-filters" x-show="hasFilters()">
       <button class="search-filters__pill"
               :class="{ 'search-filters__pill--active': activeType === 'all' }"
+              :aria-pressed="activeType === 'all'"
               @click="setType('all')">All</button>
 
       {{/* Split button: the left half selects docs, the right half picks the
@@ -69,42 +79,52 @@
            home -- collapses into one "Website" filter. */}}
       <button class="search-filters__pill"
               :class="{ 'search-filters__pill--active': activeType === 'Website' }"
+              :aria-pressed="activeType === 'Website'"
               @click="setType('Website')"
               x-show="websiteTypes().length">Website</button>
     </div>
 
     <div class="search-results" x-ref="resultsList">
-      <div class="search-loading" x-show="loading">
+      <div class="search-loading" x-show="loading" role="status" aria-live="polite">
         Searching&hellip;
       </div>
 
-      <template x-for="group in sectionOrder" :key="group">
-        <div>
-          <div class="search-results__section" x-text="group"></div>
-          <template x-for="result in groupedResults[group]" :key="result.url">
-            <a class="search-result"
-               :class="{ 'search-result--active': isSelected(result) }"
-               :href="result.url"
-               @click.prevent="navigate(result.url)"
-               @mouseenter="selectedIndex = totalResults.indexOf(result)">
-              <div class="search-result__title">
-                <span x-text="result.meta?.title || 'Untitled'"></span>
-                {{/* Version chip on every docs hit, so a result is never
-                     ambiguous -- including under "All versions". */}}
-                <span class="tag is-light search-result__version"
-                      x-show="versionOf(result)"
-                      x-text="versionOf(result)"></span>
-              </div>
-              <div class="search-result__excerpt" x-html="result.excerpt"></div>
-            </a>
-          </template>
-        </div>
-      </template>
+      {{/* Listbox paired with the combobox input above, so the arrow-key
+           selection is announced rather than being a CSS class alone. */}}
+      <div id="search-results-list" role="listbox" aria-label="Search results">
+        <template x-for="group in sectionOrder" :key="group">
+          <div role="group" :aria-label="group">
+            <div class="search-results__section" x-text="group" aria-hidden="true"></div>
+            <template x-for="result in groupedResults[group]" :key="result.url">
+              <a class="search-result"
+                 role="option"
+                 :id="resultId(result)"
+                 :aria-selected="isSelected(result)"
+                 :class="{ 'search-result--active': isSelected(result) }"
+                 :href="result.url"
+                 @click="onResultClick($event)"
+                 @mouseenter="selectedIndex = totalResults.indexOf(result)">
+                <div class="search-result__title">
+                  <span x-text="result.meta?.title || 'Untitled'"></span>
+                  {{/* Version chip on every docs hit, so a result is never
+                       ambiguous about which release it belongs to. */}}
+                  <span class="tag is-light search-result__version"
+                        x-show="versionOf(result)"
+                        x-text="versionOf(result)"></span>
+                </div>
+                <div class="search-result__excerpt" x-html="result.excerpt"></div>
+              </a>
+            </template>
+          </div>
+        </template>
+      </div>
 
       <div class="search-empty"
            x-show="query.length > 0 && totalResults.length === 0 && !loading">
         <p>No results for &ldquo;<span x-text="query"></span>&rdquo;</p>
-        <p x-show="version">
+        {{/* Only meaningful while docs are actually in scope -- under the
+             Website filter they are excluded, so changing release cannot help. */}}
+        <p x-show="version && activeType !== 'Website'">
           Docs results are limited to Harbor <span x-text="version"></span>.
           Try another release from the <strong>Docs</strong> selector.
         </p>

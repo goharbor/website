@@ -30,6 +30,11 @@ document.addEventListener('alpine:init', function () {
       totalResults: [],
       loading: false,
       pagefind: null,
+      // Element that opened the modal, so focus can be handed back on close.
+      trigger: null,
+      // Monotonic token identifying the newest search; anything older that
+      // resolves late is discarded rather than allowed to overwrite the UI.
+      searchToken: 0,
 
       init: function () {
         var self = this;
@@ -52,13 +57,20 @@ document.addEventListener('alpine:init', function () {
       },
 
       openModal: async function () {
+        if (!this.open) {
+          this.trigger = document.activeElement;
+        }
         this.open = true;
         document.documentElement.classList.add('has-search-open');
         if (!this.pagefind) {
           try {
-            this.pagefind = await import('/pagefind/pagefind.js');
-            await this.pagefind.init();
-            this.filters = await this.pagefind.filters();
+            var pagefind = await import('/pagefind/pagefind.js');
+            await pagefind.init();
+            this.filters = await pagefind.filters();
+            // Assigned only once fully initialised. Assigning before init()
+            // would leave a half-built instance cached after a transient
+            // failure, and the guard above would never retry it.
+            this.pagefind = pagefind;
             this.versions = this.sortVersions(
               Object.keys(this.filters.scope || {}).filter(function (s) {
                 return s !== 'site';
@@ -72,6 +84,7 @@ document.addEventListener('alpine:init', function () {
             }
             this.syncVersionSelect();
           } catch (err) {
+            this.pagefind = null; // allow a later open to retry
             console.error('Failed to load Pagefind:', err);
           }
         }
@@ -91,6 +104,45 @@ document.addEventListener('alpine:init', function () {
         document.documentElement.classList.remove('has-search-open');
         this.query = '';
         this.clearResults();
+        this.loading = false;
+        // Hand focus back to whatever opened the dialog, or the keyboard user
+        // is dropped at the top of the document.
+        var trigger = this.trigger;
+        this.trigger = null;
+        if (trigger && trigger !== document.body && trigger.isConnected &&
+            typeof trigger.focus === 'function') {
+          this.$nextTick(function () { trigger.focus(); });
+        }
+      },
+
+      /*
+       * Keep Tab inside the dialog. Without this, `aria-modal="true"` is a
+       * promise the markup does not keep: focus walks into the obscured page
+       * behind the modal, where the dialog's own key handlers no longer fire.
+       */
+      focusables: function () {
+        if (!this.$refs.modal) return [];
+        var nodes = this.$refs.modal.querySelectorAll(
+          'a[href], button:not([disabled]), select, input, [tabindex]:not([tabindex="-1"])'
+        );
+        return Array.prototype.slice.call(nodes).filter(function (el) {
+          return el.offsetParent !== null;
+        });
+      },
+
+      trapFocus: function (e) {
+        if (e.key !== 'Tab') return;
+        var items = this.focusables();
+        if (!items.length) return;
+        var first = items[0];
+        var last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
       },
 
       clearResults: function () {
@@ -146,8 +198,15 @@ document.addEventListener('alpine:init', function () {
       },
 
       search: async function () {
+        // Claim the newest token up front. Pagefind's debounce only cancels a
+        // call still inside its window -- one that has already started loading
+        // result data will run to completion and would otherwise repopulate the
+        // modal after the query moved on, or was cleared entirely.
+        var token = ++this.searchToken;
+
         if (!this.query || !this.pagefind) {
           this.clearResults();
+          this.loading = false;
           return;
         }
 
@@ -167,11 +226,14 @@ document.addEventListener('alpine:init', function () {
         var opts = Object.keys(filters).length ? { filters: filters } : {};
 
         var search = await this.pagefind.debouncedSearch(this.query, opts, 300);
-        if (search === null) return; // superseded by a newer search
+        if (search === null || token !== this.searchToken) return;
 
         var loaded = await Promise.all(
           search.results.slice(0, 20).map(function (r) { return r.data(); })
         );
+        // The awaits above can outlive this search; the newer one owns the UI,
+        // including `loading`, so bail without touching either.
+        if (token !== this.searchToken) return;
 
         var grouped = {};
         var order = [];
@@ -224,6 +286,19 @@ document.addEventListener('alpine:init', function () {
         this.search();
       },
 
+      /*
+       * Results are real anchors, so the browser is left to navigate them.
+       * Swallowing the click and assigning window.location would break
+       * Cmd/Ctrl-click, shift-click and middle-click into a new tab or window.
+       */
+      onResultClick: function (e) {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) {
+          return;
+        }
+        this.closeModal();
+      },
+
+      // Keyboard activation (Enter) has no anchor default to rely on.
       navigate: function (url) {
         if (url) {
           window.location.href = url;
@@ -266,6 +341,15 @@ document.addEventListener('alpine:init', function () {
 
       isSelected: function (result) {
         return this.totalResults.indexOf(result) === this.selectedIndex;
+      },
+
+      resultId: function (result) {
+        return 'search-result-' + this.totalResults.indexOf(result);
+      },
+
+      // Points the combobox at the arrow-key selection so it is announced.
+      activeDescendantId: function () {
+        return this.totalResults.length ? 'search-result-' + this.selectedIndex : null;
       },
 
       hasFilters: function () {

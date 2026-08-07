@@ -4,7 +4,10 @@
 // modal follows the theme toggle without a second set of overrides.
 
 $search-modal-width: 40rem
-$search-z: 60
+// Above the table popout (table-popout.sass uses 9998-10000). Ctrl/Cmd-K is
+// global, so search can be opened while a table is enlarged; below that stack
+// the dialog would take focus while being completely covered.
+$search-z: 10010
 
 .search-trigger
   display: inline-flex
