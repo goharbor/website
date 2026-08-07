@@ -1,12 +1,88 @@
-- title: Harbor Helm Chart
-  description: The official Helm chart for deploying Harbor on Kubernetes clusters.
-  link: https://github.com/goharbor/harbor-helm
-- title: Terraform Provider for Harbor
-  description: A Terraform provider for managing Harbor resources like projects, users, and registries.
-  link: https://github.com/goharbor/terraform-provider-harbor
-- title: Harbor Next
-  description: The next generation of Harbor projects and architecture.
-  link: https://github.com/container-registry/harbor-next
-- title: Harbor Satellite
-  description: A lightweight Harbor extension for edge deployments and proxying.
-  link: https://github.com/container-registry/harbor-satellite
+- category: Featured projects
+  description: Projects closely connected to Harbor's development and deployment.
+  projects:
+    - title: Harbor Next
+      description: The next generation of Harbor projects and architecture.
+      link: https://github.com/container-registry/harbor-next
+    - title: Harbor Helm Chart
+      description: The official Helm chart for deploying Harbor on Kubernetes clusters.
+      link: https://github.com/goharbor/harbor-helm
+    - title: Terraform Provider for Harbor
+      description: A Terraform provider for managing Harbor resources like projects, users, and registries.
+      link: https://github.com/goharbor/terraform-provider-harbor
+    - title: Harbor Satellite
+      description: A lightweight Harbor extension for edge deployments and proxying.
+      link: https://github.com/container-registry/harbor-satellite
+
+- category: Command-line and repository workflows
+  description: Tools for working with Harbor and synchronizing registry content.
+  projects:
+    - title: Harbor CLI
+      description: Official Harbor CLI
+      link: https://github.com/goharbor/harbor-cli
+    - title: Charts-Syncer
+      description: Sync chart packages and associated container images between chart repositories.
+      link: https://github.com/bitnami-labs/charts-syncer
+    - title: Helm Chart OCI Proxy
+      description: Proxy and transform Helm Chart into OCI images on the fly.
+      link: https://github.com/container-registry/helm-charts-oci-proxy
+    - title: Harbor Sync
+      description: Harbor Sync allows you to synchronize your Harbor robot accounts with your Kubernetes cluster.
+      link: https://github.com/moolen/harbor-sync
+    - title: docker-pushrm
+      description: Update your Harbor project README with a simple CLI.
+      link: https://github.com/christian-korneck/docker-pushrm
+    - title: GitHub Action for docker-pushrm
+      description: GitHub Action on top of docker-pushrm allowing you to update the README of a container repo.
+      link: https://github.com/christian-korneck/update-container-description-action
+    - title: CLI for Harbor
+      description: A community created Harbor CLI written in golang.
+      link: https://github.com/hinyinlam/cli-for-harbor
+
+- category: Security and observability
+  description: Scanners and monitoring tools for Harbor.
+  projects:
+    - title: Harbor Scanner Adapter for Trivy
+      description: Allows Harbor to use Trivy for providing static analysis of vulnerabilities in container images.
+      link: https://github.com/aquasecurity/harbor-scanner-trivy
+    - title: Harbor Scanner Adapter for Aqua Enterprise
+      description: Allows Harbor to use Aqua Enterprise ad hoc scanning feature for providing static analysis of vulnerabilities.
+      link: https://github.com/aquasecurity/harbor-scanner-aqua
+    - title: Harbor Vulnerabilities Exporter
+      description: Prometheus exporter that collects vulnerability information for the latest pushed images.
+      link: https://github.com/NCCloud/harbor-vulnerabilities-exporter
+
+- category: Integrations and operations
+  description: Infrastructure and deployment automation tools.
+  projects:
+    - title: harbor-container-webhook
+      description: Mutating webhook for Kubernetes, which rewrites container images to use Harbor's proxy cache.
+      link: https://github.com/indeedeng-alpha/harbor-container-webhook
+    - title: Crossplane Harbor Provider
+      description: Crossplane provider for Harbor based on terraform-provider-harbor.
+      link: https://github.com/globallogicuki/provider-harbor
+    - title: Pulumi Harbor Provider
+      description: Manage Harbor resources with Pulumi, using the Terraform Harbor Provider under the hood.
+      link: https://github.com/pulumiverse/pulumi-harbor
+    - title: Using Kyverno and Harbor to safeguard production systems
+      description: Rewrites image references to use an internal Harbor proxy cache for approved external registries.
+      link: https://github.com/jvanzyl/kyverno-registries
+    - title: Harbor Example - Terraform/AWS
+      description: A quick way to build an example or demo harbor instance in AWS with optional Route 53 DNS and SSL.
+      link: https://github.com/bdausses/harbor-registry-example-aws
+    - title: Harbor Day 2 Operator
+      description: Operator for automated managment of existing harbor instances using python harbor-api.
+      link: https://github.com/steadforce/harbor-day2-operator
+
+- category: Client SDKs
+  description: Libraries for interacting with the Harbor API.
+  projects:
+    - title: Python Client API
+      description: Python Client API, generated from OpenAPI.
+      link: https://github.com/container-registry/harbor-python-client-api
+    - title: Go Client Library
+      description: '"Official" Client library with golang for accessing Harbor API.'
+      link: https://github.com/goharbor/go-client
+    - title: Mittwald Goharbor Client
+      description: Client API generated from OpenAPI specifications in golang.
+      link: https://github.com/mittwald/goharbor-client

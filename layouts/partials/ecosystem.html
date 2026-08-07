@@ -1,17 +1,32 @@
-{{ $projects := site.Data.ecosystem }}
-<div class="container">
-  <div class="columns is-multiline">
-    {{ range $projects }}
-    <div class="column is-one-third">
-      <div class="card" style="height: 100%; display: flex; flex-direction: column;">
-        <div class="card-content" style="flex-grow: 1;">
-          <p class="title is-4"><a href="{{ .link }}" target="_blank" rel="noopener noreferrer">{{ .title }}</a></p>
-          <div class="content">
-            {{ .description }}
-          </div>
-        </div>
-      </div>
-    </div>
-    {{ end }}
-  </div>
+{{ $categories := site.Data.ecosystem }}
+<div class="container ecosystem-container">
+  {{ range $categories }}
+  <h2 class="title is-3" style="margin-top: 3rem; margin-bottom: 1rem;">{{ .category }}</h2>
+  <p class="subtitle is-5" style="margin-bottom: 1.5rem;">{{ .description }}</p>
+  
+  <table class="table is-fullwidth is-hoverable is-striped" style="margin-bottom: 3rem;">
+    <thead>
+      <tr>
+        <th style="width: 25%;">Project</th>
+        <th style="width: 50%;">Description</th>
+        <th style="width: 25%;">Source</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range .projects }}
+      <tr>
+        <td>
+          <strong><a href="{{ .link }}" target="_blank" rel="noopener noreferrer">{{ .title }}</a></strong>
+        </td>
+        <td>{{ .description }}</td>
+        <td>
+          <a href="{{ .link }}" target="_blank" rel="noopener noreferrer">
+            {{ replace .link "https://github.com/" "" }}
+          </a>
+        </td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+  {{ end }}
 </div>
