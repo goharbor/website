@@ -22,9 +22,15 @@
   </div>
 </section>
 
+{{/* Group root-level pages under their own URL segment ("/community/" ->
+     "Community") so the label stays right when new top-level pages are added. */}}
+{{ $seg := index (split (strings.TrimPrefix "/" .RelPermalink) "/") 0 }}
 <section class="section">
   <div class="container">
-    <div class="content is-medium">
+    <meta data-pagefind-filter="scope[content]" content="site">
+    <meta data-pagefind-filter="type[content]" content="{{ cond (eq $seg "") "Home" (title $seg) }}">
+    <meta data-pagefind-meta="title[content]" content="{{ .Title }}">
+    <div class="content is-medium" data-pagefind-body>
       {{ .Content }}
     </div>
   </div>

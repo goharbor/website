@@ -1,0 +1,19 @@
+{{- /*
+  Returns the Harbor docs version a page belongs to ("2.15.0", "main", "edge"),
+  or "" for any page outside /docs/.
+
+  The version is the first path segment under content/docs/, which is how
+  load-docs.sh lays the release branches out. Deriving it structurally rather
+  than from front matter means a page cannot silently drop out of
+  version-scoped search by forgetting to declare its version.
+*/ -}}
+{{- $version := "" -}}
+{{- if eq .Section "docs" -}}
+  {{- with .File -}}
+    {{- $parts := split .Path "/" -}}
+    {{- if ge (len $parts) 2 -}}
+      {{- $version = index $parts 1 -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $version -}}

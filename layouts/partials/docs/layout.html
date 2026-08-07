@@ -1,3 +1,14 @@
+{{ $version := partial "docs/page-version.html" . }}
+{{/* Only a real release, or the main dev branch, may enter the index.
+
+     content/docs/edge is a symlink to the working-tree docs/ that /docs/main/
+     is also built from. On Linux that symlink makes Hugo additionally publish
+     an unversioned copy of every dev page at /docs/<section>/ (65 pages, live
+     on goharbor.io today). Both those copies and /docs/edge/ itself duplicate
+     /docs/main/, and neither carries a meaningful version, so both stay out of
+     the index while remaining browsable. Anything unrecognised is excluded
+     rather than indexed under a junk version. */}}
+{{ $indexable := or (gt (len (findRE `^[0-9]` $version)) 0) (eq $version "main") }}
 <section class="section">
   <div class="container">
     <div class="columns is-variable is-8">
@@ -8,13 +19,24 @@
       </div>
 
       <div class="column is-half">
-        <div class="content is-constrained has-extra-bottom-padding is-medium">
+        {{ if $indexable }}
+        <meta data-pagefind-filter="scope[content]" content="{{ $version }}">
+        <meta data-pagefind-filter="type[content]" content="Docs">
+        <meta data-pagefind-meta="version[content]" content="{{ $version }}">
+        {{/* The page heading lives in docs/hero.html, outside the indexed body,
+             so Pagefind would otherwise fall back to the full <title>. */}}
+        <meta data-pagefind-meta="title[content]" content="{{ .Title }}">
+        {{ end }}
+        <div class="content is-constrained has-extra-bottom-padding is-medium"{{ if $indexable }} data-pagefind-body{{ end }}>
           {{ with .Content }}
           {{ . }}
           {{ end }}
 
 
           {{ if (or .RegularPages .Sections) }}
+          {{/* Link scaffolding, not content -- keep it out of the search index
+               so a section page does not match on its children's titles. */}}
+          <div data-pagefind-ignore>
           {{ if .Content }}
           <hr class="thick" />
           {{ end }}
@@ -50,6 +72,7 @@
             {{ end }}
           </ul>
           {{ end }}
+          </div>
           {{ end }}
         </div>
       </div>
