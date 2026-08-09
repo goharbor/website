@@ -15,6 +15,10 @@
 <meta property="og:title" content="{{ $title }}">
 {{ if $isDoc }}
 <meta property="og:type" content="documentation">
+{{ $version := "" }}{{ with .File }}{{ $version = index (split .Path "/") 1 }}{{ end }}
+{{ if or (findRE `^[0-9]` $version) (eq $version "edge") (eq $version "latest") }}
+<meta name="docsearch:version" content="{{ $version }}" />
+{{ end }}
 {{ end }}
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:locale" content="en_US">

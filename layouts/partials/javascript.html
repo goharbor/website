@@ -1,6 +1,29 @@
 {{ $alpineJsVersion := site.Params.alpine_js_version }}
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v{{ $alpineJsVersion }}/dist/alpine-ie11.js" defer></script>
 
+{{ $versions := site.Params.versions }}
+{{ $latest   := (index $versions 0).harborversion }}
+{{ $version  := "" }}
+{{ with .File }}
+  {{ $pathParts := split .Path "/" }}
+  {{ if gt (len $pathParts) 1 }}
+    {{ $version = index $pathParts 1 }}
+  {{ end }}
+{{ end }}
+
+{{/* 
+  Check if $version is a valid doc version (e.g. starts with a digit or is 'edge' or 'latest').
+  If not, or if we are not in the docs section, use the latest harbor version.
+*/}}
+{{ $isDocVersion := false }}
+{{ if and (eq .Section "docs") (ne $version "") }}
+  {{ if or (findRE `^[0-9]` $version) (eq $version "edge") (eq $version "latest") }}
+    {{ $isDocVersion = true }}
+  {{ end }}
+{{ end }}
+
+{{ $docVersion := cond $isDocVersion $version $latest }}
+
 {{/* Algolia DocSearch JS */}}
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 <script type="text/javascript">
@@ -8,7 +31,10 @@
     apiKey: 'a1ac053087a2434d93fa11c329a47adb',
     indexName: 'goharbor',
     inputSelector: '#search-bar',
-    debug: false
+    debug: false,
+    algoliaOptions: {
+      facetFilters: ["version:{{ $docVersion }}"]
+    }
   });
 </script>
 
