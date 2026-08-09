@@ -1,4 +1,4 @@
-{{ $version       := index (split .File.Path "/") 1 }}
+{{ $version       := "" }}{{ with .File }}{{ $version = index (split .Path "/") 1 }}{{ end }}
 {{ $pageSourceUrl := "https://github.com/goharbor/harbor-cli/tree/main/doc/cli-docs" }}
 {{ $issues        := "https://github.com/goharbor/harbor-cli/issues" }}
 <div class="column is-one-quarter is-hidden-touch">

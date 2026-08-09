@@ -1,7 +1,7 @@
 {{ $thisSection  := .CurrentSection.RelPermalink }}
 {{ $thisPage     := .RelPermalink }}
 {{ $docsSections := where site.Sections "Section" "cli-docs" }}
-{{ $version      := index (split .File.Path "/") 1 }}
+{{ $version      := "" }}{{ with .File }}{{ $version = index (split .Path "/") 1 }}{{ end }}
 
 <aside class="menu">
   {{ range $docsSections }}
