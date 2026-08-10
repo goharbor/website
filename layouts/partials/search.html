@@ -119,8 +119,18 @@
         </template>
       </div>
 
+      {{/* Without this the modal degrades silently to a bare input with no
+           filters, which looks deliberate rather than broken. */}}
+      <div class="search-empty" x-show="searchError && !loading" role="alert">
+        <p><strong>Search is unavailable right now.</strong></p>
+        <p>The search index could not be loaded.</p>
+        <p>
+          <button class="search-filters__pill" @click="retry()">Try again</button>
+        </p>
+      </div>
+
       <div class="search-empty"
-           x-show="query.length > 0 && totalResults.length === 0 && !loading">
+           x-show="!searchError && query.length > 0 && totalResults.length === 0 && !loading">
         <p>No results for &ldquo;<span x-text="query"></span>&rdquo;</p>
         {{/* Only meaningful while docs are actually in scope -- under the
              Website filter they are excluded, so changing release cannot help. */}}

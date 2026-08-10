@@ -29,6 +29,10 @@ document.addEventListener('alpine:init', function () {
       selectedIndex: 0,
       totalResults: [],
       loading: false,
+      // Set when Pagefind itself fails (index missing, chunk load rejected).
+      // Without it the modal degrades to a bare input with no filters and no
+      // explanation, which reads as intentional rather than broken.
+      searchError: false,
       pagefind: null,
       // Element that opened the modal, so focus can be handed back on close.
       trigger: null,
@@ -62,6 +66,18 @@ document.addEventListener('alpine:init', function () {
         }
         this.open = true;
         document.documentElement.classList.add('has-search-open');
+
+        // Focus before the awaits below, not after. On a cold open the Pagefind
+        // import and filter request can take hundreds of ms, and until focus is
+        // inside the dialog trapFocus has nothing to contain -- Tab would walk
+        // the obscured page behind an already-visible modal.
+        var self = this;
+        this.$nextTick(function () {
+          if (self.$refs.searchInput) {
+            self.$refs.searchInput.focus();
+          }
+        });
+
         if (!this.pagefind) {
           try {
             var pagefind = await import('/pagefind/pagefind.js');
@@ -83,17 +99,13 @@ document.addEventListener('alpine:init', function () {
               this.version = this.versions[0] || '';
             }
             this.syncVersionSelect();
+            this.searchError = false;
           } catch (err) {
             this.pagefind = null; // allow a later open to retry
+            this.searchError = true;
             console.error('Failed to load Pagefind:', err);
           }
         }
-        var self = this;
-        this.$nextTick(function () {
-          if (self.$refs.searchInput) {
-            self.$refs.searchInput.focus();
-          }
-        });
         if (this.query) {
           this.search();
         }
@@ -105,6 +117,11 @@ document.addEventListener('alpine:init', function () {
         this.query = '';
         this.clearResults();
         this.loading = false;
+        // Orphan any search still in flight. Without this it keeps the current
+        // token, so it passes the staleness checks and writes its results into
+        // the closed modal -- which then reopens showing hits for a query the
+        // user never sees.
+        this.searchToken++;
         // Hand focus back to whatever opened the dialog, or the keyboard user
         // is dropped at the top of the document.
         var trigger = this.trigger;
@@ -211,6 +228,7 @@ document.addEventListener('alpine:init', function () {
         }
 
         this.loading = true;
+        this.searchError = false;
 
         var filters = {};
         if (this.version) {
@@ -225,41 +243,53 @@ document.addEventListener('alpine:init', function () {
         }
         var opts = Object.keys(filters).length ? { filters: filters } : {};
 
-        var search = await this.pagefind.debouncedSearch(this.query, opts, 300);
-        if (search === null || token !== this.searchToken) return;
+        // Either await can reject -- a lazily fetched index chunk or result
+        // fragment that fails to load. Unhandled, that leaves the spinner up
+        // for good and raises an unhandled rejection.
+        try {
+          var search = await this.pagefind.debouncedSearch(this.query, opts, 300);
+          if (search === null || token !== this.searchToken) return;
 
-        var loaded = await Promise.all(
-          search.results.slice(0, 20).map(function (r) { return r.data(); })
-        );
-        // The awaits above can outlive this search; the newer one owns the UI,
-        // including `loading`, so bail without touching either.
-        if (token !== this.searchToken) return;
+          var loaded = await Promise.all(
+            search.results.slice(0, 20).map(function (r) { return r.data(); })
+          );
+          // The awaits above can outlive this search; the newer one owns the UI,
+          // including `loading`, so bail without touching either.
+          if (token !== this.searchToken) return;
 
-        var grouped = {};
-        var order = [];
-        var self = this;
-        loaded.forEach(function (result) {
-          var group = self.groupOf(result);
-          if (!grouped[group]) {
-            grouped[group] = [];
-            order.push(group);
-          }
-          grouped[group].push(result);
-        });
-
-        this.groupedResults = grouped;
-        this.sectionOrder = order;
-
-        // Flat list mirroring render order, for arrow-key navigation.
-        var flat = [];
-        order.forEach(function (group) {
-          grouped[group].forEach(function (result) {
-            flat.push(result);
+          var grouped = {};
+          var order = [];
+          var self = this;
+          loaded.forEach(function (result) {
+            var group = self.groupOf(result);
+            if (!grouped[group]) {
+              grouped[group] = [];
+              order.push(group);
+            }
+            grouped[group].push(result);
           });
-        });
-        this.totalResults = flat;
-        this.selectedIndex = 0;
-        this.loading = false;
+
+          this.groupedResults = grouped;
+          this.sectionOrder = order;
+
+          // Flat list mirroring render order, for arrow-key navigation.
+          var flat = [];
+          order.forEach(function (group) {
+            grouped[group].forEach(function (result) {
+              flat.push(result);
+            });
+          });
+          this.totalResults = flat;
+          this.selectedIndex = 0;
+          this.loading = false;
+        } catch (err) {
+          // A stale search failing is not interesting; the newer one owns the UI.
+          if (token !== this.searchToken) return;
+          console.error('Search failed:', err);
+          this.clearResults();
+          this.searchError = true;
+          this.loading = false;
+        }
       },
 
       groupOf: function (result) {
@@ -270,6 +300,18 @@ document.addEventListener('alpine:init', function () {
 
       versionOf: function (result) {
         return (result.meta && result.meta.version) || '';
+      },
+
+      // Both failure modes are recoverable: a missing index may appear on the
+      // next request, and a dropped chunk usually refetches.
+      retry: async function () {
+        this.searchError = false;
+        if (!this.pagefind) {
+          await this.openModal(); // re-runs the init block
+        }
+        if (this.query) {
+          this.search();
+        }
       },
 
       setType: function (type) {
