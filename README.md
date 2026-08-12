@@ -84,6 +84,28 @@ make serve
 
 This starts up the local Hugo server on http://localhost:1313. As you make changes, the site refreshes automatically in your browser.
 
+## Testing
+
+### Running E2E Tests
+
+The website includes Playwright E2E tests that validate rendering and functionality:
+
+```sh
+make test
+```
+
+To run tests in interactive UI mode:
+
+```sh
+make test-ui
+```
+
+Tests are located in the [`e2e/`](./e2e) directory and validate:
+- Admonition shortcodes render correctly
+- Custom output formats (e.g., `_redirects` for Netlify)
+- CSS pipeline and styling
+- Site configuration changes
+
 ## Checking links
 
 To run the link checker for the Harbor website:

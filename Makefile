@@ -4,7 +4,11 @@ clean:
 prepare:
 	$(CURDIR)/load-docs.sh
 
+SASS_BIN := $(CURDIR)/node_modules/.bin
+export PATH := $(SASS_BIN):$(PATH)
+
 serve:
+	@./scripts/setup-dart-sass.sh
 	hugo server \
 		--bind 0.0.0.0 \
 		--buildDrafts \
@@ -38,3 +42,9 @@ check-internal-links: clean build link-checker-setup run-checker
 
 check-all-links: clean build link-checker-setup
 	bin/htmltest --conf .htmltest.external.yml
+
+test:
+	npm run test:e2e
+
+test-ui:
+	npm run test:e2e:ui
