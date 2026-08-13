@@ -6,14 +6,18 @@
 {{ $versions := site.Params.versions }}
 {{ $latest   := index $versions 0 }}
 {{ $isDocs   := eq .Section "docs" }}
-{{ $version  := "" }}{{ with .File }}{{ $version = index (split .Path "/") 1 }}{{ end }}
-{{ $isLatest := eq $version $latest }}
+{{ $version  := partial "docs/page-version.html" . }}
+{{ $isLatest := eq $version $latest.harborversion }}
 <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation" x-data="{ open: false }">
   <div class="container">
     <div class="navbar-brand">
       <a class="navbar-item" href="{{ $home }}">
         <img src="{{ $logo }}" alt="{{ site.Title }} logo">
       </a>
+
+      {{/* Stays in .navbar-brand so search is one tap away once the menu
+           collapses behind the burger. */}}
+      {{ partial "search-bar.html" (dict "compact" true) }}
 
       {{ if $menu }}
       <div role="button" class="navbar-burger" data-target="navbar-menu" aria-label="menu" aria-expanded="false" @click="open = !open" :class="{ 'is-active': open }">
@@ -45,7 +49,7 @@
 
       {{ with $menu }}
       <div class="navbar-end">
-        {{ partial "search-bar.html" . }}
+        {{ partial "search-bar.html" (dict "compact" false) }}
 
         {{ range . }}
         {{ $name := .Name }}

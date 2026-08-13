@@ -1,0 +1,274 @@
+// Pagefind search modal
+//
+// Colours come from the custom properties declared in dark-mode.sass, so the
+// modal follows the theme toggle without a second set of overrides.
+
+$search-modal-width: 40rem
+// Above the table popout (table-popout.sass uses 9998-10000). Ctrl/Cmd-K is
+// global, so search can be opened while a table is enlarged; below that stack
+// the dialog would take focus while being completely covered.
+$search-z: 10010
+
+.search-trigger
+  display: inline-flex
+  align-items: center
+  gap: 0.5rem
+  padding: 0.35rem 0.75rem
+  border: 1px solid var(--color-border)
+  border-radius: 9999px
+  background: var(--color-background-bis)
+  color: var(--color-text-light)
+  cursor: pointer
+  font-size: 0.9rem
+  line-height: 1
+  transition: border-color 0.15s ease, color 0.15s ease
+
+  &:hover
+    border-color: var(--color-primary)
+    color: var(--color-text)
+
+  .icon
+    color: inherit
+
+// Icon-only variant that sits in .navbar-brand on touch widths.
+.search-trigger--compact
+  margin-left: auto
+  padding: 0.4rem 0.6rem
+
+.search-trigger__label
+  font-weight: 600
+
+.search-trigger__hint
+  padding: 0.1rem 0.35rem
+  border: 1px solid var(--color-border)
+  border-radius: 4px
+  font-size: 0.7rem
+  // Not meaningful on touch devices, and the trigger is tight on mobile.
+  @media screen and (max-width: 1023px)
+    display: none
+
+// Locks background scrolling while the modal is open.
+.has-search-open
+  overflow: hidden
+
+.search-backdrop
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background: rgba(10, 10, 10, 0.6)
+  z-index: $search-z
+
+.search-modal
+  position: fixed
+  top: 4.5rem
+  left: 50%
+  transform: translateX(-50%)
+  width: calc(100% - 2rem)
+  max-width: $search-modal-width
+  max-height: calc(100vh - 7rem)
+  display: flex
+  flex-direction: column
+  background: var(--color-surface)
+  color: var(--color-text)
+  border: 1px solid var(--color-border)
+  border-radius: 8px
+  box-shadow: var(--shadow-md)
+  overflow: hidden
+  z-index: $search-z + 1
+
+.search-modal__header
+  display: flex
+  align-items: center
+  gap: 0.5rem
+  padding: 0.75rem 1rem
+  border-bottom: 1px solid var(--color-border)
+
+.search-modal__icon
+  color: var(--color-text-light)
+
+.search-modal__input
+  flex: 1
+  border: 0
+  background: transparent
+  color: var(--color-text)
+  font-size: 1.05rem
+  outline: none
+
+  &::placeholder
+    color: var(--color-text-light)
+
+.search-modal__close
+  border: 0
+  background: transparent
+  color: var(--color-text-light)
+  cursor: pointer
+
+  &:hover
+    color: var(--color-text)
+
+$search-pill-font: 0.78rem
+$search-pill-line: 1.4
+$search-pill-pad-y: 0.2rem
+
+.search-filters
+  display: flex
+  align-items: center
+  flex-wrap: wrap
+  gap: 0.35rem
+  padding: 0.6rem 1rem
+  border-bottom: 1px solid var(--color-border)
+  background: var(--color-background-bis)
+
+.search-filters__pill
+  padding: $search-pill-pad-y 0.65rem
+  border: 1px solid var(--color-border)
+  border-radius: 9999px
+  background: var(--color-surface)
+  color: var(--color-text-light)
+  cursor: pointer
+  font-size: $search-pill-font
+  line-height: $search-pill-line
+
+  &:hover
+    color: var(--color-text)
+
+.search-filters__pill--active
+  border-color: var(--color-primary)
+  background: var(--color-primary)
+  color: #fff
+
+// Split control: [ Docs | 2.15.0 v ] -- static label, then the release picker.
+.search-pill
+  display: inline-flex
+  align-items: stretch
+  border: 1px solid var(--color-border)
+  border-radius: 9999px
+  background: var(--color-surface)
+  overflow: hidden
+  font-size: $search-pill-font
+  line-height: $search-pill-line
+
+  &:focus-within
+    border-color: var(--color-primary)
+
+.search-pill__label
+  display: inline-flex
+  align-items: center
+  padding: $search-pill-pad-y 0.65rem
+  border: 0
+  background: transparent
+  color: var(--color-text-light)
+  cursor: pointer
+  font: inherit
+  font-weight: 600
+  letter-spacing: 0.02em
+
+  &:hover
+    color: var(--color-text)
+
+.search-pill--active
+  border-color: var(--color-primary)
+
+  .search-pill__label
+    background: var(--color-primary)
+    color: #fff
+
+  .search-pill__version
+    border-left-color: var(--color-primary)
+
+// Hand-rolled rather than Bulma's .select, whose fixed height, radius and
+// palette all fight the control it sits inside.
+.search-pill__version
+  position: relative
+  display: inline-flex
+  align-items: center
+  border-left: 1px solid var(--color-border)
+  background: var(--color-surface)
+
+  select
+    appearance: none
+    -webkit-appearance: none
+    padding: $search-pill-pad-y 1.5rem $search-pill-pad-y 0.6rem
+    border: 0
+    border-radius: 0
+    background: transparent
+    color: var(--color-text)
+    cursor: pointer
+    font: inherit
+    font-weight: 700
+    outline: none
+
+  // Caret
+  &::after
+    content: ''
+    position: absolute
+    right: 0.6rem
+    top: 50%
+    width: 0.4em
+    height: 0.4em
+    border: 2px solid var(--color-primary)
+    border-top: 0
+    border-left: 0
+    transform: translateY(-70%) rotate(45deg)
+    pointer-events: none
+
+.search-results
+  overflow-y: auto
+  padding: 0.25rem 0
+
+.search-results__section
+  padding: 0.6rem 1rem 0.3rem
+  color: var(--color-text-light)
+  font-size: 0.75rem
+  font-weight: 700
+  text-transform: uppercase
+  letter-spacing: 0.04em
+
+.search-result
+  display: block
+  padding: 0.6rem 1rem
+  border-left: 3px solid transparent
+  color: var(--color-text)
+
+  &:hover
+    color: var(--color-text)
+
+.search-result--active
+  border-left-color: var(--color-primary)
+  background: var(--color-background-bis)
+
+.search-result__title
+  display: flex
+  align-items: center
+  gap: 0.5rem
+  font-weight: 600
+
+// Same reason as the select: Bulma's .tag.is-light is theme-blind.
+.search-result__version
+  flex: none
+  background-color: var(--color-background-bis)
+  border: 1px solid var(--color-border)
+  color: var(--color-text-light)
+  font-size: 0.7rem
+  font-weight: 600
+
+.search-result__excerpt
+  color: var(--color-text-light)
+  font-size: 0.85rem
+  line-height: 1.45
+
+  mark
+    background: transparent
+    color: var(--color-primary)
+    font-weight: 700
+
+.search-loading,
+.search-empty
+  padding: 1.25rem 1rem
+  color: var(--color-text-light)
+  text-align: center
+
+  p
+    margin-bottom: 0.35rem
