@@ -19,6 +19,7 @@
       </div>
 
       <div class="column is-half">
+        {{ partial "docs/version-banner.html" . }}
         {{ if $indexable }}
         <meta data-pagefind-filter="scope[content]" content="{{ $version }}">
         <meta data-pagefind-filter="type[content]" content="Docs">
