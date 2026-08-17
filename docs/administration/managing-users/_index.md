@@ -16,7 +16,7 @@ Harbor manages images through projects. You provide access to these images to us
 Besides the above roles, there are two system-level roles:
 
 * **Harbor system administrator**: "Harbor system administrator" has the most privileges. In addition to the privileges mentioned above, "Harbor system administrator" can also list all projects, set an ordinary user as administrator, delete users and set vulnerability scan policy for all images. The public project "library" is also owned by the administrator.
-* **Anonymous**: When a user is not logged in, the user is considered as an "Anonymous" user. An anonymous user has no access to private projects and has read-only access to public projects.
+* **Anonymous**: When a user is not logged in, the user is considered as an "Anonymous" user. An anonymous user has no access to private or internal projects and has read-only access to public projects. To pull from an internal project, the user must log in first.
 
 For full details of the permissions of the different roles, see [User Permissions By Role](user-permissions-by-role.md).
 

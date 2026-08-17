@@ -5,10 +5,11 @@ weight: 20
 
 A project in Harbor contains all repositories of an application. Images cannot be pushed to Harbor before a project is created. Role-Based Access Control (RBAC) is applied to projects, so that only users with the appropriate roles can perform certain operations.
 
-There are two types of project in Harbor:
+There are three access levels for a project in Harbor:
 
-* **Public**: Any user can pull images from this project. This is a convenient way for you to share repositories with others.
-* **Private**: Only users who are members of the project can pull images
+* **Private**: Only users who are members of the project can pull images.
+* **Internal**: Any logged-in Harbor user can pull images from this project. Anonymous users who are not logged in are denied access, so users must run `docker login` before they can pull. This behaves like a public project but restricts access to authenticated users.
+* **Public**: Any user, including anonymous users who are not logged in, can pull images from this project. This is a convenient way for you to share repositories with others.
 
 {{< note >}}
 A Harbor system administrator can also create a proxy cache project. See more about how to [Configure a Proxy Cache](../../administration/configure-proxy-cache/) project.
@@ -24,9 +25,13 @@ Log in to Harbor with a Harbor administrator or project administrator account.
 
 1. Go to **Projects** and click **New Project**.
 1. Provide a name for the project.
-1. (Optional) Check the **Public** check box to make the project public.
+1. (Optional) Set the **Access Level** of the project by selecting one of the following options:
 
-    If you set the project to **Public**, any user can pull images from this project. If you leave the project set to **Private**, only users who are members of the project can pull images. You can toggle projects from public to private, or the reverse, at any moment after you create the project.
+    * **Private**: Only users who are members of the project can pull images.
+    * **Internal**: Any logged-in Harbor user can pull images from this project. Anonymous users are denied access, so users must run `docker login` before they can pull.
+    * **Public**: Any user, including anonymous users who are not logged in, can pull images from this project.
+
+    The access level defaults to **Private**. You can change the access level at any moment after you create the project.
 
     ![create project](../../img/new-create-project.png)
 
@@ -42,7 +47,7 @@ There are two views to show repositories, list view and card view, you can switc
 
 Project properties can be changed by clicking "Configuration".
 
-* To make all repositories under the project accessible to everyone, select the `Public` checkbox.
+* To control who can pull repositories under the project, set the **Access Level** to `Private`, `Internal`, or `Public`. Select `Public` to make all repositories accessible to everyone (including anonymous users), `Internal` to allow any logged-in Harbor user to pull, or `Private` to restrict access to project members.
 
 * To prevent un-signed images under the project from being pulled, select the `Prevent vulnerable images from running` checkbox. For more information about content trust, see [Implementing Content Trust](../project-configuration/implementing-content-trust.md).
 
@@ -50,7 +55,7 @@ Project properties can be changed by clicking "Configuration".
 
 
 ## Searching Projects, Repositories and Helm charts
-Entering a keyword in the search field at the top lists all matching projects, repositories and helm charts. The search result includes both public and private repositories you have access to.
+Entering a keyword in the search field at the top lists all matching projects, repositories and helm charts. The search result includes public, internal, and private repositories you have access to.
 
 ![browse project](../../img/new-search.png)
 

@@ -8,14 +8,17 @@ After the initial creation of a project, you can configure or reconfigure its pr
 1. Log in to the Harbor interface with an account that has at least project administrator privileges.
 1. Go to **Projects** and select a project.
 1. Select the **Configuration** tab.
-1. To make all repositories under the project accessible to everyone, select the `Public` checkbox, or deselect this checkbox to make the project private.
+1. Set the **Access Level** of the project to one of the following options:
+   * **Private**: Only users who are members of the project can pull images.
+   * **Internal**: Any logged-in Harbor user can pull images from this project. Anonymous users are denied access, so users must run `docker login` before they can pull.
+   * **Public**: Any user, including anonymous users who are not logged in, can pull images from this project.
 1. To prevent un-signed images under the project from being pulled, select the `Prevent vulnerable images from running` checkbox.
 
 ![browse project](../../img/project-configuration.png)
 
 ## Searching projects and repositories
 
-Enter a keyword in the search field at the top to list all matching projects and repositories. The search result includes both public and private repositories you have access to.  
+Enter a keyword in the search field at the top to list all matching projects and repositories. The search result includes public, internal, and private repositories you have access to.  
 
 ![browse project](../../img/new-search.png)
 
