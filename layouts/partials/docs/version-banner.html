@@ -1,0 +1,34 @@
+{{- /*  Version warning banner for unsupported documentation  */ -}}
+{{- $version := partial "docs/page-version.html" . -}}
+{{- $isUnsupported := false -}}
+
+{{- /* Check if current version is beyond N-2 support policy (unsupported) */ -}}
+{{- if and (ne $version "") (ne $version "edge") (ne $version "main") -}}
+  {{- $versionIndex := -1 -}}
+  {{- range $i, $v := .Site.Params.versions -}}
+    {{- if eq $version $v.harborversion -}}
+      {{- $versionIndex = $i -}}
+    {{- end -}}
+  {{- end -}}
+  {{- /* Versions beyond index 2 (N-2) are unsupported */ -}}
+  {{- if ge $versionIndex 3 -}}
+    {{- $isUnsupported = true -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if $isUnsupported -}}
+<div class="version-banner" id="version-banner" role="alert" aria-live="polite">
+  <div class="version-banner-content">
+    <div class="version-banner-icon">
+      <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+    </div>
+    <div class="version-banner-text">
+      <strong>This documentation refers to an unsupported Harbor version</strong>
+      <p>Harbor {{ $version }} is no longer supported. For the most up-to-date documentation, see the <a href="{{ replace .RelPermalink (printf "/docs/%s/" $version) "/docs/latest/" }}">latest version</a>.</p>
+    </div>
+    <button class="version-banner-close" onclick="this.closest('.version-banner').remove()" aria-label="Close this banner">
+      <i class="fas fa-times" aria-hidden="true"></i>
+    </button>
+  </div>
+</div>
+{{- end -}}
