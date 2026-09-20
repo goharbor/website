@@ -104,7 +104,7 @@ If there is a legacy user in your instance of Harbor, the authentication mode ca
 
 | Configure item name | Description                                                                                                                                                                         | Type    | Required | Default Value |
 | ------------ |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------| ----- | ----- |
-auth_mode | Authentication mode, it can be db_auth, ldap_auth, uaa_auth or oidc_auth                                                                                                            | string  
+auth_mode | Authentication mode, it can be db_auth, ldap_auth, uaa_auth or oidc_auth                                                                                                            | string
 primary_auth_mode | Set Identity Provider to be the primary auth method                                                                                                                        | boolean | optional | false |
 ldap_url | LDAP URL                                                                                                                                                                            | string  | required |
 ldap_base_dn | LDAP base DN                                                                                                                                                                        | string  | required(ldap_auth)
@@ -147,6 +147,11 @@ audit_log_forward_endpoint | Forward audit logs to the syslog endpoint, for exam
 skip_audit_log_database | Skip to log audit log in the database, only available when audit log forward endpoint is configured                                                                                 | boolean | optional | false
 scanner_skip_update_pulltime | Vulnerability scanner(e.g. Trivy) will not update the image "last pull time" when the image is scanned                                                                              | boolean | optional |
 banner_message | The banner message for the UI. It is the stringified result of the banner message object                                                                              | string  | optional |
+notification_enable             | Enable or disable webhook notifications globally, true or false                                                                                                                         | boolean | optional                           | true           |
+| quota_per_project_enable        | Enable or disable quota management per project, true or false                                                                                                                           | boolean | optional                           | true           |
+| storage_per_project             | Default storage quota per project in bytes (e.g., 10737418240 for 10GB, -1 for unlimited)                                                                                               | number  | optional                           | -1             |
+| session_timeout                 | Session timeout duration in minutes                                                                                                                                                     | number  | optional                           | 60             |
+| disabled_audit_log_event_types  | Comma-separated list of audit log event types to disable (e.g., "PULL_ARTIFACT,DELETE_ARTIFACT")                                                                                        | string  | optional                           | ""             |
 
 {{< note >}}
 Both booleans and numbers can be enclosed with double quote in the request json, for example: `123`, `"123"`, `"true"` or `true` is OK.
