@@ -44,11 +44,11 @@ Following the announcement in version 1.8 of cross-registry artifact replication
 
 ## Community Call to Action
 
-The 1.9 release saw more input and contributions from the community than ever before whether they be feature testing and bug reporting, sharing requirements and best practices needed for an enterprise registry, or putting forth quality code contributions in a timely fashion.  As of this posting, we’re already hard at work on the 1.10 release. Key features include creating a plug-n-play experience for third-party image scanners including supporting Aqua and Anchore, creating a Harbor operator for smarter deployments, and creating image tag immutability.  Hop over to the [Harbor project board](http://github.com/orgs/goharbor/projects/1) for the most up-to-date status of the ongoing release and identify areas of interest for contribution. Contributions can be in the form of providing scenario requirements, testing, documentation, bug fixing, or introducing new features to Harbor.
+The 1.9 release saw more input and contributions from the community than ever before whether they be feature testing and bug reporting, sharing requirements and best practices needed for an enterprise registry, or putting forth quality code contributions in a timely fashion.  As of this posting, we’re already hard at work on the 1.10 release. Key features include creating a plug-n-play experience for third-party image scanners including supporting Aqua and Anchore, creating a Harbor operator for smarter deployments, and creating image tag immutability.  Hop over to the [Harbor project board](https://github.com/orgs/goharbor/projects/1) for the most up-to-date status of the ongoing release and identify areas of interest for contribution. Contributions can be in the form of providing scenario requirements, testing, documentation, bug fixing, or introducing new features to Harbor.
 
 ## About Harbor
 
-[Harbor](http://github.com/goharbor/harbor) is an open source trusted cloud native registry project that stores, signs, and scans container images and Helm charts. Harbor extends the open source Distribution/Distribution by adding key enterprise-level features in authentication and access control (LDAP/AD as well as OIDC support with RBAC), two-way replication to other third-party registries, advanced online garbage collection, and authenticity and provenance capabilities through image scanning and signing.  Harbor deploys in under 30 minutes, can be fully managed through a single web console, and comes with a rich set of APIs.
+[Harbor](https://github.com/goharbor/harbor) is an open source trusted cloud native registry project that stores, signs, and scans container images and Helm charts. Harbor extends the open source Distribution/Distribution by adding key enterprise-level features in authentication and access control (LDAP/AD as well as OIDC support with RBAC), two-way replication to other third-party registries, advanced online garbage collection, and authenticity and provenance capabilities through image scanning and signing.  Harbor deploys in under 30 minutes, can be fully managed through a single web console, and comes with a rich set of APIs.
 
 ## Collaborate with the Harbor Community!
 
@@ -59,4 +59,4 @@ Collaborate with us on GitHub: [github.com/goharbor/harbor](https://github.com/g
 Alex Xu
 Harbor Contributor
 Product Manager, VMware
-[github.com/xaleeks](http://github.com/xaleeks)
+[github.com/xaleeks](https://github.com/xaleeks)

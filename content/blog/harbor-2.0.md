@@ -163,7 +163,7 @@ Webinar on Harbor v2.0 on May 28, 2020 at 10:00am PDT by registering
 
 ## About Harbor
 
-[Harbor](http://github.com/goharbor/harbor) is an open source, trusted
+[Harbor](https://github.com/goharbor/harbor) is an open source, trusted
 cloud native registry project that stores, signs, and scans container
 images, Helm charts, and any other OCI-compliant artifacts. Harbor
 extends the open-source Distribution/Distribution by adding key
