@@ -72,7 +72,7 @@ To reconfigure Harbor, perform the following steps.
 1. Re-create and start the Harbor instance.
 
     ```sh
-    sudo docker compose up -d
+    sudo docker compose up -d --force-recreate
     ```
 
 ## Other Commands
