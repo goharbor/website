@@ -30,7 +30,7 @@ On Tuesday, Harbor has a full **ContribFest** block — 80 minutes of hands-on c
 **["Harbor ContribFest"](https://kubecon-cloudnativecon-north-america-2026.sessionize.com/session/1294764)**  
 **Tuesday, November 10 — 11:30 AM – 12:50 PM**  
 Salt Palace | Level 2 | 255 A  
-*Orlin Vasilev, Vadim Bauer*
+*Orlin Vasilev(SAP), Vadim Bauer(8gears)*
 
 No prior contribution experience required — just show up.
 
@@ -41,7 +41,7 @@ Wednesday brings the **Maintainers Track session**, where Orlin, Vadim, and Rani
 **["Harbor Project – The Maintainers Session"](https://kubecon-cloudnativecon-north-america-2026.sessionize.com/session/1289697)**  
 **Wednesday, November 11 — 11:00 AM – 11:30 AM**  
 Salt Palace | Level 2 | 251 A-C  
-*Orlin Vasilev, Vadim Bauer, Rani Chowdary Mandepudi*
+*Orlin Vasilev(SAP), Vadim Bauer(8gears), Rani Chowdary Mandepudi(ARM)*
 
 Come for the roadmap deep-dive, stay to ask the hard questions directly to the people making the decisions.
 
@@ -52,7 +52,7 @@ This one is particularly timely given KubeCon NA 2026's focus on production AI i
 **["Securing the Agentic Future: Distributing LLM Weights and Sandboxed AI Agents via Harbor"](https://kubecon-cloudnativecon-north-america-2026.sessionize.com/session/1246342)**  
 **Thursday, November 12 — 2:40 PM – 3:10 PM**  
 Salt Palace | Level 2 | 255 BC  
-*Chenyu Zhang, Yan Wang*  
+*Yan Wang(Broadcom)*
 Security | Beginner
 
 If you're working on AI model distribution, this is exactly the kind of real-world workload Harbor is increasingly being used for.
@@ -79,7 +79,7 @@ Topics to bring to the kiosk:
 
 ## Come Find Us
 
-You'll find **Orlin Vasilev**, **Vadim Bauer**, and **Rani Chowdary Mandepudi** at KubeCon NA 2026 across all of the above sessions and at the kiosk. Come say hello, challenge us with hard questions about Harbor's roadmap, or just tell us how you're using it in production.
+You'll find **Orlin Vasilev**, **Vadim Bauer**, **Rani Chowdary Mandepudi**, and **Yan Wang** at KubeCon NA 2026 across all of the above sessions and at the kiosk. Come say hello, challenge us with hard questions about Harbor's roadmap, or just tell us how you're using it in production.
 
 We genuinely want to hear what's working, what's not, and what you wish Harbor could do.
 
