@@ -1,4 +1,8 @@
 // Table popout modal — enlarges wide tables into a full-viewport dialog
+//
+// Colours come from the custom properties declared in dark-mode.sass, so the
+// modal follows the theme toggle. The modal is appended to <body>, outside the
+// table's own container, but still inherits them from the root element.
 
 .table-expanded
   position: fixed
@@ -6,7 +10,8 @@
   left: 5vw
   width: 90vw
   height: 90vh
-  background: white
+  background: var(--color-surface)
+  color: var(--color-text)
   z-index: 9999
   overflow: auto
   padding: 1.5rem
@@ -21,7 +26,7 @@
     border-collapse: collapse
 
   th, td
-    border: 1px solid rgba(0,0,0,0.08)
+    border: 1px solid var(--color-border)
     padding: 0.5rem 0.75rem
     vertical-align: top
 
@@ -31,8 +36,9 @@
     display: block
     margin-left: auto
     margin-bottom: 1rem
-    background: rgba(255,255,255,0.9)
-    border: 1px solid rgba(0,0,0,0.12)
+    background: var(--color-surface)
+    color: var(--color-text)
+    border: 1px solid var(--color-border)
     padding: 0.35rem 0.5rem
     border-radius: 4px
     font-size: 1rem
@@ -54,6 +60,9 @@
   -webkit-backdrop-filter: blur(6px)
   backdrop-filter: blur(6px)
   z-index: 9998
+
+[data-theme="dark"] .table-modal-overlay
+  background: rgba(0,0,0,0.5)
 
 .table-wrapper
   position: relative
