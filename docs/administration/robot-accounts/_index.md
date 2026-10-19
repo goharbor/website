@@ -295,3 +295,11 @@ The below tables explain what a robot account can do with a specified permission
 Apart from configuration-related permissions and not exceeding the permissions of the creator, system-level and project-level robot accounts can have all permissions after Harbor v2.12.0.
 Public APIs are not included in the tables above because they can be accessed by anyone.
 {{< /note >}}
+
+{{< important >}}
+Granting a robot account the **Update Project Member** permission lets it change any project member's role, including promoting a member to Project Admin. That makes this permission equal to project-admin control over the project. Grant it only to automation you trust.
+{{< /important >}}
+
+{{< important >}}
+Granting a robot account the **Tag Retention** create, update, delete, or operate permissions lets it delete artifacts indirectly, by creating or running tag-retention policies that purge tags. This happens even when the robot does not hold the **Delete Artifact** permission. Treat tag-retention permissions as a route to artifact deletion.
+{{< /important >}}
