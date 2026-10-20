@@ -19,7 +19,7 @@ Harbor only supports the Registry V2 API. You must use Docker client 1.6.0 or hi
 
 ## Pulling Images
 
-If the project that the image belongs to is private, you must sign in first:
+If the project that the image belongs to is private or internal, you must sign in first:
 
 ```sh
 docker login <harbor_address>
