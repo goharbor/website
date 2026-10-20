@@ -5,7 +5,7 @@ weight: 92
 
 Artifact signing and signature verification are critical security capabilities that allow you to verify the integrity of an artifact. Harbor supports content trust through integrations with [Cosign](https://github.com/sigstore/cosign) and [Notation](https://github.com/notaryproject/notation).
 
-This page describes how to start using Cosign and Notation to sign your artifacts. A project administrator can configure a project to [enforce content trust](../..//working-with-projects/project-configuration/implementing-content-trust#enforce-content-trust), making it required for all artifacts to be signed before they can be pulled from a Harbor registry.
+This page describes how to start using Cosign and Notation to sign your artifacts. A project administrator can configure a project to [enforce content trust](../../project-configuration/implementing-content-trust#enforce-deployment-security), making it required for all artifacts to be signed before they can be pulled from a Harbor registry.
 
 ## Use Cosign to sign artifacts
 

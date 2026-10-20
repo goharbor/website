@@ -1,0 +1,93 @@
+// Version warning banner styling for outdated documentation
+.version-banner
+  background-color: #fff5b5
+  border: 1px solid #ffe58f
+  border-radius: 4px
+  margin: 1.5rem 0
+  padding: 1rem
+  position: relative
+
+  .version-banner-content
+    display: flex
+    align-items: flex-start
+    gap: 1rem
+
+    .version-banner-icon
+      color: #d97706
+      font-size: 1.5rem
+      flex-shrink: 0
+      margin-top: 0.125rem
+
+    .version-banner-text
+      flex: 1
+
+      strong
+        color: #92400e
+        display: block
+        font-size: 1.1rem
+        margin-bottom: 0.5rem
+
+      p
+        color: #78350f
+        font-size: 0.95rem
+        line-height: 1.5
+        margin: 0
+
+        a
+          color: #1d4ed8
+          font-weight: 600
+          text-decoration: underline
+
+          &:hover
+            color: #1e40af
+            text-decoration: none
+
+    .version-banner-close
+      background: none
+      border: none
+      color: #92400e
+      cursor: pointer
+      flex-shrink: 0
+      font-size: 1.2rem
+      line-height: 1
+      padding: 0
+      transition: color 0.2s
+
+      &:hover
+        color: #78350f
+
+      &:focus
+        outline: 2px solid #d97706
+        outline-offset: 2px
+
+// Dark mode support
+[data-theme="dark"]
+  .version-banner
+    background-color: #3e3806
+    border-color: #6b5f0d
+
+    .version-banner-content
+      .version-banner-icon
+        color: #fbbf24
+
+      .version-banner-text
+        strong
+          color: #fcd34d
+
+        p
+          color: #eab308
+
+          a
+            color: #60a5fa
+
+            &:hover
+              color: #93c5fd
+
+      .version-banner-close
+        color: #fcd34d
+
+        &:hover
+          color: #eab308
+
+        &:focus
+          outline-color: #fbbf24

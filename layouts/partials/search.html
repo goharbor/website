@@ -1,0 +1,156 @@
+{{- $latest := (index site.Params.versions 0).harborversion -}}
+{{- $version := partial "docs/page-version.html" . -}}
+<div class="search"
+     x-data="harborSearch"
+     @open-search.window="openModal()"
+     data-docs-version="{{ $version }}"
+     data-latest-version="{{ $latest }}">
+
+  <div class="search-backdrop"
+       x-show="open"
+       @click="closeModal()"
+       style="display: none;"></div>
+
+  {{/* Escape is bound to the window, not the dialog: a stray focus outside the
+       modal would otherwise leave no way to close it from the keyboard. */}}
+  <div class="search-modal" role="dialog" aria-modal="true" aria-label="Search goharbor.io"
+       x-ref="modal"
+       x-show="open"
+       @keydown.escape.window.prevent="open && closeModal()"
+       @keydown="trapFocus($event)"
+       style="display: none;">
+
+    <div class="search-modal__header">
+      <span class="icon search-modal__icon">
+        <i class="fas fa-search"></i>
+      </span>
+      {{/* type="text", not "search": the native clear button would sit right
+           next to the modal's own close button. */}}
+      <input class="search-modal__input"
+             type="text"
+             placeholder="Search Harbor docs and site..."
+             aria-label="Search query"
+             role="combobox"
+             aria-controls="search-results-list"
+             aria-autocomplete="list"
+             :aria-expanded="totalResults.length > 0"
+             :aria-activedescendant="activeDescendantId()"
+             x-ref="searchInput"
+             x-model="query"
+             @input.debounce.150ms="search()"
+             @keydown="handleKeydown($event)"
+             autocomplete="off">
+      <button class="search-modal__close" @click="closeModal()" aria-label="Close search">
+        <span class="icon"><i class="fas fa-times"></i></span>
+      </button>
+    </div>
+
+    {{/* The version gate. Docs results are restricted to the selected release;
+         blog, community and CLI docs are unversioned and always come through,
+         which is why the version sits on the Docs pill rather than above the
+         whole filter row. */}}
+    <div class="search-filters" x-show="hasFilters()">
+      <button class="search-filters__pill"
+              :class="{ 'search-filters__pill--active': activeType === 'all' }"
+              :aria-pressed="activeType === 'all'"
+              @click="setType('all')">All</button>
+
+      {{/* Split button: the left half selects docs, the right half picks the
+           release it is scoped to. */}}
+      <div class="search-pill"
+           :class="{ 'search-pill--active': activeType === 'Docs' }"
+           x-show="hasType('Docs')">
+        <button class="search-pill__label"
+                :aria-pressed="activeType === 'Docs'"
+                @click="setType('Docs')">Docs</button>
+        <span class="search-pill__version">
+          <select id="search-version"
+                  aria-label="Harbor docs version to search"
+                  x-ref="versionSelect"
+                  @change="setVersion($event.target.value)">
+            <template x-for="v in versions" :key="v">
+              <option :value="v" x-text="v"></option>
+            </template>
+          </select>
+        </span>
+      </div>
+
+      {{/* Everything that is not versioned docs -- blog, community, CLI docs,
+           home -- collapses into one "Website" filter. */}}
+      <button class="search-filters__pill"
+              :class="{ 'search-filters__pill--active': activeType === 'Website' }"
+              :aria-pressed="activeType === 'Website'"
+              @click="setType('Website')"
+              x-show="websiteTypes().length">Website</button>
+    </div>
+
+    <div class="search-results" x-ref="resultsList">
+      <div class="search-loading" x-show="loading" role="status" aria-live="polite">
+        Searching&hellip;
+      </div>
+
+      {{/* Listbox paired with the combobox input above, so the arrow-key
+           selection is announced rather than being a CSS class alone. */}}
+      <div id="search-results-list" role="listbox" aria-label="Search results">
+        <template x-for="group in sectionOrder" :key="group">
+          <div role="group" :aria-label="group">
+            <div class="search-results__section" x-text="group" aria-hidden="true"></div>
+            <template x-for="result in groupedResults[group]" :key="result.url">
+              <a class="search-result"
+                 role="option"
+                 :id="resultId(result)"
+                 :aria-selected="isSelected(result)"
+                 :class="{ 'search-result--active': isSelected(result) }"
+                 :href="result.url"
+                 @click="onResultClick($event)"
+                 @mouseenter="selectedIndex = totalResults.indexOf(result)">
+                <div class="search-result__title">
+                  <span x-text="result.meta?.title || 'Untitled'"></span>
+                  {{/* Version chip on every docs hit, so a result is never
+                       ambiguous about which release it belongs to. */}}
+                  <span class="tag is-light search-result__version"
+                        x-show="versionOf(result)"
+                        x-text="versionOf(result)"></span>
+                </div>
+                <div class="search-result__excerpt" x-html="result.excerpt"></div>
+              </a>
+            </template>
+          </div>
+        </template>
+      </div>
+
+      {{/* Without this the modal degrades silently to a bare input with no
+           filters, which looks deliberate rather than broken. */}}
+      <div class="search-empty" x-show="searchError && !loading" role="alert">
+        <p><strong>Search is unavailable right now.</strong></p>
+        <p>The search index could not be loaded.</p>
+        <p>
+          <button class="search-filters__pill" @click="retry()">Try again</button>
+        </p>
+      </div>
+
+      <div class="search-empty"
+           x-show="!searchError && query.length > 0 && totalResults.length === 0 && !loading">
+        <p>No results for &ldquo;<span x-text="query"></span>&rdquo;</p>
+        {{/* Only meaningful while docs are actually in scope -- under the
+             Website filter they are excluded, so changing release cannot help. */}}
+        <p x-show="version && activeType !== 'Website'">
+          Docs results are limited to Harbor <span x-text="version"></span>.
+          Try another release from the <strong>Docs</strong> selector.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ $searchJS := resources.Get "js/search.js" }}
+{{ if $searchJS }}
+  {{/* .Site.IsServer rather than hugo.IsServer: the latter does not exist in
+       the Hugo 0.74.0 pinned by netlify.toml. Matches css.html. */}}
+  {{ if .Site.IsServer }}
+<script src="{{ $searchJS.RelPermalink }}"></script>
+  {{ else }}
+    {{ $built := $searchJS | minify | fingerprint }}
+<script src="{{ $built.RelPermalink }}" integrity="{{ $built.Data.Integrity }}"></script>
+  {{ end }}
+{{ end }}

@@ -12,6 +12,10 @@ resources/
 content/docs/
 generated/
 
+# Pagefind search index, generated into public/ by `make search-index` and
+# copied into static/ only for the lifetime of `make serve`
+static/pagefind/
+
 # Link checker artifacts
 bin/
 tmp/

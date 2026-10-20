@@ -1,5 +1,5 @@
 {{/* Theme Toggle Component */}}
-{{/* Uses Alpine.js v2 for reactivity and localStorage for persistence */}}
+{{/* Uses Alpine.js for reactivity and localStorage for persistence */}}
 
 <div 
   class="navbar-item theme-toggle-wrapper"
@@ -21,7 +21,6 @@
       this.applyTheme();
     }
   }"
-  x-init="init()"
 >
   <button 
     @click="toggleTheme()"

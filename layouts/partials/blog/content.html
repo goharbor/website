@@ -3,7 +3,10 @@
   <div class="container">
     <div class="columns is-variable is-8">
       <div class="column is-two-thirds">
-        <div class="content is-medium is-constrained has-extra-bottom-padding">
+        <meta data-pagefind-filter="scope[content]" content="site">
+        <meta data-pagefind-filter="type[content]" content="Blog">
+        <meta data-pagefind-meta="title[content]" content="{{ .Title }}">
+        <div class="content is-medium is-constrained has-extra-bottom-padding" data-pagefind-body>
           {{ .Content }}
         </div>
       </div>

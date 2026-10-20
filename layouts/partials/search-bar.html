@@ -1,8 +1,25 @@
-<div class="navbar-item">
-  <p class="control has-icons-left">
-    <span class="icon is-small is-right">
+{{- /*
+  Search trigger. Pass (dict "compact" true) for the icon-only variant.
+
+  Two variants exist because Bulma collapses .navbar-menu behind the burger
+  below 1024px, which would otherwise bury search two taps deep. The compact
+  trigger lives in .navbar-brand, which stays visible at every width.
+*/ -}}
+{{- $compact := false -}}
+{{- if reflect.IsMap . -}}{{- $compact = .compact -}}{{- end -}}
+<div class="navbar-item {{ if $compact }}is-hidden-desktop{{ else }}is-hidden-touch{{ end }}">
+  <button class="search-trigger{{ if $compact }} search-trigger--compact{{ end }}"
+          type="button"
+          x-data="{ mac: /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform) }"
+          @click="$dispatch('open-search')"
+          aria-label="Search goharbor.io">
+    <span class="icon is-small">
       <i class="fas fa-sm fa-search"></i>
     </span>
-    <input class="input is-rounded" type="search" id="search-bar" placeholder="Search">
-  </p>
+    {{- if not $compact }}
+    <span class="search-trigger__label">Search</span>
+    <span class="search-trigger__hint" aria-hidden="true"
+          x-text="mac ? '⌘K' : 'Ctrl K'"></span>
+    {{- end }}
+  </button>
 </div>

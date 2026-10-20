@@ -8,13 +8,20 @@
       </div>
 
       <div class="column is-half">
-        <div class="content is-constrained has-extra-bottom-padding is-medium">
+        {{/* The CLI docs are not versioned alongside Harbor releases, so they
+             sit in the "site" scope and stay visible under every version. */}}
+        <meta data-pagefind-filter="scope[content]" content="site">
+        <meta data-pagefind-filter="type[content]" content="CLI Docs">
+        <meta data-pagefind-meta="title[content]" content="{{ .Title }}">
+        <div class="content is-constrained has-extra-bottom-padding is-medium" data-pagefind-body>
           {{ with .Content }}
           {{ . }}
           {{ end }}
 
 
           {{ if (or .RegularPages .Sections) }}
+          {{/* Link scaffolding, not content -- see docs/layout.html. */}}
+          <div data-pagefind-ignore>
           {{ if .Content }}
           <hr class="thick" />
           {{ end }}
@@ -50,6 +57,7 @@
             {{ end }}
           </ul>
           {{ end }}
+          </div>
           {{ end }}
         </div>
       </div>

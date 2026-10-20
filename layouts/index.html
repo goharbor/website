@@ -1,6 +1,15 @@
 {{ define "main" }}
 {{ partial "home/hero.html" . }}
-{{ partial "home/info.html" . }}
+{{/* Pagefind skips any page with no data-pagefind-body once the attribute
+     exists anywhere on the site, so the home page opts in explicitly. The
+     "What is Harbor?" / "Getting started" copy is the only prose here worth
+     matching on; the logo walls and CNCF banner below are not. */}}
+<meta data-pagefind-filter="scope[content]" content="site">
+<meta data-pagefind-filter="type[content]" content="Home">
+<meta data-pagefind-meta="title[content]" content="{{ site.Title }} &ndash; {{ site.Params.tagline }}">
+<div data-pagefind-body>
+  {{ partial "home/info.html" . }}
+</div>
 <hr />
 {{ partial "home/project.html" . }}
 {{ partial "home/intro.html" . }}
