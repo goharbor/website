@@ -152,10 +152,30 @@ You can use certificates that are signed by a trusted third-party CA, or you can
     <td valign="top"><code>max_job_workers</code></td>
     <td valign="top">The maximum number of replication workers in the job service. For each image replication job, a worker synchronizes all tags of a repository to the remote destination. Increasing this number allows more concurrent replication jobs in the system. However, since each worker consumes a certain amount of network/CPU/IO resources, set the value of this attribute based on the hardware resource of the host. The default is 10.</td>
   </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>max_job_duration_hours</code></td>
+    <td valign="top">The maximum number of hours a job can run in the job service before it is considered timed out. Values lower than 24 are raised to 24. The default is 24.</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>job_loggers</code></td>
+    <td valign="top">The list of backends the job service writes job logs to. The supported values are <code>STD_OUTPUT</code>, <code>FILE</code> and <code>DB</code>, and you can enable more than one. This attribute is required: <code>prepare</code> fails with <code>KeyError: 'job_loggers'</code> if it is missing from <code>harbor.yml</code>. The <code>harbor.yml.tmpl</code> shipped with the installer enables <code>STD_OUTPUT</code> and <code>FILE</code>.</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>logger_sweeper_duration</code></td>
+    <td valign="top">The number of days job logs are kept before the sweeper deletes them. It applies to the <code>FILE</code> and <code>DB</code> loggers and is ignored when only <code>STD_OUTPUT</code> is enabled. This attribute is required. The <code>harbor.yml.tmpl</code> shipped with the installer sets it to 1.</td>
+  </tr>
 <tr>
     <td valign="top"><code>notification</code></td>
     <td valign="top"><code>webhook_job_max_retry</code></td>
     <td valign="top">Set the maximum number of retries for web hook jobs. The default is 10.</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>webhook_job_http_client_timeout</code></td>
+    <td valign="top">Set the timeout, in seconds, of the HTTP client that sends web hook requests. This attribute is required. The <code>harbor.yml.tmpl</code> shipped with the installer sets it to 3.</td>
   </tr>
   <tr>
     <td valign="top"><code>log</code></td>
