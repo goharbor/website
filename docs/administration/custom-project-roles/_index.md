@@ -12,7 +12,7 @@ For example, you can create a role for users who need to pull and push artifacts
 A custom role is defined once for the Harbor instance and can be reused in multiple projects. The role takes effect for a user or group only when it is assigned to that user or group in a project. Assigning a role in one project does not grant access to other projects.
 
 - Only Harbor system administrators can create, edit, or delete custom role definitions.
-- Project administrators can assign custom roles to users and groups through the project's **Members** tab. For instructions, see [Assign Users to a Project](../../working-with-projects/create-projects/add-users.md).
+- Project administrators and users with the required project member permissions can assign custom roles to users and groups through the project's **Members** tab. For instructions, see [Assign Users to a Project](../../working-with-projects/create-projects/add-users.md).
 - Permissions apply at the project level. Custom roles do not provide separate permission assignments for individual repositories within a project.
 - Built-in roles cannot be edited or deleted. Create a custom role if you need a different combination of permissions.
 - Custom roles are assigned to users and groups. Robot accounts continue to use their own directly assigned permissions. See [System Robot Accounts](../robot-accounts/) and [Project Robot Accounts](../../working-with-projects/project-configuration/create-robot-accounts.md).
@@ -44,7 +44,7 @@ To view a role's permissions, click its permission count in the **Permissions** 
 
 1. Click **Finish**.
 
-The new role appears on the **Roles** page. Creating the role does not assign it to any project members. A project administrator must assign it to a user or group in each project where it is needed.
+The new role appears on the **Roles** page. Creating the role does not assign it to any project members. Assign it to a user or group in each project where it is needed, following the [project membership instructions](../../working-with-projects/create-projects/add-users.md).
 
 ### Example: Allow Pulling and Pushing Artifacts
 
@@ -55,7 +55,7 @@ To create a role for users who need to download and upload artifacts:
 1. Click **Finish**.
 1. Ask a project administrator to assign the role to the appropriate users or groups in the project.
 
-These permissions allow pulling and pushing artifacts. They do not grant artifact deletion or project member management. Select any additional permissions required by the users' workflow before assigning the role.
+These permissions allow pulling and pushing artifacts. They do not grant artifact deletion or project member management. Select any additional permissions required by the users' workflow before assigning the role. For details on permission selection and access from other memberships, see [Custom Project Role Permissions](../managing-users/user-permissions-by-role.md#custom-project-role-permissions).
 
 ## Edit a Custom Role
 
