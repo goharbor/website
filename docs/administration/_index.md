@@ -9,6 +9,7 @@ The operations that are performed by the Harbor system administrator are the fol
 
 - Select database, LDAP/Active Directory, or OIDC based authentication. For information, see [Configuring Authentication](configure-authentication).
 - Add users in database authentication mode and assign the system administrator role to other users. For information, see [Managing Users](managing-users).
+- Define custom project roles with permissions for your organization's workflows. For information, see [Manage Custom Project Roles](custom-project-roles).
 - Configure global settings, such as setting the registry to read-only mode, and restriction who can create projects. For information, see [Configure Global Settings](general-settings).
 - Apply resource quotas to projects. For information, see [Configure Project Quotas](configure-project-quotas).
 - Set up replication of images between Harbor and another Harbor instance or a 3rd party replication target. For information, see [Configuring Replication](configuring-replication).

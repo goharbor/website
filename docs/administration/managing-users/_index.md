@@ -3,7 +3,7 @@ title: Managing Users
 weight: 15
 ---
 
-Harbor manages images through projects. You provide access to these images to users by including the users in projects and assigning one of the following roles to them.
+Harbor manages images through projects. You provide access to these images to users by including the users in projects and assigning a built-in or custom project role to them. Harbor provides the following built-in project roles.
 
 ![RBAC](../../img/rbac.png)
 
@@ -13,7 +13,9 @@ Harbor manages images through projects. You provide access to these images to us
 * **Maintainer**: Maintainer has elevated permissions beyond those of 'Developer' including the ability to scan images, view replications jobs, and delete images and helm charts.
 * **ProjectAdmin**: When creating a new project, you will be assigned the "ProjectAdmin" role to the project. Besides read-write privileges, the "ProjectAdmin" also has some management privileges, such as adding and removing members, starting a vulnerability scan.
 
-Besides the above roles, there are two system-level roles:
+Starting with Harbor v2.16.0, system administrators can also define custom project roles by selecting the permissions to grant. Project administrators can assign these roles to users or groups in each project. Built-in roles cannot be edited or deleted. For instructions, see [Manage Custom Project Roles](../custom-project-roles/).
+
+Besides project roles, there are two system-level roles:
 
 * **Harbor system administrator**: "Harbor system administrator" has the most privileges. In addition to the privileges mentioned above, "Harbor system administrator" can also list all projects, set an ordinary user as administrator, delete users and set vulnerability scan policy for all images. The public project "library" is also owned by the administrator.
 * **Anonymous**: When a user is not logged in, the user is considered as an "Anonymous" user. An anonymous user has no access to private projects and has read-only access to public projects.
