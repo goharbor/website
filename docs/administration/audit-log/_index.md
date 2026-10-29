@@ -47,4 +47,6 @@ If you want to skip audit log database for some specific event types, go to the 
 
 ![Skip audit log](../../img/skipauditlog.png)
 
+## Mask the Usernames of Deleted Users
 
+By default, the audit log keeps the username of a user after the user is deleted. To replace it with a checksum when the user is deleted, enable the `GDPR_AUDIT_LOGS` setting. For more information, see [Deleting Users in Compliance with GDPR](../managing-users/_index.md#deleting-users-in-compliance-with-gdpr).

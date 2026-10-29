@@ -31,3 +31,19 @@ Harbor system administrators can assign the Harbor system administrator role to 
 ![browse project](../../img/new-set-admin-remove-user.png)
 
 To delete users, select a user and click `DELETE`. When deleting the user, its privilege will be removed. for LDAP/AD or OIDC authentication mode, it just delete the user data in Harbor, not in the LDAP/AD or OIDC.
+
+## Deleting Users in Compliance with GDPR
+
+By default, Harbor does not remove a deleted user from its database. It marks the user as deleted and appends `#<user_id>` to the username and email address, so the original values remain readable in the database and in the audit log. If you need to remove this personal data, for example to comply with the General Data Protection Regulation (GDPR), you can enable the following settings. Both settings are disabled by default and can be enabled independently of each other.
+
+| Environment variable | Helm chart value | Description |
+| -------------------- | ---------------- | ----------- |
+| `GDPR_DELETE_USER` | `core.gdpr.deleteUser` | When a user is deleted, Harbor replaces the username, email address and full name of the user with the CRC32 checksum of each value, followed by `#<user_id>`. |
+| `GDPR_AUDIT_LOGS` | `core.gdpr.auditLogsCompliant` | When a user is deleted, Harbor starts a job that replaces the username in all of the audit log entries of that user with the CRC32 checksum of the username. This applies to both the **Audit Logs** and **Audit Logs(Legacy)** tabs. |
+
+These settings cannot be changed in the Harbor interface or with the `/api/v2.0/configurations` API. They are read from the environment of the `core` container when it starts:
+
+- If you deployed Harbor with the Harbor Helm chart, set `core.gdpr.deleteUser`, `core.gdpr.auditLogsCompliant`, or both to `true` in your `values.yaml` file and upgrade the release.
+- If you deployed Harbor with the installer, add `GDPR_DELETE_USER=true`, `GDPR_AUDIT_LOGS=true`, or both to the `common/config/core/env` file in the installation directory and run `docker compose up -d --force-recreate core`. The `prepare` script regenerates this file, so add the variables again every time you run `prepare` or `install.sh`.
+
+The settings only apply to users that are deleted after they are enabled. Users and audit log entries of users that were deleted before are not changed.
