@@ -14,7 +14,7 @@ This section describes how to use and maintain your Harbor registry instance aft
 
 ## Working with Harbor Projects
 
-This section describes how users with the developer, maintainer, and project administrator roles manage users, and create, configure, and participate in Harbor projects. [Read more](working-with-projects/_index.md)
+This section describes how users manage and participate in Harbor projects according to their assigned built-in or custom project roles. [Read more](working-with-projects/_index.md)
 
 ## Building, Customizing, and Contributing to Harbor
 

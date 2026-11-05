@@ -32,6 +32,7 @@ This section describes how to use and maintain Harbor after deployment. These da
 - [Managing Users](administration/managing-users/_index.md)
     - [User Permissions By Role](administration/managing-users/user-permissions-by-role.md)
     - [Create User Accounts in Database Mode](administration/managing-users/create-users-db.md)
+- [Manage Custom Project Roles](administration/custom-project-roles/_index.md)
 - [Configure Global Settings](administration/general-settings/_index.md)
 - [Configure Project Quotas](administration/configure-project-quotas/_index.md)
 - [Configuring Replication](administration/configuring-replication/_index.md)
@@ -55,7 +56,7 @@ This section describes how to use and maintain Harbor after deployment. These da
 
 ## Working with Harbor Projects
 
-This section describes how users with the developer, maintainer, and project administrator roles manage and participate in Harbor projects.
+This section describes how users manage and participate in Harbor projects according to their assigned built-in or custom project roles.
 
 - [Introduction](working-with-projects/_index.md)
 - [Create Projects](working-with-projects/create-projects/_index.md)
