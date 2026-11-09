@@ -3,7 +3,8 @@ title: Upgrade Harbor and Migrate Data
 weight: 45
 ---
 
-This guide covers upgrade and migration to v2.15.0. This guide only covers migration from v2.12.0 and later to the current version. If you are upgrading from an earlier version, refer to the migration guide for an earlier Harbor version.
+This guide covers upgrade and migration to v2.16.0. This guide only covers migration from v2.14.0 and later to the current version. If you are upgrading from an earlier version, refer to the migration guide for an earlier Harbor version.
+
 
 * [Upgrade to Harbor v2.14.0](/docs/2.14.0/administration/upgrade/)
 * [Upgrade to Harbor v2.13.0](/docs/2.13.0/administration/upgrade/)
