@@ -178,6 +178,25 @@ You can use certificates that are signed by a trusted third-party CA, or you can
     <td valign="top">Set the timeout, in seconds, of the HTTP client that sends web hook requests. This attribute is required. The <code>harbor.yml.tmpl</code> shipped with the installer sets it to 3.</td>
   </tr>
   <tr>
+    <td valign="top"><code>webhook_egress</code></td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">Control which destinations Harbor's webhook and Slack notifications are allowed to reach. Use it to stop a project administrator from pointing a webhook at an internal service, the Harbor host itself or a cloud metadata endpoint. If you omit <code>policy</code>, Harbor applies its own default. The deprecated <code>network.allow_private_network_access</code> setting is still honored when <code>policy</code> is not set, but <code>prepare</code> logs a warning and you should use <code>webhook_egress.policy</code> instead.</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>policy</code></td>
+    <td valign="top">One of the following values:<ul>
+          <li><code>allow_all</code>: Harbor performs no checks on the destination.</li>
+          <li><code>block_restricted</code>: Private networks are allowed, but loopback, link-local, multicast and unspecified addresses, and well-known cloud metadata endpoints are blocked.</li>
+          <li><code>public_only</code>: Only public addresses are allowed.</li>
+        </ul>The value is not case sensitive, and <code>prepare</code> fails if it is not one of the above.</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>allowlist</code></td>
+    <td valign="top">A list of destinations that are always allowed, whatever the <code>policy</code>. Each entry is an IP address, a CIDR, a hostname, or a <code>*.domain</code> suffix, for example <code>10.20.0.0/16</code> or <code>*.svc.cluster.local</code>. Harbor does not resolve an allowlisted hostname for the check, so it is trusted wherever DNS points it.</td>
+  </tr>
+  <tr>
     <td valign="top"><code>log</code></td>
     <td valign="top">&nbsp;</td>
     <td valign="top">Configure logging. Harbor uses `rsyslog` to collect the logs for each container.</td>
