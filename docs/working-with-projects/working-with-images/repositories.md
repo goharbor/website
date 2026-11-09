@@ -32,6 +32,19 @@ By clicking the search icon in the top right of the list of artifacts, you can u
 
 ![filter_artifacts](../../../img/filter-artifacts.png)
 
+### Artifact actions
+
+To act on artifacts in a repository, select one or more artifacts in the **Artifacts** tab and click **Actions** to open the drop-down menu. An option is only available if the current selection supports it and your role in the project has the required permission. For the permissions of each role, see [User Permissions By Role](../../administration/managing-users/user-permissions-by-role.md).
+
+![artifact_actions](../../../img/sbom-integration/4_stop_manual_generate_sbom.png)
+
+* **Stop Scan Vulnerability**: Stops the vulnerability scans that are running for the selected artifacts. This option is only available if a scan is queued or running for every selected artifact. See [Stop Scan](../../administration/vulnerability-scanning/stop-scan.md).
+* **Stop Generate SBOM**: Stops the SBOM generation that is running for the selected artifacts. This option is only available if SBOM generation is queued or running for every selected artifact. See [SBOM Integration](../../administration/sbom-integration/_index.md).
+* **Copy Digest**: Opens a window that shows the full `sha256` digest of the selected artifact, so that you can copy it to the clipboard. Select exactly one artifact to use this option.
+* **Add Labels**: Adds labels to or removes labels from the selected artifacts. You can select global labels and labels of the current project. To change labels on several artifacts at once, none of the selected artifacts can already have labels. See [Managing Labels](create-labels.md).
+* **Copy**: Copies the selected artifact to another repository, in the same project or a different one. In the **Copy** window, enter the destination project name and repository name, and click **Confirm**. Harbor copies the artifact together with its tags, any artifacts that it references if it is an image index, and its accessories, such as Cosign signatures and SBOMs. You need push permission in the destination project. Select exactly one artifact to use this option. See [Retagging Artifacts](retagging-images.md).
+* **Delete**: Deletes the selected artifacts, including all of their tags. You can select several artifacts to delete them in one operation. You cannot delete an artifact that is referenced by an image index. See [Deleting Artifacts](deleting-artifact.md).
+
 Since Harbor v2.0.0, [Image index](https://raw.githubusercontent.com/opencontainers/image-spec/master/image-index.md) can also be managed as an artifact in a repository.  If an artifact is an index, there will be a folder icon on the right side of its digest.
 
 ![image_index](../../../img/index-icon.png)
