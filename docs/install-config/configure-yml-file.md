@@ -60,6 +60,11 @@ You can use certificates that are signed by a trusted third-party CA, or you can
     <td valign="top"><code>private_key</code></td>
     <td valign="top">The path to the SSL key.</td>
   </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>strong_ssl_ciphers</code></td>
+    <td valign="top">Set to <code>true</code> to restrict the HTTPS listener of the Harbor proxy to a smaller set of strong cipher suites (<code>ECDHE+AESGCM:DHE+AESGCM:ECDHE+RSA+SHA256:DHE+RSA+SHA256:!AES128</code>). If internal TLS is enabled, the setting also applies to the portal. TLS 1.2 and TLS 1.3 are enabled in both cases. The default is <code>false</code>.</td>
+  </tr>
 
   <tr>
     <td valign="top"><code>internal_tls</code></td>
@@ -260,6 +265,31 @@ You can use certificates that are signed by a trusted third-party CA, or you can
     <td valign="top"><code>expire_hours</code></td>
     <td valign="top">Configure the cache expiration limit in hours. Default is 24. </td>
   </tr>
+  <tr>
+    <td valign="top"><code>upload_purging</code></td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">Configure the registry to periodically delete the files of image uploads that were started but never completed from the <code>_uploads</code> directories of the storage backend. If you remove the <code>upload_purging</code> section, upload purging is disabled.</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>enabled</code></td>
+    <td valign="top">Set to <code>true</code> to enable upload purging. The <code>harbor.yml.tmpl</code> shipped with the installer sets it to <code>true</code>.</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>age</code></td>
+    <td valign="top">Uploads that are older than this age are deleted. Set it as a number of hours followed by <code>h</code>, for example <code>168h</code>. The value must be at least <code>2h</code>. The default is <code>168h</code> (one week).</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>interval</code></td>
+    <td valign="top">How often the purge runs. Set it as a number of hours followed by <code>h</code>, for example <code>24h</code>. The value must be at least <code>2h</code>. The default is <code>24h</code>.</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>dryrun</code></td>
+    <td valign="top">Set to <code>true</code> to only log the uploads that would be deleted, without deleting them. The default is <code>false</code>.</td>
+  </tr>
 </table>
 
 ## Optional Parameters
@@ -274,6 +304,21 @@ The following table lists the additional, optional parameters that you can set t
     <th scope="col">Parameter</th>
     <th scope="col">Sub-Parameters</th>
     <th scope="col">Description and Additional Parameters </th>
+  </tr>
+  <tr>
+    <td valign="top"><code>ip_family</code></td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">Configure the IP versions that the HTTPS listener of the Harbor proxy accepts connections on. If internal TLS is enabled, the setting also applies to the HTTPS listener of the portal. The HTTP listener always uses IPv4. If you do not configure <code>ip_family</code>, Harbor listens on IPv4 only. If you configure it, set both of the following sub-parameters.</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>ipv6</code></td>
+    <td valign="top">Set <code>enabled</code> to <code>true</code> to listen on IPv6. Only enable it if IPv6 is enabled in your Docker network. The <code>harbor.yml.tmpl</code> shipped with the installer sets it to <code>false</code>.</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>ipv4</code></td>
+    <td valign="top">Set <code>enabled</code> to <code>true</code> to listen on IPv4. The <code>harbor.yml.tmpl</code> shipped with the installer sets it to <code>true</code>.</td>
   </tr>
   <tr>
     <td valign="top"><code>external_url</code></td>
@@ -299,7 +344,7 @@ The following table lists the additional, optional parameters that you can set t
   <tr>
     <td valign="top">&nbsp;</td>
     <td valign="top"><code>redirect</code></td>
-    <td valign="top">Set <code>deactivate</code> to <code>true</code> when you want to deactivate registry redirect</td>
+    <td valign="top">Set <code>disable</code> to <code>true</code> when you want to deactivate registry redirect</td>
   </tr>
   <tr>
     <td valign="top"><code>external_database</code></td>
@@ -343,6 +388,20 @@ The following table lists the additional, optional parameters that you can set t
   </tr>
   <tr>
     <td valign="top">&nbsp;</td>
+    <td valign="top"><code>username</code></td>
+    <td valign="top">Username to connect to the external Redis instance, for Redis 6 and later instances that use the two-argument form of the <code>AUTH</code> command (<code>AUTH &lt;username&gt; &lt;password&gt;</code>). Set it together with <code>password</code>.</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>tlsOptions</code></td>
+    <td valign="top">Configure TLS for the connections to the external Redis instance. Only server authentication is supported, mutual TLS is not supported.
+      <ul>
+        <li><code>enable</code>: Set to <code>true</code> to connect to Redis over TLS. The default is <code>false</code>.</li>
+        <li><code>rootCA</code>: The path to the CA certificate that signed the certificate of the Redis server. Set it if the certificate is self-signed or signed by a private CA. Harbor adds the certificate to the trust store of its components.</li>
+    </ul></td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
     <td valign="top"><code>registry_db_index</code></td>
     <td valign="top">Database index for Harbor registry.</td>
   </tr>
@@ -355,6 +414,26 @@ The following table lists the additional, optional parameters that you can set t
     <td valign="top">&nbsp;</td>
     <td valign="top"><code>trivy_db_index</code></td>
     <td valign="top">Database index for Trivy adapter.</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>harbor_db_index</code></td>
+    <td valign="top">Optional database index for miscellaneous Harbor business data. If not set, Harbor uses database index 0, which is always used by Harbor core and cannot be changed.</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>cache_layer_db_index</code></td>
+    <td valign="top">Optional database index for the Harbor cache layer that you enable with the <code>cache</code> parameter. If not set, Harbor uses database index 0.</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><code>idle_timeout_seconds</code></td>
+    <td valign="top">The number of seconds after which Harbor closes idle connections to Redis. The default is 30.</td>
+  </tr>
+  <tr>
+    <td valign="top"><code>redis</code></td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">Change the database indexes that Harbor uses in the internal Redis instance. The sub-parameters are <code>registry_db_index</code> (default 1), <code>jobservice_db_index</code> (default 2), <code>trivy_db_index</code> (default 5), <code>harbor_db_index</code> and <code>cache_layer_db_index</code>, with the same meaning as in <code>external_redis</code>. Database index 0 is always used by Harbor core. Only use <code>redis</code> with the internal Redis instance: if you set both <code>redis</code> and <code>external_redis</code>, Harbor ignores the connection settings in <code>external_redis</code>.</td>
   </tr>
   <tr>
     <td valign="top"><code>metric</code></td>
@@ -423,6 +502,11 @@ The following table lists the additional, optional parameters that you can set t
       <li><code>timeout:</code>: The timeout of data transfer</li>
     </ul></td>
   </tr>
+  <tr>
+    <td valign="top"><code>core</code></td>
+    <td valign="top"><code>quota_update_provider</code></td>
+    <td valign="top">How Harbor updates the storage usage of projects for quotas, <code>db</code> or <code>redis</code>. The default is <code>db</code>, and <code>prepare</code> fails for any other value. With <code>redis</code>, Harbor updates the usage through Redis, which reduces spikes in database connections when many clients push to the same project at the same time. The usage that Harbor displays can then be updated with a delay. Only switch to <code>redis</code> if you run into database connection spikes in that scenario, it does not improve other scenarios.</td>
+  </tr>
 </table>
 
 
@@ -447,7 +531,7 @@ storage_service:
     region: regionOne
     container: docker_images
   redirect:
-    disabled: false
+    disable: false
 ```
 
 ## What to Do Next
