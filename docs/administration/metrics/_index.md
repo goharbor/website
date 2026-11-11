@@ -49,6 +49,8 @@ Name | Description | Labels (Values) | Metric type
 `harbor_core_http_inflight_requests` | The total number of requests | operation (values from `operationId` in [Harbor API](https://github.com/goharbor/harbor/blob/main/api/v2.0/swagger.yaml). Some legacy endpoints do not have an `operationId`, so the label value is `unknown`) | gauge
 `harbor_core_http_request_duration_seconds` | The time duration of the requests | method (`GET`, `POST`, `HEAD`, `PATCH`, `PUT`), operation (values from `operationId` in [Harbor API](https://github.com/goharbor/harbor/blob/main/api/v2.0/swagger.yaml). Some legacy endpoints do not have an `operationId`, so the label value is `unknown`), quantile | summary
 `harbor_core_http_request_total` | The total number of requests | method (`GET`, `POST`, `HEAD`, `PATCH`, `PUT`), operation (values from `operationId` in [Harbor API](https://github.com/goharbor/harbor/blob/main/api/v2.0/swagger.yaml). Some legacy endpoints do not have an `operationId`, so the label value is `unknown`) | counter
+`harbor_core_http_registry_proxy_requests_total` | The total number of manifest and blob requests sent to [proxy cache projects](../configure-proxy-cache/) | project, method (`GET`, `HEAD`) | counter
+`harbor_core_http_registry_proxy_upstream_requests_total` | The total number of manifest and blob requests to proxy cache projects that were fetched from the upstream registry (cache misses) | project, method (`GET`, `HEAD`) | counter
 {{< /table >}}
 
 ## Registry Metrics
