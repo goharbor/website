@@ -39,6 +39,8 @@ This section describes how to use and maintain Harbor after deployment. These da
     - [Create Replication Endpoints](administration/configuring-replication/create-replication-endpoints.md)
     - [Create Replication Rules](administration/configuring-replication/create-replication-rules.md)
     - [Manage Replications](administration/configuring-replication/manage-replications.md)
+- [Configure Proxy Cache](administration/configure-proxy-cache/_index.md)
+    - [Use a Proxy Cache as a Registry Mirror](administration/configure-proxy-cache/configure-container-runtimes.md)
 - [Vulnerability Scanning](administration/vulnerability-scanning/_index.md)
     - [Connect Harbor to Additional Vulnerability Scanners](administration/vulnerability-scanning/pluggable-scanners.md)
     - [Scan Individual Artifacts](administration/vulnerability-scanning/scan-individual-artifact.md)

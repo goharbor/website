@@ -72,3 +72,5 @@ To start using the proxy cache, configure your docker pull commands or pod manif
 ```bash
 > docker pull <harbor_server_name>/<proxy_project_name>/goharbor/harbor-core:dev
 ```
+
+To pull images through a proxy cache project without changing the image references, configure your container runtime to use the proxy cache project as a registry mirror. See [Use a Proxy Cache as a Registry Mirror](configure-container-runtimes.md).
