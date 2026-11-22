@@ -7,7 +7,7 @@ A repository is a collection of artifacts.  Since version v2.0, in addition to c
 
 ### List Repositories
 
-Click your project to enter the project detail page after successful logging in.  Click the "Repositories" tab to view the list of of repositories. 
+Click your project to enter the project detail page after successful logging in.  Click the "Repositories" tab to view the list of repositories. 
 
 ![list_repositories](../../../img/list-repositories.png)
 
