@@ -15,45 +15,47 @@ The installation processes are almost the same for the online and offline instal
 
 1. Go to the [Harbor releases page](https://github.com/goharbor/harbor/releases). 
 1. Download the online or offline installer for the version you want to install.
-1. Optionally download the corresponding `*.asc` file to verify that the package is genuine. 
-  
-   The `*.asc` file is an OpenPGP key file. Perform the following steps to verify that the downloaded bundle is genuine. 
-   
-   1. Obtain the public key for the `*.asc` file.
-      
+1. Optionally verify that the package is genuine.
+
+   Starting with v2.15.0, Harbor installers are signed with [Cosign](https://github.com/sigstore/cosign) keyless signing. Each installer has a matching `*.sigstore.json` file on the releases page. For full details, see [Harbor Release Signature Verification](https://github.com/goharbor/harbor/blob/main/docs/signature-verification.md).
+
+   1. Install Cosign.
+
       ```sh
-      gpg --keyserver hkps://keyserver.ubuntu.com --receive-keys 644FF454C0B4115C
+      curl -LO https://github.com/sigstore/cosign/releases/latest/download/cosign-linux-amd64
+      sudo install -m 0755 cosign-linux-amd64 /usr/local/bin/cosign
+      cosign version
       ```
-      
-      You should see the message ` public key "Harbor-sign (The key for signing Harbor build) <jiangd@vmware.com>" imported`
-   1. Verify that the package is genuine by running one of the following commands.
+
+   1. Download the `*.sigstore.json` file for your installer, in the same folder as the installer.
+
+   1. Verify the package by running one of the following commands. Replace `version` with the release version, for example `v2.15.0`.
 
       - Online installer:
 
          ```sh
-         gpg -v --keyserver hkps://keyserver.ubuntu.com --verify harbor-online-installer-version.tgz.asc
+         cosign verify-blob \
+           --bundle harbor-online-installer-version.tgz.sigstore.json \
+           --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+           --certificate-identity-regexp '^https://github.com/goharbor/harbor/.github/workflows/publish_release.yml@refs/tags/v.*$' \
+           harbor-online-installer-version.tgz
          ```
 
       - Offline installer:
 
          ```sh
-         gpg -v --keyserver hkps://keyserver.ubuntu.com --verify harbor-offline-installer-version.tgz.asc
+         cosign verify-blob \
+           --bundle harbor-offline-installer-version.tgz.sigstore.json \
+           --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+           --certificate-identity-regexp '^https://github.com/goharbor/harbor/.github/workflows/publish_release.yml@refs/tags/v.*$' \
+           harbor-offline-installer-version.tgz
          ```
-      
-      The `gpg` command verifies that the bundle's signature matches that of the `*.asc` key file. You should see confirmation that the signature is correct.
-      
-      ```sh
-      gpg: armor header: Version: GnuPG v1
-      gpg: assuming signed data in 'harbor-online-installer-v2.0.2.tgz'
-      gpg: Signature made Tue Jul 28 09:49:20 2020 UTC
-      gpg:                using RSA key 644FF454C0B4115C
-      gpg: using pgp trust model
-      gpg: Good signature from "Harbor-sign (The key for signing Harbor build) <jiangd@vmware.com>" [unknown]
-      gpg: WARNING: This key is not certified with a trusted signature!
-      gpg:          There is no indication that the signature belongs to the owner.
-      Primary key fingerprint: 7722 D168 DAEC 4578 06C9  6FF9 644F F454 C0B4 115C
-      gpg: binary signature, digest algorithm SHA1, key algorithm rsa4096
-      ```
+
+      You should see `Verified OK`.
+
+   {{< note >}}
+   Releases before v2.15.0 were signed with the GPG key `644FF454C0B4115C` and a `*.asc` file. This key expired on 2024-10-21, so GPG shows it as expired. To verify an older release, import the key with `gpg --keyserver hkps://keyserver.ubuntu.com --receive-keys 644FF454C0B4115C`, then run `gpg -v --verify harbor-offline-installer-version.tgz.asc`.
+   {{< /note >}}
 
 1. Use `tar` to extract the installer package:
 
